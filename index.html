@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>Chantier</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Chantier">
+<meta name="theme-color" content="#1A1A1A">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="icon" href="./icons/icon-192.png">
+<script>
+// React servi en local (hors ligne) à la place du CDN du prototype
+window.__resources = {
+  'https://unpkg.com/react@18.3.1/umd/react.production.min.js': './vendor/react.production.min.js',
+  'https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js': './vendor/react-dom.production.min.js'
+};
+if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
+</script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="./image-slot.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>html,body{margin:0;height:100%;background:#1A1A1A;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}a{color:inherit;text-decoration:none}a:hover{opacity:.8}*{box-sizing:border-box}::-webkit-scrollbar{display:none}textarea::placeholder,input::placeholder{color:var(--ink3)}</style>
+</helmet>
+<div style="height:100%;font-family:-apple-system,'SF Pro Text',system-ui,sans-serif">
+<div style="height:100%;position:relative;overflow:hidden;color:var(--ink);--ink:#161616;--ink2:rgba(22,22,22,.55);--ink3:rgba(22,22,22,.3);--line:rgba(0,0,0,.07);--tile:#FFFFFF;--tileBd:#E0E0DE;--field:#FFFFFF;--track:#DCDCDA;--chip:#E2E2E0;--on:#FFFFFF;--acc:#161616;--accOn:#F4F4F2;--accTx:#161616;--accSoft:rgba(0,0,0,.06);--warn:#D9443A;--warnTx:#C2352B;--warnBg:rgba(220,60,50,.1);--ok:#1E7D68;--okTx:#1E7D68;--okBg:rgba(30,125,104,.1);--solid:#161616;--solidTx:#F4F4F2;--sheet:#F4F4F2;--scrim:rgba(0,0,0,.3);--knob:#fff;--card:#FFFFFF;--cardB:1px solid #E2E2E0;--cardBd:#DCDCDA;--cardSh:none;--bg:#ECECEA;--k1:#161616;--k2:rgba(22,22,22,.55);--k3:rgba(22,22,22,.3);--kl:#EFEFED;--kt:#F4F4F2;--ktb:#E6E6E4;--kf:#F4F4F2;--ktr:#E2E2E0;--kon:#FFFFFF;--ka:#161616;--kaOn:#F4F4F2;--kas:rgba(0,0,0,.06);--kw:#C2352B;--kwb:rgba(220,60,50,.1);--kwarn:#D9443A;--kok:#1E7D68;--kokb:rgba(30,125,104,.1);--t1:#E6E9D2;--t1x:#4E5420;--t2:#E2E4EA;--t2x:#30343E;--t3:#D6E8E8;--t3x:#1E5A5C;--t4:#EEDFE8;--t4x:#6A2F58;background:var(--bg)">
+<div style="{{ themeStyle }}">
+
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;padding-top:calc(env(safe-area-inset-top, 0px) + 6px)">
+
+<div style="position:relative;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:4px 20px 8px">
+<div style="flex:1;min-width:0;display:flex">
+<sc-if value="{{ showSel }}" hint-placeholder-val="{{ true }}">
+<div style="flex:1;min-width:0;display:flex;height:46px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);overflow:hidden">
+<div onWheel="{{ wWheel }}" onPointerDown="{{ wDown }}" onPointerMove="{{ wMove }}" onPointerUp="{{ wUp }}" onPointerCancel="{{ wUp }}" style="position:relative;flex:1;min-width:0;cursor:ns-resize;touch-action:none;user-select:none;-webkit-user-select:none;perspective:240px;-webkit-mask-image:linear-gradient(rgba(0,0,0,0),#000 32%,#000 68%,rgba(0,0,0,0));mask-image:linear-gradient(rgba(0,0,0,0),#000 32%,#000 68%,rgba(0,0,0,0))">
+<sc-for list="{{ wheel }}" as="r" hint-placeholder-count="3">
+<div style="position:absolute;left:0;right:0;top:11px;height:24px;display:flex;align-items:center;gap:10px;padding:0 14px;pointer-events:none;transform:{{ r.tf }};opacity:{{ r.op }};color:{{ r.col }}">
+<span style="width:8px;height:8px;border-radius:50%;flex:none;background:{{ r.dot }}"></span>
+<span style="font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.label }}</span>
+</div>
+</sc-for>
+</div>
+<div onClick="{{ toggleMenu }}" title="Tous les sites" style="flex:none;width:44px;border-left:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink2)">
+<svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transform:{{ menuChev }};transition:transform .2s"><path d="M3 4.5l3 3 3-3"></path></svg>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ back }}" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;padding:10px 16px 10px 11px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Projets</div>
+</sc-if>
+<sc-if value="{{ noSel }}" hint-placeholder-val="{{ false }}"><div style="height:42px"></div></sc-if>
+</div>
+<div onClick="{{ openAcc }}" title="Compte & réglages" style="flex:none;width:42px;height:42px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.8"></circle><path d="M4.5 20c1.2-3.6 4.1-5.5 7.5-5.5s6.3 1.9 7.5 5.5"></path></svg>
+</div>
+</div>
+
+<div style="flex:1;overflow-y:auto;padding:8px 20px 130px">
+<sc-if value="{{ showHead }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:10px 0 20px">
+<div style="min-width:0">
+<div style="font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">{{ subtitle }}</div>
+<div style="font:300 50px/1 -apple-system,'SF Pro Display','Helvetica Neue',system-ui,sans-serif;letter-spacing:-.045em;margin-top:12px">{{ title }}</div>
+</div>
+<sc-if value="{{ canCfg }}" hint-placeholder-val="{{ false }}"><div onClick="{{ openCfg }}" title="Réglages" style="flex:none;margin-left:auto;width:52px;height:52px;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg></div></sc-if>
+<sc-if value="{{ canAdd }}" hint-placeholder-val="{{ true }}">
+<div onClick="{{ openSheet }}" style="flex:none;width:52px;height:52px;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)">
+<svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 2.5v13M2.5 9h13"></path></svg>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:-4px 0 18px">
+<sc-for list="{{ psecs }}" as="g" hint-placeholder-count="3">
+<div onClick="{{ g.pick }}" style="cursor:pointer;padding:11px 12px 12px;border-radius:8px;background:linear-gradient(160deg,{{ g.bg }} 35%,var(--tile));color:{{ g.fg }};border:1px solid {{ g.bd }};opacity:{{ g.op }};transition:opacity .2s">
+<div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap">{{ g.label }}</div>
+<div style="font:300 32px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.04em;margin-top:12px">{{ g.n }}</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ noProj }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:12px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2)">{{ projEmpty }}</div></sc-if>
+<sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:16px">
+<sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
+<div onClick="{{ p.open }}" style="cursor:pointer;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<div style="position:relative;height:150px;margin:6px 6px 0;border-radius:10px;overflow:hidden;background:var(--tile)">
+<image-slot id="{{ p.img }}" src="{{ p.src }}" placeholder="{{ p.ph }}" shape="rect" style="width:100%;height:100%"></image-slot>
+<div style="position:absolute;left:10px;right:10px;top:10px;display:flex;justify-content:space-between;pointer-events:none">
+<span style="padding:5px 10px;border-radius:4px;background:rgba(255,255,255,.75);color:#0E1726;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ p.phase }}</span>
+<span style="padding:5px 10px;border-radius:4px;background:rgba(255,255,255,.75);color:#0E1726;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ p.due }}</span>
+</div>
+</div>
+<div style="padding:14px 16px 16px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+<div style="font:500 18px/1.2 -apple-system,sans-serif;letter-spacing:-.01em">{{ p.name }}</div>
+<div style="flex:none;font:300 34px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.04em">{{ p.pct }}<span style="font-size:17px;letter-spacing:0"> %</span></div>
+</div>
+<div style="display:flex;align-items:center;gap:5px;margin-top:4px;font:400 13px -apple-system,sans-serif;color:var(--ink2)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>{{ p.loc }}</div>
+<div style="height:6px;border-radius:4px;background:var(--track);overflow:hidden;margin:12px 0 9px"><div style="height:100%;border-radius:4px;background:var(--acc);width:{{ p.pctW }}"></div></div>
+<div style="display:flex;justify-content:space-between;gap:8px;font:400 13px -apple-system,sans-serif;color:var(--ink2)"><span>{{ p.meta }}</span></div>
+<sc-if value="{{ p.hasAlert }}" hint-placeholder-val="{{ false }}"><div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 10px 10px 12px;border-radius:8px;background:#161616"><span style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,242,242,.6)">Alerte</span><span style="padding:6px 9px;border-radius:4px;background:rgba(255,90,90,.16);color:#FF8F8F;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ p.alert }}</span></div></sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+<div style="position:relative;height:200px;border-radius:16px;overflow:hidden;background:var(--tile);box-shadow:var(--cardSh)">
+<image-slot id="{{ pj.img }}" src="{{ pj.src }}" placeholder="{{ pj.ph }}" shape="rect" style="width:100%;height:100%"></image-slot>
+<div style="position:absolute;left:0;right:0;bottom:0;padding:48px 18px 16px;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.62));color:#fff;pointer-events:none">
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;opacity:.88">{{ pj.phase }} · Fin {{ pj.due }}</div>
+<div style="font:400 28px/1.1 -apple-system,'SF Pro Display',sans-serif;letter-spacing:-.03em;margin-top:3px;text-wrap:pretty">{{ pj.name }}</div>
+<div style="display:flex;align-items:center;gap:5px;margin-top:5px;font:500 12.5px -apple-system,sans-serif;opacity:.9"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>{{ pj.addrLine }}</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:10px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t1) 35%,var(--tile));color:var(--t1x);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Avancé</span><span>{{ pj.pct }} %</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t2) 35%,var(--tile));color:var(--t2x);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Étapes</span><span>{{ pj.stepsDone }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t3) 35%,var(--tile));color:var(--t3x);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Fourn.</span><span>{{ pj.supN }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t4) 35%,var(--tile));color:var(--t4x);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>À payer</span><span>{{ pj.openAmt }}</span></div>
+</div>
+<div style="display:flex;gap:4px;margin:14px 0 16px;padding:4px;border-radius:10px;background:var(--chip);border:1px solid var(--cardBd)">
+<sc-for list="{{ segs }}" as="g" hint-placeholder-count="3">
+<div onClick="{{ g.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:9px 0;border-radius:10px;background:{{ g.bg }};color:{{ g.fg }};box-shadow:{{ g.sh }};white-space:nowrap;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ g.label }}</div>
+</sc-for>
+</div>
+
+<sc-if value="{{ segE }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 8px">
+<div style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Étapes du projet</div>
+<div onClick="{{ toggleEdit }}" style="cursor:pointer;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--acc)">{{ editLabel }}</div>
+</div>
+<div style="padding:4px 16px 10px;border-radius:14px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink)">
+<sc-for list="{{ pj.steps }}" as="s" hint-placeholder-count="4">
+<div style="padding:12px 0;border-bottom:2px solid var(--line)">
+<div style="display:flex;align-items:center;gap:12px">
+<sc-if value="{{ s.isC }}" hint-placeholder-val="{{ true }}"><div onClick="{{ s.toggle }}" style="cursor:pointer;width:24px;height:24px;border-radius:50%;border:1.6px solid {{ s.ckBd }};background:{{ s.ckBg }};display:flex;align-items:center;justify-content:center;flex:none"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--accOn)"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg></div></sc-if>
+<sc-if value="{{ s.isG }}" hint-placeholder-val="{{ false }}"><div onClick="{{ s.complete }}" title="Marquer terminé" style="cursor:pointer;width:24px;height:24px;border-radius:50%;flex:none;background:{{ s.pie }};display:flex;align-items:center;justify-content:center"><sc-if value="{{ s.gOpen }}" hint-placeholder-val="{{ true }}"><div style="width:14px;height:14px;border-radius:50%;background:var(--tileBd)"></div></sc-if><sc-if value="{{ s.gDone }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg></sc-if></div></sc-if>
+<div onClick="{{ s.toggle }}" style="flex:1;min-width:0;cursor:pointer;font:400 15.5px -apple-system,sans-serif;text-decoration:{{ s.deco }};color:{{ s.col }}">{{ s.l }}</div>
+<sc-if value="{{ s.showPct }}" hint-placeholder-val="{{ false }}"><div style="font:700 14px -apple-system,sans-serif;color:{{ s.pctCol }}">{{ s.pctLbl }}</div></sc-if>
+<sc-if value="{{ s.ed }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:6px;flex:none">
+<div style="display:flex;padding:3px;border-radius:10px;background:var(--track)">
+<div onClick="{{ s.setC }}" style="cursor:pointer;width:34px;height:26px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:{{ s.cBg }};color:{{ s.cFg }}"><svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg></div>
+<div onClick="{{ s.setG }}" style="cursor:pointer;width:34px;height:26px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:{{ s.gBg }};color:{{ s.gFg }}"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="5.5" width="13" height="5" rx="2.5"></rect><rect x="1.5" y="5.5" width="7" height="5" rx="2.5" fill="currentColor"></rect></svg></div>
+</div>
+<div onClick="{{ s.del }}" style="cursor:pointer;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--warnBg);color:var(--warnTx)"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{ s.showBar }}" hint-placeholder-val="{{ false }}">
+<div onPointerDown="{{ s.drag }}" onPointerMove="{{ s.drag }}" style="margin:6px 4px 0 36px;height:26px;display:flex;align-items:center;cursor:pointer;touch-action:none">
+<div style="position:relative;flex:1;height:8px;border-radius:4px;background:var(--track)">
+<div style="height:100%;border-radius:4px;background:{{ s.barCol }};width:{{ s.w }}"></div>
+<div style="position:absolute;top:50%;left:{{ s.w }};width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--knob);box-shadow:0 2px 8px rgba(0,0,0,.25),0 0 0 .5px rgba(0,0,0,.08)"></div>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+<div style="margin-top:12px;padding:10px 10px 12px;border-radius:10px;background:#161616;color:#F2F2F2;--ink:#F2F2F2;--ink2:rgba(242,242,242,.55);--ink3:rgba(242,242,242,.35);--on:#F2F2F2;--acc:#161616;--track:#2E2E2E;--field:#262626;--tileBd:#333333;--solid:#F2F2F2;--solidTx:#161616">
+<div style="display:flex;align-items:center;gap:6px;margin:0 2px 9px;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,242,242,.6)"><svg width="10" height="10" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg>Nouvelle étape</div>
+<div style="display:flex;gap:8px;align-items:center">
+<input value="{{ stepText }}" onChange="{{ onStep }}" placeholder="Nouvelle étape…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--field);padding:10px 14px;border-radius:10px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div style="display:flex;padding:3px;border-radius:10px;background:var(--track);flex:none">
+<sc-for list="{{ stepTypes }}" as="t" hint-placeholder-count="2"><div onClick="{{ t.pick }}" style="cursor:pointer;padding:6px 10px;border-radius:10px;background:{{ t.bg }};color:{{ t.fg }};font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ t.label }}</div></sc-for>
+</div>
+<div onClick="{{ addStep }}" style="cursor:pointer;flex:none;width:38px;height:38px;border-radius:50%;background:var(--solid);color:var(--solidTx);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div>
+</div>
+</div>
+</div>
+<div style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--warnTx);margin:22px 4px 8px">À prévoir pour la suite</div>
+<div style="padding:10px 16px 14px;border-radius:14px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink)">
+<sc-for list="{{ pj.notes }}" as="n" hint-placeholder-count="2">
+<div style="display:flex;gap:10px;font-size:14.5px;line-height:1.4;padding:5px 0"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);flex:none;margin-top:7px"></span><span>{{ n }}</span></div>
+</sc-for>
+<div style="display:flex;gap:8px;margin-top:8px">
+<input value="{{ noteText }}" onChange="{{ onNote }}" placeholder="Ajouter une note…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--field);padding:10px 14px;border-radius:10px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div onClick="{{ addNote }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 16px;border-radius:10px;display:flex;align-items:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ segC }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:18px">
+<div style="padding:10px 12px;border-radius:10px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink)"><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Factures HT</div><div style="font:700 16px -apple-system,sans-serif;margin-top:2px">{{ pj.invTotal }}</div></div>
+<div style="padding:10px 12px;border-radius:10px;background:var(--okBg)"><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--okTx)">Payé</div><div style="font:700 16px -apple-system,sans-serif;margin-top:2px;color:var(--okTx)">{{ pj.invPaid }}</div></div>
+<div style="padding:10px 12px;border-radius:10px;background:var(--warnBg)"><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--warnTx)">À payer</div><div style="font:700 16px -apple-system,sans-serif;margin-top:2px;color:var(--warnTx)">{{ pj.openAmt }}</div></div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin:0 4px 8px">
+<div style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Fournisseurs & factures</div>
+<div onClick="{{ openSup }}" style="cursor:pointer;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--acc)">+ Fournisseur</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ pj.sups }}" as="f" hint-placeholder-count="3">
+<div style="padding:2px 14px 12px;border-radius:14px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink)">
+<div onClick="{{ f.toggle }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 0">
+<div style="width:42px;height:42px;border-radius:8px;flex:none;background:{{ f.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 15px -apple-system,sans-serif">{{ f.ini }}</div>
+<div style="flex:1;min-width:0"><div style="font:600 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ f.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ f.sub }}</div></div>
+<sc-if value="{{ f.todo }}" hint-placeholder-val="{{ false }}"><div style="flex:none;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;background:var(--warnBg);color:var(--warnTx);padding:5px 10px;border-radius:4px">À renseigner</div></sc-if>
+<sc-if value="{{ f.ok }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;gap:6px;flex:none">
+<a href="{{ f.telH }}" onClick="{{ stop }}" style="width:34px;height:34px;border-radius:50%;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 3.5h3l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2.1 4.2 1.6v3a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"></path></svg></a>
+<a href="{{ f.smsH }}" onClick="{{ stop }}" style="width:34px;height:34px;border-radius:50%;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11H10l-6 4z"></path></svg></a>
+<a href="{{ f.mailH }}" onClick="{{ stop }}" style="width:34px;height:34px;border-radius:50%;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M4.5 7.5l7.5 5.5 7.5-5.5"></path></svg></a>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+<div style="margin:0 0 10px;border-radius:8px;overflow:hidden;background:var(--field)">
+<sc-for list="{{ f.fields }}" as="x" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;padding:0 14px;border-bottom:2px solid var(--line)">
+<div style="width:86px;flex:none;font:500 13.5px -apple-system,sans-serif;color:var(--ink2)">{{ x.label }}</div>
+<input value="{{ x.val }}" onChange="{{ x.on }}" placeholder="{{ x.ph }}" style="flex:1;min-width:0;border:0;background:transparent;padding:12px 0;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+</div>
+</sc-for>
+<div onClick="{{ f.remove }}" style="cursor:pointer;padding:12px 14px;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--warnTx)">Retirer du projet</div>
+</div>
+</sc-if>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0 4px;border-top:1px solid var(--line)">
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Factures · {{ f.invN }}</div>
+<div onClick="{{ f.addInv }}" style="cursor:pointer;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--acc)">+ Facture</div>
+</div>
+<sc-for list="{{ f.inv }}" as="i" hint-placeholder-count="1">
+<div style="display:flex;align-items:center;gap:10px;padding:8px 0">
+<div style="width:32px;height:32px;border-radius:6px;flex:none;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M6.5 3h7.5l4 4v14h-11.5z"></path><path d="M14 3v4h4M9.5 12h5M9.5 16h5"></path></svg></div>
+<div style="flex:1;min-width:0"><div style="font:600 14.5px -apple-system,sans-serif">{{ i.num }}</div><div style="font:400 12px -apple-system,sans-serif;color:var(--ink2);margin-top:1px">Échéance {{ i.date }}</div></div>
+<div style="font:700 14.5px -apple-system,sans-serif;flex:none">{{ i.amt }}</div>
+<div onClick="{{ i.cyc }}" style="cursor:pointer;flex:none;min-width:70px;text-align:center;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;background:{{ i.stBg }};color:{{ i.stFg }};padding:4px 9px;border-radius:4px">{{ i.stLbl }}</div>
+</div>
+</sc-for>
+<sc-if value="{{ f.noInv }}" hint-placeholder-val="{{ false }}"><div style="padding:6px 0 2px;font:400 13px -apple-system,sans-serif;color:var(--ink2)">Aucune facture échangée pour l’instant</div></sc-if>
+<sc-if value="{{ f.hasInv }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:12px;margin-top:6px;padding:9px 12px;border-radius:8px;background:var(--tile);font:500 12.5px -apple-system,sans-serif;color:var(--ink2)"><span style="flex:1">Payé <span style="font-weight:700;color:var(--okTx)">{{ f.paid }}</span></span><span>À payer <span style="font-weight:700;color:{{ f.openCol }}">{{ f.openAmt }}</span></span></div></sc-if>
+</div>
+</sc-for>
+</div>
+
+<div style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:24px 4px 8px">Équipe & intervenants</div>
+<div style="padding:2px 14px;border-radius:14px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink)">
+<sc-for list="{{ pj.team }}" as="m" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:2px solid var(--line)">
+<div style="width:40px;height:40px;border-radius:50%;flex:none;background:var(--accSoft);color:var(--accTx);display:flex;align-items:center;justify-content:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ m.ini }}</div>
+<div style="flex:1;min-width:0"><div style="font:600 15px -apple-system,sans-serif">{{ m.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ m.role }}</div></div>
+<div style="flex:none;font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);border:1px solid var(--line);padding:3px 8px;border-radius:4px">{{ m.tag }}</div>
+<a href="{{ m.telH }}" style="width:34px;height:34px;flex:none;border-radius:50%;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 3.5h3l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2.1 4.2 1.6v3a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"></path></svg></a>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ isStock }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:-4px 0 16px">
+<sc-for list="{{ stFilt }}" as="g" hint-placeholder-count="3">
+<div onClick="{{ g.pick }}" style="cursor:pointer;padding:11px 12px 12px;border-radius:8px;background:linear-gradient(160deg,{{ g.bg }} 35%,var(--tile));color:{{ g.fg }};border:1px solid {{ g.bd }};opacity:{{ g.op }};transition:opacity .2s">
+<div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap">{{ g.label }}</div>
+<div style="font:300 32px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.04em;margin-top:12px">{{ g.n }}</div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 4px;padding:0 20px">
+<sc-for list="{{ stDisc }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:8px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
+</div>
+<sc-if value="{{ hasStock }}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{ stGroups }}" as="sg" hint-placeholder-count="2">
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin:18px 4px 8px"><span style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">{{ sg.label }}</span><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">{{ sg.n }}</span></div>
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<sc-for list="{{ sg.items }}" as="i" hint-placeholder-count="2">
+<div style="border-bottom:2px solid var(--line)">
+<div onClick="{{ i.toggle }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 14px">
+<div style="width:46px;height:46px;border-radius:8px;overflow:hidden;flex:none;background:var(--tile)"><image-slot id="{{ i.img }}" src="{{ i.src }}" placeholder="Photo" compact="" shape="rect" style="width:100%;height:100%"></image-slot></div>
+<div style="flex:1;min-width:0">
+<div style="font:500 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ i.name }}</div>
+<div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ i.meta }}</div>
+<div style="height:4px;border-radius:2px;background:var(--track);margin-top:9px;position:relative"><div style="height:100%;border-radius:2px;width:{{ i.w }};background:{{ i.barCol }}"></div><div style="position:absolute;top:-3px;bottom:-3px;width:2px;border-radius:1px;background:var(--ink2);left:{{ i.markL }}"></div></div>
+</div>
+<div style="flex:none;min-width:58px;text-align:right"><div style="font:300 32px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.045em;color:{{ i.col }}">{{ i.q }}</div><div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);margin-top:4px;white-space:nowrap">{{ i.unit }}</div></div>
+</div>
+<sc-if value="{{ i.hasPend }}" hint-placeholder-val="{{ false }}"><div style="display:flex;margin:-4px 14px 12px 72px"><span style="padding:4px 8px;border-radius:4px;background:{{ i.pendBg }};color:{{ i.pendFg }};font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ i.pend }}</span></div></sc-if>
+<sc-if value="{{ i.open }}" hint-placeholder-val="{{ false }}">
+<div style="padding:0 14px 14px">
+<div style="display:flex;align-items:center;gap:6px">
+<div onClick="{{ i.minus }}" style="cursor:pointer;flex:none;width:52px;height:44px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:300 24px -apple-system,sans-serif">−</div>
+<div style="flex:1;text-align:center;font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)">Ajuster · {{ i.step }}</div>
+<div onClick="{{ i.plus }}" style="cursor:pointer;flex:none;width:52px;height:44px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:300 24px -apple-system,sans-serif">+</div>
+</div>
+<div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:14px 2px 7px">Emplacement</div>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -14px;padding:0 14px">
+<sc-for list="{{ i.zones }}" as="z" hint-placeholder-count="4"><div onClick="{{ z.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:7px;background:{{ z.bg }};color:{{ z.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ z.label }}</div></sc-for>
+</div>
+<div style="margin-top:12px;border-radius:8px;background:#161616;padding:10px 10px 10px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px">
+<div style="min-width:0"><div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,242,242,.55)">Fournisseur conseillé</div><div style="font:400 14px -apple-system,sans-serif;color:#F2F2F2;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ i.adv }}</div></div>
+<sc-if value="{{ i.canRecv }}" hint-placeholder-val="{{ false }}"><div onClick="{{ i.recv }}" style="cursor:pointer;flex:none;background:rgba(120,220,190,.16);color:#A6ECD5;padding:8px 10px;border-radius:4px;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap">{{ i.recvLbl }}</div></sc-if>
+<sc-if value="{{ i.canOrder }}" hint-placeholder-val="{{ true }}"><div onClick="{{ i.order }}" style="cursor:pointer;flex:none;background:rgba(255,90,90,.16);color:#FF8F8F;padding:8px 10px;border-radius:4px;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap">{{ i.lotLbl }}</div></sc-if>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</sc-if>
+<sc-if value="{{ noStock }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:12px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2)">Aucun article pour ce filtre</div></sc-if>
+<sc-if value="{{ hasBasket }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:14px;border-radius:12px;background:#161616;color:#F2F2F2;padding:14px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,242,242,.55)">Panier de commande</span><span style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ basketN }}</span></div>
+<sc-for list="{{ basket }}" as="b" hint-placeholder-count="1">
+<div style="margin-top:14px">
+<div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,242,242,.5);margin-bottom:2px">{{ b.sup }}</div>
+<sc-for list="{{ b.lines }}" as="l" hint-placeholder-count="1">
+<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08)">
+<span style="flex:1;min-width:0;font:400 14.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.name }}</span>
+<span style="flex:none;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em;text-transform:uppercase">{{ l.qty }}</span>
+<div onClick="{{ l.rm }}" style="cursor:pointer;flex:none;width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,.08);color:rgba(242,242,242,.7);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
+</div>
+</sc-for>
+</div>
+</sc-for>
+<div onClick="{{ sendOrder }}" style="cursor:pointer;margin-top:14px;padding:13px;border-radius:8px;background:rgba(255,90,90,.16);color:#FF8F8F;text-align:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase">Envoyer la commande</div>
+</div>
+</sc-if>
+<sc-if value="{{ orderSent }}" hint-placeholder-val="{{ false }}"><div style="margin-top:14px;padding:13px;border-radius:10px;background:var(--t3);color:var(--t3x);text-align:center;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">✓ Commande envoyée · à réceptionner</div></sc-if>
+</sc-if>
+
+<sc-if value="{{ isMail }}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{ listMail }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);margin-bottom:12px">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none;color:var(--ink2)"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L21 21"></path></svg>
+<input value="{{ mq }}" onChange="{{ onMq }}" placeholder="Rechercher un message, un contact…" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<sc-if value="{{ hasMq }}" hint-placeholder-val="{{ false }}"><div onClick="{{ clearMq }}" style="cursor:pointer;flex:none;width:22px;height:22px;border-radius:50%;background:var(--track);color:var(--ink2);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></sc-if>
+</div>
+<sc-if value="{{ hasPpl }}" hint-placeholder-val="{{ true }}">
+<div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:0 2px 8px">VIP & contacts récurrents</div>
+<div style="display:flex;gap:6px;margin:0 -20px 16px 0">
+<div onClick="{{ pplAll.pick }}" style="flex:none;cursor:pointer;width:40px;height:40px;border-radius:10px;background:{{ pplAll.bg }};color:{{ pplAll.fg }};border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em">ALL</div>
+<div style="flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;padding-right:20px">
+<sc-for list="{{ ppl }}" as="c" hint-placeholder-count="3">
+<div onClick="{{ c.pick }}" style="flex:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:5px 12px 5px 5px;border-radius:10px;background:{{ c.bg }};color:{{ c.fg }};border:1px solid var(--tileBd)">
+<div style="width:28px;height:28px;border-radius:7px;flex:none;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 11.5px -apple-system,sans-serif">{{ c.ini }}</div>
+<span style="font:500 14px -apple-system,sans-serif;white-space:nowrap">{{ c.name }}</span>
+<sc-if value="{{ c.vip }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" style="fill:#C9A227;flex:none"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"></path></svg></sc-if>
+<span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em;text-transform:uppercase;opacity:.6">{{ c.n }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<div style="display:flex;gap:4px;margin-bottom:14px;padding:4px;border-radius:10px;background:var(--chip);border:1px solid var(--cardBd)">
+<sc-for list="{{ mboxSeg }}" as="g" hint-placeholder-count="2">
+<div onClick="{{ g.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:9px 0;border-radius:7px;background:{{ g.bg }};color:{{ g.fg }};white-space:nowrap;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ g.label }}</div>
+</sc-for>
+</div>
+<sc-if value="{{ hasMails }}" hint-placeholder-val="{{ true }}">
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<sc-for list="{{ mails }}" as="m" hint-placeholder-count="3">
+<div onClick="{{ m.open }}" style="cursor:pointer;display:flex;gap:12px;padding:14px 16px;border-bottom:2px solid var(--line)">
+<div style="width:40px;height:40px;border-radius:10px;flex:none;background:{{ m.avBg }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 14px -apple-system,sans-serif">{{ m.ini }}</div>
+<div style="flex:1;min-width:0">
+<div style="display:flex;align-items:center;gap:6px">
+<sc-if value="{{ m.dot }}" hint-placeholder-val="{{ false }}"><span style="width:7px;height:7px;border-radius:50%;background:#FF5A5A;flex:none"></span></sc-if>
+<div style="font:{{ m.fw }} 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0">{{ m.from }}</div>
+<sc-if value="{{ m.vip }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" style="fill:#C9A227;flex:none"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"></path></svg></sc-if>
+<div style="flex:1"></div>
+<div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);flex:none">{{ m.time }}</div>
+</div>
+<div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin:3px 0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.ch }} · {{ m.org }}</div>
+<sc-if value="{{ isRecv }}" hint-placeholder-val="{{ true }}">
+<div style="font:400 14px/1.4 -apple-system,sans-serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-wrap:pretty">{{ m.summary }}</div>
+</sc-if>
+<sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+<div style="font:400 13.5px/1.4 -apple-system,sans-serif;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.summary }}</div>
+<div style="margin-top:8px;padding:9px 11px;border-radius:8px;background:var(--tile)">
+<div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--okTx)">{{ m.replyLbl }}</div>
+<div style="font:400 13.5px/1.4 -apple-system,sans-serif;margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ m.reply }}</div>
+</div>
+</sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ noMails }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:12px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2)">{{ mailEmpty }}</div></sc-if>
+</sc-if>
+<sc-if value="{{ mailOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeMail }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:7px 14px 7px 10px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--acc);margin-bottom:16px"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Messages</div>
+<div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+<div style="width:46px;height:46px;border-radius:50%;flex:none;background:{{ cm.avBg }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 16px -apple-system,sans-serif">{{ cm.ini }}</div>
+<div style="flex:1;min-width:0"><div style="font:600 16px -apple-system,sans-serif">{{ cm.from }}</div><div style="font:400 13px -apple-system,sans-serif;color:var(--ink2)">{{ cm.ch }} · {{ cm.org }} · {{ cm.time }}</div></div>
+<div onClick="{{ cm.vipToggle }}" style="cursor:pointer;flex:none;display:flex;align-items:center;gap:6px;padding:8px 11px;border-radius:10px;background:{{ cm.vipBg }};border:1px solid var(--tileBd);color:{{ cm.vipFg }};font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><svg width="13" height="13" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="fill:{{ cm.vipFill }}"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"></path></svg>VIP</div>
+</div>
+<div style="font:300 28px/1.15 -apple-system,'SF Pro Display',sans-serif;margin-bottom:14px;letter-spacing:-.03em">{{ cm.subject }}</div>
+<div style="border-radius:12px;background:var(--t3);color:var(--t3x);padding:14px 16px;font-size:14.5px;line-height:1.45"><div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;opacity:.9">Résumé de la demande</div>{{ cm.summary }}</div>
+<div style="border-radius:12px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);padding:14px 16px;font-size:14px;line-height:1.5;margin-top:10px"><div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;color:var(--ink2)">Contenu du mail</div>{{ cm.body }}</div>
+<sc-if value="{{ cmTodo }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;justify-content:space-between;align-items:center;margin:20px 2px 8px">
+<div style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Brouillon de réponse</div>
+<div style="display:flex;gap:6px">
+<sc-for list="{{ tones }}" as="t" hint-placeholder-count="2">
+<div onClick="{{ t.pick }}" style="cursor:pointer;padding:6px 12px;border-radius:10px;border:1px solid var(--cardBd);background:{{ t.bg }};color:{{ t.fg }};font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ t.label }}</div>
+</sc-for>
+</div>
+</div>
+<textarea value="{{ draftText }}" onChange="{{ onDraft }}" rows="7" style="width:100%;border:1px solid var(--tileBd);background:var(--field);padding:14px 16px;border-radius:12px;font:400 14.5px/1.5 -apple-system,sans-serif;resize:none;outline:none;color:var(--ink)"></textarea>
+<div onClick="{{ sendMail }}" style="cursor:pointer;margin-top:10px;background:{{ sendBg }};color:var(--accOn);padding:15px;border-radius:10px;text-align:center;font:500 13px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase">{{ sendLabel }}</div>
+
+<div onClick="{{ markDone }}" style="cursor:pointer;margin-top:8px;padding:13px;border-radius:10px;text-align:center;border:1px solid var(--tileBd);color:var(--ink2);font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Traité sans réponse</div>
+</sc-if>
+<sc-if value="{{ cmDone }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:20px;padding:14px 16px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)">
+<div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--okTx)">{{ cmReplyLbl }}</div>
+<div style="font:400 14.5px/1.5 -apple-system,sans-serif;margin-top:6px;white-space:pre-wrap">{{ cmReply }}</div>
+</div>
+<div onClick="{{ reopen }}" style="cursor:pointer;margin-top:10px;padding:13px;border-radius:10px;text-align:center;border:1px solid var(--tileBd);color:var(--ink);font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Remettre dans Reçu</div>
+</sc-if>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ isPlan }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat({{ dayCols }},minmax(0,1fr));gap:5px;margin-bottom:12px">
+<sc-for list="{{ days }}" as="d" hint-placeholder-count="6">
+<div onClick="{{ d.pick }}" style="cursor:pointer;text-align:center;padding:10px 0 9px;border-radius:10px;border:1px solid var(--cardBd);background:{{ d.bg }};color:{{ d.fg }};box-shadow:{{ d.sh }}">
+<div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.7">{{ d.w }}</div>
+<div style="font:300 24px -apple-system,'SF Pro Display',sans-serif;letter-spacing:-.03em;margin:2px 0 5px">{{ d.n }}</div>
+<div style="display:flex;justify-content:center;gap:3px;height:6px"><sc-for list="{{ d.dots }}" as="x" hint-placeholder-count="0"><span style="width:6px;height:6px;border-radius:50%;background:{{ x }};box-shadow:0 0 0 1px var(--tileBd)"></span></sc-for></div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;gap:14px;margin:0 4px 14px;font:500 12.5px -apple-system,sans-serif;color:var(--ink2)">
+<sc-for list="{{ legend }}" as="l" hint-placeholder-count="3"><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:{{ l.dot }}"></span>{{ l.label }}</span></sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ events }}" as="e" hint-placeholder-count="2">
+<div style="display:flex;gap:14px;align-items:stretch;padding:14px 16px;border-radius:12px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink)">
+<div style="width:4px;border-radius:4px;background:{{ e.dot }};flex:none"></div>
+<div style="flex:1;min-width:0"><div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">{{ e.t }} · {{ e.type }}</div><div style="font:600 16px/1.25 -apple-system,sans-serif;margin:3px 0">{{ e.title }}</div><div style="font:400 13px -apple-system,sans-serif;color:var(--ink2)">{{ e.site }}</div></div>
+</div>
+</sc-for>
+<sc-if value="{{ noEvents }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:12px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2)">Rien de prévu ce jour</div></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSup }}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{ isSupList }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:-4px 0 14px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t4) 35%,var(--tile));color:var(--t4x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>À payer</span><span style="white-space:nowrap">{{ supTot }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t2) 35%,var(--tile));color:var(--t2x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>En retard</span><span style="white-space:nowrap">{{ supLate }}</span></div>
+</div>
+<div style="display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);margin-bottom:10px">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none;color:var(--ink2)"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L21 21"></path></svg>
+<input value="{{ sq }}" onChange="{{ onSq }}" placeholder="Rechercher un fournisseur…" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<sc-if value="{{ hasSq }}" hint-placeholder-val="{{ false }}"><div onClick="{{ clearSq }}" style="cursor:pointer;flex:none;width:22px;height:22px;border-radius:50%;background:var(--track);color:var(--ink2);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></sc-if>
+</div>
+<div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:0 2px 8px">Types de fournitures</div>
+<div style="margin-bottom:10px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);overflow:hidden">
+<div onClick="{{ toggleCat }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px">
+<span style="font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ catCur }}</span>
+<svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;transform:{{ catChev }};transition:transform .2s"><path d="M3 4.5l3 3 3-3"></path></svg>
+</div>
+<sc-if value="{{ catOpen }}" hint-placeholder-val="{{ false }}">
+<div style="border-top:1px solid var(--tileBd);padding:4px">
+<sc-for list="{{ cats }}" as="c" hint-placeholder-count="4">
+<div onClick="{{ c.pick }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 10px;border-radius:7px;background:{{ c.bg }};color:{{ c.fg }}">
+<span style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ c.label }}</span>
+<span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em;text-transform:uppercase;opacity:.6">{{ c.n }}</span>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</div>
+<div style="display:flex;align-items:center;gap:6px;margin-bottom:14px;padding:4px;border-radius:10px;background:var(--chip);border:1px solid var(--cardBd)">
+<span style="white-space:nowrap;font:500 12.5px -apple-system,sans-serif;color:var(--ink2);padding:0 6px 0 10px">Trier</span>
+<sc-for list="{{ sorts }}" as="o" hint-placeholder-count="3">
+<div onClick="{{ o.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:7px 0;border-radius:10px;background:{{ o.bg }};color:{{ o.fg }};box-shadow:{{ o.sh }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div>
+</sc-for>
+</div>
+<sc-if value="{{ hasSup }}" hint-placeholder-val="{{ true }}">
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<sc-for list="{{ contacts }}" as="c" hint-placeholder-count="4">
+<div onClick="{{ c.open }}" style="cursor:pointer;padding:13px 14px;border-bottom:2px solid var(--line)">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="width:42px;height:42px;border-radius:10px;flex:none;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 14px -apple-system,sans-serif">{{ c.ini }}</div>
+<div style="flex:1;min-width:0"><div style="font:500 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</div><div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.meta }}</div></div>
+<div style="flex:none;text-align:right"><div style="font:300 26px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.04em">{{ c.m }}</div><div style="font:500 9px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);margin-top:4px">{{ c.mLbl }}</div></div>
+</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin:9px 0 0 54px">
+<span style="padding:4px 8px;border-radius:4px;background:{{ c.tagBg }};color:{{ c.tagFg }};font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ c.tag }}</span>
+<sc-if value="{{ c.hasLow }}" hint-placeholder-val="{{ false }}"><span style="padding:4px 8px;border-radius:4px;background:#161616;color:#FF8F8F;font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ c.lowTxt }}</span></sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ noSup }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:12px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2)">Aucun fournisseur trouvé</div></sc-if>
+</sc-if>
+<sc-if value="{{ isSupDet }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ backSup }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:7px 14px 7px 10px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:18px"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Fournisseurs</div>
+<div style="display:flex;align-items:center;gap:14px">
+<div style="width:58px;height:58px;border-radius:12px;flex:none;background:{{ sd.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:500 19px -apple-system,sans-serif">{{ sd.ini }}</div>
+<div style="min-width:0"><div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">{{ sd.sub }}</div><div style="font:300 36px/1.05 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.04em;margin-top:6px;text-wrap:pretty">{{ sd.name }}</div></div>
+</div>
+<div style="display:flex;align-items:flex-start;gap:10px;margin-top:16px">
+<span style="flex:none;padding:5px 8px;border-radius:4px;background:{{ sd.tagBg }};color:{{ sd.tagFg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ sd.tag }}</span>
+<div style="font:400 14px/1.45 -apple-system,sans-serif;color:var(--ink2);text-wrap:pretty">{{ sd.why }}</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:18px">
+<a href="{{ sd.telH }}" style="height:66px;border-radius:12px;background:var(--acc);color:var(--accOn);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 3.5h3l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2.1 4.2 1.6v3a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"></path></svg><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Appeler</span></a>
+<a href="{{ sd.smsH }}" style="height:66px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 5h16v11H10l-6 4z"></path></svg><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">SMS</span></a>
+<a href="{{ sd.mailH }}" style="height:66px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="M4.5 7.5l7.5 5.5 7.5-5.5"></path></svg><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Mail</span></a>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:6px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t1) 35%,var(--tile));color:var(--t1x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Délai</span><span style="white-space:nowrap">{{ sd.delay }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t2) 35%,var(--tile));color:var(--t2x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Prix</span><span style="white-space:nowrap">{{ sd.price }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t3) 35%,var(--tile));color:var(--t3x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Fiabilité</span><span style="white-space:nowrap">{{ sd.rel }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t4) 35%,var(--tile));color:var(--t4x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>À payer</span><span style="white-space:nowrap">{{ sd.open }}</span></div>
+</div>
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:22px 4px 8px">Contact</div>
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<div style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-bottom:2px solid var(--line)"><span style="width:84px;flex:none;font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Interlocuteur</span><span style="font:400 15px -apple-system,sans-serif">{{ sd.who }}</span></div>
+<a href="{{ sd.telH }}" style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-bottom:2px solid var(--line)"><span style="width:84px;flex:none;font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Téléphone</span><span style="font:400 15px -apple-system,sans-serif">{{ sd.tel }}</span></a>
+<a href="{{ sd.mailH }}" style="display:flex;align-items:center;gap:12px;padding:13px 14px"><span style="width:84px;flex:none;font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Mail</span><span style="font:400 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sd.mail }}</span></a>
+</div>
+<sc-if value="{{ sd.hasItems }}" hint-placeholder-val="{{ true }}">
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:22px 4px 8px">Fournitures sur vos sites</div>
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<sc-for list="{{ sd.items }}" as="t" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:2px solid var(--line)">
+<div style="flex:1;min-width:0"><div style="font:500 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.name }}</div><div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-top:4px">{{ t.site }} · {{ t.q }}</div></div>
+<span style="flex:none;padding:4px 8px;border-radius:4px;background:{{ t.stBg }};color:{{ t.stFg }};font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ t.st }}</span>
+<div onClick="{{ t.order }}" title="Ajouter un lot au panier" style="cursor:pointer;flex:none;width:34px;height:34px;border-radius:8px;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:22px 4px 8px">Factures</div>
+<sc-if value="{{ sd.hasInv }}" hint-placeholder-val="{{ true }}">
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<sc-for list="{{ sd.groups }}" as="g" hint-placeholder-count="1">
+<div style="padding:12px 14px 4px;font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">{{ g.proj }}</div>
+<sc-for list="{{ g.inv }}" as="i" hint-placeholder-count="1">
+<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:2px solid var(--line)">
+<div style="flex:1;min-width:0"><div style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ i.num }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">Échéance {{ i.date }}</div></div>
+<div style="flex:none;font:400 15px -apple-system,sans-serif">{{ i.amt }}</div>
+<div onClick="{{ i.cyc }}" style="cursor:pointer;flex:none;min-width:70px;text-align:center;padding:5px 8px;border-radius:4px;background:{{ i.stBg }};color:{{ i.stFg }};font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ i.stLbl }}</div>
+</div>
+</sc-for>
+</sc-for>
+<div style="display:flex;justify-content:space-between;gap:10px;padding:12px 14px;background:var(--tile)"><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--okTx)">Payé {{ sd.paid }}</span><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">À payer {{ sd.open }}</span></div>
+</div>
+</sc-if>
+<sc-if value="{{ sd.noInv }}" hint-placeholder-val="{{ false }}"><div style="padding:22px 16px;text-align:center;border-radius:12px;background:var(--chip);font:400 14px -apple-system,sans-serif;color:var(--ink2)">Aucune facture avec ce fournisseur</div></sc-if>
+</sc-if>
+</sc-if>
+</div>
+</div>
+
+<div style="position:absolute;left:0;right:0;bottom:0;padding:18px 14px max(26px, env(safe-area-inset-bottom, 0px));background:linear-gradient(rgba(0,0,0,0),var(--bg) 28%);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px">
+<div onClick="{{ tb.p.pick }}" style="cursor:pointer;position:relative;height:62px;border-radius:12px;background:{{ tb.p.bg }};color:{{ tb.p.fg }};border:1px solid var(--tileBd);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"></rect></svg>
+<span style="font:500 8.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Projets</span></div>
+<div onClick="{{ tb.s.pick }}" style="cursor:pointer;position:relative;height:62px;border-radius:12px;background:{{ tb.s.bg }};color:{{ tb.s.fg }};border:1px solid var(--tileBd);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M3.5 7.5L12 3.5l8.5 4v9L12 20.5l-8.5-4z"></path><path d="M3.5 7.5L12 11.5l8.5-4M12 11.5v9"></path></svg>
+<span style="font:500 8.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Stocks</span></div>
+<div onClick="{{ tb.m.pick }}" style="cursor:pointer;position:relative;height:62px;border-radius:12px;background:{{ tb.m.bg }};color:{{ tb.m.fg }};border:1px solid var(--tileBd);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="M4.5 7.5l7.5 5.5 7.5-5.5"></path></svg>
+<span style="font:500 8.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Mails</span>
+<sc-if value="{{ tb.m.badge }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:7px;right:9px;min-width:16px;height:16px;border-radius:4px;background:#FF5A5A;color:#fff;font:500 10px/16px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;text-align:center;padding:0 4px">{{ tb.m.count }}</span></sc-if></div>
+<div onClick="{{ tb.l.pick }}" style="cursor:pointer;position:relative;height:62px;border-radius:12px;background:{{ tb.l.bg }};color:{{ tb.l.fg }};border:1px solid var(--tileBd);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"></rect><path d="M3.5 10h17M8.5 3v4M15.5 3v4"></path></svg>
+<span style="font:500 8.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Planning</span></div>
+<div onClick="{{ tb.c.pick }}" style="cursor:pointer;position:relative;height:62px;border-radius:12px;background:{{ tb.c.bg }};color:{{ tb.c.fg }};border:1px solid var(--tileBd);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M2.5 6.5h11v10h-11zM13.5 10h4l3 3.2v3.3h-7"></path><circle cx="6.5" cy="17.5" r="1.8"></circle><circle cx="17" cy="17.5" r="1.8"></circle></svg>
+<span style="font:500 8.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Fourn.</span></div>
+</div>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:45;background:var(--bg);display:flex;flex-direction:column;padding:62px 20px 30px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<div style="font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Changer de site</div>
+<div onClick="{{ closeMenu }}" style="cursor:pointer;flex:none;width:42px;height:42px;border-radius:50%;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;color:var(--ink)"><svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
+</div>
+<div style="font:300 50px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.045em;margin:14px 0 24px">Sites</div>
+<div style="flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ sites }}" as="s" hint-placeholder-count="3">
+<div onClick="{{ s.pick }}" style="cursor:pointer;padding:16px;border-radius:12px;background:{{ s.bg }};color:{{ s.fg }};border:1px solid var(--tileBd)">
+<div style="display:flex;align-items:center;gap:10px">
+<span style="width:10px;height:10px;border-radius:50%;background:{{ s.dot }};flex:none"></span>
+<span style="flex:1;min-width:0;font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.label }}</span>
+<sc-if value="{{ s.on }}" hint-placeholder-val="{{ false }}"><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:4px;background:{{ s.tagBg }}">Actif</span></sc-if>
+</div>
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:16px">
+<div style="font:400 14px/1.35 -apple-system,sans-serif;opacity:.65">{{ s.addr }}<br>{{ s.meta }}</div>
+<div style="flex:none;font:300 38px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.045em">{{ s.pct }}<span style="font-size:17px;letter-spacing:0"> %</span></div>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid {{ s.sep }}">
+<span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;opacity:.6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.cfgMeta }}</span>
+<div onClick="{{ s.config }}" style="flex:none;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:8px;border:1px solid {{ s.sep }};font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>Configurer</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:50;display:flex;flex-direction:column;justify-content:flex-end">
+<div onClick="{{ closeSheet }}" style="position:absolute;inset:0;background:var(--scrim)"></div>
+<div style="position:relative;margin:0 8px calc(8px + env(safe-area-inset-bottom, 0px));max-height:calc(100% - env(safe-area-inset-top, 0px) - 24px);display:flex;flex-direction:column;border-radius:18px;background:var(--sheet);border:1px solid var(--cardBd);box-shadow:0 -10px 40px rgba(10,20,40,.3)">
+<div style="flex:none;padding:10px 18px 0">
+<div style="width:38px;height:5px;border-radius:9px;background:var(--ink3);margin:0 auto 12px"></div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+<div onClick="{{ closeSheet }}" style="cursor:pointer;font:500 15px -apple-system,sans-serif;color:var(--acc)">Annuler</div>
+<div style="font:700 16px -apple-system,sans-serif">{{ sheetTitle }}</div>
+<div onClick="{{ submit }}" style="cursor:pointer;font:700 15px -apple-system,sans-serif;color:{{ submitCol }}">{{ submitLabel }}</div>
+</div>
+</div>
+<div style="flex:1;min-height:0;overflow-y:auto;padding:0 18px 26px">
+<sc-if value="{{ isProjSheet }}" hint-placeholder-val="{{ false }}">
+<div style="height:104px;border-radius:10px;overflow:hidden;margin-bottom:4px;background:var(--field)"><image-slot id="{{ newImg }}" src="{{ newSrc }}" placeholder="Photo du projet" shape="rect" style="width:100%;height:100%"></image-slot></div>
+</sc-if>
+<sc-if value="{{ isSiteSheet }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:10px;padding:2px 4px 4px"><span style="width:10px;height:10px;border-radius:50%;background:{{ sc.dot }}"></span><span style="font:500 13px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ sc.label }}</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin:16px 4px 8px"><div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Adresse</div><a href="{{ sc.maps }}" target="_blank" style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)">Ouvrir dans Plans ↗</a></div>
+<div style="border-radius:10px;background:var(--field);overflow:hidden">
+<div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:86px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Adresse</div><input value="{{ sc.addr }}" onChange="{{ sc.onAddr }}" placeholder="Ex. 14 rue Garibaldi" style="flex:1;min-width:0;border:0;background:transparent;padding:14px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:86px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Ville</div><input value="{{ sc.city }}" onChange="{{ sc.onCity }}" placeholder="Ex. 69006 Lyon" style="flex:1;min-width:0;border:0;background:transparent;padding:14px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:86px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Accès</div><input value="{{ sc.access }}" onChange="{{ sc.onAccess }}" placeholder="Code, badge, clé…" style="flex:1;min-width:0;border:0;background:transparent;padding:14px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:86px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Horaires</div><input value="{{ sc.hours }}" onChange="{{ sc.onHours }}" placeholder="Ex. 7h30 – 17h" style="flex:1;min-width:0;border:0;background:transparent;padding:14px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+</div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Lieux du site</div><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">{{ sc.zoneN }}</div></div>
+<div style="padding:12px;border-radius:12px;background:var(--field)">
+<div style="display:flex;flex-wrap:wrap;gap:6px">
+<sc-for list="{{ sc.zones }}" as="z" hint-placeholder-count="5"><div style="display:flex;align-items:center;gap:8px;padding:7px 8px 7px 11px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd);font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ z.label }}<div onClick="{{ z.del }}" style="cursor:pointer;width:18px;height:18px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></div></sc-for>
+</div>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:12px -12px 0;padding:0 12px">
+<sc-for list="{{ sc.sugg }}" as="z" hint-placeholder-count="6"><div onClick="{{ z.add }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:8px;border:1px dashed var(--ink3);color:var(--ink2);font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">+ {{ z.label }}</div></sc-for>
+</div>
+<div style="display:flex;gap:8px;margin-top:10px">
+<input value="{{ sc.zoneText }}" onChange="{{ sc.onZone }}" placeholder="Autre lieu (ex. Local poubelles)…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div onClick="{{ sc.addZone }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:8px;display:flex;align-items:center;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
+</div>
+</div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Contacts rapides</div><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">{{ sc.ctN }}</div></div>
+<div style="border-radius:12px;background:var(--field);padding:2px 12px 12px">
+<sc-for list="{{ sc.contacts }}" as="c" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:2px solid var(--line)">
+<div style="width:36px;height:36px;border-radius:9px;flex:none;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:600 12.5px -apple-system,sans-serif">{{ c.ini }}</div>
+<div style="flex:1;min-width:0"><div style="font:500 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.role }} · {{ c.tel }}</div></div>
+<a href="{{ c.telH }}" style="flex:none;width:34px;height:34px;border-radius:9px;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 3.5h3l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2.1 4.2 1.6v3a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"></path></svg></a>
+<a href="{{ c.smsH }}" style="flex:none;width:34px;height:34px;border-radius:9px;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11H10l-6 4z"></path></svg></a>
+<div onClick="{{ c.del }}" style="cursor:pointer;flex:none;color:var(--ink3);padding:4px"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
+</div>
+</sc-for>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px;margin-top:12px">
+<input value="{{ sc.cn }}" onChange="{{ sc.onCn }}" placeholder="Nom" style="min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ sc.cr }}" onChange="{{ sc.onCr }}" placeholder="Rôle (gardien, client…)" style="min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+</div>
+<div style="display:flex;gap:6px;margin-top:6px">
+<input value="{{ sc.ct }}" onChange="{{ sc.onCt }}" placeholder="Téléphone" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div onClick="{{ sc.addCt }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:8px;display:flex;align-items:center;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ isStkCfg }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin:4px 4px 8px"><span style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Articles · {{ kc.site }}</span><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">{{ kc.n }}</span></div>
+<div style="border-radius:12px;background:var(--field);overflow:hidden">
+<sc-for list="{{ kc.items }}" as="t" hint-placeholder-count="3">
+<div style="padding:11px 14px 12px;border-bottom:2px solid var(--line)">
+<div style="display:flex;align-items:center;gap:10px">
+<div style="flex:1;min-width:0"><div style="font:500 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.name }}</div><div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-top:3px">{{ t.disc }} · {{ t.unit }}</div></div>
+<div onClick="{{ t.del }}" title="Supprimer" style="cursor:pointer;flex:none;width:28px;height:28px;border-radius:7px;background:var(--warnBg);color:var(--warnTx);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:9px">
+<div style="display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Seuil</span><input value="{{ t.min }}" onChange="{{ t.onMin }}" inputmode="numeric" style="flex:1;min-width:0;border:0;background:transparent;padding:9px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Lot</span><input value="{{ t.lot }}" onChange="{{ t.onLot }}" inputmode="numeric" style="flex:1;min-width:0;border:0;background:transparent;padding:9px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:20px 4px 8px">Ajouter un article</div>
+<div style="padding:12px;border-radius:12px;background:var(--field)">
+<input value="{{ kc.na }}" onChange="{{ kc.onNa }}" placeholder="Nom de l’article (ex. Joint carrelage)" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:6px">
+<input value="{{ kc.nu }}" onChange="{{ kc.onNu }}" placeholder="Unité (sacs, m²…)" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ kc.nq }}" onChange="{{ kc.onNq }}" placeholder="Quantité" inputmode="numeric" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ kc.nm }}" onChange="{{ kc.onNm }}" placeholder="Seuil d’alerte" inputmode="numeric" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ kc.nl }}" onChange="{{ kc.onNl }}" placeholder="Lot de commande" inputmode="numeric" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+</div>
+<div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:12px 2px 7px">Discipline</div>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -12px;padding:0 12px">
+<sc-for list="{{ kc.discs }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:7px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+</div>
+<div onClick="{{ kc.add }}" style="cursor:pointer;margin-top:14px;padding:13px;border-radius:8px;background:var(--solid);color:var(--solidTx);text-align:center;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter l’article</div>
+</div>
+</sc-if>
+<sc-if value="{{ isSupCfg }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin:4px 4px 8px"><span style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Annuaire</span><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">{{ uc.n }}</span></div>
+<div style="border-radius:12px;background:var(--field);overflow:hidden">
+<sc-for list="{{ uc.items }}" as="t" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:2px solid var(--line)">
+<div style="width:36px;height:36px;border-radius:9px;flex:none;background:{{ t.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 12.5px -apple-system,sans-serif">{{ t.ini }}</div>
+<div style="flex:1;min-width:0"><div style="font:500 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.name }}</div><div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.meta }}</div></div>
+<div onClick="{{ t.del }}" title="Retirer" style="cursor:pointer;flex:none;width:28px;height:28px;border-radius:7px;background:var(--warnBg);color:var(--warnTx);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
+</div>
+</sc-for>
+</div>
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:20px 4px 8px">Ajouter un fournisseur</div>
+<div style="padding:12px;border-radius:12px;background:var(--field)">
+<input value="{{ uc.na }}" onChange="{{ uc.onNa }}" placeholder="Nom de l’entreprise" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:6px">
+<input value="{{ uc.who }}" onChange="{{ uc.onWho }}" placeholder="Interlocuteur" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ uc.tel }}" onChange="{{ uc.onTel }}" placeholder="Téléphone" inputmode="tel" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:6px;margin-top:6px">
+<input value="{{ uc.mail }}" onChange="{{ uc.onMail }}" placeholder="Mail" inputmode="email" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ uc.city }}" onChange="{{ uc.onCity }}" placeholder="Ville" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+</div>
+<div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:12px 2px 7px">Discipline</div>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -12px;padding:0 12px">
+<sc-for list="{{ uc.discs }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:7px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+</div>
+<div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:12px 2px 7px">Délai de livraison</div>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -12px;padding:0 12px">
+<sc-for list="{{ uc.delays }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:7px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+</div>
+<div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:12px 2px 7px">Niveau de prix</div>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -12px;padding:0 12px">
+<sc-for list="{{ uc.prices }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:7px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+</div>
+<div onClick="{{ uc.add }}" style="cursor:pointer;margin-top:14px;padding:13px;border-radius:8px;background:var(--solid);color:var(--solidTx);text-align:center;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter à l’annuaire</div>
+</div>
+</sc-if>
+<sc-if value="{{ isAccSheet }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;background:var(--field)">
+<div style="width:52px;height:52px;border-radius:50%;flex:none;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center;font:500 18px -apple-system,sans-serif">TM</div>
+<div style="flex:1;min-width:0"><div style="font:500 17px -apple-system,sans-serif">Thomas Martin</div><div style="font:400 13px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">Martin Rénovation · Lyon</div><div style="font:400 13px -apple-system,sans-serif;color:var(--ink2)">thomas@martin-renovation.fr</div></div>
+</div>
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:20px 4px 8px">Apparence</div>
+<div style="display:flex;gap:4px;padding:4px;border-radius:10px;background:var(--track)">
+<sc-for list="{{ themeOpts }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;padding:10px 0;border-radius:7px;background:{{ o.bg }};color:{{ o.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+</div>
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:20px 4px 8px">Planning</div>
+<div onClick="{{ toggleSun }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:12px;background:var(--field)">
+<div><div style="font:400 15.5px -apple-system,sans-serif">Travailler le dimanche</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ sunSub }}</div></div>
+<div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ sunTrack }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ sunKnob }};transition:transform .2s"></div></div>
+</div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Disciplines</div><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">{{ discN }}</div></div>
+<div style="padding:12px;border-radius:12px;background:var(--field)">
+<div style="display:flex;flex-wrap:wrap;gap:6px">
+<sc-for list="{{ discs }}" as="d" hint-placeholder-count="4"><div style="display:flex;align-items:center;gap:8px;padding:7px 8px 7px 11px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd);font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ d.label }}<div onClick="{{ d.del }}" style="cursor:pointer;width:18px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></div></sc-for>
+</div>
+<div style="display:flex;gap:8px;margin-top:12px">
+<input value="{{ discText }}" onChange="{{ onDisc }}" placeholder="Ajouter une discipline…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div onClick="{{ addDisc }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:8px;display:flex;align-items:center;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
+</div>
+</div>
+<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Proposées comme type lors de la création d’un projet.</div>
+<div style="margin-top:20px;padding:14px;border-radius:12px;background:var(--field);text-align:center;color:var(--warnTx);font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Se déconnecter</div>
+</sc-if>
+<sc-if value="{{ isSupSheet }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:4px;padding:4px;border-radius:10px;background:var(--track);margin-bottom:6px">
+<sc-for list="{{ supModes }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:8px 0;border-radius:10px;background:{{ o.bg }};color:{{ o.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+</div>
+<sc-if value="{{ supDir }}" hint-placeholder-val="{{ true }}">
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:14px 4px 8px">Depuis l’annuaire</div>
+<div style="border-radius:10px;background:var(--field);padding:0 14px">
+<sc-for list="{{ dirList }}" as="d" hint-placeholder-count="4">
+<div onClick="{{ d.pick }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:2px solid var(--line)">
+<div style="width:38px;height:38px;border-radius:12px;flex:none;background:{{ d.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ d.ini }}</div>
+<div style="flex:1;min-width:0"><div style="font:600 15px -apple-system,sans-serif">{{ d.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:1px">{{ d.sub }}</div></div>
+<div style="width:24px;height:24px;border-radius:50%;flex:none;border:1.6px solid {{ d.ckBd }};background:{{ d.ckBg }};display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--accOn)"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg></div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</sc-if>
+<sc-if value="{{ isInvSheet }}" hint-placeholder-val="{{ false }}">
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:4px 4px 8px">Fournisseur</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ invSups }}" as="s" hint-placeholder-count="3"><div onClick="{{ s.pick }}" style="cursor:pointer;padding:8px 13px;border-radius:10px;background:{{ s.bg }};color:{{ s.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ s.name }}</div></sc-for>
+</div>
+</sc-if>
+<sc-for list="{{ groups }}" as="g" hint-placeholder-count="1">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 4px 8px">
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">{{ g.t }}</div>
+<div style="display:flex;align-items:center;gap:8px">
+<sc-if value="{{ g.micMsg }}" hint-placeholder-val="{{ false }}"><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:{{ g.micCol }}">{{ g.micLbl }}</span></sc-if>
+<div onClick="{{ g.mic }}" title="Dicter" style="cursor:pointer;flex:none;width:34px;height:34px;border-radius:9px;background:{{ g.micBg }};color:{{ g.micFg }};border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"></path></svg></div>
+</div>
+</div>
+<div style="border-radius:10px;background:var(--field);overflow:hidden">
+<sc-for list="{{ g.fields }}" as="x" hint-placeholder-count="3">
+<sc-if value="{{ x.isIn }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)">
+<div style="width:96px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">{{ x.label }}</div>
+<input value="{{ x.val }}" onChange="{{ x.on }}" placeholder="{{ x.ph }}" style="flex:1;min-width:0;border:0;background:transparent;padding:14px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+</div>
+</sc-if>
+<sc-if value="{{ x.isCh }}" hint-placeholder-val="{{ false }}">
+<div style="padding:12px 16px 14px;border-bottom:2px solid var(--line)">
+<div style="font:500 14.5px -apple-system,sans-serif;color:var(--ink2);margin-bottom:10px">{{ x.label }}</div>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -16px;padding:0 16px;scroll-snap-type:x proximity">
+<sc-for list="{{ x.opts }}" as="o" hint-placeholder-count="6"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;scroll-snap-align:start;cursor:pointer;padding:8px 11px;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+</div>
+</div>
+</sc-if>
+</sc-for>
+</div>
+</sc-for>
+<sc-if value="{{ isProjSheet }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin:20px 4px 8px">
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Étapes · coche ou jauge</div>
+<div style="display:flex;gap:12px;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--acc)"><span onClick="{{ allC }}" style="cursor:pointer">Tout en coches</span><span onClick="{{ allG }}" style="cursor:pointer">Tout en jauges</span></div>
+</div>
+<div style="border-radius:10px;background:var(--field);padding:2px 14px 10px">
+<sc-for list="{{ fSteps }}" as="s" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:2px solid var(--line)">
+<div style="flex:1;min-width:0;font:400 15px -apple-system,sans-serif">{{ s.l }}</div>
+<div style="display:flex;padding:3px;border-radius:10px;background:var(--track);flex:none">
+<div onClick="{{ s.pickC }}" style="cursor:pointer;display:flex;align-items:center;gap:4px;padding:5px 9px;border-radius:10px;background:{{ s.cBg }};color:{{ s.cFg }};font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg>Coche</div>
+<div onClick="{{ s.pickG }}" style="cursor:pointer;display:flex;align-items:center;gap:4px;padding:5px 9px;border-radius:10px;background:{{ s.gBg }};color:{{ s.gFg }};font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="5.5" width="13" height="5" rx="2.5"></rect><rect x="1.5" y="5.5" width="7" height="5" rx="2.5" fill="currentColor"></rect></svg>Jauge</div>
+</div>
+<div onClick="{{ s.del }}" style="cursor:pointer;flex:none;color:var(--ink3);padding:4px"><svg width="11" height="11" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
+</div>
+</sc-for>
+<div style="display:flex;gap:8px;margin-top:10px">
+<input value="{{ fStepText }}" onChange="{{ onFStep }}" placeholder="Ajouter une étape…" style="flex:1;min-width:0;border:1px solid var(--line);background:var(--tile);padding:10px 14px;border-radius:10px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div onClick="{{ addFStep }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 16px;border-radius:10px;display:flex;align-items:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
+</div>
+</div>
+<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Coche : fait / pas fait. Jauge : avancement en %, réglable au doigt.</div>
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:20px 4px 8px">Fournisseurs du projet</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ fSups }}" as="s" hint-placeholder-count="6"><div onClick="{{ s.pick }}" style="cursor:pointer;padding:8px 12px;border-radius:10px;background:{{ s.bg }};color:{{ s.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ s.mark }} {{ s.name }}</div></sc-for>
+<sc-for list="{{ fCustom }}" as="s" hint-placeholder-count="0"><div onClick="{{ s.del }}" style="cursor:pointer;padding:8px 12px;border-radius:10px;background:var(--acc);color:var(--accOn);font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">✓ {{ s.name }} · à renseigner</div></sc-for>
+</div>
+<div style="display:flex;gap:8px;margin-top:10px">
+<input value="{{ fSupText }}" onChange="{{ onFSup }}" placeholder="Autre fournisseur…" style="flex:1;min-width:0;border:1px solid var(--line);background:var(--field);padding:10px 14px;border-radius:10px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div onClick="{{ addFSup }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 16px;border-radius:10px;display:flex;align-items:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
+</div>
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:20px 4px 8px">Planning</div>
+<div style="padding:12px;border-radius:12px;background:var(--field)">
+<div onClick="{{ pp.toggle }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px">
+<div><div style="font:400 15.5px -apple-system,sans-serif">Ajouter au planning</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ pp.sub }}</div></div>
+<div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ pp.track }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ pp.knob }};transition:transform .2s"></div></div>
+</div>
+<sc-if value="{{ pp.on }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:repeat({{ dayCols }},minmax(0,1fr));gap:5px;margin-top:12px">
+<sc-for list="{{ pp.days }}" as="d" hint-placeholder-count="6"><div onClick="{{ d.pick }}" style="cursor:pointer;text-align:center;padding:8px 0;border-radius:8px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em;text-transform:uppercase">{{ d.label }}</div></sc-for>
+</div>
+<div style="display:flex;align-items:center;gap:8px;margin-top:6px">
+<div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Heure</span><input value="{{ pp.time }}" onChange="{{ pp.onTime }}" placeholder="08:00" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Type</span><input value="{{ pp.kind }}" onChange="{{ pp.onKind }}" placeholder="Démarrage" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ isInvSheet }}" hint-placeholder-val="{{ false }}">
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:16px 4px 8px">Statut</div>
+<div style="display:flex;gap:4px;padding:4px;border-radius:10px;background:var(--track)">
+<sc-for list="{{ invSt }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:8px 0;border-radius:10px;background:{{ o.bg }};color:{{ o.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+</div>
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:16px 4px 8px">Scan de la facture</div>
+<div style="height:96px;border-radius:10px;overflow:hidden;background:var(--field)"><image-slot id="{{ invImg }}" placeholder="Photo ou PDF de la facture" shape="rect" style="width:100%;height:100%"></image-slot></div>
+</sc-if>
+<sc-if value="{{ isPlanSheet }}" hint-placeholder-val="{{ false }}">
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:16px 4px 8px">Jour</div>
+<div style="display:grid;grid-template-columns:repeat({{ dayCols }},minmax(0,1fr));gap:5px">
+<sc-for list="{{ formDays }}" as="d" hint-placeholder-count="6"><div onClick="{{ d.pick }}" style="cursor:pointer;text-align:center;padding:8px 0;border-radius:8px;background:{{ d.bg }};color:{{ d.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ d.label }}</div></sc-for>
+</div>
+<div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:16px 4px 8px">Site</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ formSites }}" as="s" hint-placeholder-count="3"><div onClick="{{ s.pick }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;background:{{ s.bg }};color:{{ s.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span style="width:8px;height:8px;border-radius:50%;background:{{ s.dot }}"></span>{{ s.label }}</div></sc-for>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;dark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Thème&quot;},&quot;start&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Liste des projets&quot;,&quot;options&quot;:[&quot;Liste des projets&quot;,&quot;Fiche projet · Étapes&quot;,&quot;Fiche projet · Fournisseurs&quot;,&quot;Nouveau projet&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Écran de départ&quot;}}">
+const SUP = [
+  { id: 's1', name: 'Plâtre Express', cat: 'PLACO', sub: 'Lyon · 12 km', delay: '24 h', h: 24, price: '€€', p: 2, rel: 96, tag: 'LE + FIABLE', k: ['placo', 'rail', 'enduit'], why: 'Livraison avec hayon, 96 % à l’heure sur vos 3 derniers chantiers.', tel: '04 78 61 22 40', mail: 'commandes@platre-express.fr', who: 'Karim Benali' },
+  { id: 's2', name: 'Point Matériaux', cat: 'PLACO', sub: 'Vénissieux · 8 km', delay: '48 h', h: 48, price: '€', p: 1, rel: 88, tag: 'LE - CHER', k: ['placo', 'rail', 'enduit', 'colle'], why: 'Plaques et enduits −9 % vs moyenne ; retrait possible sur place.', tel: '04 72 50 18 93', mail: 'venissieux@pointmat.fr', who: 'Accueil pro' },
+  { id: 's3', name: 'Couleurs & Cie', cat: 'PEINTURE', sub: 'Bron · 6 km', delay: '72 h', h: 72, price: '€€', p: 2, rel: 82, tag: 'RETARD', k: ['peinture', 'sousc'], why: 'Teinteuse en panne. Alternative : Peintures Pro, livraison 48 h.', tel: '04 78 26 71 05', mail: 'contact@couleurs-cie.fr', who: 'Sophie Aubry' },
+  { id: 's4', name: 'Peintures Pro', cat: 'PEINTURE', sub: 'Meyzieu · 14 km', delay: '48 h', h: 48, price: '€€€', p: 3, rel: 93, tag: 'LE + RAPIDE', k: ['peinture', 'sousc', 'dalle'], why: 'Teintes sur mesure en 24 h ; surcoût ~8 %.', tel: '04 72 02 44 18', mail: 'pro@peintures-pro.fr', who: 'Service teinte' },
+  { id: 's5', name: 'Elec Pro', cat: 'ÉLEC', sub: 'Saint-Fons · 10 km', delay: '5 j', h: 120, price: '€€', p: 2, rel: 85, tag: 'RUPTURE', k: ['cable'], why: 'Rupture partielle 3G2.5. Alternative : Volt Distribution, 48 h.', tel: '04 78 70 31 62', mail: 'agence@elecpro.fr', who: 'Marc Dubois' },
+  { id: 's6', name: 'Volt Distribution', cat: 'ÉLEC', sub: 'Lyon 3e · 5 km', delay: '48 h', h: 48, price: '€€€', p: 3, rel: 94, tag: 'LE + RAPIDE', k: ['cable'], why: 'Stock permanent câbles et tableaux ; dépannage sous 4 h.', tel: '04 78 95 10 07', mail: 'lyon@volt-distrib.fr', who: 'Comptoir' },
+  { id: 's7', name: 'Céramique Sud', cat: 'CARRELAGE', sub: 'Lyon 2e · 3 km', delay: '72 h', h: 72, price: '€€', p: 2, rel: 91, tag: 'LOT GARANTI', k: ['carrelage', 'colle'], why: 'Réserve un même lot de teinte jusqu’à vendredi.', tel: '04 78 42 88 30', mail: 'paul.girard@ceramique-sud.fr', who: 'Paul Girard' },
+  { id: 's8', name: 'Sanit’Eau', cat: 'PLOMBERIE', sub: 'Lyon 7e · 4 km', delay: '24 h', h: 24, price: '€€', p: 2, rel: 92, tag: 'LE + RAPIDE', k: ['tube'], why: 'Multicouche, raccords et sanitaires ; livraison J+1.', tel: '04 78 72 64 11', mail: 'cde@sanit-eau.fr', who: 'Comptoir' }
+];
+const SN = id => SUP.find(s => s.id === id).name;
+const SITES = {
+  a: { label: 'LES TILLEULS', addr: 'Lyon 7e · 24 logements', geo: [45.7337, 4.8329],
+    projects: [
+      { id: 'a1', name: 'Cloisons & doublages', phase: 'Second œuvre', due: '14 nov', addr: '38 rue de Gerland', city: '69007 Lyon', access: 'Bât. B · portail code 4721', hours: '7h30 – 17h', geo: [45.7337, 4.8329],
+        steps: [['Traçage des rails', 'c', 100], ['Montants + isolant', 'g', 100], ['Pose plaques BA13', 'g', 55], ['Bandes & enduit', 'g', 0], ['Réception', 'c', 0]],
+        notes: ['Contrôle électrique avant fermeture des cloisons', 'Prévoir 120 plaques pour les étages 3 à 5'],
+        sup: ['s1', 's2', { name: 'Isol’Rhône', cat: 'Isolation', tel: '', mail: '', who: '' }],
+        inv: [['s1', 'F-2026-0412', 4280, '12 oct', 'paid'], ['s1', 'F-2026-0451', 2640, '20 oct', 'late'], ['s2', 'PM-88213', 1915.5, '30 oct', 'due']] },
+      { id: 'a2', name: 'Électricité · reprise des tableaux', phase: 'Lot élec', due: '5 déc', addr: '38 rue de Gerland', city: '69007 Lyon', access: 'Local TGBT sous-sol · clé gardien', hours: '7h30 – 17h', geo: [45.7337, 4.8329],
+        steps: [['Dépose anciens tableaux', 'c', 100], ['Tirage des câbles', 'g', 70], ['Pose tableaux', 'g', 0], ['Consuel', 'c', 0]],
+        notes: ['Coupure générale à planifier avec le syndic', 'Câble 3G2.5 : stock à renouveler'],
+        sup: ['s5', 's6'], inv: [['s5', 'EP-7731', 3120, '5 nov', 'due']] },
+      { id: 'a3', name: 'Peinture cages d’escalier', phase: 'Finitions', due: '10 oct', addr: '38 rue de Gerland', city: '69007 Lyon', access: 'Bât. A · cages 1 et 2', hours: '7h30 – 17h', geo: [45.7337, 4.8329],
+        steps: [['Protection', 'c', 100], ['Préparation des murs', 'g', 100], ['Deux couches', 'g', 100], ['Réception', 'c', 100]],
+        notes: ['PV de réception signé le 10 oct'], sup: ['s4'], inv: [['s4', 'PP-1102', 1840, '5 oct', 'paid']] },
+      { id: 'a4', name: 'Menuiseries intérieures', phase: 'Lot menuiserie', due: '16 janv', addr: '38 rue de Gerland', city: '69007 Lyon', access: 'Bât. B · étages 1 à 5', hours: '7h30 – 17h', geo: [45.7337, 4.8329],
+        steps: [['Relevé des cotes', 'c', 0], ['Commande blocs-portes', 'c', 0], ['Pose', 'g', 0], ['Réglages', 'c', 0]],
+        notes: ['Démarrer après les enduits'], sup: ['s2'], inv: [] }],
+    stock: [['placo', 'Plaques BA13', 'plaques', 48, 80, 60], ['rail', 'Rails & montants R48', 'lots', 30, 20, 20], ['enduit', 'Enduit de lissage', 'sacs', 10, 20, 30], ['cable', 'Câble 3G2.5', 'couronnes', 4, 6, 6]],
+    mails: [
+      { id: 'a-m1', ch: 'MAIL', from: 'Karim Benali', org: 'Plâtre Express', time: '08:42', unread: 1, subject: 'Livraison plaques BA13 — jeudi', summary: 'Livraison de 60 plaques possible jeudi matin. Demande confirmation avant 16h.', body: 'Bonjour, nous pouvons livrer les 60 plaques BA13 jeudi entre 7h et 9h, avec hayon. Merci de nous confirmer avant 16h aujourd’hui.', drafts: ['Bonjour Karim,\n\nLe créneau de jeudi 7h-9h nous convient pour les 60 plaques BA13. Merci de nous envoyer la confirmation écrite.\n\nCordialement,', 'OK jeudi 7h-9h pour 60 plaques. Merci de confirmer par mail.'] },
+      { id: 'a-m2', ch: 'SMS', from: 'Julie Marchand', org: 'Conductrice de travaux', time: '07:15', unread: 1, subject: 'SMS · Contrôle électrique', summary: 'Le bureau de contrôle passe demain 9h avant fermeture des cloisons étage 3.', body: 'Le bureau de contrôle passe demain à 9h avant la fermeture des cloisons de l’étage 3. Merci de dégager les accès.', drafts: ['Bien reçu Julie, accès dégagés dès 8h30. Je vous tiens au courant.', 'Reçu, ce sera prêt à 8h30.'] },
+      { id: 'a-m3', ch: 'APPEL', from: 'Marc Dubois', org: 'Elec Pro', time: 'Hier', unread: 0, subject: 'Appel manqué · Câble', summary: 'Rupture partielle câble 3G2.5 : 3 couronnes dispo, solde sous 10 jours.', body: 'Message vocal (0:48) : rupture partielle sur le câble 3G2.5. 3 couronnes disponibles, le solde sous 10 jours.', drafts: ['Bonjour Marc,\n\nMerci pour l’info. Pouvez-vous livrer les 3 couronnes demain ? Le solde sous 10 jours est acceptable.\n\nCordialement,', 'Livrez les 3 couronnes demain, solde sous 10 j OK.'] }] },
+  b: { label: 'COLLÈGE PASTEUR', addr: 'Villeurbanne · Rénovation', geo: [45.766, 4.8795],
+    projects: [
+      { id: 'b1', name: 'Peinture des couloirs', phase: 'Finitions', due: '28 nov', addr: '12 rue Pasteur', city: '69100 Villeurbanne', access: 'Entrée rue Pasteur · badge à l’accueil', hours: '8h – 16h30 (hors cours)', geo: [45.766, 4.8795],
+        steps: [['Protection sols', 'c', 100], ['Rebouchage & ponçage', 'g', 80], ['Sous-couche', 'g', 20], ['Finition deux couches', 'g', 0]],
+        notes: ['Zone élèves interdite jusqu’au 2 nov', 'Teinte validée par la direction : RAL 9010'],
+        sup: ['s3', 's4'], inv: [['s3', 'CC-2291', 1480, '2 oct', 'paid'], ['s4', 'PP-1180', 960, '8 nov', 'due']] },
+      { id: 'b2', name: 'Faux-plafonds salles A', phase: 'Second œuvre', due: '19 déc', addr: '12 rue Pasteur', city: '69100 Villeurbanne', access: 'Bât. A · accès par la cour', hours: '8h – 16h30 (hors cours)', geo: [45.766, 4.8795],
+        steps: [['Relevé des cotes', 'c', 100], ['Ossature', 'g', 60], ['Pose des dalles', 'g', 0], ['Luminaires', 'c', 0]],
+        notes: ['Livraison dalles : 5 jours après commande'], sup: ['s4', 's2'], inv: [] },
+      { id: 'b3', name: 'Désamiantage salles B', phase: 'Préparation', due: '20 sept', addr: '12 rue Pasteur', city: '69100 Villeurbanne', access: 'Bât. B', hours: '8h – 16h30', geo: [45.766, 4.8795],
+        steps: [['Confinement', 'c', 100], ['Retrait', 'g', 100], ['Mesures d’empoussièrement', 'c', 100]],
+        notes: ['Rapport de fin de chantier transmis'], sup: [], inv: [] }],
+    stock: [['peinture', 'Peinture acrylique mat', 'pots 15 L', 9, 12, 20], ['sousc', 'Sous-couche', 'pots', 14, 8, 10], ['dalle', 'Dalles faux-plafond', 'cartons', 30, 40, 20]],
+    mails: [
+      { id: 'b-m1', ch: 'MAIL', from: 'Direction Pasteur', org: 'M. Lefèvre', time: '09:10', unread: 1, subject: 'Planning vacances Toussaint', summary: 'Le collège autorise le bruit lourd uniquement pendant les vacances (24 oct – 3 nov).', body: 'Bonjour, merci de concentrer les travaux bruyants pendant les vacances scolaires. Accès libre au bâtiment A du 24 octobre au 3 novembre.', drafts: ['Bonjour M. Lefèvre,\n\nNous concentrerons les travaux bruyants sur la période du 24 octobre au 3 novembre. Un planning détaillé vous sera envoyé demain.\n\nCordialement,', 'Bien noté, planning envoyé demain.'] },
+      { id: 'b-m2', ch: 'APPEL', from: 'Sophie Aubry', org: 'Couleurs & Cie', time: 'Hier', unread: 0, subject: 'Appel · Peinture', summary: 'Peinture RAL 9010 : teinteuse en panne, livraison décalée au 30 octobre.', body: 'Message vocal (0:32) : teinteuse en panne, livraison de la peinture RAL 9010 décalée au 30 octobre.', drafts: ['Bonjour Sophie,\n\nUn décalage au 30 octobre est difficile pour nous. Pouvez-vous livrer au plus tôt, même partiellement ?\n\nCordialement,', 'Impossible d’attendre le 30. Livraison partielle dès demain ?'] }] },
+  c: { label: 'LOFT CONFLUENCE', addr: 'Lyon 2e · Réhabilitation', geo: [45.742, 4.819],
+    projects: [
+      { id: 'c1', name: 'Plomberie salles d’eau', phase: 'Lot plomberie', due: '7 nov', addr: '5 cours Charlemagne', city: '69002 Lyon', access: 'Interphone « Loft 3 » · 2e étage', hours: '8h – 18h', geo: [45.742, 4.819],
+        steps: [['Dépose sanitaires', 'c', 100], ['Alimentations multicouche', 'g', 100], ['Évacuations PVC', 'g', 40], ['Test de pression', 'c', 0], ['Pose appareils', 'c', 0]],
+        notes: ['Test de pression avant carrelage'], sup: ['s8'], inv: [['s8', 'SE-4402', 2210, '28 oct', 'due']] },
+      { id: 'c2', name: 'Carrelage sols & faïence', phase: 'Finitions', due: '30 nov', addr: '5 cours Charlemagne', city: '69002 Lyon', access: 'Interphone « Loft 3 » · monte-charge', hours: '8h – 18h', geo: [45.742, 4.819],
+        steps: [['Ragréage', 'c', 100], ['Pose sol 60×60', 'g', 30], ['Faïence salles d’eau', 'g', 0], ['Joints', 'c', 0]],
+        notes: ['Vérifier le lot de carrelage (même teinte)', 'Attendre séchage ragréage 48 h'], sup: ['s7', 's2'], inv: [['s7', 'CS-0907', 5600, '15 oct', 'paid']] },
+      { id: 'c3', name: 'Cuisine & crédences', phase: 'Agencement', due: '12 déc', addr: '5 cours Charlemagne', city: '69002 Lyon', access: 'Interphone « Loft 3 »', hours: '8h – 18h', geo: [45.742, 4.819],
+        steps: [['Validation du plan', 'c', 0], ['Pose des meubles', 'g', 0], ['Crédences', 'g', 0], ['Raccordements', 'c', 0]],
+        notes: ['Plan à valider avec le client'], sup: ['s8'], inv: [] }],
+    stock: [['carrelage', 'Carrelage 60×60', 'm²', 40, 60, 50], ['colle', 'Colle C2', 'sacs', 12, 10, 25], ['tube', 'Tube multicouche Ø16', 'couronnes', 5, 4, 5]],
+    mails: [
+      { id: 'c-m1', ch: 'MAIL', from: 'Paul Girard', org: 'Céramique Sud', time: '10:05', unread: 1, subject: 'Carrelage — même lot de teinte', summary: 'Un seul lot disponible pour 50 m² ; au-delà, risque de différence de teinte.', body: 'Bonjour, nous pouvons vous réserver 50 m² du même lot de teinte jusqu’à vendredi. Au-delà, le lot ne sera plus garanti.', drafts: ['Bonjour Paul,\n\nMerci de réserver 50 m² du lot actuel. Nous confirmons la commande avant vendredi.\n\nCordialement,', 'Réservez 50 m² du lot, commande confirmée avant vendredi.'] }] }
+};
+const DONE = {
+  a: [
+    { id: 'a-t1', ch: 'MAIL', from: 'Karim Benali', org: 'Plâtre Express', time: 'Lun.', subject: 'Devis rails R48', summary: 'Demande validation du devis pour 20 lots de rails R48 livrés sur site.', body: 'Bonjour, voici notre devis pour 20 lots de rails R48, livraison sur site sous 48 h. Merci de nous le retourner signé.', reply: 'Bonjour Karim,\n\nDevis validé pour 20 lots, livraison lundi matin.\n\nCordialement,', at: 'Lun. 16:20' },
+    { id: 'a-t2', ch: 'SMS', from: 'Julie Marchand', org: 'Conductrice de travaux', time: 'Ven.', subject: 'SMS · Planning plâtrerie', summary: 'Demande le planning plâtrerie de la semaine prochaine pour les étages 3 à 5.', body: 'Tu peux m’envoyer le planning plâtrerie de la semaine prochaine ? Étages 3 à 5.', reply: 'Planning envoyé par mail : étages 3 à 5 de lundi à mercredi.', at: 'Ven. 18:05' },
+    { id: 'a-t3', ch: 'APPEL', from: 'Ali Diallo', org: 'Chef d’équipe plâtrerie', time: 'Jeu.', subject: 'Appel · Matériel', summary: 'Besoin de 2 escabeaux supplémentaires à l’étage 4.', body: 'Appel (1:12) : il manque 2 escabeaux à l’étage 4 pour l’équipe.', reply: '', at: 'Jeu. 10:30' }],
+  b: [
+    { id: 'b-t1', ch: 'MAIL', from: 'Thomas Nguyen', org: 'Conducteur de travaux', time: 'Mar.', subject: 'Teinte couloirs', summary: 'Teinte RAL 9010 validée ; attend le bon de commande peinture.', body: 'La direction valide le RAL 9010 pour les couloirs. Peux-tu passer le bon de commande ?', reply: 'Bon de commande transmis à Peintures Pro ce matin.', at: 'Mar. 09:12' },
+    { id: 'b-t2', ch: 'MAIL', from: 'Direction Pasteur', org: 'M. Lefèvre', time: 'Lun.', subject: 'Attestation décennale', summary: 'Demande l’attestation d’assurance décennale 2026 avant démarrage.', body: 'Bonjour, merci de nous transmettre votre attestation d’assurance décennale à jour.', reply: 'Bonjour M. Lefèvre,\n\nVous trouverez notre attestation 2026 en pièce jointe.\n\nCordialement,', at: 'Lun. 11:40' }],
+  c: [
+    { id: 'c-t1', ch: 'SMS', from: 'Nadia Haddad', org: 'Conductrice de travaux', time: 'Mer.', subject: 'SMS · Avancement', summary: 'Demande des photos de l’avancement plomberie pour le client.', body: 'Tu peux m’envoyer des photos de l’avancement plomberie ? Le client les demande.', reply: 'Photos envoyées : évacuations à 40 %, alimentations terminées.', at: 'Mer. 17:48' },
+    { id: 'c-t2', ch: 'MAIL', from: 'Paul Girard', org: 'Céramique Sud', time: 'Lun.', subject: 'Échantillon carrelage', summary: 'Propose un échantillon du lot de carrelage 60×60 avant réservation.', body: 'Bonjour, je peux vous déposer un échantillon du lot en cours. Dites-moi quand passer.', reply: 'Merci Paul, échantillon reçu et validé.', at: 'Lun. 15:02' }]
+};
+const CFG0 = {
+  a: { addr: '38 rue de Gerland', city: '69007 Lyon', access: 'Portail code 4721 · Bât. A et B', hours: '7h30 – 17h', zones: ['Sous-sol', 'RDC', 'Étage 1', 'Étage 2', 'Étage 3', 'Étage 4', 'Étage 5', 'Local TGBT', 'Parking'], contacts: [['Julie Marchand', 'Conductrice de travaux', '06 12 48 30 77'], ['M. Rossi', 'Gardien · clés', '06 33 18 40 12']] },
+  b: { addr: '12 rue Pasteur', city: '69100 Villeurbanne', access: 'Badge à l’accueil · entrée rue Pasteur', hours: '8h – 16h30', zones: ['Bât. A · RDC', 'Bât. A · Étage 1', 'Bât. B', 'Cour', 'Préau', 'Chaufferie'], contacts: [['M. Lefèvre', 'Directeur', '04 78 85 20 14'], ['Thomas Nguyen', 'Conducteur de travaux', '06 41 92 07 63']] },
+  c: { addr: '5 cours Charlemagne', city: '69002 Lyon', access: 'Interphone « Loft 3 » · monte-charge', hours: '8h – 18h', zones: ['RDC', 'Mezzanine', 'Salle d’eau 1', 'Salle d’eau 2', 'Cuisine', 'Cave'], contacts: [['Nadia Haddad', 'Conductrice de travaux', '06 25 60 18 94'], ['Mme Bertin', 'Cliente', '06 71 20 55 38']] }
+};
+const SDISC = { placo: 'Placo', rail: 'Placo', enduit: 'Placo', dalle: 'Placo', cable: 'Électricité', peinture: 'Peinture', sousc: 'Peinture', carrelage: 'Carrelage', colle: 'Carrelage', tube: 'Plomberie' };
+const STZ = { placo: 'Étage 3', rail: 'Sous-sol', enduit: 'Sous-sol', cable: 'Local TGBT', peinture: 'Préau', sousc: 'Préau', dalle: 'Bât. A · RDC', carrelage: 'Cave', colle: 'Cave', tube: 'RDC' };
+const ZSUG = ['RDC', 'Étage', 'Sous-sol', 'Jardin', 'Local technique', 'Combles', 'Toiture', 'Cave', 'Parking', 'Cour'];
+const SUN = { w: 'Dim', n: 1, ev: [] };
+const DISC0 = ['Électricité', 'Plomberie', 'Peinture', 'Menuiserie', 'Placo', 'Carrelage'];
+const VIP0 = { 'Julie Marchand': 1, 'Direction Pasteur': 1, 'Paul Girard': 1, 'Thomas Nguyen': 1 };
+const TEAMS = {
+  a: [['Julie Marchand', 'Conductrice de travaux', 'Référente', '06 12 48 30 77'], ['Ali Diallo', 'Chef d’équipe plâtrerie · 6 pers.', 'Sur site', '06 70 21 55 09'], ['Bureau Qualiconsult', 'Contrôle électrique', 'Sous-traitant', '04 72 33 10 50']],
+  b: [['Thomas Nguyen', 'Conducteur de travaux', 'Référent', '06 41 92 07 63'], ['Éric Roux', 'Chef d’équipe peinture · 4 pers.', 'Sur site', '06 88 15 42 30'], ['M. Lefèvre', 'Directeur du collège', 'Client', '04 78 85 20 14']],
+  c: [['Nadia Haddad', 'Conductrice de travaux', 'Référente', '06 25 60 18 94'], ['Luc Perrin', 'Chef d’équipe plomberie · 3 pers.', 'Sur site', '06 52 77 43 01'], ['Carrelage Pro', 'Pose sols & faïence', 'Sous-traitant', '04 78 37 62 25']]
+};
+const ADV = { placo: 'Plâtre Express · 24 h', enduit: 'Point Matériaux · 48 h', cable: 'Volt Distribution · 48 h', peinture: 'Peintures Pro · 48 h', dalle: 'Peintures Pro · 48 h', carrelage: 'Céramique Sud · 72 h', rail: 'Point Matériaux', sousc: 'Peintures Pro', colle: 'Point Matériaux', tube: 'Sanit’Eau · 24 h' };
+const PLAN = [
+  { w: 'Lun', n: 26, ev: [['08:00', 'b', 'Démarrage faux-plafonds salles A', 'Chantier'], ['14:00', 'a', 'Réunion de chantier', 'Réunion']] },
+  { w: 'Mar', n: 27, ev: [['09:00', 'a', 'Contrôle électrique · étage 3', 'Contrôle'], ['13:30', 'c', 'Test de pression plomberie', 'Contrôle']] },
+  { w: 'Mer', n: 28, ev: [['08:00', 'b', 'Livraison peinture RAL 9010 (partielle)', 'Livraison'], ['15:00', 'b', 'Visite M. Lefèvre', 'Réunion']] },
+  { w: 'Jeu', n: 29, ev: [['07:00', 'a', 'Livraison 60 plaques BA13', 'Livraison'], ['11:00', 'a', 'Livraison câbles 3G2.5', 'Livraison']] },
+  { w: 'Ven', n: 30, ev: [['10:00', 'c', 'Échéance réservation lot carrelage', 'Échéance'], ['16:00', 'b', 'Validation planning bruit lourd', 'Réunion']] },
+  { w: 'Sam', n: 31, ev: [] }
+];
+const DARK = {'--ink':'#F2F2F2','--ink2':'rgba(242,242,242,.5)','--ink3':'rgba(242,242,242,.28)','--line':'rgba(255,255,255,.07)','--tile':'#242424','--tileBd':'#2C2C2C','--field':'#242424','--track':'#2E2E2E','--chip':'#242424','--on':'#3A3A3A','--acc':'#F2F2F2','--accOn':'#141414','--accTx':'#F2F2F2','--accSoft':'rgba(255,255,255,.1)','--warn':'#FF6B6B','--warnTx':'#FF8F8F','--warnBg':'rgba(255,90,90,.14)','--ok':'#8FE3C8','--okTx':'#A6ECD5','--okBg':'rgba(120,220,190,.12)','--solid':'#F2F2F2','--solidTx':'#141414','--sheet':'#1F1F1F','--scrim':'rgba(0,0,0,.55)','--knob':'#fff','--card':'#F2F2F2','--cardB':'none','--cardBd':'#2C2C2C','--cardSh':'none','--bg':'#1A1A1A','--kl':'rgba(0,0,0,.07)','--kt':'#E7E7E7','--ktb':'#DADADA','--kf':'#E7E7E7','--ktr':'#DCDCDC','--kon':'#FFFFFF','--t1':'#2A2C20','--t1x':'#E8EDB8','--t2':'#26282D','--t2x':'#E3E6F0','--t3':'#1D292A','--t3x':'#B5E6E8','--t4':'#2C2229','--t4x':'#F0C6E2'};
+const cap = s => s ? s.charAt(0) + s.slice(1).toLowerCase() : s;
+const tc = s => s.toLowerCase().replace(/(^|\s)(\S)/g, (m, a, b) => a + b.toUpperCase());
+const CH = { TOUS: 'Tous', MAIL: 'Mail', SMS: 'SMS', APPEL: 'Appel' };
+const AV = { MAIL: '#5B6478', SMS: '#3C8487', APPEL: '#8E4F7C' };
+const DOT = { a: '#9AA34E', b: '#B06E9C', c: '#4E9FA2' };
+const CATC = { Placo: '#5B6478', Peinture: '#8E4F7C', 'Élec': '#7D8540', Carrelage: '#3C8487', Plomberie: '#4F6F8F' };
+const PX = id => 'https://images.pexels.com/photos/' + id + '/pexels-photo-' + id + '.jpeg?auto=compress&cs=tinysrgb&w=600';
+const IMG = { a3: 1887946, a4: 6474309, b3: 5691590, c3: 6419128, a1: 4981812, a2: 5767595, b1: 5493653, b2: 6474309, c1: 6419128, c2: 1144871, placo: 4981812, rail: 4981812, enduit: 2293819, cable: 5691590, peinture: 1887946, sousc: 6474309, dalle: 7218011, carrelage: 1144871, colle: 2293819, tube: 6419128, s1: 4981812, s2: 6474309, s3: 1887946, s4: 5583116, s5: 5767595, s6: 5691590, s7: 1144871, s8: 6419128 };
+const DEF = 6474471;
+const src = k => PX(IMG[k] || DEF);
+const ini = s => s.replace(/[’']/g, ' ').split(/\s+/).filter(Boolean).map(w => w[0]).slice(0, 2).join('').toUpperCase();
+const eur = n => n.toLocaleString('fr-FR', { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + ' €';
+const rid = () => Math.random().toString(36).slice(2, 8);
+const supCopy = id => { const s = SUP.find(x => x.id === id); return { id: 'f' + rid(), ref: id, name: s.name, cat: cap(s.cat), tel: s.tel, mail: s.mail, who: s.who }; };
+const KS = Object.keys(SITES);
+const wrapI = j => ((j % KS.length) + KS.length) % KS.length;
+const DEFSTEPS = [{ l: 'Préparation', t: 'c' }, { l: 'Exécution', t: 'g' }, { l: 'Finitions', t: 'g' }, { l: 'Réception', t: 'c' }];
+const SAVE_KEY = 'chantier-app-v6';
+const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos'];
+const restore = () => {
+  try {
+    if (location.hash === '#reset') { localStorage.removeItem(SAVE_KEY); history.replaceState(null, '', location.pathname); return {}; }
+    const d = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
+    if (!d || !d.state) return {};
+    if (Array.isArray(d.sup)) SUP.splice(0, SUP.length, ...d.sup);
+    const s = d.state;
+    if (s.geo) Object.keys(s.geo).forEach(k => { if (s.geo[k] === 'busy') delete s.geo[k]; });
+    if (s.site && KS.includes(s.site)) s.wpos = KS.indexOf(s.site);
+    return s;
+  } catch (e) { return {}; }
+};
+let saveT;
+const persist = st => {
+  clearTimeout(saveT);
+  saveT = setTimeout(() => {
+    try {
+      const s = {};
+      Object.keys(st).forEach(k => { if (!VOLATILE.includes(k)) s[k] = st[k]; });
+      localStorage.setItem(SAVE_KEY, JSON.stringify({ state: s, sup: SUP }));
+    } catch (e) {}
+  }, 400);
+};
+const START = { 'Liste des projets': { proj: null }, 'Fiche projet · Étapes': { proj: 'a1', seg: 'e' }, 'Fiche projet · Fournisseurs': { proj: 'a1', seg: 'c' }, 'Nouveau projet': { proj: null, sheet: 'p', form: { steps: DEFSTEPS, sups: [], custom: [] } } };
+
+class Component extends DCLogic {
+  state = this.init();
+  init() {
+    const P = {};
+    Object.keys(SITES).forEach(k => {
+      P[k] = SITES[k].projects.map(p => ({ ...p,
+        steps: p.steps.map(([l, t, v], i) => ({ id: p.id + 's' + i, l, t, v })),
+        notes: [...p.notes],
+        sup: p.sup.map(x => typeof x === 'string' ? supCopy(x) : { id: 'f' + rid(), ...x }),
+        inv: p.inv.map((r, i) => ({ id: p.id + 'i' + i, sup: SN(r[0]), num: r[1], amt: r[2], date: r[3], st: r[4] })) }));
+    });
+    return { dark: this.props.dark ?? true, site: 'a', tab: 'p', proj: null, seg: 'e', editSteps: false, stepText: '', stepType: 'g', supOpen: null, geo: {}, P, noteText: '', stk: {}, sentOrder: {}, mail: null, tone: 0, edits: {}, sentMail: {}, read: {}, wpos: 0, cfg: CFG0, cfgSite: 'a', cfgF: {}, sunday: false, discs: DISC0, discText: '', chf: 'TOUS', mbox: 'r', mq: '', who: null, vip: {}, treated: {}, cat: 'TOUS', sort: 'PRIX', day: 0, menu: false, sheet: null, form: {}, addS: {}, addE: {}, seq: 0, ...(START[this.props.start] || {}), ...restore() };
+  }
+  componentWillUnmount() { if (this.wRaf) cancelAnimationFrame(this.wRaf); if (this.rec) try { this.rec.abort(); } catch (e) {} }
+  dictate(mk, key) {
+    if (this.rec) { try { this.rec.stop(); } catch (e) {} this.rec = null; if (this.state.mic === mk) { this.setState({ mic: null }); return; } }
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { this.setState({ micErr: mk }); clearTimeout(this.micT); this.micT = setTimeout(() => this.setState({ micErr: null }), 2500); return; }
+    const r = new SR(); r.lang = 'fr-FR'; r.interimResults = true; r.continuous = false;
+    const base = (this.state.form[key] || '').trim();
+    r.onresult = (e) => { let t = ''; for (let i = 0; i < e.results.length; i++) t += e.results[i][0].transcript; t = t.trim(); t = t.charAt(0).toUpperCase() + t.slice(1); this.setState(s => ({ form: { ...s.form, [key]: base ? base + ' ' + t : t } })); };
+    r.onerror = () => { this.rec = null; this.setState({ mic: null, micErr: mk }); clearTimeout(this.micT); this.micT = setTimeout(() => this.setState({ micErr: null }), 2500); };
+    r.onend = () => { if (this.rec === r) this.rec = null; this.setState(s => s.mic === mk ? { mic: null } : null); };
+    this.rec = r; this.setState({ mic: mk, micErr: null });
+    try { r.start(); } catch (e) { r.onerror(); }
+  }
+  wheelGo(target) {
+    this.wTarget = target;
+    const k = KS[wrapI(Math.round(target))];
+    if (k !== this.state.site) this.setState({ site: k, mail: null, proj: null, who: null });
+    if (this.wRaf) return;
+    const tick = () => {
+      const p = this.state.wpos, d = this.wTarget - p;
+      if (Math.abs(d) < 0.01) { this.wRaf = null; this.setState({ wpos: this.wTarget }); return; }
+      this.setState({ wpos: p + d * 0.24 });
+      this.wRaf = requestAnimationFrame(tick);
+    };
+    this.wRaf = requestAnimationFrame(tick);
+  }
+  componentDidUpdate(prev) {
+    persist(this.state);
+    if (!this.wRaf && !this.wDrag && KS[wrapI(Math.round(this.state.wpos))] !== this.state.site) { const i = KS.indexOf(this.state.site); this.wTarget = i; this.setState({ wpos: i }); }
+    if (prev.dark !== this.props.dark) this.setState({ dark: this.props.dark ?? true });
+    if (prev.start !== this.props.start) this.setState({ tab: 'p', site: 'a', wpos: 0, sheet: null, seg: 'e', ...(START[this.props.start] || {}) });
+  }
+  updP(pid, fn) {
+    this.setState(s => { const P = {}; Object.keys(s.P).forEach(k => { P[k] = s.P[k].map(p => p.id === pid ? fn(p) : p); }); return { P }; });
+  }
+  async geocode(pid, addr, city) {
+    this.setState(s => ({ geo: { ...s.geo, [pid]: 'busy' } }));
+    try {
+      const r = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(addr + ', ' + city));
+      const j = await r.json();
+      if (j && j[0]) { this.updP(pid, p => ({ ...p, geo: [+j[0].lat, +j[0].lon] })); this.setState(s => ({ geo: { ...s.geo, [pid]: 'ok' } })); }
+      else this.setState(s => ({ geo: { ...s.geo, [pid]: 'err' } }));
+    } catch (e) { this.setState(s => ({ geo: { ...s.geo, [pid]: 'err' } })); }
+  }
+  renderVals() {
+    const st = this.state, S = SITES[st.site], set = (o) => this.setState(o);
+    const ACC = 'var(--acc)', INK = 'var(--ink)', CHIP = 'var(--chip)', WARN = 'var(--warn)';
+    const on = (b) => b ? ACC : CHIP, fg = (b) => b ? 'var(--accOn)' : INK;
+    const glob = st.tab === 'l' || st.tab === 'c';
+    const stockOf = k => [...SITES[k].stock, ...(st.addS[k] || [])].filter(x => !(st.stkDel || {})[k + x[0]]).map(x => { const c = (st.stkCfg || {})[k + x[0]]; return c ? [x[0], x[1], x[2], x[3], c.min ?? x[4], c.lot ?? x[5], x[6]] : x; });
+    const list = st.P[st.site];
+    const P0 = list.find(p => p.id === st.proj);
+    const detail = st.tab === 'p' && !!P0;
+    const sites = Object.keys(SITES).map(k => { const on = k === st.site, L = st.P[k], av = L.length ? Math.round(L.reduce((a, p) => a + (p.steps.length ? p.steps.reduce((b, s) => b + s.v, 0) / p.steps.length : 0), 0) / L.length) : 0, run = L.filter(p => p.steps.some(s => s.v < 100) && p.steps.some(s => s.v > 0)).length;
+      return { label: tc(SITES[k].label), addr: SITES[k].addr, dot: DOT[k], on, pct: av, meta: L.length + ' projets · ' + run + ' en cours', bg: on ? 'var(--acc)' : 'var(--tile)', fg: on ? 'var(--accOn)' : 'var(--ink)', tagBg: on ? 'var(--accSoft)' : 'transparent', sep: on ? (st.dark ? 'rgba(0,0,0,.14)' : 'rgba(255,255,255,.2)') : 'var(--tileBd)', cfgMeta: st.cfg[k].zones.length + ' lieux · ' + st.cfg[k].contacts.length + ' contacts', config: (e) => { e.stopPropagation(); set({ sheet: 'site', cfgSite: k, cfgF: {} }); },
+        pick: () => { set({ menu: false }); const cur = Math.round(this.state.wpos); let d = KS.indexOf(k) - wrapI(cur); if (d > KS.length / 2) d -= KS.length; if (d < -KS.length / 2) d += KS.length; this.wheelGo(cur + d); } }; });
+    const wp = st.wpos, wb = Math.round(wp);
+    const wheel = [-2, -1, 0, 1, 2].map(o => { const j = wb + o, rel = j - wp, k = KS[wrapI(j)], a = Math.abs(rel); return { label: tc(SITES[k].label), dot: DOT[k], tf: 'translateY(' + (rel * 22).toFixed(1) + 'px) rotateX(' + (-rel * 34).toFixed(1) + 'deg)', op: Math.max(0, 1 - a * 0.85).toFixed(2), col: a < 0.5 ? 'var(--ink)' : 'var(--ink2)' }; });
+    const wWheel = (e) => { this.wAcc = (this.wAcc || 0) + e.deltaY; if (Math.abs(this.wAcc) >= 28) { const s = Math.sign(this.wAcc); this.wAcc = 0; this.wheelGo(Math.round(this.wTarget ?? this.state.wpos) + s); } };
+    const wDown = (e) => { if (this.wRaf) { cancelAnimationFrame(this.wRaf); this.wRaf = null; } this.wDrag = { y: e.clientY, p: this.state.wpos, moved: false, r: e.currentTarget.getBoundingClientRect() }; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) {} };
+    const wMove = (e) => { const d = this.wDrag; if (!d) return; const dy = e.clientY - d.y; if (Math.abs(dy) > 3) d.moved = true; if (d.moved) this.setState({ wpos: d.p - dy / 22 }); };
+    const wUp = (e) => { const d = this.wDrag; this.wDrag = null; if (!d) return; const cur = Math.round(this.state.wpos);
+      if (d.moved) { this.wheelGo(cur); return; }
+      const off = Math.max(-1, Math.min(1, Math.round((e.clientY - (d.r.top + d.r.height / 2)) / 22)));
+      this.wheelGo(cur + off); if (off === 0) this.setState(s => ({ menu: !s.menu })); };
+    const pctOf = p => p.steps.length ? Math.round(p.steps.reduce((a, s) => a + s.v, 0) / p.steps.length) : 0;
+    const stOf = p => { const v = pctOf(p); return v >= 100 ? 'd' : v === 0 ? 't' : 'r'; };
+    const psec = st.psec || 'r';
+    const PS = [['d', 'Terminés', 'var(--t3)', 'var(--t3x)'], ['r', 'En cours', 'var(--t1)', 'var(--t1x)'], ['t', 'À faire', 'var(--t4)', 'var(--t4x)']];
+    const psecs = PS.map(([k, label, bg, fx]) => { const a = psec === k; return { label, bg, fg: fx, n: list.filter(p => stOf(p) === k).length, bd: a ? fx : 'transparent', op: a ? 1 : 0.55, pick: () => set({ psec: k }) }; });
+    const projects = list.filter(p => stOf(p) === psec).map(p => {
+      const pct = pctOf(p), done = p.steps.filter(s => s.v >= 100).length, late = p.inv.filter(i => i.st === 'late').length, todo = p.sup.filter(f => !f.tel || !f.mail).length;
+      return { name: p.name, img: 'proj-' + p.id, src: src(p.id), ph: 'Photo · ' + p.name, phase: p.phase, due: 'Fin ' + p.due, pct, pctW: pct + '%',
+        loc: p.addr ? p.addr + ' · ' + p.city.replace(/^\d+\s*/, '') : 'Adresse à renseigner',
+        meta: done + '/' + p.steps.length + ' étapes · ' + p.sup.length + ' fourn.',
+        hasAlert: !!(late || todo), alert: late ? late + ' facture' + (late > 1 ? 's' : '') + ' en retard' : todo ? todo + ' fourn. à renseigner' : '',
+        open: () => set({ proj: p.id, seg: 'e', editSteps: false, supOpen: null, noteText: '', stepText: '' }) };
+    });
+    // project detail
+    const Q = P0 || list[0], pid = Q.id, up = fn => this.updP(pid, fn);
+    const pct = pctOf(Q), C = 163.36;
+    const setV = (sid, v) => up(p => ({ ...p, steps: p.steps.map(s => s.id === sid ? { ...s, v } : s) }));
+    const steps = Q.steps.map(s => {
+      const isC = s.t === 'c', d = s.v >= 100, ed = st.editSteps;
+      const drag = (e) => {
+        if (e.type === 'pointermove' && !e.buttons) return;
+        const el = e.currentTarget, r = el.getBoundingClientRect();
+        if (e.type === 'pointerdown' && el.setPointerCapture) { try { el.setPointerCapture(e.pointerId); } catch (x) {} }
+        setV(s.id, Math.max(0, Math.min(100, Math.round((e.clientX - r.left) / r.width * 20) * 5)));
+      };
+      const col = d ? 'var(--ok)' : ACC;
+      return { l: s.l, isC, isG: !isC, ed, showPct: !isC && !ed, showBar: !isC && !ed,
+        ckBg: d ? ACC : 'transparent', ckBd: d ? ACC : 'var(--ink3)',
+        pie: 'conic-gradient(' + col + ' ' + (s.v * 3.6) + 'deg, var(--track) 0)',
+        deco: isC && d ? 'line-through' : 'none', col: isC && d ? 'var(--ink3)' : INK,
+        pctLbl: d ? 'Terminé' : s.v + ' %', pctCol: col, barCol: col, w: s.v + '%', drag,
+        cBg: isC ? 'var(--on)' : 'transparent', cFg: isC ? ACC : 'var(--ink2)', gBg: !isC ? 'var(--on)' : 'transparent', gFg: !isC ? ACC : 'var(--ink2)',
+        setC: () => up(p => ({ ...p, steps: p.steps.map(x => x.id === s.id ? { ...x, t: 'c', v: x.v >= 100 ? 100 : 0 } : x) })),
+        setG: () => up(p => ({ ...p, steps: p.steps.map(x => x.id === s.id ? { ...x, t: 'g' } : x) })),
+        del: () => up(p => ({ ...p, steps: p.steps.filter(x => x.id !== s.id) })),
+        gDone: d, gOpen: !d,
+        complete: () => { if (ed) return; up(p => ({ ...p, steps: p.steps.map(x => x.id === s.id ? (x.v >= 100 ? { ...x, v: x.pv ?? 0 } : { ...x, pv: x.v, v: 100 }) : x) })); },
+        toggle: () => { if (isC && !ed) setV(s.id, d ? 0 : 100); } };
+    });
+    const loc = [['addr', 'Adresse', 'Ex. 14 rue Garibaldi'], ['city', 'Ville', 'Ex. 69006 Lyon'], ['access', 'Accès', 'Code, étage, clé…'], ['hours', 'Horaires', 'Ex. 7h30 – 17h']].map(([k, label, ph]) => ({ label, ph, val: Q[k] || '', on: (e) => { const v = e.target.value; up(p => ({ ...p, [k]: v })); } }));
+    const [lat, lon] = Q.geo || S.geo, dd = 0.005;
+    const gs = st.geo[pid];
+    const STL = { paid: 'Payée', due: 'À payer', late: 'En retard' }, STB = { paid: 'var(--okBg)', due: 'var(--accSoft)', late: 'var(--warnBg)' }, STF = { paid: 'var(--okTx)', due: 'var(--accTx)', late: 'var(--warnTx)' };
+    const cycInv = (ppid, iid) => this.updP(ppid, p => ({ ...p, inv: p.inv.map(x => x.id === iid ? { ...x, st: x.st === 'paid' ? 'due' : 'paid' } : x) }));
+    const mkInv = (i, ppid) => ({ sup: i.sup, num: i.num, date: i.date, amt: eur(i.amt), stLbl: STL[i.st], stBg: STB[i.st], stFg: STF[i.st], cyc: () => cycInv(ppid, i.id) });
+    const sups = Q.sup.map(f => {
+      const fi = Q.inv.filter(i => i.sup === f.name), fp = fi.filter(i => i.st === 'paid').reduce((a, i) => a + i.amt, 0), ft = fi.reduce((a, i) => a + i.amt, 0);
+      const todo = !f.tel || !f.mail, n = (f.tel || '').replace(/\s/g, '');
+      return { name: f.name, ini: ini(f.name), av: CATC[f.cat] || '#7A8496', sub: [f.cat, f.who].filter(Boolean).join(' · '), todo, ok: !todo,
+        telH: 'tel:' + n, smsH: 'sms:' + n, mailH: 'mailto:' + f.mail, open: st.supOpen === f.id,
+        toggle: () => set({ supOpen: st.supOpen === f.id ? null : f.id }),
+        fields: [['who', 'Contact', 'Nom du contact'], ['tel', 'Téléphone', '04 …'], ['mail', 'Mail', 'contact@…']].map(([k, label, ph]) => ({ label, ph, val: f[k] || '', on: (e) => { const v = e.target.value; up(p => ({ ...p, sup: p.sup.map(x => x.id === f.id ? { ...x, [k]: v } : x) })); } })),
+        remove: () => { up(p => ({ ...p, sup: p.sup.filter(x => x.id !== f.id) })); set({ supOpen: null }); },
+        inv: fi.map(i => mkInv(i, pid)), invN: fi.length, noInv: !fi.length, hasInv: !!fi.length, paid: eur(fp), openAmt: eur(ft - fp), openCol: fi.some(i => i.st === 'late') ? 'var(--warnTx)' : 'var(--ink)',
+        addInv: () => set({ sheet: 'inv', form: { sup: f.name, st: 'due' } }) };
+    });
+    const inv = Q.inv.map(i => mkInv(i, pid));
+    const total = Q.inv.reduce((a, i) => a + i.amt, 0), paid = Q.inv.filter(i => i.st === 'paid').reduce((a, i) => a + i.amt, 0), anyLate = Q.inv.some(i => i.st === 'late');
+    const pj = { name: Q.name, phase: Q.phase, due: Q.due, img: 'proj-' + Q.id, src: src(Q.id), ph: 'Photo · ' + Q.name, addrLine: Q.addr ? Q.addr + ' · ' + (Q.city || '') : 'Adresse non renseignée', pct, dash: (C * pct / 100) + ' ' + C,
+      stepsDone: Q.steps.filter(s => s.v >= 100).length + '/' + Q.steps.length, supN: Q.sup.length, openAmt: eur(total - paid), openCol: anyLate ? 'var(--warnTx)' : INK,
+      steps, notes: Q.notes, locFields: loc,
+      map: 'https://www.openstreetmap.org/export/embed.html?bbox=' + (lon - dd * 1.5) + ',' + (lat - dd) + ',' + (lon + dd * 1.5) + ',' + (lat + dd) + '&layer=mapnik&marker=' + lat + ',' + lon,
+      maps: 'https://maps.apple.com/?q=' + encodeURIComponent((Q.addr || '') + ', ' + (Q.city || '')),
+      geoLabel: gs === 'busy' ? 'Recherche…' : gs === 'ok' ? '✓ Position mise à jour' : gs === 'err' ? 'Adresse introuvable · réessayer' : 'Localiser l’adresse sur la carte',
+      geoCol: gs === 'err' ? 'var(--warnTx)' : gs === 'ok' ? 'var(--okTx)' : ACC,
+      geocode: () => { if (Q.addr) this.geocode(pid, Q.addr, Q.city || ''); },
+      sups, inv, noInv: inv.length === 0, invTotal: eur(total), invPaid: eur(paid),
+      team: (TEAMS[st.site] || []).map(m => ({ name: m[0], role: m[1], tag: m[2], ini: ini(m[0]), telH: 'tel:' + m[3].replace(/\s/g, '') })) };
+    const segs = [['e', 'Étapes'], ['c', 'Fourn. & factures']].map(([k, label]) => ({ label, bg: st.seg === k ? 'var(--on)' : 'transparent', fg: st.seg === k ? INK : 'var(--ink2)', sh: st.seg === k ? '0 2px 8px rgba(0,0,0,.12)' : 'none', pick: () => set({ seg: k, editSteps: false }) }));
+    const stepTypes = [['c', 'Coche'], ['g', 'Jauge']].map(([k, label]) => ({ label, bg: st.stepType === k ? 'var(--on)' : 'transparent', fg: st.stepType === k ? ACC : 'var(--ink2)', pick: () => set({ stepType: k }) }));
+    // stocks
+    const zonesS = st.cfg[st.site].zones;
+    const stItems = stockOf(st.site).map(s => { const key = st.site + s[0], o = { q: s[3], o: 0, sent: false, ...(st.stk[key] || {}) }, low = o.q < s[4]; return { s, key, o, low, disc: s[6] || SDISC[s[0]] || 'Autre', stt: o.o > 0 ? 'ord' : low ? 'low' : 'ok' }; });
+    const updS = (key, n) => set({ stk: { ...st.stk, [key]: n }, stkSent: false });
+    const sf = st.stkF || null;
+    const stFilt = [['low', 'À commander', 'var(--t4)', 'var(--t4x)'], ['ord', 'En commande', 'var(--t2)', 'var(--t2x)'], ['ok', 'En stock', 'var(--t3)', 'var(--t3x)']].map(([k, label, bg, fx]) => { const a = sf === k; return { label, bg, fg: fx, n: stItems.filter(x => x.stt === k).length, bd: a ? fx : 'transparent', op: !sf || a ? 1 : 0.5, pick: () => set({ stkF: a ? null : k }) }; });
+    const dOrder = Array.from(new Set([...st.discs, ...stItems.map(x => x.disc)])).filter(d => d !== 'Autre').concat('Autre');
+    const sdSel = st.stkD || null, inStt = stItems.filter(x => !sf || x.stt === sf);
+    const stDisc = [{ k: null, label: 'Toutes', n: inStt.length }, ...dOrder.filter(d => inStt.some(x => x.disc === d)).map(d => ({ k: d, label: d, n: inStt.filter(x => x.disc === d).length }))].map(d => { const a = sdSel === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ stkD: d.k }) }; });
+    const stocks = inStt.filter(x => !sdSel || x.disc === sdSel).map(({ s, key, o, low, disc }) => {
+      const max = Math.max(s[4] * 2, o.q, 1), step = Math.max(1, Math.round(s[5] / 10)), open = st.stkOpen === key;
+      const zone = (st.stkZone || {})[key] || STZ[s[0]] || zonesS[0] || '—';
+      return { img: 'stk-' + s[0], src: src(s[0]), name: s[1], unit: s[2], q: o.q, col: low ? WARN : INK, barCol: low ? WARN : ACC, w: Math.min(100, o.q / max * 100) + '%', markL: (s[4] / max * 100) + '%',
+        meta: 'Seuil ' + s[4] + ' · ' + zone, hasPend: o.o > 0, pend: '+' + o.o + ' ' + s[2] + (o.sent ? ' · commandés' : ' · au panier'), pendBg: o.sent ? 'var(--t2)' : 'var(--warnBg)', pendFg: o.sent ? 'var(--t2x)' : 'var(--warnTx)',
+        open, toggle: () => set({ stkOpen: open ? null : key }), step: step + ' ' + s[2],
+        minus: () => updS(key, { ...o, q: Math.max(0, o.q - step) }), plus: () => updS(key, { ...o, q: o.q + step }),
+        zones: zonesS.map(z => ({ label: z, bg: z === zone ? 'var(--acc)' : 'var(--tile)', fg: z === zone ? 'var(--accOn)' : INK, pick: () => set({ stkZone: { ...(st.stkZone || {}), [key]: z } }) })),
+        adv: o.sup || ADV[s[0]] || 'Point Matériaux · 48 h', lotLbl: '+ 1 lot · ' + s[5], order: () => updS(key, { ...o, o: o.o + s[5], sent: false }),
+        disc, canRecv: o.sent && o.o > 0, canOrder: !(o.sent && o.o > 0), recvLbl: 'Réceptionner +' + o.o, recv: () => updS(key, { ...o, q: o.q + o.o, o: 0, sent: false }) };
+    });
+    const stGroups = dOrder.map(d => ({ label: d, items: stocks.filter(x => x.disc === d) })).filter(g => g.items.length).map(g => ({ ...g, n: g.items.length + ' article' + (g.items.length > 1 ? 's' : '') }));
+    const bk = {}; stItems.filter(x => x.o.o > 0 && !x.o.sent).forEach(x => { const sup = (x.o.sup || ADV[x.s[0]] || 'Point Matériaux').split(' · ')[0]; (bk[sup] = bk[sup] || []).push({ name: x.s[1], qty: '+' + x.o.o + ' ' + x.s[2], rm: () => updS(x.key, { ...x.o, o: 0 }) }); });
+    const basket = Object.keys(bk).map(sup => ({ sup, lines: bk[sup] })), basketLines = stItems.filter(x => x.o.o > 0 && !x.o.sent).length;
+    const sendOrder = () => { const n = { ...st.stk }; stItems.forEach(x => { if (x.o.o > 0 && !x.o.sent) n[x.key] = { ...x.o, sent: true }; }); set({ stk: n, stkSent: true }); };
+    // mails
+    const isVip = n => st.vip[n] ?? !!VIP0[n];
+    const allM = [...S.mails, ...(DONE[st.site] || [])].map(m => ({ ...m, drafts: m.drafts || [m.reply || '', m.reply || ''] }));
+    const trOf = m => { const t = st.treated[m.id]; return t !== undefined ? t : (m.reply != null ? { reply: m.reply, at: m.at } : false); };
+    const mq = st.mq.trim().toLowerCase();
+    const match = m => (!st.who || m.from === st.who) && (!mq || [m.from, m.org, m.subject, m.summary, m.body].join(' ').toLowerCase().includes(mq));
+    const recv = allM.filter(m => !trOf(m)), done = allM.filter(m => trOf(m));
+    const mails = (st.mbox === 't' ? done : recv).filter(match).map(m => {
+      const unread = m.unread && !st.read[m.id], t = trOf(m);
+      return { ch: CH[m.ch], ini: ini(m.from), avBg: AV[m.ch], from: m.from, org: m.org, time: t ? t.at : m.time, summary: m.summary, vip: isVip(m.from), dot: !!unread, fw: unread ? 700 : 500,
+        replyLbl: t && t.reply ? 'Réponse envoyée' : 'Traité sans réponse', reply: t && t.reply ? t.reply.replace(/\n+/g, ' ') : 'Demande traitée directement (appel ou sur site).',
+        open: () => set({ mail: m.id, tone: 0, read: { ...st.read, [m.id]: true } }) };
+    });
+    const mboxSeg = [['r', 'Reçu', recv.length], ['t', 'Traité', done.length]].map(([k, l, n]) => ({ label: l + ' · ' + n, bg: st.mbox === k ? 'var(--on)' : 'transparent', fg: st.mbox === k ? INK : 'var(--ink2)', pick: () => set({ mbox: k }) }));
+    const mcnt = {}; allM.forEach(m => { mcnt[m.from] = (mcnt[m.from] || 0) + 1; });
+    const ppl = Object.keys(mcnt).filter(n => isVip(n) || mcnt[n] > 1).sort((a, b) => (isVip(b) - isVip(a)) || mcnt[b] - mcnt[a]).map(n => { const a = st.who === n, m0 = allM.find(x => x.from === n); return { name: n, ini: ini(n), av: AV[m0.ch], vip: isVip(n), n: mcnt[n], bg: a ? ACC : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ who: a ? null : n }) }; });
+    const unreadN = Object.keys(SITES).reduce((n, k) => n + SITES[k].mails.filter(m => m.unread && !st.read[m.id] && !st.treated[m.id]).length, 0);
+    const cm0 = allM.find(m => m.id === st.mail) || { id: '', ch: 'MAIL', time: '', subject: '', from: ' ', org: '', summary: '', body: '', drafts: ['', ''] };
+    const cmT = trOf(cm0), cv = isVip(cm0.from);
+    const cm = { ...cm0, ch: CH[cm0.ch], ini: ini(cm0.from), avBg: AV[cm0.ch], vipBg: cv ? 'rgba(201,162,39,.16)' : 'var(--tile)', vipFg: cv ? '#C9A227' : 'var(--ink2)', vipFill: cv ? '#C9A227' : 'none', vipToggle: () => set({ vip: { ...st.vip, [cm0.from]: !cv } }) };
+    const dk = cm0.id + st.tone, draftText = st.edits[dk] ?? cm0.drafts[st.tone];
+    const nowT = { reply: '', at: 'À l’instant' };
+    const tones = ['Courtois', 'Bref'].map((l, i) => ({ label: l, bg: on(st.tone === i), fg: fg(st.tone === i), pick: () => set({ tone: i }) }));
+    const chFilters = ['TOUS', 'MAIL', 'SMS', 'APPEL'].map(l => ({ label: CH[l], bg: on(st.chf === l), fg: fg(st.chf === l), pick: () => set({ chf: l }) }));
+    // suppliers directory
+    const cats = ['TOUS', ...Array.from(new Set(SUP.map(s => s.cat)))].map(l => ({ label: cap(l), n: l === 'TOUS' ? SUP.length : SUP.filter(s => s.cat === l).length, bg: st.cat === l ? 'var(--acc)' : 'transparent', fg: st.cat === l ? 'var(--accOn)' : INK, pick: () => set({ cat: l, catOpen: false }) }));
+    const sorts = ['PRIX', 'DÉLAI', 'FIABLE'].map(l => ({ label: cap(l), bg: st.sort === l ? 'var(--on)' : 'transparent', fg: st.sort === l ? ACC : INK, sh: st.sort === l ? '0 2px 8px rgba(0,0,0,.12)' : 'none', pick: () => set({ sort: l }) }));
+    const best = { PRIX: x => x.p, DÉLAI: x => x.h, FIABLE: x => -x.rel }[st.sort];
+    const allInv = []; Object.keys(st.P).forEach(k => st.P[k].forEach(p => p.inv.forEach(i => allInv.push({ i, proj: p.name, pid: p.id }))));
+    const itemsOf = key => { const r = []; KS.forEach(k => stockOf(k).forEach(x => { if (x[0] === key) { const sk = k + x[0], o = { q: x[3], o: 0, sent: false, ...(st.stk[sk] || {}) }; r.push({ k, x, sk, o, low: o.q < x[4] }); } })); return r; };
+    const supInfo = s => { const ci = allInv.filter(x => x.i.sup === s.name), its = s.k.flatMap(itemsOf); return { ci, ct: ci.reduce((a, x) => a + x.i.amt, 0), cpd: ci.filter(x => x.i.st === 'paid').reduce((a, x) => a + x.i.amt, 0), its, low: its.filter(t => t.low && !t.o.o) }; };
+    const sq = (st.sq || '').trim().toLowerCase();
+    const MET = { PRIX: s => s.price, DÉLAI: s => s.delay, FIABLE: s => s.rel + '%' }[st.sort], mLbl = { PRIX: 'Prix', DÉLAI: 'Délai', FIABLE: 'Fiabilité' }[st.sort];
+    const contacts = SUP.filter(s => st.cat === 'TOUS' || s.cat === st.cat).filter(s => !sq || [s.name, s.cat, s.who, s.sub].join(' ').toLowerCase().includes(sq)).sort((x, y) => best(x) - best(y) || x.h - y.h).map(s => {
+      const I = supInfo(s), bad = /RUPTURE|RETARD/.test(s.tag);
+      return { name: s.name, ini: ini(s.name), av: CATC[cap(s.cat)] || '#7A8496', meta: cap(s.cat) + ' · ' + s.sub, tag: cap(s.tag), tagBg: bad ? 'var(--warnBg)' : 'var(--tile)', tagFg: bad ? 'var(--warnTx)' : 'var(--ink2)', m: MET(s), mLbl,
+        hasLow: I.low.length > 0 && !bad, lowTxt: 'Stock bas · ' + Array.from(new Set(I.low.map(t => t.x[1].split(' ')[0]))).join(', '), open: () => set({ supSel: s.id }) };
+    });
+    const totOpen = allInv.filter(x => x.i.st !== 'paid').reduce((a, x) => a + x.i.amt, 0), lateN = allInv.filter(x => x.i.st === 'late').length;
+    const kk = v => v >= 1000 ? (v / 1000).toLocaleString('fr-FR', { maximumFractionDigits: 1 }) + ' k€' : eur(v);
+    const S0 = SUP.find(s => s.id === st.supSel) || SUP[0], I0 = supInfo(S0), n0 = S0.tel.replace(/\s/g, ''), bad0 = /RUPTURE|RETARD/.test(S0.tag);
+    const gp = {}; I0.ci.forEach(x => { (gp[x.proj] = gp[x.proj] || []).push(mkInv(x.i, x.pid)); });
+    const sd = { name: S0.name, ini: ini(S0.name), av: CATC[cap(S0.cat)] || '#7A8496', sub: cap(S0.cat) + ' · ' + S0.sub, tag: cap(S0.tag), tagBg: bad0 ? 'var(--warnBg)' : 'var(--tile)', tagFg: bad0 ? 'var(--warnTx)' : 'var(--ink)', why: S0.why, who: S0.who, tel: S0.tel, mail: S0.mail, telH: 'tel:' + n0, smsH: 'sms:' + n0, mailH: 'mailto:' + S0.mail,
+      delay: S0.delay, price: S0.price, rel: S0.rel + ' %', open: kk(I0.ct - I0.cpd), paid: eur(I0.cpd),
+      items: I0.its.map(t => ({ name: t.x[1], site: tc(SITES[t.k].label), q: t.o.q + ' ' + t.x[2], st: t.o.o > 0 ? (t.o.sent ? 'Commandé' : 'Au panier') : t.low ? 'Stock bas' : 'OK', stBg: t.o.o > 0 ? 'var(--t2)' : t.low ? 'var(--warnBg)' : 'var(--okBg)', stFg: t.o.o > 0 ? 'var(--t2x)' : t.low ? 'var(--warnTx)' : 'var(--okTx)', order: () => set({ stk: { ...st.stk, [t.sk]: { ...t.o, o: t.o.o + t.x[5], sent: false, sup: S0.name + ' · ' + S0.delay } }, stkSent: false }) })),
+      hasItems: I0.its.length > 0, groups: Object.keys(gp).map(p => ({ proj: p, inv: gp[p] })), hasInv: I0.ci.length > 0, noInv: !I0.ci.length };
+    // planning
+    const WEEK = st.sunday ? [...PLAN, SUN] : PLAN, dIdx = Math.min(st.day, WEEK.length - 1);
+    const plan = WEEK.map((d, i) => ({ ...d, ev: [...d.ev, ...(st.addE[i] || [])].sort((a, b) => a[0].localeCompare(b[0])) }));
+    const days = plan.map((d, i) => ({ w: d.w, n: d.n, bg: dIdx === i ? ACC : CHIP, fg: dIdx === i ? 'var(--accOn)' : INK, sh: 'none', dots: d.ev.map(e => DOT[e[1]]), pick: () => set({ day: i }) }));
+    const events = plan[dIdx].ev.map(e => ({ t: e[0], dot: DOT[e[1]], title: e[2], type: e[3], site: tc(SITES[e[1]].label) }));
+    const legend = Object.keys(SITES).map(k => ({ dot: DOT[k], label: tc(SITES[k].label) }));
+    const tb = {};
+    ['p', 's', 'm', 'l', 'c'].forEach(k => { tb[k] = { bg: st.tab === k ? ACC : 'var(--tile)', fg: st.tab === k ? 'var(--accOn)' : 'var(--ink2)', pick: () => set({ tab: k, mail: null, menu: false, proj: k === 'p' && st.tab === 'p' ? null : st.proj, supSel: k === 'c' && st.tab === 'c' ? null : st.supSel }) }; });
+    tb.m.badge = unreadN > 0; tb.m.count = unreadN;
+    // sheets
+    const F = st.form, sh = st.sheet, setF = (o) => set({ form: { ...F, ...o } }), fset = (k) => (e) => setF({ [k]: e.target.value });
+    const FD = {
+      p: [{ t: 'Projet', f: [['a', 'Nom', 'Ex. Salle de bain lot 4'], ['b', 'Type', '', [...st.discs, 'Autre']], ['c', 'Échéance', 'Ex. 20 déc']] }, { t: 'Localisation', f: [['addr', 'Adresse', 'Ex. 14 rue Garibaldi'], ['city', 'Ville', 'Ex. 69006 Lyon'], ['access', 'Accès', 'Code, étage, clé…']] }],
+      s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Discipline', '', [...st.discs, 'Autre']], ['b', 'Unité', 'Ex. sacs'], ['c', 'Quantité', '0'], ['d', 'Seuil', '0']] }],
+      l: [{ t: 'Événement', f: [['a', 'Intitulé', 'Ex. Livraison sanitaires'], ['b', 'Heure', '08:00'], ['c', 'Type', 'Ex. Livraison']] }],
+      inv: [{ t: 'Facture', f: [['a', 'N°', 'Ex. F-2026-0520'], ['b', 'Montant HT', 'Ex. 1 250'], ['c', 'Échéance', 'Ex. 30 nov']] }],
+      sup: [{ t: 'Nouveau fournisseur', f: [['a', 'Nom', 'Ex. Isol’Rhône'], ['b', 'Spécialité', 'Ex. Isolation'], ['who', 'Contact', 'Nom du contact'], ['tel', 'Téléphone', '04 …'], ['mail', 'Mail', 'contact@…']] }]
+    };
+    const groups = (sh === 'sup' && F.mode !== 'new' ? [] : (FD[sh] || [])).map((g, gi) => { const mk = sh + gi, live = st.mic === mk, err = st.micErr === mk; return { t: g.t, micMsg: live || err, micLbl: live ? 'Écoute…' : 'Dictée indisponible', micCol: live ? '#FF5A5A' : 'var(--ink3)', micBg: live ? '#FF5A5A' : 'var(--tile)', micFg: live ? '#fff' : 'var(--ink)', mic: () => this.dictate(mk, g.f[0][0]), fields: g.f.map(([k, label, ph, ch]) => ({ label, ph, val: F[k] || '', on: fset(k), isIn: !ch, isCh: !!ch, opts: (ch || []).map(v => { const a = F[k] === v; return { label: v, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => setF({ [k]: a ? '' : v }) }; }) })) }; });
+    const valid = sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' ? true : sh === 'sup' ? (F.mode === 'new' ? !!(F.a && F.a.trim()) : (F.pick || []).length > 0) : sh === 'inv' ? !!(F.a && F.b && F.sup) : !!(F.a && F.a.trim());
+    const fs = F.steps || [];
+    const fSteps = fs.map((s, i) => ({ l: s.l, cBg: s.t === 'c' ? 'var(--on)' : 'transparent', cFg: s.t === 'c' ? ACC : 'var(--ink2)', gBg: s.t === 'g' ? 'var(--on)' : 'transparent', gFg: s.t === 'g' ? ACC : 'var(--ink2)',
+      pickC: () => setF({ steps: fs.map((x, j) => j === i ? { ...x, t: 'c' } : x) }), pickG: () => setF({ steps: fs.map((x, j) => j === i ? { ...x, t: 'g' } : x) }), del: () => setF({ steps: fs.filter((x, j) => j !== i) }) }));
+    const fSel = F.sups || [];
+    const fSups = SUP.map(s => { const sel = fSel.includes(s.id); return { name: s.name, mark: sel ? '✓' : '+', bg: sel ? ACC : 'var(--field)', fg: sel ? 'var(--accOn)' : INK, pick: () => setF({ sups: sel ? fSel.filter(x => x !== s.id) : [...fSel, s.id] }) }; });
+    const fCustom = (F.custom || []).map((n, i) => ({ name: n, del: () => setF({ custom: F.custom.filter((x, j) => j !== i) }) }));
+    const pick = F.pick || [];
+    const dirList = SUP.filter(s => !Q.sup.some(f => f.ref === s.id)).map(s => { const sel = pick.includes(s.id); return { name: s.name, ini: ini(s.name), av: CATC[cap(s.cat)] || '#7A8496', sub: cap(s.cat) + ' · ' + s.delay + ' · fiabilité ' + s.rel + ' %', ckBg: sel ? ACC : 'transparent', ckBd: sel ? ACC : 'var(--ink3)', pick: () => setF({ pick: sel ? pick.filter(x => x !== s.id) : [...pick, s.id] }) }; });
+    const supModes = [['dir', 'Annuaire'], ['new', 'Nouveau']].map(([k, label]) => { const a = (F.mode || 'dir') === k; return { label, bg: a ? 'var(--on)' : 'transparent', fg: a ? INK : 'var(--ink2)', pick: () => setF({ mode: k }) }; });
+    const invSups = Q.sup.map(f => ({ name: f.name, bg: F.sup === f.name ? ACC : 'var(--field)', fg: F.sup === f.name ? 'var(--accOn)' : INK, pick: () => setF({ sup: f.name }) }));
+    const invSt = [['due', 'À payer'], ['paid', 'Payée']].map(([k, label]) => { const a = (F.st || 'due') === k; return { label, bg: a ? 'var(--on)' : 'transparent', fg: a ? INK : 'var(--ink2)', pick: () => setF({ st: k }) }; });
+    const formDays = WEEK.map((d, i) => ({ label: d.w, bg: F.day === i ? ACC : 'var(--field)', fg: F.day === i ? 'var(--accOn)' : INK, pick: () => setF({ day: i }) }));
+    const formSites = Object.keys(SITES).map(k => ({ label: tc(SITES[k].label), dot: F.site === k ? '#fff' : DOT[k], bg: F.site === k ? DOT[k] : 'var(--field)', fg: F.site === k ? 'var(--accOn)' : INK, pick: () => setF({ site: k }) }));
+    const newId = 'n' + (st.seq + 1);
+    const submit = () => {
+      if (!valid) return;
+      if (sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg') { set({ sheet: null }); return; }
+      const a = (F.a || '').trim(), sq = st.seq + 1;
+      if (sh === 'p') {
+        const p = { id: newId, name: a, phase: F.b || 'Nouveau lot', due: F.c || 'à planifier', addr: F.addr || '', city: F.city || '', access: F.access || '', hours: '', geo: S.geo,
+          steps: fs.map((s, i) => ({ id: newId + 's' + i, l: s.l, t: s.t, v: 0 })), notes: [],
+          sup: [...fSel.map(supCopy), ...(F.custom || []).map(n => ({ id: 'f' + rid(), name: n, cat: 'À préciser', tel: '', mail: '', who: '' }))], inv: [] };
+        const pd = F.pday ?? 0, addPlan = F.plan !== false;
+        this.setState(s => ({ P: { ...s.P, [s.site]: [...s.P[s.site], p] }, addE: addPlan ? { ...s.addE, [pd]: [...(s.addE[pd] || []), [(F.ptime || '08:00').trim(), s.site, ((F.pkind || 'Démarrage').trim()) + ' · ' + a, 'Chantier']] } : s.addE, proj: newId, seg: 'e', sheet: null, seq: sq, tab: 'p' }));
+      }
+      if (sh === 's') { const n = Math.max(0, parseInt(F.c) || 0), m = Math.max(1, parseInt(F.d) || 1); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), [newId, a, F.b || 'unités', n, m, m, F.e || 'Autre']] }, sheet: null, seq: sq }); }
+      if (sh === 'l') { const d = F.day ?? st.day; set({ addE: { ...st.addE, [d]: [...(st.addE[d] || []), [F.b || '08:00', F.site || st.site, a, F.c || 'Ajouté']] }, day: d, sheet: null, seq: sq }); }
+      if (sh === 'sup') {
+        const add = F.mode === 'new' ? [{ id: 'f' + rid(), name: a, cat: F.b || 'À préciser', tel: F.tel || '', mail: F.mail || '', who: F.who || '' }] : pick.map(supCopy);
+        up(p => ({ ...p, sup: [...p.sup, ...add] })); set({ sheet: null, seq: sq });
+      }
+      if (sh === 'inv') {
+        const amt = parseFloat(String(F.b).replace(/\s/g, '').replace(',', '.').replace(/[^\d.]/g, '')) || 0;
+        up(p => ({ ...p, inv: [...p.inv, { id: 'iv' + sq, sup: F.sup, num: a, amt, date: F.c || '—', st: F.st || 'due' }] })); set({ sheet: null, seq: sq });
+      }
+    };
+    const titles = { p: 'Projets', s: 'Stocks', m: 'Messages', l: 'Planning', c: 'Fournisseurs' };
+    const subtitle = st.tab === 'l' ? 'Sem. du 26 oct · tous chantiers' : st.tab === 'c' ? 'Annuaire · ' + contacts.length + ' fournisseurs' : 'Sam. 24 oct · ' + S.addr;
+    const kAll = list.reduce((a, p) => { a.s += p.steps.length; a.d += p.steps.filter(x => x.v >= 100).length; a.pct += pctOf(p); a.o += p.inv.filter(i => i.st !== 'paid').reduce((b, i) => b + i.amt, 0); return a; }, { s: 0, d: 0, pct: 0, o: 0 });
+    const kp = { n: list.length, avg: list.length ? Math.round(kAll.pct / list.length) : 0, steps: kAll.d + '/' + kAll.s, open: kAll.o >= 1000 ? (kAll.o / 1000).toLocaleString('fr-FR', { maximumFractionDigits: 1 }) + ' k€' : eur(kAll.o) };
+    return {
+      dark: st.dark, light: !st.dark, toggleTheme: () => set({ dark: !st.dark }),
+      themeStyle: { position: 'absolute', inset: 0, background: 'var(--bg)', color: 'var(--ink)', colorScheme: st.dark ? 'dark' : 'light', transition: 'background .3s', ...(st.dark ? DARK : {}) },
+      kp, sites, sorts, days, events, legend, subtitle, tb, projects, stocks, mails, tones, chFilters, cats, contacts, cm, draftText, pj, segs, stepTypes,
+      catCur: cap(st.cat), catOpen: !!st.catOpen, catChev: st.catOpen ? 'rotate(180deg)' : 'none', toggleCat: () => set({ catOpen: !st.catOpen }),
+      ...(() => { const k = st.cfgSite, C = st.cfg[k], CF = st.cfgF, upC = (o) => set({ cfg: { ...st.cfg, [k]: { ...C, ...o } } }), fld = (f) => (e) => upC({ [f]: e.target.value }), cf = (f) => (e) => set({ cfgF: { ...CF, [f]: e.target.value } });
+        const nEt = C.zones.filter(z => /^Étage \d+$/.test(z)).map(z => +z.split(' ')[1]), nextEt = 'Étage ' + (nEt.length ? Math.max(...nEt) + 1 : 1);
+        const addZ = (z) => { if (z && !C.zones.some(x => x.toLowerCase() === z.toLowerCase())) upC({ zones: [...C.zones, z] }); };
+        return { isSiteSheet: sh === 'site', sc: { label: tc(SITES[k].label), dot: DOT[k], addr: C.addr, city: C.city, access: C.access, hours: C.hours, onAddr: fld('addr'), onCity: fld('city'), onAccess: fld('access'), onHours: fld('hours'),
+          maps: 'https://maps.apple.com/?q=' + encodeURIComponent(C.addr + ', ' + C.city),
+          zones: C.zones.map(z => ({ label: z, del: () => upC({ zones: C.zones.filter(x => x !== z) }) })), zoneN: C.zones.length + ' lieux',
+          sugg: ZSUG.map(z => z === 'Étage' ? nextEt : z).filter(z => !C.zones.includes(z)).map(z => ({ label: z, add: () => addZ(z) })),
+          zoneText: CF.z || '', onZone: cf('z'), addZone: () => { const t = (CF.z || '').trim(); if (t) { addZ(t.charAt(0).toUpperCase() + t.slice(1)); set({ cfgF: { ...CF, z: '' } }); } },
+          contacts: C.contacts.map((c, i) => ({ name: c[0], role: c[1], tel: c[2], ini: ini(c[0]), telH: 'tel:' + c[2].replace(/\s/g, ''), smsH: 'sms:' + c[2].replace(/\s/g, ''), del: () => upC({ contacts: C.contacts.filter((x, j) => j !== i) }) })), ctN: C.contacts.length + ' contacts',
+          cn: CF.cn || '', cr: CF.cr || '', ct: CF.ct || '', onCn: cf('cn'), onCr: cf('cr'), onCt: cf('ct'),
+          addCt: () => { const n = (CF.cn || '').trim(), t = (CF.ct || '').trim(); if (!n || !t) return; upC({ contacts: [...C.contacts, [n, (CF.cr || '').trim() || 'Contact', t]] }); set({ cfgF: {} }); } } };
+      })(),
+      dayCols: WEEK.length, toggleSun: () => set({ sunday: !st.sunday }), sunSub: st.sunday ? 'Le dimanche apparaît dans le planning' : 'Semaine du lundi au samedi',
+      sunTrack: st.sunday ? '#4E9FA2' : 'var(--track)', sunKnob: st.sunday ? 'translateX(20px)' : 'none',
+      discs: st.discs.map(d => ({ label: d, del: () => set({ discs: st.discs.filter(x => x !== d) }) })), discN: st.discs.length + ' active' + (st.discs.length > 1 ? 's' : ''),
+      discText: st.discText, onDisc: (e) => set({ discText: e.target.value }),
+      addDisc: () => { const t = st.discText.trim(); if (!t) return; const v = t.charAt(0).toUpperCase() + t.slice(1); if (!st.discs.some(x => x.toLowerCase() === v.toLowerCase())) set({ discs: [...st.discs, v], discText: '' }); else set({ discText: '' }); },
+      stDisc, stGroups, stFilt, hasStock: stocks.length > 0, noStock: stocks.length === 0, basket, hasBasket: basketLines > 0, basketN: basketLines + ' ligne' + (basketLines > 1 ? 's' : ''), sendOrder, orderSent: !!st.stkSent && basketLines === 0,
+      sd, isSupList: st.tab === 'c' && !st.supSel, isSupDet: st.tab === 'c' && !!st.supSel, backSup: () => set({ supSel: null }), hasSup: contacts.length > 0, noSup: contacts.length === 0,
+      sq: st.sq || '', onSq: (e) => set({ sq: e.target.value }), clearSq: () => set({ sq: '' }), hasSq: !!st.sq, supTot: kk(totOpen), supLate: lateN + ' fact.',
+      psecs, noProj: st.tab === 'p' && !detail && projects.length === 0, projEmpty: { d: 'Aucun projet terminé', r: 'Aucun projet en cours', t: 'Aucun projet à faire' }[psec],
+      title: titles[st.tab], noEvents: events.length === 0, stop: (e) => e.stopPropagation(),
+      isList: st.tab === 'p' && !detail, isDetail: detail, showHead: !detail && !(st.tab === 'c' && st.supSel),
+      segE: st.seg === 'e', segL: st.seg === 'l', segC: st.seg === 'c',
+      editLabel: st.editSteps ? 'OK' : 'Modifier', toggleEdit: () => set({ editSteps: !st.editSteps }),
+      stepText: st.stepText, onStep: (e) => set({ stepText: e.target.value }),
+      addStep: () => { const t = st.stepText.trim(); if (!t) return; up(p => ({ ...p, steps: [...p.steps, { id: pid + 'x' + rid(), l: t, t: st.stepType, v: 0 }] })); set({ stepText: '' }); },
+      back: () => set({ proj: null }),
+      openSup: () => set({ sheet: 'sup', form: { mode: 'dir', pick: [] } }),
+      openInv: () => set({ sheet: 'inv', form: { sup: (Q.sup[0] || {}).name, st: 'due' } }),
+      isStock: st.tab === 's', isMail: st.tab === 'm', isPlan: st.tab === 'l', isSup: st.tab === 'c',
+      showSel: !glob && !detail, noSel: glob, menuOpen: st.menu && !glob && !detail, toggleMenu: () => set({ menu: !st.menu }), closeMenu: () => set({ menu: false }),
+      cur: { label: tc(S.label), dot: DOT[st.site] }, wheel, wWheel, wDown, wMove, wUp, menuChev: st.menu ? 'rotate(180deg)' : 'none',
+      openAcc: () => set({ sheet: 'acc', form: {}, menu: false }), isAccSheet: sh === 'acc',
+      themeOpts: [[true, 'Sombre'], [false, 'Clair']].map(([v, label]) => ({ label, bg: st.dark === v ? ACC : 'transparent', fg: st.dark === v ? 'var(--accOn)' : 'var(--ink2)', pick: () => set({ dark: v }) })),
+      canAdd: st.tab === 'p' || st.tab === 's' || st.tab === 'l',
+      canCfg: (st.tab === 's' || (st.tab === 'c' && !st.supSel)), openCfg: () => set({ sheet: st.tab === 's' ? 'stkcfg' : 'supcfg', form: {}, menu: false }),
+      isStkCfg: sh === 'stkcfg', isSupCfg: sh === 'supcfg',
+      ...(() => {
+        const chip = (list, cur, key) => list.map(v => { const a = cur === v; return { label: v, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => setF({ [key]: a ? '' : v }) }; });
+        const num = (v, d) => { const n = parseInt(String(v).replace(/[^\d]/g, '')); return isNaN(n) ? d : n; };
+        const kItems = stockOf(st.site).map(x => { const key = st.site + x[0], setC = (o) => set({ stkCfg: { ...(st.stkCfg || {}), [key]: { ...((st.stkCfg || {})[key] || {}), ...o } } });
+          return { name: x[1], unit: x[2], disc: x[6] || SDISC[x[0]] || 'Autre', min: String(x[4]), lot: String(x[5]), onMin: (e) => setC({ min: num(e.target.value, 0) }), onLot: (e) => setC({ lot: Math.max(1, num(e.target.value, 1)) }), del: () => set({ stkDel: { ...(st.stkDel || {}), [key]: true } }) }; });
+        const kc = { site: tc(S.label), n: kItems.length + ' articles', items: kItems, na: F.na || '', nu: F.nu || '', nq: F.nq || '', nm: F.nm || '', nl: F.nl || '', onNa: fset('na'), onNu: fset('nu'), onNq: fset('nq'), onNm: fset('nm'), onNl: fset('nl'), discs: chip([...st.discs, 'Autre'], F.nd, 'nd'),
+          add: () => { const a = (F.na || '').trim(); if (!a) return; const sq = st.seq + 1, m = Math.max(1, num(F.nm, 1)); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), ['k' + sq, a.charAt(0).toUpperCase() + a.slice(1), (F.nu || '').trim() || 'unités', num(F.nq, 0), m, Math.max(1, num(F.nl, m)), F.nd || 'Autre']] }, seq: sq, form: {} }); } };
+        const DL = { '24 h': 24, '48 h': 48, '72 h': 72, '5 j': 120 }, PR = { '€': 1, '€€': 2, '€€€': 3 };
+        const uc = { n: SUP.length + ' fournisseurs', items: SUP.map(s => ({ name: s.name, ini: ini(s.name), av: CATC[cap(s.cat)] || '#7A8496', meta: cap(s.cat) + ' · ' + s.delay + ' · ' + (s.tel || 'sans tél.'), del: () => { const i = SUP.indexOf(s); if (i >= 0) SUP.splice(i, 1); set({ supRev: (st.supRev || 0) + 1, supSel: null }); } })),
+          na: F.na || '', who: F.who || '', tel: F.tel || '', mail: F.mail || '', city: F.city || '', onNa: fset('na'), onWho: fset('who'), onTel: fset('tel'), onMail: fset('mail'), onCity: fset('city'),
+          discs: chip(st.discs, F.nd, 'nd'), delays: chip(Object.keys(DL), F.dl, 'dl'), prices: chip(Object.keys(PR), F.pr, 'pr'),
+          add: () => { const a = (F.na || '').trim(); if (!a) return; const d = F.nd || 'Autre', dl = F.dl || '48 h', pr = F.pr || '€€';
+            SUP.push({ id: 'u' + rid(), name: a, cat: d.toUpperCase(), sub: (F.city || '').trim() || 'Ville à préciser', delay: dl, h: DL[dl], price: pr, p: PR[pr], rel: 90, tag: 'NOUVEAU', k: Object.keys(SDISC).filter(x => SDISC[x] === d), why: 'Ajouté manuellement à l’annuaire.', tel: (F.tel || '').trim(), mail: (F.mail || '').trim(), who: (F.who || '').trim() || 'Accueil' });
+            set({ supRev: (st.supRev || 0) + 1, form: {} }); } };
+        const pdays = WEEK.map((d, i) => { const a = (F.pday ?? 0) === i; return { label: d.w, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => setF({ pday: i }) }; });
+        const pOn = F.plan !== false;
+        const pp = { on: pOn, toggle: () => setF({ plan: !pOn }), sub: pOn ? WEEK[F.pday ?? 0].w + ' ' + WEEK[F.pday ?? 0].n + ' · ' + (F.ptime || '08:00') + ' · ' + tc(S.label) : 'Le projet ne sera pas planifié', track: pOn ? '#4E9FA2' : 'var(--track)', knob: pOn ? 'translateX(20px)' : 'none', days: pdays, time: F.ptime || '', onTime: fset('ptime'), kind: F.pkind || '', onKind: fset('pkind') };
+        return { kc, uc, pp };
+      })(),
+      openSheet: () => set({ sheet: st.tab, form: st.tab === 'p' ? { steps: DEFSTEPS, sups: [], custom: [] } : { day: st.day, site: st.site }, menu: false }),
+      sheetOpen: !!sh, closeSheet: () => { if (this.rec) try { this.rec.abort(); } catch (e) {} set({ sheet: null, mic: null }); }, submit, submitCol: valid ? ACC : 'var(--ink3)', submitLabel: sh === 'p' ? 'Créer' : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' ? 'OK' : 'Ajouter',
+      sheetTitle: { stkcfg: 'Réglages du stock', supcfg: 'Réglages fournisseurs', site: 'Configurer le site', acc: 'Compte', p: 'Nouveau projet', s: 'Nouveau produit', l: 'Nouvel événement', sup: 'Ajouter un fournisseur', inv: 'Nouvelle facture' }[sh] || '',
+      groups, fSteps, fSups, fCustom, dirList, supModes, invSups, invSt, formDays, formSites,
+      isPlanSheet: sh === 'l', isProjSheet: sh === 'p', isSupSheet: sh === 'sup', isInvSheet: sh === 'inv', supDir: F.mode !== 'new',
+      newImg: 'proj-' + newId, newSrc: PX(DEF), invImg: 'inv-' + pid + '-' + (st.seq + 1),
+      allC: () => setF({ steps: fs.map(x => ({ ...x, t: 'c' })) }), allG: () => setF({ steps: fs.map(x => ({ ...x, t: 'g' })) }),
+      fStepText: F.stepText || '', onFStep: fset('stepText'),
+      addFStep: () => { const t = (F.stepText || '').trim(); if (t) setF({ steps: [...fs, { l: t, t: 'c' }], stepText: '' }); },
+      fSupText: F.supText || '', onFSup: fset('supText'),
+      addFSup: () => { const t = (F.supText || '').trim(); if (t) setF({ custom: [...(F.custom || []), t], supText: '' }); },
+      listMail: !st.mail, mailOpen: !!st.mail,
+      noteText: st.noteText, onNote: (e) => set({ noteText: e.target.value }),
+      addNote: () => { const t = st.noteText.trim(); if (t) { up(p => ({ ...p, notes: [...p.notes, t] })); set({ noteText: '' }); } },
+      onDraft: (e) => set({ edits: { ...st.edits, [dk]: e.target.value } }),
+      sendLabel: 'Envoyer la réponse', sendBg: ACC,
+      sendMail: () => { if (draftText.trim()) set({ treated: { ...st.treated, [cm0.id]: { reply: draftText, at: 'À l’instant' } } }); },
+      markDone: () => set({ treated: { ...st.treated, [cm0.id]: nowT } }),
+      reopen: () => set({ treated: { ...st.treated, [cm0.id]: false }, mbox: 'r' }),
+      cmDone: !!cmT, cmTodo: !cmT, cmReplyLbl: cmT && cmT.reply ? 'Réponse envoyée · ' + cmT.at : 'Traité sans réponse · ' + (cmT ? cmT.at : ''), cmReply: cmT && cmT.reply ? cmT.reply : 'Aucune réponse écrite : demande traitée directement.',
+      mboxSeg, ppl, pplAll: { bg: st.who ? 'var(--tile)' : 'var(--acc)', fg: st.who ? 'var(--ink)' : 'var(--accOn)', pick: () => set({ who: null }) }, hasPpl: ppl.length > 0, mq: st.mq, onMq: (e) => set({ mq: e.target.value }), clearMq: () => set({ mq: '' }), hasMq: !!st.mq,
+      hasMails: mails.length > 0, noMails: mails.length === 0, isRecv: st.mbox !== 't', isDone: st.mbox === 't',
+      mailEmpty: mq || st.who ? 'Aucun message ne correspond' : st.mbox === 't' ? 'Aucune demande traitée' : 'Tout est traité',
+      closeMail: () => set({ mail: null })
+    };
+  }
+}
+</script>
+</body>
+</html>
