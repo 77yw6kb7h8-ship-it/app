@@ -3,6 +3,10 @@
 Version v6 du prototype Claude Design, en plein écran, installable sur iPhone,
 utilisable hors ligne. Les données saisies sont gardées sur le téléphone (localStorage).
 
+Habillage « Liquid Glass » repris de la v4 : fond en dégradés, surfaces translucides
+floutées (`backdrop-filter`), accent bleu iOS, capsules, barre d'onglets flottante.
+Thème sombre par défaut ; thème clair dans Compte.
+
 ## Mettre en ligne
 
 Le dossier `chantier/` est un site statique : il suffit de l'héberger en **HTTPS**.

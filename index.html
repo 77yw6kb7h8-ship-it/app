@@ -8,7 +8,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Chantier">
-<meta name="theme-color" content="#1A1A1A">
+<meta name="theme-color" content="#090D14">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <link rel="icon" href="./icons/icon-192.png">
@@ -27,10 +27,10 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <helmet>
 <script src="./image-slot.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>html,body{margin:0;height:100%;background:#1A1A1A;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}a{color:inherit;text-decoration:none}a:hover{opacity:.8}*{box-sizing:border-box}::-webkit-scrollbar{display:none}textarea::placeholder,input::placeholder{color:var(--ink3)}</style>
+<style>html,body{margin:0;height:100%;background:#090D14;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}a{color:inherit;text-decoration:none}a:hover{opacity:.8}*{box-sizing:border-box}::-webkit-scrollbar{display:none}textarea::placeholder,input::placeholder{color:var(--ink3)}</style>
 </helmet>
 <div style="height:100%;font-family:-apple-system,'SF Pro Text',system-ui,sans-serif">
-<div style="height:100%;position:relative;overflow:hidden;color:var(--ink);--ink:#161616;--ink2:rgba(22,22,22,.55);--ink3:rgba(22,22,22,.3);--line:rgba(0,0,0,.07);--tile:#FFFFFF;--tileBd:#E0E0DE;--field:#FFFFFF;--track:#DCDCDA;--chip:#E2E2E0;--on:#FFFFFF;--acc:#161616;--accOn:#F4F4F2;--accTx:#161616;--accSoft:rgba(0,0,0,.06);--warn:#D9443A;--warnTx:#C2352B;--warnBg:rgba(220,60,50,.1);--ok:#1E7D68;--okTx:#1E7D68;--okBg:rgba(30,125,104,.1);--solid:#161616;--solidTx:#F4F4F2;--sheet:#F4F4F2;--scrim:rgba(0,0,0,.3);--knob:#fff;--card:#FFFFFF;--cardB:1px solid #E2E2E0;--cardBd:#DCDCDA;--cardSh:none;--bg:#ECECEA;--k1:#161616;--k2:rgba(22,22,22,.55);--k3:rgba(22,22,22,.3);--kl:#EFEFED;--kt:#F4F4F2;--ktb:#E6E6E4;--kf:#F4F4F2;--ktr:#E2E2E0;--kon:#FFFFFF;--ka:#161616;--kaOn:#F4F4F2;--kas:rgba(0,0,0,.06);--kw:#C2352B;--kwb:rgba(220,60,50,.1);--kwarn:#D9443A;--kok:#1E7D68;--kokb:rgba(30,125,104,.1);--t1:#E6E9D2;--t1x:#4E5420;--t2:#E2E4EA;--t2x:#30343E;--t3:#D6E8E8;--t3x:#1E5A5C;--t4:#EEDFE8;--t4x:#6A2F58;background:var(--bg)">
+<div style="height:100%;position:relative;overflow:hidden;color:var(--ink);--ink:#0E1726;--ink2:rgba(14,23,38,.58);--ink3:rgba(14,23,38,.36);--line:rgba(14,23,38,.07);--tile:rgba(255,255,255,.62);--tileBd:rgba(255,255,255,.95);--field:rgba(255,255,255,.85);--track:rgba(14,23,38,.09);--chip:rgba(255,255,255,.5);--on:rgba(255,255,255,.92);--acc:#0A7AFF;--accOn:#FFFFFF;--accTx:#0A5FD0;--accSoft:rgba(10,122,255,.13);--warn:#E8590C;--warnTx:#B8470A;--warnBg:rgba(255,140,60,.16);--ok:#1FA45A;--okTx:#157A42;--okBg:rgba(31,164,90,.14);--solid:#0E1726;--solidTx:#FFFFFF;--sheet:rgba(246,247,249,.88);--scrim:rgba(14,23,38,.25);--knob:#fff;--card:rgba(255,255,255,.55);--cardB:1px solid rgba(255,255,255,.85);--cardBd:rgba(255,255,255,.85);--cardSh:0 10px 30px rgba(20,40,80,.10),inset 0 1px 0 #fff;--k1:#0E1726;--k2:rgba(14,23,38,.58);--k3:rgba(14,23,38,.36);--kl:rgba(14,23,38,.07);--kt:rgba(255,255,255,.62);--ktb:rgba(255,255,255,.95);--kf:rgba(255,255,255,.85);--ktr:rgba(14,23,38,.09);--kon:rgba(255,255,255,.92);--ka:#0A7AFF;--kaOn:#FFFFFF;--kas:rgba(10,122,255,.13);--kw:#B8470A;--kwb:rgba(255,140,60,.16);--kwarn:#E8590C;--kok:#157A42;--kokb:rgba(31,164,90,.14);--panel:rgba(14,23,38,.86);--bg:radial-gradient(120% 55% at 0% 0%,#C6DAF3 0,transparent 60%),radial-gradient(90% 50% at 100% 38%,#F3DBC6 0,transparent 62%),radial-gradient(100% 50% at 0% 100%,#D0E8DB 0,transparent 60%),#EEF0F3;--t1:rgba(214,226,140,.42);--t1x:#4A5410;--t2:rgba(170,190,240,.38);--t2x:#24324E;--t3:rgba(150,220,215,.40);--t3x:#14585A;--t4:rgba(240,180,220,.40);--t4x:#6A2058;background:var(--bg)">
 <div style="{{ themeStyle }}">
 
 <div style="position:absolute;inset:0;display:flex;flex-direction:column;padding-top:calc(env(safe-area-inset-top, 0px) + 6px)">
@@ -38,7 +38,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="position:relative;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:4px 20px 8px">
 <div style="flex:1;min-width:0;display:flex">
 <sc-if value="{{ showSel }}" hint-placeholder-val="{{ true }}">
-<div style="flex:1;min-width:0;display:flex;height:46px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);overflow:hidden">
+<div style="flex:1;min-width:0;display:flex;height:46px;border-radius:20px;background:var(--tile);border:1px solid var(--tileBd);overflow:hidden;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <div onWheel="{{ wWheel }}" onPointerDown="{{ wDown }}" onPointerMove="{{ wMove }}" onPointerUp="{{ wUp }}" onPointerCancel="{{ wUp }}" style="position:relative;flex:1;min-width:0;cursor:ns-resize;touch-action:none;user-select:none;-webkit-user-select:none;perspective:240px;-webkit-mask-image:linear-gradient(rgba(0,0,0,0),#000 32%,#000 68%,rgba(0,0,0,0));mask-image:linear-gradient(rgba(0,0,0,0),#000 32%,#000 68%,rgba(0,0,0,0))">
 <sc-for list="{{ wheel }}" as="r" hint-placeholder-count="3">
 <div style="position:absolute;left:0;right:0;top:11px;height:24px;display:flex;align-items:center;gap:10px;padding:0 14px;pointer-events:none;transform:{{ r.tf }};opacity:{{ r.op }};color:{{ r.col }}">
@@ -53,7 +53,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </sc-if>
 <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
-<div onClick="{{ back }}" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;padding:10px 16px 10px 11px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Projets</div>
+<div onClick="{{ back }}" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;padding:10px 16px 10px 11px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Projets</div>
 </sc-if>
 <sc-if value="{{ noSel }}" hint-placeholder-val="{{ false }}"><div style="height:42px"></div></sc-if>
 </div>
@@ -69,9 +69,9 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">{{ subtitle }}</div>
 <div style="font:300 50px/1 -apple-system,'SF Pro Display','Helvetica Neue',system-ui,sans-serif;letter-spacing:-.045em;margin-top:12px">{{ title }}</div>
 </div>
-<sc-if value="{{ canCfg }}" hint-placeholder-val="{{ false }}"><div onClick="{{ openCfg }}" title="Réglages" style="flex:none;margin-left:auto;width:52px;height:52px;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg></div></sc-if>
+<sc-if value="{{ canCfg }}" hint-placeholder-val="{{ false }}"><div onClick="{{ openCfg }}" title="Réglages" style="flex:none;margin-left:auto;width:52px;height:52px;border-radius:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg></div></sc-if>
 <sc-if value="{{ canAdd }}" hint-placeholder-val="{{ true }}">
-<div onClick="{{ openSheet }}" style="flex:none;width:52px;height:52px;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)">
+<div onClick="{{ openSheet }}" style="flex:none;width:52px;height:52px;border-radius:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 2.5v13M2.5 9h13"></path></svg>
 </div>
 </sc-if>
@@ -79,7 +79,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
 <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:-4px 0 18px">
 <sc-for list="{{ psecs }}" as="g" hint-placeholder-count="3">
-<div onClick="{{ g.pick }}" style="cursor:pointer;padding:11px 12px 12px;border-radius:8px;background:linear-gradient(160deg,{{ g.bg }} 35%,var(--tile));color:{{ g.fg }};border:1px solid {{ g.bd }};opacity:{{ g.op }};transition:opacity .2s">
+<div onClick="{{ g.pick }}" style="cursor:pointer;padding:11px 12px 12px;border-radius:12px;background:linear-gradient(160deg,{{ g.bg }} 35%,var(--tile));color:{{ g.fg }};border:1px solid {{ g.bd }};opacity:{{ g.op }};transition:opacity .2s">
 <div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap">{{ g.label }}</div>
 <div style="font:300 32px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.04em;margin-top:12px">{{ g.n }}</div>
 </div>
@@ -88,16 +88,16 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-if>
 </sc-if>
 
-<sc-if value="{{ noProj }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:12px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2)">{{ projEmpty }}</div></sc-if>
+<sc-if value="{{ noProj }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:20px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">{{ projEmpty }}</div></sc-if>
 <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;flex-direction:column;gap:16px">
 <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
-<div onClick="{{ p.open }}" style="cursor:pointer;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
-<div style="position:relative;height:150px;margin:6px 6px 0;border-radius:10px;overflow:hidden;background:var(--tile)">
+<div onClick="{{ p.open }}" style="cursor:pointer;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
+<div style="position:relative;height:150px;margin:6px 6px 0;border-radius:16px;overflow:hidden;background:var(--tile);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <image-slot id="{{ p.img }}" src="{{ p.src }}" placeholder="{{ p.ph }}" shape="rect" style="width:100%;height:100%"></image-slot>
 <div style="position:absolute;left:10px;right:10px;top:10px;display:flex;justify-content:space-between;pointer-events:none">
-<span style="padding:5px 10px;border-radius:4px;background:rgba(255,255,255,.75);color:#0E1726;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ p.phase }}</span>
-<span style="padding:5px 10px;border-radius:4px;background:rgba(255,255,255,.75);color:#0E1726;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ p.due }}</span>
+<span style="padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.75);color:#0E1726;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ p.phase }}</span>
+<span style="padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.75);color:#0E1726;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ p.due }}</span>
 </div>
 </div>
 <div style="padding:14px 16px 16px">
@@ -106,9 +106,9 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="flex:none;font:300 34px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.04em">{{ p.pct }}<span style="font-size:17px;letter-spacing:0"> %</span></div>
 </div>
 <div style="display:flex;align-items:center;gap:5px;margin-top:4px;font:400 13px -apple-system,sans-serif;color:var(--ink2)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>{{ p.loc }}</div>
-<div style="height:6px;border-radius:4px;background:var(--track);overflow:hidden;margin:12px 0 9px"><div style="height:100%;border-radius:4px;background:var(--acc);width:{{ p.pctW }}"></div></div>
+<div style="height:6px;border-radius:999px;background:var(--track);overflow:hidden;margin:12px 0 9px"><div style="height:100%;border-radius:999px;background:var(--acc);width:{{ p.pctW }}"></div></div>
 <div style="display:flex;justify-content:space-between;gap:8px;font:400 13px -apple-system,sans-serif;color:var(--ink2)"><span>{{ p.meta }}</span></div>
-<sc-if value="{{ p.hasAlert }}" hint-placeholder-val="{{ false }}"><div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 10px 10px 12px;border-radius:8px;background:#161616"><span style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,242,242,.6)">Alerte</span><span style="padding:6px 9px;border-radius:4px;background:rgba(255,90,90,.16);color:#FF8F8F;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ p.alert }}</span></div></sc-if>
+<sc-if value="{{ p.hasAlert }}" hint-placeholder-val="{{ false }}"><div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 10px 10px 12px;border-radius:12px;background:var(--panel);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6)"><span style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,242,242,.6)">Alerte</span><span style="padding:6px 9px;border-radius:999px;background:rgba(255,90,90,.16);color:#FF8F8F;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ p.alert }}</span></div></sc-if>
 </div>
 </div>
 </sc-for>
@@ -116,7 +116,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-if>
 
 <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
-<div style="position:relative;height:200px;border-radius:16px;overflow:hidden;background:var(--tile);box-shadow:var(--cardSh)">
+<div style="position:relative;height:200px;border-radius:24px;overflow:hidden;background:var(--tile);box-shadow:var(--cardSh);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <image-slot id="{{ pj.img }}" src="{{ pj.src }}" placeholder="{{ pj.ph }}" shape="rect" style="width:100%;height:100%"></image-slot>
 <div style="position:absolute;left:0;right:0;bottom:0;padding:48px 18px 16px;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.62));color:#fff;pointer-events:none">
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;opacity:.88">{{ pj.phase }} · Fin {{ pj.due }}</div>
@@ -125,14 +125,14 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </div>
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:10px">
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t1) 35%,var(--tile));color:var(--t1x);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Avancé</span><span>{{ pj.pct }} %</span></div>
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t2) 35%,var(--tile));color:var(--t2x);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Étapes</span><span>{{ pj.stepsDone }}</span></div>
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t3) 35%,var(--tile));color:var(--t3x);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Fourn.</span><span>{{ pj.supN }}</span></div>
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t4) 35%,var(--tile));color:var(--t4x);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>À payer</span><span>{{ pj.openAmt }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t1) 35%,var(--tile));color:var(--t1x);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Avancé</span><span>{{ pj.pct }} %</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t2) 35%,var(--tile));color:var(--t2x);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Étapes</span><span>{{ pj.stepsDone }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t3) 35%,var(--tile));color:var(--t3x);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Fourn.</span><span>{{ pj.supN }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t4) 35%,var(--tile));color:var(--t4x);font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>À payer</span><span>{{ pj.openAmt }}</span></div>
 </div>
-<div style="display:flex;gap:4px;margin:14px 0 16px;padding:4px;border-radius:10px;background:var(--chip);border:1px solid var(--cardBd)">
+<div style="display:flex;gap:4px;margin:14px 0 16px;padding:4px;border-radius:16px;background:var(--chip);border:1px solid var(--cardBd);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <sc-for list="{{ segs }}" as="g" hint-placeholder-count="3">
-<div onClick="{{ g.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:9px 0;border-radius:10px;background:{{ g.bg }};color:{{ g.fg }};box-shadow:{{ g.sh }};white-space:nowrap;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ g.label }}</div>
+<div onClick="{{ g.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:9px 0;border-radius:16px;background:{{ g.bg }};color:{{ g.fg }};box-shadow:{{ g.sh }};white-space:nowrap;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ g.label }}</div>
 </sc-for>
 </div>
 
@@ -141,7 +141,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Étapes du projet</div>
 <div onClick="{{ toggleEdit }}" style="cursor:pointer;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--acc)">{{ editLabel }}</div>
 </div>
-<div style="padding:4px 16px 10px;border-radius:14px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink)">
+<div style="padding:4px 16px 10px;border-radius:24px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ pj.steps }}" as="s" hint-placeholder-count="4">
 <div style="padding:12px 0;border-bottom:2px solid var(--line)">
 <div style="display:flex;align-items:center;gap:12px">
@@ -151,9 +151,9 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ s.showPct }}" hint-placeholder-val="{{ false }}"><div style="font:700 14px -apple-system,sans-serif;color:{{ s.pctCol }}">{{ s.pctLbl }}</div></sc-if>
 <sc-if value="{{ s.ed }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;align-items:center;gap:6px;flex:none">
-<div style="display:flex;padding:3px;border-radius:10px;background:var(--track)">
-<div onClick="{{ s.setC }}" style="cursor:pointer;width:34px;height:26px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:{{ s.cBg }};color:{{ s.cFg }}"><svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg></div>
-<div onClick="{{ s.setG }}" style="cursor:pointer;width:34px;height:26px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:{{ s.gBg }};color:{{ s.gFg }}"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="5.5" width="13" height="5" rx="2.5"></rect><rect x="1.5" y="5.5" width="7" height="5" rx="2.5" fill="currentColor"></rect></svg></div>
+<div style="display:flex;padding:3px;border-radius:16px;background:var(--track)">
+<div onClick="{{ s.setC }}" style="cursor:pointer;width:34px;height:26px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:{{ s.cBg }};color:{{ s.cFg }}"><svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg></div>
+<div onClick="{{ s.setG }}" style="cursor:pointer;width:34px;height:26px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:{{ s.gBg }};color:{{ s.gFg }}"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="5.5" width="13" height="5" rx="2.5"></rect><rect x="1.5" y="5.5" width="7" height="5" rx="2.5" fill="currentColor"></rect></svg></div>
 </div>
 <div onClick="{{ s.del }}" style="cursor:pointer;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--warnBg);color:var(--warnTx)"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
 </div>
@@ -161,42 +161,42 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <sc-if value="{{ s.showBar }}" hint-placeholder-val="{{ false }}">
 <div onPointerDown="{{ s.drag }}" onPointerMove="{{ s.drag }}" style="margin:6px 4px 0 36px;height:26px;display:flex;align-items:center;cursor:pointer;touch-action:none">
-<div style="position:relative;flex:1;height:8px;border-radius:4px;background:var(--track)">
-<div style="height:100%;border-radius:4px;background:{{ s.barCol }};width:{{ s.w }}"></div>
+<div style="position:relative;flex:1;height:8px;border-radius:999px;background:var(--track)">
+<div style="height:100%;border-radius:999px;background:{{ s.barCol }};width:{{ s.w }}"></div>
 <div style="position:absolute;top:50%;left:{{ s.w }};width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--knob);box-shadow:0 2px 8px rgba(0,0,0,.25),0 0 0 .5px rgba(0,0,0,.08)"></div>
 </div>
 </div>
 </sc-if>
 </div>
 </sc-for>
-<div style="margin-top:12px;padding:10px 10px 12px;border-radius:10px;background:#161616;color:#F2F2F2;--ink:#F2F2F2;--ink2:rgba(242,242,242,.55);--ink3:rgba(242,242,242,.35);--on:#F2F2F2;--acc:#161616;--track:#2E2E2E;--field:#262626;--tileBd:#333333;--solid:#F2F2F2;--solidTx:#161616">
+<div style="margin-top:12px;padding:10px 10px 12px;border-radius:16px;background:var(--panel);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);color:#F2F2F2;--ink:#F2F2F2;--ink2:rgba(242,242,242,.55);--ink3:rgba(242,242,242,.35);--on:#F2F2F2;--acc:#161616;--track:#2E2E2E;--field:#262626;--tileBd:#333333;--solid:#F2F2F2;--solidTx:#161616">
 <div style="display:flex;align-items:center;gap:6px;margin:0 2px 9px;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,242,242,.6)"><svg width="10" height="10" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg>Nouvelle étape</div>
 <div style="display:flex;gap:8px;align-items:center">
-<input value="{{ stepText }}" onChange="{{ onStep }}" placeholder="Nouvelle étape…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--field);padding:10px 14px;border-radius:10px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<div style="display:flex;padding:3px;border-radius:10px;background:var(--track);flex:none">
-<sc-for list="{{ stepTypes }}" as="t" hint-placeholder-count="2"><div onClick="{{ t.pick }}" style="cursor:pointer;padding:6px 10px;border-radius:10px;background:{{ t.bg }};color:{{ t.fg }};font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ t.label }}</div></sc-for>
+<input value="{{ stepText }}" onChange="{{ onStep }}" placeholder="Nouvelle étape…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--field);padding:10px 14px;border-radius:16px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div style="display:flex;padding:3px;border-radius:16px;background:var(--track);flex:none">
+<sc-for list="{{ stepTypes }}" as="t" hint-placeholder-count="2"><div onClick="{{ t.pick }}" style="cursor:pointer;padding:6px 10px;border-radius:16px;background:{{ t.bg }};color:{{ t.fg }};font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ t.label }}</div></sc-for>
 </div>
 <div onClick="{{ addStep }}" style="cursor:pointer;flex:none;width:38px;height:38px;border-radius:50%;background:var(--solid);color:var(--solidTx);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div>
 </div>
 </div>
 </div>
 <div style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--warnTx);margin:22px 4px 8px">À prévoir pour la suite</div>
-<div style="padding:10px 16px 14px;border-radius:14px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink)">
+<div style="padding:10px 16px 14px;border-radius:24px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ pj.notes }}" as="n" hint-placeholder-count="2">
 <div style="display:flex;gap:10px;font-size:14.5px;line-height:1.4;padding:5px 0"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);flex:none;margin-top:7px"></span><span>{{ n }}</span></div>
 </sc-for>
 <div style="display:flex;gap:8px;margin-top:8px">
-<input value="{{ noteText }}" onChange="{{ onNote }}" placeholder="Ajouter une note…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--field);padding:10px 14px;border-radius:10px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<div onClick="{{ addNote }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 16px;border-radius:10px;display:flex;align-items:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
+<input value="{{ noteText }}" onChange="{{ onNote }}" placeholder="Ajouter une note…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--field);padding:10px 14px;border-radius:16px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div onClick="{{ addNote }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 16px;border-radius:16px;display:flex;align-items:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
 </div>
 </div>
 </sc-if>
 
 <sc-if value="{{ segC }}" hint-placeholder-val="{{ false }}">
 <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:18px">
-<div style="padding:10px 12px;border-radius:10px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink)"><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Factures HT</div><div style="font:700 16px -apple-system,sans-serif;margin-top:2px">{{ pj.invTotal }}</div></div>
-<div style="padding:10px 12px;border-radius:10px;background:var(--okBg)"><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--okTx)">Payé</div><div style="font:700 16px -apple-system,sans-serif;margin-top:2px;color:var(--okTx)">{{ pj.invPaid }}</div></div>
-<div style="padding:10px 12px;border-radius:10px;background:var(--warnBg)"><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--warnTx)">À payer</div><div style="font:700 16px -apple-system,sans-serif;margin-top:2px;color:var(--warnTx)">{{ pj.openAmt }}</div></div>
+<div style="padding:10px 12px;border-radius:16px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)"><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Factures HT</div><div style="font:700 16px -apple-system,sans-serif;margin-top:2px">{{ pj.invTotal }}</div></div>
+<div style="padding:10px 12px;border-radius:16px;background:var(--okBg)"><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--okTx)">Payé</div><div style="font:700 16px -apple-system,sans-serif;margin-top:2px;color:var(--okTx)">{{ pj.invPaid }}</div></div>
+<div style="padding:10px 12px;border-radius:16px;background:var(--warnBg)"><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--warnTx)">À payer</div><div style="font:700 16px -apple-system,sans-serif;margin-top:2px;color:var(--warnTx)">{{ pj.openAmt }}</div></div>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;margin:0 4px 8px">
 <div style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Fournisseurs & factures</div>
@@ -204,11 +204,11 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="display:flex;flex-direction:column;gap:12px">
 <sc-for list="{{ pj.sups }}" as="f" hint-placeholder-count="3">
-<div style="padding:2px 14px 12px;border-radius:14px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink)">
+<div style="padding:2px 14px 12px;border-radius:24px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <div onClick="{{ f.toggle }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 0">
-<div style="width:42px;height:42px;border-radius:8px;flex:none;background:{{ f.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 15px -apple-system,sans-serif">{{ f.ini }}</div>
+<div style="width:42px;height:42px;border-radius:12px;flex:none;background:{{ f.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 15px -apple-system,sans-serif">{{ f.ini }}</div>
 <div style="flex:1;min-width:0"><div style="font:600 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ f.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ f.sub }}</div></div>
-<sc-if value="{{ f.todo }}" hint-placeholder-val="{{ false }}"><div style="flex:none;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;background:var(--warnBg);color:var(--warnTx);padding:5px 10px;border-radius:4px">À renseigner</div></sc-if>
+<sc-if value="{{ f.todo }}" hint-placeholder-val="{{ false }}"><div style="flex:none;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;background:var(--warnBg);color:var(--warnTx);padding:5px 10px;border-radius:999px">À renseigner</div></sc-if>
 <sc-if value="{{ f.ok }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;gap:6px;flex:none">
 <a href="{{ f.telH }}" onClick="{{ stop }}" style="width:34px;height:34px;border-radius:50%;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 3.5h3l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2.1 4.2 1.6v3a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"></path></svg></a>
@@ -218,7 +218,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-if>
 </div>
 <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
-<div style="margin:0 0 10px;border-radius:8px;overflow:hidden;background:var(--field)">
+<div style="margin:0 0 10px;border-radius:12px;overflow:hidden;background:var(--field)">
 <sc-for list="{{ f.fields }}" as="x" hint-placeholder-count="3">
 <div style="display:flex;align-items:center;padding:0 14px;border-bottom:2px solid var(--line)">
 <div style="width:86px;flex:none;font:500 13.5px -apple-system,sans-serif;color:var(--ink2)">{{ x.label }}</div>
@@ -234,25 +234,25 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <sc-for list="{{ f.inv }}" as="i" hint-placeholder-count="1">
 <div style="display:flex;align-items:center;gap:10px;padding:8px 0">
-<div style="width:32px;height:32px;border-radius:6px;flex:none;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M6.5 3h7.5l4 4v14h-11.5z"></path><path d="M14 3v4h4M9.5 12h5M9.5 16h5"></path></svg></div>
+<div style="width:32px;height:32px;border-radius:12px;flex:none;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M6.5 3h7.5l4 4v14h-11.5z"></path><path d="M14 3v4h4M9.5 12h5M9.5 16h5"></path></svg></div>
 <div style="flex:1;min-width:0"><div style="font:600 14.5px -apple-system,sans-serif">{{ i.num }}</div><div style="font:400 12px -apple-system,sans-serif;color:var(--ink2);margin-top:1px">Échéance {{ i.date }}</div></div>
 <div style="font:700 14.5px -apple-system,sans-serif;flex:none">{{ i.amt }}</div>
-<div onClick="{{ i.cyc }}" style="cursor:pointer;flex:none;min-width:70px;text-align:center;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;background:{{ i.stBg }};color:{{ i.stFg }};padding:4px 9px;border-radius:4px">{{ i.stLbl }}</div>
+<div onClick="{{ i.cyc }}" style="cursor:pointer;flex:none;min-width:70px;text-align:center;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;background:{{ i.stBg }};color:{{ i.stFg }};padding:4px 9px;border-radius:999px">{{ i.stLbl }}</div>
 </div>
 </sc-for>
 <sc-if value="{{ f.noInv }}" hint-placeholder-val="{{ false }}"><div style="padding:6px 0 2px;font:400 13px -apple-system,sans-serif;color:var(--ink2)">Aucune facture échangée pour l’instant</div></sc-if>
-<sc-if value="{{ f.hasInv }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:12px;margin-top:6px;padding:9px 12px;border-radius:8px;background:var(--tile);font:500 12.5px -apple-system,sans-serif;color:var(--ink2)"><span style="flex:1">Payé <span style="font-weight:700;color:var(--okTx)">{{ f.paid }}</span></span><span>À payer <span style="font-weight:700;color:{{ f.openCol }}">{{ f.openAmt }}</span></span></div></sc-if>
+<sc-if value="{{ f.hasInv }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:12px;margin-top:6px;padding:9px 12px;border-radius:12px;background:var(--tile);font:500 12.5px -apple-system,sans-serif;color:var(--ink2)"><span style="flex:1">Payé <span style="font-weight:700;color:var(--okTx)">{{ f.paid }}</span></span><span>À payer <span style="font-weight:700;color:{{ f.openCol }}">{{ f.openAmt }}</span></span></div></sc-if>
 </div>
 </sc-for>
 </div>
 
 <div style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:24px 4px 8px">Équipe & intervenants</div>
-<div style="padding:2px 14px;border-radius:14px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink)">
+<div style="padding:2px 14px;border-radius:24px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ pj.team }}" as="m" hint-placeholder-count="3">
 <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:2px solid var(--line)">
 <div style="width:40px;height:40px;border-radius:50%;flex:none;background:var(--accSoft);color:var(--accTx);display:flex;align-items:center;justify-content:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ m.ini }}</div>
 <div style="flex:1;min-width:0"><div style="font:600 15px -apple-system,sans-serif">{{ m.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ m.role }}</div></div>
-<div style="flex:none;font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);border:1px solid var(--line);padding:3px 8px;border-radius:4px">{{ m.tag }}</div>
+<div style="flex:none;font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);border:1px solid var(--line);padding:3px 8px;border-radius:999px">{{ m.tag }}</div>
 <a href="{{ m.telH }}" style="width:34px;height:34px;flex:none;border-radius:50%;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 3.5h3l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2.1 4.2 1.6v3a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"></path></svg></a>
 </div>
 </sc-for>
@@ -263,23 +263,23 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ isStock }}" hint-placeholder-val="{{ false }}">
 <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:-4px 0 16px">
 <sc-for list="{{ stFilt }}" as="g" hint-placeholder-count="3">
-<div onClick="{{ g.pick }}" style="cursor:pointer;padding:11px 12px 12px;border-radius:8px;background:linear-gradient(160deg,{{ g.bg }} 35%,var(--tile));color:{{ g.fg }};border:1px solid {{ g.bd }};opacity:{{ g.op }};transition:opacity .2s">
+<div onClick="{{ g.pick }}" style="cursor:pointer;padding:11px 12px 12px;border-radius:12px;background:linear-gradient(160deg,{{ g.bg }} 35%,var(--tile));color:{{ g.fg }};border:1px solid {{ g.bd }};opacity:{{ g.op }};transition:opacity .2s">
 <div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap">{{ g.label }}</div>
 <div style="font:300 32px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.04em;margin-top:12px">{{ g.n }}</div>
 </div>
 </sc-for>
 </div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 4px;padding:0 20px">
-<sc-for list="{{ stDisc }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:8px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
+<sc-for list="{{ stDisc }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
 </div>
 <sc-if value="{{ hasStock }}" hint-placeholder-val="{{ true }}">
 <sc-for list="{{ stGroups }}" as="sg" hint-placeholder-count="2">
 <div style="display:flex;justify-content:space-between;align-items:baseline;margin:18px 4px 8px"><span style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">{{ sg.label }}</span><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">{{ sg.n }}</span></div>
-<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ sg.items }}" as="i" hint-placeholder-count="2">
 <div style="border-bottom:2px solid var(--line)">
 <div onClick="{{ i.toggle }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 14px">
-<div style="width:46px;height:46px;border-radius:8px;overflow:hidden;flex:none;background:var(--tile)"><image-slot id="{{ i.img }}" src="{{ i.src }}" placeholder="Photo" compact="" shape="rect" style="width:100%;height:100%"></image-slot></div>
+<div style="width:46px;height:46px;border-radius:12px;overflow:hidden;flex:none;background:var(--tile)"><image-slot id="{{ i.img }}" src="{{ i.src }}" placeholder="Photo" compact="" shape="rect" style="width:100%;height:100%"></image-slot></div>
 <div style="flex:1;min-width:0">
 <div style="font:500 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ i.name }}</div>
 <div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ i.meta }}</div>
@@ -287,22 +287,22 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="flex:none;min-width:58px;text-align:right"><div style="font:300 32px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.045em;color:{{ i.col }}">{{ i.q }}</div><div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);margin-top:4px;white-space:nowrap">{{ i.unit }}</div></div>
 </div>
-<sc-if value="{{ i.hasPend }}" hint-placeholder-val="{{ false }}"><div style="display:flex;margin:-4px 14px 12px 72px"><span style="padding:4px 8px;border-radius:4px;background:{{ i.pendBg }};color:{{ i.pendFg }};font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ i.pend }}</span></div></sc-if>
+<sc-if value="{{ i.hasPend }}" hint-placeholder-val="{{ false }}"><div style="display:flex;margin:-4px 14px 12px 72px"><span style="padding:4px 8px;border-radius:999px;background:{{ i.pendBg }};color:{{ i.pendFg }};font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ i.pend }}</span></div></sc-if>
 <sc-if value="{{ i.open }}" hint-placeholder-val="{{ false }}">
 <div style="padding:0 14px 14px">
 <div style="display:flex;align-items:center;gap:6px">
-<div onClick="{{ i.minus }}" style="cursor:pointer;flex:none;width:52px;height:44px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:300 24px -apple-system,sans-serif">−</div>
+<div onClick="{{ i.minus }}" style="cursor:pointer;flex:none;width:52px;height:44px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:300 24px -apple-system,sans-serif">−</div>
 <div style="flex:1;text-align:center;font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)">Ajuster · {{ i.step }}</div>
-<div onClick="{{ i.plus }}" style="cursor:pointer;flex:none;width:52px;height:44px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:300 24px -apple-system,sans-serif">+</div>
+<div onClick="{{ i.plus }}" style="cursor:pointer;flex:none;width:52px;height:44px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:300 24px -apple-system,sans-serif">+</div>
 </div>
 <div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:14px 2px 7px">Emplacement</div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -14px;padding:0 14px">
-<sc-for list="{{ i.zones }}" as="z" hint-placeholder-count="4"><div onClick="{{ z.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:7px;background:{{ z.bg }};color:{{ z.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ z.label }}</div></sc-for>
+<sc-for list="{{ i.zones }}" as="z" hint-placeholder-count="4"><div onClick="{{ z.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:12px;background:{{ z.bg }};color:{{ z.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ z.label }}</div></sc-for>
 </div>
-<div style="margin-top:12px;border-radius:8px;background:#161616;padding:10px 10px 10px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px">
+<div style="margin-top:12px;border-radius:12px;background:var(--panel);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);padding:10px 10px 10px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px">
 <div style="min-width:0"><div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,242,242,.55)">Fournisseur conseillé</div><div style="font:400 14px -apple-system,sans-serif;color:#F2F2F2;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ i.adv }}</div></div>
-<sc-if value="{{ i.canRecv }}" hint-placeholder-val="{{ false }}"><div onClick="{{ i.recv }}" style="cursor:pointer;flex:none;background:rgba(120,220,190,.16);color:#A6ECD5;padding:8px 10px;border-radius:4px;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap">{{ i.recvLbl }}</div></sc-if>
-<sc-if value="{{ i.canOrder }}" hint-placeholder-val="{{ true }}"><div onClick="{{ i.order }}" style="cursor:pointer;flex:none;background:rgba(255,90,90,.16);color:#FF8F8F;padding:8px 10px;border-radius:4px;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap">{{ i.lotLbl }}</div></sc-if>
+<sc-if value="{{ i.canRecv }}" hint-placeholder-val="{{ false }}"><div onClick="{{ i.recv }}" style="cursor:pointer;flex:none;background:rgba(120,220,190,.16);color:#A6ECD5;padding:8px 10px;border-radius:999px;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap">{{ i.recvLbl }}</div></sc-if>
+<sc-if value="{{ i.canOrder }}" hint-placeholder-val="{{ true }}"><div onClick="{{ i.order }}" style="cursor:pointer;flex:none;background:rgba(255,90,90,.16);color:#FF8F8F;padding:8px 10px;border-radius:999px;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap">{{ i.lotLbl }}</div></sc-if>
 </div>
 </div>
 </sc-if>
@@ -311,9 +311,9 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </sc-for>
 </sc-if>
-<sc-if value="{{ noStock }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:12px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2)">Aucun article pour ce filtre</div></sc-if>
+<sc-if value="{{ noStock }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:20px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">Aucun article pour ce filtre</div></sc-if>
 <sc-if value="{{ hasBasket }}" hint-placeholder-val="{{ false }}">
-<div style="margin-top:14px;border-radius:12px;background:#161616;color:#F2F2F2;padding:14px">
+<div style="margin-top:14px;border-radius:20px;background:var(--panel);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);color:#F2F2F2;padding:14px">
 <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,242,242,.55)">Panier de commande</span><span style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ basketN }}</span></div>
 <sc-for list="{{ basket }}" as="b" hint-placeholder-count="1">
 <div style="margin-top:14px">
@@ -322,20 +322,20 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08)">
 <span style="flex:1;min-width:0;font:400 14.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.name }}</span>
 <span style="flex:none;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em;text-transform:uppercase">{{ l.qty }}</span>
-<div onClick="{{ l.rm }}" style="cursor:pointer;flex:none;width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,.08);color:rgba(242,242,242,.7);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
+<div onClick="{{ l.rm }}" style="cursor:pointer;flex:none;width:24px;height:24px;border-radius:12px;background:rgba(255,255,255,.08);color:rgba(242,242,242,.7);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
 </div>
 </sc-for>
 </div>
 </sc-for>
-<div onClick="{{ sendOrder }}" style="cursor:pointer;margin-top:14px;padding:13px;border-radius:8px;background:rgba(255,90,90,.16);color:#FF8F8F;text-align:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase">Envoyer la commande</div>
+<div onClick="{{ sendOrder }}" style="cursor:pointer;margin-top:14px;padding:13px;border-radius:12px;background:rgba(255,90,90,.16);color:#FF8F8F;text-align:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase">Envoyer la commande</div>
 </div>
 </sc-if>
-<sc-if value="{{ orderSent }}" hint-placeholder-val="{{ false }}"><div style="margin-top:14px;padding:13px;border-radius:10px;background:var(--t3);color:var(--t3x);text-align:center;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">✓ Commande envoyée · à réceptionner</div></sc-if>
+<sc-if value="{{ orderSent }}" hint-placeholder-val="{{ false }}"><div style="margin-top:14px;padding:13px;border-radius:16px;background:var(--t3);color:var(--t3x);text-align:center;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">✓ Commande envoyée · à réceptionner</div></sc-if>
 </sc-if>
 
 <sc-if value="{{ isMail }}" hint-placeholder-val="{{ false }}">
 <sc-if value="{{ listMail }}" hint-placeholder-val="{{ true }}">
-<div style="display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);margin-bottom:12px">
+<div style="display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);margin-bottom:12px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none;color:var(--ink2)"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L21 21"></path></svg>
 <input value="{{ mq }}" onChange="{{ onMq }}" placeholder="Rechercher un message, un contact…" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)">
 <sc-if value="{{ hasMq }}" hint-placeholder-val="{{ false }}"><div onClick="{{ clearMq }}" style="cursor:pointer;flex:none;width:22px;height:22px;border-radius:50%;background:var(--track);color:var(--ink2);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></sc-if>
@@ -343,11 +343,11 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasPpl }}" hint-placeholder-val="{{ true }}">
 <div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:0 2px 8px">VIP & contacts récurrents</div>
 <div style="display:flex;gap:6px;margin:0 -20px 16px 0">
-<div onClick="{{ pplAll.pick }}" style="flex:none;cursor:pointer;width:40px;height:40px;border-radius:10px;background:{{ pplAll.bg }};color:{{ pplAll.fg }};border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em">ALL</div>
+<div onClick="{{ pplAll.pick }}" style="flex:none;cursor:pointer;width:40px;height:40px;border-radius:16px;background:{{ pplAll.bg }};color:{{ pplAll.fg }};border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em">ALL</div>
 <div style="flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;padding-right:20px">
 <sc-for list="{{ ppl }}" as="c" hint-placeholder-count="3">
-<div onClick="{{ c.pick }}" style="flex:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:5px 12px 5px 5px;border-radius:10px;background:{{ c.bg }};color:{{ c.fg }};border:1px solid var(--tileBd)">
-<div style="width:28px;height:28px;border-radius:7px;flex:none;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 11.5px -apple-system,sans-serif">{{ c.ini }}</div>
+<div onClick="{{ c.pick }}" style="flex:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:5px 12px 5px 5px;border-radius:16px;background:{{ c.bg }};color:{{ c.fg }};border:1px solid var(--tileBd)">
+<div style="width:28px;height:28px;border-radius:12px;flex:none;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 11.5px -apple-system,sans-serif">{{ c.ini }}</div>
 <span style="font:500 14px -apple-system,sans-serif;white-space:nowrap">{{ c.name }}</span>
 <sc-if value="{{ c.vip }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" style="fill:#C9A227;flex:none"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"></path></svg></sc-if>
 <span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em;text-transform:uppercase;opacity:.6">{{ c.n }}</span>
@@ -356,16 +356,16 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </div>
 </sc-if>
-<div style="display:flex;gap:4px;margin-bottom:14px;padding:4px;border-radius:10px;background:var(--chip);border:1px solid var(--cardBd)">
+<div style="display:flex;gap:4px;margin-bottom:14px;padding:4px;border-radius:16px;background:var(--chip);border:1px solid var(--cardBd);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <sc-for list="{{ mboxSeg }}" as="g" hint-placeholder-count="2">
-<div onClick="{{ g.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:9px 0;border-radius:7px;background:{{ g.bg }};color:{{ g.fg }};white-space:nowrap;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ g.label }}</div>
+<div onClick="{{ g.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:9px 0;border-radius:12px;background:{{ g.bg }};color:{{ g.fg }};white-space:nowrap;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ g.label }}</div>
 </sc-for>
 </div>
 <sc-if value="{{ hasMails }}" hint-placeholder-val="{{ true }}">
-<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ mails }}" as="m" hint-placeholder-count="3">
 <div onClick="{{ m.open }}" style="cursor:pointer;display:flex;gap:12px;padding:14px 16px;border-bottom:2px solid var(--line)">
-<div style="width:40px;height:40px;border-radius:10px;flex:none;background:{{ m.avBg }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 14px -apple-system,sans-serif">{{ m.ini }}</div>
+<div style="width:40px;height:40px;border-radius:16px;flex:none;background:{{ m.avBg }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 14px -apple-system,sans-serif">{{ m.ini }}</div>
 <div style="flex:1;min-width:0">
 <div style="display:flex;align-items:center;gap:6px">
 <sc-if value="{{ m.dot }}" hint-placeholder-val="{{ false }}"><span style="width:7px;height:7px;border-radius:50%;background:#FF5A5A;flex:none"></span></sc-if>
@@ -380,7 +380,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-if>
 <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
 <div style="font:400 13.5px/1.4 -apple-system,sans-serif;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.summary }}</div>
-<div style="margin-top:8px;padding:9px 11px;border-radius:8px;background:var(--tile)">
+<div style="margin-top:8px;padding:9px 11px;border-radius:12px;background:var(--tile)">
 <div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--okTx)">{{ m.replyLbl }}</div>
 <div style="font:400 13.5px/1.4 -apple-system,sans-serif;margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ m.reply }}</div>
 </div>
@@ -390,38 +390,38 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-for>
 </div>
 </sc-if>
-<sc-if value="{{ noMails }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:12px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2)">{{ mailEmpty }}</div></sc-if>
+<sc-if value="{{ noMails }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:20px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">{{ mailEmpty }}</div></sc-if>
 </sc-if>
 <sc-if value="{{ mailOpen }}" hint-placeholder-val="{{ false }}">
-<div onClick="{{ closeMail }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:7px 14px 7px 10px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--acc);margin-bottom:16px"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Messages</div>
+<div onClick="{{ closeMail }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:7px 14px 7px 10px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--acc);margin-bottom:16px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Messages</div>
 <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
 <div style="width:46px;height:46px;border-radius:50%;flex:none;background:{{ cm.avBg }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 16px -apple-system,sans-serif">{{ cm.ini }}</div>
 <div style="flex:1;min-width:0"><div style="font:600 16px -apple-system,sans-serif">{{ cm.from }}</div><div style="font:400 13px -apple-system,sans-serif;color:var(--ink2)">{{ cm.ch }} · {{ cm.org }} · {{ cm.time }}</div></div>
-<div onClick="{{ cm.vipToggle }}" style="cursor:pointer;flex:none;display:flex;align-items:center;gap:6px;padding:8px 11px;border-radius:10px;background:{{ cm.vipBg }};border:1px solid var(--tileBd);color:{{ cm.vipFg }};font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><svg width="13" height="13" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="fill:{{ cm.vipFill }}"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"></path></svg>VIP</div>
+<div onClick="{{ cm.vipToggle }}" style="cursor:pointer;flex:none;display:flex;align-items:center;gap:6px;padding:8px 11px;border-radius:16px;background:{{ cm.vipBg }};border:1px solid var(--tileBd);color:{{ cm.vipFg }};font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><svg width="13" height="13" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="fill:{{ cm.vipFill }}"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"></path></svg>VIP</div>
 </div>
 <div style="font:300 28px/1.15 -apple-system,'SF Pro Display',sans-serif;margin-bottom:14px;letter-spacing:-.03em">{{ cm.subject }}</div>
-<div style="border-radius:12px;background:var(--t3);color:var(--t3x);padding:14px 16px;font-size:14.5px;line-height:1.45"><div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;opacity:.9">Résumé de la demande</div>{{ cm.summary }}</div>
-<div style="border-radius:12px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);padding:14px 16px;font-size:14px;line-height:1.5;margin-top:10px"><div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;color:var(--ink2)">Contenu du mail</div>{{ cm.body }}</div>
+<div style="border-radius:20px;background:var(--t3);color:var(--t3x);padding:14px 16px;font-size:14.5px;line-height:1.45"><div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;opacity:.9">Résumé de la demande</div>{{ cm.summary }}</div>
+<div style="border-radius:20px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);padding:14px 16px;font-size:14px;line-height:1.5;margin-top:10px;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)"><div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;color:var(--ink2)">Contenu du mail</div>{{ cm.body }}</div>
 <sc-if value="{{ cmTodo }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;justify-content:space-between;align-items:center;margin:20px 2px 8px">
 <div style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Brouillon de réponse</div>
 <div style="display:flex;gap:6px">
 <sc-for list="{{ tones }}" as="t" hint-placeholder-count="2">
-<div onClick="{{ t.pick }}" style="cursor:pointer;padding:6px 12px;border-radius:10px;border:1px solid var(--cardBd);background:{{ t.bg }};color:{{ t.fg }};font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ t.label }}</div>
+<div onClick="{{ t.pick }}" style="cursor:pointer;padding:6px 12px;border-radius:16px;border:1px solid var(--cardBd);background:{{ t.bg }};color:{{ t.fg }};font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ t.label }}</div>
 </sc-for>
 </div>
 </div>
-<textarea value="{{ draftText }}" onChange="{{ onDraft }}" rows="7" style="width:100%;border:1px solid var(--tileBd);background:var(--field);padding:14px 16px;border-radius:12px;font:400 14.5px/1.5 -apple-system,sans-serif;resize:none;outline:none;color:var(--ink)"></textarea>
-<div onClick="{{ sendMail }}" style="cursor:pointer;margin-top:10px;background:{{ sendBg }};color:var(--accOn);padding:15px;border-radius:10px;text-align:center;font:500 13px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase">{{ sendLabel }}</div>
+<textarea value="{{ draftText }}" onChange="{{ onDraft }}" rows="7" style="width:100%;border:1px solid var(--tileBd);background:var(--field);padding:14px 16px;border-radius:20px;font:400 14.5px/1.5 -apple-system,sans-serif;resize:none;outline:none;color:var(--ink)"></textarea>
+<div onClick="{{ sendMail }}" style="cursor:pointer;margin-top:10px;background:{{ sendBg }};color:var(--accOn);padding:15px;border-radius:16px;text-align:center;font:500 13px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase">{{ sendLabel }}</div>
 
-<div onClick="{{ markDone }}" style="cursor:pointer;margin-top:8px;padding:13px;border-radius:10px;text-align:center;border:1px solid var(--tileBd);color:var(--ink2);font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Traité sans réponse</div>
+<div onClick="{{ markDone }}" style="cursor:pointer;margin-top:8px;padding:13px;border-radius:16px;text-align:center;border:1px solid var(--tileBd);color:var(--ink2);font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Traité sans réponse</div>
 </sc-if>
 <sc-if value="{{ cmDone }}" hint-placeholder-val="{{ false }}">
-<div style="margin-top:20px;padding:14px 16px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)">
+<div style="margin-top:20px;padding:14px 16px;border-radius:20px;background:var(--tile);border:1px solid var(--tileBd);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--okTx)">{{ cmReplyLbl }}</div>
 <div style="font:400 14.5px/1.5 -apple-system,sans-serif;margin-top:6px;white-space:pre-wrap">{{ cmReply }}</div>
 </div>
-<div onClick="{{ reopen }}" style="cursor:pointer;margin-top:10px;padding:13px;border-radius:10px;text-align:center;border:1px solid var(--tileBd);color:var(--ink);font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Remettre dans Reçu</div>
+<div onClick="{{ reopen }}" style="cursor:pointer;margin-top:10px;padding:13px;border-radius:16px;text-align:center;border:1px solid var(--tileBd);color:var(--ink);font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Remettre dans Reçu</div>
 </sc-if>
 </sc-if>
 </sc-if>
@@ -429,7 +429,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ isPlan }}" hint-placeholder-val="{{ false }}">
 <div style="display:grid;grid-template-columns:repeat({{ dayCols }},minmax(0,1fr));gap:5px;margin-bottom:12px">
 <sc-for list="{{ days }}" as="d" hint-placeholder-count="6">
-<div onClick="{{ d.pick }}" style="cursor:pointer;text-align:center;padding:10px 0 9px;border-radius:10px;border:1px solid var(--cardBd);background:{{ d.bg }};color:{{ d.fg }};box-shadow:{{ d.sh }}">
+<div onClick="{{ d.pick }}" style="cursor:pointer;text-align:center;padding:10px 0 9px;border-radius:16px;border:1px solid var(--cardBd);background:{{ d.bg }};color:{{ d.fg }};box-shadow:{{ d.sh }}">
 <div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.7">{{ d.w }}</div>
 <div style="font:300 24px -apple-system,'SF Pro Display',sans-serif;letter-spacing:-.03em;margin:2px 0 5px">{{ d.n }}</div>
 <div style="display:flex;justify-content:center;gap:3px;height:6px"><sc-for list="{{ d.dots }}" as="x" hint-placeholder-count="0"><span style="width:6px;height:6px;border-radius:50%;background:{{ x }};box-shadow:0 0 0 1px var(--tileBd)"></span></sc-for></div>
@@ -441,28 +441,28 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="display:flex;flex-direction:column;gap:10px">
 <sc-for list="{{ events }}" as="e" hint-placeholder-count="2">
-<div style="display:flex;gap:14px;align-items:stretch;padding:14px 16px;border-radius:12px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink)">
-<div style="width:4px;border-radius:4px;background:{{ e.dot }};flex:none"></div>
+<div style="display:flex;gap:14px;align-items:stretch;padding:14px 16px;border-radius:20px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
+<div style="width:4px;border-radius:999px;background:{{ e.dot }};flex:none"></div>
 <div style="flex:1;min-width:0"><div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">{{ e.t }} · {{ e.type }}</div><div style="font:600 16px/1.25 -apple-system,sans-serif;margin:3px 0">{{ e.title }}</div><div style="font:400 13px -apple-system,sans-serif;color:var(--ink2)">{{ e.site }}</div></div>
 </div>
 </sc-for>
-<sc-if value="{{ noEvents }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:12px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2)">Rien de prévu ce jour</div></sc-if>
+<sc-if value="{{ noEvents }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:20px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">Rien de prévu ce jour</div></sc-if>
 </div>
 </sc-if>
 
 <sc-if value="{{ isSup }}" hint-placeholder-val="{{ false }}">
 <sc-if value="{{ isSupList }}" hint-placeholder-val="{{ true }}">
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:-4px 0 14px">
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t4) 35%,var(--tile));color:var(--t4x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>À payer</span><span style="white-space:nowrap">{{ supTot }}</span></div>
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t2) 35%,var(--tile));color:var(--t2x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>En retard</span><span style="white-space:nowrap">{{ supLate }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t4) 35%,var(--tile));color:var(--t4x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>À payer</span><span style="white-space:nowrap">{{ supTot }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t2) 35%,var(--tile));color:var(--t2x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>En retard</span><span style="white-space:nowrap">{{ supLate }}</span></div>
 </div>
-<div style="display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);margin-bottom:10px">
+<div style="display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);margin-bottom:10px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none;color:var(--ink2)"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L21 21"></path></svg>
 <input value="{{ sq }}" onChange="{{ onSq }}" placeholder="Rechercher un fournisseur…" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)">
 <sc-if value="{{ hasSq }}" hint-placeholder-val="{{ false }}"><div onClick="{{ clearSq }}" style="cursor:pointer;flex:none;width:22px;height:22px;border-radius:50%;background:var(--track);color:var(--ink2);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></sc-if>
 </div>
 <div style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:0 2px 8px">Types de fournitures</div>
-<div style="margin-bottom:10px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);overflow:hidden">
+<div style="margin-bottom:10px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);overflow:hidden;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <div onClick="{{ toggleCat }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px">
 <span style="font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ catCur }}</span>
 <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;transform:{{ catChev }};transition:transform .2s"><path d="M3 4.5l3 3 3-3"></path></svg>
@@ -470,7 +470,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ catOpen }}" hint-placeholder-val="{{ false }}">
 <div style="border-top:1px solid var(--tileBd);padding:4px">
 <sc-for list="{{ cats }}" as="c" hint-placeholder-count="4">
-<div onClick="{{ c.pick }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 10px;border-radius:7px;background:{{ c.bg }};color:{{ c.fg }}">
+<div onClick="{{ c.pick }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 10px;border-radius:12px;background:{{ c.bg }};color:{{ c.fg }}">
 <span style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ c.label }}</span>
 <span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em;text-transform:uppercase;opacity:.6">{{ c.n }}</span>
 </div>
@@ -478,107 +478,107 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </sc-if>
 </div>
-<div style="display:flex;align-items:center;gap:6px;margin-bottom:14px;padding:4px;border-radius:10px;background:var(--chip);border:1px solid var(--cardBd)">
+<div style="display:flex;align-items:center;gap:6px;margin-bottom:14px;padding:4px;border-radius:16px;background:var(--chip);border:1px solid var(--cardBd);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <span style="white-space:nowrap;font:500 12.5px -apple-system,sans-serif;color:var(--ink2);padding:0 6px 0 10px">Trier</span>
 <sc-for list="{{ sorts }}" as="o" hint-placeholder-count="3">
-<div onClick="{{ o.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:7px 0;border-radius:10px;background:{{ o.bg }};color:{{ o.fg }};box-shadow:{{ o.sh }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div>
+<div onClick="{{ o.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:7px 0;border-radius:16px;background:{{ o.bg }};color:{{ o.fg }};box-shadow:{{ o.sh }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div>
 </sc-for>
 </div>
 <sc-if value="{{ hasSup }}" hint-placeholder-val="{{ true }}">
-<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="4">
 <div onClick="{{ c.open }}" style="cursor:pointer;padding:13px 14px;border-bottom:2px solid var(--line)">
 <div style="display:flex;align-items:center;gap:12px">
-<div style="width:42px;height:42px;border-radius:10px;flex:none;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 14px -apple-system,sans-serif">{{ c.ini }}</div>
+<div style="width:42px;height:42px;border-radius:16px;flex:none;background:{{ c.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 14px -apple-system,sans-serif">{{ c.ini }}</div>
 <div style="flex:1;min-width:0"><div style="font:500 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</div><div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.meta }}</div></div>
 <div style="flex:none;text-align:right"><div style="font:300 26px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.04em">{{ c.m }}</div><div style="font:500 9px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);margin-top:4px">{{ c.mLbl }}</div></div>
 </div>
 <div style="display:flex;gap:6px;flex-wrap:wrap;margin:9px 0 0 54px">
-<span style="padding:4px 8px;border-radius:4px;background:{{ c.tagBg }};color:{{ c.tagFg }};font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ c.tag }}</span>
-<sc-if value="{{ c.hasLow }}" hint-placeholder-val="{{ false }}"><span style="padding:4px 8px;border-radius:4px;background:#161616;color:#FF8F8F;font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ c.lowTxt }}</span></sc-if>
+<span style="padding:4px 8px;border-radius:999px;background:{{ c.tagBg }};color:{{ c.tagFg }};font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ c.tag }}</span>
+<sc-if value="{{ c.hasLow }}" hint-placeholder-val="{{ false }}"><span style="padding:4px 8px;border-radius:999px;background:var(--panel);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);color:#FF8F8F;font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ c.lowTxt }}</span></sc-if>
 </div>
 </div>
 </sc-for>
 </div>
 </sc-if>
-<sc-if value="{{ noSup }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:12px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2)">Aucun fournisseur trouvé</div></sc-if>
+<sc-if value="{{ noSup }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:20px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">Aucun fournisseur trouvé</div></sc-if>
 </sc-if>
 <sc-if value="{{ isSupDet }}" hint-placeholder-val="{{ false }}">
-<div onClick="{{ backSup }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:7px 14px 7px 10px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:18px"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Fournisseurs</div>
+<div onClick="{{ backSup }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:7px 14px 7px 10px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:18px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Fournisseurs</div>
 <div style="display:flex;align-items:center;gap:14px">
-<div style="width:58px;height:58px;border-radius:12px;flex:none;background:{{ sd.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:500 19px -apple-system,sans-serif">{{ sd.ini }}</div>
+<div style="width:58px;height:58px;border-radius:20px;flex:none;background:{{ sd.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:500 19px -apple-system,sans-serif">{{ sd.ini }}</div>
 <div style="min-width:0"><div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">{{ sd.sub }}</div><div style="font:300 36px/1.05 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.04em;margin-top:6px;text-wrap:pretty">{{ sd.name }}</div></div>
 </div>
 <div style="display:flex;align-items:flex-start;gap:10px;margin-top:16px">
-<span style="flex:none;padding:5px 8px;border-radius:4px;background:{{ sd.tagBg }};color:{{ sd.tagFg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ sd.tag }}</span>
+<span style="flex:none;padding:5px 8px;border-radius:999px;background:{{ sd.tagBg }};color:{{ sd.tagFg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ sd.tag }}</span>
 <div style="font:400 14px/1.45 -apple-system,sans-serif;color:var(--ink2);text-wrap:pretty">{{ sd.why }}</div>
 </div>
 <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:18px">
-<a href="{{ sd.telH }}" style="height:66px;border-radius:12px;background:var(--acc);color:var(--accOn);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 3.5h3l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2.1 4.2 1.6v3a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"></path></svg><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Appeler</span></a>
-<a href="{{ sd.smsH }}" style="height:66px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 5h16v11H10l-6 4z"></path></svg><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">SMS</span></a>
-<a href="{{ sd.mailH }}" style="height:66px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="M4.5 7.5l7.5 5.5 7.5-5.5"></path></svg><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Mail</span></a>
+<a href="{{ sd.telH }}" style="height:66px;border-radius:20px;background:var(--acc);color:var(--accOn);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 3.5h3l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2.1 4.2 1.6v3a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"></path></svg><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Appeler</span></a>
+<a href="{{ sd.smsH }}" style="height:66px;border-radius:20px;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 5h16v11H10l-6 4z"></path></svg><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">SMS</span></a>
+<a href="{{ sd.mailH }}" style="height:66px;border-radius:20px;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="M4.5 7.5l7.5 5.5 7.5-5.5"></path></svg><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Mail</span></a>
 </div>
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:6px">
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t1) 35%,var(--tile));color:var(--t1x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Délai</span><span style="white-space:nowrap">{{ sd.delay }}</span></div>
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t2) 35%,var(--tile));color:var(--t2x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Prix</span><span style="white-space:nowrap">{{ sd.price }}</span></div>
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t3) 35%,var(--tile));color:var(--t3x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Fiabilité</span><span style="white-space:nowrap">{{ sd.rel }}</span></div>
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:8px;background:linear-gradient(100deg,var(--t4) 35%,var(--tile));color:var(--t4x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>À payer</span><span style="white-space:nowrap">{{ sd.open }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t1) 35%,var(--tile));color:var(--t1x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Délai</span><span style="white-space:nowrap">{{ sd.delay }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t2) 35%,var(--tile));color:var(--t2x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Prix</span><span style="white-space:nowrap">{{ sd.price }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t3) 35%,var(--tile));color:var(--t3x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>Fiabilité</span><span style="white-space:nowrap">{{ sd.rel }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t4) 35%,var(--tile));color:var(--t4x);font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span>À payer</span><span style="white-space:nowrap">{{ sd.open }}</span></div>
 </div>
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:22px 4px 8px">Contact</div>
-<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <div style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-bottom:2px solid var(--line)"><span style="width:84px;flex:none;font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Interlocuteur</span><span style="font:400 15px -apple-system,sans-serif">{{ sd.who }}</span></div>
 <a href="{{ sd.telH }}" style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-bottom:2px solid var(--line)"><span style="width:84px;flex:none;font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Téléphone</span><span style="font:400 15px -apple-system,sans-serif">{{ sd.tel }}</span></a>
 <a href="{{ sd.mailH }}" style="display:flex;align-items:center;gap:12px;padding:13px 14px"><span style="width:84px;flex:none;font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Mail</span><span style="font:400 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sd.mail }}</span></a>
 </div>
 <sc-if value="{{ sd.hasItems }}" hint-placeholder-val="{{ true }}">
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:22px 4px 8px">Fournitures sur vos sites</div>
-<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ sd.items }}" as="t" hint-placeholder-count="2">
 <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:2px solid var(--line)">
 <div style="flex:1;min-width:0"><div style="font:500 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.name }}</div><div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-top:4px">{{ t.site }} · {{ t.q }}</div></div>
-<span style="flex:none;padding:4px 8px;border-radius:4px;background:{{ t.stBg }};color:{{ t.stFg }};font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ t.st }}</span>
-<div onClick="{{ t.order }}" title="Ajouter un lot au panier" style="cursor:pointer;flex:none;width:34px;height:34px;border-radius:8px;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div>
+<span style="flex:none;padding:4px 8px;border-radius:999px;background:{{ t.stBg }};color:{{ t.stFg }};font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ t.st }}</span>
+<div onClick="{{ t.order }}" title="Ajouter un lot au panier" style="cursor:pointer;flex:none;width:34px;height:34px;border-radius:12px;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div>
 </div>
 </sc-for>
 </div>
 </sc-if>
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:22px 4px 8px">Factures</div>
 <sc-if value="{{ sd.hasInv }}" hint-placeholder-val="{{ true }}">
-<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);--t3:#D6E8E8;--t3x:#1E5A5C;color:var(--ink);border-radius:14px;overflow:hidden">
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ sd.groups }}" as="g" hint-placeholder-count="1">
 <div style="padding:12px 14px 4px;font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">{{ g.proj }}</div>
 <sc-for list="{{ g.inv }}" as="i" hint-placeholder-count="1">
 <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:2px solid var(--line)">
 <div style="flex:1;min-width:0"><div style="font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ i.num }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">Échéance {{ i.date }}</div></div>
 <div style="flex:none;font:400 15px -apple-system,sans-serif">{{ i.amt }}</div>
-<div onClick="{{ i.cyc }}" style="cursor:pointer;flex:none;min-width:70px;text-align:center;padding:5px 8px;border-radius:4px;background:{{ i.stBg }};color:{{ i.stFg }};font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ i.stLbl }}</div>
+<div onClick="{{ i.cyc }}" style="cursor:pointer;flex:none;min-width:70px;text-align:center;padding:5px 8px;border-radius:999px;background:{{ i.stBg }};color:{{ i.stFg }};font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ i.stLbl }}</div>
 </div>
 </sc-for>
 </sc-for>
 <div style="display:flex;justify-content:space-between;gap:10px;padding:12px 14px;background:var(--tile)"><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--okTx)">Payé {{ sd.paid }}</span><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">À payer {{ sd.open }}</span></div>
 </div>
 </sc-if>
-<sc-if value="{{ sd.noInv }}" hint-placeholder-val="{{ false }}"><div style="padding:22px 16px;text-align:center;border-radius:12px;background:var(--chip);font:400 14px -apple-system,sans-serif;color:var(--ink2)">Aucune facture avec ce fournisseur</div></sc-if>
+<sc-if value="{{ sd.noInv }}" hint-placeholder-val="{{ false }}"><div style="padding:22px 16px;text-align:center;border-radius:20px;background:var(--chip);font:400 14px -apple-system,sans-serif;color:var(--ink2);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">Aucune facture avec ce fournisseur</div></sc-if>
 </sc-if>
 </sc-if>
 </div>
 </div>
 
-<div style="position:absolute;left:0;right:0;bottom:0;padding:18px 14px max(26px, env(safe-area-inset-bottom, 0px));background:linear-gradient(rgba(0,0,0,0),var(--bg) 28%);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px">
-<div onClick="{{ tb.p.pick }}" style="cursor:pointer;position:relative;height:62px;border-radius:12px;background:{{ tb.p.bg }};color:{{ tb.p.fg }};border:1px solid var(--tileBd);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+<div style="position:absolute;z-index:40;left:12px;right:12px;bottom:max(14px, calc(env(safe-area-inset-bottom, 0px) - 6px));padding:6px;border-radius:32px;background:var(--card);backdrop-filter:blur(30px) saturate(1.9);-webkit-backdrop-filter:blur(30px) saturate(1.9);border:1px solid var(--cardBd);box-shadow:0 14px 36px rgba(10,20,40,.22),inset 0 1px 0 rgba(255,255,255,.25);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px">
+<div onClick="{{ tb.p.pick }}" style="cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ tb.p.bg }};color:{{ tb.p.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"></rect></svg>
 <span style="font:500 8.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Projets</span></div>
-<div onClick="{{ tb.s.pick }}" style="cursor:pointer;position:relative;height:62px;border-radius:12px;background:{{ tb.s.bg }};color:{{ tb.s.fg }};border:1px solid var(--tileBd);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+<div onClick="{{ tb.s.pick }}" style="cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ tb.s.bg }};color:{{ tb.s.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M3.5 7.5L12 3.5l8.5 4v9L12 20.5l-8.5-4z"></path><path d="M3.5 7.5L12 11.5l8.5-4M12 11.5v9"></path></svg>
 <span style="font:500 8.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Stocks</span></div>
-<div onClick="{{ tb.m.pick }}" style="cursor:pointer;position:relative;height:62px;border-radius:12px;background:{{ tb.m.bg }};color:{{ tb.m.fg }};border:1px solid var(--tileBd);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+<div onClick="{{ tb.m.pick }}" style="cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ tb.m.bg }};color:{{ tb.m.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="M4.5 7.5l7.5 5.5 7.5-5.5"></path></svg>
 <span style="font:500 8.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Mails</span>
-<sc-if value="{{ tb.m.badge }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:7px;right:9px;min-width:16px;height:16px;border-radius:4px;background:#FF5A5A;color:#fff;font:500 10px/16px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;text-align:center;padding:0 4px">{{ tb.m.count }}</span></sc-if></div>
-<div onClick="{{ tb.l.pick }}" style="cursor:pointer;position:relative;height:62px;border-radius:12px;background:{{ tb.l.bg }};color:{{ tb.l.fg }};border:1px solid var(--tileBd);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+<sc-if value="{{ tb.m.badge }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:7px;right:9px;min-width:16px;height:16px;border-radius:999px;background:#FF5A5A;color:#fff;font:500 10px/16px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;text-align:center;padding:0 4px">{{ tb.m.count }}</span></sc-if></div>
+<div onClick="{{ tb.l.pick }}" style="cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ tb.l.bg }};color:{{ tb.l.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"></rect><path d="M3.5 10h17M8.5 3v4M15.5 3v4"></path></svg>
 <span style="font:500 8.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Planning</span></div>
-<div onClick="{{ tb.c.pick }}" style="cursor:pointer;position:relative;height:62px;border-radius:12px;background:{{ tb.c.bg }};color:{{ tb.c.fg }};border:1px solid var(--tileBd);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+<div onClick="{{ tb.c.pick }}" style="cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ tb.c.bg }};color:{{ tb.c.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M2.5 6.5h11v10h-11zM13.5 10h4l3 3.2v3.3h-7"></path><circle cx="6.5" cy="17.5" r="1.8"></circle><circle cx="17" cy="17.5" r="1.8"></circle></svg>
 <span style="font:500 8.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Fourn.</span></div>
 </div>
@@ -592,11 +592,11 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:300 50px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.045em;margin:14px 0 24px">Sites</div>
 <div style="flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:8px">
 <sc-for list="{{ sites }}" as="s" hint-placeholder-count="3">
-<div onClick="{{ s.pick }}" style="cursor:pointer;padding:16px;border-radius:12px;background:{{ s.bg }};color:{{ s.fg }};border:1px solid var(--tileBd)">
+<div onClick="{{ s.pick }}" style="cursor:pointer;padding:16px;border-radius:20px;background:{{ s.bg }};color:{{ s.fg }};border:1px solid var(--tileBd)">
 <div style="display:flex;align-items:center;gap:10px">
 <span style="width:10px;height:10px;border-radius:50%;background:{{ s.dot }};flex:none"></span>
 <span style="flex:1;min-width:0;font:500 12.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.label }}</span>
-<sc-if value="{{ s.on }}" hint-placeholder-val="{{ false }}"><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:4px;background:{{ s.tagBg }}">Actif</span></sc-if>
+<sc-if value="{{ s.on }}" hint-placeholder-val="{{ false }}"><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:999px;background:{{ s.tagBg }}">Actif</span></sc-if>
 </div>
 <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:16px">
 <div style="font:400 14px/1.35 -apple-system,sans-serif;opacity:.65">{{ s.addr }}<br>{{ s.meta }}</div>
@@ -604,7 +604,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid {{ s.sep }}">
 <span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;opacity:.6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.cfgMeta }}</span>
-<div onClick="{{ s.config }}" style="flex:none;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:8px;border:1px solid {{ s.sep }};font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>Configurer</div>
+<div onClick="{{ s.config }}" style="flex:none;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:12px;border:1px solid {{ s.sep }};font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>Configurer</div>
 </div>
 </div>
 </sc-for>
@@ -615,9 +615,9 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
 <div style="position:absolute;inset:0;z-index:50;display:flex;flex-direction:column;justify-content:flex-end">
 <div onClick="{{ closeSheet }}" style="position:absolute;inset:0;background:var(--scrim)"></div>
-<div style="position:relative;margin:0 8px calc(8px + env(safe-area-inset-bottom, 0px));max-height:calc(100% - env(safe-area-inset-top, 0px) - 24px);display:flex;flex-direction:column;border-radius:18px;background:var(--sheet);border:1px solid var(--cardBd);box-shadow:0 -10px 40px rgba(10,20,40,.3)">
+<div style="position:relative;margin:0 8px calc(8px + env(safe-area-inset-bottom, 0px));max-height:calc(100% - env(safe-area-inset-top, 0px) - 24px);display:flex;flex-direction:column;border-radius:32px;background:var(--sheet);border:1px solid var(--cardBd);box-shadow:0 -10px 40px rgba(10,20,40,.3);backdrop-filter:blur(40px) saturate(1.9);-webkit-backdrop-filter:blur(40px) saturate(1.9)">
 <div style="flex:none;padding:10px 18px 0">
-<div style="width:38px;height:5px;border-radius:9px;background:var(--ink3);margin:0 auto 12px"></div>
+<div style="width:38px;height:5px;border-radius:12px;background:var(--ink3);margin:0 auto 12px"></div>
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
 <div onClick="{{ closeSheet }}" style="cursor:pointer;font:500 15px -apple-system,sans-serif;color:var(--acc)">Annuler</div>
 <div style="font:700 16px -apple-system,sans-serif">{{ sheetTitle }}</div>
@@ -626,157 +626,157 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="flex:1;min-height:0;overflow-y:auto;padding:0 18px 26px">
 <sc-if value="{{ isProjSheet }}" hint-placeholder-val="{{ false }}">
-<div style="height:104px;border-radius:10px;overflow:hidden;margin-bottom:4px;background:var(--field)"><image-slot id="{{ newImg }}" src="{{ newSrc }}" placeholder="Photo du projet" shape="rect" style="width:100%;height:100%"></image-slot></div>
+<div style="height:104px;border-radius:16px;overflow:hidden;margin-bottom:4px;background:var(--field)"><image-slot id="{{ newImg }}" src="{{ newSrc }}" placeholder="Photo du projet" shape="rect" style="width:100%;height:100%"></image-slot></div>
 </sc-if>
 <sc-if value="{{ isSiteSheet }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;align-items:center;gap:10px;padding:2px 4px 4px"><span style="width:10px;height:10px;border-radius:50%;background:{{ sc.dot }}"></span><span style="font:500 13px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ sc.label }}</span></div>
 <div style="display:flex;align-items:center;justify-content:space-between;margin:16px 4px 8px"><div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Adresse</div><a href="{{ sc.maps }}" target="_blank" style="font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)">Ouvrir dans Plans ↗</a></div>
-<div style="border-radius:10px;background:var(--field);overflow:hidden">
+<div style="border-radius:16px;background:var(--field);overflow:hidden">
 <div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:86px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Adresse</div><input value="{{ sc.addr }}" onChange="{{ sc.onAddr }}" placeholder="Ex. 14 rue Garibaldi" style="flex:1;min-width:0;border:0;background:transparent;padding:14px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 <div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:86px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Ville</div><input value="{{ sc.city }}" onChange="{{ sc.onCity }}" placeholder="Ex. 69006 Lyon" style="flex:1;min-width:0;border:0;background:transparent;padding:14px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 <div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:86px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Accès</div><input value="{{ sc.access }}" onChange="{{ sc.onAccess }}" placeholder="Code, badge, clé…" style="flex:1;min-width:0;border:0;background:transparent;padding:14px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 <div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:86px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Horaires</div><input value="{{ sc.hours }}" onChange="{{ sc.onHours }}" placeholder="Ex. 7h30 – 17h" style="flex:1;min-width:0;border:0;background:transparent;padding:14px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 </div>
 <div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Lieux du site</div><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">{{ sc.zoneN }}</div></div>
-<div style="padding:12px;border-radius:12px;background:var(--field)">
+<div style="padding:12px;border-radius:20px;background:var(--field)">
 <div style="display:flex;flex-wrap:wrap;gap:6px">
-<sc-for list="{{ sc.zones }}" as="z" hint-placeholder-count="5"><div style="display:flex;align-items:center;gap:8px;padding:7px 8px 7px 11px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd);font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ z.label }}<div onClick="{{ z.del }}" style="cursor:pointer;width:18px;height:18px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></div></sc-for>
+<sc-for list="{{ sc.zones }}" as="z" hint-placeholder-count="5"><div style="display:flex;align-items:center;gap:8px;padding:7px 8px 7px 11px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ z.label }}<div onClick="{{ z.del }}" style="cursor:pointer;width:18px;height:18px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></div></sc-for>
 </div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:12px -12px 0;padding:0 12px">
-<sc-for list="{{ sc.sugg }}" as="z" hint-placeholder-count="6"><div onClick="{{ z.add }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:8px;border:1px dashed var(--ink3);color:var(--ink2);font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">+ {{ z.label }}</div></sc-for>
+<sc-for list="{{ sc.sugg }}" as="z" hint-placeholder-count="6"><div onClick="{{ z.add }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:12px;border:1px dashed var(--ink3);color:var(--ink2);font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">+ {{ z.label }}</div></sc-for>
 </div>
 <div style="display:flex;gap:8px;margin-top:10px">
-<input value="{{ sc.zoneText }}" onChange="{{ sc.onZone }}" placeholder="Autre lieu (ex. Local poubelles)…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<div onClick="{{ sc.addZone }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:8px;display:flex;align-items:center;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
+<input value="{{ sc.zoneText }}" onChange="{{ sc.onZone }}" placeholder="Autre lieu (ex. Local poubelles)…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div onClick="{{ sc.addZone }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
 </div>
 </div>
 <div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Contacts rapides</div><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">{{ sc.ctN }}</div></div>
-<div style="border-radius:12px;background:var(--field);padding:2px 12px 12px">
+<div style="border-radius:20px;background:var(--field);padding:2px 12px 12px">
 <sc-for list="{{ sc.contacts }}" as="c" hint-placeholder-count="2">
 <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:2px solid var(--line)">
-<div style="width:36px;height:36px;border-radius:9px;flex:none;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:600 12.5px -apple-system,sans-serif">{{ c.ini }}</div>
+<div style="width:36px;height:36px;border-radius:12px;flex:none;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:600 12.5px -apple-system,sans-serif">{{ c.ini }}</div>
 <div style="flex:1;min-width:0"><div style="font:500 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.role }} · {{ c.tel }}</div></div>
-<a href="{{ c.telH }}" style="flex:none;width:34px;height:34px;border-radius:9px;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 3.5h3l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2.1 4.2 1.6v3a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"></path></svg></a>
-<a href="{{ c.smsH }}" style="flex:none;width:34px;height:34px;border-radius:9px;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11H10l-6 4z"></path></svg></a>
+<a href="{{ c.telH }}" style="flex:none;width:34px;height:34px;border-radius:12px;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 3.5h3l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2.1 4.2 1.6v3a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"></path></svg></a>
+<a href="{{ c.smsH }}" style="flex:none;width:34px;height:34px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11H10l-6 4z"></path></svg></a>
 <div onClick="{{ c.del }}" style="cursor:pointer;flex:none;color:var(--ink3);padding:4px"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
 </div>
 </sc-for>
 <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px;margin-top:12px">
-<input value="{{ sc.cn }}" onChange="{{ sc.onCn }}" placeholder="Nom" style="min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<input value="{{ sc.cr }}" onChange="{{ sc.onCr }}" placeholder="Rôle (gardien, client…)" style="min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ sc.cn }}" onChange="{{ sc.onCn }}" placeholder="Nom" style="min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ sc.cr }}" onChange="{{ sc.onCr }}" placeholder="Rôle (gardien, client…)" style="min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
 </div>
 <div style="display:flex;gap:6px;margin-top:6px">
-<input value="{{ sc.ct }}" onChange="{{ sc.onCt }}" placeholder="Téléphone" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<div onClick="{{ sc.addCt }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:8px;display:flex;align-items:center;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
+<input value="{{ sc.ct }}" onChange="{{ sc.onCt }}" placeholder="Téléphone" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div onClick="{{ sc.addCt }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
 </div>
 </div>
 </sc-if>
 <sc-if value="{{ isStkCfg }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;justify-content:space-between;align-items:baseline;margin:4px 4px 8px"><span style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Articles · {{ kc.site }}</span><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">{{ kc.n }}</span></div>
-<div style="border-radius:12px;background:var(--field);overflow:hidden">
+<div style="border-radius:20px;background:var(--field);overflow:hidden">
 <sc-for list="{{ kc.items }}" as="t" hint-placeholder-count="3">
 <div style="padding:11px 14px 12px;border-bottom:2px solid var(--line)">
 <div style="display:flex;align-items:center;gap:10px">
 <div style="flex:1;min-width:0"><div style="font:500 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.name }}</div><div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-top:3px">{{ t.disc }} · {{ t.unit }}</div></div>
-<div onClick="{{ t.del }}" title="Supprimer" style="cursor:pointer;flex:none;width:28px;height:28px;border-radius:7px;background:var(--warnBg);color:var(--warnTx);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
+<div onClick="{{ t.del }}" title="Supprimer" style="cursor:pointer;flex:none;width:28px;height:28px;border-radius:12px;background:var(--warnBg);color:var(--warnTx);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
 </div>
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:9px">
-<div style="display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Seuil</span><input value="{{ t.min }}" onChange="{{ t.onMin }}" inputmode="numeric" style="flex:1;min-width:0;border:0;background:transparent;padding:9px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
-<div style="display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Lot</span><input value="{{ t.lot }}" onChange="{{ t.onLot }}" inputmode="numeric" style="flex:1;min-width:0;border:0;background:transparent;padding:9px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Seuil</span><input value="{{ t.min }}" onChange="{{ t.onMin }}" inputmode="numeric" style="flex:1;min-width:0;border:0;background:transparent;padding:9px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Lot</span><input value="{{ t.lot }}" onChange="{{ t.onLot }}" inputmode="numeric" style="flex:1;min-width:0;border:0;background:transparent;padding:9px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 </div>
 </div>
 </sc-for>
 </div>
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:20px 4px 8px">Ajouter un article</div>
-<div style="padding:12px;border-radius:12px;background:var(--field)">
-<input value="{{ kc.na }}" onChange="{{ kc.onNa }}" placeholder="Nom de l’article (ex. Joint carrelage)" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div style="padding:12px;border-radius:20px;background:var(--field)">
+<input value="{{ kc.na }}" onChange="{{ kc.onNa }}" placeholder="Nom de l’article (ex. Joint carrelage)" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:6px">
-<input value="{{ kc.nu }}" onChange="{{ kc.onNu }}" placeholder="Unité (sacs, m²…)" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<input value="{{ kc.nq }}" onChange="{{ kc.onNq }}" placeholder="Quantité" inputmode="numeric" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<input value="{{ kc.nm }}" onChange="{{ kc.onNm }}" placeholder="Seuil d’alerte" inputmode="numeric" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<input value="{{ kc.nl }}" onChange="{{ kc.onNl }}" placeholder="Lot de commande" inputmode="numeric" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ kc.nu }}" onChange="{{ kc.onNu }}" placeholder="Unité (sacs, m²…)" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ kc.nq }}" onChange="{{ kc.onNq }}" placeholder="Quantité" inputmode="numeric" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ kc.nm }}" onChange="{{ kc.onNm }}" placeholder="Seuil d’alerte" inputmode="numeric" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ kc.nl }}" onChange="{{ kc.onNl }}" placeholder="Lot de commande" inputmode="numeric" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
 </div>
 <div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:12px 2px 7px">Discipline</div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -12px;padding:0 12px">
-<sc-for list="{{ kc.discs }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:7px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+<sc-for list="{{ kc.discs }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:12px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ o.label }}</div></sc-for>
 </div>
-<div onClick="{{ kc.add }}" style="cursor:pointer;margin-top:14px;padding:13px;border-radius:8px;background:var(--solid);color:var(--solidTx);text-align:center;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter l’article</div>
+<div onClick="{{ kc.add }}" style="cursor:pointer;margin-top:14px;padding:13px;border-radius:12px;background:var(--solid);color:var(--solidTx);text-align:center;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter l’article</div>
 </div>
 </sc-if>
 <sc-if value="{{ isSupCfg }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;justify-content:space-between;align-items:baseline;margin:4px 4px 8px"><span style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Annuaire</span><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">{{ uc.n }}</span></div>
-<div style="border-radius:12px;background:var(--field);overflow:hidden">
+<div style="border-radius:20px;background:var(--field);overflow:hidden">
 <sc-for list="{{ uc.items }}" as="t" hint-placeholder-count="4">
 <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:2px solid var(--line)">
-<div style="width:36px;height:36px;border-radius:9px;flex:none;background:{{ t.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 12.5px -apple-system,sans-serif">{{ t.ini }}</div>
+<div style="width:36px;height:36px;border-radius:12px;flex:none;background:{{ t.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 12.5px -apple-system,sans-serif">{{ t.ini }}</div>
 <div style="flex:1;min-width:0"><div style="font:500 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.name }}</div><div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.meta }}</div></div>
-<div onClick="{{ t.del }}" title="Retirer" style="cursor:pointer;flex:none;width:28px;height:28px;border-radius:7px;background:var(--warnBg);color:var(--warnTx);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
+<div onClick="{{ t.del }}" title="Retirer" style="cursor:pointer;flex:none;width:28px;height:28px;border-radius:12px;background:var(--warnBg);color:var(--warnTx);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
 </div>
 </sc-for>
 </div>
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:20px 4px 8px">Ajouter un fournisseur</div>
-<div style="padding:12px;border-radius:12px;background:var(--field)">
-<input value="{{ uc.na }}" onChange="{{ uc.onNa }}" placeholder="Nom de l’entreprise" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div style="padding:12px;border-radius:20px;background:var(--field)">
+<input value="{{ uc.na }}" onChange="{{ uc.onNa }}" placeholder="Nom de l’entreprise" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:6px">
-<input value="{{ uc.who }}" onChange="{{ uc.onWho }}" placeholder="Interlocuteur" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<input value="{{ uc.tel }}" onChange="{{ uc.onTel }}" placeholder="Téléphone" inputmode="tel" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ uc.who }}" onChange="{{ uc.onWho }}" placeholder="Interlocuteur" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ uc.tel }}" onChange="{{ uc.onTel }}" placeholder="Téléphone" inputmode="tel" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
 </div>
 <div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:6px;margin-top:6px">
-<input value="{{ uc.mail }}" onChange="{{ uc.onMail }}" placeholder="Mail" inputmode="email" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<input value="{{ uc.city }}" onChange="{{ uc.onCity }}" placeholder="Ville" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ uc.mail }}" onChange="{{ uc.onMail }}" placeholder="Mail" inputmode="email" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<input value="{{ uc.city }}" onChange="{{ uc.onCity }}" placeholder="Ville" style="min-width:0;width:100%;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
 </div>
 <div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:12px 2px 7px">Discipline</div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -12px;padding:0 12px">
-<sc-for list="{{ uc.discs }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:7px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+<sc-for list="{{ uc.discs }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:12px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ o.label }}</div></sc-for>
 </div>
 <div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:12px 2px 7px">Délai de livraison</div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -12px;padding:0 12px">
-<sc-for list="{{ uc.delays }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:7px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+<sc-for list="{{ uc.delays }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:12px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ o.label }}</div></sc-for>
 </div>
 <div style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:12px 2px 7px">Niveau de prix</div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -12px;padding:0 12px">
-<sc-for list="{{ uc.prices }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:7px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+<sc-for list="{{ uc.prices }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:12px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.05em;text-transform:uppercase">{{ o.label }}</div></sc-for>
 </div>
-<div onClick="{{ uc.add }}" style="cursor:pointer;margin-top:14px;padding:13px;border-radius:8px;background:var(--solid);color:var(--solidTx);text-align:center;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter à l’annuaire</div>
+<div onClick="{{ uc.add }}" style="cursor:pointer;margin-top:14px;padding:13px;border-radius:12px;background:var(--solid);color:var(--solidTx);text-align:center;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter à l’annuaire</div>
 </div>
 </sc-if>
 <sc-if value="{{ isAccSheet }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;background:var(--field)">
+<div style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:20px;background:var(--field)">
 <div style="width:52px;height:52px;border-radius:50%;flex:none;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center;font:500 18px -apple-system,sans-serif">TM</div>
 <div style="flex:1;min-width:0"><div style="font:500 17px -apple-system,sans-serif">Thomas Martin</div><div style="font:400 13px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">Martin Rénovation · Lyon</div><div style="font:400 13px -apple-system,sans-serif;color:var(--ink2)">thomas@martin-renovation.fr</div></div>
 </div>
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:20px 4px 8px">Apparence</div>
-<div style="display:flex;gap:4px;padding:4px;border-radius:10px;background:var(--track)">
-<sc-for list="{{ themeOpts }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;padding:10px 0;border-radius:7px;background:{{ o.bg }};color:{{ o.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+<div style="display:flex;gap:4px;padding:4px;border-radius:16px;background:var(--track)">
+<sc-for list="{{ themeOpts }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;padding:10px 0;border-radius:12px;background:{{ o.bg }};color:{{ o.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div></sc-for>
 </div>
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:20px 4px 8px">Planning</div>
-<div onClick="{{ toggleSun }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:12px;background:var(--field)">
+<div onClick="{{ toggleSun }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:20px;background:var(--field)">
 <div><div style="font:400 15.5px -apple-system,sans-serif">Travailler le dimanche</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ sunSub }}</div></div>
 <div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ sunTrack }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ sunKnob }};transition:transform .2s"></div></div>
 </div>
 <div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Disciplines</div><div style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">{{ discN }}</div></div>
-<div style="padding:12px;border-radius:12px;background:var(--field)">
+<div style="padding:12px;border-radius:20px;background:var(--field)">
 <div style="display:flex;flex-wrap:wrap;gap:6px">
-<sc-for list="{{ discs }}" as="d" hint-placeholder-count="4"><div style="display:flex;align-items:center;gap:8px;padding:7px 8px 7px 11px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd);font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ d.label }}<div onClick="{{ d.del }}" style="cursor:pointer;width:18px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></div></sc-for>
+<sc-for list="{{ discs }}" as="d" hint-placeholder-count="4"><div style="display:flex;align-items:center;gap:8px;padding:7px 8px 7px 11px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ d.label }}<div onClick="{{ d.del }}" style="cursor:pointer;width:18px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></div></sc-for>
 </div>
 <div style="display:flex;gap:8px;margin-top:12px">
-<input value="{{ discText }}" onChange="{{ onDisc }}" placeholder="Ajouter une discipline…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:8px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<div onClick="{{ addDisc }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:8px;display:flex;align-items:center;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
+<input value="{{ discText }}" onChange="{{ onDisc }}" placeholder="Ajouter une discipline…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div onClick="{{ addDisc }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
 </div>
 </div>
 <div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Proposées comme type lors de la création d’un projet.</div>
-<div style="margin-top:20px;padding:14px;border-radius:12px;background:var(--field);text-align:center;color:var(--warnTx);font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Se déconnecter</div>
+<div style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Se déconnecter</div>
 </sc-if>
 <sc-if value="{{ isSupSheet }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;gap:4px;padding:4px;border-radius:10px;background:var(--track);margin-bottom:6px">
-<sc-for list="{{ supModes }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:8px 0;border-radius:10px;background:{{ o.bg }};color:{{ o.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+<div style="display:flex;gap:4px;padding:4px;border-radius:16px;background:var(--track);margin-bottom:6px">
+<sc-for list="{{ supModes }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:8px 0;border-radius:16px;background:{{ o.bg }};color:{{ o.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div></sc-for>
 </div>
 <sc-if value="{{ supDir }}" hint-placeholder-val="{{ true }}">
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:14px 4px 8px">Depuis l’annuaire</div>
-<div style="border-radius:10px;background:var(--field);padding:0 14px">
+<div style="border-radius:16px;background:var(--field);padding:0 14px">
 <sc-for list="{{ dirList }}" as="d" hint-placeholder-count="4">
 <div onClick="{{ d.pick }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:2px solid var(--line)">
-<div style="width:38px;height:38px;border-radius:12px;flex:none;background:{{ d.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ d.ini }}</div>
+<div style="width:38px;height:38px;border-radius:20px;flex:none;background:{{ d.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ d.ini }}</div>
 <div style="flex:1;min-width:0"><div style="font:600 15px -apple-system,sans-serif">{{ d.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:1px">{{ d.sub }}</div></div>
 <div style="width:24px;height:24px;border-radius:50%;flex:none;border:1.6px solid {{ d.ckBd }};background:{{ d.ckBg }};display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--accOn)"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg></div>
 </div>
@@ -787,7 +787,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ isInvSheet }}" hint-placeholder-val="{{ false }}">
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:4px 4px 8px">Fournisseur</div>
 <div style="display:flex;gap:6px;flex-wrap:wrap">
-<sc-for list="{{ invSups }}" as="s" hint-placeholder-count="3"><div onClick="{{ s.pick }}" style="cursor:pointer;padding:8px 13px;border-radius:10px;background:{{ s.bg }};color:{{ s.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ s.name }}</div></sc-for>
+<sc-for list="{{ invSups }}" as="s" hint-placeholder-count="3"><div onClick="{{ s.pick }}" style="cursor:pointer;padding:8px 13px;border-radius:16px;background:{{ s.bg }};color:{{ s.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ s.name }}</div></sc-for>
 </div>
 </sc-if>
 <sc-for list="{{ groups }}" as="g" hint-placeholder-count="1">
@@ -795,10 +795,10 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">{{ g.t }}</div>
 <div style="display:flex;align-items:center;gap:8px">
 <sc-if value="{{ g.micMsg }}" hint-placeholder-val="{{ false }}"><span style="font:500 10px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:{{ g.micCol }}">{{ g.micLbl }}</span></sc-if>
-<div onClick="{{ g.mic }}" title="Dicter" style="cursor:pointer;flex:none;width:34px;height:34px;border-radius:9px;background:{{ g.micBg }};color:{{ g.micFg }};border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"></path></svg></div>
+<div onClick="{{ g.mic }}" title="Dicter" style="cursor:pointer;flex:none;width:34px;height:34px;border-radius:12px;background:{{ g.micBg }};color:{{ g.micFg }};border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"></path></svg></div>
 </div>
 </div>
-<div style="border-radius:10px;background:var(--field);overflow:hidden">
+<div style="border-radius:16px;background:var(--field);overflow:hidden">
 <sc-for list="{{ g.fields }}" as="x" hint-placeholder-count="3">
 <sc-if value="{{ x.isIn }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)">
@@ -810,7 +810,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="padding:12px 16px 14px;border-bottom:2px solid var(--line)">
 <div style="font:500 14.5px -apple-system,sans-serif;color:var(--ink2);margin-bottom:10px">{{ x.label }}</div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -16px;padding:0 16px;scroll-snap-type:x proximity">
-<sc-for list="{{ x.opts }}" as="o" hint-placeholder-count="6"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;scroll-snap-align:start;cursor:pointer;padding:8px 11px;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+<sc-for list="{{ x.opts }}" as="o" hint-placeholder-count="6"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;scroll-snap-align:start;cursor:pointer;padding:8px 11px;border-radius:12px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div></sc-for>
 </div>
 </div>
 </sc-if>
@@ -822,65 +822,65 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Étapes · coche ou jauge</div>
 <div style="display:flex;gap:12px;font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--acc)"><span onClick="{{ allC }}" style="cursor:pointer">Tout en coches</span><span onClick="{{ allG }}" style="cursor:pointer">Tout en jauges</span></div>
 </div>
-<div style="border-radius:10px;background:var(--field);padding:2px 14px 10px">
+<div style="border-radius:16px;background:var(--field);padding:2px 14px 10px">
 <sc-for list="{{ fSteps }}" as="s" hint-placeholder-count="3">
 <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:2px solid var(--line)">
 <div style="flex:1;min-width:0;font:400 15px -apple-system,sans-serif">{{ s.l }}</div>
-<div style="display:flex;padding:3px;border-radius:10px;background:var(--track);flex:none">
-<div onClick="{{ s.pickC }}" style="cursor:pointer;display:flex;align-items:center;gap:4px;padding:5px 9px;border-radius:10px;background:{{ s.cBg }};color:{{ s.cFg }};font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg>Coche</div>
-<div onClick="{{ s.pickG }}" style="cursor:pointer;display:flex;align-items:center;gap:4px;padding:5px 9px;border-radius:10px;background:{{ s.gBg }};color:{{ s.gFg }};font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="5.5" width="13" height="5" rx="2.5"></rect><rect x="1.5" y="5.5" width="7" height="5" rx="2.5" fill="currentColor"></rect></svg>Jauge</div>
+<div style="display:flex;padding:3px;border-radius:16px;background:var(--track);flex:none">
+<div onClick="{{ s.pickC }}" style="cursor:pointer;display:flex;align-items:center;gap:4px;padding:5px 9px;border-radius:16px;background:{{ s.cBg }};color:{{ s.cFg }};font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg>Coche</div>
+<div onClick="{{ s.pickG }}" style="cursor:pointer;display:flex;align-items:center;gap:4px;padding:5px 9px;border-radius:16px;background:{{ s.gBg }};color:{{ s.gFg }};font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="5.5" width="13" height="5" rx="2.5"></rect><rect x="1.5" y="5.5" width="7" height="5" rx="2.5" fill="currentColor"></rect></svg>Jauge</div>
 </div>
 <div onClick="{{ s.del }}" style="cursor:pointer;flex:none;color:var(--ink3);padding:4px"><svg width="11" height="11" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
 </div>
 </sc-for>
 <div style="display:flex;gap:8px;margin-top:10px">
-<input value="{{ fStepText }}" onChange="{{ onFStep }}" placeholder="Ajouter une étape…" style="flex:1;min-width:0;border:1px solid var(--line);background:var(--tile);padding:10px 14px;border-radius:10px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<div onClick="{{ addFStep }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 16px;border-radius:10px;display:flex;align-items:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
+<input value="{{ fStepText }}" onChange="{{ onFStep }}" placeholder="Ajouter une étape…" style="flex:1;min-width:0;border:1px solid var(--line);background:var(--tile);padding:10px 14px;border-radius:16px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
+<div onClick="{{ addFStep }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 16px;border-radius:16px;display:flex;align-items:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
 </div>
 </div>
 <div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Coche : fait / pas fait. Jauge : avancement en %, réglable au doigt.</div>
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:20px 4px 8px">Fournisseurs du projet</div>
 <div style="display:flex;gap:6px;flex-wrap:wrap">
-<sc-for list="{{ fSups }}" as="s" hint-placeholder-count="6"><div onClick="{{ s.pick }}" style="cursor:pointer;padding:8px 12px;border-radius:10px;background:{{ s.bg }};color:{{ s.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ s.mark }} {{ s.name }}</div></sc-for>
-<sc-for list="{{ fCustom }}" as="s" hint-placeholder-count="0"><div onClick="{{ s.del }}" style="cursor:pointer;padding:8px 12px;border-radius:10px;background:var(--acc);color:var(--accOn);font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">✓ {{ s.name }} · à renseigner</div></sc-for>
+<sc-for list="{{ fSups }}" as="s" hint-placeholder-count="6"><div onClick="{{ s.pick }}" style="cursor:pointer;padding:8px 12px;border-radius:16px;background:{{ s.bg }};color:{{ s.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ s.mark }} {{ s.name }}</div></sc-for>
+<sc-for list="{{ fCustom }}" as="s" hint-placeholder-count="0"><div onClick="{{ s.del }}" style="cursor:pointer;padding:8px 12px;border-radius:16px;background:var(--acc);color:var(--accOn);font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">✓ {{ s.name }} · à renseigner</div></sc-for>
 </div>
 <div style="display:flex;gap:8px;margin-top:10px">
-<input value="{{ fSupText }}" onChange="{{ onFSup }}" placeholder="Autre fournisseur…" style="flex:1;min-width:0;border:1px solid var(--line);background:var(--field);padding:10px 14px;border-radius:10px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
-<div onClick="{{ addFSup }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 16px;border-radius:10px;display:flex;align-items:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
+<input value="{{ fSupText }}" onChange="{{ onFSup }}" placeholder="Autre fournisseur…" style="flex:1;min-width:0;border:1px solid var(--line);background:var(--field);padding:10px 14px;border-radius:16px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div onClick="{{ addFSup }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 16px;border-radius:16px;display:flex;align-items:center;font:500 12px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">Ajouter</div>
 </div>
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:20px 4px 8px">Planning</div>
-<div style="padding:12px;border-radius:12px;background:var(--field)">
+<div style="padding:12px;border-radius:20px;background:var(--field)">
 <div onClick="{{ pp.toggle }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px">
 <div><div style="font:400 15.5px -apple-system,sans-serif">Ajouter au planning</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ pp.sub }}</div></div>
 <div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ pp.track }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ pp.knob }};transition:transform .2s"></div></div>
 </div>
 <sc-if value="{{ pp.on }}" hint-placeholder-val="{{ true }}">
 <div style="display:grid;grid-template-columns:repeat({{ dayCols }},minmax(0,1fr));gap:5px;margin-top:12px">
-<sc-for list="{{ pp.days }}" as="d" hint-placeholder-count="6"><div onClick="{{ d.pick }}" style="cursor:pointer;text-align:center;padding:8px 0;border-radius:8px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em;text-transform:uppercase">{{ d.label }}</div></sc-for>
+<sc-for list="{{ pp.days }}" as="d" hint-placeholder-count="6"><div onClick="{{ d.pick }}" style="cursor:pointer;text-align:center;padding:8px 0;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:500 10.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.04em;text-transform:uppercase">{{ d.label }}</div></sc-for>
 </div>
 <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
-<div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Heure</span><input value="{{ pp.time }}" onChange="{{ pp.onTime }}" placeholder="08:00" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
-<div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:8px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Type</span><input value="{{ pp.kind }}" onChange="{{ pp.onKind }}" placeholder="Démarrage" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Heure</span><input value="{{ pp.time }}" onChange="{{ pp.onTime }}" placeholder="08:00" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:500 9.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)">Type</span><input value="{{ pp.kind }}" onChange="{{ pp.onKind }}" placeholder="Démarrage" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 </div>
 </sc-if>
 </div>
 </sc-if>
 <sc-if value="{{ isInvSheet }}" hint-placeholder-val="{{ false }}">
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:16px 4px 8px">Statut</div>
-<div style="display:flex;gap:4px;padding:4px;border-radius:10px;background:var(--track)">
-<sc-for list="{{ invSt }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:8px 0;border-radius:10px;background:{{ o.bg }};color:{{ o.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div></sc-for>
+<div style="display:flex;gap:4px;padding:4px;border-radius:16px;background:var(--track)">
+<sc-for list="{{ invSt }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:8px 0;border-radius:16px;background:{{ o.bg }};color:{{ o.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ o.label }}</div></sc-for>
 </div>
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:16px 4px 8px">Scan de la facture</div>
-<div style="height:96px;border-radius:10px;overflow:hidden;background:var(--field)"><image-slot id="{{ invImg }}" placeholder="Photo ou PDF de la facture" shape="rect" style="width:100%;height:100%"></image-slot></div>
+<div style="height:96px;border-radius:16px;overflow:hidden;background:var(--field)"><image-slot id="{{ invImg }}" placeholder="Photo ou PDF de la facture" shape="rect" style="width:100%;height:100%"></image-slot></div>
 </sc-if>
 <sc-if value="{{ isPlanSheet }}" hint-placeholder-val="{{ false }}">
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:16px 4px 8px">Jour</div>
 <div style="display:grid;grid-template-columns:repeat({{ dayCols }},minmax(0,1fr));gap:5px">
-<sc-for list="{{ formDays }}" as="d" hint-placeholder-count="6"><div onClick="{{ d.pick }}" style="cursor:pointer;text-align:center;padding:8px 0;border-radius:8px;background:{{ d.bg }};color:{{ d.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ d.label }}</div></sc-for>
+<sc-for list="{{ formDays }}" as="d" hint-placeholder-count="6"><div onClick="{{ d.pick }}" style="cursor:pointer;text-align:center;padding:8px 0;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase">{{ d.label }}</div></sc-for>
 </div>
 <div style="font:500 11px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:16px 4px 8px">Site</div>
 <div style="display:flex;gap:6px;flex-wrap:wrap">
-<sc-for list="{{ formSites }}" as="s" hint-placeholder-count="3"><div onClick="{{ s.pick }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;background:{{ s.bg }};color:{{ s.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span style="width:8px;height:8px;border-radius:50%;background:{{ s.dot }}"></span>{{ s.label }}</div></sc-for>
+<sc-for list="{{ formSites }}" as="s" hint-placeholder-count="3"><div onClick="{{ s.pick }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:16px;background:{{ s.bg }};color:{{ s.fg }};font:500 11.5px 'SF Mono',ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.06em;text-transform:uppercase"><span style="width:8px;height:8px;border-radius:50%;background:{{ s.dot }}"></span>{{ s.label }}</div></sc-for>
 </div>
 </sc-if>
 </div>
@@ -995,7 +995,7 @@ const PLAN = [
   { w: 'Ven', n: 30, ev: [['10:00', 'c', 'Échéance réservation lot carrelage', 'Échéance'], ['16:00', 'b', 'Validation planning bruit lourd', 'Réunion']] },
   { w: 'Sam', n: 31, ev: [] }
 ];
-const DARK = {'--ink':'#F2F2F2','--ink2':'rgba(242,242,242,.5)','--ink3':'rgba(242,242,242,.28)','--line':'rgba(255,255,255,.07)','--tile':'#242424','--tileBd':'#2C2C2C','--field':'#242424','--track':'#2E2E2E','--chip':'#242424','--on':'#3A3A3A','--acc':'#F2F2F2','--accOn':'#141414','--accTx':'#F2F2F2','--accSoft':'rgba(255,255,255,.1)','--warn':'#FF6B6B','--warnTx':'#FF8F8F','--warnBg':'rgba(255,90,90,.14)','--ok':'#8FE3C8','--okTx':'#A6ECD5','--okBg':'rgba(120,220,190,.12)','--solid':'#F2F2F2','--solidTx':'#141414','--sheet':'#1F1F1F','--scrim':'rgba(0,0,0,.55)','--knob':'#fff','--card':'#F2F2F2','--cardB':'none','--cardBd':'#2C2C2C','--cardSh':'none','--bg':'#1A1A1A','--kl':'rgba(0,0,0,.07)','--kt':'#E7E7E7','--ktb':'#DADADA','--kf':'#E7E7E7','--ktr':'#DCDCDC','--kon':'#FFFFFF','--t1':'#2A2C20','--t1x':'#E8EDB8','--t2':'#26282D','--t2x':'#E3E6F0','--t3':'#1D292A','--t3x':'#B5E6E8','--t4':'#2C2229','--t4x':'#F0C6E2'};
+const DARK = {'--ink':'#F2F4F8','--ink2':'rgba(235,240,250,.62)','--ink3':'rgba(235,240,250,.36)','--line':'rgba(255,255,255,.08)','--tile':'rgba(255,255,255,.07)','--tileBd':'rgba(255,255,255,.12)','--field':'rgba(255,255,255,.08)','--track':'rgba(255,255,255,.12)','--chip':'rgba(255,255,255,.07)','--on':'rgba(255,255,255,.16)','--acc':'#0A84FF','--accOn':'#FFFFFF','--accTx':'#6CB6FF','--accSoft':'rgba(10,132,255,.2)','--warn':'#FF8A3D','--warnTx':'#FFB27A','--warnBg':'rgba(255,138,61,.17)','--ok':'#30D158','--okTx':'#5BE07D','--okBg':'rgba(48,209,88,.16)','--solid':'#F2F4F8','--solidTx':'#0B0F17','--sheet':'rgba(24,28,38,.92)','--scrim':'rgba(0,0,0,.5)','--knob':'#F2F4F8','--card':'rgba(30,36,48,.55)','--cardB':'1px solid rgba(255,255,255,.10)','--cardBd':'rgba(255,255,255,.10)','--cardSh':'0 10px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.07)','--k1':'#F2F4F8','--k2':'rgba(235,240,250,.62)','--k3':'rgba(235,240,250,.36)','--kl':'rgba(255,255,255,.08)','--kt':'rgba(255,255,255,.07)','--ktb':'rgba(255,255,255,.12)','--kf':'rgba(255,255,255,.08)','--ktr':'rgba(255,255,255,.12)','--kon':'rgba(255,255,255,.16)','--ka':'#0A84FF','--kaOn':'#FFFFFF','--kas':'rgba(10,132,255,.2)','--kw':'#FFB27A','--kwb':'rgba(255,138,61,.17)','--kwarn':'#FF8A3D','--kok':'#5BE07D','--kokb':'rgba(48,209,88,.16)','--panel':'rgba(255,255,255,.09)','--bg':'radial-gradient(120% 55% at 0% 0%,#163052 0,transparent 60%),radial-gradient(90% 50% at 100% 38%,#3B2817 0,transparent 62%),radial-gradient(100% 50% at 0% 100%,#11382C 0,transparent 60%),#090D14','--t1':'rgba(170,185,70,.20)','--t1x':'#E8EDB8','--t2':'rgba(110,140,230,.20)','--t2x':'#DCE4FA','--t3':'rgba(60,180,175,.20)','--t3x':'#B5ECE8','--t4':'rgba(200,90,170,.20)','--t4x':'#F4C9E6'};
 const cap = s => s ? s.charAt(0) + s.slice(1).toLowerCase() : s;
 const tc = s => s.toLowerCase().replace(/(^|\s)(\S)/g, (m, a, b) => a + b.toUpperCase());
 const CH = { TOUS: 'Tous', MAIL: 'Mail', SMS: 'SMS', APPEL: 'Appel' };
@@ -1265,7 +1265,7 @@ class Component extends DCLogic {
     const events = plan[dIdx].ev.map(e => ({ t: e[0], dot: DOT[e[1]], title: e[2], type: e[3], site: tc(SITES[e[1]].label) }));
     const legend = Object.keys(SITES).map(k => ({ dot: DOT[k], label: tc(SITES[k].label) }));
     const tb = {};
-    ['p', 's', 'm', 'l', 'c'].forEach(k => { tb[k] = { bg: st.tab === k ? ACC : 'var(--tile)', fg: st.tab === k ? 'var(--accOn)' : 'var(--ink2)', pick: () => set({ tab: k, mail: null, menu: false, proj: k === 'p' && st.tab === 'p' ? null : st.proj, supSel: k === 'c' && st.tab === 'c' ? null : st.supSel }) }; });
+    ['p', 's', 'm', 'l', 'c'].forEach(k => { tb[k] = { bg: st.tab === k ? 'var(--on)' : 'transparent', fg: st.tab === k ? ACC : 'var(--ink2)', pick: () => set({ tab: k, mail: null, menu: false, proj: k === 'p' && st.tab === 'p' ? null : st.proj, supSel: k === 'c' && st.tab === 'c' ? null : st.supSel }) }; });
     tb.m.badge = unreadN > 0; tb.m.count = unreadN;
     // sheets
     const F = st.form, sh = st.sheet, setF = (o) => set({ form: { ...F, ...o } }), fset = (k) => (e) => setF({ [k]: e.target.value });
@@ -1336,7 +1336,7 @@ class Component extends DCLogic {
           addCt: () => { const n = (CF.cn || '').trim(), t = (CF.ct || '').trim(); if (!n || !t) return; upC({ contacts: [...C.contacts, [n, (CF.cr || '').trim() || 'Contact', t]] }); set({ cfgF: {} }); } } };
       })(),
       dayCols: WEEK.length, toggleSun: () => set({ sunday: !st.sunday }), sunSub: st.sunday ? 'Le dimanche apparaît dans le planning' : 'Semaine du lundi au samedi',
-      sunTrack: st.sunday ? '#4E9FA2' : 'var(--track)', sunKnob: st.sunday ? 'translateX(20px)' : 'none',
+      sunTrack: st.sunday ? 'var(--ok)' : 'var(--track)', sunKnob: st.sunday ? 'translateX(20px)' : 'none',
       discs: st.discs.map(d => ({ label: d, del: () => set({ discs: st.discs.filter(x => x !== d) }) })), discN: st.discs.length + ' active' + (st.discs.length > 1 ? 's' : ''),
       discText: st.discText, onDisc: (e) => set({ discText: e.target.value }),
       addDisc: () => { const t = st.discText.trim(); if (!t) return; const v = t.charAt(0).toUpperCase() + t.slice(1); if (!st.discs.some(x => x.toLowerCase() === v.toLowerCase())) set({ discs: [...st.discs, v], discText: '' }); else set({ discText: '' }); },
@@ -1377,7 +1377,7 @@ class Component extends DCLogic {
             set({ supRev: (st.supRev || 0) + 1, form: {} }); } };
         const pdays = WEEK.map((d, i) => { const a = (F.pday ?? 0) === i; return { label: d.w, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => setF({ pday: i }) }; });
         const pOn = F.plan !== false;
-        const pp = { on: pOn, toggle: () => setF({ plan: !pOn }), sub: pOn ? WEEK[F.pday ?? 0].w + ' ' + WEEK[F.pday ?? 0].n + ' · ' + (F.ptime || '08:00') + ' · ' + tc(S.label) : 'Le projet ne sera pas planifié', track: pOn ? '#4E9FA2' : 'var(--track)', knob: pOn ? 'translateX(20px)' : 'none', days: pdays, time: F.ptime || '', onTime: fset('ptime'), kind: F.pkind || '', onKind: fset('pkind') };
+        const pp = { on: pOn, toggle: () => setF({ plan: !pOn }), sub: pOn ? WEEK[F.pday ?? 0].w + ' ' + WEEK[F.pday ?? 0].n + ' · ' + (F.ptime || '08:00') + ' · ' + tc(S.label) : 'Le projet ne sera pas planifié', track: pOn ? 'var(--ok)' : 'var(--track)', knob: pOn ? 'translateX(20px)' : 'none', days: pdays, time: F.ptime || '', onTime: fset('ptime'), kind: F.pkind || '', onKind: fset('pkind') };
         return { kc, uc, pp };
       })(),
       openSheet: () => set({ sheet: st.tab, form: st.tab === 'p' ? { steps: DEFSTEPS, sups: [], custom: [] } : { day: st.day, site: st.site }, menu: false }),
