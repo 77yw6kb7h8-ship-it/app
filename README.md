@@ -5,7 +5,7 @@ utilisable hors ligne. Les données saisies sont gardées sur le téléphone (lo
 
 Habillage « Liquid Glass » repris de la v4 : fond en dégradés, surfaces translucides
 floutées (`backdrop-filter`), accent bleu iOS, capsules, barre d'onglets flottante.
-Thème sombre par défaut ; thème clair dans Compte.
+Thème clair par défaut comme la v4 ; thème sombre dans Compte. Intitulés en police système iOS.
 
 ## Mettre en ligne
 
