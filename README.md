@@ -7,6 +7,18 @@ Habillage « Liquid Glass » repris de la v4 : fond en dégradés, surfaces tran
 floutées (`backdrop-filter`), accent bleu iOS, capsules, barre d'onglets flottante.
 Thème clair par défaut comme la v4 ; thème sombre dans Compte. Intitulés en police système iOS.
 
+## Tout est configurable
+
+- **Sites** : menu Sites → « + Nouveau site » ; sur un site, Configurer → « Nom, couleur… »
+  pour renommer, changer la description, la couleur, l'adresse, ou supprimer.
+- **Projets** : bouton « Modifier » sur la fiche (nom, phase, échéance, site, adresse, suppression).
+- **Étapes** (en mode Modifier), **notes**, **factures**, **intervenants**, **événements** :
+  toucher l'élément pour le modifier ou le supprimer.
+- **Stock** : ouvrir un article → « Modifier l'article ».
+- **Fournisseurs** : fiche → « Modifier ». **Messages** : « Modifier ou supprimer le message ».
+
+Chaque suppression demande deux touchers. Tout est sauvegardé sur le téléphone.
+
 ## Mettre en ligne
 
 Le dossier `chantier/` est un site statique : il suffit de l'héberger en **HTTPS**.

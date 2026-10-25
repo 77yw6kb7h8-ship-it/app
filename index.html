@@ -52,7 +52,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </sc-if>
 <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
-<div onClick="{{ back }}" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;padding:10px 16px 10px 11px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Projets</div>
+<div onClick="{{ back }}" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;padding:10px 16px 10px 11px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Projets</div><div onClick="{{ editProj }}" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;padding:10px 14px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--acc);margin-left:8px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg>Modifier</div>
 </sc-if>
 <sc-if value="{{ noSel }}" hint-placeholder-val="{{ false }}"><div style="height:42px"></div></sc-if>
 </div>
@@ -146,7 +146,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="display:flex;align-items:center;gap:12px">
 <sc-if value="{{ s.isC }}" hint-placeholder-val="{{ true }}"><div onClick="{{ s.toggle }}" style="cursor:pointer;width:24px;height:24px;border-radius:50%;border:1.6px solid {{ s.ckBd }};background:{{ s.ckBg }};display:flex;align-items:center;justify-content:center;flex:none"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--accOn)"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg></div></sc-if>
 <sc-if value="{{ s.isG }}" hint-placeholder-val="{{ false }}"><div onClick="{{ s.complete }}" title="Marquer terminé" style="cursor:pointer;width:24px;height:24px;border-radius:50%;flex:none;background:{{ s.pie }};display:flex;align-items:center;justify-content:center"><sc-if value="{{ s.gOpen }}" hint-placeholder-val="{{ true }}"><div style="width:14px;height:14px;border-radius:50%;background:var(--tileBd)"></div></sc-if><sc-if value="{{ s.gDone }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg></sc-if></div></sc-if>
-<div onClick="{{ s.toggle }}" style="flex:1;min-width:0;cursor:pointer;font:400 15.5px -apple-system,sans-serif;text-decoration:{{ s.deco }};color:{{ s.col }}">{{ s.l }}</div>
+<div onClick="{{ s.lab }}" style="flex:1;min-width:0;cursor:pointer;font:400 15.5px -apple-system,sans-serif;text-decoration:{{ s.deco }};color:{{ s.col }}">{{ s.l }}</div>
 <sc-if value="{{ s.showPct }}" hint-placeholder-val="{{ false }}"><div style="font:700 14px -apple-system,sans-serif;color:{{ s.pctCol }}">{{ s.pctLbl }}</div></sc-if>
 <sc-if value="{{ s.ed }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;align-items:center;gap:6px;flex:none">
@@ -182,7 +182,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--warnTx);margin:22px 4px 8px">À prévoir pour la suite</div>
 <div style="padding:10px 16px 14px;border-radius:24px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ pj.notes }}" as="n" hint-placeholder-count="2">
-<div style="display:flex;gap:10px;font-size:14.5px;line-height:1.4;padding:5px 0"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);flex:none;margin-top:7px"></span><span>{{ n }}</span></div>
+<div style="display:flex;gap:10px;font-size:14.5px;line-height:1.4;padding:5px 0"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);flex:none;margin-top:7px"></span><span onClick="{{ n.edit }}" style="flex:1;cursor:pointer">{{ n.t }}</span></div>
 </sc-for>
 <div style="display:flex;gap:8px;margin-top:8px">
 <input value="{{ noteText }}" onChange="{{ onNote }}" placeholder="Ajouter une note…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--field);padding:10px 14px;border-radius:16px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
@@ -234,7 +234,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-for list="{{ f.inv }}" as="i" hint-placeholder-count="1">
 <div style="display:flex;align-items:center;gap:10px;padding:8px 0">
 <div style="width:32px;height:32px;border-radius:12px;flex:none;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M6.5 3h7.5l4 4v14h-11.5z"></path><path d="M14 3v4h4M9.5 12h5M9.5 16h5"></path></svg></div>
-<div style="flex:1;min-width:0"><div style="font:600 14.5px -apple-system,sans-serif">{{ i.num }}</div><div style="font:400 12px -apple-system,sans-serif;color:var(--ink2);margin-top:1px">Échéance {{ i.date }}</div></div>
+<div onClick="{{ i.edit }}" style="flex:1;min-width:0;cursor:pointer"><div style="font:600 14.5px -apple-system,sans-serif">{{ i.num }}</div><div style="font:400 12px -apple-system,sans-serif;color:var(--ink2);margin-top:1px">Échéance {{ i.date }}</div></div>
 <div style="font:700 14.5px -apple-system,sans-serif;flex:none">{{ i.amt }}</div>
 <div onClick="{{ i.cyc }}" style="cursor:pointer;flex:none;min-width:70px;text-align:center;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;background:{{ i.stBg }};color:{{ i.stFg }};padding:4px 9px;border-radius:999px">{{ i.stLbl }}</div>
 </div>
@@ -250,11 +250,12 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-for list="{{ pj.team }}" as="m" hint-placeholder-count="3">
 <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:2px solid var(--line)">
 <div style="width:40px;height:40px;border-radius:50%;flex:none;background:var(--accSoft);color:var(--accTx);display:flex;align-items:center;justify-content:center;font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ m.ini }}</div>
-<div style="flex:1;min-width:0"><div style="font:600 15px -apple-system,sans-serif">{{ m.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ m.role }}</div></div>
+<div onClick="{{ m.edit }}" style="flex:1;min-width:0;cursor:pointer"><div style="font:600 15px -apple-system,sans-serif">{{ m.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ m.role }}</div></div>
 <div style="flex:none;font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);border:1px solid var(--line);padding:3px 8px;border-radius:999px">{{ m.tag }}</div>
 <a href="{{ m.telH }}" style="width:34px;height:34px;flex:none;border-radius:50%;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 3.5h3l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2.1 4.2 1.6v3a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"></path></svg></a>
 </div>
 </sc-for>
+<div onClick="{{ pj.addTeam }}" style="cursor:pointer;text-align:center;font:600 14px -apple-system,sans-serif;color:var(--acc);text-align:left;padding:13px 0">+ Ajouter un intervenant</div>
 </div>
 </sc-if>
 </sc-if>
@@ -303,6 +304,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ i.canRecv }}" hint-placeholder-val="{{ false }}"><div onClick="{{ i.recv }}" style="cursor:pointer;flex:none;background:rgba(120,220,190,.16);color:#A6ECD5;padding:8px 10px;border-radius:999px;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap">{{ i.recvLbl }}</div></sc-if>
 <sc-if value="{{ i.canOrder }}" hint-placeholder-val="{{ true }}"><div onClick="{{ i.order }}" style="cursor:pointer;flex:none;background:rgba(255,90,90,.16);color:#FF8F8F;padding:8px 10px;border-radius:999px;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap">{{ i.lotLbl }}</div></sc-if>
 </div>
+<div onClick="{{ i.edit }}" style="cursor:pointer;text-align:center;font:600 14px -apple-system,sans-serif;color:var(--acc);margin-top:12px">Modifier l’article</div>
 </div>
 </sc-if>
 </div>
@@ -422,6 +424,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div onClick="{{ reopen }}" style="cursor:pointer;margin-top:10px;padding:13px;border-radius:16px;text-align:center;border:1px solid var(--tileBd);color:var(--ink);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">Remettre dans Reçu</div>
 </sc-if>
+<div onClick="{{ editMail }}" style="cursor:pointer;text-align:center;font:600 14px -apple-system,sans-serif;color:var(--acc);margin-top:18px">Modifier ou supprimer le message</div>
 </sc-if>
 </sc-if>
 
@@ -440,7 +443,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="display:flex;flex-direction:column;gap:10px">
 <sc-for list="{{ events }}" as="e" hint-placeholder-count="2">
-<div style="display:flex;gap:14px;align-items:stretch;padding:14px 16px;border-radius:20px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
+<div onClick="{{ e.edit }}" style="cursor:pointer;display:flex;gap:14px;align-items:stretch;padding:14px 16px;border-radius:20px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <div style="width:4px;border-radius:999px;background:{{ e.dot }};flex:none"></div>
 <div style="flex:1;min-width:0"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">{{ e.t }} · {{ e.type }}</div><div style="font:600 16px/1.25 -apple-system,sans-serif;margin:3px 0">{{ e.title }}</div><div style="font:400 13px -apple-system,sans-serif;color:var(--ink2)">{{ e.site }}</div></div>
 </div>
@@ -503,7 +506,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ noSup }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:20px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">Aucun fournisseur trouvé</div></sc-if>
 </sc-if>
 <sc-if value="{{ isSupDet }}" hint-placeholder-val="{{ false }}">
-<div onClick="{{ backSup }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:7px 14px 7px 10px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink);margin-bottom:18px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Fournisseurs</div>
+<div onClick="{{ backSup }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:7px 14px 7px 10px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink);margin-bottom:18px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Fournisseurs</div><div onClick="{{ editSup }}" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;padding:10px 14px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--acc);margin-left:8px;margin-bottom:18px;padding:7px 14px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg>Modifier</div>
 <div style="display:flex;align-items:center;gap:14px">
 <div style="width:58px;height:58px;border-radius:20px;flex:none;background:{{ sd.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:500 19px -apple-system,sans-serif">{{ sd.ini }}</div>
 <div style="min-width:0"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">{{ sd.sub }}</div><div style="font:700 28px/1.05 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.02em;margin-top:6px;text-wrap:pretty">{{ sd.name }}</div></div>
@@ -548,7 +551,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="padding:12px 14px 4px;font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">{{ g.proj }}</div>
 <sc-for list="{{ g.inv }}" as="i" hint-placeholder-count="1">
 <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:2px solid var(--line)">
-<div style="flex:1;min-width:0"><div style="font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ i.num }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">Échéance {{ i.date }}</div></div>
+<div onClick="{{ i.edit }}" style="flex:1;min-width:0;cursor:pointer"><div style="font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ i.num }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">Échéance {{ i.date }}</div></div>
 <div style="flex:none;font:400 15px -apple-system,sans-serif">{{ i.amt }}</div>
 <div onClick="{{ i.cyc }}" style="cursor:pointer;flex:none;min-width:70px;text-align:center;padding:5px 8px;border-radius:999px;background:{{ i.stBg }};color:{{ i.stFg }};font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ i.stLbl }}</div>
 </div>
@@ -607,6 +610,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </div>
 </sc-for>
+<div onClick="{{ newSite }}" style="cursor:pointer;flex:none;padding:16px;border-radius:20px;border:1.5px dashed var(--ink3);text-align:center;font:600 15px -apple-system,sans-serif;color:var(--acc)">+ Nouveau site</div>
 </div>
 </div>
 </sc-if>
@@ -628,7 +632,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="height:104px;border-radius:16px;overflow:hidden;margin-bottom:4px;background:var(--field)"><image-slot id="{{ newImg }}" src="{{ newSrc }}" placeholder="Photo du projet" shape="rect" style="width:100%;height:100%"></image-slot></div>
 </sc-if>
 <sc-if value="{{ isSiteSheet }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;align-items:center;gap:10px;padding:2px 4px 4px"><span style="width:10px;height:10px;border-radius:50%;background:{{ sc.dot }}"></span><span style="font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ sc.label }}</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:2px 4px 4px"><span style="width:10px;height:10px;border-radius:50%;background:{{ sc.dot }}"></span><span style="font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ sc.label }}</span><div onClick="{{ sc.edit }}" style="margin-left:auto;cursor:pointer;font:600 13.5px -apple-system,sans-serif;color:var(--acc)">Nom, couleur…</div></div>
 <div style="display:flex;align-items:center;justify-content:space-between;margin:16px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Adresse</div><a href="{{ sc.maps }}" target="_blank" style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)">Ouvrir dans Plans ↗</a></div>
 <div style="border-radius:16px;background:var(--field);overflow:hidden">
 <div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:86px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Adresse</div><input value="{{ sc.addr }}" onChange="{{ sc.onAddr }}" placeholder="Ex. 14 rue Garibaldi" style="flex:1;min-width:0;border:0;background:transparent;padding:14px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
@@ -882,6 +886,8 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-for list="{{ formSites }}" as="s" hint-placeholder-count="3"><div onClick="{{ s.pick }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:16px;background:{{ s.bg }};color:{{ s.fg }};font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums"><span style="width:8px;height:8px;border-radius:50%;background:{{ s.dot }}"></span>{{ s.label }}</div></sc-for>
 </div>
 </sc-if>
+<sc-if value="{{ edNote }}" hint-placeholder-val="{{ false }}"><div style="margin:18px 4px 0;font:400 13px/1.4 -apple-system,sans-serif;color:var(--ink2)">{{ edNoteTxt }}</div></sc-if>
+<sc-if value="{{ edCanDel }}" hint-placeholder-val="{{ false }}"><div onClick="{{ edDel }}" style="cursor:pointer;margin-top:14px;padding:14px;border-radius:16px;text-align:center;background:{{ edDelBg }};color:{{ edDelFg }};font:600 15px -apple-system,sans-serif;transition:background .2s">{{ edDelLbl }}</div></sc-if>
 </div>
 </div>
 </div>
@@ -1010,6 +1016,10 @@ const eur = n => n.toLocaleString('fr-FR', { minimumFractionDigits: 0, maximumFr
 const rid = () => Math.random().toString(36).slice(2, 8);
 const supCopy = id => { const s = SUP.find(x => x.id === id); return { id: 'f' + rid(), ref: id, name: s.name, cat: cap(s.cat), tel: s.tel, mail: s.mail, who: s.who }; };
 const KS = Object.keys(SITES);
+const SL = k => SITES[k] ? (SITES[k].name || tc(SITES[k].label)) : 'Site supprimé';
+const COLORS = { Olive: '#9AA34E', Prune: '#B06E9C', Canard: '#4E9FA2', Bleu: '#0A84FF', Orange: '#E8590C', Ardoise: '#5B6478', Rose: '#E0569B', Vert: '#30A46C' };
+const colorName = hex => Object.keys(COLORS).find(n => COLORS[n] === hex) || '';
+const put = (o, v) => { if (v && typeof v === 'object') { Object.keys(o).forEach(k => delete o[k]); Object.assign(o, v); } };
 const wrapI = j => ((j % KS.length) + KS.length) % KS.length;
 const DEFSTEPS = [{ l: 'Préparation', t: 'c' }, { l: 'Exécution', t: 'g' }, { l: 'Finitions', t: 'g' }, { l: 'Réception', t: 'c' }];
 const SAVE_KEY = 'chantier-app-v6';
@@ -1020,9 +1030,14 @@ const restore = () => {
     const d = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
     if (!d || !d.state) return {};
     if (Array.isArray(d.sup)) SUP.splice(0, SUP.length, ...d.sup);
+    if (d.sites) { put(SITES, d.sites); put(DOT, d.dot); put(TEAMS, d.teams); put(DONE, d.done); if (Array.isArray(d.ks)) KS.splice(0, KS.length, ...d.ks.filter(k => SITES[k])); }
+    if (Array.isArray(d.plan)) d.plan.forEach((ev, i) => { if (PLAN[i]) PLAN[i].ev = ev; });
+    if (Array.isArray(d.sun)) SUN.ev = d.sun;
     const s = d.state;
     if (s.geo) Object.keys(s.geo).forEach(k => { if (s.geo[k] === 'busy') delete s.geo[k]; });
-    if (s.site && KS.includes(s.site)) s.wpos = KS.indexOf(s.site);
+    if (!s.site || !SITES[s.site]) s.site = KS[0];
+    if (s.cfgSite && !SITES[s.cfgSite]) s.cfgSite = s.site;
+    s.wpos = KS.indexOf(s.site);
     return s;
   } catch (e) { return {}; }
 };
@@ -1033,7 +1048,7 @@ const persist = st => {
     try {
       const s = {};
       Object.keys(st).forEach(k => { if (!VOLATILE.includes(k)) s[k] = st[k]; });
-      localStorage.setItem(SAVE_KEY, JSON.stringify({ state: s, sup: SUP }));
+      localStorage.setItem(SAVE_KEY, JSON.stringify({ state: s, sup: SUP, sites: SITES, ks: KS, dot: DOT, teams: TEAMS, done: DONE, plan: PLAN.map(d => d.ev), sun: SUN.ev }));
     } catch (e) {}
   }, 400);
 };
@@ -1101,15 +1116,15 @@ class Component extends DCLogic {
     const ACC = 'var(--acc)', INK = 'var(--ink)', CHIP = 'var(--chip)', WARN = 'var(--warn)';
     const on = (b) => b ? ACC : CHIP, fg = (b) => b ? 'var(--accOn)' : INK;
     const glob = st.tab === 'l' || st.tab === 'c';
-    const stockOf = k => [...SITES[k].stock, ...(st.addS[k] || [])].filter(x => !(st.stkDel || {})[k + x[0]]).map(x => { const c = (st.stkCfg || {})[k + x[0]]; return c ? [x[0], x[1], x[2], x[3], c.min ?? x[4], c.lot ?? x[5], x[6]] : x; });
-    const list = st.P[st.site];
+    const stockOf = k => [...((SITES[k] || {}).stock || []), ...(st.addS[k] || [])].filter(x => !(st.stkDel || {})[k + x[0]]).map(x => { const c = (st.stkCfg || {})[k + x[0]]; return c ? [x[0], c.name ?? x[1], c.unit ?? x[2], x[3], c.min ?? x[4], c.lot ?? x[5], c.disc ?? x[6]] : x; });
+    const list = st.P[st.site] || [];
     const P0 = list.find(p => p.id === st.proj);
     const detail = st.tab === 'p' && !!P0;
-    const sites = Object.keys(SITES).map(k => { const on = k === st.site, L = st.P[k], av = L.length ? Math.round(L.reduce((a, p) => a + (p.steps.length ? p.steps.reduce((b, s) => b + s.v, 0) / p.steps.length : 0), 0) / L.length) : 0, run = L.filter(p => p.steps.some(s => s.v < 100) && p.steps.some(s => s.v > 0)).length;
-      return { label: tc(SITES[k].label), addr: SITES[k].addr, dot: DOT[k], on, pct: av, meta: L.length + ' projets · ' + run + ' en cours', bg: on ? 'var(--acc)' : 'var(--tile)', fg: on ? 'var(--accOn)' : 'var(--ink)', tagBg: on ? 'var(--accSoft)' : 'transparent', sep: on ? (st.dark ? 'rgba(0,0,0,.14)' : 'rgba(255,255,255,.2)') : 'var(--tileBd)', cfgMeta: st.cfg[k].zones.length + ' lieux · ' + st.cfg[k].contacts.length + ' contacts', config: (e) => { e.stopPropagation(); set({ sheet: 'site', cfgSite: k, cfgF: {} }); },
+    const sites = Object.keys(SITES).map(k => { const on = k === st.site, L = st.P[k] || [], av = L.length ? Math.round(L.reduce((a, p) => a + (p.steps.length ? p.steps.reduce((b, s) => b + s.v, 0) / p.steps.length : 0), 0) / L.length) : 0, run = L.filter(p => p.steps.some(s => s.v < 100) && p.steps.some(s => s.v > 0)).length;
+      return { label: SL(k), addr: SITES[k].addr, dot: DOT[k], on, pct: av, meta: L.length + ' projets · ' + run + ' en cours', bg: on ? 'var(--acc)' : 'var(--tile)', fg: on ? 'var(--accOn)' : 'var(--ink)', tagBg: on ? 'var(--accSoft)' : 'transparent', sep: on ? (st.dark ? 'rgba(0,0,0,.14)' : 'rgba(255,255,255,.2)') : 'var(--tileBd)', cfgMeta: (st.cfg[k] || { zones: [] }).zones.length + ' lieux · ' + (st.cfg[k] || { contacts: [] }).contacts.length + ' contacts', config: (e) => { e.stopPropagation(); set({ sheet: 'site', cfgSite: k, cfgF: {} }); },
         pick: () => { set({ menu: false }); const cur = Math.round(this.state.wpos); let d = KS.indexOf(k) - wrapI(cur); if (d > KS.length / 2) d -= KS.length; if (d < -KS.length / 2) d += KS.length; this.wheelGo(cur + d); } }; });
     const wp = st.wpos, wb = Math.round(wp);
-    const wheel = [-2, -1, 0, 1, 2].map(o => { const j = wb + o, rel = j - wp, k = KS[wrapI(j)], a = Math.abs(rel); return { label: tc(SITES[k].label), dot: DOT[k], tf: 'translateY(' + (rel * 22).toFixed(1) + 'px) rotateX(' + (-rel * 34).toFixed(1) + 'deg)', op: Math.max(0, 1 - a * 0.85).toFixed(2), col: a < 0.5 ? 'var(--ink)' : 'var(--ink2)' }; });
+    const wheel = [-2, -1, 0, 1, 2].map(o => { const j = wb + o, rel = j - wp, k = KS[wrapI(j)], a = Math.abs(rel); return { label: SL(k), dot: DOT[k], tf: 'translateY(' + (rel * 22).toFixed(1) + 'px) rotateX(' + (-rel * 34).toFixed(1) + 'deg)', op: KS.length < 2 && j !== wb ? '0' : Math.max(0, 1 - a * 0.85).toFixed(2), col: a < 0.5 ? 'var(--ink)' : 'var(--ink2)' }; });
     const wWheel = (e) => { this.wAcc = (this.wAcc || 0) + e.deltaY; if (Math.abs(this.wAcc) >= 28) { const s = Math.sign(this.wAcc); this.wAcc = 0; this.wheelGo(Math.round(this.wTarget ?? this.state.wpos) + s); } };
     const wDown = (e) => { if (this.wRaf) { cancelAnimationFrame(this.wRaf); this.wRaf = null; } this.wDrag = { y: e.clientY, p: this.state.wpos, moved: false, r: e.currentTarget.getBoundingClientRect() }; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) {} };
     const wMove = (e) => { const d = this.wDrag; if (!d) return; const dy = e.clientY - d.y; if (Math.abs(dy) > 3) d.moved = true; if (d.moved) this.setState({ wpos: d.p - dy / 22 }); };
@@ -1131,7 +1146,7 @@ class Component extends DCLogic {
         open: () => set({ proj: p.id, seg: 'e', editSteps: false, supOpen: null, noteText: '', stepText: '' }) };
     });
     // project detail
-    const Q = P0 || list[0], pid = Q.id, up = fn => this.updP(pid, fn);
+    const Q = P0 || list[0] || { id: '_', name: '', phase: '', due: '', addr: '', city: '', steps: [], notes: [], sup: [], inv: [] }, pid = Q.id, up = fn => this.updP(pid, fn);
     const pct = pctOf(Q), C = 163.36;
     const setV = (sid, v) => up(p => ({ ...p, steps: p.steps.map(s => s.id === sid ? { ...s, v } : s) }));
     const steps = Q.steps.map(s => {
@@ -1154,14 +1169,15 @@ class Component extends DCLogic {
         del: () => up(p => ({ ...p, steps: p.steps.filter(x => x.id !== s.id) })),
         gDone: d, gOpen: !d,
         complete: () => { if (ed) return; up(p => ({ ...p, steps: p.steps.map(x => x.id === s.id ? (x.v >= 100 ? { ...x, v: x.pv ?? 0 } : { ...x, pv: x.v, v: 100 }) : x) })); },
-        toggle: () => { if (isC && !ed) setV(s.id, d ? 0 : 100); } };
+        toggle: () => { if (isC && !ed) setV(s.id, d ? 0 : 100); },
+        lab: () => { if (ed) openEd('step', { id: s.id }); else if (isC) setV(s.id, d ? 0 : 100); } };
     });
     const loc = [['addr', 'Adresse', 'Ex. 14 rue Garibaldi'], ['city', 'Ville', 'Ex. 69006 Lyon'], ['access', 'Accès', 'Code, étage, clé…'], ['hours', 'Horaires', 'Ex. 7h30 – 17h']].map(([k, label, ph]) => ({ label, ph, val: Q[k] || '', on: (e) => { const v = e.target.value; up(p => ({ ...p, [k]: v })); } }));
     const [lat, lon] = Q.geo || S.geo, dd = 0.005;
     const gs = st.geo[pid];
     const STL = { paid: 'Payée', due: 'À payer', late: 'En retard' }, STB = { paid: 'var(--okBg)', due: 'var(--accSoft)', late: 'var(--warnBg)' }, STF = { paid: 'var(--okTx)', due: 'var(--accTx)', late: 'var(--warnTx)' };
     const cycInv = (ppid, iid) => this.updP(ppid, p => ({ ...p, inv: p.inv.map(x => x.id === iid ? { ...x, st: x.st === 'paid' ? 'due' : 'paid' } : x) }));
-    const mkInv = (i, ppid) => ({ sup: i.sup, num: i.num, date: i.date, amt: eur(i.amt), stLbl: STL[i.st], stBg: STB[i.st], stFg: STF[i.st], cyc: () => cycInv(ppid, i.id) });
+    const mkInv = (i, ppid) => ({ sup: i.sup, num: i.num, date: i.date, amt: eur(i.amt), stLbl: STL[i.st], stBg: STB[i.st], stFg: STF[i.st], cyc: () => cycInv(ppid, i.id), edit: () => openEd('inv', { pid: ppid, id: i.id }) });
     const sups = Q.sup.map(f => {
       const fi = Q.inv.filter(i => i.sup === f.name), fp = fi.filter(i => i.st === 'paid').reduce((a, i) => a + i.amt, 0), ft = fi.reduce((a, i) => a + i.amt, 0);
       const todo = !f.tel || !f.mail, n = (f.tel || '').replace(/\s/g, '');
@@ -1177,18 +1193,18 @@ class Component extends DCLogic {
     const total = Q.inv.reduce((a, i) => a + i.amt, 0), paid = Q.inv.filter(i => i.st === 'paid').reduce((a, i) => a + i.amt, 0), anyLate = Q.inv.some(i => i.st === 'late');
     const pj = { name: Q.name, phase: Q.phase, due: Q.due, img: 'proj-' + Q.id, src: src(Q.id), ph: 'Photo · ' + Q.name, addrLine: Q.addr ? Q.addr + ' · ' + (Q.city || '') : 'Adresse non renseignée', pct, dash: (C * pct / 100) + ' ' + C,
       stepsDone: Q.steps.filter(s => s.v >= 100).length + '/' + Q.steps.length, supN: Q.sup.length, openAmt: eur(total - paid), openCol: anyLate ? 'var(--warnTx)' : INK,
-      steps, notes: Q.notes, locFields: loc,
+      steps, notes: Q.notes.map((t, i) => ({ t, edit: () => openEd('note', { i }) })), locFields: loc,
       map: 'https://www.openstreetmap.org/export/embed.html?bbox=' + (lon - dd * 1.5) + ',' + (lat - dd) + ',' + (lon + dd * 1.5) + ',' + (lat + dd) + '&layer=mapnik&marker=' + lat + ',' + lon,
       maps: 'https://maps.apple.com/?q=' + encodeURIComponent((Q.addr || '') + ', ' + (Q.city || '')),
       geoLabel: gs === 'busy' ? 'Recherche…' : gs === 'ok' ? '✓ Position mise à jour' : gs === 'err' ? 'Adresse introuvable · réessayer' : 'Localiser l’adresse sur la carte',
       geoCol: gs === 'err' ? 'var(--warnTx)' : gs === 'ok' ? 'var(--okTx)' : ACC,
       geocode: () => { if (Q.addr) this.geocode(pid, Q.addr, Q.city || ''); },
       sups, inv, noInv: inv.length === 0, invTotal: eur(total), invPaid: eur(paid),
-      team: (TEAMS[st.site] || []).map(m => ({ name: m[0], role: m[1], tag: m[2], ini: ini(m[0]), telH: 'tel:' + m[3].replace(/\s/g, '') })) };
+      team: (TEAMS[st.site] || []).map((m, i) => ({ name: m[0], role: m[1], tag: m[2], ini: ini(m[0]), telH: 'tel:' + (m[3] || '').replace(/\s/g, ''), edit: () => openEd('team', { i }) })), addTeam: () => openEd('team', { i: -1 }) };
     const segs = [['e', 'Étapes'], ['c', 'Fourn. & factures']].map(([k, label]) => ({ label, bg: st.seg === k ? 'var(--on)' : 'transparent', fg: st.seg === k ? INK : 'var(--ink2)', sh: st.seg === k ? '0 2px 8px rgba(0,0,0,.12)' : 'none', pick: () => set({ seg: k, editSteps: false }) }));
     const stepTypes = [['c', 'Coche'], ['g', 'Jauge']].map(([k, label]) => ({ label, bg: st.stepType === k ? 'var(--on)' : 'transparent', fg: st.stepType === k ? ACC : 'var(--ink2)', pick: () => set({ stepType: k }) }));
     // stocks
-    const zonesS = st.cfg[st.site].zones;
+    const zonesS = (st.cfg[st.site] || { zones: [] }).zones;
     const stItems = stockOf(st.site).map(s => { const key = st.site + s[0], o = { q: s[3], o: 0, sent: false, ...(st.stk[key] || {}) }, low = o.q < s[4]; return { s, key, o, low, disc: s[6] || SDISC[s[0]] || 'Autre', stt: o.o > 0 ? 'ord' : low ? 'low' : 'ok' }; });
     const updS = (key, n) => set({ stk: { ...st.stk, [key]: n }, stkSent: false });
     const sf = st.stkF || null;
@@ -1205,7 +1221,7 @@ class Component extends DCLogic {
         minus: () => updS(key, { ...o, q: Math.max(0, o.q - step) }), plus: () => updS(key, { ...o, q: o.q + step }),
         zones: zonesS.map(z => ({ label: z, bg: z === zone ? 'var(--acc)' : 'var(--tile)', fg: z === zone ? 'var(--accOn)' : INK, pick: () => set({ stkZone: { ...(st.stkZone || {}), [key]: z } }) })),
         adv: o.sup || ADV[s[0]] || 'Point Matériaux · 48 h', lotLbl: '+ 1 lot · ' + s[5], order: () => updS(key, { ...o, o: o.o + s[5], sent: false }),
-        disc, canRecv: o.sent && o.o > 0, canOrder: !(o.sent && o.o > 0), recvLbl: 'Réceptionner +' + o.o, recv: () => updS(key, { ...o, q: o.q + o.o, o: 0, sent: false }) };
+        disc, canRecv: o.sent && o.o > 0, canOrder: !(o.sent && o.o > 0), recvLbl: 'Réceptionner +' + o.o, recv: () => updS(key, { ...o, q: o.q + o.o, o: 0, sent: false }), edit: () => openEd('stk', { key }) };
     });
     const stGroups = dOrder.map(d => ({ label: d, items: stocks.filter(x => x.disc === d) })).filter(g => g.items.length).map(g => ({ ...g, n: g.items.length + ' article' + (g.items.length > 1 ? 's' : '') }));
     const bk = {}; stItems.filter(x => x.o.o > 0 && !x.o.sent).forEach(x => { const sup = (x.o.sup || ADV[x.s[0]] || 'Point Matériaux').split(' · ')[0]; (bk[sup] = bk[sup] || []).push({ name: x.s[1], qty: '+' + x.o.o + ' ' + x.s[2], rm: () => updS(x.key, { ...x.o, o: 0 }) }); });
@@ -1213,7 +1229,7 @@ class Component extends DCLogic {
     const sendOrder = () => { const n = { ...st.stk }; stItems.forEach(x => { if (x.o.o > 0 && !x.o.sent) n[x.key] = { ...x.o, sent: true }; }); set({ stk: n, stkSent: true }); };
     // mails
     const isVip = n => st.vip[n] ?? !!VIP0[n];
-    const allM = [...S.mails, ...(DONE[st.site] || [])].map(m => ({ ...m, drafts: m.drafts || [m.reply || '', m.reply || ''] }));
+    const allM = [...(S.mails || []), ...(DONE[st.site] || [])].map(m => ({ ...m, drafts: m.drafts || [m.reply || '', m.reply || ''] }));
     const trOf = m => { const t = st.treated[m.id]; return t !== undefined ? t : (m.reply != null ? { reply: m.reply, at: m.at } : false); };
     const mq = st.mq.trim().toLowerCase();
     const match = m => (!st.who || m.from === st.who) && (!mq || [m.from, m.org, m.subject, m.summary, m.body].join(' ').toLowerCase().includes(mq));
@@ -1227,7 +1243,7 @@ class Component extends DCLogic {
     const mboxSeg = [['r', 'Reçu', recv.length], ['t', 'Traité', done.length]].map(([k, l, n]) => ({ label: l + ' · ' + n, bg: st.mbox === k ? 'var(--on)' : 'transparent', fg: st.mbox === k ? INK : 'var(--ink2)', pick: () => set({ mbox: k }) }));
     const mcnt = {}; allM.forEach(m => { mcnt[m.from] = (mcnt[m.from] || 0) + 1; });
     const ppl = Object.keys(mcnt).filter(n => isVip(n) || mcnt[n] > 1).sort((a, b) => (isVip(b) - isVip(a)) || mcnt[b] - mcnt[a]).map(n => { const a = st.who === n, m0 = allM.find(x => x.from === n); return { name: n, ini: ini(n), av: AV[m0.ch], vip: isVip(n), n: mcnt[n], bg: a ? ACC : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ who: a ? null : n }) }; });
-    const unreadN = Object.keys(SITES).reduce((n, k) => n + SITES[k].mails.filter(m => m.unread && !st.read[m.id] && !st.treated[m.id]).length, 0);
+    const unreadN = Object.keys(SITES).reduce((n, k) => n + (SITES[k].mails || []).filter(m => m.unread && !st.read[m.id] && !st.treated[m.id]).length, 0);
     const cm0 = allM.find(m => m.id === st.mail) || { id: '', ch: 'MAIL', time: '', subject: '', from: ' ', org: '', summary: '', body: '', drafts: ['', ''] };
     const cmT = trOf(cm0), cv = isVip(cm0.from);
     const cm = { ...cm0, ch: CH[cm0.ch], ini: ini(cm0.from), avBg: AV[cm0.ch], vipBg: cv ? 'rgba(201,162,39,.16)' : 'var(--tile)', vipFg: cv ? '#C9A227' : 'var(--ink2)', vipFill: cv ? '#C9A227' : 'none', vipToggle: () => set({ vip: { ...st.vip, [cm0.from]: !cv } }) };
@@ -1255,20 +1271,141 @@ class Component extends DCLogic {
     const gp = {}; I0.ci.forEach(x => { (gp[x.proj] = gp[x.proj] || []).push(mkInv(x.i, x.pid)); });
     const sd = { name: S0.name, ini: ini(S0.name), av: CATC[cap(S0.cat)] || '#7A8496', sub: cap(S0.cat) + ' · ' + S0.sub, tag: cap(S0.tag), tagBg: bad0 ? 'var(--warnBg)' : 'var(--tile)', tagFg: bad0 ? 'var(--warnTx)' : 'var(--ink)', why: S0.why, who: S0.who, tel: S0.tel, mail: S0.mail, telH: 'tel:' + n0, smsH: 'sms:' + n0, mailH: 'mailto:' + S0.mail,
       delay: S0.delay, price: S0.price, rel: S0.rel + ' %', open: kk(I0.ct - I0.cpd), paid: eur(I0.cpd),
-      items: I0.its.map(t => ({ name: t.x[1], site: tc(SITES[t.k].label), q: t.o.q + ' ' + t.x[2], st: t.o.o > 0 ? (t.o.sent ? 'Commandé' : 'Au panier') : t.low ? 'Stock bas' : 'OK', stBg: t.o.o > 0 ? 'var(--t2)' : t.low ? 'var(--warnBg)' : 'var(--okBg)', stFg: t.o.o > 0 ? 'var(--t2x)' : t.low ? 'var(--warnTx)' : 'var(--okTx)', order: () => set({ stk: { ...st.stk, [t.sk]: { ...t.o, o: t.o.o + t.x[5], sent: false, sup: S0.name + ' · ' + S0.delay } }, stkSent: false }) })),
+      items: I0.its.map(t => ({ name: t.x[1], site: SL(t.k), q: t.o.q + ' ' + t.x[2], st: t.o.o > 0 ? (t.o.sent ? 'Commandé' : 'Au panier') : t.low ? 'Stock bas' : 'OK', stBg: t.o.o > 0 ? 'var(--t2)' : t.low ? 'var(--warnBg)' : 'var(--okBg)', stFg: t.o.o > 0 ? 'var(--t2x)' : t.low ? 'var(--warnTx)' : 'var(--okTx)', order: () => set({ stk: { ...st.stk, [t.sk]: { ...t.o, o: t.o.o + t.x[5], sent: false, sup: S0.name + ' · ' + S0.delay } }, stkSent: false }) })),
       hasItems: I0.its.length > 0, groups: Object.keys(gp).map(p => ({ proj: p, inv: gp[p] })), hasInv: I0.ci.length > 0, noInv: !I0.ci.length };
     // planning
     const WEEK = st.sunday ? [...PLAN, SUN] : PLAN, dIdx = Math.min(st.day, WEEK.length - 1);
-    const plan = WEEK.map((d, i) => ({ ...d, ev: [...d.ev, ...(st.addE[i] || [])].sort((a, b) => a[0].localeCompare(b[0])) }));
-    const days = plan.map((d, i) => ({ w: d.w, n: d.n, bg: dIdx === i ? ACC : CHIP, fg: dIdx === i ? 'var(--accOn)' : INK, sh: 'none', dots: d.ev.map(e => DOT[e[1]]), pick: () => set({ day: i }) }));
-    const events = plan[dIdx].ev.map(e => ({ t: e[0], dot: DOT[e[1]], title: e[2], type: e[3], site: tc(SITES[e[1]].label) }));
-    const legend = Object.keys(SITES).map(k => ({ dot: DOT[k], label: tc(SITES[k].label) }));
+    const plan = WEEK.map((d, i) => ({ ...d, ev: [...d.ev.map((e, j) => ({ e, src: 'p', j })), ...(st.addE[i] || []).map((e, j) => ({ e, src: 'a', j }))].filter(x => SITES[x.e[1]]).sort((a, b) => a.e[0].localeCompare(b.e[0])) }));
+    const days = plan.map((d, i) => ({ w: d.w, n: d.n, bg: dIdx === i ? ACC : CHIP, fg: dIdx === i ? 'var(--accOn)' : INK, sh: 'none', dots: d.ev.map(x => DOT[x.e[1]]), pick: () => set({ day: i }) }));
+    const events = plan[dIdx].ev.map(x => ({ t: x.e[0], dot: DOT[x.e[1]], title: x.e[2], type: x.e[3], site: SL(x.e[1]), edit: () => openEd('ev', { day: dIdx, src: x.src, j: x.j }) }));
+    const legend = Object.keys(SITES).map(k => ({ dot: DOT[k], label: SL(k) }));
     const tb = {};
     ['p', 's', 'm', 'l', 'c'].forEach(k => { tb[k] = { bg: st.tab === k ? 'var(--on)' : 'transparent', fg: st.tab === k ? ACC : 'var(--ink2)', pick: () => set({ tab: k, mail: null, menu: false, proj: k === 'p' && st.tab === 'p' ? null : st.proj, supSel: k === 'c' && st.tab === 'c' ? null : st.supSel }) }; });
     tb.m.badge = unreadN > 0; tb.m.count = unreadN;
     // sheets
     const F = st.form, sh = st.sheet, setF = (o) => set({ form: { ...F, ...o } }), fset = (k) => (e) => setF({ [k]: e.target.value });
+
+    // éditeur générique : modifier ou supprimer n'importe quel élément
+    const openEd = (kind, ref) => set({ sheet: 'ed', menu: false, form: { kind, ref, ...EDK[kind].load(ref) } });
+    const bump = () => ({ rev: (st.rev || 0) + 1 });
+    const siteNames = KS.map(SL), keyOfName = n => KS.find(k => SL(k) === n);
+    const DAYN = WEEK.map(d => d.w), DLH = { '24 h': 24, '48 h': 48, '72 h': 72, '5 j': 120 };
+    const STK = { 'Payée': 'paid', 'À payer': 'due', 'En retard': 'late' };
+    const amtOf = v => parseFloat(String(v || '').replace(/\s/g, '').replace(',', '.').replace(/[^\d.]/g, '')) || 0;
+    const numOf = v => Math.max(0, parseInt(String(v || '').replace(/[^\d]/g, '')) || 0);
+    const allP = () => Object.keys(st.P).flatMap(k => st.P[k]);
+    const findMail = id => { for (const k of KS) for (const arr of [SITES[k].mails || [], DONE[k] || []]) { const i = arr.findIndex(m => m.id === id); if (i >= 0) return { arr, i, m: arr[i] }; } return null; };
+    const evOf = r => { const d = WEEK[r.day]; if (!d) return null; return r.src === 'p' ? d.ev[r.j] : (st.addE[r.day] || [])[r.j]; };
+    const rmEv = r => { if (r.src === 'p') { WEEK[r.day].ev.splice(r.j, 1); return st.addE; } const a = [...(st.addE[r.day] || [])]; a.splice(r.j, 1); return { ...st.addE, [r.day]: a }; };
+    const LOC = [['addr', 'Adresse', 'Ex. 14 rue Garibaldi'], ['city', 'Ville', 'Ex. 69006 Lyon'], ['access', 'Accès', 'Code, badge, clé…'], ['hours', 'Horaires', 'Ex. 7h30 – 17h']];
+    const EDK = {
+      site: {
+        title: r => r.k ? 'Modifier le site' : 'Nouveau site', req: 'name', delLbl: 'Supprimer ce site', canDel: r => !!r.k && KS.length > 1,
+        note: r => !r.k ? '' : KS.length > 1 ? 'Supprimer le site efface aussi ses projets, son stock, ses messages et ses événements.' : 'Il faut au moins un site : créez-en un autre avant de supprimer celui-ci.',
+        load: r => { if (!r.k) return { color: Object.keys(COLORS).find(n => !Object.values(DOT).includes(COLORS[n])) || 'Bleu' }; const C = st.cfg[r.k] || {}; return { name: SL(r.k), desc: SITES[r.k].addr, color: colorName(DOT[r.k]), addr: C.addr, city: C.city, access: C.access, hours: C.hours }; },
+        groups: () => [{ t: 'Site', f: [['name', 'Nom', 'Ex. Résidence Les Lilas'], ['desc', 'Description', 'Ex. Lyon 3e · 12 logements'], ['color', 'Couleur', '', Object.keys(COLORS)]] }, { t: 'Adresse', f: LOC }],
+        save: (r, F) => {
+          const k = r.k || 's' + rid(), name = F.name.trim();
+          SITES[k] = { geo: [45.764, 4.8357], projects: [], stock: [], mails: [], ...(SITES[k] || {}), label: name.toUpperCase(), name, addr: (F.desc || '').trim() || 'Nouveau site' };
+          DOT[k] = COLORS[F.color] || DOT[k] || '#0A84FF';
+          if (!r.k) { KS.push(k); TEAMS[k] = []; }
+          this.setState(s => ({ ...bump(), cfg: { ...s.cfg, [k]: { zones: [], contacts: [], ...(s.cfg[k] || {}), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: F.hours || '' } }, P: s.P[k] ? s.P : { ...s.P, [k]: [] }, ...(r.k ? {} : { site: k, wpos: KS.indexOf(k), proj: null, menu: false, tab: s.tab === 'l' || s.tab === 'c' ? 'p' : s.tab }) }));
+        },
+        del: r => {
+          const k = r.k, i = KS.indexOf(k); if (i < 0 || KS.length < 2) return;
+          KS.splice(i, 1); delete SITES[k]; delete DOT[k]; delete TEAMS[k]; delete DONE[k];
+          [...PLAN, SUN].forEach(d => { d.ev = d.ev.filter(e => e[1] !== k); });
+          this.setState(s => { const P = { ...s.P }, cfg = { ...s.cfg }, addE = {}; delete P[k]; delete cfg[k]; Object.keys(s.addE).forEach(d => { addE[d] = s.addE[d].filter(e => e[1] !== k); }); const nk = s.site === k ? KS[0] : s.site; return { ...bump(), P, cfg, addE, site: nk, wpos: KS.indexOf(nk), cfgSite: nk, proj: null, mail: null, who: null }; });
+        }
+      },
+      proj: {
+        title: () => 'Modifier le projet', req: 'name', delLbl: 'Supprimer ce projet', canDel: () => true,
+        note: () => 'Supprimer le projet efface aussi ses étapes, notes, fournisseurs et factures.',
+        load: r => { const p = list.find(x => x.id === r.id) || {}; return { name: p.name, phase: p.phase, due: p.due, site: SL(st.site), addr: p.addr, city: p.city, access: p.access, hours: p.hours }; },
+        groups: () => [{ t: 'Projet', f: [['name', 'Nom', 'Ex. Salle de bain lot 4'], ['phase', 'Phase / lot', 'Ex. Second œuvre'], ['due', 'Échéance', 'Ex. 20 déc'], ['site', 'Site', '', siteNames]] }, { t: 'Localisation', f: LOC }],
+        save: (r, F) => {
+          const nk = keyOfName(F.site) || st.site;
+          this.setState(s => {
+            const cur = (s.P[s.site] || []).find(p => p.id === r.id); if (!cur) return null;
+            const p = { ...cur, name: F.name.trim(), phase: F.phase || '', due: F.due || '', addr: F.addr || '', city: F.city || '', access: F.access || '', hours: F.hours || '' };
+            if (nk === s.site) return { P: { ...s.P, [s.site]: s.P[s.site].map(x => x.id === r.id ? p : x) } };
+            return { P: { ...s.P, [s.site]: s.P[s.site].filter(x => x.id !== r.id), [nk]: [...(s.P[nk] || []), p] }, site: nk, wpos: KS.indexOf(nk) };
+          });
+        },
+        del: r => this.setState(s => ({ P: { ...s.P, [s.site]: (s.P[s.site] || []).filter(x => x.id !== r.id) }, proj: null }))
+      },
+      step: {
+        title: () => 'Modifier l’étape', req: 'l', delLbl: 'Supprimer l’étape', canDel: () => true,
+        load: r => { const s = Q.steps.find(x => x.id === r.id) || {}; return { l: s.l, t: s.t === 'c' ? 'Coche' : 'Jauge' }; },
+        groups: () => [{ t: 'Étape', f: [['l', 'Intitulé', 'Ex. Pose plaques'], ['t', 'Suivi', '', ['Coche', 'Jauge']]] }],
+        save: (r, F) => up(p => ({ ...p, steps: p.steps.map(x => x.id === r.id ? { ...x, l: F.l.trim(), t: F.t === 'Coche' ? 'c' : 'g', v: F.t === 'Coche' && x.v < 100 ? 0 : x.v } : x) })),
+        del: r => up(p => ({ ...p, steps: p.steps.filter(x => x.id !== r.id) }))
+      },
+      note: {
+        title: () => 'Modifier la note', req: 'n', delLbl: 'Supprimer la note', canDel: () => true,
+        load: r => ({ n: Q.notes[r.i] }),
+        groups: () => [{ t: 'Note', f: [['n', 'Note', 'Ex. Prévoir 120 plaques']] }],
+        save: (r, F) => up(p => ({ ...p, notes: p.notes.map((x, i) => i === r.i ? F.n.trim() : x) })),
+        del: r => up(p => ({ ...p, notes: p.notes.filter((x, i) => i !== r.i) }))
+      },
+      inv: {
+        title: () => 'Modifier la facture', req: 'num', delLbl: 'Supprimer la facture', canDel: () => true,
+        load: r => { const p = allP().find(x => x.id === r.pid), i = (p && p.inv.find(x => x.id === r.id)) || {}; return { num: i.num, amt: i.amt != null ? String(i.amt).replace('.', ',') : '', date: i.date, st: STL[i.st], sup: i.sup, sups: p ? p.sup.map(f => f.name) : [] }; },
+        groups: () => [{ t: 'Facture', f: [['num', 'N°', 'Ex. F-2026-0520'], ['amt', 'Montant HT', 'Ex. 1 250'], ['date', 'Échéance', 'Ex. 30 nov'], ['st', 'Statut', '', Object.keys(STK)], ['sup', 'Fournisseur', '', F.sups || []]] }],
+        save: (r, F) => this.updP(r.pid, p => ({ ...p, inv: p.inv.map(x => x.id === r.id ? { ...x, num: F.num.trim(), amt: amtOf(F.amt), date: F.date || '—', st: STK[F.st] || x.st, sup: F.sup || x.sup } : x) })),
+        del: r => this.updP(r.pid, p => ({ ...p, inv: p.inv.filter(x => x.id !== r.id) }))
+      },
+      team: {
+        title: r => r.i < 0 ? 'Nouvel intervenant' : 'Modifier l’intervenant', req: 'name', delLbl: 'Retirer de l’équipe', canDel: r => r.i >= 0,
+        load: r => { const m = (TEAMS[st.site] || [])[r.i] || []; return { name: m[0], role: m[1], tag: m[2], tel: m[3] }; },
+        groups: () => [{ t: 'Intervenant', f: [['name', 'Nom', 'Ex. Ali Diallo'], ['role', 'Rôle', 'Ex. Chef d’équipe plâtrerie'], ['tag', 'Statut', '', ['Référent', 'Sur site', 'Sous-traitant', 'Client']], ['tel', 'Téléphone', '06 …']] }],
+        save: (r, F) => { const T = TEAMS[st.site] = TEAMS[st.site] || [], m = [F.name.trim(), F.role || '', F.tag || 'Sur site', F.tel || '']; if (r.i < 0) T.push(m); else T[r.i] = m; set(bump()); },
+        del: r => { (TEAMS[st.site] || []).splice(r.i, 1); set(bump()); }
+      },
+      stk: {
+        title: () => 'Modifier l’article', req: 'name', delLbl: 'Supprimer l’article', canDel: () => true,
+        load: r => { const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || []; const o = st.stk[r.key] || {}; return { name: x[1], unit: x[2], disc: x[6] || SDISC[x[0]] || 'Autre', q: String(o.q ?? x[3]), min: String(x[4]), lot: String(x[5]) }; },
+        groups: () => [{ t: 'Article', f: [['name', 'Produit', 'Ex. Joint carrelage'], ['unit', 'Unité', 'Ex. sacs'], ['disc', 'Discipline', '', [...st.discs, 'Autre']]] }, { t: 'Quantités', f: [['q', 'En stock', '0'], ['min', 'Seuil', '0'], ['lot', 'Lot', '1']] }],
+        save: (r, F) => {
+          const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || [], o = { q: x[3], o: 0, sent: false, ...(st.stk[r.key] || {}) };
+          set({ stkCfg: { ...(st.stkCfg || {}), [r.key]: { ...((st.stkCfg || {})[r.key] || {}), name: F.name.trim(), unit: (F.unit || '').trim() || 'unités', disc: F.disc || 'Autre', min: numOf(F.min), lot: Math.max(1, numOf(F.lot)) } }, stk: { ...st.stk, [r.key]: { ...o, q: numOf(F.q) } } });
+        },
+        del: r => set({ stkDel: { ...(st.stkDel || {}), [r.key]: true }, stkOpen: null })
+      },
+      ev: {
+        title: () => 'Modifier l’événement', req: 'title', delLbl: 'Supprimer l’événement', canDel: () => true,
+        load: r => { const e = evOf(r) || []; return { title: e[2], time: e[0], type: e[3], day: (WEEK[r.day] || {}).w, site: SL(e[1]) }; },
+        groups: () => [{ t: 'Événement', f: [['title', 'Intitulé', 'Ex. Livraison sanitaires'], ['time', 'Heure', '08:00'], ['type', 'Type', 'Ex. Livraison']] }, { t: 'Quand et où', f: [['day', 'Jour', '', DAYN], ['site', 'Site', '', siteNames]] }],
+        save: (r, F) => {
+          const e0 = evOf(r); if (!e0) return;
+          const ix = DAYN.indexOf(F.day), d = ix < 0 ? r.day : ix, e = [(F.time || '08:00').trim(), keyOfName(F.site) || e0[1], F.title.trim(), (F.type || '').trim() || 'Ajouté'];
+          const addE = rmEv(r); set({ ...bump(), addE: { ...addE, [d]: [...(addE[d] || []), e] }, day: d });
+        },
+        del: r => set({ ...bump(), addE: rmEv(r) })
+      },
+      sup: {
+        title: () => 'Modifier le fournisseur', req: 'name', delLbl: 'Supprimer de l’annuaire', canDel: () => true,
+        load: r => { const s = SUP.find(x => x.id === r.id) || {}; return { name: s.name, cat: cap(s.cat || ''), sub: s.sub, who: s.who, tel: s.tel, mail: s.mail, delay: s.delay, price: s.price, why: s.why }; },
+        groups: () => [{ t: 'Fournisseur', f: [['name', 'Nom', 'Ex. Isol’Rhône'], ['cat', 'Spécialité', '', Array.from(new Set([...SUP.map(s => cap(s.cat)), ...st.discs]))], ['sub', 'Ville', 'Ex. Lyon · 12 km'], ['why', 'Notes', 'Ex. Livraison avec hayon']] }, { t: 'Contact', f: [['who', 'Contact', 'Nom du contact'], ['tel', 'Téléphone', '04 …'], ['mail', 'Mail', 'contact@…']] }, { t: 'Conditions', f: [['delay', 'Délai', '', Object.keys(DLH)], ['price', 'Prix', '', ['€', '€€', '€€€']]] }],
+        save: (r, F) => {
+          const s = SUP.find(x => x.id === r.id); if (!s) return;
+          const old = s.name, name = F.name.trim(), price = F.price || s.price;
+          Object.assign(s, { name, cat: (F.cat || s.cat).toUpperCase(), sub: F.sub || '', who: F.who || '', tel: F.tel || '', mail: F.mail || '', delay: F.delay || s.delay, h: DLH[F.delay] || s.h, price, p: price.length, why: F.why || '' });
+          this.setState(s0 => { const P = {}; Object.keys(s0.P).forEach(k => { P[k] = s0.P[k].map(p => ({ ...p, sup: p.sup.map(f => f.ref === r.id ? { ...f, name, tel: s.tel, mail: s.mail, who: s.who } : f), inv: p.inv.map(i => i.sup === old ? { ...i, sup: name } : i) })); }); return { ...bump(), P }; });
+        },
+        del: r => { const i = SUP.findIndex(x => x.id === r.id); if (i >= 0) SUP.splice(i, 1); set({ ...bump(), supSel: null }); }
+      },
+      mail: {
+        title: () => 'Modifier le message', req: 'from', delLbl: 'Supprimer le message', canDel: () => true,
+        load: r => { const x = findMail(r.id), m = x ? x.m : {}; return { from: m.from, org: m.org, subject: m.subject, summary: m.summary, body: m.body }; },
+        groups: () => [{ t: 'Message', f: [['from', 'De', 'Nom'], ['org', 'Société', 'Ex. Plâtre Express'], ['subject', 'Objet', 'Objet'], ['summary', 'Résumé', 'En une phrase'], ['body', 'Texte', 'Contenu du message']] }],
+        save: (r, F) => { const x = findMail(r.id); if (x) Object.assign(x.m, { from: F.from.trim(), org: F.org || '', subject: F.subject || '', summary: F.summary || '', body: F.body || '' }); set(bump()); },
+        del: r => { const x = findMail(r.id); if (x) x.arr.splice(x.i, 1); set({ ...bump(), mail: null }); }
+      }
+    };
+    const EK = st.sheet === 'ed' ? EDK[F.kind] : null, edRef = F.ref || {};
     const FD = {
+      ed: EK ? EK.groups() : [],
       p: [{ t: 'Projet', f: [['a', 'Nom', 'Ex. Salle de bain lot 4'], ['b', 'Type', '', [...st.discs, 'Autre']], ['c', 'Échéance', 'Ex. 20 déc']] }, { t: 'Localisation', f: [['addr', 'Adresse', 'Ex. 14 rue Garibaldi'], ['city', 'Ville', 'Ex. 69006 Lyon'], ['access', 'Accès', 'Code, étage, clé…']] }],
       s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Discipline', '', [...st.discs, 'Autre']], ['b', 'Unité', 'Ex. sacs'], ['c', 'Quantité', '0'], ['d', 'Seuil', '0']] }],
       l: [{ t: 'Événement', f: [['a', 'Intitulé', 'Ex. Livraison sanitaires'], ['b', 'Heure', '08:00'], ['c', 'Type', 'Ex. Livraison']] }],
@@ -1276,7 +1413,7 @@ class Component extends DCLogic {
       sup: [{ t: 'Nouveau fournisseur', f: [['a', 'Nom', 'Ex. Isol’Rhône'], ['b', 'Spécialité', 'Ex. Isolation'], ['who', 'Contact', 'Nom du contact'], ['tel', 'Téléphone', '04 …'], ['mail', 'Mail', 'contact@…']] }]
     };
     const groups = (sh === 'sup' && F.mode !== 'new' ? [] : (FD[sh] || [])).map((g, gi) => { const mk = sh + gi, live = st.mic === mk, err = st.micErr === mk; return { t: g.t, micMsg: live || err, micLbl: live ? 'Écoute…' : 'Dictée indisponible', micCol: live ? '#FF5A5A' : 'var(--ink3)', micBg: live ? '#FF5A5A' : 'var(--tile)', micFg: live ? '#fff' : 'var(--ink)', mic: () => this.dictate(mk, g.f[0][0]), fields: g.f.map(([k, label, ph, ch]) => ({ label, ph, val: F[k] || '', on: fset(k), isIn: !ch, isCh: !!ch, opts: (ch || []).map(v => { const a = F[k] === v; return { label: v, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => setF({ [k]: a ? '' : v }) }; }) })) }; });
-    const valid = sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' ? true : sh === 'sup' ? (F.mode === 'new' ? !!(F.a && F.a.trim()) : (F.pick || []).length > 0) : sh === 'inv' ? !!(F.a && F.b && F.sup) : !!(F.a && F.a.trim());
+    const valid = sh === 'ed' ? !!(EK && String(F[EK.req] || '').trim()) : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' ? true : sh === 'sup' ? (F.mode === 'new' ? !!(F.a && F.a.trim()) : (F.pick || []).length > 0) : sh === 'inv' ? !!(F.a && F.b && F.sup) : !!(F.a && F.a.trim());
     const fs = F.steps || [];
     const fSteps = fs.map((s, i) => ({ l: s.l, cBg: s.t === 'c' ? 'var(--on)' : 'transparent', cFg: s.t === 'c' ? ACC : 'var(--ink2)', gBg: s.t === 'g' ? 'var(--on)' : 'transparent', gFg: s.t === 'g' ? ACC : 'var(--ink2)',
       pickC: () => setF({ steps: fs.map((x, j) => j === i ? { ...x, t: 'c' } : x) }), pickG: () => setF({ steps: fs.map((x, j) => j === i ? { ...x, t: 'g' } : x) }), del: () => setF({ steps: fs.filter((x, j) => j !== i) }) }));
@@ -1289,10 +1426,11 @@ class Component extends DCLogic {
     const invSups = Q.sup.map(f => ({ name: f.name, bg: F.sup === f.name ? ACC : 'var(--field)', fg: F.sup === f.name ? 'var(--accOn)' : INK, pick: () => setF({ sup: f.name }) }));
     const invSt = [['due', 'À payer'], ['paid', 'Payée']].map(([k, label]) => { const a = (F.st || 'due') === k; return { label, bg: a ? 'var(--on)' : 'transparent', fg: a ? INK : 'var(--ink2)', pick: () => setF({ st: k }) }; });
     const formDays = WEEK.map((d, i) => ({ label: d.w, bg: F.day === i ? ACC : 'var(--field)', fg: F.day === i ? 'var(--accOn)' : INK, pick: () => setF({ day: i }) }));
-    const formSites = Object.keys(SITES).map(k => ({ label: tc(SITES[k].label), dot: F.site === k ? '#fff' : DOT[k], bg: F.site === k ? DOT[k] : 'var(--field)', fg: F.site === k ? 'var(--accOn)' : INK, pick: () => setF({ site: k }) }));
+    const formSites = Object.keys(SITES).map(k => ({ label: SL(k), dot: F.site === k ? '#fff' : DOT[k], bg: F.site === k ? DOT[k] : 'var(--field)', fg: F.site === k ? 'var(--accOn)' : INK, pick: () => setF({ site: k }) }));
     const newId = 'n' + (st.seq + 1);
     const submit = () => {
       if (!valid) return;
+      if (sh === 'ed') { EK.save(edRef, F); set({ sheet: null }); return; }
       if (sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg') { set({ sheet: null }); return; }
       const a = (F.a || '').trim(), sq = st.seq + 1;
       if (sh === 'p') {
@@ -1325,7 +1463,7 @@ class Component extends DCLogic {
       ...(() => { const k = st.cfgSite, C = st.cfg[k], CF = st.cfgF, upC = (o) => set({ cfg: { ...st.cfg, [k]: { ...C, ...o } } }), fld = (f) => (e) => upC({ [f]: e.target.value }), cf = (f) => (e) => set({ cfgF: { ...CF, [f]: e.target.value } });
         const nEt = C.zones.filter(z => /^Étage \d+$/.test(z)).map(z => +z.split(' ')[1]), nextEt = 'Étage ' + (nEt.length ? Math.max(...nEt) + 1 : 1);
         const addZ = (z) => { if (z && !C.zones.some(x => x.toLowerCase() === z.toLowerCase())) upC({ zones: [...C.zones, z] }); };
-        return { isSiteSheet: sh === 'site', sc: { label: tc(SITES[k].label), dot: DOT[k], addr: C.addr, city: C.city, access: C.access, hours: C.hours, onAddr: fld('addr'), onCity: fld('city'), onAccess: fld('access'), onHours: fld('hours'),
+        return { isSiteSheet: sh === 'site', sc: { edit: () => openEd('site', { k }), label: SL(k), dot: DOT[k], addr: C.addr, city: C.city, access: C.access, hours: C.hours, onAddr: fld('addr'), onCity: fld('city'), onAccess: fld('access'), onHours: fld('hours'),
           maps: 'https://maps.apple.com/?q=' + encodeURIComponent(C.addr + ', ' + C.city),
           zones: C.zones.map(z => ({ label: z, del: () => upC({ zones: C.zones.filter(x => x !== z) }) })), zoneN: C.zones.length + ' lieux',
           sugg: ZSUG.map(z => z === 'Étage' ? nextEt : z).filter(z => !C.zones.includes(z)).map(z => ({ label: z, add: () => addZ(z) })),
@@ -1354,7 +1492,7 @@ class Component extends DCLogic {
       openInv: () => set({ sheet: 'inv', form: { sup: (Q.sup[0] || {}).name, st: 'due' } }),
       isStock: st.tab === 's', isMail: st.tab === 'm', isPlan: st.tab === 'l', isSup: st.tab === 'c',
       showSel: !glob && !detail, noSel: glob, menuOpen: st.menu && !glob && !detail, toggleMenu: () => set({ menu: !st.menu }), closeMenu: () => set({ menu: false }),
-      cur: { label: tc(S.label), dot: DOT[st.site] }, wheel, wWheel, wDown, wMove, wUp, menuChev: st.menu ? 'rotate(180deg)' : 'none',
+      cur: { label: SL(st.site), dot: DOT[st.site] }, wheel, wWheel, wDown, wMove, wUp, menuChev: st.menu ? 'rotate(180deg)' : 'none',
       openAcc: () => set({ sheet: 'acc', form: {}, menu: false }), isAccSheet: sh === 'acc',
       themeOpts: [[true, 'Sombre'], [false, 'Clair']].map(([v, label]) => ({ label, bg: st.dark === v ? ACC : 'transparent', fg: st.dark === v ? 'var(--accOn)' : 'var(--ink2)', pick: () => set({ dark: v }) })),
       canAdd: st.tab === 'p' || st.tab === 's' || st.tab === 'l',
@@ -1365,7 +1503,7 @@ class Component extends DCLogic {
         const num = (v, d) => { const n = parseInt(String(v).replace(/[^\d]/g, '')); return isNaN(n) ? d : n; };
         const kItems = stockOf(st.site).map(x => { const key = st.site + x[0], setC = (o) => set({ stkCfg: { ...(st.stkCfg || {}), [key]: { ...((st.stkCfg || {})[key] || {}), ...o } } });
           return { name: x[1], unit: x[2], disc: x[6] || SDISC[x[0]] || 'Autre', min: String(x[4]), lot: String(x[5]), onMin: (e) => setC({ min: num(e.target.value, 0) }), onLot: (e) => setC({ lot: Math.max(1, num(e.target.value, 1)) }), del: () => set({ stkDel: { ...(st.stkDel || {}), [key]: true } }) }; });
-        const kc = { site: tc(S.label), n: kItems.length + ' articles', items: kItems, na: F.na || '', nu: F.nu || '', nq: F.nq || '', nm: F.nm || '', nl: F.nl || '', onNa: fset('na'), onNu: fset('nu'), onNq: fset('nq'), onNm: fset('nm'), onNl: fset('nl'), discs: chip([...st.discs, 'Autre'], F.nd, 'nd'),
+        const kc = { site: SL(st.site), n: kItems.length + ' articles', items: kItems, na: F.na || '', nu: F.nu || '', nq: F.nq || '', nm: F.nm || '', nl: F.nl || '', onNa: fset('na'), onNu: fset('nu'), onNq: fset('nq'), onNm: fset('nm'), onNl: fset('nl'), discs: chip([...st.discs, 'Autre'], F.nd, 'nd'),
           add: () => { const a = (F.na || '').trim(); if (!a) return; const sq = st.seq + 1, m = Math.max(1, num(F.nm, 1)); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), ['k' + sq, a.charAt(0).toUpperCase() + a.slice(1), (F.nu || '').trim() || 'unités', num(F.nq, 0), m, Math.max(1, num(F.nl, m)), F.nd || 'Autre']] }, seq: sq, form: {} }); } };
         const DL = { '24 h': 24, '48 h': 48, '72 h': 72, '5 j': 120 }, PR = { '€': 1, '€€': 2, '€€€': 3 };
         const uc = { n: SUP.length + ' fournisseurs', items: SUP.map(s => ({ name: s.name, ini: ini(s.name), av: CATC[cap(s.cat)] || '#7A8496', meta: cap(s.cat) + ' · ' + s.delay + ' · ' + (s.tel || 'sans tél.'), del: () => { const i = SUP.indexOf(s); if (i >= 0) SUP.splice(i, 1); set({ supRev: (st.supRev || 0) + 1, supSel: null }); } })),
@@ -1376,12 +1514,16 @@ class Component extends DCLogic {
             set({ supRev: (st.supRev || 0) + 1, form: {} }); } };
         const pdays = WEEK.map((d, i) => { const a = (F.pday ?? 0) === i; return { label: d.w, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => setF({ pday: i }) }; });
         const pOn = F.plan !== false;
-        const pp = { on: pOn, toggle: () => setF({ plan: !pOn }), sub: pOn ? WEEK[F.pday ?? 0].w + ' ' + WEEK[F.pday ?? 0].n + ' · ' + (F.ptime || '08:00') + ' · ' + tc(S.label) : 'Le projet ne sera pas planifié', track: pOn ? 'var(--ok)' : 'var(--track)', knob: pOn ? 'translateX(20px)' : 'none', days: pdays, time: F.ptime || '', onTime: fset('ptime'), kind: F.pkind || '', onKind: fset('pkind') };
+        const pp = { on: pOn, toggle: () => setF({ plan: !pOn }), sub: pOn ? WEEK[F.pday ?? 0].w + ' ' + WEEK[F.pday ?? 0].n + ' · ' + (F.ptime || '08:00') + ' · ' + SL(st.site) : 'Le projet ne sera pas planifié', track: pOn ? 'var(--ok)' : 'var(--track)', knob: pOn ? 'translateX(20px)' : 'none', days: pdays, time: F.ptime || '', onTime: fset('ptime'), kind: F.pkind || '', onKind: fset('pkind') };
         return { kc, uc, pp };
       })(),
+      isEdSheet: sh === 'ed', edCanDel: !!(EK && EK.canDel(edRef)), edNote: !!(EK && EK.note && EK.note(edRef)), edNoteTxt: EK && EK.note ? EK.note(edRef) : '',
+      edDelLbl: F.confirm ? 'Toucher encore pour confirmer' : (EK ? EK.delLbl : ''), edDelBg: F.confirm ? 'var(--warn)' : 'var(--warnBg)', edDelFg: F.confirm ? '#fff' : 'var(--warnTx)',
+      edDel: () => { if (!F.confirm) { setF({ confirm: true }); return; } EK.del(edRef); set({ sheet: null }); },
+      editProj: () => openEd('proj', { id: pid }), editSup: () => openEd('sup', { id: S0.id }), editMail: () => openEd('mail', { id: cm0.id }), newSite: () => openEd('site', { k: null }),
       openSheet: () => set({ sheet: st.tab, form: st.tab === 'p' ? { steps: DEFSTEPS, sups: [], custom: [] } : { day: st.day, site: st.site }, menu: false }),
-      sheetOpen: !!sh, closeSheet: () => { if (this.rec) try { this.rec.abort(); } catch (e) {} set({ sheet: null, mic: null }); }, submit, submitCol: valid ? ACC : 'var(--ink3)', submitLabel: sh === 'p' ? 'Créer' : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' ? 'OK' : 'Ajouter',
-      sheetTitle: { stkcfg: 'Réglages du stock', supcfg: 'Réglages fournisseurs', site: 'Configurer le site', acc: 'Compte', p: 'Nouveau projet', s: 'Nouveau produit', l: 'Nouvel événement', sup: 'Ajouter un fournisseur', inv: 'Nouvelle facture' }[sh] || '',
+      sheetOpen: !!sh, closeSheet: () => { if (this.rec) try { this.rec.abort(); } catch (e) {} set({ sheet: null, mic: null }); }, submit, submitCol: valid ? ACC : 'var(--ink3)', submitLabel: sh === 'ed' ? (edRef.k === null || edRef.i < 0 ? 'Créer' : 'OK') : sh === 'p' ? 'Créer' : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' ? 'OK' : 'Ajouter',
+      sheetTitle: sh === 'ed' ? (EK ? EK.title(edRef) : '') : { stkcfg: 'Réglages du stock', supcfg: 'Réglages fournisseurs', site: 'Configurer le site', acc: 'Compte', p: 'Nouveau projet', s: 'Nouveau produit', l: 'Nouvel événement', sup: 'Ajouter un fournisseur', inv: 'Nouvelle facture' }[sh] || '',
       groups, fSteps, fSups, fCustom, dirList, supModes, invSups, invSt, formDays, formSites,
       isPlanSheet: sh === 'l', isProjSheet: sh === 'p', isSupSheet: sh === 'sup', isInvSheet: sh === 'inv', supDir: F.mode !== 'new',
       newImg: 'proj-' + newId, newSrc: PX(DEF), invImg: 'inv-' + pid + '-' + (st.seq + 1),
