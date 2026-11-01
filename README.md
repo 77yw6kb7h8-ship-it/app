@@ -19,6 +19,14 @@ Thème clair par défaut comme la v4 ; thème sombre dans Compte. Intitulés en 
 
 Chaque suppression demande deux touchers. Tout est sauvegardé sur le téléphone.
 
+## Identifiants lisibles
+
+Compte → **Afficher les identifiants** : chaque fiche montre son numéro —
+`PRJ-0001` (projet), `FAC-0001` (facture), `STK-0001` (article de stock),
+`FRN-0001` (fournisseur), `SITE-0001` (site). Un numéro est attribué à la création,
+ne change jamais (même après renommage) et n'est jamais réutilisé après une suppression.
+Il est inclus dans les sauvegardes.
+
 ## Sauvegarde iCloud Drive
 
 Les données vivent dans Safari, sur l'appareil. Pour les garder ailleurs ou les passer
