@@ -752,6 +752,21 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="display:flex;gap:4px;padding:4px;border-radius:16px;background:var(--track)">
 <sc-for list="{{ themeOpts }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;padding:10px 0;border-radius:12px;background:{{ o.bg }};color:{{ o.fg }};font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ o.label }}</div></sc-for>
 </div>
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Sauvegarde · iCloud Drive</div>
+<div style="padding:12px 14px;border-radius:20px;background:var(--field)">
+<div style="font:400 15.5px -apple-system,sans-serif">{{ bkLast }}</div>
+<sc-if value="{{ hasBkId }}" hint-placeholder-val="{{ false }}"><div style="font:600 12px ui-monospace,'SF Mono',monospace;color:var(--ink2);margin-top:3px">{{ bkLastId }}</div></sc-if>
+<sc-if value="{{ bkIdle }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:8px;margin-top:12px">
+<div onClick="{{ bkExport }}" style="flex:1;cursor:pointer;text-align:center;padding:11px 0;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:var(--acc);color:var(--accOn)">Exporter</div>
+<div onClick="{{ bkImport }}" style="flex:1;cursor:pointer;text-align:center;padding:11px 0;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)">Importer</div>
+</div></sc-if>
+<sc-if value="{{ bkPending }}" hint-placeholder-val="{{ false }}"><div style="margin-top:12px;font:400 13.5px -apple-system,sans-serif">{{ bkPendTxt }}</div><div style="display:flex;gap:8px;margin-top:10px">
+<div onClick="{{ bkApply }}" style="flex:1;cursor:pointer;text-align:center;padding:11px 0;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:#FF3B30;color:#fff">Remplacer</div>
+<div onClick="{{ bkCancel }}" style="flex:1;cursor:pointer;text-align:center;padding:11px 0;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)">Annuler</div>
+</div></sc-if>
+<sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
+<div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">Exporter → « Enregistrer dans Fichiers » → iCloud Drive › Chantier › Sauvegardes. Chaque sauvegarde porte un identifiant unique.</div>
+</div>
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Planning</div>
 <div onClick="{{ toggleSun }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:20px;background:var(--field)">
 <div><div style="font:400 15.5px -apple-system,sans-serif">Travailler le dimanche</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ sunSub }}</div></div>
@@ -1023,7 +1038,7 @@ const put = (o, v) => { if (v && typeof v === 'object') { Object.keys(o).forEach
 const wrapI = j => ((j % KS.length) + KS.length) % KS.length;
 const DEFSTEPS = [{ l: 'Préparation', t: 'c' }, { l: 'Exécution', t: 'g' }, { l: 'Finitions', t: 'g' }, { l: 'Réception', t: 'c' }];
 const SAVE_KEY = 'chantier-app-v6';
-const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos'];
+const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg'];
 const restore = () => {
   try {
     if (location.hash === '#reset') { localStorage.removeItem(SAVE_KEY); history.replaceState(null, '', location.pathname); return {}; }
@@ -1041,17 +1056,38 @@ const restore = () => {
     return s;
   } catch (e) { return {}; }
 };
-let saveT;
+let saveT, saveOff = false;
+const snap = st => {
+  const s = {};
+  Object.keys(st).forEach(k => { if (!VOLATILE.includes(k)) s[k] = st[k]; });
+  return { state: s, sup: SUP, sites: SITES, ks: KS, dot: DOT, teams: TEAMS, done: DONE, plan: PLAN.map(d => d.ev), sun: SUN.ev };
+};
 const persist = st => {
   clearTimeout(saveT);
-  saveT = setTimeout(() => {
-    try {
-      const s = {};
-      Object.keys(st).forEach(k => { if (!VOLATILE.includes(k)) s[k] = st[k]; });
-      localStorage.setItem(SAVE_KEY, JSON.stringify({ state: s, sup: SUP, sites: SITES, ks: KS, dot: DOT, teams: TEAMS, done: DONE, plan: PLAN.map(d => d.ev), sun: SUN.ev }));
-    } catch (e) {}
-  }, 400);
+  if (saveOff) return;
+  saveT = setTimeout(() => { try { localStorage.setItem(SAVE_KEY, JSON.stringify(snap(st))); } catch (e) {} }, 400);
 };
+// sauvegarde dans un fichier (à ranger dans iCloud Drive › Chantier › Sauvegardes) et restauration
+const p2 = n => String(n).padStart(2, '0');
+const bkStamp = d => d.getFullYear() + p2(d.getMonth() + 1) + p2(d.getDate()) + '-' + p2(d.getHours()) + p2(d.getMinutes());
+const bkWhen = iso => { const d = new Date(iso); return isNaN(d) ? 'date inconnue' : d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' }) + ' à ' + d.getHours() + 'h' + p2(d.getMinutes()); };
+const bkSave = async (name, text) => {
+  const file = new File([text], name, { type: 'application/json' });
+  if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: name }); return; }
+  if (window.showSaveFilePicker) {
+    const h = await window.showSaveFilePicker({ suggestedName: name, types: [{ description: 'Sauvegarde Chantier', accept: { 'application/json': ['.json'] } }] });
+    const w = await h.createWritable(); await w.write(file); await w.close(); return;
+  }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(file); a.download = name;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+};
+const bkPick = () => new Promise((ok, ko) => {
+  const i = document.createElement('input'); i.type = 'file'; i.accept = '.json,application/json';
+  i.style.display = 'none'; document.body.appendChild(i);
+  i.onchange = () => { const f = i.files && i.files[0]; i.remove(); if (!f) return ko(new Error('aucun fichier')); f.text().then(ok, ko); };
+  i.click();
+});
+let bkData = null;
 const START = { 'Liste des projets': { proj: null }, 'Fiche projet · Étapes': { proj: 'a1', seg: 'e' }, 'Fiche projet · Fournisseurs': { proj: 'a1', seg: 'c' }, 'Nouveau projet': { proj: null, sheet: 'p', form: { steps: DEFSTEPS, sups: [], custom: [] } } };
 
 class Component extends DCLogic {
@@ -1267,7 +1303,7 @@ class Component extends DCLogic {
     });
     const totOpen = allInv.filter(x => x.i.st !== 'paid').reduce((a, x) => a + x.i.amt, 0), lateN = allInv.filter(x => x.i.st === 'late').length;
     const kk = v => v >= 1000 ? (v / 1000).toLocaleString('fr-FR', { maximumFractionDigits: 1 }) + ' k€' : eur(v);
-    const S0 = SUP.find(s => s.id === st.supSel) || SUP[0], I0 = supInfo(S0), n0 = S0.tel.replace(/\s/g, ''), bad0 = /RUPTURE|RETARD/.test(S0.tag);
+    const S0 = SUP.find(s => s.id === st.supSel) || SUP[0] || { id: '', name: '', cat: '', sub: '', delay: '', price: '', rel: 0, tag: '', k: [], why: '', tel: '', mail: '', who: '' }, I0 = supInfo(S0), n0 = S0.tel.replace(/\s/g, ''), bad0 = /RUPTURE|RETARD/.test(S0.tag);
     const gp = {}; I0.ci.forEach(x => { (gp[x.proj] = gp[x.proj] || []).push(mkInv(x.i, x.pid)); });
     const sd = { name: S0.name, ini: ini(S0.name), av: CATC[cap(S0.cat)] || '#7A8496', sub: cap(S0.cat) + ' · ' + S0.sub, tag: cap(S0.tag), tagBg: bad0 ? 'var(--warnBg)' : 'var(--tile)', tagFg: bad0 ? 'var(--warnTx)' : 'var(--ink)', why: S0.why, who: S0.who, tel: S0.tel, mail: S0.mail, telH: 'tel:' + n0, smsH: 'sms:' + n0, mailH: 'mailto:' + S0.mail,
       delay: S0.delay, price: S0.price, rel: S0.rel + ' %', open: kk(I0.ct - I0.cpd), paid: eur(I0.cpd),
@@ -1493,7 +1529,31 @@ class Component extends DCLogic {
       isStock: st.tab === 's', isMail: st.tab === 'm', isPlan: st.tab === 'l', isSup: st.tab === 'c',
       showSel: !glob && !detail, noSel: glob, menuOpen: st.menu && !glob && !detail, toggleMenu: () => set({ menu: !st.menu }), closeMenu: () => set({ menu: false }),
       cur: { label: SL(st.site), dot: DOT[st.site] }, wheel, wWheel, wDown, wMove, wUp, menuChev: st.menu ? 'rotate(180deg)' : 'none',
-      openAcc: () => set({ sheet: 'acc', form: {}, menu: false }), isAccSheet: sh === 'acc',
+      openAcc: () => set({ sheet: 'acc', form: {}, menu: false, bkPend: null, bkMsg: '' }), isAccSheet: sh === 'acc',
+      bkLast: st.bkLast ? 'Dernière : ' + bkWhen(st.bkLast.at) + (st.bkLast.imp ? ' · restaurée' : '') : 'Aucune sauvegarde pour l’instant', bkLastId: st.bkLast ? st.bkLast.id : '', hasBkId: !!st.bkLast,
+      bkMsg: st.bkMsg || '', hasBkMsg: !!st.bkMsg, bkPending: !!st.bkPend, bkIdle: !st.bkPend,
+      bkPendTxt: st.bkPend ? 'Remplacer toutes les données actuelles par la sauvegarde ' + st.bkPend.id + ' du ' + bkWhen(st.bkPend.at) + ' ?' : '',
+      bkExport: async () => {
+        const d = new Date(), id = 'SAV-' + bkStamp(d) + '-' + rid().slice(0, 4).toUpperCase();
+        const text = JSON.stringify({ app: 'chantier', format: 1, id, at: d.toISOString(), data: snap(this.state) });
+        try { await bkSave('chantier-' + id + '.json', text); set({ bkLast: { id, at: d.toISOString() }, bkMsg: '✓ Sauvegarde ' + id + ' créée' }); }
+        catch (e) { if (!e || e.name !== 'AbortError') set({ bkMsg: 'Échec de la sauvegarde : ' + ((e && e.message) || e) }); }
+      },
+      bkImport: async () => {
+        try {
+          const j = JSON.parse(await bkPick());
+          if (!j || j.app !== 'chantier' || !j.data || !j.data.state) throw new Error('ce fichier n’est pas une sauvegarde Chantier');
+          bkData = j; set({ bkPend: { id: j.id || 'sans identifiant', at: j.at }, bkMsg: '' });
+        } catch (e) { set({ bkMsg: 'Import impossible : ' + ((e && e.message) || e) }); }
+      },
+      bkCancel: () => { bkData = null; set({ bkPend: null }); },
+      bkApply: () => {
+        if (!bkData) return;
+        const d = bkData.data; d.state = { ...d.state, bkLast: { id: bkData.id, at: bkData.at, imp: true } };
+        saveOff = true; clearTimeout(saveT);
+        try { localStorage.setItem(SAVE_KEY, JSON.stringify(d)); location.reload(); }
+        catch (e) { saveOff = false; set({ bkMsg: 'Import impossible : ' + ((e && e.message) || e) }); }
+      },
       themeOpts: [[true, 'Sombre'], [false, 'Clair']].map(([v, label]) => ({ label, bg: st.dark === v ? ACC : 'transparent', fg: st.dark === v ? 'var(--accOn)' : 'var(--ink2)', pick: () => set({ dark: v }) })),
       canAdd: st.tab === 'p' || st.tab === 's' || st.tab === 'l',
       canCfg: (st.tab === 's' || (st.tab === 'c' && !st.supSel)), openCfg: () => set({ sheet: st.tab === 's' ? 'stkcfg' : 'supcfg', form: {}, menu: false }),

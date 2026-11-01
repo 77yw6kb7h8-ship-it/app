@@ -19,6 +19,17 @@ Thème clair par défaut comme la v4 ; thème sombre dans Compte. Intitulés en 
 
 Chaque suppression demande deux touchers. Tout est sauvegardé sur le téléphone.
 
+## Sauvegarde iCloud Drive
+
+Les données vivent dans Safari, sur l'appareil. Pour les garder ailleurs ou les passer
+d'un appareil à l'autre : Compte → **Sauvegarde · iCloud Drive**.
+
+- **Exporter** crée un fichier `chantier-SAV-AAAAMMJJ-HHMM-XXXX.json` ; l'identifiant
+  `SAV-…` est unique et reste affiché dans Compte. Sur iPhone : « Enregistrer dans Fichiers »
+  → iCloud Drive › **Chantier › Sauvegardes** (dossier créé sur le Mac, synchronisé par iCloud).
+- **Importer** choisit un fichier de sauvegarde, demande confirmation puis remplace toutes
+  les données de l'appareil.
+
 ## Mettre en ligne
 
 Le dossier `chantier/` est un site statique : il suffit de l'héberger en **HTTPS**.
