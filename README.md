@@ -24,14 +24,17 @@ Chaque suppression demande deux touchers. Tout est sauvegardé sur le téléphon
 - **Glisser vers la gauche** sur un projet, un article, un mail, un événement, un contact, une facture,
   une étape, une note ou un intervenant : bouton **Supprimer** (ou glisser jusqu’au bout). Un bandeau
   **Annuler** reste 6 secondes.
-- **Glisser vers la droite** sur un projet : **épingler** (les projets épinglés passent en tête).
+- **Glisser vers la droite** sur un projet, ou bouton punaise dans sa fiche : **épingler**. Les projets
+  épinglés restent en tête de liste, quelle que soit la section (Terminés, En cours, À faire).
 
 ## Profils et connexion
 
 Compte › **Connexion** : identifiant et mot de passe (seule une empreinte PBKDF2 est gardée sur
 l’appareil). C’est un verrou d’usage sur l’appareil, pas une protection des données : quelqu’un qui
 a accès au téléphone déverrouillé et aux outils de développement peut lire les données de Safari.
-« Exiger l’identifiant » affiche l’écran de connexion à l’ouverture. Le **propriétaire** gère les
+« Exiger l’identifiant » affiche l’écran de connexion à l’ouverture. Trois identifiants sont créés
+d’office (activés une fois par appareil) : `thomas` (Propriétaire), `conducteur` (Admin), `equipe` (User) ;
+les mots de passe ont été remis au propriétaire et ne figurent pas dans le code (empreintes seulement). Le **propriétaire** gère les
 **Profils** : Propriétaire (tout), Admin (tout sauf les profils), User (consultation et saisie,
 sans suppression ni réglages). Les profils vivent sur l’appareil et voyagent dans les sauvegardes.
 

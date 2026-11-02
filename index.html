@@ -26,7 +26,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <x-dc>
 <helmet>
 <script src="./image-slot.js"></script>
-<style>html,body{margin:0;height:100%;background:#EEF0F3;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}a{color:inherit;text-decoration:none}a:hover{opacity:.8}*{box-sizing:border-box}::-webkit-scrollbar{display:none}textarea::placeholder,input::placeholder{color:var(--ink3)}.rid{display:none;padding:3px 7px;border-radius:7px;background:var(--tile);border:1px solid var(--tileBd);font:600 11px/1.3 ui-monospace,'SF Mono',Menlo,monospace;color:var(--ink2);letter-spacing:.02em;white-space:nowrap;vertical-align:middle}.show-ids .rid{display:inline-block}.sw{position:relative;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}img{-webkit-user-drag:none}.sw img{pointer-events:none}.sw-fg{position:relative;z-index:1}.sw-r,.sw-l{position:absolute;top:0;bottom:0;width:0;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff;font:600 13.5px -apple-system,system-ui,sans-serif;white-space:nowrap;cursor:pointer}.sw-r{right:0;background:#FF3B30}.sw-l{left:0;background:#FF9F0A}.sw-card>.sw-r,.sw-card>.sw-l{border-radius:24px}.no-del .sw-r{display:none}</style>
+<style>html,body{margin:0;height:100%;background:#EEF0F3;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}a{color:inherit;text-decoration:none}a:hover{opacity:.8}*{box-sizing:border-box}::-webkit-scrollbar{display:none}textarea::placeholder,input::placeholder{color:var(--ink3)}.rid{display:none;padding:3px 7px;border-radius:7px;background:var(--tile);border:1px solid var(--tileBd);font:600 11px/1.3 ui-monospace,'SF Mono',Menlo,monospace;color:var(--ink2);letter-spacing:.02em;white-space:nowrap;vertical-align:middle}.show-ids .rid{display:inline-block}.sw{position:relative;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}img{-webkit-user-drag:none}.sw img{pointer-events:none}.sw-fg{position:relative;z-index:1}.sw-r,.sw-l{position:absolute;top:0;bottom:0;width:0;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff;font:600 13.5px -apple-system,system-ui,sans-serif;white-space:nowrap;cursor:pointer}.sw-r{right:0;background:#FF3B30}.sw-l{left:0;background:#FF9F0A;opacity:.75;transition:opacity .15s}.sw-go>.sw-l{opacity:1}.sw-card>.sw-r,.sw-card>.sw-l{border-radius:24px}.no-del .sw-r{display:none}</style>
 </helmet>
 <div style="height:100%;font-family:-apple-system,'SF Pro Text',system-ui,sans-serif">
 <div style="height:100%;position:relative;overflow:hidden;color:var(--ink);--ink:#0E1726;--ink2:rgba(14,23,38,.58);--ink3:rgba(14,23,38,.36);--line:rgba(14,23,38,.07);--tile:rgba(255,255,255,.62);--tileBd:rgba(255,255,255,.95);--field:rgba(255,255,255,.85);--track:rgba(14,23,38,.09);--chip:rgba(255,255,255,.5);--on:rgba(255,255,255,.92);--acc:#0A7AFF;--accOn:#FFFFFF;--accTx:#0A5FD0;--accSoft:rgba(10,122,255,.13);--warn:#E8590C;--warnTx:#B8470A;--warnBg:rgba(255,140,60,.16);--ok:#1FA45A;--okTx:#157A42;--okBg:rgba(31,164,90,.14);--solid:#0E1726;--solidTx:#FFFFFF;--sheet:rgba(246,247,249,.88);--scrim:rgba(14,23,38,.25);--knob:#fff;--card:rgba(255,255,255,.55);--cardB:1px solid rgba(255,255,255,.85);--cardBd:rgba(255,255,255,.85);--cardSh:0 10px 30px rgba(20,40,80,.10),inset 0 1px 0 #fff;--k1:#0E1726;--k2:rgba(14,23,38,.58);--k3:rgba(14,23,38,.36);--kl:rgba(14,23,38,.07);--kt:rgba(255,255,255,.62);--ktb:rgba(255,255,255,.95);--kf:rgba(255,255,255,.85);--ktr:rgba(14,23,38,.09);--kon:rgba(255,255,255,.92);--ka:#0A7AFF;--kaOn:#FFFFFF;--kas:rgba(10,122,255,.13);--kw:#B8470A;--kwb:rgba(255,140,60,.16);--kwarn:#E8590C;--kok:#157A42;--kokb:rgba(31,164,90,.14);--panel:rgba(14,23,38,.86);--bg:radial-gradient(120% 55% at 0% 0%,#C6DAF3 0,transparent 60%),radial-gradient(90% 50% at 100% 38%,#F3DBC6 0,transparent 62%),radial-gradient(100% 50% at 0% 100%,#D0E8DB 0,transparent 60%),#EEF0F3;--t1:rgba(214,226,140,.42);--t1x:#4A5410;--t2:rgba(170,190,240,.38);--t2x:#24324E;--t3:rgba(150,220,215,.40);--t3x:#14585A;--t4:rgba(240,180,220,.40);--t4x:#6A2058;background:var(--bg)">
@@ -52,7 +52,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </sc-if>
 <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
-<div onClick="{{ back }}" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;padding:10px 16px 10px 11px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Projets</div><div onClick="{{ editProj }}" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;padding:10px 14px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--acc);margin-left:8px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg>Modifier</div>
+<div onClick="{{ back }}" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;padding:10px 16px 10px 11px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Projets</div><div onClick="{{ editProj }}" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;padding:10px 14px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--acc);margin-left:8px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg>Modifier</div><div onClick="{{ pj.pin }}" title="Épingler en tête de liste" style="display:inline-flex;align-items:center;justify-content:center;cursor:pointer;width:44px;height:42px;padding:0;border-radius:16px;background:{{ pj.pinBg }};border:1px solid var(--tileBd);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;color:{{ pj.pinFg }};margin-left:8px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M15.2 2.6l6.2 6.2-1.9.8-3.8 3.8.4 4.6-1.7 1.7-3.9-3.9-5.6 5.6H3.4v-1.5L9 14.3l-3.9-3.9 1.7-1.7 4.6.4 3.8-3.8z"></path></svg></div>
 </sc-if>
 <sc-if value="{{ noSel }}" hint-placeholder-val="{{ false }}"><div style="height:42px"></div></sc-if>
 </div>
@@ -1293,6 +1293,19 @@ const ridScan = st => {
 const ROLES = { owner: 'Propriétaire', admin: 'Admin', user: 'User' };
 const USERS = [{ id: 'u1', name: 'Thomas Martin', login: 'thomas', role: 'owner', mail: 'thomas@martin-renovation.fr', org: 'Martin Rénovation · Lyon', pw: null }];
 const AUTH = { on: false };
+// identifiants remis au propriétaire : empreintes PBKDF2 seulement (les mots de passe ne sont pas dans le code)
+const SEEDU = [
+  { id: 'u1', login: 'thomas', pw: '7a36ac0492f7e1be65a0a7aa:7b344b42ea759402acc103930f9f8faccbd4423764a9a88b40cdb43574c55c1f' },
+  { id: 'u2', name: 'Conducteur de travaux', login: 'conducteur', role: 'admin', mail: '', pw: 'bf9b206957cef77e37a3f703:8d817c75dd406bb8bcfd29f2e7c169f5e0eaf741508bdaf9b90ecef764c6d7f5' },
+  { id: 'u3', name: 'Équipe chantier', login: 'equipe', role: 'user', mail: '', pw: '8901baa2357058cbd77085a8:e99d9f44a0aa0684bcd78e4e4ef455884f17160121e2147de63a38b629bd093f' }
+];
+const seedUsers = () => {
+  if (AUTH.seed) return;
+  const o = USERS.find(u => u.role === 'owner') || USERS[0];
+  if (o && !o.pw) { if (!USERS.some(u => u !== o && u.login === 'thomas')) o.login = 'thomas'; o.pw = SEEDU[0].pw; }
+  SEEDU.slice(1).forEach(x => { if (!USERS.some(u => u.login === x.login)) USERS.push({ ...x, id: USERS.some(u => u.id === x.id) ? 'u' + rid() : x.id }); });
+  AUTH.seed = 1; AUTH.on = true;
+};
 const SESS_KEY = 'chantier-session';
 let ME = USERS[0];
 const meLoad = () => { let id = null; try { id = localStorage.getItem(SESS_KEY); } catch (e) {} ME = USERS.find(u => u.id === id) || (AUTH.on ? null : USERS.find(u => u.role === 'owner') || USERS[0]); };
@@ -1358,18 +1371,21 @@ let swOpen = null, swJust = 0;
     if (!g || e.pointerId !== g.id) return;
     const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
     if (!g.on) {
-      if (Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)) { g = null; return; }
-      if (Math.abs(dx) < 12) return;
+      if (Math.hypot(dx, dy) < 10) return;
+      if (Math.abs(dy) > Math.abs(dx) * 0.8) { g = null; return; }
       g.on = true;
     }
     let x = g.base + dx;
     if (!g.a.del) x = Math.max(0, x);
     if (!g.a.pin) x = Math.min(0, x);
     g.dx = Math.min(x, W * 1.4); place(g.el, g.dx, false);
+    g.el.classList.toggle('sw-go', g.dx > W * 0.6 || (g.dx < 0 && -g.dx > g.el.getBoundingClientRect().width * 0.6));
   }, true);
+  // sur iPhone : une fois le glissé horizontal engagé, la page ne défile plus
+  addEventListener('touchmove', e => { if (g && g.on && e.cancelable) e.preventDefault(); }, { passive: false, capture: true });
   addEventListener('pointerup', e => {
     if (!g || e.pointerId !== g.id) return;
-    const { el, a, dx, on } = g; g = null;
+    const { el, a, dx, on } = g; g = null; el.classList.remove('sw-go');
     if (!on) { if (el === swOpen) { close(); swJust = Date.now(); } return; }
     swJust = Date.now();
     const w = el.getBoundingClientRect().width;
@@ -1378,7 +1394,7 @@ let swOpen = null, swJust = 0;
     if (dx > W * 0.6 && a.pin) a.pin();
     place(el, 0, true); if (swOpen === el) swOpen = null;
   }, true);
-  addEventListener('pointercancel', e => { if (g && e.pointerId === g.id) { place(g.el, 0, true); g = null; } }, true);
+  addEventListener('pointercancel', e => { if (g && e.pointerId === g.id) { g.el.classList.remove('sw-go'); place(g.el, 0, true); g = null; } }, true);
   addEventListener('click', e => {
     const t = e.target.closest ? e.target : e.target.parentElement, b = t && t.closest('.sw-r, .sw-l');
     if (b) { const el = b.closest('.sw'), a = SW[el.dataset.sw]; e.stopPropagation(); place(el, 0, false); swOpen = null; if (a) { if (b.classList.contains('sw-r') && a.del) a.del('bouton'); if (b.classList.contains('sw-l') && a.pin) a.pin(); } return; }
@@ -1477,7 +1493,7 @@ class Component extends DCLogic {
     });
     return { dark: this.props.dark ?? false, site: 'a', tab: 'p', proj: null, seg: 'e', editSteps: false, stepText: '', stepType: 'g', supOpen: null, geo: {}, P, noteText: '', stk: {}, sentOrder: {}, mail: null, tone: 0, edits: {}, sentMail: {}, read: {}, wpos: 0, cfg: CFG0, cfgSite: 'a', cfgF: {}, sunday: false, discs: DISC0, discText: '', chf: 'TOUS', mbox: 'r', mq: '', who: null, vip: {}, treated: {}, cat: 'TOUS', sort: 'PRIX', day: 0, menu: false, sheet: null, form: {}, addS: {}, addE: {}, seq: 0, lg: {}, ...(START[this.props.start] || {}), ...this.boot() };
   }
-  boot() { const r = restore(); meLoad(); if (r.mbx) r.mbx = { ...r.mbx, busy: false }; if (!Array.isArray(r.evs)) r.evs = evMigrate(r.addE); return r;
+  boot() { const r = restore(); seedUsers(); meLoad(); if (r.mbx) r.mbx = { ...r.mbx, busy: false }; if (!Array.isArray(r.evs)) r.evs = evMigrate(r.addE); return r;
   }
   componentWillUnmount() { this.stopScan(); if (this.wRaf) cancelAnimationFrame(this.wRaf); if (this.rec) try { this.rec.abort(); } catch (e) {} }
   dictate(mk, key) {
@@ -1669,12 +1685,13 @@ class Component extends DCLogic {
     const PS = [['d', 'Terminés', 'var(--t3)', 'var(--t3x)'], ['r', 'En cours', 'var(--t1)', 'var(--t1x)'], ['t', 'À faire', 'var(--t4)', 'var(--t4x)']];
     const psecs = PS.map(([k, label, bg, fx]) => { const a = psec === k; return { label, bg, fg: fx, n: list.filter(p => stOf(p) === k).length, bd: a ? fx : 'transparent', op: a ? 1 : 0.55, pick: () => set({ psec: k }) }; });
     const pins = st.pins || {}, pdisc = st.pdisc || null;
+    const togglePin = p => { const was = !!(this.state.pins || {})[p.id], n = { ...(this.state.pins || {}) }; if (was) delete n[p.id]; else n[p.id] = Date.now(); track(was ? 'unpin' : 'pin'); set({ pins: n }); this.toast(was ? '« ' + p.name + ' » n’est plus épinglé' : '« ' + p.name + ' » épinglé en tête de liste'); };
     const inSec = list.filter(p => stOf(p) === psec);
     const pdiscs = [{ k: null, label: 'Toutes', n: inSec.length }, ...Array.from(new Set([...st.discs, ...list.map(discOf).filter(Boolean)])).map(d => ({ k: d, label: d, n: inSec.filter(p => discOf(p) === d).length }))].map(d => { const a = pdisc === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, op: a || d.n ? 1 : 0.5, pick: () => set({ pdisc: a && d.k ? null : d.k }) }; });
     const coverOf = p => phUrl((st.cover || {})[p.id]) || src(p.id);
-    const projects = inSec.filter(p => !pdisc || discOf(p) === pdisc).map((p, i) => ({ p, i })).sort((x, y) => ((pins[y.p.id] ? 1 : 0) - (pins[x.p.id] ? 1 : 0)) || ((pins[x.p.id] || 0) - (pins[y.p.id] || 0)) || x.i - y.i).map(({ p }) => {
+    const projects = [...list.filter(p => pins[p.id] && stOf(p) !== psec), ...inSec].filter(p => !pdisc || discOf(p) === pdisc).map((p, i) => ({ p, i })).sort((x, y) => ((pins[y.p.id] ? 1 : 0) - (pins[x.p.id] ? 1 : 0)) || ((pins[x.p.id] || 0) - (pins[y.p.id] || 0)) || x.i - y.i).map(({ p }) => {
       const pct = pctOf(p), done = p.steps.filter(s => s.v >= 100).length, late = p.inv.filter(i => i.st === 'late').length, todo = p.sup.filter(f => !f.tel || !f.mail).length, pinned = !!pins[p.id], sw = 'p:' + p.id, lv = lvlOf(p);
-      SW[sw] = { pin: () => { track(pinned ? 'unpin' : 'pin'); const n = { ...(this.state.pins || {}) }; if (pinned) delete n[p.id]; else n[p.id] = Date.now(); set({ pins: n }); },
+      SW[sw] = { pin: () => togglePin(p),
         ...(canDel() ? { del: how => this.undoable('Projet « ' + p.name + ' » supprimé', 'proj', how, () => this.setState(s => ({ P: { ...s.P, [st.site]: (s.P[st.site] || []).filter(x => x.id !== p.id) } }))) } : {}) };
       return { sw, pinned, pinLbl: pinned ? 'Désépingler' : 'Épingler', name: p.name, rid: RI('P:' + p.id), img: 'proj-' + p.id, src: coverOf(p), ph: 'Photo · ' + p.name, phase: p.phase, due: 'Fin ' + p.due, pct, pctW: pct + '%',
         loc: [lv, p.addr ? p.addr + (p.city ? ' · ' + p.city.replace(/^\d+\s*/, '') : '') : ''].filter(Boolean).join(' · ') || 'Emplacement à renseigner',
@@ -1734,7 +1751,7 @@ class Component extends DCLogic {
     const total = Q.inv.reduce((a, i) => a + i.amt, 0), paid = Q.inv.filter(i => i.st === 'paid').reduce((a, i) => a + i.amt, 0), anyLate = Q.inv.some(i => i.st === 'late');
     const PH = (st.ph || {})[pid] || [], lvQ = lvlOf(Q);
     const pj = { name: Q.name, rid: RI('P:' + Q.id), phase: Q.phase, due: Q.due, img: 'proj-' + Q.id, src: coverOf(Q), ph: 'Photo · ' + Q.name, addrLine: [lvQ, Q.addr ? Q.addr + (Q.city ? ' · ' + Q.city : '') : ''].filter(Boolean).join(' · ') || 'Emplacement non renseigné', pct,
-      disc: discOf(Q), hasDisc: !!discOf(Q), phN: (n => n ? n + ' photo' + (n > 1 ? 's' : '') : 'Photos')(PH.filter(x => PHS[x.sec]).length), goPh: () => set({ seg: 'ph', editSteps: false }), goSup: () => set({ seg: 'c', editSteps: false }), dash: (C * pct / 100) + ' ' + C,
+      disc: discOf(Q), hasDisc: !!discOf(Q), pinned: !!pins[Q.id], pinLbl: pins[Q.id] ? 'Épinglé' : 'Épingler', pinBg: pins[Q.id] ? '#FF9F0A' : 'var(--tile)', pinFg: pins[Q.id] ? '#fff' : 'var(--ink)', pin: () => togglePin(Q), phN: (n => n ? n + ' photo' + (n > 1 ? 's' : '') : 'Photos')(PH.filter(x => PHS[x.sec]).length), goPh: () => set({ seg: 'ph', editSteps: false }), goSup: () => set({ seg: 'c', editSteps: false }), dash: (C * pct / 100) + ' ' + C,
       stepsDone: Q.steps.filter(s => s.v >= 100).length + '/' + Q.steps.length, supN: Q.sup.length, openAmt: eur(total - paid), openCol: anyLate ? 'var(--warnTx)' : INK,
       steps, notes: Q.notes.map((t, i) => { const sw = 'n:' + pid + '/' + i; SW[sw] = canDel() ? { del: how => this.undoable('Note supprimée', 'note', how, () => up(p => ({ ...p, notes: p.notes.filter((x, j) => j !== i) }))) } : {}; return { sw, t, edit: () => openEd('note', { i }) }; }), locFields: loc,
       map: 'https://www.openstreetmap.org/export/embed.html?bbox=' + (lon - dd * 1.5) + ',' + (lat - dd) + ',' + (lon + dd * 1.5) + ',' + (lat + dd) + '&layer=mapnik&marker=' + lat + ',' + lon,
