@@ -862,7 +862,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">Exporter → « Enregistrer dans Fichiers » → iCloud Drive › Chantier › Sauvegardes. Chaque sauvegarde porte un identifiant unique.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 20</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 21</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -1872,7 +1872,9 @@ class Component extends DCLogic {
     if (!own && !((M.user || '').trim() && M.pass)) { this.toast('Renseignez l’adresse mail et le mot de passe d’application (Réglages › Mails)'); return; }
     this.setState(s => ({ mbx: { ...s.mbx, busy: true, err: '' } })); track('mailSync');
     try {
-      const user = (M.user || '').trim(), imap = user && M.pass ? { host: (M.host || '').trim() || imapGuess(user), user, pass: M.pass } : undefined;
+      // mot de passe d'application Gmail affiché en 4 groupes (« abcd efgh ijkl mnop ») : les espaces sont retirés
+      const user = (M.user || '').trim(), host = (M.host || '').trim() || imapGuess(user), pass = /gmail|google/i.test(host) ? (M.pass || '').replace(/\s+/g, '') : (M.pass || '').trim();
+      const imap = user && pass ? { host, user, pass } : undefined;
       let j;
       if (own) {
         const r = await fetch(M.url.trim().replace(/\/+$/, '') + '/session', { method: 'POST', headers: { Authorization: 'Bearer ' + M.token.trim(), 'Content-Type': 'application/json' }, body: JSON.stringify({ limit: M.limit || 30, imap }) });
