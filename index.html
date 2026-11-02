@@ -473,6 +473,9 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-if>
 
 <sc-if value="{{ isPlan }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:4px;margin:-4px 0 12px;padding:4px;border-radius:16px;background:var(--chip);border:1px solid var(--cardBd)">
+<sc-for list="{{ lsites }}" as="c" hint-placeholder-count="2"><div onClick="{{ c.pick }}" style="flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;padding:9px 6px;border-radius:12px;background:{{ c.bg }};color:{{ c.fg }};font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;white-space:nowrap;overflow:hidden"><span style="width:8px;height:8px;border-radius:50%;flex:none;background:{{ c.dot }}"></span><span style="overflow:hidden;text-overflow:ellipsis">{{ c.label }}</span></div></sc-for>
+</div>
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:-4px 0 14px">
 <div onClick="{{ plSum.cmd.pick }}" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t4) 35%,var(--tile));color:var(--t4x);font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif"><span style="white-space:nowrap">À commander</span><span style="white-space:nowrap">{{ plSum.cmd.n }}</span></div>
 <div onClick="{{ plSum.fac.pick }}" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t2) 35%,var(--tile));color:var(--t2x);font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif"><span>Factures</span><span style="white-space:nowrap">{{ plSum.fac.n }}</span></div>
@@ -522,8 +525,8 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 8px;padding:0 20px">
 <sc-for list="{{ rubs }}" as="r" hint-placeholder-count="4"><div onClick="{{ r.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:9px 13px;border-radius:14px;background:{{ r.bg }};color:{{ r.fg }};border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ r.label }}<span style="opacity:.55">{{ r.n }}</span></div></sc-for>
 </div>
-<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 12px;padding:0 20px">
-<sc-for list="{{ csites }}" as="c" hint-placeholder-count="4"><div onClick="{{ c.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:7px 11px;border-radius:12px;background:{{ c.bg }};color:{{ c.fg }};border:1px solid var(--tileBd);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif"><span style="width:8px;height:8px;border-radius:50%;background:{{ c.dot }}"></span>{{ c.label }}</div></sc-for>
+<div style="display:flex;gap:4px;margin:0 0 12px;padding:4px;border-radius:16px;background:var(--chip);border:1px solid var(--cardBd)">
+<sc-for list="{{ csites }}" as="c" hint-placeholder-count="2"><div onClick="{{ c.pick }}" style="flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;padding:9px 6px;border-radius:12px;background:{{ c.bg }};color:{{ c.fg }};font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;white-space:nowrap;overflow:hidden"><span style="width:8px;height:8px;border-radius:50%;flex:none;background:{{ c.dot }}"></span><span style="overflow:hidden;text-overflow:ellipsis">{{ c.label }}</span></div></sc-for>
 </div>
 <div style="display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);margin-bottom:10px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none;color:var(--ink2)"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L21 21"></path></svg>
@@ -1411,6 +1414,15 @@ let swOpen = null, swJust = 0;
   }, true);
 })();
 let undoD = null, toastT;
+// petit « tic » tactile : vibreur sur Android ; sur iPhone (Safari n'a pas de vibreur), l'interrupteur iOS 18+ donne un retour haptique
+let hapL = null;
+const haptic = () => {
+  try {
+    if (navigator.vibrate) { navigator.vibrate(5); return; }
+    if (!hapL) { hapL = document.createElement('label'); hapL.setAttribute('aria-hidden', 'true'); hapL.style.display = 'none'; const i = document.createElement('input'); i.type = 'checkbox'; i.setAttribute('switch', ''); hapL.appendChild(i); document.head.appendChild(hapL); }
+    hapL.click();
+  } catch (e) {}
+};
 // photos des projets : gardées dans IndexedDB (trop lourdes pour localStorage), réduites à 1600 px
 let phDbP = null, phWake = null;
 const phOpen = () => phDbP || (phDbP = new Promise((ok, ko) => { const r = indexedDB.open('chantier-photos', 1); r.onupgradeneeded = () => r.result.createObjectStore('ph'); r.onsuccess = () => ok(r.result); r.onerror = () => ko(r.error); }));
@@ -1679,6 +1691,7 @@ class Component extends DCLogic {
   undo() { if (!undoD) return; const d = JSON.parse(undoD); undoD = null; clearTimeout(toastT); const s = applyData(d); Object.keys(this.state).forEach(k => { if (!(k in s) && !VOLATILE.includes(k)) s[k] = undefined; }); track('undo'); this.setState({ ...s, toast: null, sheet: null }); }
   componentDidUpdate(prev) {
     this.flags(); this.trackDiff();
+    const wk = Math.round(this.state.wpos || 0); if (this.wLast !== undefined && wk !== this.wLast) haptic(); this.wLast = wk;
     if (ridScan(this.state)) { this.forceUpdate(); return; }
     persist(this.state);
     if (!this.wRaf && !this.wDrag && KS[wrapI(Math.round(this.state.wpos))] !== this.state.site) { const i = KS.indexOf(this.state.site); this.wTarget = i; this.setState({ wpos: i }); }
@@ -1702,7 +1715,7 @@ class Component extends DCLogic {
     const RI = key => RID.map[key] || '';
     const ACC = 'var(--acc)', INK = 'var(--ink)', CHIP = 'var(--chip)', WARN = 'var(--warn)';
     const on = (b) => b ? ACC : CHIP, fg = (b) => b ? 'var(--accOn)' : INK;
-    const glob = st.tab === 'l' || st.tab === 'c';
+    const glob = false;
     const stockOf = k => stockOfS(st, k), subOf = x => x[7] || SSUB[x[0]] || 'Divers';
     const subSugg = d => Array.from(new Set([...(SUBS[d] || []), ...KS.flatMap(k => stockOf(k)).filter(x => (x[6] || SDISC[x[0]] || 'Autre') === d).map(subOf)])).filter(x => x !== 'Divers');
     const list = st.P[st.site] || [];
@@ -1878,18 +1891,19 @@ class Component extends DCLogic {
     const chFilters = ['TOUS', 'MAIL', 'SMS', 'APPEL'].map(l => ({ label: CH[l], bg: on(st.chf === l), fg: fg(st.chf === l), pick: () => set({ chf: l }) }));
     // annuaire : fournisseurs, sous-traitants, clients, par site
     const rubOf = s => s.rub || 'F', sitesOf = s => (s.sites || []).filter(k => SITES[k]);
-    const csite = st.csite && SITES[st.csite] ? st.csite : null, rub = st.rub || 'T';
+    const csite = st.allC ? null : st.site, rub = st.rub || 'T';
     const sq = (st.sq || '').trim().toLowerCase();
     const base = SUP.filter(s => !csite || !sitesOf(s).length || sitesOf(s).includes(csite)).filter(s => !sq || [s.name, s.cat, s.who, s.sub, s.addr, s.city, RUB[rubOf(s)]].join(' ').toLowerCase().includes(sq));
     const rubs = [['T', 'Tous'], ['F', 'Fournisseurs'], ['S', 'Sous-traitants'], ['C', 'Clients']].map(([k, label]) => { const a = rub === k; return { label, n: k === 'T' ? base.length : base.filter(s => rubOf(s) === k).length, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ rub: k }) }; });
     const inRub = base.filter(s => rub === 'T' || rubOf(s) === rub);
     const ccat = st.cat !== 'TOUS' && inRub.some(s => s.cat === st.cat) ? st.cat : 'TOUS';
     const cats = ['TOUS', ...Array.from(new Set(inRub.map(s => s.cat).filter(Boolean)))].map(l => ({ label: l === 'TOUS' ? 'Toutes les disciplines' : cap(l), n: l === 'TOUS' ? inRub.length : inRub.filter(s => s.cat === l).length, bg: ccat === l ? 'var(--acc)' : 'transparent', fg: ccat === l ? 'var(--accOn)' : INK, pick: () => set({ cat: l, catOpen: false }) }));
-    const csites = [{ k: null, label: 'Tous les sites', dot: 'var(--ink3)' }, ...KS.map(k => ({ k, label: SL(k), dot: DOT[k] }))].map(c => { const a = csite === c.k; return { label: c.label, dot: a ? 'var(--accOn)' : c.dot, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ csite: c.k }) }; });
+    const scopeOf = key => [[false, SL(st.site), DOT[st.site]], [true, 'Tous les sites', 'var(--ink3)']].map(([all, label, dot]) => { const a = !!st[key] === all; return { label, dot, bg: a ? 'var(--on)' : 'transparent', fg: a ? INK : 'var(--ink2)', pick: () => set({ [key]: all }) }; });
+    const csites = scopeOf('allC');
     const allInv = []; Object.keys(st.P).forEach(k => st.P[k].forEach(p => p.inv.forEach(i => allInv.push({ i, proj: p.name, pid: p.id }))));
     const itemsOf = key => { const r = []; KS.forEach(k => stockOf(k).forEach(x => { if (x[0] === key) { const sk = k + x[0], o = { q: x[3], o: 0, sent: false, ...(st.stk[sk] || {}) }; r.push({ k, x, sk, o, low: o.q < x[4] }); } })); return r; };
     const supInfo = s => { const ci = allInv.filter(x => x.i.sup === s.name), its = (s.k || []).flatMap(itemsOf); return { ci, ct: ci.reduce((a, x) => a + x.i.amt, 0), cpd: ci.filter(x => x.i.st === 'paid').reduce((a, x) => a + x.i.amt, 0), its, low: its.filter(t => t.low && !t.o.o) }; };
-    const sitesLbl = s => sitesOf(s).length ? sitesOf(s).map(SL).join(', ') : 'Tous les sites';
+    const sitesLbl = s => sitesOf(s).length ? sitesOf(s).map(SL).join(', ') : 'Tous sites';
     const contacts = inRub.filter(s => ccat === 'TOUS' || s.cat === ccat).sort((x, y) => x.name.localeCompare(y.name, 'fr')).map(s => {
       const I = supInfo(s), bad = /RUPTURE|RETARD/.test(s.tag || ''), r = rubOf(s), sw = 'c:' + s.id;
       SW[sw] = canDel() ? { del: how => this.undoable(s.name + ' supprimé de l’annuaire', 'sup', how, () => { const i = SUP.indexOf(s); if (i >= 0) SUP.splice(i, 1); set({ rev: (this.state.rev || 0) + 1, supSel: null }); }) } : {};
@@ -1921,7 +1935,8 @@ class Component extends DCLogic {
       else if (o.q < x[4]) cmdEv.push({ id: 'cmd:' + key, auto: true, date: today, t: '', site: k, title: 'À commander · ' + x[1], sub: o.q + ' ' + x[2] + ' en stock (seuil ' + x[4] + ')', cal: 'cmd', disc, open });
     }));
     const userEv = (st.evs || []).filter(e => !e.site || SITES[e.site]).map(e => ({ ...e, open: () => openEd('ev', { id: e.id }) }));
-    const allEv = [...userEv, ...invEv, ...cmdEv].filter(e => CALS[e.cal] && !calOff[e.cal] && (!pdf || e.disc === pdf));
+    const allEv = [...userEv, ...invEv, ...cmdEv].filter(e => CALS[e.cal] && !calOff[e.cal] && (!pdf || e.disc === pdf) && (st.allL || !e.site || e.site === st.site));
+    const lsites = scopeOf('allL');
     const byDay = {}; allEv.forEach(e => (byDay[e.date] = byDay[e.date] || []).push(e));
     const [calY, calMo] = calM.split('-').map(Number), nDays = new Date(calY, calMo, 0).getDate(), lead = (new Date(calY, calMo - 1, 1).getDay() + 6) % 7;
     const cells = []; for (let i = 0; i < lead; i++) cells.push(0); for (let d = 1; d <= nDays; d++) cells.push(d); while (cells.length % 7) cells.push(0);
@@ -2161,13 +2176,13 @@ class Component extends DCLogic {
       }
     };
     const titles = { p: 'Projets', s: 'Stocks', m: 'Messages', l: 'Planning', c: 'Contacts' };
-    const subtitle = st.tab === 'l' ? 'Tous chantiers · ' + monthN + ' élément' + (monthN > 1 ? 's' : '') + ' en ' + MOIS[calMo - 1] : st.tab === 'c' ? 'Fournisseurs, sous-traitants, clients · ' + SUP.length : 'Sam. 24 oct · ' + S.addr;
+    const subtitle = st.tab === 'l' ? (st.allL ? 'Tous les sites' : SL(st.site)) + ' · ' + monthN + ' élément' + (monthN > 1 ? 's' : '') + ' en ' + MOIS[calMo - 1] : st.tab === 'c' ? 'Fournisseurs, sous-traitants, clients · ' + SUP.length : 'Sam. 24 oct · ' + S.addr;
     const kAll = list.reduce((a, p) => { a.s += p.steps.length; a.d += p.steps.filter(x => x.v >= 100).length; a.pct += pctOf(p); a.o += p.inv.filter(i => i.st !== 'paid').reduce((b, i) => b + i.amt, 0); return a; }, { s: 0, d: 0, pct: 0, o: 0 });
     const kp = { n: list.length, avg: list.length ? Math.round(kAll.pct / list.length) : 0, steps: kAll.d + '/' + kAll.s, open: kAll.o >= 1000 ? (kAll.o / 1000).toLocaleString('fr-FR', { maximumFractionDigits: 1 }) + ' k€' : eur(kAll.o) };
     return {
       dark: st.dark, light: !st.dark, toggleTheme: () => set({ dark: !st.dark }),
       themeStyle: { position: 'absolute', inset: 0, background: 'var(--bg)', color: 'var(--ink)', colorScheme: st.dark ? 'dark' : 'light', transition: 'background .3s', ...(st.dark ? DARK : {}) },
-      kp, sites, rubs, csites, calCells, dayEv, calChips, plDiscs, plSum, dayLbl, dayN: dayEv.length ? dayEv.length + ' élément' + (dayEv.length > 1 ? 's' : '') : 'libre',
+      kp, sites, rubs, csites, lsites, calCells, dayEv, calChips, plDiscs, plSum, dayLbl, dayN: dayEv.length ? dayEv.length + ' élément' + (dayEv.length > 1 ? 's' : '') : 'libre',
       calTitle: up1(MOIS[calMo - 1]) + ' ' + calY, calPrev: () => monthGo(-1), calNext: () => monthGo(1), calToday: () => set({ cal: today.slice(0, 7), calDay: today }),
       calDown: (e) => { this.calX = e.clientX; }, calUp: (e) => { if (this.calX == null) return; const dx = e.clientX - this.calX; this.calX = null; if (Math.abs(dx) > 50) { this.calSw = Date.now(); monthGo(dx < 0 ? 1 : -1); } },
       subtitle, tb, projects, stocks, mails, tones, chFilters, cats, contacts, cm, draftText, pj, segs, stepTypes,
