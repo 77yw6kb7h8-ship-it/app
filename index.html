@@ -26,7 +26,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <x-dc>
 <helmet>
 <script src="./image-slot.js"></script>
-<style>html,body{margin:0;height:100%;background:#EEF0F3;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}a{color:inherit;text-decoration:none}a:hover{opacity:.8}*{box-sizing:border-box}::-webkit-scrollbar{display:none}textarea::placeholder,input::placeholder{color:var(--ink3)}.rid{display:none;padding:3px 7px;border-radius:7px;background:var(--tile);border:1px solid var(--tileBd);font:600 11px/1.3 ui-monospace,'SF Mono',Menlo,monospace;color:var(--ink2);letter-spacing:.02em;white-space:nowrap;vertical-align:middle}.show-ids .rid{display:inline-block}.sw{position:relative;touch-action:pan-y}.sw-fg{position:relative;z-index:1}.sw-r,.sw-l{position:absolute;top:0;bottom:0;width:0;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff;font:600 13.5px -apple-system,system-ui,sans-serif;white-space:nowrap;cursor:pointer}.sw-r{right:0;background:#FF3B30}.sw-l{left:0;background:#FF9F0A}.sw-card>.sw-r,.sw-card>.sw-l{border-radius:24px}.no-del .sw-r{display:none}</style>
+<style>html,body{margin:0;height:100%;background:#EEF0F3;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}a{color:inherit;text-decoration:none}a:hover{opacity:.8}*{box-sizing:border-box}::-webkit-scrollbar{display:none}textarea::placeholder,input::placeholder{color:var(--ink3)}.rid{display:none;padding:3px 7px;border-radius:7px;background:var(--tile);border:1px solid var(--tileBd);font:600 11px/1.3 ui-monospace,'SF Mono',Menlo,monospace;color:var(--ink2);letter-spacing:.02em;white-space:nowrap;vertical-align:middle}.show-ids .rid{display:inline-block}.sw{position:relative;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}img{-webkit-user-drag:none}.sw img{pointer-events:none}.sw-fg{position:relative;z-index:1}.sw-r,.sw-l{position:absolute;top:0;bottom:0;width:0;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff;font:600 13.5px -apple-system,system-ui,sans-serif;white-space:nowrap;cursor:pointer}.sw-r{right:0;background:#FF3B30}.sw-l{left:0;background:#FF9F0A}.sw-card>.sw-r,.sw-card>.sw-l{border-radius:24px}.no-del .sw-r{display:none}</style>
 </helmet>
 <div style="height:100%;font-family:-apple-system,'SF Pro Text',system-ui,sans-serif">
 <div style="height:100%;position:relative;overflow:hidden;color:var(--ink);--ink:#0E1726;--ink2:rgba(14,23,38,.58);--ink3:rgba(14,23,38,.36);--line:rgba(14,23,38,.07);--tile:rgba(255,255,255,.62);--tileBd:rgba(255,255,255,.95);--field:rgba(255,255,255,.85);--track:rgba(14,23,38,.09);--chip:rgba(255,255,255,.5);--on:rgba(255,255,255,.92);--acc:#0A7AFF;--accOn:#FFFFFF;--accTx:#0A5FD0;--accSoft:rgba(10,122,255,.13);--warn:#E8590C;--warnTx:#B8470A;--warnBg:rgba(255,140,60,.16);--ok:#1FA45A;--okTx:#157A42;--okBg:rgba(31,164,90,.14);--solid:#0E1726;--solidTx:#FFFFFF;--sheet:rgba(246,247,249,.88);--scrim:rgba(14,23,38,.25);--knob:#fff;--card:rgba(255,255,255,.55);--cardB:1px solid rgba(255,255,255,.85);--cardBd:rgba(255,255,255,.85);--cardSh:0 10px 30px rgba(20,40,80,.10),inset 0 1px 0 #fff;--k1:#0E1726;--k2:rgba(14,23,38,.58);--k3:rgba(14,23,38,.36);--kl:rgba(14,23,38,.07);--kt:rgba(255,255,255,.62);--ktb:rgba(255,255,255,.95);--kf:rgba(255,255,255,.85);--ktr:rgba(14,23,38,.09);--kon:rgba(255,255,255,.92);--ka:#0A7AFF;--kaOn:#FFFFFF;--kas:rgba(10,122,255,.13);--kw:#B8470A;--kwb:rgba(255,140,60,.16);--kwarn:#E8590C;--kok:#157A42;--kokb:rgba(31,164,90,.14);--panel:rgba(14,23,38,.86);--bg:radial-gradient(120% 55% at 0% 0%,#C6DAF3 0,transparent 60%),radial-gradient(90% 50% at 100% 38%,#F3DBC6 0,transparent 62%),radial-gradient(100% 50% at 0% 100%,#D0E8DB 0,transparent 60%),#EEF0F3;--t1:rgba(214,226,140,.42);--t1x:#4A5410;--t2:rgba(170,190,240,.38);--t2x:#24324E;--t3:rgba(150,220,215,.40);--t3x:#14585A;--t4:rgba(240,180,220,.40);--t4x:#6A2058;background:var(--bg)">
@@ -84,6 +84,14 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </sc-for>
 </div>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:-6px -20px 16px;padding:0 20px">
+<sc-for list="{{ pdiscs }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};opacity:{{ d.op }};border:1px solid var(--tileBd);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
+<div onClick="{{ togglePdAdd }}" title="Ajouter une discipline" style="flex:none;cursor:pointer;width:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div>
+</div>
+<sc-if value="{{ pdAdd }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin:-6px 0 16px">
+<input value="{{ discText }}" onChange="{{ onDisc }}" placeholder="Nouvelle discipline (ex. Isolation)…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--field);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
+<div onClick="{{ addDisc }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ajouter</div>
+</div></sc-if>
 </sc-if>
 </sc-if>
 
@@ -91,11 +99,13 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;flex-direction:column;gap:16px">
 <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
-<div onClick="{{ p.open }}" style="cursor:pointer;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
+<div class="sw sw-card" data-sw="{{ p.sw }}">
+<div class="sw-l"><span style="display:flex;flex-direction:column;align-items:center;gap:5px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.2 2.6l6.2 6.2-1.9.8-3.8 3.8.4 4.6-1.7 1.7-3.9-3.9-5.6 5.6H3.4v-1.5L9 14.3l-3.9-3.9 1.7-1.7 4.6.4 3.8-3.8z"></path></svg>{{ p.pinLbl }}</span></div>
+<div class="sw-fg" onClick="{{ p.open }}" style="cursor:pointer;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <div style="position:relative;height:150px;margin:6px 6px 0;border-radius:16px;overflow:hidden;background:var(--tile);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
-<image-slot id="{{ p.img }}" src="{{ p.src }}" placeholder="{{ p.ph }}" shape="rect" style="width:100%;height:100%"></image-slot>
+<img src="{{ p.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
 <div style="position:absolute;left:10px;right:10px;top:10px;display:flex;justify-content:space-between;pointer-events:none">
-<span style="padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.75);color:#0E1726;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ p.phase }}</span>
+<span style="display:flex;gap:6px"><sc-if value="{{ p.pinned }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:4px;padding:5px 9px;border-radius:999px;background:#FF9F0A;color:#fff;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M15.2 2.6l6.2 6.2-1.9.8-3.8 3.8.4 4.6-1.7 1.7-3.9-3.9-5.6 5.6H3.4v-1.5L9 14.3l-3.9-3.9 1.7-1.7 4.6.4 3.8-3.8z"></path></svg></span></sc-if><span style="padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.75);color:#0E1726;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ p.phase }}</span></span>
 <span style="padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.75);color:#0E1726;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ p.due }}</span>
 </div>
 </div>
@@ -110,16 +120,19 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ p.hasAlert }}" hint-placeholder-val="{{ false }}"><div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 10px 10px 12px;border-radius:12px;background:var(--panel);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6)"><span style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:rgba(242,242,242,.6)">Alerte</span><span style="padding:6px 9px;border-radius:999px;background:rgba(255,90,90,.16);color:#FF8F8F;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ p.alert }}</span></div></sc-if>
 </div>
 </div>
+<div class="sw-r">Supprimer</div>
+</div>
 </sc-for>
 </div>
 </sc-if>
 
 <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
 <div style="position:relative;height:200px;border-radius:24px;overflow:hidden;background:var(--tile);box-shadow:var(--cardSh);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
-<image-slot id="{{ pj.img }}" src="{{ pj.src }}" placeholder="{{ pj.ph }}" shape="rect" style="width:100%;height:100%"></image-slot>
+<img src="{{ pj.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+<div onClick="{{ pj.goPh }}" style="position:absolute;top:10px;right:10px;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;background:rgba(0,0,0,.42);color:#fff;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"></path><circle cx="12" cy="13" r="3.6"></circle></svg>{{ pj.phN }}</div>
 <div style="position:absolute;left:0;right:0;bottom:0;padding:48px 18px 16px;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.62));color:#fff;pointer-events:none">
 <div class="rid" style="background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3);color:#fff;margin-bottom:6px">{{ pj.rid }}</div>
-<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;opacity:.88">{{ pj.phase }} · Fin {{ pj.due }}</div>
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;opacity:.88">{{ pj.phase }} · Fin {{ pj.due }}<sc-if value="{{ pj.hasDisc }}" hint-placeholder-val="{{ true }}"> · {{ pj.disc }}</sc-if></div>
 <div style="font:400 28px/1.1 -apple-system,'SF Pro Display',sans-serif;letter-spacing:-.03em;margin-top:3px;text-wrap:pretty">{{ pj.name }}</div>
 <div style="display:flex;align-items:center;gap:5px;margin-top:5px;font:500 12.5px -apple-system,sans-serif;opacity:.9"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>{{ pj.addrLine }}</div>
 </div>
@@ -127,7 +140,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:10px">
 <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t1) 35%,var(--tile));color:var(--t1x);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums"><span>Avancé</span><span>{{ pj.pct }} %</span></div>
 <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t2) 35%,var(--tile));color:var(--t2x);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums"><span>Étapes</span><span>{{ pj.stepsDone }}</span></div>
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t3) 35%,var(--tile));color:var(--t3x);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums"><span>Fourn.</span><span>{{ pj.supN }}</span></div>
+<div onClick="{{ pj.goSup }}" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t3) 35%,var(--tile));color:var(--t3x);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums"><span>Fourn. ›</span><span>{{ pj.supN }}</span></div>
 <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t4) 35%,var(--tile));color:var(--t4x);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums"><span>À payer</span><span>{{ pj.openAmt }}</span></div>
 </div>
 <div style="display:flex;gap:4px;margin:14px 0 16px;padding:4px;border-radius:16px;background:var(--chip);border:1px solid var(--cardBd);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
@@ -143,7 +156,8 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="padding:4px 16px 10px;border-radius:24px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ pj.steps }}" as="s" hint-placeholder-count="4">
-<div style="padding:12px 0;border-bottom:2px solid var(--line)">
+<div class="sw" data-sw="{{ s.sw }}" style="border-bottom:2px solid var(--line)">
+<div class="sw-fg" style="padding:12px 0">
 <div style="display:flex;align-items:center;gap:12px">
 <sc-if value="{{ s.isC }}" hint-placeholder-val="{{ true }}"><div onClick="{{ s.toggle }}" style="cursor:pointer;width:24px;height:24px;border-radius:50%;border:1.6px solid {{ s.ckBd }};background:{{ s.ckBg }};display:flex;align-items:center;justify-content:center;flex:none"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--accOn)"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg></div></sc-if>
 <sc-if value="{{ s.isG }}" hint-placeholder-val="{{ false }}"><div onClick="{{ s.complete }}" title="Marquer terminé" style="cursor:pointer;width:24px;height:24px;border-radius:50%;flex:none;background:{{ s.pie }};display:flex;align-items:center;justify-content:center"><sc-if value="{{ s.gOpen }}" hint-placeholder-val="{{ true }}"><div style="width:14px;height:14px;border-radius:50%;background:var(--tileBd)"></div></sc-if><sc-if value="{{ s.gDone }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.4 2.3 4.6-5"></path></svg></sc-if></div></sc-if>
@@ -160,13 +174,15 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-if>
 </div>
 <sc-if value="{{ s.showBar }}" hint-placeholder-val="{{ false }}">
-<div onPointerDown="{{ s.drag }}" onPointerMove="{{ s.drag }}" style="margin:6px 4px 0 36px;height:26px;display:flex;align-items:center;cursor:pointer;touch-action:none">
+<div data-nosw="1" onPointerDown="{{ s.drag }}" onPointerMove="{{ s.drag }}" style="margin:6px 4px 0 36px;height:26px;display:flex;align-items:center;cursor:pointer;touch-action:none">
 <div style="position:relative;flex:1;height:8px;border-radius:999px;background:var(--track)">
 <div style="height:100%;border-radius:999px;background:{{ s.barCol }};width:{{ s.w }}"></div>
 <div style="position:absolute;top:50%;left:{{ s.w }};width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--knob);box-shadow:0 2px 8px rgba(0,0,0,.25),0 0 0 .5px rgba(0,0,0,.08)"></div>
 </div>
 </div>
 </sc-if>
+</div>
+<div class="sw-r">Supprimer</div>
 </div>
 </sc-for>
 <div style="margin-top:12px;padding:10px 10px 12px;border-radius:16px;background:var(--panel);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);color:#F2F2F2;--ink:#F2F2F2;--ink2:rgba(242,242,242,.55);--ink3:rgba(242,242,242,.35);--on:#F2F2F2;--acc:#161616;--track:#2E2E2E;--field:#262626;--tileBd:#333333;--solid:#F2F2F2;--solidTx:#161616">
@@ -183,13 +199,24 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--warnTx);margin:22px 4px 8px">À prévoir pour la suite</div>
 <div style="padding:10px 16px 14px;border-radius:24px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ pj.notes }}" as="n" hint-placeholder-count="2">
-<div style="display:flex;gap:10px;font-size:14.5px;line-height:1.4;padding:5px 0"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);flex:none;margin-top:7px"></span><span onClick="{{ n.edit }}" style="flex:1;cursor:pointer">{{ n.t }}</span></div>
+<div class="sw" data-sw="{{ n.sw }}"><div class="sw-fg" style="display:flex;gap:10px;font-size:14.5px;line-height:1.4;padding:5px 0"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);flex:none;margin-top:7px"></span><span onClick="{{ n.edit }}" style="flex:1;cursor:pointer">{{ n.t }}</span></div><div class="sw-r" style="border-radius:8px">Supprimer</div></div>
 </sc-for>
 <div style="display:flex;gap:8px;margin-top:8px">
 <input value="{{ noteText }}" onChange="{{ onNote }}" placeholder="Ajouter une note…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--field);padding:10px 14px;border-radius:16px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
 <div onClick="{{ addNote }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 16px;border-radius:16px;display:flex;align-items:center;font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">Ajouter</div>
 </div>
 </div>
+</sc-if>
+
+<sc-if value="{{ segPh }}" hint-placeholder-val="{{ false }}">
+<sc-for list="{{ phSecs }}" as="g" hint-placeholder-count="2">
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin:4px 4px 8px"><div style="font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2)">{{ g.label }} <span style="font-weight:500;color:var(--ink3)">· {{ g.n }}</span></div><div onClick="{{ g.add }}" style="cursor:pointer;font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--acc)">+ Ajouter</div></div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:20px">
+<sc-for list="{{ g.items }}" as="x" hint-placeholder-count="3"><div onClick="{{ x.open }}" style="cursor:pointer;position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;background:var(--tile)"><img src="{{ x.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><sc-if value="{{ x.cover }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:6px;bottom:6px;padding:3px 7px;border-radius:999px;background:rgba(0,0,0,.5);color:#fff;font:600 10.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Couverture</span></sc-if></div></sc-for>
+<div onClick="{{ g.add }}" style="cursor:pointer;aspect-ratio:1;border-radius:14px;border:1.5px dashed var(--ink3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--acc);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"></path><circle cx="12" cy="13" r="3.6"></circle></svg>Ajouter</div>
+</div>
+</sc-for>
+<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:0 6px">Touchez une photo pour la remplacer, la changer de section, la mettre en couverture ou la supprimer. Les photos restent sur l’appareil et sont incluses dans les sauvegardes iCloud Drive.</div>
 </sc-if>
 
 <sc-if value="{{ segC }}" hint-placeholder-val="{{ false }}">
@@ -200,11 +227,12 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;margin:0 4px 8px">
 <div style="font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Fournisseurs & factures</div>
-<div onClick="{{ openSup }}" style="cursor:pointer;font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--acc)">+ Fournisseur</div>
+<div onClick="{{ openSup }}" style="cursor:pointer;font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--acc)">+ Attacher</div>
 </div>
 <div style="display:flex;flex-direction:column;gap:12px">
 <sc-for list="{{ pj.sups }}" as="f" hint-placeholder-count="3">
-<div style="padding:2px 14px 12px;border-radius:24px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
+<div class="sw sw-card" data-sw="{{ f.sw }}">
+<div class="sw-fg" style="padding:2px 14px 12px;border-radius:24px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <div onClick="{{ f.toggle }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 0">
 <div style="width:42px;height:42px;border-radius:12px;flex:none;background:{{ f.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 15px -apple-system,sans-serif">{{ f.ini }}</div>
 <div style="flex:1;min-width:0"><div style="font:600 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ f.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ f.sub }}</div></div>
@@ -233,28 +261,31 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div onClick="{{ f.addInv }}" style="cursor:pointer;font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--acc)">+ Facture</div>
 </div>
 <sc-for list="{{ f.inv }}" as="i" hint-placeholder-count="1">
-<div style="display:flex;align-items:center;gap:10px;padding:8px 0">
+<div class="sw" data-sw="{{ i.sw }}"><div class="sw-fg" style="display:flex;align-items:center;gap:10px;padding:8px 0">
 <div style="width:32px;height:32px;border-radius:12px;flex:none;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M6.5 3h7.5l4 4v14h-11.5z"></path><path d="M14 3v4h4M9.5 12h5M9.5 16h5"></path></svg></div>
 <div onClick="{{ i.edit }}" style="flex:1;min-width:0;cursor:pointer"><div style="font:600 14.5px -apple-system,sans-serif">{{ i.num }} <span class="rid" style="margin-left:4px">{{ i.rid }}</span></div><div style="font:400 12px -apple-system,sans-serif;color:var(--ink2);margin-top:1px">Échéance {{ i.date }}</div></div>
 <div style="font:700 14.5px -apple-system,sans-serif;flex:none">{{ i.amt }}</div>
 <div onClick="{{ i.cyc }}" style="cursor:pointer;flex:none;min-width:70px;text-align:center;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;background:{{ i.stBg }};color:{{ i.stFg }};padding:4px 9px;border-radius:999px">{{ i.stLbl }}</div>
-</div>
+</div><div class="sw-r" style="border-radius:10px">Supprimer</div></div>
 </sc-for>
 <sc-if value="{{ f.noInv }}" hint-placeholder-val="{{ false }}"><div style="padding:6px 0 2px;font:400 13px -apple-system,sans-serif;color:var(--ink2)">Aucune facture échangée pour l’instant</div></sc-if>
 <sc-if value="{{ f.hasInv }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:12px;margin-top:6px;padding:9px 12px;border-radius:12px;background:var(--tile);font:500 12.5px -apple-system,sans-serif;color:var(--ink2)"><span style="flex:1">Payé <span style="font-weight:700;color:var(--okTx)">{{ f.paid }}</span></span><span>À payer <span style="font-weight:700;color:{{ f.openCol }}">{{ f.openAmt }}</span></span></div></sc-if>
 </div>
+<div class="sw-r">Retirer</div>
+</div>
 </sc-for>
+<div onClick="{{ openSup }}" style="cursor:pointer;padding:14px;border-radius:20px;border:1.5px dashed var(--ink3);text-align:center;font:600 14.5px -apple-system,sans-serif;color:var(--acc)">+ Attacher un fournisseur, sous-traitant ou client</div>
 </div>
 
 <div style="font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:24px 4px 8px">Équipe & intervenants</div>
 <div style="padding:2px 14px;border-radius:24px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ pj.team }}" as="m" hint-placeholder-count="3">
-<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:2px solid var(--line)">
+<div class="sw" data-sw="{{ m.sw }}" style="border-bottom:2px solid var(--line)"><div class="sw-fg" style="display:flex;align-items:center;gap:12px;padding:12px 0">
 <div style="width:40px;height:40px;border-radius:50%;flex:none;background:var(--accSoft);color:var(--accTx);display:flex;align-items:center;justify-content:center;font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ m.ini }}</div>
 <div onClick="{{ m.edit }}" style="flex:1;min-width:0;cursor:pointer"><div style="font:600 15px -apple-system,sans-serif">{{ m.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ m.role }}</div></div>
 <div style="flex:none;font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);border:1px solid var(--line);padding:3px 8px;border-radius:999px">{{ m.tag }}</div>
 <a href="{{ m.telH }}" style="width:34px;height:34px;flex:none;border-radius:50%;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 3.5h3l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2.1 4.2 1.6v3a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"></path></svg></a>
-</div>
+</div><div class="sw-r">Retirer</div></div>
 </sc-for>
 <div onClick="{{ pj.addTeam }}" style="cursor:pointer;text-align:center;font:600 14px -apple-system,sans-serif;color:var(--acc);text-align:left;padding:13px 0">+ Ajouter un intervenant</div>
 </div>
@@ -566,11 +597,11 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-for list="{{ sd.groups }}" as="g" hint-placeholder-count="1">
 <div style="padding:12px 14px 4px;font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">{{ g.proj }}</div>
 <sc-for list="{{ g.inv }}" as="i" hint-placeholder-count="1">
-<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:2px solid var(--line)">
+<div class="sw" data-sw="{{ i.sw }}" style="border-bottom:2px solid var(--line)"><div class="sw-fg" style="display:flex;align-items:center;gap:10px;padding:10px 14px">
 <div onClick="{{ i.edit }}" style="flex:1;min-width:0;cursor:pointer"><div style="font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ i.num }} <span class="rid" style="margin-left:4px">{{ i.rid }}</span></div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">Échéance {{ i.date }}</div></div>
 <div style="flex:none;font:400 15px -apple-system,sans-serif">{{ i.amt }}</div>
 <div onClick="{{ i.cyc }}" style="cursor:pointer;flex:none;min-width:70px;text-align:center;padding:5px 8px;border-radius:999px;background:{{ i.stBg }};color:{{ i.stFg }};font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ i.stLbl }}</div>
-</div>
+</div><div class="sw-r">Supprimer</div></div>
 </sc-for>
 </sc-for>
 <div style="display:flex;justify-content:space-between;gap:10px;padding:12px 14px;background:var(--tile)"><span style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--okTx)">Payé {{ sd.paid }}</span><span style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">À payer {{ sd.open }}</span></div>
@@ -646,7 +677,10 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="flex:1;min-height:0;overflow-y:auto;padding:0 18px 26px">
 <sc-if value="{{ isProjSheet }}" hint-placeholder-val="{{ false }}">
-<div style="height:104px;border-radius:16px;overflow:hidden;margin-bottom:4px;background:var(--field)"><image-slot id="{{ newImg }}" src="{{ newSrc }}" placeholder="Photo du projet" shape="rect" style="width:100%;height:100%"></image-slot></div>
+<div onClick="{{ addCover }}" style="cursor:pointer;position:relative;height:104px;border-radius:16px;overflow:hidden;margin-bottom:4px;background:var(--field);display:flex;align-items:center;justify-content:center;gap:8px;color:var(--acc);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif">
+<sc-if value="{{ newHasCover }}" hint-placeholder-val="{{ false }}"><img src="{{ newCoverSrc }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if>
+<sc-if value="{{ newNoCover }}" hint-placeholder-val="{{ true }}"><span style="display:flex;align-items:center;gap:8px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"></path><circle cx="12" cy="13" r="3.6"></circle></svg>Ajouter une photo</span></sc-if>
+</div>
 </sc-if>
 <sc-if value="{{ isSiteSheet }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;align-items:center;gap:10px;padding:2px 4px 4px"><span style="width:10px;height:10px;border-radius:50%;background:{{ sc.dot }}"></span><span style="font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ sc.label }}</span><span class="rid">{{ sc.rid }}</span><div onClick="{{ sc.edit }}" style="margin-left:auto;cursor:pointer;font:600 13.5px -apple-system,sans-serif;color:var(--acc)">Nom, couleur…</div></div>
@@ -815,7 +849,10 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-for list="{{ supModes }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:8px 0;border-radius:16px;background:{{ o.bg }};color:{{ o.fg }};font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ o.label }}</div></sc-for>
 </div>
 <sc-if value="{{ supDir }}" hint-placeholder-val="{{ true }}">
-<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:14px 4px 8px">Depuis l’annuaire</div>
+<div style="display:flex;gap:4px;padding:4px;border-radius:14px;background:var(--track);margin:10px 0 0;overflow-x:auto">
+<sc-for list="{{ dirRubs }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:1;white-space:nowrap;text-align:center;cursor:pointer;padding:7px 8px;border-radius:11px;background:{{ o.bg }};color:{{ o.fg }};font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ o.label }}</div></sc-for>
+</div>
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:14px 4px 8px">Depuis l’annuaire · ce site en premier</div>
 <div style="border-radius:16px;background:var(--field);padding:0 14px">
 <sc-for list="{{ dirList }}" as="d" hint-placeholder-count="4">
 <div onClick="{{ d.pick }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:2px solid var(--line)">
@@ -935,6 +972,29 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ edNote }}" hint-placeholder-val="{{ false }}"><div style="margin:18px 4px 0;font:400 13px/1.4 -apple-system,sans-serif;color:{{ edNoteCol }}">{{ edNoteTxt }}</div></sc-if>
 <sc-if value="{{ edCanDel }}" hint-placeholder-val="{{ false }}"><div onClick="{{ edDel }}" style="cursor:pointer;margin-top:14px;padding:14px;border-radius:16px;text-align:center;background:{{ edDelBg }};color:{{ edDelFg }};font:600 15px -apple-system,sans-serif;transition:background .2s">{{ edDelLbl }}</div></sc-if>
 </div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ phvOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:85;background:#000;color:#fff;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top, 0px)">
+<div style="flex:none;display:flex;align-items:center;justify-content:space-between;padding:12px 16px">
+<div onClick="{{ phv.close }}" style="cursor:pointer;font:600 15.5px -apple-system,sans-serif;color:#7CC4FF">Fermer</div>
+<div style="font:600 15px -apple-system,sans-serif">{{ phv.title }}</div>
+<div style="font:500 13.5px -apple-system,sans-serif;opacity:.7;min-width:44px;text-align:right">{{ phv.pos }}</div>
+</div>
+<div style="flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center">
+<img src="{{ phv.src }}" alt="" style="max-width:100%;max-height:100%;object-fit:contain;display:block">
+<sc-if value="{{ phv.multi }}" hint-placeholder-val="{{ true }}">
+<div onClick="{{ phv.prev }}" style="position:absolute;left:10px;top:50%;margin-top:-22px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg></div>
+<div onClick="{{ phv.next }}" style="position:absolute;right:10px;top:50%;margin-top:-22px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6 4.5 9.5"></path></svg></div>
+</sc-if>
+</div>
+<div style="flex:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:12px 12px calc(12px + env(safe-area-inset-bottom, 0px))">
+<div onClick="{{ phv.setCover }}" style="cursor:pointer;text-align:center;padding:12px 2px;border-radius:14px;background:rgba(255,255,255,.12);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ phv.coverLbl }}</div>
+<div onClick="{{ phv.move }}" style="cursor:pointer;text-align:center;padding:12px 2px;border-radius:14px;background:rgba(255,255,255,.12);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ phv.moveLbl }}</div>
+<div onClick="{{ phv.replace }}" style="cursor:pointer;text-align:center;padding:12px 2px;border-radius:14px;background:rgba(255,255,255,.12);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Remplacer</div>
+<sc-if value="{{ phv.canDel }}" hint-placeholder-val="{{ true }}"><div onClick="{{ phv.del }}" style="cursor:pointer;text-align:center;padding:12px 2px;border-radius:14px;background:{{ phv.delBg }};color:#fff;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ phv.delLbl }}</div></sc-if>
 </div>
 </div>
 </sc-if>
@@ -1092,7 +1152,7 @@ const src = k => PX(IMG[k] || DEF);
 const ini = s => s.replace(/[’']/g, ' ').split(/\s+/).filter(Boolean).map(w => w[0]).slice(0, 2).join('').toUpperCase();
 const eur = n => n.toLocaleString('fr-FR', { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + ' €';
 const rid = () => Math.random().toString(36).slice(2, 8);
-const supCopy = id => { const s = SUP.find(x => x.id === id); return { id: 'f' + rid(), ref: id, name: s.name, cat: cap(s.cat), tel: s.tel, mail: s.mail, who: s.who }; };
+const supCopy = id => { const s = SUP.find(x => x.id === id); return { id: 'f' + rid(), ref: id, name: s.name, cat: cap(s.cat), tel: s.tel, mail: s.mail, who: s.who, rub: s.rub || 'F' }; };
 const KS = Object.keys(SITES);
 const SL = k => SITES[k] ? (SITES[k].name || tc(SITES[k].label)) : 'Site supprimé';
 const COLORS = { Olive: '#9AA34E', Prune: '#B06E9C', Canard: '#4E9FA2', Bleu: '#0A84FF', Orange: '#E8590C', Ardoise: '#5B6478', Rose: '#E0569B', Vert: '#30A46C' };
@@ -1101,7 +1161,7 @@ const put = (o, v) => { if (v && typeof v === 'object') { Object.keys(o).forEach
 const wrapI = j => ((j % KS.length) + KS.length) % KS.length;
 const DEFSTEPS = [{ l: 'Préparation', t: 'c' }, { l: 'Exécution', t: 'g' }, { l: 'Finitions', t: 'g' }, { l: 'Réception', t: 'c' }];
 const SAVE_KEY = 'chantier-app-v6';
-const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'usage'];
+const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'usage', 'pdAdd'];
 const restore = () => {
   try {
     if (location.hash === '#reset') { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(SESS_KEY); history.replaceState(null, '', location.pathname); return {}; }
@@ -1242,7 +1302,7 @@ let swOpen = null, swJust = 0;
   addEventListener('pointerdown', e => {
     const t = e.target.closest ? e.target : e.target.parentElement, el = t && t.closest('.sw');
     if (swOpen && el !== swOpen) { close(); swJust = Date.now(); return; }
-    if (!el || t.closest('.sw-r, .sw-l, input, textarea, a')) return;
+    if (!el || t.closest('.sw-r, .sw-l, input, textarea, a, [data-nosw]')) return;
     const a = SW[el.dataset.sw]; if (!a || (!a.del && !a.pin)) return;
     g = { el, a, x0: e.clientX, y0: e.clientY, base: el === swOpen ? -W : 0, dx: 0, on: false, id: e.pointerId };
   }, true);
@@ -1278,6 +1338,32 @@ let swOpen = null, swJust = 0;
   }, true);
 })();
 let undoD = null, toastT;
+// photos des projets : gardées dans IndexedDB (trop lourdes pour localStorage), réduites à 1600 px
+let phDbP = null, phWake = null;
+const phOpen = () => phDbP || (phDbP = new Promise((ok, ko) => { const r = indexedDB.open('chantier-photos', 1); r.onupgradeneeded = () => r.result.createObjectStore('ph'); r.onsuccess = () => ok(r.result); r.onerror = () => ko(r.error); }));
+const phTx = async (mode, fn) => { const db = await phOpen(); return new Promise((ok, ko) => { const t = db.transaction('ph', mode), r = fn(t.objectStore('ph')); t.oncomplete = () => ok(r && r.result); t.onerror = () => ko(t.error); }); };
+// octets bruts plutôt que Blob : certains Safari refusent les Blob dans IndexedDB
+const phPut = async (id, blob) => { const d = await blob.arrayBuffer(); return phTx('readwrite', o => o.put({ t: blob.type || 'image/jpeg', d }, id)); };
+const phGet = async id => { const v = await phTx('readonly', o => o.get(id)); return !v ? null : v instanceof Blob ? v : new Blob([v.d], { type: v.t }); };
+const phDel = id => phTx('readwrite', o => o.delete(id));
+const phKeys = () => phTx('readonly', o => o.getAllKeys());
+const PURL = {};
+const phUrl = id => { if (!id) return ''; if (PURL[id] === undefined) { PURL[id] = ''; phGet(id).then(b => { if (b) { PURL[id] = URL.createObjectURL(b); if (phWake) phWake(); } }).catch(() => {}); } return PURL[id]; };
+const phShrink = file => new Promise((ok, ko) => {
+  const img = new Image(), u = URL.createObjectURL(file);
+  img.onload = () => { const k = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight)), c = document.createElement('canvas'); c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(u); c.toBlob(b => b ? ok(b) : ko(new Error('conversion impossible')), 'image/jpeg', 0.82); };
+  img.onerror = () => { URL.revokeObjectURL(u); ko(new Error('format non lu')); };
+  img.src = u;
+});
+const phPick = multi => new Promise(ok => { const i = document.createElement('input'); i.type = 'file'; i.accept = 'image/*'; i.multiple = !!multi; i.style.display = 'none'; document.body.appendChild(i); i.onchange = () => { const f = [...(i.files || [])]; i.remove(); ok(f); }; i.click(); });
+const blobToData = b => new Promise((ok, ko) => { const r = new FileReader(); r.onload = () => ok(r.result); r.onerror = () => ko(r.error); r.readAsDataURL(b); });
+const dataToBlob = d => fetch(d).then(r => r.blob());
+const PHS = { av: 'Avant', ap: 'Après' };
+const DISCP = { a1: 'Placo', a2: 'Électricité', a3: 'Peinture', a4: 'Menuiserie', b1: 'Peinture', b2: 'Placo', c1: 'Plomberie', c2: 'Carrelage', c3: 'Menuiserie' };
+const LVLP = { a1: 'Étage 3, Étage 4, Étage 5', a2: 'Sous-sol', a3: 'Cages 1 et 2', b1: 'RDC, 1er étage', b2: 'Bât. A · RDC', c1: '2ème étage', c2: '2ème étage', c3: '2ème étage' };
+const LVL0 = ['RDC', '1er étage', '2ème étage', '3ème étage', 'Sous-sol', 'Combles', 'Toiture', 'Extérieur', 'Cave', 'Parking', 'Façade', 'Cour'];
+const discOf = p => p.disc ?? DISCP[p.id] ?? '';
+const lvlOf = p => p.lvl ?? LVLP[p.id] ?? '';
 const START ={ 'Liste des projets': { proj: null }, 'Fiche projet · Étapes': { proj: 'a1', seg: 'e' }, 'Fiche projet · Fournisseurs': { proj: 'a1', seg: 'c' }, 'Nouveau projet': { proj: null, sheet: 'p', form: { steps: DEFSTEPS, sups: [], custom: [] } } };
 
 class Component extends DCLogic {
@@ -1321,7 +1407,30 @@ class Component extends DCLogic {
     };
     this.wRaf = requestAnimationFrame(tick);
   }
-  componentDidMount() { this.flags(); this.trackDiff(); if (ridScan(this.state)) this.forceUpdate(); }
+  componentDidMount() {
+    this.flags(); this.trackDiff(); if (ridScan(this.state)) this.forceUpdate();
+    phWake = () => { clearTimeout(this.phT); this.phT = setTimeout(() => this.forceUpdate(), 30); };
+    setTimeout(() => { const keep = new Set(); Object.values(this.state.ph || {}).forEach(L => L.forEach(x => keep.add(x.id))); if (window.indexedDB) phKeys().then(K => K.forEach(k => { if (!keep.has(k)) phDel(k); })).catch(() => {}); }, 4000);
+  }
+  async addPhotos(pid, sec, replaceId, asCover) {
+    const files = await phPick(!replaceId && !asCover);
+    if (!files.length) return null;
+    const ids = [];
+    for (const f of files) {
+      try { const b = await phShrink(f), id = 'ph' + Date.now().toString(36) + rid(); await phPut(id, b); PURL[id] = URL.createObjectURL(b); ids.push(id); }
+      catch (e) { this.toast('Photo ignorée : ' + ((e && e.message) || e)); }
+    }
+    if (!ids.length) return null;
+    track('photo:' + (replaceId ? 'replace' : 'add'), sec);
+    this.setState(s => {
+      const L = [...((s.ph || {})[pid] || [])], cover = { ...(s.cover || {}) };
+      if (replaceId) { const i = L.findIndex(x => x.id === replaceId); if (i >= 0) L[i] = { ...L[i], id: ids[0], at: Date.now() }; if (cover[pid] === replaceId) cover[pid] = ids[0]; }
+      else ids.forEach(id => L.push({ id, sec, at: Date.now() }));
+      if (asCover || !cover[pid]) cover[pid] = ids[0];
+      return { ph: { ...(s.ph || {}), [pid]: L }, cover, ...(replaceId && s.phv ? { phv: { ...s.phv, id: ids[0] } } : {}) };
+    });
+    return ids;
+  }
   flags() { const c = document.documentElement.classList; c.toggle('show-ids', !!this.state.showIds); c.toggle('no-del', !canDel()); }
   trackDiff() {
     const s = this.state, p = this.lastT || {}, now = {};
@@ -1383,14 +1492,21 @@ class Component extends DCLogic {
     const psec = st.psec || 'r';
     const PS = [['d', 'Terminés', 'var(--t3)', 'var(--t3x)'], ['r', 'En cours', 'var(--t1)', 'var(--t1x)'], ['t', 'À faire', 'var(--t4)', 'var(--t4x)']];
     const psecs = PS.map(([k, label, bg, fx]) => { const a = psec === k; return { label, bg, fg: fx, n: list.filter(p => stOf(p) === k).length, bd: a ? fx : 'transparent', op: a ? 1 : 0.55, pick: () => set({ psec: k }) }; });
-    const projects = list.filter(p => stOf(p) === psec).map(p => {
-      const pct = pctOf(p), done = p.steps.filter(s => s.v >= 100).length, late = p.inv.filter(i => i.st === 'late').length, todo = p.sup.filter(f => !f.tel || !f.mail).length;
-      return { name: p.name, rid: RI('P:' + p.id), img: 'proj-' + p.id, src: src(p.id), ph: 'Photo · ' + p.name, phase: p.phase, due: 'Fin ' + p.due, pct, pctW: pct + '%',
-        loc: p.addr ? p.addr + ' · ' + p.city.replace(/^\d+\s*/, '') : 'Adresse à renseigner',
+    const pins = st.pins || {}, pdisc = st.pdisc || null;
+    const inSec = list.filter(p => stOf(p) === psec);
+    const pdiscs = [{ k: null, label: 'Toutes', n: inSec.length }, ...Array.from(new Set([...st.discs, ...list.map(discOf).filter(Boolean)])).map(d => ({ k: d, label: d, n: inSec.filter(p => discOf(p) === d).length }))].map(d => { const a = pdisc === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, op: a || d.n ? 1 : 0.5, pick: () => set({ pdisc: a && d.k ? null : d.k }) }; });
+    const coverOf = p => phUrl((st.cover || {})[p.id]) || src(p.id);
+    const projects = inSec.filter(p => !pdisc || discOf(p) === pdisc).map((p, i) => ({ p, i })).sort((x, y) => ((pins[y.p.id] ? 1 : 0) - (pins[x.p.id] ? 1 : 0)) || ((pins[x.p.id] || 0) - (pins[y.p.id] || 0)) || x.i - y.i).map(({ p }) => {
+      const pct = pctOf(p), done = p.steps.filter(s => s.v >= 100).length, late = p.inv.filter(i => i.st === 'late').length, todo = p.sup.filter(f => !f.tel || !f.mail).length, pinned = !!pins[p.id], sw = 'p:' + p.id, lv = lvlOf(p);
+      SW[sw] = { pin: () => { track(pinned ? 'unpin' : 'pin'); const n = { ...(this.state.pins || {}) }; if (pinned) delete n[p.id]; else n[p.id] = Date.now(); set({ pins: n }); },
+        ...(canDel() ? { del: how => this.undoable('Projet « ' + p.name + ' » supprimé', 'proj', how, () => this.setState(s => ({ P: { ...s.P, [st.site]: (s.P[st.site] || []).filter(x => x.id !== p.id) } }))) } : {}) };
+      return { sw, pinned, pinLbl: pinned ? 'Désépingler' : 'Épingler', name: p.name, rid: RI('P:' + p.id), img: 'proj-' + p.id, src: coverOf(p), ph: 'Photo · ' + p.name, phase: p.phase, due: 'Fin ' + p.due, pct, pctW: pct + '%',
+        loc: [lv, p.addr ? p.addr + (p.city ? ' · ' + p.city.replace(/^\d+\s*/, '') : '') : ''].filter(Boolean).join(' · ') || 'Emplacement à renseigner',
         meta: done + '/' + p.steps.length + ' étapes · ' + p.sup.length + ' fourn.',
         hasAlert: !!(late || todo), alert: late ? late + ' facture' + (late > 1 ? 's' : '') + ' en retard' : todo ? todo + ' fourn. à renseigner' : '',
         open: () => set({ proj: p.id, seg: 'e', editSteps: false, supOpen: null, noteText: '', stepText: '' }) };
     });
+    const pdAdd = !!st.pdAdd;
     // project detail
     const Q = P0 || list[0] || { id: '_', name: '', phase: '', due: '', addr: '', city: '', steps: [], notes: [], sup: [], inv: [] }, pid = Q.id, up = fn => this.updP(pid, fn);
     const pct = pctOf(Q), C = 163.36;
@@ -1404,7 +1520,9 @@ class Component extends DCLogic {
         setV(s.id, Math.max(0, Math.min(100, Math.round((e.clientX - r.left) / r.width * 20) * 5)));
       };
       const col = d ? 'var(--ok)' : ACC;
-      return { l: s.l, isC, isG: !isC, ed, showPct: !isC && !ed, showBar: !isC && !ed,
+      const sw = 's:' + s.id;
+      SW[sw] = !ed && canDel() ? { del: how => this.undoable('Étape supprimée', 'step', how, () => up(p => ({ ...p, steps: p.steps.filter(x => x.id !== s.id) }))) } : {};
+      return { sw, l: s.l, isC, isG: !isC, ed, showPct: !isC && !ed, showBar: !isC && !ed,
         ckBg: d ? ACC : 'transparent', ckBd: d ? ACC : 'var(--ink3)',
         pie: 'conic-gradient(' + col + ' ' + (s.v * 3.6) + 'deg, var(--track) 0)',
         deco: isC && d ? 'line-through' : 'none', col: isC && d ? 'var(--ink3)' : INK,
@@ -1423,11 +1541,12 @@ class Component extends DCLogic {
     const gs = st.geo[pid];
     const STL = { paid: 'Payée', due: 'À payer', late: 'En retard' }, STB = { paid: 'var(--okBg)', due: 'var(--accSoft)', late: 'var(--warnBg)' }, STF = { paid: 'var(--okTx)', due: 'var(--accTx)', late: 'var(--warnTx)' };
     const cycInv = (ppid, iid) => this.updP(ppid, p => ({ ...p, inv: p.inv.map(x => x.id === iid ? { ...x, st: x.st === 'paid' ? 'due' : 'paid' } : x) }));
-    const mkInv = (i, ppid) => ({ sup: i.sup, num: i.num, rid: RI('F:' + ppid + '/' + i.id), date: i.date, amt: eur(i.amt), stLbl: STL[i.st], stBg: STB[i.st], stFg: STF[i.st], cyc: () => cycInv(ppid, i.id), edit: () => openEd('inv', { pid: ppid, id: i.id }) });
+    const mkInv = (i, ppid) => ({ sw: (() => { const k = 'i:' + ppid + '/' + i.id; SW[k] = canDel() ? { del: how => this.undoable('Facture ' + i.num + ' supprimée', 'inv', how, () => this.updP(ppid, p => ({ ...p, inv: p.inv.filter(x => x.id !== i.id) }))) } : {}; return k; })(), sup: i.sup, num: i.num, rid: RI('F:' + ppid + '/' + i.id), date: i.date, amt: eur(i.amt), stLbl: STL[i.st], stBg: STB[i.st], stFg: STF[i.st], cyc: () => cycInv(ppid, i.id), edit: () => openEd('inv', { pid: ppid, id: i.id }) });
     const sups = Q.sup.map(f => {
       const fi = Q.inv.filter(i => i.sup === f.name), fp = fi.filter(i => i.st === 'paid').reduce((a, i) => a + i.amt, 0), ft = fi.reduce((a, i) => a + i.amt, 0);
-      const todo = !f.tel || !f.mail, n = (f.tel || '').replace(/\s/g, '');
-      return { name: f.name, ini: ini(f.name), av: CATC[f.cat] || '#7A8496', sub: [f.cat, f.who].filter(Boolean).join(' · '), todo, ok: !todo,
+      const todo = !f.tel || !f.mail, n = (f.tel || '').replace(/\s/g, ''), sw = 'f:' + pid + '/' + f.id;
+      SW[sw] = canDel() ? { del: how => this.undoable(f.name + ' retiré du projet', 'projSup', how, () => up(p => ({ ...p, sup: p.sup.filter(x => x.id !== f.id) }))) } : {};
+      return { sw, name: f.name, ini: ini(f.name), av: CATC[f.cat] || '#7A8496', sub: [f.cat, f.who].filter(Boolean).join(' · '), todo, ok: !todo,
         telH: 'tel:' + n, smsH: 'sms:' + n, mailH: 'mailto:' + f.mail, open: st.supOpen === f.id,
         toggle: () => set({ supOpen: st.supOpen === f.id ? null : f.id }),
         fields: [['who', 'Contact', 'Nom du contact'], ['tel', 'Téléphone', '04 …'], ['mail', 'Mail', 'contact@…']].map(([k, label, ph]) => ({ label, ph, val: f[k] || '', on: (e) => { const v = e.target.value; up(p => ({ ...p, sup: p.sup.map(x => x.id === f.id ? { ...x, [k]: v } : x) })); } })),
@@ -1437,17 +1556,31 @@ class Component extends DCLogic {
     });
     const inv = Q.inv.map(i => mkInv(i, pid));
     const total = Q.inv.reduce((a, i) => a + i.amt, 0), paid = Q.inv.filter(i => i.st === 'paid').reduce((a, i) => a + i.amt, 0), anyLate = Q.inv.some(i => i.st === 'late');
-    const pj = { name: Q.name, rid: RI('P:' + Q.id), phase: Q.phase, due: Q.due, img: 'proj-' + Q.id, src: src(Q.id), ph: 'Photo · ' + Q.name, addrLine: Q.addr ? Q.addr + ' · ' + (Q.city || '') : 'Adresse non renseignée', pct, dash: (C * pct / 100) + ' ' + C,
+    const PH = (st.ph || {})[pid] || [], lvQ = lvlOf(Q);
+    const pj = { name: Q.name, rid: RI('P:' + Q.id), phase: Q.phase, due: Q.due, img: 'proj-' + Q.id, src: coverOf(Q), ph: 'Photo · ' + Q.name, addrLine: [lvQ, Q.addr ? Q.addr + (Q.city ? ' · ' + Q.city : '') : ''].filter(Boolean).join(' · ') || 'Emplacement non renseigné', pct,
+      disc: discOf(Q), hasDisc: !!discOf(Q), phN: (n => n ? n + ' photo' + (n > 1 ? 's' : '') : 'Photos')(PH.filter(x => PHS[x.sec]).length), goPh: () => set({ seg: 'ph', editSteps: false }), goSup: () => set({ seg: 'c', editSteps: false }), dash: (C * pct / 100) + ' ' + C,
       stepsDone: Q.steps.filter(s => s.v >= 100).length + '/' + Q.steps.length, supN: Q.sup.length, openAmt: eur(total - paid), openCol: anyLate ? 'var(--warnTx)' : INK,
-      steps, notes: Q.notes.map((t, i) => ({ t, edit: () => openEd('note', { i }) })), locFields: loc,
+      steps, notes: Q.notes.map((t, i) => { const sw = 'n:' + pid + '/' + i; SW[sw] = canDel() ? { del: how => this.undoable('Note supprimée', 'note', how, () => up(p => ({ ...p, notes: p.notes.filter((x, j) => j !== i) }))) } : {}; return { sw, t, edit: () => openEd('note', { i }) }; }), locFields: loc,
       map: 'https://www.openstreetmap.org/export/embed.html?bbox=' + (lon - dd * 1.5) + ',' + (lat - dd) + ',' + (lon + dd * 1.5) + ',' + (lat + dd) + '&layer=mapnik&marker=' + lat + ',' + lon,
       maps: 'https://maps.apple.com/?q=' + encodeURIComponent((Q.addr || '') + ', ' + (Q.city || '')),
       geoLabel: gs === 'busy' ? 'Recherche…' : gs === 'ok' ? '✓ Position mise à jour' : gs === 'err' ? 'Adresse introuvable · réessayer' : 'Localiser l’adresse sur la carte',
       geoCol: gs === 'err' ? 'var(--warnTx)' : gs === 'ok' ? 'var(--okTx)' : ACC,
       geocode: () => { if (Q.addr) this.geocode(pid, Q.addr, Q.city || ''); },
       sups, inv, noInv: inv.length === 0, invTotal: eur(total), invPaid: eur(paid),
-      team: (TEAMS[st.site] || []).map((m, i) => ({ name: m[0], role: m[1], tag: m[2], ini: ini(m[0]), telH: 'tel:' + (m[3] || '').replace(/\s/g, ''), edit: () => openEd('team', { i }) })), addTeam: () => openEd('team', { i: -1 }) };
-    const segs = [['e', 'Étapes'], ['c', 'Fourn. & factures']].map(([k, label]) => ({ label, bg: st.seg === k ? 'var(--on)' : 'transparent', fg: st.seg === k ? INK : 'var(--ink2)', sh: st.seg === k ? '0 2px 8px rgba(0,0,0,.12)' : 'none', pick: () => set({ seg: k, editSteps: false }) }));
+      team: (TEAMS[st.site] || []).map((m, i) => { const sw = 't:' + st.site + '/' + i; SW[sw] = canDel() ? { del: how => this.undoable(m[0] + ' retiré de l’équipe', 'team', how, () => { (TEAMS[st.site] || []).splice(i, 1); set({ rev: (this.state.rev || 0) + 1 }); }) } : {}; return { sw, name: m[0], role: m[1], tag: m[2], ini: ini(m[0]), telH: 'tel:' + (m[3] || '').replace(/\s/g, ''), edit: () => openEd('team', { i }) }; }), addTeam: () => openEd('team', { i: -1 }) };
+    // dossier photos : sections Avant / Après
+    const phList = PH.filter(x => PHS[x.sec]);
+    const phSecs = Object.keys(PHS).map(k => { const L = phList.filter(x => x.sec === k); return { label: PHS[k], n: L.length ? L.length + ' photo' + (L.length > 1 ? 's' : '') : 'Vide', add: () => this.addPhotos(pid, k), items: L.map(x => ({ src: phUrl(x.id), cover: (st.cover || {})[pid] === x.id, open: () => set({ phv: { pid, id: x.id } }) })) }; });
+    const V = st.phv && (st.ph || {})[st.phv.pid] ? (st.ph[st.phv.pid] || []).filter(x => PHS[x.sec]) : [], vi = V.findIndex(x => st.phv && x.id === st.phv.id), vx = V[vi];
+    const phvGo = d => { if (V.length) set({ phv: { ...st.phv, id: V[(vi + d + V.length) % V.length].id, confirm: false } }); };
+    const phv = vx ? { src: phUrl(vx.id), title: PHS[vx.sec], pos: (vi + 1) + ' / ' + V.length, multi: V.length > 1, prev: () => phvGo(-1), next: () => phvGo(1), close: () => set({ phv: null }),
+      isCover: (st.cover || {})[st.phv.pid] === vx.id, coverLbl: (st.cover || {})[st.phv.pid] === vx.id ? 'Couverture ✓' : 'Couverture', setCover: () => { track('photo:cover'); set({ cover: { ...(st.cover || {}), [st.phv.pid]: vx.id } }); },
+      moveLbl: vx.sec === 'av' ? 'Vers Après' : 'Vers Avant', move: () => { track('photo:move'); const to = vx.sec === 'av' ? 'ap' : 'av'; set({ ph: { ...st.ph, [st.phv.pid]: st.ph[st.phv.pid].map(x => x.id === vx.id ? { ...x, sec: to } : x) } }); },
+      replace: () => this.addPhotos(st.phv.pid, vx.sec, vx.id), canDel: canDel(),
+      delLbl: st.phv.confirm ? 'Confirmer' : 'Supprimer', delBg: st.phv.confirm ? '#FF3B30' : 'rgba(255,59,48,.18)',
+      del: () => { if (!st.phv.confirm) { set({ phv: { ...st.phv, confirm: true } }); return; } const ppid = st.phv.pid, nx = V.length > 1 ? V[(vi + 1) % V.length].id : null;
+        this.undoable('Photo supprimée', 'photo', 'bouton', () => this.setState(s => { const cover = { ...(s.cover || {}) }; if (cover[ppid] === vx.id) delete cover[ppid]; return { ph: { ...s.ph, [ppid]: s.ph[ppid].filter(x => x.id !== vx.id) }, cover, phv: nx ? { pid: ppid, id: nx } : null }; })); } } : null;
+    const segs = [['e', 'Étapes'], ['c', 'Fourn. & fact.'], ['ph', 'Photos']].map(([k, label]) => ({ label, bg: st.seg === k ? 'var(--on)' : 'transparent', fg: st.seg === k ? INK : 'var(--ink2)', sh: st.seg === k ? '0 2px 8px rgba(0,0,0,.12)' : 'none', pick: () => set({ seg: k, editSteps: false }) }));
     const stepTypes = [['c', 'Coche'], ['g', 'Jauge']].map(([k, label]) => ({ label, bg: st.stepType === k ? 'var(--on)' : 'transparent', fg: st.stepType === k ? ACC : 'var(--ink2)', pick: () => set({ stepType: k }) }));
     // stocks
     const zonesS = (st.cfg[st.site] || { zones: [] }).zones;
@@ -1554,6 +1687,8 @@ class Component extends DCLogic {
     const findMail = id => { for (const k of KS) for (const arr of [SITES[k].mails || [], DONE[k] || []]) { const i = arr.findIndex(m => m.id === id); if (i >= 0) return { arr, i, m: arr[i] }; } return null; };
     const evOf = r => { const d = WEEK[r.day]; if (!d) return null; return r.src === 'p' ? d.ev[r.j] : (st.addE[r.day] || [])[r.j]; };
     const rmEv = r => { if (r.src === 'p') { WEEK[r.day].ev.splice(r.j, 1); return st.addE; } const a = [...(st.addE[r.day] || [])]; a.splice(r.j, 1); return { ...st.addE, [r.day]: a }; };
+    const lvlUse = st.lvlUse || {}, lvlSugg = Array.from(new Set([...Object.keys(lvlUse).sort((a, b) => lvlUse[b] - lvlUse[a]), ...(st.cfg[st.site] || { zones: [] }).zones, ...LVL0])).slice(0, 14);
+    const countLvl = (now, before) => { const b = new Set(splitL(before)), n = { ...(this.state.lvlUse || {}) }; splitL(now).forEach(x => { if (!b.has(x)) n[x] = (n[x] || 0) + 1; }); return n; };
     const LOC = [['addr', 'Adresse', 'Ex. 14 rue Garibaldi'], ['city', 'Ville', 'Ex. 69006 Lyon'], ['access', 'Accès', 'Code, badge, clé…'], ['hours', 'Horaires', 'Ex. 7h30 – 17h']];
     const EDK = {
       site: {
@@ -1578,15 +1713,16 @@ class Component extends DCLogic {
       proj: {
         title: () => 'Modifier le projet', req: 'name', delLbl: 'Supprimer ce projet', canDel: () => true,
         note: () => 'Supprimer le projet efface aussi ses étapes, notes, fournisseurs et factures.',
-        load: r => { const p = list.find(x => x.id === r.id) || {}; return { name: p.name, phase: p.phase, due: p.due, site: SL(st.site), addr: p.addr, city: p.city, access: p.access, hours: p.hours }; },
-        groups: () => [{ t: 'Projet', f: [['name', 'Nom', 'Ex. Salle de bain lot 4'], ['phase', 'Phase / lot', 'Ex. Second œuvre'], ['due', 'Échéance', 'Ex. 20 déc'], ['site', 'Site', '', siteNames]] }, { t: 'Localisation', f: LOC }],
+        load: r => { const p = list.find(x => x.id === r.id) || {}; return { name: p.name, disc: discOf(p), phase: p.phase, due: p.due, site: SL(st.site), lvl: lvlOf(p), addr: p.addr, city: p.city, access: p.access, hours: p.hours }; },
+        groups: () => [{ t: 'Projet', f: [['name', 'Nom', 'Ex. Salle de bain lot 4'], ['disc', 'Discipline', '', [...st.discs, 'Autre']], ['phase', 'Phase / lot', 'Ex. Second œuvre'], ['due', 'Échéance', 'Ex. 20 déc'], ['site', 'Site', '', siteNames]] }, { t: 'Localisation', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true }], ...LOC] }],
         save: (r, F) => {
           const nk = keyOfName(F.site) || st.site;
           this.setState(s => {
             const cur = (s.P[s.site] || []).find(p => p.id === r.id); if (!cur) return null;
-            const p = { ...cur, name: F.name.trim(), phase: F.phase || '', due: F.due || '', addr: F.addr || '', city: F.city || '', access: F.access || '', hours: F.hours || '' };
-            if (nk === s.site) return { P: { ...s.P, [s.site]: s.P[s.site].map(x => x.id === r.id ? p : x) } };
-            return { P: { ...s.P, [s.site]: s.P[s.site].filter(x => x.id !== r.id), [nk]: [...(s.P[nk] || []), p] }, site: nk, wpos: KS.indexOf(nk) };
+            const p = { ...cur, name: F.name.trim(), disc: F.disc || '', phase: F.phase || '', due: F.due || '', lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: F.hours || '' };
+            const lu = countLvl(F.lvl, lvlOf(cur));
+            if (nk === s.site) return { lvlUse: lu, P: { ...s.P, [s.site]: s.P[s.site].map(x => x.id === r.id ? p : x) } };
+            return { lvlUse: lu, P: { ...s.P, [s.site]: s.P[s.site].filter(x => x.id !== r.id), [nk]: [...(s.P[nk] || []), p] }, site: nk, wpos: KS.indexOf(nk) };
           });
         },
         del: r => this.setState(s => ({ P: { ...s.P, [s.site]: (s.P[s.site] || []).filter(x => x.id !== r.id) }, proj: null }))
@@ -1697,7 +1833,7 @@ class Component extends DCLogic {
     const EK = st.sheet === 'ed' ? EDK[F.kind] : null, edRef = F.ref || {};
     const FD = {
       ed: EK ? EK.groups() : [],
-      p: [{ t: 'Projet', f: [['a', 'Nom', 'Ex. Salle de bain lot 4'], ['b', 'Type', '', [...st.discs, 'Autre']], ['c', 'Échéance', 'Ex. 20 déc']] }, { t: 'Localisation', f: [['addr', 'Adresse', 'Ex. 14 rue Garibaldi'], ['city', 'Ville', 'Ex. 69006 Lyon'], ['access', 'Accès', 'Code, étage, clé…']] }],
+      p: [{ t: 'Projet', f: [['a', 'Nom', 'Ex. Salle de bain lot 4'], ['b', 'Discipline', '', [...st.discs, 'Autre']], ['c', 'Échéance', 'Ex. 20 déc']] }, { t: 'Localisation', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true }], ['addr', 'Adresse', 'Ex. 14 rue Garibaldi'], ['city', 'Ville', 'Ex. 69006 Lyon'], ['access', 'Accès', 'Code, étage, clé…']] }],
       s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Discipline', '', [...st.discs, 'Autre']], ['b', 'Unité', 'Ex. sacs'], ['c', 'Quantité', '0'], ['d', 'Seuil', '0']] }],
       l: [{ t: 'Événement', f: [['a', 'Intitulé', 'Ex. Livraison sanitaires'], ['b', 'Heure', '08:00'], ['c', 'Type', 'Ex. Livraison']] }],
       inv: [{ t: 'Facture', f: [['a', 'N°', 'Ex. F-2026-0520'], ['b', 'Montant HT', 'Ex. 1 250'], ['c', 'Échéance', 'Ex. 30 nov']] }],
@@ -1716,7 +1852,9 @@ class Component extends DCLogic {
     const fSups = SUP.map(s => { const sel = fSel.includes(s.id); return { name: s.name, mark: sel ? '✓' : '+', bg: sel ? ACC : 'var(--field)', fg: sel ? 'var(--accOn)' : INK, pick: () => setF({ sups: sel ? fSel.filter(x => x !== s.id) : [...fSel, s.id] }) }; });
     const fCustom = (F.custom || []).map((n, i) => ({ name: n, del: () => setF({ custom: F.custom.filter((x, j) => j !== i) }) }));
     const pick = F.pick || [];
-    const dirList = SUP.filter(s => !Q.sup.some(f => f.ref === s.id)).map(s => { const sel = pick.includes(s.id); return { name: s.name, ini: ini(s.name), av: CATC[cap(s.cat)] || '#7A8496', sub: [RUB[rubOf(s)], cap(s.cat), s.delay].filter(Boolean).join(' · '), ckBg: sel ? ACC : 'transparent', ckBd: sel ? ACC : 'var(--ink3)', pick: () => setF({ pick: sel ? pick.filter(x => x !== s.id) : [...pick, s.id] }) }; });
+    const rf = F.rf || 'T';
+    const dirRubs = [['T', 'Tous'], ['F', 'Fournisseurs'], ['S', 'Sous-traitants'], ['C', 'Clients']].map(([k, label]) => { const a = rf === k; return { label, bg: a ? 'var(--on)' : 'transparent', fg: a ? INK : 'var(--ink2)', pick: () => setF({ rf: k }) }; });
+    const dirList = SUP.filter(s => !Q.sup.some(f => f.ref === s.id)).filter(s => rf === 'T' || rubOf(s) === rf).sort((x, y) => (sitesOf(y).includes(st.site) - sitesOf(x).includes(st.site)) || x.name.localeCompare(y.name, 'fr')).map(s => { const sel = pick.includes(s.id); return { name: s.name, ini: ini(s.name), av: CATC[cap(s.cat)] || '#7A8496', sub: [RUB[rubOf(s)], cap(s.cat), s.delay].filter(Boolean).join(' · '), ckBg: sel ? ACC : 'transparent', ckBd: sel ? ACC : 'var(--ink3)', pick: () => setF({ pick: sel ? pick.filter(x => x !== s.id) : [...pick, s.id] }) }; });
     const supModes = [['dir', 'Annuaire'], ['new', 'Nouveau']].map(([k, label]) => { const a = (F.mode || 'dir') === k; return { label, bg: a ? 'var(--on)' : 'transparent', fg: a ? INK : 'var(--ink2)', pick: () => setF({ mode: k }) }; });
     const invSups = Q.sup.map(f => ({ name: f.name, bg: F.sup === f.name ? ACC : 'var(--field)', fg: F.sup === f.name ? 'var(--accOn)' : INK, pick: () => setF({ sup: f.name }) }));
     const invSt = [['due', 'À payer'], ['paid', 'Payée']].map(([k, label]) => { const a = (F.st || 'due') === k; return { label, bg: a ? 'var(--on)' : 'transparent', fg: a ? INK : 'var(--ink2)', pick: () => setF({ st: k }) }; });
@@ -1730,11 +1868,12 @@ class Component extends DCLogic {
       const a = (F.a || '').trim(), sq = st.seq + 1;
       track('create:' + sh);
       if (sh === 'p') {
-        const p = { id: newId, name: a, phase: F.b || 'Nouveau lot', due: F.c || 'à planifier', addr: F.addr || '', city: F.city || '', access: F.access || '', hours: '', geo: S.geo,
+        const p = { id: newId, name: a, disc: F.b && F.b !== 'Autre' ? F.b : '', phase: F.b || 'Nouveau lot', due: F.c || 'à planifier', lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: '', geo: S.geo,
           steps: fs.map((s, i) => ({ id: newId + 's' + i, l: s.l, t: s.t, v: 0 })), notes: [],
           sup: [...fSel.map(supCopy), ...(F.custom || []).map(n => ({ id: 'f' + rid(), name: n, cat: 'À préciser', tel: '', mail: '', who: '' }))], inv: [] };
         const pd = F.pday ?? 0, addPlan = F.plan !== false;
-        this.setState(s => ({ P: { ...s.P, [s.site]: [...s.P[s.site], p] }, addE: addPlan ? { ...s.addE, [pd]: [...(s.addE[pd] || []), [(F.ptime || '08:00').trim(), s.site, ((F.pkind || 'Démarrage').trim()) + ' · ' + a, 'Chantier']] } : s.addE, proj: newId, seg: 'e', sheet: null, seq: sq, tab: 'p' }));
+        const lu = countLvl(F.lvl, ''), cov = F.cover ? { cover: { ...(st.cover || {}), [newId]: F.cover }, ph: { ...(st.ph || {}), [newId]: [{ id: F.cover, sec: 'av', at: Date.now() }] } } : {};
+        this.setState(s => ({ ...cov, lvlUse: lu, P: { ...s.P, [s.site]: [...s.P[s.site], p] }, addE: addPlan ? { ...s.addE, [pd]: [...(s.addE[pd] || []), [(F.ptime || '08:00').trim(), s.site, ((F.pkind || 'Démarrage').trim()) + ' · ' + a, 'Chantier']] } : s.addE, proj: newId, seg: 'e', sheet: null, seq: sq, tab: 'p' }));
       }
       if (sh === 's') { const n = Math.max(0, parseInt(F.c) || 0), m = Math.max(1, parseInt(F.d) || 1); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), [newId, a, F.b || 'unités', n, m, m, F.e || 'Autre']] }, sheet: null, seq: sq }); }
       if (sh === 'l') { const d = F.day ?? st.day; set({ addE: { ...st.addE, [d]: [...(st.addE[d] || []), [F.b || '08:00', F.site || st.site, a, F.c || 'Ajouté']] }, day: d, sheet: null, seq: sq }); }
@@ -1773,11 +1912,14 @@ class Component extends DCLogic {
       sunTrack: st.sunday ? 'var(--ok)' : 'var(--track)', sunKnob: st.sunday ? 'translateX(20px)' : 'none',
       discs: st.discs.map(d => ({ label: d, del: () => set({ discs: st.discs.filter(x => x !== d) }) })), discN: st.discs.length + ' active' + (st.discs.length > 1 ? 's' : ''),
       discText: st.discText, onDisc: (e) => set({ discText: e.target.value }),
-      addDisc: () => { const t = st.discText.trim(); if (!t) return; const v = t.charAt(0).toUpperCase() + t.slice(1); if (!st.discs.some(x => x.toLowerCase() === v.toLowerCase())) set({ discs: [...st.discs, v], discText: '' }); else set({ discText: '' }); },
+      addDisc: () => { const t = st.discText.trim(); if (!t) return; const v = t.charAt(0).toUpperCase() + t.slice(1); track('create:disc'); if (!st.discs.some(x => x.toLowerCase() === v.toLowerCase())) set({ discs: [...st.discs, v], discText: '', pdAdd: false, ...(st.pdAdd ? { pdisc: v } : {}) }); else set({ discText: '', pdAdd: false }); },
       stDisc, stGroups, stFilt, hasStock: stocks.length > 0, noStock: stocks.length === 0, basket, hasBasket: basketLines > 0, basketN: basketLines + ' ligne' + (basketLines > 1 ? 's' : ''), sendOrder, orderSent: !!st.stkSent && basketLines === 0,
       sd, isSupList: st.tab === 'c' && !st.supSel, isSupDet: st.tab === 'c' && !!st.supSel, backSup: () => set({ supSel: null }), hasSup: contacts.length > 0, noSup: contacts.length === 0,
       sq: st.sq || '', onSq: (e) => set({ sq: e.target.value }), clearSq: () => set({ sq: '' }), hasSq: !!st.sq, supTot: kk(totOpen), supLate: lateN + ' fact.',
-      psecs, noProj: st.tab === 'p' && !detail && projects.length === 0, projEmpty: { d: 'Aucun projet terminé', r: 'Aucun projet en cours', t: 'Aucun projet à faire' }[psec],
+      psecs, pdiscs, pdAdd, togglePdAdd: () => set({ pdAdd: !st.pdAdd, discText: '' }), segPh: st.seg === 'ph', phSecs, phv, phvOpen: !!phv, dirRubs,
+      addCover: async () => { const f = await phPick(false); if (!f.length) return; try { const b = await phShrink(f[0]), id = 'ph' + Date.now().toString(36) + rid(); await phPut(id, b); PURL[id] = URL.createObjectURL(b); setF({ cover: id }); } catch (e) { this.toast('Photo ignorée : ' + ((e && e.message) || e)); } },
+      newHasCover: !!F.cover, newNoCover: !F.cover, newCoverSrc: F.cover ? phUrl(F.cover) : '',
+      noProj: st.tab === 'p' && !detail && projects.length === 0, projEmpty: pdisc ? 'Aucun projet ' + { d: 'terminé', r: 'en cours', t: 'à faire' }[psec] + ' en ' + pdisc : { d: 'Aucun projet terminé', r: 'Aucun projet en cours', t: 'Aucun projet à faire' }[psec],
       title: titles[st.tab], noEvents: events.length === 0, stop: (e) => e.stopPropagation(),
       isList: st.tab === 'p' && !detail, isDetail: detail, showHead: !detail && !(st.tab === 'c' && st.supSel),
       segE: st.seg === 'e', segL: st.seg === 'l', segC: st.seg === 'c',
@@ -1860,7 +2002,7 @@ class Component extends DCLogic {
       edDelLbl: F.confirm ? 'Toucher encore pour confirmer' : (EK ? EK.delLbl : ''), edDelBg: F.confirm ? 'var(--warn)' : 'var(--warnBg)', edDelFg: F.confirm ? '#fff' : 'var(--warnTx)',
       edDel: () => { if (!F.confirm) { setF({ confirm: true }); return; } track('del:' + F.kind); EK.del(edRef); set({ sheet: null }); },
       editProj: () => openEd('proj', { id: pid }), editSup: () => openEd('sup', { id: S0.id }), editMail: () => openEd('mail', { id: cm0.id }), newSite: () => openEd('site', { k: null }),
-      openSheet: () => st.tab === 'c' ? openEd('sup', { id: null, rub: rub }) : set({ sheet: st.tab, form: st.tab === 'p' ? { steps: DEFSTEPS, sups: [], custom: [] } : { day: st.day, site: st.site }, menu: false }),
+      openSheet: () => st.tab === 'c' ? openEd('sup', { id: null, rub: rub }) : set({ sheet: st.tab, form: st.tab === 'p' ? { steps: DEFSTEPS, sups: [], custom: [], b: pdisc || '', addr: (st.cfg[st.site] || {}).addr || '', city: (st.cfg[st.site] || {}).city || '' } : { day: st.day, site: st.site }, menu: false }),
       sheetOpen: !!sh, closeSheet: () => { if (this.rec) try { this.rec.abort(); } catch (e) {} set({ sheet: null, mic: null }); }, submit, submitCol: valid ? ACC : 'var(--ink3)', submitLabel: sh === 'ed' ? (edRef.k === null || edRef.i < 0 || edRef.id === null ? 'Créer' : 'OK') : sh === 'p' ? 'Créer' : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' ? 'OK' : 'Ajouter',
       sheetTitle: sh === 'ed' ? (EK ? EK.title(edRef) : '') : { stkcfg: 'Réglages du stock', supcfg: 'Réglages fournisseurs', site: 'Configurer le site', acc: 'Compte', p: 'Nouveau projet', s: 'Nouveau produit', l: 'Nouvel événement', sup: 'Ajouter un fournisseur', inv: 'Nouvelle facture' }[sh] || '',
       groups, fSteps, fSups, fCustom, dirList, supModes, invSups, invSt, formDays, formSites,
