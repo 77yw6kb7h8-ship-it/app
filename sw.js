@@ -9,6 +9,7 @@ const SHELL = [
   './manifest.webmanifest',
   './vendor/react.production.min.js',
   './vendor/react-dom.production.min.js',
+  './vendor/zxing.min.js',
   './icons/apple-touch-icon.png',
   './icons/icon-192.png',
   './icons/icon-512.png'
@@ -29,7 +30,7 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   // géocodage : toujours en direct
-  if (url.hostname === 'nominatim.openstreetmap.org') return;
+  if (url.hostname === 'nominatim.openstreetmap.org' || url.hostname.endsWith('openproductsfacts.org')) return;
 
   if (url.origin === location.origin) {
     // fichiers de l'appli : réseau d'abord pour avoir les mises à jour, cache si hors ligne

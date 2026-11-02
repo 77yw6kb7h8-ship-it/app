@@ -68,12 +68,15 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:700 34px/1.05 -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.025em">{{ title }}</div>
 <div style="font:400 14px -apple-system,sans-serif;color:var(--ink2);margin-top:5px">{{ subtitle }}</div>
 </div>
-<sc-if value="{{ canCfg }}" hint-placeholder-val="{{ false }}"><div onClick="{{ openCfg }}" title="Réglages" style="flex:none;margin-left:auto;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg></div></sc-if>
+<div style="flex:none;display:flex;gap:10px;margin-left:auto">
+<sc-if value="{{ canCfg }}" hint-placeholder-val="{{ false }}"><div onClick="{{ openCfg }}" title="Réglages" style="flex:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg></div></sc-if>
+<sc-if value="{{ canScan }}" hint-placeholder-val="{{ false }}"><div onClick="{{ scanStock }}" title="Scanner un code EAN" style="flex:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 7V4.5A1.5 1.5 0 0 1 4.5 3H7M17 3h2.5A1.5 1.5 0 0 1 21 4.5V7M21 17v2.5a1.5 1.5 0 0 1-1.5 1.5H17M7 21H4.5A1.5 1.5 0 0 1 3 19.5V17M7 8v8M10 8v8M13.5 8v8M17 8v8"></path></svg></div></sc-if>
 <sc-if value="{{ canAdd }}" hint-placeholder-val="{{ true }}">
 <div onClick="{{ openSheet }}" style="flex:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--acc);color:#fff;box-shadow:0 8px 20px rgba(10,122,255,.35),inset 0 1px 0 rgba(255,255,255,.4)">
 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 2.5v13M2.5 9h13"></path></svg>
 </div>
 </sc-if>
+</div>
 </div>
 <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
 <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:-4px 0 18px">
@@ -304,12 +307,15 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 4px;padding:0 20px">
 <sc-for list="{{ stDisc }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
 </div>
+<sc-if value="{{ hasStSub }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:4px;overflow-x:auto;margin:8px -20px 0;padding:0 20px">
+<sc-for list="{{ stSub }}" as="d" hint-placeholder-count="4"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:10px;background:{{ d.bg }};color:{{ d.fg }};font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
+</div></sc-if>
 <sc-if value="{{ hasStock }}" hint-placeholder-val="{{ true }}">
 <sc-for list="{{ stGroups }}" as="sg" hint-placeholder-count="2">
 <div style="display:flex;justify-content:space-between;align-items:baseline;margin:18px 4px 8px"><span style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">{{ sg.label }}</span><span style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink3)">{{ sg.n }}</span></div>
 <div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ sg.items }}" as="i" hint-placeholder-count="2">
-<div style="border-bottom:2px solid var(--line)">
+<div class="sw" data-sw="{{ i.sw }}" style="border-bottom:2px solid var(--line)"><div class="sw-fg">
 <div onClick="{{ i.toggle }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 14px">
 <div style="width:46px;height:46px;border-radius:12px;overflow:hidden;flex:none;background:var(--tile)"><image-slot id="{{ i.img }}" src="{{ i.src }}" placeholder="Photo" compact="" shape="rect" style="width:100%;height:100%"></image-slot></div>
 <div style="flex:1;min-width:0">
@@ -328,7 +334,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div onClick="{{ i.plus }}" style="cursor:pointer;flex:none;width:52px;height:44px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:700 20px -apple-system,sans-serif">+</div>
 </div>
 <div style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:14px 2px 7px">Emplacement</div>
-<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -14px;padding:0 14px">
+<div data-nosw="1" style="display:flex;gap:6px;overflow-x:auto;margin:0 -14px;padding:0 14px">
 <sc-for list="{{ i.zones }}" as="z" hint-placeholder-count="4"><div onClick="{{ z.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:12px;background:{{ z.bg }};color:{{ z.fg }};border:1px solid var(--tileBd);font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ z.label }}</div></sc-for>
 </div>
 <div style="margin-top:12px;border-radius:12px;background:var(--panel);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);padding:10px 10px 10px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px">
@@ -339,6 +345,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div onClick="{{ i.edit }}" style="cursor:pointer;text-align:center;font:600 14px -apple-system,sans-serif;color:var(--acc);margin-top:12px">Modifier l’article</div>
 </div>
 </sc-if>
+</div><div class="sw-r">Supprimer</div>
 </div>
 </sc-for>
 </div>
@@ -903,6 +910,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-for>
 </div>
 </sc-for>
+<sc-if value="{{ eanForm }}" hint-placeholder-val="{{ false }}"><div onClick="{{ scanForm }}" style="cursor:pointer;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:16px;background:var(--field);color:var(--acc);font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 7V4.5A1.5 1.5 0 0 1 4.5 3H7M17 3h2.5A1.5 1.5 0 0 1 21 4.5V7M21 17v2.5a1.5 1.5 0 0 1-1.5 1.5H17M7 21H4.5A1.5 1.5 0 0 1 3 19.5V17M7 8v8M10 8v8M13.5 8v8M17 8v8"></path></svg>Scanner le code EAN</div></sc-if>
 <sc-if value="{{ isProjSheet }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;justify-content:space-between;align-items:baseline;margin:20px 4px 8px">
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Étapes · coche ou jauge</div>
@@ -972,6 +980,28 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ edNote }}" hint-placeholder-val="{{ false }}"><div style="margin:18px 4px 0;font:400 13px/1.4 -apple-system,sans-serif;color:{{ edNoteCol }}">{{ edNoteTxt }}</div></sc-if>
 <sc-if value="{{ edCanDel }}" hint-placeholder-val="{{ false }}"><div onClick="{{ edDel }}" style="cursor:pointer;margin-top:14px;padding:14px;border-radius:16px;text-align:center;background:{{ edDelBg }};color:{{ edDelFg }};font:600 15px -apple-system,sans-serif;transition:background .2s">{{ edDelLbl }}</div></sc-if>
 </div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ scanOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:88;background:#000;color:#fff;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top, 0px)">
+<div style="flex:none;display:flex;align-items:center;justify-content:space-between;padding:12px 16px">
+<div onClick="{{ scanClose }}" style="cursor:pointer;font:600 15.5px -apple-system,sans-serif;color:#7CC4FF">Fermer</div>
+<div style="font:600 15px -apple-system,sans-serif">Code EAN</div>
+<div style="width:52px"></div>
+</div>
+<div style="flex:1;min-height:0;position:relative;overflow:hidden;background:#111">
+<video id="scanv" autoplay muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+<div style="position:absolute;left:11%;right:11%;top:50%;height:150px;margin-top:-75px;border-radius:18px;border:3px solid rgba(255,255,255,.92);box-shadow:0 0 0 2000px rgba(0,0,0,.38)"><div style="position:absolute;left:12px;right:12px;top:50%;height:2px;background:#FF453A;box-shadow:0 0 10px #FF453A"></div></div>
+<div style="position:absolute;left:16px;right:16px;bottom:16px;text-align:center;font:500 14px/1.35 -apple-system,sans-serif;text-shadow:0 1px 4px rgba(0,0,0,.6)">{{ scanMsg }}</div>
+</div>
+<div style="flex:none;padding:12px 14px calc(12px + env(safe-area-inset-bottom, 0px));display:flex;flex-direction:column;gap:8px;background:#0B0B0D">
+<div style="display:flex;gap:8px">
+<input value="{{ scanCode }}" onChange="{{ onScanCode }}" onKeyDown="{{ scanKey }}" inputmode="numeric" placeholder="Saisir le code à la main" style="flex:1;min-width:0;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);padding:12px 14px;border-radius:14px;font:400 16px -apple-system,sans-serif;outline:none;color:#fff">
+<div onClick="{{ scanManual }}" style="cursor:pointer;flex:none;padding:0 16px;border-radius:14px;background:#0A84FF;display:flex;align-items:center;font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Valider</div>
+</div>
+<div onClick="{{ scanPhoto }}" style="cursor:pointer;text-align:center;padding:13px;border-radius:14px;background:rgba(255,255,255,.12);font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Prendre le code en photo</div>
 </div>
 </div>
 </sc-if>
@@ -1363,6 +1393,28 @@ const DISCP = { a1: 'Placo', a2: 'Électricité', a3: 'Peinture', a4: 'Menuiseri
 const LVLP = { a1: 'Étage 3, Étage 4, Étage 5', a2: 'Sous-sol', a3: 'Cages 1 et 2', b1: 'RDC, 1er étage', b2: 'Bât. A · RDC', c1: '2ème étage', c2: '2ème étage', c3: '2ème étage' };
 const LVL0 = ['RDC', '1er étage', '2ème étage', '3ème étage', 'Sous-sol', 'Combles', 'Toiture', 'Extérieur', 'Cave', 'Parking', 'Façade', 'Cour'];
 const discOf = p => p.disc ?? DISCP[p.id] ?? '';
+// stock : discipline › sous-catégorie, code EAN
+const SUBS = { 'Électricité': ['Câbles', 'Ampoules', 'Prises & interrupteurs', 'Tableaux', 'Gaines'], 'Plomberie': ['Tubes', 'Raccords', 'Sanitaires', 'Évacuation'], 'Peinture': ['Peintures', 'Sous-couches', 'Outillage'], 'Placo': ['Plaques', 'Rails & montants', 'Enduits', 'Isolants', 'Dalles'], 'Carrelage': ['Carreaux', 'Colles', 'Joints'], 'Menuiserie': ['Portes', 'Quincaillerie', 'Bois'] };
+const SSUB = { placo: 'Plaques', rail: 'Rails & montants', enduit: 'Enduits', dalle: 'Dalles', cable: 'Câbles', peinture: 'Peintures', sousc: 'Sous-couches', carrelage: 'Carreaux', colle: 'Colles', tube: 'Tubes' };
+const stockOfS = (st, k) => [...((SITES[k] || {}).stock || []), ...((st.addS || {})[k] || [])].filter(x => !(st.stkDel || {})[k + x[0]]).map(x => { const c = (st.stkCfg || {})[k + x[0]]; return c ? [x[0], c.name ?? x[1], c.unit ?? x[2], x[3], c.min ?? x[4], c.lot ?? x[5], c.disc ?? x[6], c.sub ?? x[7], c.ean ?? x[8]] : x; });
+const eanOk = c => { c = String(c || '').trim(); if (!/^\d+$/.test(c)) return c.length >= 4 && c.length <= 40; if (![8, 12, 13, 14].includes(c.length)) return false; const d = c.split('').map(Number), chk = d.pop(); const t = d.reverse().reduce((a, x, i) => a + x * (i % 2 ? 1 : 3), 0); return (10 - t % 10) % 10 === chk; };
+let zxP = null;
+const zxLoad = () => zxP || (zxP = window.ZXing ? Promise.resolve(window.ZXing) : new Promise((ok, ko) => { const sc = document.createElement('script'); sc.src = './vendor/zxing.min.js'; sc.onload = () => ok(window.ZXing); sc.onerror = () => { zxP = null; ko(new Error('lecteur de code indisponible')); }; document.head.appendChild(sc); }));
+const zxHints = Z => { const h = new Map(); h.set(Z.DecodeHintType.POSSIBLE_FORMATS, [Z.BarcodeFormat.EAN_13, Z.BarcodeFormat.EAN_8, Z.BarcodeFormat.UPC_A, Z.BarcodeFormat.UPC_E, Z.BarcodeFormat.CODE_128]); h.set(Z.DecodeHintType.TRY_HARDER, true); return h; };
+const BDF = ['ean_13', 'ean_8', 'upc_a', 'upc_e', 'code_128'];
+const hasBD = async () => { try { return 'BarcodeDetector' in window && (await BarcodeDetector.getSupportedFormats()).includes('ean_13'); } catch (e) { return false; } };
+// lit un code-barres sur une photo (BarcodeDetector si présent, sinon ZXing)
+const decodeFile = async file => {
+  const img = new Image(), u = URL.createObjectURL(file);
+  try {
+    img.src = u; await img.decode();
+    const k = Math.min(1, 1400 / Math.max(img.naturalWidth, img.naturalHeight)), c = document.createElement('canvas');
+    c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+    if (await hasBD()) { try { const r = await new BarcodeDetector({ formats: BDF }).detect(c); const x = r.find(y => eanOk(y.rawValue)); if (x) return x.rawValue; } catch (e) {} }
+    const Z = await zxLoad(), rd = new Z.MultiFormatReader(); rd.setHints(zxHints(Z));
+    try { return rd.decode(new Z.BinaryBitmap(new Z.HybridBinarizer(new Z.HTMLCanvasElementLuminanceSource(c)))).getText(); } catch (e) { return null; }
+  } finally { URL.revokeObjectURL(u); }
+};
 const lvlOf = p => p.lvl ?? LVLP[p.id] ?? '';
 const START ={ 'Liste des projets': { proj: null }, 'Fiche projet · Étapes': { proj: 'a1', seg: 'e' }, 'Fiche projet · Fournisseurs': { proj: 'a1', seg: 'c' }, 'Nouveau projet': { proj: null, sheet: 'p', form: { steps: DEFSTEPS, sups: [], custom: [] } } };
 
@@ -1381,7 +1433,7 @@ class Component extends DCLogic {
   }
   boot() { const r = restore(); meLoad(); return r;
   }
-  componentWillUnmount() { if (this.wRaf) cancelAnimationFrame(this.wRaf); if (this.rec) try { this.rec.abort(); } catch (e) {} }
+  componentWillUnmount() { this.stopScan(); if (this.wRaf) cancelAnimationFrame(this.wRaf); if (this.rec) try { this.rec.abort(); } catch (e) {} }
   dictate(mk, key) {
     if (this.rec) { try { this.rec.stop(); } catch (e) {} this.rec = null; if (this.state.mic === mk) { this.setState({ mic: null }); return; } }
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -1411,6 +1463,70 @@ class Component extends DCLogic {
     this.flags(); this.trackDiff(); if (ridScan(this.state)) this.forceUpdate();
     phWake = () => { clearTimeout(this.phT); this.phT = setTimeout(() => this.forceUpdate(), 30); };
     setTimeout(() => { const keep = new Set(); Object.values(this.state.ph || {}).forEach(L => L.forEach(x => keep.add(x.id))); if (window.indexedDB) phKeys().then(K => K.forEach(k => { if (!keep.has(k)) phDel(k); })).catch(() => {}); }, 4000);
+  }
+  async startScan(target) {
+    track('scan:open', target);
+    this.stopScan();
+    this.setState({ scan: { target, msg: 'Cadrez le code-barres dans le rectangle', code: '' } });
+    await new Promise(r => setTimeout(r, 80));
+    const v = document.getElementById('scanv'); if (!v || !this.state.scan) return;
+    v.setAttribute('playsinline', ''); v.setAttribute('muted', ''); v.muted = true;
+    try {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error('pas de caméra');
+      if (await hasBD()) {
+        const det = new BarcodeDetector({ formats: BDF });
+        this.scanStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+        v.srcObject = this.scanStream; await v.play();
+        const loop = async () => { if (!this.state.scan || !this.scanStream) return; try { const r = await det.detect(v); const x = r.find(y => eanOk(y.rawValue)); if (x) return this.gotCode(x.rawValue); } catch (e) {} this.scanT = setTimeout(loop, 180); };
+        loop();
+      } else {
+        const Z = await zxLoad();
+        if (!this.state.scan) return;
+        this.zx = new Z.BrowserMultiFormatReader(zxHints(Z), 250);
+        await this.zx.decodeFromConstraints({ video: { facingMode: 'environment' }, audio: false }, v, res => { if (res && eanOk(res.getText())) this.gotCode(res.getText()); });
+      }
+    } catch (e) { this.setState(s => s.scan ? { scan: { ...s.scan, msg: 'Caméra indisponible : prenez le code en photo ou saisissez-le.' } } : null); }
+  }
+  stopScan() {
+    clearTimeout(this.scanT);
+    if (this.scanStream) { this.scanStream.getTracks().forEach(t => t.stop()); this.scanStream = null; }
+    if (this.zx) { try { this.zx.reset(); } catch (e) {} this.zx = null; }
+  }
+  async scanPhoto() {
+    const f = await phPick(false); if (!f.length) return;
+    this.setState(s => s.scan ? { scan: { ...s.scan, msg: 'Lecture de la photo…' } } : null);
+    let code = null; try { code = await decodeFile(f[0]); } catch (e) {}
+    if (code && eanOk(code)) this.gotCode(code);
+    else this.setState(s => s.scan ? { scan: { ...s.scan, msg: 'Aucun code lisible sur la photo : rapprochez-vous et évitez les reflets.' } } : null);
+  }
+  gotCode(code) {
+    if (this.gotBusy) return; this.gotBusy = true; setTimeout(() => { this.gotBusy = false; }, 800);
+    code = String(code).trim();
+    try { if (navigator.vibrate) navigator.vibrate(60); } catch (e) {}
+    const target = (this.state.scan || {}).target;
+    this.stopScan(); track('scan:ok', target); this.setState({ scan: null });
+    this.onEan(code, target);
+  }
+  onEan(code, target) {
+    const st = this.state;
+    if (target === 'form') { this.setState(s => ({ form: { ...s.form, ean: code } })); this.lookupEan(code, true); return; }
+    for (const k of [st.site, ...KS.filter(x => x !== st.site)]) {
+      const x = stockOfS(st, k).find(y => y[8] === code);
+      if (x) { this.setState({ site: k, wpos: KS.indexOf(k), tab: 's', stkF: null, stkD: null, stkU: null, stkOpen: k + x[0], sheet: null }); this.toast('Article trouvé : ' + x[1] + (k !== st.site ? ' · ' + SL(k) : '')); return; }
+    }
+    this.setState({ sheet: 's', form: { ean: code, e: st.stkD || '' } });
+    this.lookupEan(code, false);
+  }
+  async lookupEan(code, quiet) {
+    if (!/^\d{8,14}$/.test(code)) return;
+    let name = '';
+    try {
+      const ctl = new AbortController(); setTimeout(() => ctl.abort(), 4000);
+      const j = await (await fetch('https://world.openproductsfacts.org/api/v2/product/' + code + '.json?fields=product_name,brands', { signal: ctl.signal })).json();
+      name = j && j.product ? [j.product.product_name, j.product.brands].filter(Boolean).join(' · ') : '';
+    } catch (e) {}
+    if (name) this.setState(s => s.form && s.form.ean === code && !s.form.a && !s.form.name ? { form: { ...s.form, [s.sheet === 'ed' ? 'name' : 'a']: name } } : null);
+    else if (!quiet) this.toast('Nouveau code ' + code + ' : saisissez le nom du produit');
   }
   async addPhotos(pid, sec, replaceId, asCover) {
     const files = await phPick(!replaceId && !asCover);
@@ -1444,7 +1560,7 @@ class Component extends DCLogic {
   }
   toast(msg, undo) { clearTimeout(toastT); if (!undo) undoD = null; this.setState({ toast: { msg, undo: !!undo } }); toastT = setTimeout(() => { undoD = null; this.setState({ toast: null }); }, undo ? 6000 : 3000); }
   undoable(label, kind, how, fn) { undoD = JSON.stringify(snap(this.state)); track((how === 'swipe' ? 'swipe:del:' : 'del:') + kind); fn(); this.toast(label, true); }
-  undo() { if (!undoD) return; const d = JSON.parse(undoD); undoD = null; clearTimeout(toastT); const s = applyData(d); track('undo'); this.setState({ ...s, toast: null, sheet: null }); }
+  undo() { if (!undoD) return; const d = JSON.parse(undoD); undoD = null; clearTimeout(toastT); const s = applyData(d); Object.keys(this.state).forEach(k => { if (!(k in s) && !VOLATILE.includes(k)) s[k] = undefined; }); track('undo'); this.setState({ ...s, toast: null, sheet: null }); }
   componentDidUpdate(prev) {
     this.flags(); this.trackDiff();
     if (ridScan(this.state)) { this.forceUpdate(); return; }
@@ -1471,7 +1587,8 @@ class Component extends DCLogic {
     const ACC = 'var(--acc)', INK = 'var(--ink)', CHIP = 'var(--chip)', WARN = 'var(--warn)';
     const on = (b) => b ? ACC : CHIP, fg = (b) => b ? 'var(--accOn)' : INK;
     const glob = st.tab === 'l' || st.tab === 'c';
-    const stockOf = k => [...((SITES[k] || {}).stock || []), ...(st.addS[k] || [])].filter(x => !(st.stkDel || {})[k + x[0]]).map(x => { const c = (st.stkCfg || {})[k + x[0]]; return c ? [x[0], c.name ?? x[1], c.unit ?? x[2], x[3], c.min ?? x[4], c.lot ?? x[5], c.disc ?? x[6]] : x; });
+    const stockOf = k => stockOfS(st, k), subOf = x => x[7] || SSUB[x[0]] || 'Divers';
+    const subSugg = d => Array.from(new Set([...(SUBS[d] || []), ...KS.flatMap(k => stockOf(k)).filter(x => (x[6] || SDISC[x[0]] || 'Autre') === d).map(subOf)])).filter(x => x !== 'Divers');
     const list = st.P[st.site] || [];
     const P0 = list.find(p => p.id === st.proj);
     const detail = st.tab === 'p' && !!P0;
@@ -1584,25 +1701,30 @@ class Component extends DCLogic {
     const stepTypes = [['c', 'Coche'], ['g', 'Jauge']].map(([k, label]) => ({ label, bg: st.stepType === k ? 'var(--on)' : 'transparent', fg: st.stepType === k ? ACC : 'var(--ink2)', pick: () => set({ stepType: k }) }));
     // stocks
     const zonesS = (st.cfg[st.site] || { zones: [] }).zones;
-    const stItems = stockOf(st.site).map(s => { const key = st.site + s[0], o = { q: s[3], o: 0, sent: false, ...(st.stk[key] || {}) }, low = o.q < s[4]; return { s, key, o, low, disc: s[6] || SDISC[s[0]] || 'Autre', stt: o.o > 0 ? 'ord' : low ? 'low' : 'ok' }; });
+    const stItems = stockOf(st.site).map(s => { const key = st.site + s[0], o = { q: s[3], o: 0, sent: false, ...(st.stk[key] || {}) }, low = o.q < s[4]; return { s, key, o, low, disc: s[6] || SDISC[s[0]] || 'Autre', sub: subOf(s), stt: o.o > 0 ? 'ord' : low ? 'low' : 'ok' }; });
     const updS = (key, n) => set({ stk: { ...st.stk, [key]: n }, stkSent: false });
     const sf = st.stkF || null;
     const stFilt = [['low', 'À commander', 'var(--t4)', 'var(--t4x)'], ['ord', 'En commande', 'var(--t2)', 'var(--t2x)'], ['ok', 'En stock', 'var(--t3)', 'var(--t3x)']].map(([k, label, bg, fx]) => { const a = sf === k; return { label, bg, fg: fx, n: stItems.filter(x => x.stt === k).length, bd: a ? fx : 'transparent', op: !sf || a ? 1 : 0.5, pick: () => set({ stkF: a ? null : k }) }; });
     const dOrder = Array.from(new Set([...st.discs, ...stItems.map(x => x.disc)])).filter(d => d !== 'Autre').concat('Autre');
     const sdSel = st.stkD || null, inStt = stItems.filter(x => !sf || x.stt === sf);
-    const stDisc = [{ k: null, label: 'Toutes', n: inStt.length }, ...dOrder.filter(d => inStt.some(x => x.disc === d)).map(d => ({ k: d, label: d, n: inStt.filter(x => x.disc === d).length }))].map(d => { const a = sdSel === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ stkD: d.k }) }; });
-    const stocks = inStt.filter(x => !sdSel || x.disc === sdSel).map(({ s, key, o, low, disc }) => {
+    const stDisc = [{ k: null, label: 'Toutes', n: inStt.length }, ...dOrder.filter(d => inStt.some(x => x.disc === d)).map(d => ({ k: d, label: d, n: inStt.filter(x => x.disc === d).length }))].map(d => { const a = sdSel === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ stkD: d.k, stkU: null }) }; });
+    const inD = inStt.filter(x => !sdSel || x.disc === sdSel), suSel = sdSel && inD.some(x => x.sub === st.stkU) ? st.stkU : null;
+    const stSub = !sdSel ? [] : [{ k: null, label: 'Toutes', n: inD.length }, ...Array.from(new Set(inD.map(x => x.sub))).sort((a, b) => a.localeCompare(b, 'fr')).map(u => ({ k: u, label: u, n: inD.filter(x => x.sub === u).length }))].map(d => { const a = suSel === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--solid)' : 'transparent', fg: a ? 'var(--solidTx)' : 'var(--ink2)', pick: () => set({ stkU: d.k }) }; });
+    const stocks = inD.filter(x => !suSel || x.sub === suSel).map(({ s, key, o, low, disc, sub }) => {
       const max = Math.max(s[4] * 2, o.q, 1), step = Math.max(1, Math.round(s[5] / 10)), open = st.stkOpen === key;
       const zone = (st.stkZone || {})[key] || STZ[s[0]] || zonesS[0] || '—';
-      return { img: 'stk-' + s[0], src: src(s[0]), name: s[1], rid: RI('K:' + key), unit: s[2], q: o.q, col: low ? WARN : INK, barCol: low ? WARN : ACC, w: Math.min(100, o.q / max * 100) + '%', markL: (s[4] / max * 100) + '%',
-        meta: 'Seuil ' + s[4] + ' · ' + zone, hasPend: o.o > 0, pend: '+' + o.o + ' ' + s[2] + (o.sent ? ' · commandés' : ' · au panier'), pendBg: o.sent ? 'var(--t2)' : 'var(--warnBg)', pendFg: o.sent ? 'var(--t2x)' : 'var(--warnTx)',
+      const sw = 'k:' + key;
+      SW[sw] = canDel() ? { del: how => this.undoable(s[1] + ' supprimé du stock', 'stk', how, () => this.setState(z => ({ stkDel: { ...(z.stkDel || {}), [key]: true }, stkOpen: null }))) } : {};
+      return { sw, sub, ean: s[8] || '', hasEan: !!s[8], img: 'stk-' + s[0], src: src(s[0]), name: s[1], rid: RI('K:' + key), unit: s[2], q: o.q, col: low ? WARN : INK, barCol: low ? WARN : ACC, w: Math.min(100, o.q / max * 100) + '%', markL: (s[4] / max * 100) + '%',
+        meta: 'Seuil ' + s[4] + ' · ' + zone + (s[8] ? ' · EAN ' + s[8] : ''), hasPend: o.o > 0, pend: '+' + o.o + ' ' + s[2] + (o.sent ? ' · commandés' : ' · au panier'), pendBg: o.sent ? 'var(--t2)' : 'var(--warnBg)', pendFg: o.sent ? 'var(--t2x)' : 'var(--warnTx)',
         open, toggle: () => set({ stkOpen: open ? null : key }), step: step + ' ' + s[2],
         minus: () => updS(key, { ...o, q: Math.max(0, o.q - step) }), plus: () => updS(key, { ...o, q: o.q + step }),
         zones: zonesS.map(z => ({ label: z, bg: z === zone ? 'var(--acc)' : 'var(--tile)', fg: z === zone ? 'var(--accOn)' : INK, pick: () => set({ stkZone: { ...(st.stkZone || {}), [key]: z } }) })),
         adv: o.sup || ADV[s[0]] || 'Point Matériaux · 48 h', lotLbl: '+ 1 lot · ' + s[5], order: () => updS(key, { ...o, o: o.o + s[5], sent: false }),
         disc, canRecv: o.sent && o.o > 0, canOrder: !(o.sent && o.o > 0), recvLbl: 'Réceptionner +' + o.o, recv: () => updS(key, { ...o, q: o.q + o.o, o: 0, sent: false }), edit: () => openEd('stk', { key }) };
     });
-    const stGroups = dOrder.map(d => ({ label: d, items: stocks.filter(x => x.disc === d) })).filter(g => g.items.length).map(g => ({ ...g, n: g.items.length + ' article' + (g.items.length > 1 ? 's' : '') }));
+    const stGroups = [];
+    dOrder.forEach(d => Array.from(new Set(stocks.filter(x => x.disc === d).map(x => x.sub))).sort((a, b) => a.localeCompare(b, 'fr')).forEach(u => { const items = stocks.filter(x => x.disc === d && x.sub === u); stGroups.push({ label: sdSel ? u : d + ' › ' + u, items, n: items.length + ' article' + (items.length > 1 ? 's' : '') }); }));
     const bk = {}; stItems.filter(x => x.o.o > 0 && !x.o.sent).forEach(x => { const sup = (x.o.sup || ADV[x.s[0]] || 'Point Matériaux').split(' · ')[0]; (bk[sup] = bk[sup] || []).push({ name: x.s[1], qty: '+' + x.o.o + ' ' + x.s[2], rm: () => updS(x.key, { ...x.o, o: 0 }) }); });
     const basket = Object.keys(bk).map(sup => ({ sup, lines: bk[sup] })), basketLines = stItems.filter(x => x.o.o > 0 && !x.o.sent).length;
     const sendOrder = () => { const n = { ...st.stk }; stItems.forEach(x => { if (x.o.o > 0 && !x.o.sent) n[x.key] = { ...x.o, sent: true }; }); set({ stk: n, stkSent: true }); };
@@ -1757,11 +1879,11 @@ class Component extends DCLogic {
       },
       stk: {
         title: () => 'Modifier l’article', req: 'name', delLbl: 'Supprimer l’article', canDel: () => true,
-        load: r => { const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || []; const o = st.stk[r.key] || {}; return { name: x[1], unit: x[2], disc: x[6] || SDISC[x[0]] || 'Autre', q: String(o.q ?? x[3]), min: String(x[4]), lot: String(x[5]) }; },
-        groups: () => [{ t: 'Article', f: [['name', 'Produit', 'Ex. Joint carrelage'], ['unit', 'Unité', 'Ex. sacs'], ['disc', 'Discipline', '', [...st.discs, 'Autre']]] }, { t: 'Quantités', f: [['q', 'En stock', '0'], ['min', 'Seuil', '0'], ['lot', 'Lot', '1']] }],
+        load: r => { const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || []; const o = st.stk[r.key] || {}; return { name: x[1], unit: x[2], disc: x[6] || SDISC[x[0]] || 'Autre', sub: x[0] ? subOf(x) : '', ean: x[8] || '', q: String(o.q ?? x[3]), min: String(x[4]), lot: String(x[5]) }; },
+        groups: () => [{ t: 'Article', f: [['name', 'Produit', 'Ex. Joint carrelage'], ['unit', 'Unité', 'Ex. sacs'], ['disc', 'Discipline', '', [...st.discs, 'Autre']], ['sub', 'Sous-catég.', 'Ex. Câbles', subSugg(F.disc), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir']] }, { t: 'Quantités', f: [['q', 'En stock', '0'], ['min', 'Seuil', '0'], ['lot', 'Lot', '1']] }],
         save: (r, F) => {
           const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || [], o = { q: x[3], o: 0, sent: false, ...(st.stk[r.key] || {}) };
-          set({ stkCfg: { ...(st.stkCfg || {}), [r.key]: { ...((st.stkCfg || {})[r.key] || {}), name: F.name.trim(), unit: (F.unit || '').trim() || 'unités', disc: F.disc || 'Autre', min: numOf(F.min), lot: Math.max(1, numOf(F.lot)) } }, stk: { ...st.stk, [r.key]: { ...o, q: numOf(F.q) } } });
+          set({ stkCfg: { ...(st.stkCfg || {}), [r.key]: { ...((st.stkCfg || {})[r.key] || {}), name: F.name.trim(), unit: (F.unit || '').trim() || 'unités', disc: F.disc || 'Autre', sub: (F.sub || '').trim(), ean: (F.ean || '').trim(), min: numOf(F.min), lot: Math.max(1, numOf(F.lot)) } }, stk: { ...st.stk, [r.key]: { ...o, q: numOf(F.q) } } });
         },
         del: r => set({ stkDel: { ...(st.stkDel || {}), [r.key]: true }, stkOpen: null })
       },
@@ -1834,7 +1956,7 @@ class Component extends DCLogic {
     const FD = {
       ed: EK ? EK.groups() : [],
       p: [{ t: 'Projet', f: [['a', 'Nom', 'Ex. Salle de bain lot 4'], ['b', 'Discipline', '', [...st.discs, 'Autre']], ['c', 'Échéance', 'Ex. 20 déc']] }, { t: 'Localisation', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true }], ['addr', 'Adresse', 'Ex. 14 rue Garibaldi'], ['city', 'Ville', 'Ex. 69006 Lyon'], ['access', 'Accès', 'Code, étage, clé…']] }],
-      s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Discipline', '', [...st.discs, 'Autre']], ['b', 'Unité', 'Ex. sacs'], ['c', 'Quantité', '0'], ['d', 'Seuil', '0']] }],
+      s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Discipline', '', [...st.discs, 'Autre']], ['u', 'Sous-catég.', 'Ex. Ampoules', subSugg(F.e), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir', null, { type: 'text' }]] }, { t: 'Quantités', f: [['b', 'Unité', 'Ex. sacs'], ['c', 'Quantité', '0'], ['d', 'Seuil', '0']] }],
       l: [{ t: 'Événement', f: [['a', 'Intitulé', 'Ex. Livraison sanitaires'], ['b', 'Heure', '08:00'], ['c', 'Type', 'Ex. Livraison']] }],
       inv: [{ t: 'Facture', f: [['a', 'N°', 'Ex. F-2026-0520'], ['b', 'Montant HT', 'Ex. 1 250'], ['c', 'Échéance', 'Ex. 30 nov']] }],
       sup: [{ t: 'Nouveau fournisseur', f: [['a', 'Nom', 'Ex. Isol’Rhône'], ['b', 'Spécialité', 'Ex. Isolation'], ['who', 'Contact', 'Nom du contact'], ['tel', 'Téléphone', '04 …'], ['mail', 'Mail', 'contact@…']] }]
@@ -1875,7 +1997,7 @@ class Component extends DCLogic {
         const lu = countLvl(F.lvl, ''), cov = F.cover ? { cover: { ...(st.cover || {}), [newId]: F.cover }, ph: { ...(st.ph || {}), [newId]: [{ id: F.cover, sec: 'av', at: Date.now() }] } } : {};
         this.setState(s => ({ ...cov, lvlUse: lu, P: { ...s.P, [s.site]: [...s.P[s.site], p] }, addE: addPlan ? { ...s.addE, [pd]: [...(s.addE[pd] || []), [(F.ptime || '08:00').trim(), s.site, ((F.pkind || 'Démarrage').trim()) + ' · ' + a, 'Chantier']] } : s.addE, proj: newId, seg: 'e', sheet: null, seq: sq, tab: 'p' }));
       }
-      if (sh === 's') { const n = Math.max(0, parseInt(F.c) || 0), m = Math.max(1, parseInt(F.d) || 1); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), [newId, a, F.b || 'unités', n, m, m, F.e || 'Autre']] }, sheet: null, seq: sq }); }
+      if (sh === 's') { const n = Math.max(0, parseInt(F.c) || 0), m = Math.max(1, parseInt(F.d) || 1); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), [newId, a, F.b || 'unités', n, m, m, F.e || 'Autre', (F.u || '').trim(), (F.ean || '').trim()]] }, sheet: null, seq: sq, stkD: null, stkU: null, stkF: null, stkOpen: st.site + newId }); }
       if (sh === 'l') { const d = F.day ?? st.day; set({ addE: { ...st.addE, [d]: [...(st.addE[d] || []), [F.b || '08:00', F.site || st.site, a, F.c || 'Ajouté']] }, day: d, sheet: null, seq: sq }); }
       if (sh === 'sup') {
         const add = F.mode === 'new' ? [{ id: 'f' + rid(), name: a, cat: F.b || 'À préciser', tel: F.tel || '', mail: F.mail || '', who: F.who || '' }] : pick.map(supCopy);
@@ -1913,7 +2035,12 @@ class Component extends DCLogic {
       discs: st.discs.map(d => ({ label: d, del: () => set({ discs: st.discs.filter(x => x !== d) }) })), discN: st.discs.length + ' active' + (st.discs.length > 1 ? 's' : ''),
       discText: st.discText, onDisc: (e) => set({ discText: e.target.value }),
       addDisc: () => { const t = st.discText.trim(); if (!t) return; const v = t.charAt(0).toUpperCase() + t.slice(1); track('create:disc'); if (!st.discs.some(x => x.toLowerCase() === v.toLowerCase())) set({ discs: [...st.discs, v], discText: '', pdAdd: false, ...(st.pdAdd ? { pdisc: v } : {}) }); else set({ discText: '', pdAdd: false }); },
-      stDisc, stGroups, stFilt, hasStock: stocks.length > 0, noStock: stocks.length === 0, basket, hasBasket: basketLines > 0, basketN: basketLines + ' ligne' + (basketLines > 1 ? 's' : ''), sendOrder, orderSent: !!st.stkSent && basketLines === 0,
+      stDisc, stSub, hasStSub: stSub.length > 0, stGroups, stFilt,
+      canScan: st.tab === 's', scanStock: () => this.startScan('stock'), scanForm: () => this.startScan('form'), eanForm: sh === 's' || (sh === 'ed' && F.kind === 'stk'),
+      scanOpen: !!st.scan, scanMsg: st.scan ? st.scan.msg : '', scanCode: st.scan ? st.scan.code : '', onScanCode: (e) => set({ scan: { ...st.scan, code: e.target.value } }),
+      scanClose: () => { this.stopScan(); set({ scan: null }); }, scanPhoto: () => this.scanPhoto(),
+      scanManual: () => { const c = ((st.scan || {}).code || '').replace(/\s/g, ''); if (!c) return; if (!eanOk(c)) { set({ scan: { ...st.scan, msg: 'Code invalide : vérifiez les chiffres (clé de contrôle EAN).' } }); return; } this.gotCode(c); },
+      scanKey: (e) => { if (e.key === 'Enter') { const c = ((st.scan || {}).code || '').replace(/\s/g, ''); if (c && eanOk(c)) this.gotCode(c); } }, hasStock: stocks.length > 0, noStock: stocks.length === 0, basket, hasBasket: basketLines > 0, basketN: basketLines + ' ligne' + (basketLines > 1 ? 's' : ''), sendOrder, orderSent: !!st.stkSent && basketLines === 0,
       sd, isSupList: st.tab === 'c' && !st.supSel, isSupDet: st.tab === 'c' && !!st.supSel, backSup: () => set({ supSel: null }), hasSup: contacts.length > 0, noSup: contacts.length === 0,
       sq: st.sq || '', onSq: (e) => set({ sq: e.target.value }), clearSq: () => set({ sq: '' }), hasSq: !!st.sq, supTot: kk(totOpen), supLate: lateN + ' fact.',
       psecs, pdiscs, pdAdd, togglePdAdd: () => set({ pdAdd: !st.pdAdd, discText: '' }), segPh: st.seg === 'ph', phSecs, phv, phvOpen: !!phv, dirRubs,
@@ -1990,7 +2117,7 @@ class Component extends DCLogic {
         const chip = (list, cur, key) => list.map(v => { const a = cur === v; return { label: v, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => setF({ [key]: a ? '' : v }) }; });
         const num = (v, d) => { const n = parseInt(String(v).replace(/[^\d]/g, '')); return isNaN(n) ? d : n; };
         const kItems = stockOf(st.site).map(x => { const key = st.site + x[0], setC = (o) => set({ stkCfg: { ...(st.stkCfg || {}), [key]: { ...((st.stkCfg || {})[key] || {}), ...o } } });
-          return { name: x[1], unit: x[2], disc: x[6] || SDISC[x[0]] || 'Autre', min: String(x[4]), lot: String(x[5]), onMin: (e) => setC({ min: num(e.target.value, 0) }), onLot: (e) => setC({ lot: Math.max(1, num(e.target.value, 1)) }), del: () => set({ stkDel: { ...(st.stkDel || {}), [key]: true } }) }; });
+          return { name: x[1], unit: x[2], disc: (x[6] || SDISC[x[0]] || 'Autre') + ' › ' + subOf(x), min: String(x[4]), lot: String(x[5]), onMin: (e) => setC({ min: num(e.target.value, 0) }), onLot: (e) => setC({ lot: Math.max(1, num(e.target.value, 1)) }), del: () => set({ stkDel: { ...(st.stkDel || {}), [key]: true } }) }; });
         const kc = { site: SL(st.site), n: kItems.length + ' articles', items: kItems, na: F.na || '', nu: F.nu || '', nq: F.nq || '', nm: F.nm || '', nl: F.nl || '', onNa: fset('na'), onNu: fset('nu'), onNq: fset('nq'), onNm: fset('nm'), onNl: fset('nl'), discs: chip([...st.discs, 'Autre'], F.nd, 'nd'),
           add: () => { const a = (F.na || '').trim(); if (!a) return; const sq = st.seq + 1, m = Math.max(1, num(F.nm, 1)); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), ['k' + sq, a.charAt(0).toUpperCase() + a.slice(1), (F.nu || '').trim() || 'unités', num(F.nq, 0), m, Math.max(1, num(F.nl, m)), F.nd || 'Autre']] }, seq: sq, form: {} }); } };
         const pdays = WEEK.map((d, i) => { const a = (F.pday ?? 0) === i; return { label: d.w, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => setF({ pday: i }) }; });
