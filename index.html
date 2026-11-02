@@ -463,8 +463,11 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-for>
 </div>
 </div>
-<textarea value="{{ draftText }}" onChange="{{ onDraft }}" rows="7" style="width:100%;border:1px solid var(--tileBd);background:var(--field);padding:14px 16px;border-radius:20px;font:400 14.5px/1.5 -apple-system,sans-serif;resize:none;outline:none;color:var(--ink)"></textarea>
-<div onClick="{{ sendMail }}" style="cursor:pointer;margin-top:10px;background:{{ sendBg }};color:var(--accOn);padding:15px;border-radius:16px;text-align:center;font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ sendLabel }}</div>
+<sc-if value="{{ cmNote }}" hint-placeholder-val="{{ false }}"><div style="margin:0 0 10px;padding:11px 14px;border-radius:16px;background:var(--warnBg);color:var(--warnTx);font:500 13px/1.4 -apple-system,sans-serif">{{ cmNoteTxt }}</div></sc-if>
+<sc-if value="{{ cmBox }}" hint-placeholder-val="{{ false }}"><div style="border-radius:16px;background:var(--field);border:1px solid var(--tileBd);overflow:hidden;margin-bottom:8px"><div style="display:flex;align-items:center;padding:0 14px;border-bottom:2px solid var(--line)"><div style="width:52px;flex:none;font:500 13.5px -apple-system,sans-serif;color:var(--ink2)">À</div><input type="email" value="{{ replyTo }}" onChange="{{ onReplyTo }}" autocapitalize="none" autocorrect="off" style="flex:1;min-width:0;border:0;background:transparent;padding:11px 0;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div><div style="display:flex;align-items:center;padding:0 14px"><div style="width:52px;flex:none;font:500 13.5px -apple-system,sans-serif;color:var(--ink2)">Objet</div><input value="{{ replySub }}" onChange="{{ onReplySub }}" style="flex:1;min-width:0;border:0;background:transparent;padding:11px 0;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div></div></sc-if>
+<textarea value="{{ draftText }}" onChange="{{ onDraft }}" placeholder="Écrivez votre réponse…" rows="7" style="width:100%;border:1px solid var(--tileBd);background:var(--field);padding:14px 16px;border-radius:20px;font:400 14.5px/1.5 -apple-system,sans-serif;resize:none;outline:none;color:var(--ink)"></textarea>
+<div onClick="{{ sendMail }}" style="cursor:pointer;margin-top:10px;background:{{ sendBg }};color:var(--accOn);padding:15px;border-radius:16px;text-align:center;font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;opacity:{{ sendOp }}">{{ sendLabel }}</div>
+<sc-if value="{{ cmBox }}" hint-placeholder-val="{{ false }}"><div onClick="{{ openInMail }}" style="cursor:pointer;margin-top:8px;padding:12px;border-radius:16px;text-align:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">Ouvrir dans l’app Mail</div></sc-if>
 
 <div onClick="{{ markDone }}" style="cursor:pointer;margin-top:8px;padding:13px;border-radius:16px;text-align:center;border:1px solid var(--tileBd);color:var(--ink2);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">Traité sans réponse</div>
 </sc-if>
@@ -862,7 +865,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">Exporter → « Enregistrer dans Fichiers » → iCloud Drive › Chantier › Sauvegardes. Chaque sauvegarde porte un identifiant unique.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 21</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 23</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -1281,7 +1284,7 @@ const put = (o, v) => { if (v && typeof v === 'object') { Object.keys(o).forEach
 const wrapI = j => ((j % KS.length) + KS.length) % KS.length;
 const DEFSTEPS = [{ l: 'Préparation', t: 'c' }, { l: 'Exécution', t: 'g' }, { l: 'Finitions', t: 'g' }, { l: 'Réception', t: 'c' }];
 const SAVE_KEY = 'chantier-app-v6';
-const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'usage', 'pdAdd', 'back', 'cfgSec', 'qa'];
+const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'usage', 'pdAdd', 'back', 'cfgSec', 'qa', 'sending'];
 const restore = () => {
   try {
     if (location.hash === '#reset') { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(SESS_KEY); localStorage.removeItem(CL_KEY); Object.keys(CL).forEach(k => delete CL[k]); history.replaceState(null, '', location.pathname); return {}; }
@@ -1628,6 +1631,8 @@ const refImport = async (file, discs) => {
   refMark(Object.keys(N));
   return { add, skip };
 };
+// mot de passe d'application Gmail affiché en 4 groupes (« abcd efgh ijkl mnop ») : les espaces sont retirés
+const mbxImap = M => { const user = (M.user || '').trim(), host = (M.host || '').trim() || imapGuess(user), pass = /gmail|google/i.test(host) ? (M.pass || '').replace(/\s+/g, '') : (M.pass || '').trim(); return user && pass ? { host, user, pass } : undefined; };
 const imapGuess = mail => { const d = String(mail || '').split('@')[1] || '', h = d.toLowerCase(); return /^(icloud|me|mac)\.com$/.test(h) ? 'imap.mail.me.com' : /^(gmail|googlemail)\.com$/.test(h) ? 'imap.gmail.com' : /^(outlook|hotmail|live|msn)\.(com|fr)$/.test(h) ? 'outlook.office365.com' : /^(yahoo|ymail)\./.test(h) ? 'imap.mail.yahoo.com' : h === 'orange.fr' || h === 'wanadoo.fr' ? 'imap.orange.fr' : h === 'free.fr' ? 'imap.free.fr' : h === 'sfr.fr' || h === 'neuf.fr' ? 'imap.sfr.fr' : h === 'laposte.net' ? 'imap.laposte.net' : h === 'bbox.fr' ? 'imap.bbox.fr' : h ? 'ssl0.ovh.net' : ''; };
 // ---------- données partagées : comptes Supabase et synchronisation entre appareils et utilisateurs ----------
 // Chaque fiche (site, projet, article ajouté, événement, contact, réglage…) devient une ligne « records » de l'entreprise.
@@ -1872,9 +1877,7 @@ class Component extends DCLogic {
     if (!own && !((M.user || '').trim() && M.pass)) { this.toast('Renseignez l’adresse mail et le mot de passe d’application (Réglages › Mails)'); return; }
     this.setState(s => ({ mbx: { ...s.mbx, busy: true, err: '' } })); track('mailSync');
     try {
-      // mot de passe d'application Gmail affiché en 4 groupes (« abcd efgh ijkl mnop ») : les espaces sont retirés
-      const user = (M.user || '').trim(), host = (M.host || '').trim() || imapGuess(user), pass = /gmail|google/i.test(host) ? (M.pass || '').replace(/\s+/g, '') : (M.pass || '').trim();
-      const imap = user && pass ? { host, user, pass } : undefined;
+      const imap = mbxImap(M);
       let j;
       if (own) {
         const r = await fetch(M.url.trim().replace(/\/+$/, '') + '/session', { method: 'POST', headers: { Authorization: 'Bearer ' + M.token.trim(), 'Content-Type': 'application/json' }, body: JSON.stringify({ limit: M.limit || 30, imap }) });
@@ -1882,12 +1885,19 @@ class Component extends DCLogic {
         if (!r.ok) throw new Error(j.error || 'erreur ' + r.status);
       } else {
         if (!cloudReady()) throw new Error('connectez-vous d’abord');
-        try { j = await sbJson('/functions/v1/chantier-ia/session', { method: 'POST', json: { limit: M.limit || 30, imap, sender: (ME && ME.name) || '' } }); }
-        catch (e) { throw new Error(e.status === 404 ? 'la fonction chantier-ia n’est pas encore déployée dans Supabase' : e.message); }
+        // la fonction analyse 15 nouveaux mails par passage : on relance tant qu'il en reste (8 passages au plus)
+        for (let round = 0; ; round++) {
+          try { j = await sbJson('/functions/v1/chantier-ia/session', { method: 'POST', json: { limit: M.limit || 30, imap, sender: (ME && ME.name) || '' } }); }
+          catch (e) { throw new Error(e.status === 404 ? 'la fonction chantier-ia n’est pas encore déployée dans Supabase' : /compute|resources|WORKER_LIMIT|546/i.test(e.message + e.status) ? 'limite de calcul de Supabase atteinte : choisissez moins de mails (10) et réessayez' : e.message); }
+          if (!(j.pending > 0) || round >= 7) break;
+          const L0 = Array.isArray(j.mails) ? j.mails : [];
+          this.setState(s => ({ inbox: L0, msrc: 'box', mail: null }));
+          this.toast('Analyse en cours : encore ' + j.pending + ' mail' + (j.pending > 1 ? 's' : '') + '…');
+        }
       }
       const L = Array.isArray(j.mails) ? j.mails : [];
       this.setState(s => ({ inbox: L, msrc: 'box', mail: null, mbx: { ...s.mbx, busy: false, last: j.at || new Date().toISOString(), account: j.account || s.mbx.account || '', err: '' } }));
-      this.toast('✓ ' + L.length + ' mails résumés, brouillons prêts');
+      this.toast(j.pending > 0 ? '✓ ' + L.length + ' mails lus · ' + j.pending + ' restent à analyser : touchez Synchroniser à nouveau' : '✓ ' + L.length + ' mails résumés, brouillons prêts');
     } catch (e) { this.setState(s => ({ mbx: { ...s.mbx, busy: false, err: 'Synchronisation impossible : ' + ((e && e.message) || e) } })); }
   }
   async startScan(target) {
@@ -2085,6 +2095,20 @@ class Component extends DCLogic {
     } catch (e) { const m = (e && e.message) || String(e); bad(/create_org|login_email|schema cache|does not exist|relation/i.test(m) ? 'La base Supabase n’est pas encore préparée : collez supabase/schema.sql dans Supabase › SQL Editor, puis réessayez.' : m); }
   }
   // clé Claude enregistrée ? fonction chantier-ia déployée ?
+  // envoi direct d'une réponse par la fonction chantier-ia (serveur d'envoi de la boîte)
+  async sendReply(r) {
+    const M = this.state.mbx || {}, imap = mbxImap(M);
+    if (this.state.sending) return;
+    if (!imap) { this.toast('Renseignez l’adresse mail et le mot de passe d’application (Réglages › Mails)'); return; }
+    if (!/^[^@\s,;<>]+@[^@\s,;<>]+\.[^@\s,;<>]+$/.test(String(r.to || '').trim())) { this.toast('Adresse du destinataire invalide'); return; }
+    if ((M.url || '').trim()) { this.toast('Envoi direct possible seulement sans session personnalisée : utilisez « Ouvrir dans l’app Mail »'); return; }
+    this.setState({ sending: r.id }); track('send', 'direct');
+    try {
+      await sbJson('/functions/v1/chantier-ia/send', { method: 'POST', json: { imap, to: String(r.to).trim(), subject: r.subject, text: r.text, inReplyTo: r.inReplyTo || '', sender: (ME && ME.name) || '' } });
+      this.setState(s => ({ sending: null, treated: { ...s.treated, [r.id]: { reply: r.text, at: 'À l’instant' } } }));
+      this.toast('✓ Réponse envoyée à ' + String(r.to).trim());
+    } catch (e) { this.setState({ sending: null }); this.toast('Non envoyé : ' + (e.status === 404 ? 'mettez à jour la fonction chantier-ia dans Supabase' : (e && e.message) || e)); }
+  }
   async iaRefresh() {
     if (!cloudReady()) return;
     try { CL.iaHint = await rpc('ia_key_hint', {}); } catch (e) {}
@@ -2286,7 +2310,7 @@ class Component extends DCLogic {
     const isVip = n => st.vip[n] ?? !!VIP0[n];
     const inbox = Array.isArray(st.inbox) ? st.inbox : [], boxOn = st.msrc === 'box';
     const whenM = x => { const d = new Date(x); if (isNaN(d)) return ''; return iso(d) === iso(new Date()) ? p2(d.getHours()) + ':' + p2(d.getMinutes()) : d.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' }); };
-    const boxM = inbox.map(m => ({ id: m.id, ch: 'MAIL', from: m.from || m.addr || '?', org: m.addr || '', time: whenM(m.date), unread: m.unread ? 1 : 0, subject: m.subject || '(sans objet)', summary: m.summary || m.subject || '', body: m.body || '', drafts: [(m.drafts || [])[0] || '', (m.drafts || [])[1] || ''], replyTo: m.replyTo || m.addr || '', box: true }));
+    const boxM = inbox.map(m => ({ messageId: m.messageId || '', note: m.note || '', id: m.id, ch: 'MAIL', from: m.from || m.addr || '?', org: m.addr || '', time: whenM(m.date), unread: m.unread ? 1 : 0, subject: m.subject || '(sans objet)', summary: m.summary || m.subject || '', body: m.body || '', drafts: [(m.drafts || [])[0] || '', (m.drafts || [])[1] || ''], replyTo: m.replyTo || m.addr || '', box: true }));
     const allM = boxOn ? boxM : (st.allM ? KS : [st.site]).flatMap(k => [...((SITES[k] || {}).mails || []), ...(DONE[k] || [])].map(m => ({ ...m, org: st.allM ? [m.org, SL(k)].filter(Boolean).join(' · ') : m.org, drafts: m.drafts || [m.reply || '', m.reply || ''] })));
     const trOf = m => { const t = st.treated[m.id]; return t !== undefined ? t : (m.reply != null ? { reply: m.reply, at: m.at } : false); };
     const mq = st.mq.trim().toLowerCase();
@@ -2309,7 +2333,8 @@ class Component extends DCLogic {
     const cm0 = allM.find(m => m.id === st.mail) || { id: '', ch: 'MAIL', time: '', subject: '', from: ' ', org: '', summary: '', body: '', drafts: ['', ''] };
     const cmT = trOf(cm0), cv = isVip(cm0.from);
     const cm = { ...cm0, ch: CH[cm0.ch], ini: ini(cm0.from), avBg: AV[cm0.ch], vipBg: cv ? 'rgba(201,162,39,.16)' : 'var(--tile)', vipFg: cv ? '#C9A227' : 'var(--ink2)', vipFill: cv ? '#C9A227' : 'none', vipToggle: () => set({ vip: { ...st.vip, [cm0.from]: !cv } }) };
-    const dk = cm0.id + st.tone, draftText = st.edits[dk] ?? cm0.drafts[st.tone];
+    const dk = cm0.id + st.tone, draftText = st.edits[dk] ?? cm0.drafts[st.tone] ?? '';
+    const replyTo = st.edits[cm0.id + ':to'] ?? (cm0.replyTo || ''), replySub = st.edits[cm0.id + ':sub'] ?? (/^re\s*:/i.test(cm0.subject || '') ? cm0.subject : 'Re: ' + (cm0.subject || ''));
     const nowT = { reply: '', at: 'À l’instant' };
     const tones = ['Courtois', 'Bref'].map((l, i) => ({ label: l, bg: on(st.tone === i), fg: fg(st.tone === i), pick: () => set({ tone: i }) }));
     const chFilters = ['TOUS', 'MAIL', 'SMS', 'APPEL'].map(l => ({ label: CH[l], bg: on(st.chf === l), fg: fg(st.chf === l), pick: () => set({ chf: l }) }));
@@ -2900,18 +2925,21 @@ class Component extends DCLogic {
       noteText: st.noteText, onNote: (e) => set({ noteText: e.target.value }),
       addNote: () => { const t = st.noteText.trim(); if (t) { up(p => ({ ...p, notes: [...p.notes, t] })); set({ noteText: '' }); } },
       onDraft: (e) => set({ edits: { ...st.edits, [dk]: e.target.value } }),
-      sendLabel: cm0.box ? 'Ouvrir dans Mail pour envoyer' : 'Envoyer la réponse', sendBg: ACC, cmBox: !!cm0.box, cmSite: !cm0.box,
+      sendLabel: st.sending === cm0.id ? 'Envoi en cours…' : 'Envoyer la réponse', sendOp: st.sending === cm0.id ? 0.6 : 1, sendBg: ACC, cmBox: !!cm0.box, cmSite: !cm0.box,
       msrcSeg, showMsrc: inbox.length > 0 || !!mbx.url || !!mbx.user, boxEmpty: boxOn && !inbox.length, syncMail: () => this.syncMail(), syncLbl: mbx.busy ? 'Synchronisation…' : 'Synchroniser les ' + mlim + ' derniers mails', mbxLim: mlim,
       mbxUrl: mbx.url || '', mbxToken: mbx.token || '', onMbxUrl: (e) => set({ mbx: { ...mbx, url: e.target.value } }), onMbxToken: (e) => set({ mbx: { ...mbx, token: e.target.value } }),
       mbxState: mbx.err ? mbx.err : mbx.last ? 'Connectée' + (mbx.account ? ' · ' + mbx.account : '') + ' · ' + inbox.length + ' mails · ' + bkWhen(mbx.last) : mbx.url || mbx.user ? 'Pas encore synchronisée' : 'Non connectée',
       mbxCol: mbx.err ? 'var(--warnTx)' : mbx.last ? 'var(--okTx)' : 'var(--ink2)', mbxOn: !!mbx.last,
       mbxOff: () => set({ mbx: {}, inbox: [], msrc: 'site', mail: null }), openMbx: () => set({ sheet: 'cfg', cfgSec: 'm', form: {}, back: [], menu: false }),
       sendMail: () => {
-        if (!draftText.trim()) return;
-        track('send', cm0.box ? 'box' : 'site');
-        if (cm0.box && cm0.replyTo) location.href = 'mailto:' + encodeURIComponent(cm0.replyTo) + '?subject=' + encodeURIComponent(/^re\s*:/i.test(cm0.subject) ? cm0.subject : 'Re: ' + cm0.subject) + '&body=' + encodeURIComponent(draftText);
+        if (!draftText.trim()) { this.toast('Écrivez d’abord votre réponse'); return; }
+        if (cm0.box) { this.sendReply({ id: cm0.id, to: replyTo, subject: replySub, text: draftText, inReplyTo: cm0.messageId }); return; }
+        track('send', 'site');
         set({ treated: { ...st.treated, [cm0.id]: { reply: draftText, at: 'À l’instant' } } });
       },
+      openInMail: () => { if (!replyTo) return; track('send', 'mailapp'); location.href = 'mailto:' + encodeURIComponent(replyTo) + '?subject=' + encodeURIComponent(replySub) + '&body=' + encodeURIComponent(draftText); set({ treated: { ...st.treated, [cm0.id]: { reply: draftText, at: 'À l’instant' } } }); },
+      replyTo, replySub, onReplyTo: (e) => set({ edits: { ...st.edits, [cm0.id + ':to']: e.target.value } }), onReplySub: (e) => set({ edits: { ...st.edits, [cm0.id + ':sub']: e.target.value } }),
+      cmNote: !!cm0.box && !!cm0.note && !cmT, cmNoteTxt: cm0.note === 'à analyser' ? 'Pas encore analysé par Claude : touchez Synchroniser pour obtenir le résumé et les brouillons. Vous pouvez aussi écrire votre réponse vous-même.' : 'Claude n’a pas pu préparer de brouillon (' + String(cm0.note).replace(/^analyse indisponible : /, '') + '). Vous pouvez écrire votre réponse vous-même.',
       markDone: () => set({ treated: { ...st.treated, [cm0.id]: nowT } }),
       reopen: () => set({ treated: { ...st.treated, [cm0.id]: false }, mbox: 'r' }),
       cmDone: !!cmT, cmTodo: !cmT, cmReplyLbl: cmT && cmT.reply ? 'Réponse envoyée · ' + cmT.at : 'Traité sans réponse · ' + (cmT ? cmT.at : ''), cmReply: cmT && cmT.reply ? cmT.reply : 'Aucune réponse écrite : demande traitée directement.',

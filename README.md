@@ -107,7 +107,9 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
   création (modifiables ensuite sur la fiche d'un fournisseur).
 - **Mails** : résumé en deux lignes et brouillon proposé. Compte › Réglages › **Mails** : clé Claude
   de l'entreprise (propriétaire, admin), puis pour chacun adresse et mot de passe d'application. La boîte
-  est lue par la fonction Supabase « chantier-ia » (voir `supabase/README.md`).
+  est lue par la fonction Supabase « chantier-ia » (voir `supabase/README.md`). Dans la fiche d'un mail,
+  destinataire, objet et réponse se modifient, puis « Envoyer la réponse » l'envoie directement depuis la
+  boîte (ou « Ouvrir dans l'app Mail »). Si Claude n'a pas préparé de brouillon, la raison est affichée.
 
 ## Identifiants lisibles
 
