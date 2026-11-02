@@ -45,25 +45,45 @@ Compte › **Usage de l’appli** (propriétaire, admin) : fonctions les plus ut
 répétés. Le journal reste sur l’appareil ; « Exporter le journal » le range dans iCloud Drive pour
 l’analyser et améliorer l’appli.
 
+## Réglages
+
+Compte › **Réglages** : une page par section (aussi par la roue dentée en haut de chaque onglet).
+
+- **Projets** : disciplines (toucher pour renommer ou supprimer ; un nouveau nom est repris dans les
+  projets, le stock, le planning et les contacts), emplacements proposés, photos des projets
+  affichées ou masquées, fournisseurs par projet activés ou non.
+- **Stocks** : articles, seuils et lots du site ; **base de référence EAN** (import du catalogue CSV
+  du négoce, export, vider).
+- **Mails** : adresse mail, serveur IMAP (deviné d'après l'adresse), mot de passe d'application
+  (gardé sur l'appareil, jamais dans les sauvegardes), nombre de mails à synchroniser (10, 30, 50,
+  100), session cloud.
+- **Planning** : calendriers (nom, couleur, disciplines proposées), ajout et suppression ; les
+  événements d'un calendrier supprimé passent dans le premier calendrier restant.
+- **Contacts** : rubriques (renommer, ajouter, supprimer ; « Fournisseur » reste car elle porte le
+  stock et les factures), annuaire complet.
+
 ## Projets, stock, planning, contacts, mails
 
-- **Projets** : barre des disciplines (filtre) avec **+** pour en créer une ; emplacement (RDC,
-  2ème étage…) proposé selon vos saisies les plus fréquentes ; tuile **Fourn. ›** et bouton
-  **Attacher** ; onglet **Photos** : dossier Avant / Après, couverture, remplacer, déplacer, supprimer
-  (photos réduites à 1600 px, gardées sur l’appareil, incluses dans les sauvegardes).
+- **Projets** : barre des disciplines (filtre) avec **+** pour en créer une. À la création, seul
+  l'**emplacement** est demandé (RDC, 2ème étage…, en boutons ; « Modifier » au bout pour changer
+  la liste). Les fournisseurs s'ajoutent par une **barre de recherche** dans l'annuaire, à la
+  création comme avec « + Attacher ». Onglet **Photos** : dossier Avant / Après, couverture,
+  remplacer, déplacer, supprimer (photos réduites à 1600 px, gardées sur l'appareil, incluses dans
+  les sauvegardes).
 - **Stocks** : discipline › sous-catégorie (Électricité › Câbles / Ampoules / Prises…) ; bouton
-  **scan EAN** (caméra, photo du code ou saisie) : un code connu ouvre l’article, un code nouveau
-  ouvre une fiche préremplie. Le nom est cherché dans Open Products Facts et Open Food Facts, puis sur le
-  web par la session cloud si elle est branchée (les matériaux du bâtiment ne sont presque jamais dans
-  les bases gratuites) ; sinon, « Chercher sur le web » ouvre la recherche et le nom saisi une fois est
-  reconnu ensuite.
-- **Planning** : vue du mois façon Calendrier d’Apple ; calendriers Prestation / visite,
-  Administratif, Réalisation, Visite (devis), plus **Commandes** et **Factures** ajoutées
-  automatiquement ; filtres par calendrier et discipline.
-- **Contacts** (anciennement Fournisseurs) : rubriques Fournisseurs / Sous-traitants / Clients,
-  discipline, adresse, affectation aux sites, sélecteur de site, délai saisi à la main.
-- **Mails** : résumé en deux lignes et brouillon proposé ; Compte › **Boîte mail · session cloud**
-  pour brancher votre boîte (voir `cloud/mail-session/README.md`).
+  **scan EAN** (caméra, photo du code ou saisie). Un code est cherché dans vos articles, puis la
+  **base de référence** (catalogue du négoce importé + produits déjà nommés, sans réseau), puis Open
+  Products Facts et Open Food Facts, puis par la session cloud sur les sites du bâtiment (Plateforme
+  du Bâtiment, Point.P, Cedeo, BigMat…) et enfin le reste du web.
+- **Planning** : calendriers puis disciplines en haut, vue du mois façon Calendrier d’Apple. Un
+  événement a une date de début et de fin ; sur un seul jour, une durée (1 h, 2 h, 3 h, ½ journée,
+  journée) ; sur plusieurs jours, il apparaît chaque jour (J1/3, J2/3…). Le choix du site ne propose
+  que ses projets. **Commandes** et **Factures** restent des calendriers automatiques.
+- **Contacts** : rubriques modifiables (bouton « Modifier » au bout de la liste), discipline,
+  adresse, affectation aux sites, sélecteur de site. Délai et prix ne sont plus demandés à la
+  création (modifiables ensuite sur la fiche d'un fournisseur).
+- **Mails** : résumé en deux lignes et brouillon proposé ; Compte › Réglages › **Mails** pour
+  brancher votre boîte (voir `cloud/mail-session/README.md`).
 
 ## Identifiants lisibles
 
