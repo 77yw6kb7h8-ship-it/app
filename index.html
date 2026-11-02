@@ -879,7 +879,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </div>
 <div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Proposées comme type lors de la création d’un projet.</div></sc-if>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 12</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 13</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isSupSheet }}" hint-placeholder-val="{{ false }}">
@@ -1547,7 +1547,7 @@ class Component extends DCLogic {
   wheelGo(target) {
     this.wTarget = target;
     const k = KS[wrapI(Math.round(target))];
-    if (k !== this.state.site) this.setState({ site: k, mail: null, proj: null, who: null, allC: false, allL: false });
+    if (k !== this.state.site) this.setState({ site: k, mail: null, proj: null, who: null, allC: false, allL: false, allM: false });
     if (this.wRaf) return;
     const tick = () => {
       const p = this.state.wpos, d = this.wTarget - p;
@@ -1861,7 +1861,7 @@ class Component extends DCLogic {
     const inbox = Array.isArray(st.inbox) ? st.inbox : [], boxOn = st.msrc === 'box';
     const whenM = x => { const d = new Date(x); if (isNaN(d)) return ''; return iso(d) === iso(new Date()) ? p2(d.getHours()) + ':' + p2(d.getMinutes()) : d.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' }); };
     const boxM = inbox.map(m => ({ id: m.id, ch: 'MAIL', from: m.from || m.addr || '?', org: m.addr || '', time: whenM(m.date), unread: m.unread ? 1 : 0, subject: m.subject || '(sans objet)', summary: m.summary || m.subject || '', body: m.body || '', drafts: [(m.drafts || [])[0] || '', (m.drafts || [])[1] || ''], replyTo: m.replyTo || m.addr || '', box: true }));
-    const allM = boxOn ? boxM : [...(S.mails || []), ...(DONE[st.site] || [])].map(m => ({ ...m, drafts: m.drafts || [m.reply || '', m.reply || ''] }));
+    const allM = boxOn ? boxM : (st.allM ? KS : [st.site]).flatMap(k => [...((SITES[k] || {}).mails || []), ...(DONE[k] || [])].map(m => ({ ...m, org: st.allM ? [m.org, SL(k)].filter(Boolean).join(' · ') : m.org, drafts: m.drafts || [m.reply || '', m.reply || ''] })));
     const trOf = m => { const t = st.treated[m.id]; return t !== undefined ? t : (m.reply != null ? { reply: m.reply, at: m.at } : false); };
     const mq = st.mq.trim().toLowerCase();
     const match = m => (!st.who || m.from === st.who) && (!mq || [m.from, m.org, m.subject, m.summary, m.body].join(' ').toLowerCase().includes(mq));
@@ -2174,7 +2174,7 @@ class Component extends DCLogic {
       }
     };
     const titles = { p: 'Projets', s: 'Stocks', m: 'Messages', l: 'Planning', c: 'Contacts' };
-    const subtitle = st.tab === 'l' ? (st.allL ? 'Tous les sites' : SL(st.site)) + ' · ' + monthN + ' élément' + (monthN > 1 ? 's' : '') + ' en ' + MOIS[calMo - 1] : st.tab === 'c' ? (st.allC ? 'Tous les sites' : SL(st.site)) + ' · ' + contacts.length + ' contact' + (contacts.length > 1 ? 's' : '') : 'Sam. 24 oct · ' + S.addr;
+    const subtitle = st.tab === 'm' && !boxOn ? (st.allM ? 'Tous les sites' : SL(st.site)) + ' · ' + recv.length + ' à traiter' : st.tab === 'l' ? (st.allL ? 'Tous les sites' : SL(st.site)) + ' · ' + monthN + ' élément' + (monthN > 1 ? 's' : '') + ' en ' + MOIS[calMo - 1] : st.tab === 'c' ? (st.allC ? 'Tous les sites' : SL(st.site)) + ' · ' + contacts.length + ' contact' + (contacts.length > 1 ? 's' : '') : 'Sam. 24 oct · ' + S.addr;
     const kAll = list.reduce((a, p) => { a.s += p.steps.length; a.d += p.steps.filter(x => x.v >= 100).length; a.pct += pctOf(p); a.o += p.inv.filter(i => i.st !== 'paid').reduce((b, i) => b + i.amt, 0); return a; }, { s: 0, d: 0, pct: 0, o: 0 });
     const kp = { n: list.length, avg: list.length ? Math.round(kAll.pct / list.length) : 0, steps: kAll.d + '/' + kAll.s, open: kAll.o >= 1000 ? (kAll.o / 1000).toLocaleString('fr-FR', { maximumFractionDigits: 1 }) + ' k€' : eur(kAll.o) };
     return {
@@ -2225,9 +2225,8 @@ class Component extends DCLogic {
       openSup: () => set({ sheet: 'sup', form: { mode: 'dir', pick: [] } }),
       openInv: () => set({ sheet: 'inv', form: { sup: (Q.sup[0] || {}).name, st: 'due' } }),
       isStock: st.tab === 's', isMail: st.tab === 'm', isPlan: st.tab === 'l', isSup: st.tab === 'c',
-      scopeOn: st.tab === 'c' || st.tab === 'l', wheelOp: (st.tab === 'c' && st.allC) || (st.tab === 'l' && st.allL) ? 0.45 : 1,
-      scopeBg: (st.tab === 'c' && st.allC) || (st.tab === 'l' && st.allL) ? 'var(--acc)' : 'var(--tile)', scopeFg: (st.tab === 'c' && st.allC) || (st.tab === 'l' && st.allL) ? 'var(--accOn)' : 'var(--ink)',
-      scopeToggle: () => { const k = st.tab === 'c' ? 'allC' : 'allL'; set({ [k]: !st[k] }); },
+      ...(() => { const key = { c: 'allC', l: 'allL', m: 'allM' }[st.tab], on = !!(key && st[key]) && !(st.tab === 'm' && boxOn);
+        return { scopeOn: !!key && !(st.tab === 'm' && boxOn), wheelOp: on ? 0.45 : 1, scopeBg: on ? 'var(--acc)' : 'var(--tile)', scopeFg: on ? 'var(--accOn)' : 'var(--ink)', scopeToggle: () => set({ [key]: !st[key], mail: null, who: null }) }; })(),
       showSel: !glob && !detail, noSel: glob, menuOpen: st.menu && !glob && !detail, toggleMenu: () => set({ menu: !st.menu }), closeMenu: () => set({ menu: false }),
       cur: { label: SL(st.site), dot: DOT[st.site] }, wheel, wWheel, wDown, wMove, wUp, menuChev: st.menu ? 'rotate(180deg)' : 'none',
       openAcc: () => set({ sheet: 'acc', form: {}, menu: false, bkPend: null, bkMsg: '' }), isAccSheet: sh === 'acc',
