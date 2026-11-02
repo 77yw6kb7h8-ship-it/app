@@ -862,7 +862,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">Exporter → « Enregistrer dans Fichiers » → iCloud Drive › Chantier › Sauvegardes. Chaque sauvegarde porte un identifiant unique.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 18</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 19</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -915,7 +915,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Mot de passe d’application : iCloud › appleid.apple.com › Connexion et sécurité › Mots de passe pour app ; Gmail › compte Google › Sécurité. Il reste sur l’appareil et n’est jamais mis dans les sauvegardes. Laissez vide si la session cloud a déjà la boîte dans sa configuration.</div>
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Nombre de mails à synchroniser</div>
 <div style="display:flex;gap:4px;padding:4px;border-radius:16px;background:var(--track)"><sc-for list="{{ mbxLims }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:9px 0;border-radius:12px;background:{{ o.bg }};color:{{ o.fg }};font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ o.label }}</div></sc-for></div>
-<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Les derniers mails reçus sont lus, résumés en deux lignes et accompagnés de deux brouillons. Compter environ 2 centimes par nouveau mail ; un mail déjà traité ne coûte plus rien.</div>
+<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Les derniers mails reçus sont lus, résumés en deux lignes et accompagnés de deux brouillons. Analyse par Claude Sonnet : environ 1 centime par nouveau mail ; un mail déjà traité ne coûte plus rien.</div>
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Synchronisation</div>
 <div style="border-radius:20px;background:var(--field);overflow:hidden"><div style="padding:12px 14px">
 <div style="font:500 13.5px/1.35 -apple-system,sans-serif;color:{{ mbxCol }}">{{ mbxState }}</div>
