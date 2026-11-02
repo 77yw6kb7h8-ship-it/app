@@ -75,7 +75,9 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
 
 - **Projets** : barre des disciplines (filtre) avec **+** pour en créer une. À la création, seul
   l'**emplacement** est demandé (RDC, 2ème étage…, en boutons ; « Modifier » au bout pour changer
-  la liste). Les fournisseurs s'ajoutent par une **barre de recherche** dans l'annuaire, à la
+  la liste). Planning du projet à la création : une date (« Du ») ou une période (« Du 15 mai au 12 juin »),
+  affichée chaque jour dans le planning ; sans échéance saisie, la fin devient l'échéance.
+  Les fournisseurs s'ajoutent par une **barre de recherche** dans l'annuaire, à la
   création comme avec « + Attacher ». Onglet **Photos** : dossier Avant / Après, couverture,
   remplacer, déplacer, supprimer (photos réduites à 1600 px, gardées sur l'appareil, incluses dans
   les sauvegardes).

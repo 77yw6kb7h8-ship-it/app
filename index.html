@@ -856,7 +856,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">Exporter → « Enregistrer dans Fichiers » → iCloud Drive › Chantier › Sauvegardes. Chaque sauvegarde porte un identifiant unique.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 15</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 16</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -1019,9 +1019,11 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ pp.track }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ pp.knob }};transition:transform .2s"></div></div>
 </div>
 <sc-if value="{{ pp.on }}" hint-placeholder-val="{{ true }}">
-<div style="display:flex;align-items:center;gap:8px;margin-top:12px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2)">Date</span><input type="date" value="{{ pp.date }}" onChange="{{ pp.onDate }}" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="display:flex;align-items:center;gap:8px;margin-top:12px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2)">Du</span><input type="date" value="{{ pp.date }}" onChange="{{ pp.onDate }}" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="display:flex;align-items:center;gap:8px;margin-top:6px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2)">Au</span><input type="date" value="{{ pp.end }}" onChange="{{ pp.onEnd }}" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="font:400 12px/1.35 -apple-system,sans-serif;color:var(--ink3);margin:6px 4px 0">{{ pp.hint }}</div>
 <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
-<div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Type</span><input value="{{ pp.kind }}" onChange="{{ pp.onKind }}" placeholder="Démarrage" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Type</span><input value="{{ pp.kind }}" onChange="{{ pp.onKind }}" placeholder="{{ pp.kindPh }}" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 </div>
 </sc-if>
 </div>
@@ -2515,10 +2517,11 @@ class Component extends DCLogic {
       const a = (F.a || '').trim(), sq = st.seq + 1;
       track('create:' + sh);
       if (sh === 'p') {
-        const p = { id: newId, name: a, disc: F.b && F.b !== 'Autre' ? F.b : '', phase: F.b || 'Nouveau lot', due: F.c || 'à planifier', lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: '', geo: S.geo,
+        const p = { id: newId, name: a, disc: F.b && F.b !== 'Autre' ? F.b : '', phase: F.b || 'Nouveau lot', due: F.c || (F.plan !== false && /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > (F.pdate || today) ? (d => d.getDate() + ' ' + MABRV[d.getMonth()])(dOf(F.pend)) : 'à planifier'), lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: '', geo: S.geo,
           steps: fs.map((s, i) => ({ id: newId + 's' + i, l: s.l, t: s.t, v: 0 })), notes: [],
           sup: fSelIds.map(supCopy), inv: [] };
-        const addPlan = F.plan !== false, pev = { id: 'e' + rid(), date: /^\d{4}-\d{2}-\d{2}$/.test(F.pdate || '') ? F.pdate : today, t: '', end: '', site: st.site, title: ((F.pkind || 'Démarrage').trim()) + ' · ' + a, cal: CALS.real ? 'real' : CALU[0], disc: p.disc, proj: newId, who: '', note: '' };
+        const pd0 = /^\d{4}-\d{2}-\d{2}$/.test(F.pdate || '') ? F.pdate : today, pto = /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > pd0 ? F.pend : '';
+        const addPlan = F.plan !== false, pev = { id: 'e' + rid(), date: pd0, to: pto, dur: '', t: '', end: '', site: st.site, title: ((F.pkind || '').trim() || (pto ? 'Réalisation' : 'Démarrage')) + ' · ' + a, cal: CALS.real ? 'real' : CALU[0], disc: p.disc, proj: newId, who: '', note: '' };
         const lu = countLvl(F.lvl, ''), cov = F.cover ? { cover: { ...(st.cover || {}), [newId]: F.cover }, ph: { ...(st.ph || {}), [newId]: [{ id: F.cover, sec: 'av', at: Date.now() }] } } : {};
         this.setState(s => ({ ...cov, lvlUse: lu, lvls: lvlMerge(F.lvl), P: { ...s.P, [s.site]: [...s.P[s.site], p] }, evs: addPlan ? [...(s.evs || []), pev] : s.evs, proj: newId, seg: 'e', sheet: null, seq: sq, tab: 'p' }));
       }
@@ -2668,7 +2671,12 @@ class Component extends DCLogic {
         const kc = { site: SL(st.site), n: kItems.length + ' articles', items: kItems, na: F.na || '', nu: F.nu || '', nq: F.nq || '', nm: F.nm || '', nl: F.nl || '', onNa: fset('na'), onNu: fset('nu'), onNq: fset('nq'), onNm: fset('nm'), onNl: fset('nl'), discs: chip([...st.discs, 'Autre'], F.nd, 'nd'),
           add: () => { const a = (F.na || '').trim(); if (!a) return; const sq = st.seq + 1, m = Math.max(1, num(F.nm, 1)); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), ['k' + DEV + sq, a.charAt(0).toUpperCase() + a.slice(1), (F.nu || '').trim() || 'unités', num(F.nq, 0), m, Math.max(1, num(F.nl, m)), F.nd || 'Autre']] }, seq: sq, form: {} }); } };
         const pOn = F.plan !== false;
-        const pp = { on: pOn, toggle: () => setF({ plan: !pOn }), sub: pOn ? (d => up1(JOURS[d.getDay()]) + ' ' + d.getDate() + ' ' + MOIS[d.getMonth()])(dOf(F.pdate || today)) + ' · ' + (CALS.real ? CALS.real[0] : CALS[CALU[0]][0]) : 'Le projet ne sera pas planifié', track: pOn ? 'var(--ok)' : 'var(--track)', knob: pOn ? 'translateX(20px)' : 'none', date: F.pdate || today, onDate: fset('pdate'), time: F.ptime || '', onTime: fset('ptime'), kind: F.pkind || '', onKind: fset('pkind') };
+        const pD = /^\d{4}-\d{2}-\d{2}$/.test(F.pdate || '') ? F.pdate : today, pE = /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > pD ? F.pend : '';
+        const dl = x => (d => d.getDate() + ' ' + MOIS[d.getMonth()])(dOf(x)), nJ = pE ? Math.round((dOf(pE) - dOf(pD)) / 864e5) + 1 : 1, calN = CALS.real ? CALS.real[0] : CALS[CALU[0]][0];
+        const pp = { on: pOn, toggle: () => setF({ plan: !pOn }), sub: !pOn ? 'Le projet ne sera pas planifié' : pE ? 'Du ' + dl(pD) + ' au ' + dl(pE) + ' · ' + nJ + ' jours · ' + calN : up1(JOURS[dOf(pD).getDay()]) + ' ' + dl(pD) + ' · ' + calN,
+          track: pOn ? 'var(--ok)' : 'var(--track)', knob: pOn ? 'translateX(20px)' : 'none', date: pD, onDate: fset('pdate'), end: F.pend || '', onEnd: fset('pend'),
+          hint: F.pend && !pE ? 'La fin doit être après le début.' : pE ? 'Le projet apparaît chaque jour de la période dans le planning' + (F.c ? '.' : ', et son échéance devient le ' + dl(pE) + '.') : 'Laissez « Au » vide pour un seul jour.',
+          time: F.ptime || '', onTime: fset('ptime'), kind: F.pkind || '', onKind: fset('pkind'), kindPh: pE ? 'Réalisation' : 'Démarrage' };
         return { kc, pp };
       })(),
       // réglages par section : Projets, Stocks, Mails, Planning, Contacts
