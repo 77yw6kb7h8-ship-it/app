@@ -59,8 +59,9 @@ l’analyser et améliorer l’appli.
 Compte › **Réglages** : une page par section (aussi par la roue dentée en haut de chaque onglet).
 
 - **Projets** : disciplines (toucher pour renommer ou supprimer ; un nouveau nom est repris dans les
-  projets, le stock, le planning et les contacts), emplacements proposés, photos des projets
-  affichées ou masquées, fournisseurs par projet activés ou non.
+  projets, le stock, le planning et les contacts), emplacements proposés, tri par avancement
+  (En cours / À faire / Terminés) activé ou non, photos des projets affichées ou masquées,
+  fournisseurs par projet activés ou non.
 - **Stocks** : articles, seuils et lots du site ; **base de référence EAN** (import du catalogue CSV
   du négoce, export, vider).
 - **Mails** : adresse mail, serveur IMAP (deviné d'après l'adresse), mot de passe d'application
@@ -73,7 +74,17 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
 
 ## Projets, stock, planning, contacts, mails
 
-- **Projets** : barre des disciplines (filtre) avec **+** pour en créer une. À la création, seul
+- **Bouton « + »** au bout des listes défilantes (disciplines, rubriques, calendriers), dans les
+  formulaires comme dans les onglets : ajout immédiat, réservé au propriétaire et aux admins.
+- **Corbeille** (Compte, propriétaire et admins) : projets, contacts, événements, articles,
+  factures, étapes, notes, intervenants, photos et messages supprimés restent 30 jours, partagés avec
+  toute l'entreprise ; « Restaurer » les remet en place, glisser vers la gauche les supprime pour de
+  bon. Glisser vers la gauche supprime aussi dans l'annuaire, les calendriers et les articles des
+  réglages.
+- **Projets** : barre des disciplines (filtre) avec **+** pour en créer une. Un projet peut avoir
+  plusieurs disciplines et un calendrier ; son événement de planning reprend les deux à la création
+  (changer ensuite les disciplines du projet ne modifie pas les événements déjà créés). Bouton
+  « Photo » sur la fiche pour changer la photo d'affichage. À la création, seul
   l'**emplacement** est demandé (RDC, 2ème étage…, en boutons ; « Modifier » au bout pour changer
   la liste). Planning du projet à la création : une date (« Du ») ou une période (« Du 15 mai au 12 juin »),
   affichée chaque jour dans le planning ; sans échéance saisie, la fin devient l'échéance.
@@ -86,7 +97,8 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
   **base de référence** (catalogue du négoce importé + produits déjà nommés, sans réseau), puis Open
   Products Facts et Open Food Facts, puis par la session cloud sur les sites du bâtiment (Plateforme
   du Bâtiment, Point.P, Cedeo, BigMat…) et enfin le reste du web.
-- **Planning** : calendriers puis disciplines en haut, vue du mois façon Calendrier d’Apple. Un
+- **Planning** : calendriers en haut (avec « + » et « Modifier »), vue du mois façon Calendrier
+  d’Apple ; un projet ou un événement sur plusieurs jours y est tracé en barre continue. Un
   événement a une date de début et de fin ; sur un seul jour, une durée (1 h, 2 h, 3 h, ½ journée,
   journée) ; sur plusieurs jours, il apparaît chaque jour (J1/3, J2/3…). Le choix du site ne propose
   que ses projets. **Commandes** et **Factures** restent des calendriers automatiques.

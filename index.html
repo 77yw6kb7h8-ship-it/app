@@ -82,14 +82,14 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </div>
 <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
-<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:-4px 0 18px">
+<sc-if value="{{ secOn }}" hint-placeholder-val="{{ true }}"><div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:-4px 0 18px">
 <sc-for list="{{ psecs }}" as="g" hint-placeholder-count="3">
 <div onClick="{{ g.pick }}" style="cursor:pointer;padding:11px 12px 12px;border-radius:12px;background:linear-gradient(160deg,{{ g.bg }} 35%,var(--tile));color:{{ g.fg }};border:1px solid {{ g.bd }};opacity:{{ g.op }};transition:opacity .2s">
 <div style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap">{{ g.label }}</div>
 <div style="font:700 26px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.02em;margin-top:12px">{{ g.n }}</div>
 </div>
 </sc-for>
-</div>
+</div></sc-if>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:-6px -20px 16px;padding:0 20px">
 <sc-for list="{{ pdiscs }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};opacity:{{ d.op }};border:1px solid var(--tileBd);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
 <sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div onClick="{{ togglePdAdd }}" title="Ajouter une discipline" style="flex:none;cursor:pointer;width:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if>
@@ -136,6 +136,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
 <div style="position:relative;height:{{ pj.heroH }};border-radius:24px;overflow:hidden;background:{{ pj.heroBg }};box-shadow:var(--cardSh);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <sc-if value="{{ pj.showPh }}" hint-placeholder-val="{{ true }}"><img src="{{ pj.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></sc-if>
+<div onClick="{{ pj.setCover }}" style="position:absolute;top:10px;left:10px;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;background:rgba(0,0,0,.42);color:#fff;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg>Photo</div>
 <div onClick="{{ pj.goPh }}" style="position:absolute;top:10px;right:10px;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;background:rgba(0,0,0,.42);color:#fff;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"></path><circle cx="12" cy="13" r="3.6"></circle></svg>{{ pj.phN }}</div>
 <div style="position:absolute;left:0;right:0;bottom:0;padding:48px 18px 16px;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.62));color:#fff;pointer-events:none">
 <div class="rid" style="background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3);color:#fff;margin-bottom:6px">{{ pj.rid }}</div>
@@ -310,7 +311,9 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 4px;padding:0 20px">
 <sc-for list="{{ stDisc }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
+<sc-if value="{{ qaStk.can }}" hint-placeholder-val="{{ false }}"><div onClick="{{ qaStk.tog }}" title="Ajouter une discipline" style="flex:none;cursor:pointer;min-width:36px;padding:0 10px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if>
 </div>
+<sc-if value="{{ qaStk.on }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin:8px 0 0"><input value="{{ qaStk.v }}" onChange="{{ qaStk.onV }}" placeholder="{{ qaStk.ph }}" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:9px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"><div onClick="{{ qaStk.ok }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ajouter</div></div></sc-if>
 <sc-if value="{{ hasStSub }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:4px;overflow-x:auto;margin:8px -20px 0;padding:0 20px">
 <sc-for list="{{ stSub }}" as="d" hint-placeholder-count="4"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:10px;background:{{ d.bg }};color:{{ d.fg }};font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
 </div></sc-if>
@@ -477,12 +480,10 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-if>
 
 <sc-if value="{{ isPlan }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;gap:6px;overflow-x:auto;margin:-4px -20px 8px;padding:0 20px">
-<sc-for list="{{ calChips }}" as="c" hint-placeholder-count="6"><div onClick="{{ c.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:7px 11px;border-radius:12px;background:{{ c.bg }};color:{{ c.fg }};border:1px solid var(--tileBd);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;text-decoration:{{ c.deco }}"><span style="width:9px;height:9px;border-radius:50%;background:{{ c.dot }};opacity:{{ c.op }}"></span>{{ c.label }}</div></sc-for><sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ false }}"><div onClick="{{ calEdit }}" title="Modifier les calendriers" style="flex:none;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:12px;border:1px dashed var(--ink3);color:var(--acc);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg>Modifier</div></sc-if>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:-4px -20px 14px;padding:0 20px">
+<sc-for list="{{ calChips }}" as="c" hint-placeholder-count="6"><div onClick="{{ c.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:7px 11px;border-radius:12px;background:{{ c.bg }};color:{{ c.fg }};border:1px solid var(--tileBd);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;text-decoration:{{ c.deco }}"><span style="width:9px;height:9px;border-radius:50%;background:{{ c.dot }};opacity:{{ c.op }}"></span>{{ c.label }}</div></sc-for><sc-if value="{{ qaCal.can }}" hint-placeholder-val="{{ false }}"><div onClick="{{ qaCal.tog }}" title="Ajouter un calendrier" style="flex:none;cursor:pointer;min-width:36px;padding:0 10px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if><sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ false }}"><div onClick="{{ calEdit }}" title="Modifier les calendriers" style="flex:none;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:12px;border:1px dashed var(--ink3);color:var(--acc);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg>Modifier</div></sc-if>
 </div>
-<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 14px;padding:0 20px">
-<sc-for list="{{ plDiscs }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 11px;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ d.label }}</div></sc-for>
-</div>
+<sc-if value="{{ qaCal.on }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin:-6px 0 14px"><input value="{{ qaCal.v }}" onChange="{{ qaCal.onV }}" placeholder="{{ qaCal.ph }}" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:9px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"><div onClick="{{ qaCal.ok }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ajouter</div></div></sc-if>
 <div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh);border-radius:24px;padding:12px 10px 8px">
 <div style="display:flex;align-items:center;gap:6px;padding:0 4px 10px">
 <div style="flex:1;min-width:0;font:700 19px/1.1 -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.02em;color:#FF3B30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ calTitle }}</div>
@@ -491,10 +492,13 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div onClick="{{ calNext }}" title="Mois suivant" style="cursor:pointer;flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#FF3B30"><svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6 4.5 9.5"></path></svg></div>
 </div>
 <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));text-align:center;font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2);padding-bottom:6px"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span style="opacity:.6">S</span><span style="opacity:.6">D</span></div>
-<div onPointerDown="{{ calDown }}" onPointerUp="{{ calUp }}" style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));touch-action:pan-y;user-select:none;-webkit-user-select:none">
-<sc-for list="{{ calCells }}" as="c" hint-placeholder-count="35"><div onClick="{{ c.pick }}" style="cursor:{{ c.cur }};height:50px;display:flex;flex-direction:column;align-items:center;gap:3px;border-top:1px solid var(--line)">
+<div onPointerDown="{{ calDown }}" onPointerUp="{{ calUp }}" style="touch-action:pan-y;user-select:none;-webkit-user-select:none">
+<sc-for list="{{ calWeeks }}" as="w" hint-placeholder-count="5"><div style="position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr))">
+<sc-for list="{{ w.cells }}" as="c" hint-placeholder-count="7"><div onClick="{{ c.pick }}" style="cursor:{{ c.cur }};height:{{ c.h }};display:flex;flex-direction:column;align-items:center;gap:3px;border-top:1px solid var(--line)">
 <div style="width:32px;height:32px;margin-top:4px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:{{ c.bg }};color:{{ c.fg }};font:{{ c.fw }} 16.5px -apple-system,'SF Pro Display',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ c.n }}</div>
 <div style="display:flex;gap:3px;height:5px"><sc-for list="{{ c.dots }}" as="x" hint-placeholder-count="0"><span style="width:5px;height:5px;border-radius:50%;background:{{ x }}"></span></sc-for></div>
+</div></sc-for>
+<sc-for list="{{ w.bars }}" as="b" hint-placeholder-count="0"><div style="position:absolute;left:{{ b.l }};width:{{ b.w }};top:{{ b.t }};height:5px;border-radius:{{ b.r }};background:{{ b.c }};pointer-events:none"></div></sc-for>
 </div></sc-for>
 </div>
 </div>
@@ -516,8 +520,9 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ isSup }}" hint-placeholder-val="{{ false }}">
 <sc-if value="{{ isSupList }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;gap:6px;overflow-x:auto;margin:-4px -20px 8px;padding:0 20px">
-<sc-for list="{{ rubs }}" as="r" hint-placeholder-count="4"><div onClick="{{ r.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:9px 13px;border-radius:14px;background:{{ r.bg }};color:{{ r.fg }};border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ r.label }}<span style="opacity:.55">{{ r.n }}</span></div></sc-for><sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ false }}"><div onClick="{{ rubEdit }}" title="Modifier les rubriques" style="flex:none;cursor:pointer;display:flex;align-items:center;gap:6px;padding:9px 13px;border-radius:14px;border:1px dashed var(--ink3);color:var(--acc);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg>Modifier</div></sc-if>
+<sc-for list="{{ rubs }}" as="r" hint-placeholder-count="4"><div onClick="{{ r.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:9px 13px;border-radius:14px;background:{{ r.bg }};color:{{ r.fg }};border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ r.label }}<span style="opacity:.55">{{ r.n }}</span></div></sc-for><sc-if value="{{ qaRub.can }}" hint-placeholder-val="{{ false }}"><div onClick="{{ qaRub.tog }}" title="Ajouter une rubrique" style="flex:none;cursor:pointer;min-width:36px;padding:0 10px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if><sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ false }}"><div onClick="{{ rubEdit }}" title="Modifier les rubriques" style="flex:none;cursor:pointer;display:flex;align-items:center;gap:6px;padding:9px 13px;border-radius:14px;border:1px dashed var(--ink3);color:var(--acc);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg>Modifier</div></sc-if>
 </div>
+<sc-if value="{{ qaRub.on }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin:-2px 0 10px"><input value="{{ qaRub.v }}" onChange="{{ qaRub.onV }}" placeholder="{{ qaRub.ph }}" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:9px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"><div onClick="{{ qaRub.ok }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ajouter</div></div></sc-if>
 <div style="display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);margin-bottom:10px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none;color:var(--ink2)"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L21 21"></path></svg>
 <input value="{{ sq }}" onChange="{{ onSq }}" placeholder="Rechercher un contact, une ville…" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)">
@@ -751,7 +756,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="display:flex;justify-content:space-between;align-items:baseline;margin:4px 4px 8px"><span style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Articles · {{ kc.site }}</span><span style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink3)">{{ kc.n }}</span></div>
 <div style="border-radius:20px;background:var(--field);overflow:hidden">
 <sc-for list="{{ kc.items }}" as="t" hint-placeholder-count="3">
-<div style="padding:11px 14px 12px;border-bottom:2px solid var(--line)">
+<div class="sw" data-sw="{{ t.sw }}" style="border-bottom:2px solid var(--line)"><div class="sw-fg" style="padding:11px 14px 12px">
 <div style="display:flex;align-items:center;gap:10px">
 <div style="flex:1;min-width:0"><div style="font:500 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.name }}</div><div style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin-top:3px">{{ t.disc }} · {{ t.unit }}</div></div>
 <div onClick="{{ t.del }}" title="Supprimer" style="cursor:pointer;flex:none;width:28px;height:28px;border-radius:12px;background:var(--warnBg);color:var(--warnTx);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div>
@@ -760,7 +765,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Seuil</span><input value="{{ t.min }}" onChange="{{ t.onMin }}" inputmode="numeric" style="flex:1;min-width:0;border:0;background:transparent;padding:9px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 <div style="display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Lot</span><input value="{{ t.lot }}" onChange="{{ t.onLot }}" inputmode="numeric" style="flex:1;min-width:0;border:0;background:transparent;padding:9px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 </div>
-</div>
+</div><div class="sw-r">Supprimer</div></div>
 </sc-for>
 </div>
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Ajouter un article</div>
@@ -815,6 +820,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div onClick="{{ cfgGo.m }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:2px solid var(--line)"><div style="width:32px;height:32px;border-radius:9px;flex:none;background:#32ADE6;color:#fff;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="M4.5 7.5l7.5 5.5 7.5-5.5"></path></svg></div><div style="flex:1;min-width:0"><div style="font:400 15.5px -apple-system,sans-serif">Mails</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cfgSub.m }}</div></div><svg width="8" height="13" viewBox="0 0 8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink3)"><path d="M1.5 1.5l5 5-5 5"></path></svg></div>
 <sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div onClick="{{ cfgGo.l }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:2px solid var(--line)"><div style="width:32px;height:32px;border-radius:9px;flex:none;background:#FF3B30;color:#fff;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"></rect><path d="M3.5 10h17M8.5 3v4M15.5 3v4"></path></svg></div><div style="flex:1;min-width:0"><div style="font:400 15.5px -apple-system,sans-serif">Planning</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cfgSub.l }}</div></div><svg width="8" height="13" viewBox="0 0 8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink3)"><path d="M1.5 1.5l5 5-5 5"></path></svg></div><div onClick="{{ cfgGo.c }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:10px 14px;"><div style="width:32px;height:32px;border-radius:9px;flex:none;background:#8E8E93;color:#fff;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="8.5" r="3.3"></circle><path d="M3 19.5c.8-3.2 3.2-5 6-5s5.2 1.8 6 5"></path><circle cx="17" cy="9.5" r="2.6"></circle><path d="M16.2 14.6c2.4.1 4.1 1.6 4.8 4.4"></path></svg></div><div style="flex:1;min-width:0"><div style="font:400 15.5px -apple-system,sans-serif">Contacts</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cfgSub.c }}</div></div><svg width="8" height="13" viewBox="0 0 8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink3)"><path d="M1.5 1.5l5 5-5 5"></path></svg></div></sc-if>
 </div>
+<sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div onClick="{{ trashOpen }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:20px;background:var(--field);margin-top:8px"><div style="width:32px;height:32px;border-radius:9px;flex:none;background:#8E8E93;color:#fff;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13M10 11v6M14 11v6"></path></svg></div><div style="flex:1;min-width:0"><div style="font:400 15.5px -apple-system,sans-serif">Corbeille</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ trashN }} · restaurables 30 jours</div></div><svg width="8" height="13" viewBox="0 0 8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink3)"><path d="M1.5 1.5l5 5-5 5"></path></svg></div></sc-if>
 <sc-if value="{{ me.admin }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Usage de l’appli</div><div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink3)">{{ use.total }}</div></div>
 <div style="padding:12px 14px;border-radius:20px;background:var(--field)">
@@ -856,7 +862,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">Exporter → « Enregistrer dans Fichiers » → iCloud Drive › Chantier › Sauvegardes. Chaque sauvegarde porte un identifiant unique.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 17</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 18</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -879,7 +885,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-for list="{{ cfToggles }}" as="o" hint-placeholder-count="0"><div onClick="{{ o.pick }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:20px;background:var(--field);margin-bottom:8px"><div style="min-width:0"><div style="font:400 15.5px -apple-system,sans-serif">{{ o.t }}</div><div style="font:400 12.5px/1.35 -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ o.sub }}</div></div><div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ o.track }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ o.knob }};transition:transform .2s"></div></div></div></sc-for>
 <sc-if value="{{ cfHasRows }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">{{ cfRowsT }}</div><div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink3)">{{ cfRowsN }}</div></div>
 <div style="border-radius:20px;background:var(--field);overflow:hidden">
-<sc-for list="{{ cfRows }}" as="r" hint-placeholder-count="3"><div onClick="{{ r.open }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:2px solid var(--line)"><div style="width:30px;height:30px;border-radius:50%;flex:none;background:{{ r.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ r.ini }}</div><div style="flex:1;min-width:0"><div style="font:400 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.sub }}</div></div><svg width="8" height="13" viewBox="0 0 8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink3)"><path d="M1.5 1.5l5 5-5 5"></path></svg></div></sc-for>
+<sc-for list="{{ cfRows }}" as="r" hint-placeholder-count="3"><div class="sw" data-sw="{{ r.sw }}" style="border-bottom:2px solid var(--line)"><div class="sw-fg" onClick="{{ r.open }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:10px 14px"><div style="width:30px;height:30px;border-radius:50%;flex:none;background:{{ r.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ r.ini }}</div><div style="flex:1;min-width:0"><div style="font:400 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.sub }}</div></div><svg width="8" height="13" viewBox="0 0 8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink3)"><path d="M1.5 1.5l5 5-5 5"></path></svg></div><div class="sw-r">Supprimer</div></div></sc-for>
 <div onClick="{{ cfAdd }}" style="cursor:pointer;padding:13px 14px;font:600 14px -apple-system,sans-serif;color:var(--acc)">{{ cfAddLbl }}</div>
 </div>
 <sc-if value="{{ cfHasRowsNote }}" hint-placeholder-val="{{ false }}"><div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">{{ cfRowsNote }}</div></sc-if>
@@ -927,6 +933,14 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">À laisser vide. Seulement pour une session hébergée ailleurs (Render, Mac), qui a alors sa propre clé.</div>
 </sc-if>
+</sc-if>
+<sc-if value="{{ isTrash }}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{ trashEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:20px;background:var(--field);font:400 14.5px/1.4 -apple-system,sans-serif;color:var(--ink2)">La corbeille est vide.<br>Les éléments supprimés y restent 30 jours.</div></sc-if>
+<sc-if value="{{ trashHas }}" hint-placeholder-val="{{ true }}"><div style="border-radius:20px;background:var(--field);overflow:hidden">
+<sc-for list="{{ trashL }}" as="t" hint-placeholder-count="3"><div class="sw" data-sw="{{ t.sw }}" style="border-bottom:2px solid var(--line)"><div class="sw-fg" style="display:flex;align-items:center;gap:12px;padding:11px 14px"><div style="flex:1;min-width:0"><div style="font:500 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.name }}</div><div style="font:400 12.5px/1.35 -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ t.sub }}</div></div><div onClick="{{ t.restore }}" style="flex:none;cursor:pointer;padding:8px 12px;border-radius:12px;background:var(--acc);color:var(--accOn);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">Restaurer</div></div><div class="sw-r">Supprimer</div></div></sc-for>
+</div>
+<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Partagée avec toute l’entreprise. Glissez un élément vers la gauche pour le supprimer définitivement ; au-delà de 30 jours, il disparaît de lui-même.</div>
+<div onClick="{{ trashClear }}" style="cursor:pointer;margin-top:16px;padding:12px;border-radius:14px;background:var(--warnBg);color:var(--warnTx);text-align:center;font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ trashClearLbl }}</div></sc-if>
 </sc-if>
 <sc-if value="{{ isSupSheet }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:14px;background:var(--field);border:1px solid var(--tileBd)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none;color:var(--ink2)"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L21 21"></path></svg><input value="{{ dirQ }}" onChange="{{ onDirQ }}" placeholder="Rechercher un contact référencé…" autocorrect="off" style="flex:1;min-width:0;border:0;background:transparent;padding:12px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"><sc-if value="{{ hasDirQ }}" hint-placeholder-val="{{ false }}"><div onClick="{{ clearDirQ }}" style="cursor:pointer;flex:none;width:22px;height:22px;border-radius:50%;background:var(--track);color:var(--ink2);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></sc-if></div>
@@ -980,7 +994,9 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:500 14.5px -apple-system,sans-serif;color:var(--ink2);margin-bottom:10px">{{ x.label }}</div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -16px;padding:0 16px;scroll-snap-type:x proximity">
 <sc-for list="{{ x.opts }}" as="o" hint-placeholder-count="6"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;scroll-snap-align:start;cursor:pointer;padding:8px 11px;border-radius:12px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ o.label }}</div></sc-for>
+<sc-if value="{{ x.hasAdd }}" hint-placeholder-val="{{ false }}"><div onClick="{{ x.addTog }}" title="Ajouter" style="flex:none;cursor:pointer;min-width:36px;padding:0 10px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if>
 </div>
+<sc-if value="{{ x.addOn }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin:8px 0 0"><input value="{{ x.addVal }}" onChange="{{ x.addIn }}" placeholder="{{ x.addPh }}" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:9px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"><div onClick="{{ x.addOk }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ajouter</div></div></sc-if>
 </div>
 </sc-if>
 </sc-for>
@@ -1027,6 +1043,10 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="display:flex;align-items:center;gap:8px;margin-top:12px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2)">Du</span><input type="date" value="{{ pp.date }}" onChange="{{ pp.onDate }}" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 <div style="display:flex;align-items:center;gap:8px;margin-top:6px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2)">Au</span><input type="date" value="{{ pp.end }}" onChange="{{ pp.onEnd }}" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 <div style="font:400 12px/1.35 -apple-system,sans-serif;color:var(--ink3);margin:6px 4px 0">{{ pp.hint }}</div>
+<div style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2);margin:12px 2px 7px">Calendrier</div>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -12px;padding:0 12px"><sc-for list="{{ pp.cals }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:7px 10px;border-radius:12px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid var(--tileBd);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif"><span style="width:9px;height:9px;border-radius:50%;background:{{ o.dot }}"></span>{{ o.label }}</div></sc-for><sc-if value="{{ pp.canAdd }}" hint-placeholder-val="{{ false }}"><div onClick="{{ pp.addTog }}" title="Nouveau calendrier" style="flex:none;cursor:pointer;width:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if></div>
+<sc-if value="{{ pp.addOn }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin-top:8px"><input value="{{ pp.addVal }}" onChange="{{ pp.addIn }}" placeholder="Nouveau calendrier (ex. Réception)…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:9px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"><div onClick="{{ pp.addOk }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ajouter</div></div></sc-if>
+
 <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
 <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Type</span><input value="{{ pp.kind }}" onChange="{{ pp.onKind }}" placeholder="{{ pp.kindPh }}" style="flex:1;min-width:0;border:0;background:transparent;padding:10px 0;text-align:right;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 </div>
@@ -1261,7 +1281,7 @@ const put = (o, v) => { if (v && typeof v === 'object') { Object.keys(o).forEach
 const wrapI = j => ((j % KS.length) + KS.length) % KS.length;
 const DEFSTEPS = [{ l: 'Préparation', t: 'c' }, { l: 'Exécution', t: 'g' }, { l: 'Finitions', t: 'g' }, { l: 'Réception', t: 'c' }];
 const SAVE_KEY = 'chantier-app-v6';
-const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'usage', 'pdAdd', 'back', 'cfgSec'];
+const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'usage', 'pdAdd', 'back', 'cfgSec', 'qa'];
 const restore = () => {
   try {
     if (location.hash === '#reset') { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(SESS_KEY); localStorage.removeItem(CL_KEY); Object.keys(CL).forEach(k => delete CL[k]); history.replaceState(null, '', location.pathname); return {}; }
@@ -1497,6 +1517,8 @@ const DISCP = { a1: 'Placo', a2: 'Électricité', a3: 'Peinture', a4: 'Menuiseri
 const LVLP = { a1: 'Étage 3, Étage 4, Étage 5', a2: 'Sous-sol', a3: 'Cages 1 et 2', b1: 'RDC, 1er étage', b2: 'Bât. A · RDC', c1: '2ème étage', c2: '2ème étage', c3: '2ème étage' };
 const LVL0 = ['RDC', '1er étage', '2ème étage', '3ème étage', 'Sous-sol', 'Combles', 'Toiture', 'Extérieur', 'Cave', 'Parking', 'Façade', 'Cour'];
 const discOf = p => p.disc ?? DISCP[p.id] ?? '';
+// un projet peut avoir plusieurs disciplines (la première reste « disc »)
+const discsOf = p => Array.isArray(p.discs) && p.discs.length ? p.discs : discOf(p) ? [discOf(p)] : [];
 // planning : dates ISO, calendriers façon Calendrier d'Apple
 const up1 = x => x ? x.charAt(0).toUpperCase() + x.slice(1) : x;
 const iso = d => d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate());
@@ -1643,8 +1665,8 @@ const rpc = (fn, args, opt = {}) => sbJson('/rest/v1/rpc/' + fn, { method: 'POST
 // empreinte stable d'une valeur (clés triées, comme jsonb les renvoie dans un autre ordre)
 const canon = v => v === undefined ? 'null' : JSON.stringify(v, (k, x) => x && typeof x === 'object' && !Array.isArray(x) ? Object.keys(x).sort().reduce((o, y) => { o[y] = x[y]; return o; }, {}) : x);
 // dictionnaires partagés (une fiche par entrée) et réglages (une fiche chacun ; cfg/… réservé aux admins)
-const SH_DICT = ['stk', 'stkCfg', 'stkDel', 'stkZone', 'ph', 'cover', 'treated', 'vip', 'lvlUse', 'pins'];
-const SH_CFG = ['discs', 'cals', 'rubs', 'projPh', 'projSup'], SH_VAL = ['lvls'];
+const SH_DICT = ['stk', 'stkCfg', 'stkDel', 'stkZone', 'ph', 'cover', 'treated', 'vip', 'lvlUse', 'pins', 'trash'];
+const SH_CFG = ['discs', 'cals', 'rubs', 'projPh', 'projSup', 'projSecs'], SH_VAL = ['lvls'];
 // état de l'appli → fiches
 const toRecords = st => {
   const R = new Map();
@@ -1841,7 +1863,7 @@ class Component extends DCLogic {
     addEventListener('online', () => syncSoon(200)); document.addEventListener('visibilitychange', () => { if (!document.hidden) syncSoon(200); });
     this.flags(); this.trackDiff(); if (ridScan(this.state)) this.forceUpdate();
     phWake = () => { clearTimeout(this.phT); this.phT = setTimeout(() => this.forceUpdate(), 30); };
-    setTimeout(() => { const keep = new Set(); Object.values(this.state.ph || {}).forEach(L => L.forEach(x => keep.add(x.id))); if (window.indexedDB) phKeys().then(K => K.forEach(k => { if (!keep.has(k)) phDel(k); })).catch(() => {}); }, 4000);
+    setTimeout(() => { const keep = new Set(); Object.values(this.state.ph || {}).forEach(L => L.forEach(x => keep.add(x.id))); Object.values(this.state.trash || {}).forEach(t => { if (t.k === 'photo' && t.d && t.d.x) keep.add(t.d.x.id); }); this.trashPurge(); if (window.indexedDB) phKeys().then(K => K.forEach(k => { if (!keep.has(k)) phDel(k); })).catch(() => {}); }, 4000);
   }
   async syncMail() {
     const M = this.state.mbx || {};
@@ -1977,7 +1999,28 @@ class Component extends DCLogic {
     this.lastT = now;
   }
   toast(msg, undo) { clearTimeout(toastT); if (!undo) undoD = null; this.setState({ toast: { msg, undo: !!undo } }); toastT = setTimeout(() => { undoD = null; this.setState({ toast: null }); }, undo ? 6000 : 3000); }
-  undoable(label, kind, how, fn) { undoD = JSON.stringify(snap(this.state)); track((how === 'swipe' ? 'swipe:del:' : 'del:') + kind); fn(); this.toast(label, true); }
+  undoable(label, kind, how, d, fn) { undoD = JSON.stringify(snap(this.state)); track((how === 'swipe' ? 'swipe:del:' : 'del:') + kind); fn(); this.trashPut(kind, label, d); this.toast(label, true); }
+  // corbeille partagée : un élément supprimé reste 30 jours, avec de quoi le remettre en place
+  trashPut(k, l, d) { if (!d) return; const id = 't' + Date.now().toString(36) + rid(); this.setState(s => ({ trash: { ...(s.trash || {}), [id]: { k, l, at: new Date().toISOString(), by: (ME && ME.name) || '', d } } })); }
+  trashPurge() { if (!canDel()) return; const T = this.state.trash || {}, lim = Date.now() - 30 * 864e5, keep = {}; let ch = false; Object.keys(T).forEach(id => { if (new Date(T[id].at).getTime() >= lim) keep[id] = T[id]; else ch = true; }); if (ch) this.setState({ trash: keep }); }
+  trashRestore(id) {
+    const s = this.state, t = (s.trash || {})[id]; if (!t) return;
+    const d = t.d || {}, hasP = pid => KS.some(k => (s.P[k] || []).some(p => p.id === pid)), ins = (L, x, i) => { const a = [...(L || [])]; a.splice(Math.min(i ?? a.length, a.length), 0, x); return a; };
+    let up = {}, fail = '';
+    if (t.k === 'proj') { const k = SITES[d.site] ? d.site : s.site; if (!hasP(d.p.id)) up = { P: { ...s.P, [k]: ins(s.P[k], d.p, d.i) } }; }
+    else if (t.k === 'sup') { if (!SUP.some(x => x.id === d.x.id)) SUP.push(d.x); up = { rev: (s.rev || 0) + 1 }; }
+    else if (t.k === 'ev') { if (!(s.evs || []).some(x => x.id === d.e.id)) up = { evs: [...(s.evs || []), d.e] }; }
+    else if (t.k === 'stk') { const n = { ...(s.stkDel || {}) }; delete n[d.key]; up = { stkDel: n }; }
+    else if (t.k === 'team') { const T = TEAMS[d.site] = TEAMS[d.site] || []; if (!SITES[d.site]) fail = 'Site introuvable.'; else { T.splice(Math.min(d.i ?? T.length, T.length), 0, d.m); up = { rev: (s.rev || 0) + 1 }; } }
+    else if (t.k === 'mail') { const arr = !SITES[d.site] ? null : d.done ? (DONE[d.site] = DONE[d.site] || []) : (SITES[d.site].mails = SITES[d.site].mails || []); if (!arr) fail = 'Site introuvable.'; else { if (!arr.some(x => x.id === d.m.id)) arr.splice(Math.min(d.i, arr.length), 0, d.m); up = { rev: (s.rev || 0) + 1 }; } }
+    else if (!hasP(d.pid)) fail = 'Projet introuvable : restaurez d’abord le projet.';
+    else if (t.k === 'photo') up = { ph: { ...(s.ph || {}), [d.pid]: [...((s.ph || {})[d.pid] || []).filter(x => x.id !== d.x.id), d.x] }, ...(d.cover && !(s.cover || {})[d.pid] ? { cover: { ...(s.cover || {}), [d.pid]: d.x.id } } : {}) };
+    else { const fld = { inv: 'inv', step: 'steps', note: 'notes', projSup: 'sup' }[t.k], P = {};
+      Object.keys(s.P).forEach(k => { P[k] = s.P[k].map(p => p.id !== d.pid ? p : { ...p, [fld]: t.k === 'note' ? ins(p.notes, d.t, d.i) : p[fld].some(x => x.id === d.x.id) ? p[fld] : ins(p[fld], d.x, d.i) }); }); up = { P }; }
+    if (fail) { this.toast(fail); return; }
+    const T = { ...(s.trash || {}) }; delete T[id];
+    this.setState({ ...up, trash: T }); track('trash:restore:' + t.k); this.toast('✓ Restauré');
+  }
   undo() { if (!undoD) return; const d = JSON.parse(undoD); undoD = null; clearTimeout(toastT); const s = applyData(d); Object.keys(this.state).forEach(k => { if (!(k in s) && !VOLATILE.includes(k)) s[k] = undefined; }); track('undo'); this.setState({ ...s, toast: null, sheet: null }); }
   componentDidUpdate(prev) {
     this.flags(); this.trackDiff();
@@ -2118,13 +2161,13 @@ class Component extends DCLogic {
     const psecs = PS.map(([k, label, bg, fx]) => { const a = psec === k; return { label, bg, fg: fx, n: list.filter(p => stOf(p) === k).length, bd: a ? fx : 'transparent', op: a ? 1 : 0.55, pick: () => set({ psec: k }) }; });
     const pins = st.pins || {}, pdisc = st.pdisc || null;
     const togglePin = p => { const was = !!(this.state.pins || {})[p.id], n = { ...(this.state.pins || {}) }; if (was) delete n[p.id]; else n[p.id] = Date.now(); track(was ? 'unpin' : 'pin'); set({ pins: n }); this.toast(was ? '« ' + p.name + ' » n’est plus épinglé' : '« ' + p.name + ' » épinglé en tête de liste'); };
-    const inSec = list.filter(p => stOf(p) === psec);
-    const pdiscs = [{ k: null, label: 'Toutes', n: inSec.length }, ...Array.from(new Set([...st.discs, ...list.map(discOf).filter(Boolean)])).map(d => ({ k: d, label: d, n: inSec.filter(p => discOf(p) === d).length }))].map(d => { const a = pdisc === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, op: a || d.n ? 1 : 0.5, pick: () => set({ pdisc: a && d.k ? null : d.k }) }; });
+    const secOn = st.projSecs !== false, inSec = secOn ? list.filter(p => stOf(p) === psec) : list;
+    const pdiscs = [{ k: null, label: 'Toutes', n: inSec.length }, ...Array.from(new Set([...st.discs, ...list.flatMap(discsOf)])).map(d => ({ k: d, label: d, n: inSec.filter(p => discsOf(p).includes(d)).length }))].map(d => { const a = pdisc === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, op: a || d.n ? 1 : 0.5, pick: () => set({ pdisc: a && d.k ? null : d.k }) }; });
     const coverOf = p => phUrl((st.cover || {})[p.id]) || src(p.id);
-    const projects = [...list.filter(p => pins[p.id] && stOf(p) !== psec), ...inSec].filter(p => !pdisc || discOf(p) === pdisc).map((p, i) => ({ p, i })).sort((x, y) => ((pins[y.p.id] ? 1 : 0) - (pins[x.p.id] ? 1 : 0)) || ((pins[x.p.id] || 0) - (pins[y.p.id] || 0)) || x.i - y.i).map(({ p }) => {
+    const projects = [...(secOn ? list.filter(p => pins[p.id] && stOf(p) !== psec) : []), ...inSec].filter(p => !pdisc || discsOf(p).includes(pdisc)).map((p, i) => ({ p, i })).sort((x, y) => ((pins[y.p.id] ? 1 : 0) - (pins[x.p.id] ? 1 : 0)) || ((pins[x.p.id] || 0) - (pins[y.p.id] || 0)) || x.i - y.i).map(({ p }) => {
       const pct = pctOf(p), done = p.steps.filter(s => s.v >= 100).length, late = p.inv.filter(i => i.st === 'late').length, todo = p.sup.filter(f => !f.tel || !f.mail).length, pinned = !!pins[p.id], sw = 'p:' + p.id, lv = lvlOf(p);
       SW[sw] = { pin: () => togglePin(p),
-        ...(canDel() ? { del: how => this.undoable('Projet « ' + p.name + ' » supprimé', 'proj', how, () => this.setState(s => ({ P: { ...s.P, [st.site]: (s.P[st.site] || []).filter(x => x.id !== p.id) } }))) } : {}) };
+        ...(canDel() ? { del: how => this.undoable('Projet « ' + p.name + ' » supprimé', 'proj', how, { site: st.site, p, i: list.indexOf(p) }, () => this.setState(s => ({ P: { ...s.P, [st.site]: (s.P[st.site] || []).filter(x => x.id !== p.id) } }))) } : {}) };
       return { sw, pinned, pinLbl: pinned ? 'Désépingler' : 'Épingler', name: p.name, rid: RI('P:' + p.id), img: 'proj-' + p.id, src: coverOf(p), ph: 'Photo · ' + p.name, phase: p.phase, due: 'Fin ' + p.due, pct, pctW: pct + '%',
         loc: [lv, p.addr ? p.addr + (p.city ? ' · ' + p.city.replace(/^\d+\s*/, '') : '') : ''].filter(Boolean).join(' · ') || 'Emplacement à renseigner',
         meta: done + '/' + p.steps.length + ' étapes' + (projSupOn ? ' · ' + p.sup.length + ' fourn.' : ''), showPh: projPhOn, noPh: !projPhOn,
@@ -2146,7 +2189,7 @@ class Component extends DCLogic {
       };
       const col = d ? 'var(--ok)' : ACC;
       const sw = 's:' + s.id;
-      SW[sw] = !ed && canDel() ? { del: how => this.undoable('Étape supprimée', 'step', how, () => up(p => ({ ...p, steps: p.steps.filter(x => x.id !== s.id) }))) } : {};
+      SW[sw] = !ed && canDel() ? { del: how => this.undoable('Étape supprimée', 'step', how, { pid, x: s, i: Q.steps.indexOf(s) }, () => up(p => ({ ...p, steps: p.steps.filter(x => x.id !== s.id) }))) } : {};
       return { sw, l: s.l, isC, isG: !isC, ed, showPct: !isC && !ed, showBar: !isC && !ed,
         ckBg: d ? ACC : 'transparent', ckBd: d ? ACC : 'var(--ink3)',
         pie: 'conic-gradient(' + col + ' ' + (s.v * 3.6) + 'deg, var(--track) 0)',
@@ -2166,11 +2209,11 @@ class Component extends DCLogic {
     const gs = st.geo[pid];
     const STL = { paid: 'Payée', due: 'À payer', late: 'En retard' }, STB = { paid: 'var(--okBg)', due: 'var(--accSoft)', late: 'var(--warnBg)' }, STF = { paid: 'var(--okTx)', due: 'var(--accTx)', late: 'var(--warnTx)' };
     const cycInv = (ppid, iid) => this.updP(ppid, p => ({ ...p, inv: p.inv.map(x => x.id === iid ? { ...x, st: x.st === 'paid' ? 'due' : 'paid' } : x) }));
-    const mkInv = (i, ppid) => ({ sw: (() => { const k = 'i:' + ppid + '/' + i.id; SW[k] = canDel() ? { del: how => this.undoable('Facture ' + i.num + ' supprimée', 'inv', how, () => this.updP(ppid, p => ({ ...p, inv: p.inv.filter(x => x.id !== i.id) }))) } : {}; return k; })(), sup: i.sup, num: i.num, rid: RI('F:' + ppid + '/' + i.id), date: i.date, amt: eur(i.amt), stLbl: STL[i.st], stBg: STB[i.st], stFg: STF[i.st], cyc: () => cycInv(ppid, i.id), edit: () => openEd('inv', { pid: ppid, id: i.id }) });
+    const mkInv = (i, ppid) => ({ sw: (() => { const k = 'i:' + ppid + '/' + i.id; SW[k] = canDel() ? { del: how => this.undoable('Facture ' + i.num + ' supprimée', 'inv', how, { pid: ppid, x: i }, () => this.updP(ppid, p => ({ ...p, inv: p.inv.filter(x => x.id !== i.id) }))) } : {}; return k; })(), sup: i.sup, num: i.num, rid: RI('F:' + ppid + '/' + i.id), date: i.date, amt: eur(i.amt), stLbl: STL[i.st], stBg: STB[i.st], stFg: STF[i.st], cyc: () => cycInv(ppid, i.id), edit: () => openEd('inv', { pid: ppid, id: i.id }) });
     const sups = Q.sup.map(f => {
       const fi = Q.inv.filter(i => i.sup === f.name), fp = fi.filter(i => i.st === 'paid').reduce((a, i) => a + i.amt, 0), ft = fi.reduce((a, i) => a + i.amt, 0);
       const todo = !f.tel || !f.mail, n = (f.tel || '').replace(/\s/g, ''), sw = 'f:' + pid + '/' + f.id;
-      SW[sw] = canDel() ? { del: how => this.undoable(f.name + ' retiré du projet', 'projSup', how, () => up(p => ({ ...p, sup: p.sup.filter(x => x.id !== f.id) }))) } : {};
+      SW[sw] = canDel() ? { del: how => this.undoable(f.name + ' retiré du projet', 'projSup', how, { pid, x: f }, () => up(p => ({ ...p, sup: p.sup.filter(x => x.id !== f.id) }))) } : {};
       return { sw, name: f.name, ini: ini(f.name), av: CATC[f.cat] || '#7A8496', sub: [f.cat, f.who].filter(Boolean).join(' · '), todo, ok: !todo,
         telH: 'tel:' + n, smsH: 'sms:' + n, mailH: 'mailto:' + f.mail, open: st.supOpen === f.id,
         toggle: () => set({ supOpen: st.supOpen === f.id ? null : f.id }),
@@ -2182,17 +2225,17 @@ class Component extends DCLogic {
     const inv = Q.inv.map(i => mkInv(i, pid));
     const total = Q.inv.reduce((a, i) => a + i.amt, 0), paid = Q.inv.filter(i => i.st === 'paid').reduce((a, i) => a + i.amt, 0), anyLate = Q.inv.some(i => i.st === 'late');
     const PH = (st.ph || {})[pid] || [], lvQ = lvlOf(Q);
-    const pj = { showPh: projPhOn, heroH: projPhOn ? '200px' : '150px', heroBg: projPhOn ? 'var(--tile)' : 'linear-gradient(135deg,' + (DOT[st.site] || '#0A84FF') + ',#1C2333)', name: Q.name, rid: RI('P:' + Q.id), phase: Q.phase, due: Q.due, img: 'proj-' + Q.id, src: coverOf(Q), ph: 'Photo · ' + Q.name, addrLine: [lvQ, Q.addr ? Q.addr + (Q.city ? ' · ' + Q.city : '') : ''].filter(Boolean).join(' · ') || 'Emplacement non renseigné', pct,
-      disc: discOf(Q), hasDisc: !!discOf(Q), pinned: !!pins[Q.id], pinLbl: pins[Q.id] ? 'Épinglé' : 'Épingler', pinBg: pins[Q.id] ? '#FF9F0A' : 'var(--tile)', pinFg: pins[Q.id] ? '#fff' : 'var(--ink)', pin: () => togglePin(Q), phN: (n => n ? n + ' photo' + (n > 1 ? 's' : '') : 'Photos')(PH.filter(x => PHS[x.sec]).length), goPh: () => set({ seg: 'ph', editSteps: false }), goSup: () => set({ seg: 'c', editSteps: false }), dash: (C * pct / 100) + ' ' + C,
+    const pj = { setCover: () => { track('photo:cover'); this.addPhotos(pid, 'av', null, true); }, showPh: projPhOn, heroH: projPhOn ? '200px' : '150px', heroBg: projPhOn ? 'var(--tile)' : 'linear-gradient(135deg,' + (DOT[st.site] || '#0A84FF') + ',#1C2333)', name: Q.name, rid: RI('P:' + Q.id), phase: Q.phase, due: Q.due, img: 'proj-' + Q.id, src: coverOf(Q), ph: 'Photo · ' + Q.name, addrLine: [lvQ, Q.addr ? Q.addr + (Q.city ? ' · ' + Q.city : '') : ''].filter(Boolean).join(' · ') || 'Emplacement non renseigné', pct,
+      disc: discsOf(Q).join(', '), hasDisc: discsOf(Q).length > 0, pinned: !!pins[Q.id], pinLbl: pins[Q.id] ? 'Épinglé' : 'Épingler', pinBg: pins[Q.id] ? '#FF9F0A' : 'var(--tile)', pinFg: pins[Q.id] ? '#fff' : 'var(--ink)', pin: () => togglePin(Q), phN: (n => n ? n + ' photo' + (n > 1 ? 's' : '') : 'Photos')(PH.filter(x => PHS[x.sec]).length), goPh: () => set({ seg: 'ph', editSteps: false }), goSup: () => set({ seg: 'c', editSteps: false }), dash: (C * pct / 100) + ' ' + C,
       stepsDone: Q.steps.filter(s => s.v >= 100).length + '/' + Q.steps.length, supN: Q.sup.length, openAmt: eur(total - paid), openCol: anyLate ? 'var(--warnTx)' : INK,
-      steps, notes: Q.notes.map((t, i) => { const sw = 'n:' + pid + '/' + i; SW[sw] = canDel() ? { del: how => this.undoable('Note supprimée', 'note', how, () => up(p => ({ ...p, notes: p.notes.filter((x, j) => j !== i) }))) } : {}; return { sw, t, edit: () => openEd('note', { i }) }; }), locFields: loc,
+      steps, notes: Q.notes.map((t, i) => { const sw = 'n:' + pid + '/' + i; SW[sw] = canDel() ? { del: how => this.undoable('Note supprimée', 'note', how, { pid, t, i }, () => up(p => ({ ...p, notes: p.notes.filter((x, j) => j !== i) }))) } : {}; return { sw, t, edit: () => openEd('note', { i }) }; }), locFields: loc,
       map: 'https://www.openstreetmap.org/export/embed.html?bbox=' + (lon - dd * 1.5) + ',' + (lat - dd) + ',' + (lon + dd * 1.5) + ',' + (lat + dd) + '&layer=mapnik&marker=' + lat + ',' + lon,
       maps: 'https://maps.apple.com/?q=' + encodeURIComponent((Q.addr || '') + ', ' + (Q.city || '')),
       geoLabel: gs === 'busy' ? 'Recherche…' : gs === 'ok' ? '✓ Position mise à jour' : gs === 'err' ? 'Adresse introuvable · réessayer' : 'Localiser l’adresse sur la carte',
       geoCol: gs === 'err' ? 'var(--warnTx)' : gs === 'ok' ? 'var(--okTx)' : ACC,
       geocode: () => { if (Q.addr) this.geocode(pid, Q.addr, Q.city || ''); },
       sups, inv, noInv: inv.length === 0, invTotal: eur(total), invPaid: eur(paid),
-      team: (TEAMS[st.site] || []).map((m, i) => { const sw = 't:' + st.site + '/' + i; SW[sw] = canDel() ? { del: how => this.undoable(m[0] + ' retiré de l’équipe', 'team', how, () => { (TEAMS[st.site] || []).splice(i, 1); set({ rev: (this.state.rev || 0) + 1 }); }) } : {}; return { sw, name: m[0], role: m[1], tag: m[2], ini: ini(m[0]), telH: 'tel:' + (m[3] || '').replace(/\s/g, ''), edit: () => openEd('team', { i }) }; }), addTeam: () => openEd('team', { i: -1 }) };
+      team: (TEAMS[st.site] || []).map((m, i) => { const sw = 't:' + st.site + '/' + i; SW[sw] = canDel() ? { del: how => this.undoable(m[0] + ' retiré de l’équipe', 'team', how, { site: st.site, m, i }, () => { (TEAMS[st.site] || []).splice(i, 1); set({ rev: (this.state.rev || 0) + 1 }); }) } : {}; return { sw, name: m[0], role: m[1], tag: m[2], ini: ini(m[0]), telH: 'tel:' + (m[3] || '').replace(/\s/g, ''), edit: () => openEd('team', { i }) }; }), addTeam: () => openEd('team', { i: -1 }) };
     // dossier photos : sections Avant / Après
     const phList = PH.filter(x => PHS[x.sec]);
     const phSecs = Object.keys(PHS).map(k => { const L = phList.filter(x => x.sec === k); return { label: PHS[k], n: L.length ? L.length + ' photo' + (L.length > 1 ? 's' : '') : 'Vide', add: () => this.addPhotos(pid, k), items: L.map(x => ({ src: phUrl(x.id), cover: (st.cover || {})[pid] === x.id, open: () => set({ phv: { pid, id: x.id } }) })) }; });
@@ -2204,7 +2247,7 @@ class Component extends DCLogic {
       replace: () => this.addPhotos(st.phv.pid, vx.sec, vx.id), canDel: canDel(),
       delLbl: st.phv.confirm ? 'Confirmer' : 'Supprimer', delBg: st.phv.confirm ? '#FF3B30' : 'rgba(255,59,48,.18)',
       del: () => { if (!st.phv.confirm) { set({ phv: { ...st.phv, confirm: true } }); return; } const ppid = st.phv.pid, nx = V.length > 1 ? V[(vi + 1) % V.length].id : null;
-        this.undoable('Photo supprimée', 'photo', 'bouton', () => this.setState(s => { const cover = { ...(s.cover || {}) }; if (cover[ppid] === vx.id) delete cover[ppid]; return { ph: { ...s.ph, [ppid]: s.ph[ppid].filter(x => x.id !== vx.id) }, cover, phv: nx ? { pid: ppid, id: nx } : null }; })); } } : null;
+        this.undoable('Photo supprimée', 'photo', 'bouton', { pid: ppid, x: vx, cover: (st.cover || {})[ppid] === vx.id }, () => this.setState(s => { const cover = { ...(s.cover || {}) }; if (cover[ppid] === vx.id) delete cover[ppid]; return { ph: { ...s.ph, [ppid]: s.ph[ppid].filter(x => x.id !== vx.id) }, cover, phv: nx ? { pid: ppid, id: nx } : null }; })); } } : null;
     const segK = st.seg === 'c' && !projSupOn ? 'e' : st.seg;
     const segs = [['e', 'Étapes'], ...(projSupOn ? [['c', 'Fourn. & fact.']] : []), ['ph', 'Photos']].map(([k, label]) => ({ label, bg: segK === k ? 'var(--on)' : 'transparent', fg: segK === k ? INK : 'var(--ink2)', sh: segK === k ? '0 2px 8px rgba(0,0,0,.12)' : 'none', pick: () => set({ seg: k, editSteps: false }) }));
     const stepTypes = [['c', 'Coche'], ['g', 'Jauge']].map(([k, label]) => ({ label, bg: st.stepType === k ? 'var(--on)' : 'transparent', fg: st.stepType === k ? ACC : 'var(--ink2)', pick: () => set({ stepType: k }) }));
@@ -2223,7 +2266,7 @@ class Component extends DCLogic {
       const max = Math.max(s[4] * 2, o.q, 1), step = Math.max(1, Math.round(s[5] / 10)), open = st.stkOpen === key;
       const zone = (st.stkZone || {})[key] || STZ[s[0]] || zonesS[0] || '—';
       const sw = 'k:' + key;
-      SW[sw] = canDel() ? { del: how => this.undoable(s[1] + ' supprimé du stock', 'stk', how, () => this.setState(z => ({ stkDel: { ...(z.stkDel || {}), [key]: true }, stkOpen: null }))) } : {};
+      SW[sw] = canDel() ? { del: how => this.undoable(s[1] + ' supprimé du stock', 'stk', how, { key, name: s[1] }, () => this.setState(z => ({ stkDel: { ...(z.stkDel || {}), [key]: true }, stkOpen: null }))) } : {};
       return { sw, sub, ean: s[8] || '', hasEan: !!s[8], img: 'stk-' + s[0], src: src(s[0]), name: s[1], rid: RI('K:' + key), unit: s[2], q: o.q, col: low ? WARN : INK, barCol: low ? WARN : ACC, w: Math.min(100, o.q / max * 100) + '%', markL: (s[4] / max * 100) + '%',
         meta: 'Seuil ' + s[4] + ' · ' + zone + (s[8] ? ' · EAN ' + s[8] : ''), hasPend: o.o > 0, pend: '+' + o.o + ' ' + s[2] + (o.sent ? ' · commandés' : ' · au panier'), pendBg: o.sent ? 'var(--t2)' : 'var(--warnBg)', pendFg: o.sent ? 'var(--t2x)' : 'var(--warnTx)',
         open, toggle: () => set({ stkOpen: open ? null : key }), step: step + ' ' + s[2],
@@ -2250,7 +2293,7 @@ class Component extends DCLogic {
     const mails = (st.mbox === 't' ? done : recv).filter(match).map(m => {
       const unread = m.unread && !st.read[m.id], t = trOf(m);
       const sw = 'm:' + m.id, d0 = (m.drafts[0] || '').replace(/\s+/g, ' ').trim();
-      SW[sw] = canDel() ? { del: how => this.undoable('Message supprimé', 'mail', how, () => { if (m.box) this.setState(z => ({ inbox: (z.inbox || []).filter(x => x.id !== m.id) })); else { const x = findMail(m.id); if (x) x.arr.splice(x.i, 1); this.setState(z => ({ rev: (z.rev || 0) + 1 })); } }) } : {};
+      SW[sw] = canDel() ? { del: how => this.undoable('Message supprimé', 'mail', how, m.box ? null : mailLoc(m.id), () => { if (m.box) this.setState(z => ({ inbox: (z.inbox || []).filter(x => x.id !== m.id) })); else { const x = findMail(m.id); if (x) x.arr.splice(x.i, 1); this.setState(z => ({ rev: (z.rev || 0) + 1 })); } }) } : {};
       return { sw, hasDraft: !!d0 && !t, draft: d0, ch: CH[m.ch], ini: ini(m.from), avBg: AV[m.ch], from: m.from, org: m.org, time: t ? t.at : m.time, summary: m.summary, vip: isVip(m.from), dot: !!unread, fw: unread ? 700 : 500,
         replyLbl: t && t.reply ? 'Réponse envoyée' : 'Traité sans réponse', reply: t && t.reply ? t.reply.replace(/\n+/g, ' ') : 'Demande traitée directement (appel ou sur site).',
         open: () => set({ mail: m.id, tone: 0, read: { ...st.read, [m.id]: true } }) };
@@ -2283,7 +2326,7 @@ class Component extends DCLogic {
     const sitesLbl = s => sitesOf(s).length ? sitesOf(s).map(SL).join(', ') : 'Tous sites';
     const contacts = inRub.filter(s => ccat === 'TOUS' || s.cat === ccat).sort((x, y) => x.name.localeCompare(y.name, 'fr')).map(s => {
       const I = supInfo(s), bad = /RUPTURE|RETARD/.test(s.tag || ''), r = rubOf(s), sw = 'c:' + s.id;
-      SW[sw] = canDel() ? { del: how => this.undoable(s.name + ' supprimé de l’annuaire', 'sup', how, () => { const i = SUP.indexOf(s); if (i >= 0) SUP.splice(i, 1); set({ rev: (this.state.rev || 0) + 1, supSel: null }); }) } : {};
+      SW[sw] = canDel() ? { del: how => this.undoable(s.name + ' supprimé de l’annuaire', 'sup', how, { x: s }, () => { const i = SUP.indexOf(s); if (i >= 0) SUP.splice(i, 1); set({ rev: (this.state.rev || 0) + 1, supSel: null }); }) } : {};
       return { sw, name: s.name, ini: ini(s.name), av: CATC[cap(s.cat)] || '#7A8496', meta: [cap(s.cat), s.city ? s.city.replace(/^\d+\s*/, '') : s.sub].filter(Boolean).join(' · '), sites: sitesLbl(s),
         rubLbl: RUB[r], rubBg: RUBC[r][0], rubFg: RUBC[r][1], hasTag: r === 'F' && !!s.tag, tag: cap(s.tag || ''), tagBg: bad ? 'var(--warnBg)' : 'var(--tile)', tagFg: bad ? 'var(--warnTx)' : 'var(--ink2)',
         hasLow: I.low.length > 0 && !bad, lowTxt: 'Stock bas · ' + Array.from(new Set(I.low.map(t => t.x[1].split(' ')[0]))).join(', '), open: () => set({ supSel: s.id }) };
@@ -2301,7 +2344,7 @@ class Component extends DCLogic {
     // planning : vue mensuelle façon Calendrier d'Apple, avec commandes et factures
     const today = iso(new Date());
     const calM = /^\d{4}-\d{2}$/.test(st.cal || '') ? st.cal : today.slice(0, 7), selD = /^\d{4}-\d{2}-\d{2}$/.test(st.calDay || '') ? st.calDay : today;
-    const calOff = st.calOff || {}, pdf = st.pldisc || null;
+    const calOff = st.calOff || {};
     const invEv = [], cmdEv = [];
     KS.forEach(k => (st.P[k] || []).forEach(p => p.inv.forEach(i => { if (i.st === 'paid') return; const d = frDate(i.date); if (d) invEv.push({ id: 'fac:' + p.id + '/' + i.id, auto: true, date: d, t: '', site: k, title: (i.st === 'late' ? 'En retard · ' : 'À payer · ') + i.num + ' · ' + i.sup, sub: eur(i.amt) + ' · ' + p.name, cal: 'fac', disc: discOf(p), amt: i.amt, open: () => set({ tab: 'p', site: k, wpos: KS.indexOf(k), proj: p.id, seg: 'c' }) }); })));
     KS.forEach(k => stockOf(k).forEach(x => {
@@ -2311,30 +2354,45 @@ class Component extends DCLogic {
       else if (o.q < x[4]) cmdEv.push({ id: 'cmd:' + key, auto: true, date: today, t: '', site: k, title: 'À commander · ' + x[1], sub: o.q + ' ' + x[2] + ' en stock (seuil ' + x[4] + ')', cal: 'cmd', disc, open });
     }));
     const userEv = (st.evs || []).filter(e => !e.site || SITES[e.site]).map(e => ({ ...e, open: () => openEd('ev', { id: e.id }) }));
-    const allEv = [...userEv, ...invEv, ...cmdEv].filter(e => CALS[e.cal] && !calOff[e.cal] && (!pdf || e.disc === pdf) && (st.allL || !e.site || e.site === st.site));
+    const allEv = [...userEv, ...invEv, ...cmdEv].filter(e => CALS[e.cal] && !calOff[e.cal] && (st.allL || !e.site || e.site === st.site));
     // un événement sur plusieurs jours apparaît chaque jour (J1/3, J2/3…)
     const byDay = {}; allEv.forEach(e => { const to = /^\d{4}-\d{2}-\d{2}$/.test(e.to || '') && e.to > e.date ? e.to : e.date, n = Math.min(62, Math.round((dOf(to) - dOf(e.date)) / 864e5) + 1); for (let i = 0, d = e.date; i < n; i++, d = addDays(d, 1)) (byDay[d] = byDay[d] || []).push(n > 1 ? { ...e, span: [i + 1, n] } : e); });
     const dShort = x => { const d = dOf(x); return d.getDate() + ' ' + MABRV[d.getMonth()]; };
     const [calY, calMo] = calM.split('-').map(Number), nDays = new Date(calY, calMo, 0).getDate(), lead = (new Date(calY, calMo - 1, 1).getDay() + 6) % 7;
     const cells = []; for (let i = 0; i < lead; i++) cells.push(0); for (let d = 1; d <= nDays; d++) cells.push(d); while (cells.length % 7) cells.push(0);
+    // barres des événements sur plusieurs jours, par semaine (3 lignes au plus)
+    const spanEv = allEv.filter(e => /^\d{4}-\d{2}-\d{2}$/.test(e.to || '') && e.to > e.date).sort((x, y) => x.date.localeCompare(y.date) || y.to.localeCompare(x.to));
+    const weekBars = [];
+    for (let w = 0; w < cells.length / 7; w++) {
+      const days = cells.slice(w * 7, w * 7 + 7).map(d => d ? calM + '-' + p2(d) : null), lanes = [], bars = [];
+      spanEv.forEach(e => {
+        const inE = ds => ds && ds >= e.date && ds <= e.to, c0 = days.findIndex(inE); if (c0 < 0) return;
+        let c1 = c0; days.forEach((ds, j) => { if (inE(ds)) c1 = j; });
+        let lane = lanes.findIndex(end => end < c0); if (lane < 0) { lane = lanes.length; lanes.push(-1); } lanes[lane] = c1;
+        if (lane > 2) return;
+        const a0 = days[c0] === e.date, a1 = days[c1] === e.to, ml = a0 ? 5 : 0, mr = a1 ? 5 : 0;
+        bars.push({ l: 'calc(' + (c0 / 7 * 100).toFixed(3) + '% + ' + ml + 'px)', w: 'calc(' + ((c1 - c0 + 1) / 7 * 100).toFixed(3) + '% - ' + (ml + mr) + 'px)', t: (45 + lane * 7) + 'px', c: CALS[e.cal][1], r: (a0 ? '3px' : '0') + ' ' + (a1 ? '3px 3px' : '0 0') + ' ' + (a0 ? '3px' : '0') });
+      });
+      weekBars.push({ bars, h: (52 + Math.min(3, lanes.length) * 7) + 'px' });
+    }
     const calCells = cells.map((d, i) => {
-      if (!d) return { n: '', bg: 'transparent', fg: INK, fw: 500, dots: [], cur: 'default', pick: () => {} };
+      if (!d) return { n: '', bg: 'transparent', fg: INK, fw: 500, dots: [], cur: 'default', h: weekBars[Math.floor(i / 7)].h, pick: () => {} };
       const ds = calM + '-' + p2(d), isT = ds === today, isS = ds === selD, L = byDay[ds] || [];
       return { n: d, bg: isS ? (isT ? '#FF3B30' : 'var(--solid)') : 'transparent', fg: isS ? (isT ? '#fff' : 'var(--solidTx)') : isT ? '#FF3B30' : i % 7 >= 5 ? 'var(--ink2)' : INK, fw: isT || isS ? 700 : 500, cur: 'pointer',
-        dots: Array.from(new Set(L.map(e => CALS[e.cal][1]))).slice(0, 3), pick: () => { if (Date.now() - (this.calSw || 0) > 350) set({ calDay: ds }); } };
+        h: weekBars[Math.floor(i / 7)].h, dots: Array.from(new Set(L.filter(e => !e.span).map(e => CALS[e.cal][1]))).slice(0, 3), pick: () => { if (Date.now() - (this.calSw || 0) > 350) set({ calDay: ds }); } };
     });
+    const calWeeks = weekBars.map((w, i) => ({ cells: calCells.slice(i * 7, i * 7 + 7), bars: w.bars }));
     const monthGo = n => { const d = new Date(calY, calMo - 1 + n, 1), m = d.getFullYear() + '-' + p2(d.getMonth() + 1); set({ cal: m, calDay: m === today.slice(0, 7) ? today : m + '-01' }); };
     const allP0 = Object.keys(st.P).flatMap(k => st.P[k]);
     const dayEv = (byDay[selD] || []).slice().sort((a, b) => (a.t || '').localeCompare(b.t || '')).map(e => {
       const sw = 'e:' + e.id, P0 = e.proj ? allP0.find(p => p.id === e.proj) : null;
-      SW[sw] = !e.auto && canDel() ? { del: how => this.undoable('Événement supprimé', 'ev', how, () => this.setState(z => ({ evs: (z.evs || []).filter(x => x.id !== e.id) }))) } : {};
+      SW[sw] = !e.auto && canDel() ? { del: how => this.undoable('Événement supprimé', 'ev', how, { e: (st.evs || []).find(x => x.id === e.id) }, () => this.setState(z => ({ evs: (z.evs || []).filter(x => x.id !== e.id) }))) } : {};
       const t = e.span ? 'J' + e.span[0] + '/' + e.span[1] : e.dur ? (e.dur === '½ journée' ? '½ j.' : e.dur) : e.t || 'Journée', end = e.span ? '→ ' + dShort(e.to) : e.dur ? '' : e.end || '';
-      return { sw, t, end, hasEnd: !!end, col: CALS[e.cal][1], title: e.title, sub: [CALS[e.cal][0], e.site ? SL(e.site) : '', e.disc, P0 ? P0.name : '', e.client || e.who, e.sub].filter(Boolean).join(' · '), note: [e.addr, e.note].filter(Boolean).join(' · '), hasNote: !!(e.addr || e.note), open: e.open };
+      return { sw, t, end, hasEnd: !!end, col: CALS[e.cal][1], title: e.title, sub: [CALS[e.cal][0], e.site ? SL(e.site) : '', (e.discs && e.discs.length ? e.discs.join(', ') : e.disc), P0 ? P0.name : '', e.client || e.who, e.sub].filter(Boolean).join(' · '), note: [e.addr, e.note].filter(Boolean).join(' · '), hasNote: !!(e.addr || e.note), open: e.open };
     });
     const selDt = dOf(selD), dayLbl = up1(JOURS[selDt.getDay()]) + ' ' + selDt.getDate() + ' ' + MOIS[selDt.getMonth()];
     const solo = k => { const only = Object.keys(CALS).every(c => c === k ? !calOff[c] : calOff[c]); const n = {}; if (!only) Object.keys(CALS).forEach(c => { n[c] = c !== k; }); set({ calOff: n }); };
     const calChips = Object.keys(CALS).map(k => { const off = !!calOff[k]; return { label: CALS[k][0], dot: CALS[k][1], op: off ? 0.45 : 1, bg: off ? 'transparent' : 'var(--tile)', fg: off ? 'var(--ink3)' : INK, deco: off ? 'line-through' : 'none', pick: () => set({ calOff: { ...calOff, [k]: !off } }) }; });
-    const plDiscs = [{ k: null, label: 'Toutes' }, ...st.discs.map(d => ({ k: d, label: d }))].map(d => { const a = pdf === d.k; return { label: d.label, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ pldisc: d.k }) }; });
     const monthN = Object.keys(byDay).filter(d => d.startsWith(calM)).reduce((a, d) => a + byDay[d].length, 0);
     const tb = {};
     ['p', 's', 'm', 'l', 'c'].forEach(k => { tb[k] = { bg: st.tab === k ? 'var(--on)' : 'transparent', fg: st.tab === k ? ACC : 'var(--ink2)', pick: () => set({ tab: k, mail: null, menu: false, proj: k === 'p' && st.tab === 'p' ? null : st.proj, supSel: k === 'c' && st.tab === 'c' ? null : st.supSel }) }; });
@@ -2351,19 +2409,31 @@ class Component extends DCLogic {
     const openEdB = (kind, ref) => sub({ sheet: 'ed', form: { kind, ref, ...EDK[kind].load(ref) } });
     const closeLbl = bstack.length ? '‹ ' + ({ acc: 'Compte', cfg: 'Réglages' }[bstack[bstack.length - 1].sheet] || 'Retour') : 'Annuler';
     const calL = () => st.cals && st.cals.length ? st.cals : CAL0;
+    // ajout rapide depuis une liste défilante ; renvoie la discipline, ou la clé de la rubrique / du calendrier
+    const quickAdd = (kind, v) => {
+      const t = up1(String(v || '').trim()); if (!t) return null;
+      if (!canCfg()) { this.toast('Réservé au propriétaire et aux admins'); return null; }
+      track('quickadd:' + kind);
+      if (kind === 'disc') { const ex = st.discs.find(x => x.toLowerCase() === t.toLowerCase()); if (!ex) set({ discs: [...st.discs, t] }); return ex || t; }
+      if (kind === 'rub') { const rl = st.rubs && st.rubs.length ? st.rubs : RUB0, ex = rl.find(r => r.n.toLowerCase() === t.toLowerCase()); if (ex) return ex.k; const k = 'r' + rid(); set({ rubs: [...rl, { k, n: t, p: plurFr(t) }] }); return k; }
+      if (kind === 'cal') { const L = calL(), ex = L.find(c => c.n.toLowerCase() === t.toLowerCase()); if (ex) return ex.k; const k = 'k' + rid(), used = L.map(c => c.c), c = Object.values(COLORS).find(x => !used.includes(x)) || '#0A84FF'; set({ cals: [...L.filter(x => !x.auto), { k, n: t, c, d: [] }, ...L.filter(x => x.auto)] }); return k; }
+      return null;
+    };
+    const qaMk = (w, ph, fn) => { const q = st.qa || {}, on = q.w === w; return { on, ph, v: on ? q.v || '' : '', can: canCfg(), tog: () => set({ qa: on ? null : { w, v: '' } }), onV: (e) => set({ qa: { w, v: e.target.value } }), ok: () => { if (fn(q.v)) set({ qa: null }); } }; };
     const bump = () => ({ rev: (st.rev || 0) + 1 });
     const siteNames = KS.map(SL), keyOfName = n => KS.find(k => SL(k) === n);
     const calKey = n => CALU.find(k => CALS[k][0] === n) || CALU[0];
     const evGroups = tk => { const sk = keyOfName(F.siteN), multi = /^\d{4}-\d{2}-\d{2}$/.test(F.to || '') && F.to > (F.date || ''), cd = (CALS[calKey(F.cal)] || [])[2] || [], prj = sk ? (st.P[sk] || []).map(p => p.name) : []; return [
-      { t: 'Événement', f: [[tk, 'Intitulé', 'Ex. Visite client'], ['cal', 'Calendrier', '', CALU.map(k => CALS[k][0])], ['date', 'Début', '', null, { type: 'date' }], ['to', 'Fin', 'Même jour', null, { type: 'date' }], ...(multi ? [] : [['dur', 'Durée', '', DURS]])] },
+      { t: 'Événement', f: [[tk, 'Intitulé', 'Ex. Visite client'], ['cal', 'Calendrier', '', CALU.map(k => CALS[k][0]), { add: 'cal' }], ['date', 'Début', '', null, { type: 'date' }], ['to', 'Fin', 'Même jour', null, { type: 'date' }], ...(multi ? [] : [['dur', 'Durée', '', DURS]])] },
       ...(CALS.devis && F.cal === CALS.devis[0] ? [{ t: 'Visite de devis', f: [['client', 'Client', 'Nom du client', SUP.filter(x => x.rub === 'C').map(x => x.name), { combo: true }], ['addr', 'Adresse', 'Adresse de la visite'], ['tel', 'Téléphone', '06 …', null, { type: 'tel' }]] }] : []),
-      { t: 'Chantier', f: [['siteN', 'Site', '', siteNames], ...(prj.length ? [['projN', 'Projet', '', prj]] : []), ['disc', 'Discipline', '', cd.length ? cd : st.discs], ['who', 'Contact', 'Nom', SUP.filter(x => !sk || !(x.sites || []).length || (x.sites || []).includes(sk)).map(x => x.name), { combo: true }], ['note', 'Notes', 'Matériel, accès…']] }]; };
+      { t: 'Chantier', f: [['siteN', 'Site', '', siteNames], ...(prj.length ? [['projN', 'Projet', '', prj]] : []), ['disc', 'Discipline', '', cd.length ? cd : st.discs, { add: 'disc' }], ['who', 'Contact', 'Nom', SUP.filter(x => !sk || !(x.sites || []).length || (x.sites || []).includes(sk)).map(x => x.name), { combo: true }], ['note', 'Notes', 'Matériel, accès…']] }]; };
     const evFromForm = (F, id, tk, base = {}) => { const sk = keyOfName(F.siteN) || base.site || st.site, pr = (st.P[sk] || []).find(p => p.name === F.projN), date = /^\d{4}-\d{2}-\d{2}$/.test(F.date || '') ? F.date : (base.date || selD), to = /^\d{4}-\d{2}-\d{2}$/.test(F.to || '') && F.to > date ? F.to : '', dur = to ? '' : (F.dur || ''), keepT = !to && !dur;
-      return { ...base, id, title: (F[tk] || '').trim(), cal: calKey(F.cal), date, to, dur, t: keepT ? (base.t || '') : '', end: keepT ? (base.end || '') : '', site: sk, proj: pr ? pr.id : '', disc: F.disc || (pr ? discOf(pr) : ''), who: (F.who || '').trim(), note: (F.note || '').trim(), client: (F.client || '').trim(), addr: (F.addr || '').trim(), tel: (F.tel || '').trim() }; };
+      return { ...base, id, title: (F[tk] || '').trim(), cal: calKey(F.cal), date, to, dur, t: keepT ? (base.t || '') : '', end: keepT ? (base.end || '') : '', site: sk, proj: pr ? pr.id : '', disc: F.disc || (pr ? discOf(pr) : ''), discs: F.disc ? [F.disc] : pr ? discsOf(pr) : [], who: (F.who || '').trim(), note: (F.note || '').trim(), client: (F.client || '').trim(), addr: (F.addr || '').trim(), tel: (F.tel || '').trim() }; };
     const STK = { 'Payée': 'paid', 'À payer': 'due', 'En retard': 'late' };
     const amtOf = v => parseFloat(String(v || '').replace(/\s/g, '').replace(',', '.').replace(/[^\d.]/g, '')) || 0;
     const numOf = v => Math.max(0, parseInt(String(v || '').replace(/[^\d]/g, '')) || 0);
     const allP = () => Object.keys(st.P).flatMap(k => st.P[k]);
+    const mailLoc = id => { for (const k of KS) for (const done of [false, true]) { const arr = done ? DONE[k] || [] : (SITES[k] || {}).mails || [], i = arr.findIndex(x => x.id === id); if (i >= 0) return { site: k, done, i, m: arr[i] }; } return null; };
     const findMail = id => { for (const k of KS) for (const arr of [SITES[k].mails || [], DONE[k] || []]) { const i = arr.findIndex(m => m.id === id); if (i >= 0) return { arr, i, m: arr[i] }; } return null; };
     const lvlUse = st.lvlUse || {}, lvlList = st.lvls || LVL0, lvlSugg = lvlList.map((v, i) => ({ v, i })).sort((a, b) => (lvlUse[b.v] || 0) - (lvlUse[a.v] || 0) || a.i - b.i).map(x => x.v);
     const lvlMerge = v => { const n = splitL(v).filter(x => !lvlList.some(y => y.toLowerCase() === x.toLowerCase())); return n.length ? [...lvlList, ...n] : st.lvls; };
@@ -2392,71 +2462,71 @@ class Component extends DCLogic {
       proj: {
         title: () => 'Modifier le projet', req: 'name', delLbl: 'Supprimer ce projet', canDel: () => true,
         note: () => 'Supprimer le projet efface aussi ses étapes, notes, fournisseurs et factures.',
-        load: r => { const p = list.find(x => x.id === r.id) || {}; return { name: p.name, disc: discOf(p), phase: p.phase, due: p.due, site: SL(st.site), lvl: lvlOf(p), addr: p.addr, city: p.city, access: p.access, hours: p.hours }; },
-        groups: () => [{ t: 'Projet', f: [['name', 'Nom', 'Ex. Salle de bain lot 4'], ['disc', 'Discipline', '', [...st.discs, 'Autre']], ['phase', 'Phase / lot', 'Ex. Second œuvre'], ['due', 'Échéance', 'Ex. 20 déc'], ['site', 'Site', '', siteNames]] }, { t: 'Localisation', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }], ...LOC] }],
+        load: r => { const p = list.find(x => x.id === r.id) || {}; return { name: p.name, disc: discsOf(p), cal: CALS[p.cal] ? CALS[p.cal][0] : '', phase: p.phase, due: p.due, site: SL(st.site), lvl: lvlOf(p), addr: p.addr, city: p.city, access: p.access, hours: p.hours }; },
+        groups: () => [{ t: 'Projet', f: [['name', 'Nom', 'Ex. Salle de bain lot 4'], ['disc', 'Disciplines', '', st.discs, { multi: true, add: 'disc' }], ['cal', 'Calendrier', '', CALU.map(k => CALS[k][0]), { add: 'cal' }], ['phase', 'Phase / lot', 'Ex. Second œuvre'], ['due', 'Échéance', 'Ex. 20 déc'], ['site', 'Site', '', siteNames]] }, { t: 'Localisation', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }], ...LOC] }],
         save: (r, F) => {
           const nk = keyOfName(F.site) || st.site;
           this.setState(s => {
             const cur = (s.P[s.site] || []).find(p => p.id === r.id); if (!cur) return null;
-            const p = { ...cur, name: F.name.trim(), disc: F.disc || '', phase: F.phase || '', due: F.due || '', lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: F.hours || '' };
+            const dl = (Array.isArray(F.disc) ? F.disc : F.disc ? [F.disc] : []).filter(x => x !== 'Autre'), p = { ...cur, name: F.name.trim(), disc: dl[0] || '', discs: dl, cal: CALU.find(k => CALS[k][0] === F.cal) || cur.cal || '', phase: F.phase || '', due: F.due || '', lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: F.hours || '' };
             const lu = countLvl(F.lvl, lvlOf(cur));
             if (nk === s.site) return { lvlUse: lu, lvls: lvlMerge(F.lvl), P: { ...s.P, [s.site]: s.P[s.site].map(x => x.id === r.id ? p : x) } };
             return { lvlUse: lu, lvls: lvlMerge(F.lvl), P: { ...s.P, [s.site]: s.P[s.site].filter(x => x.id !== r.id), [nk]: [...(s.P[nk] || []), p] }, site: nk, wpos: KS.indexOf(nk) };
           });
         },
-        del: r => this.setState(s => ({ P: { ...s.P, [s.site]: (s.P[s.site] || []).filter(x => x.id !== r.id) }, proj: null }))
+        del: r => { const p = list.find(x => x.id === r.id); if (p) this.trashPut('proj', '', { site: st.site, p, i: list.indexOf(p) }); this.setState(s => ({ P: { ...s.P, [s.site]: (s.P[s.site] || []).filter(x => x.id !== r.id) }, proj: null })); }
       },
       step: {
         title: () => 'Modifier l’étape', req: 'l', delLbl: 'Supprimer l’étape', canDel: () => true,
         load: r => { const s = Q.steps.find(x => x.id === r.id) || {}; return { l: s.l, t: s.t === 'c' ? 'Coche' : 'Jauge' }; },
         groups: () => [{ t: 'Étape', f: [['l', 'Intitulé', 'Ex. Pose plaques'], ['t', 'Suivi', '', ['Coche', 'Jauge']]] }],
         save: (r, F) => up(p => ({ ...p, steps: p.steps.map(x => x.id === r.id ? { ...x, l: F.l.trim(), t: F.t === 'Coche' ? 'c' : 'g', v: F.t === 'Coche' && x.v < 100 ? 0 : x.v } : x) })),
-        del: r => up(p => ({ ...p, steps: p.steps.filter(x => x.id !== r.id) }))
+        del: r => { const x = Q.steps.find(y => y.id === r.id); if (x) this.trashPut('step', '', { pid, x, i: Q.steps.indexOf(x) }); up(p => ({ ...p, steps: p.steps.filter(x => x.id !== r.id) })); }
       },
       note: {
         title: () => 'Modifier la note', req: 'n', delLbl: 'Supprimer la note', canDel: () => true,
         load: r => ({ n: Q.notes[r.i] }),
         groups: () => [{ t: 'Note', f: [['n', 'Note', 'Ex. Prévoir 120 plaques']] }],
         save: (r, F) => up(p => ({ ...p, notes: p.notes.map((x, i) => i === r.i ? F.n.trim() : x) })),
-        del: r => up(p => ({ ...p, notes: p.notes.filter((x, i) => i !== r.i) }))
+        del: r => { this.trashPut('note', '', { pid, t: Q.notes[r.i], i: r.i }); up(p => ({ ...p, notes: p.notes.filter((x, i) => i !== r.i) })); }
       },
       inv: {
         title: () => 'Modifier la facture', req: 'num', delLbl: 'Supprimer la facture', canDel: () => true,
         load: r => { const p = allP().find(x => x.id === r.pid), i = (p && p.inv.find(x => x.id === r.id)) || {}; return { num: i.num, amt: i.amt != null ? String(i.amt).replace('.', ',') : '', date: i.date, st: STL[i.st], sup: i.sup, sups: p ? p.sup.map(f => f.name) : [] }; },
         groups: () => [{ t: 'Facture', f: [['num', 'N°', 'Ex. F-2026-0520'], ['amt', 'Montant HT', 'Ex. 1 250'], ['date', 'Échéance', 'Ex. 30 nov'], ['st', 'Statut', '', Object.keys(STK)], ['sup', 'Fournisseur', '', F.sups || []]] }],
         save: (r, F) => this.updP(r.pid, p => ({ ...p, inv: p.inv.map(x => x.id === r.id ? { ...x, num: F.num.trim(), amt: amtOf(F.amt), date: F.date || '—', st: STK[F.st] || x.st, sup: F.sup || x.sup } : x) })),
-        del: r => this.updP(r.pid, p => ({ ...p, inv: p.inv.filter(x => x.id !== r.id) }))
+        del: r => { const p0 = allP().find(x => x.id === r.pid), x = p0 && p0.inv.find(y => y.id === r.id); if (x) this.trashPut('inv', '', { pid: r.pid, x }); this.updP(r.pid, p => ({ ...p, inv: p.inv.filter(x => x.id !== r.id) })); }
       },
       team: {
         title: r => r.i < 0 ? 'Nouvel intervenant' : 'Modifier l’intervenant', req: 'name', delLbl: 'Retirer de l’équipe', canDel: r => r.i >= 0,
         load: r => { const m = (TEAMS[st.site] || [])[r.i] || []; return { name: m[0], role: m[1], tag: m[2], tel: m[3] }; },
         groups: () => [{ t: 'Intervenant', f: [['name', 'Nom', 'Ex. Ali Diallo'], ['role', 'Rôle', 'Ex. Chef d’équipe plâtrerie'], ['tag', 'Statut', '', ['Référent', 'Sur site', 'Sous-traitant', 'Client']], ['tel', 'Téléphone', '06 …']] }],
         save: (r, F) => { const T = TEAMS[st.site] = TEAMS[st.site] || [], m = [F.name.trim(), F.role || '', F.tag || 'Sur site', F.tel || '']; if (r.i < 0) T.push(m); else T[r.i] = m; set(bump()); },
-        del: r => { (TEAMS[st.site] || []).splice(r.i, 1); set(bump()); }
+        del: r => { const m = (TEAMS[st.site] || [])[r.i]; if (m) this.trashPut('team', '', { site: st.site, m, i: r.i }); (TEAMS[st.site] || []).splice(r.i, 1); set(bump()); }
       },
       stk: {
         title: () => 'Modifier l’article', req: 'name', delLbl: 'Supprimer l’article', canDel: () => true,
         load: r => { const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || []; const o = st.stk[r.key] || {}; return { name: x[1], unit: x[2], disc: x[6] || SDISC[x[0]] || 'Autre', sub: x[0] ? subOf(x) : '', ean: x[8] || '', q: String(o.q ?? x[3]), min: String(x[4]), lot: String(x[5]) }; },
-        groups: () => [{ t: 'Article', f: [['name', 'Produit', 'Ex. Joint carrelage'], ['unit', 'Unité', 'Ex. sacs'], ['disc', 'Discipline', '', [...st.discs, 'Autre']], ['sub', 'Sous-catég.', 'Ex. Câbles', subSugg(F.disc), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir']] }, { t: 'Quantités', f: [['q', 'En stock', '0'], ['min', 'Seuil', '0'], ['lot', 'Lot', '1']] }],
+        groups: () => [{ t: 'Article', f: [['name', 'Produit', 'Ex. Joint carrelage'], ['unit', 'Unité', 'Ex. sacs'], ['disc', 'Discipline', '', [...st.discs, 'Autre'], { add: 'disc' }], ['sub', 'Sous-catég.', 'Ex. Câbles', subSugg(F.disc), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir']] }, { t: 'Quantités', f: [['q', 'En stock', '0'], ['min', 'Seuil', '0'], ['lot', 'Lot', '1']] }],
         save: (r, F) => {
           refPut(F.ean, F.name, F.unit, F.disc, F.sub);
           const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || [], o = { q: x[3], o: 0, sent: false, ...(st.stk[r.key] || {}) };
           set({ stkCfg: { ...(st.stkCfg || {}), [r.key]: { ...((st.stkCfg || {})[r.key] || {}), name: F.name.trim(), unit: (F.unit || '').trim() || 'unités', disc: F.disc || 'Autre', sub: (F.sub || '').trim(), ean: (F.ean || '').trim(), min: numOf(F.min), lot: Math.max(1, numOf(F.lot)) } }, stk: { ...st.stk, [r.key]: { ...o, q: numOf(F.q) } } });
         },
-        del: r => set({ stkDel: { ...(st.stkDel || {}), [r.key]: true }, stkOpen: null })
+        del: r => { this.trashPut('stk', '', { key: r.key, name: F.name }); set({ stkDel: { ...(st.stkDel || {}), [r.key]: true }, stkOpen: null }); }
       },
       ev: {
         title: r => r.id ? 'Modifier l’événement' : 'Nouvel événement', req: 'title', delLbl: 'Supprimer l’événement', canDel: r => !!r.id,
         load: r => { const e = (st.evs || []).find(x => x.id === r.id) || {}, pr = e.proj ? Object.keys(st.P).flatMap(k => st.P[k]).find(x => x.id === e.proj) : null; return { title: e.title, cal: (CALS[e.cal] || CALS[CALU[0]])[0], date: e.date, to: e.to, dur: e.dur, siteN: e.site && SITES[e.site] ? SL(e.site) : '', projN: pr ? pr.name : '', disc: e.disc, who: e.who, note: e.note, client: e.client, addr: e.addr, tel: e.tel }; },
         groups: () => evGroups('title'),
         save: (r, F) => this.setState(s => ({ evs: (s.evs || []).map(x => x.id === r.id ? evFromForm(F, r.id, 'title', x) : x), calDay: /^\d{4}-\d{2}-\d{2}$/.test(F.date || '') ? F.date : s.calDay, cal: /^\d{4}-\d{2}-\d{2}$/.test(F.date || '') ? F.date.slice(0, 7) : s.cal })),
-        del: r => this.setState(s => ({ evs: (s.evs || []).filter(x => x.id !== r.id) }))
+        del: r => { const e = (st.evs || []).find(x => x.id === r.id); if (e) this.trashPut('ev', '', { e }); this.setState(s => ({ evs: (s.evs || []).filter(x => x.id !== r.id) })); }
       },
       sup: {
         title: r => r.id ? 'Modifier le contact' : 'Nouveau contact', req: 'name', delLbl: 'Supprimer de l’annuaire', canDel: r => !!r.id,
         load: r => { const x = SUP.find(y => y.id === r.id) || { rub: r.rub && r.rub !== 'T' ? r.rub : 'F', sites: st.csite && SITES[st.csite] ? [st.csite] : [] }; return { name: x.name, rub: RUB[x.rub || 'F'], cat: x.cat ? cap(x.cat) : '', who: x.who, tel: x.tel, mail: x.mail, addr: x.addr, city: x.city, sites: (x.sites || []).filter(k => SITES[k]).map(SL), delay: x.delay, price: x.price, why: x.why }; },
         groups: () => [
-          { t: 'Contact', f: [['name', 'Nom', 'Ex. Isol’Rhône'], ['rub', 'Rubrique', '', Object.values(RUB)], ['cat', 'Discipline', '', Array.from(new Set([...st.discs, ...SUP.map(x => cap(x.cat)).filter(Boolean)]))], ['why', 'Notes', 'Ex. Livraison avec hayon']] },
+          { t: 'Contact', f: [['name', 'Nom', 'Ex. Isol’Rhône'], ['rub', 'Rubrique', '', Object.values(RUB), { add: 'rub' }], ['cat', 'Discipline', '', Array.from(new Set([...st.discs, ...SUP.map(x => cap(x.cat)).filter(Boolean)])), { add: 'disc' }], ['why', 'Notes', 'Ex. Livraison avec hayon']] },
           { t: 'Coordonnées', f: [['who', 'Interlocuteur', 'Nom du contact'], ['tel', 'Téléphone', '04 …', null, { type: 'tel' }], ['mail', 'Mail', 'contact@…', null, { type: 'email' }], ['addr', 'Adresse', 'Ex. 12 rue de la Gare'], ['city', 'Ville', 'Ex. 69007 Lyon']] },
           { t: 'Affectation aux sites', f: [['sites', 'Sites', '', siteNames, { multi: true }]] },
           ...(edRef.id && F.rub === RUB.F ? [{ t: 'Conditions', f: [['delay', 'Délai', 'Ex. 48 h, 5 jours…'], ['price', 'Prix', '', ['€', '€€', '€€€']]] }] : [])],
@@ -2468,14 +2538,14 @@ class Component extends DCLogic {
           if (isNew) { x.k = Object.keys(SDISC).filter(y => SDISC[y].toUpperCase() === x.cat); this.setState(s0 => ({ ...bump(), ...(r.sub ? {} : { tab: 'c', supSel: x.id }) })); return; }
           this.setState(s0 => { const P = {}; Object.keys(s0.P).forEach(k => { P[k] = s0.P[k].map(p => ({ ...p, sup: p.sup.map(f => f.ref === r.id ? { ...f, name, tel: x.tel, mail: x.mail, who: x.who } : f), inv: p.inv.map(iv => iv.sup === old ? { ...iv, sup: name } : iv) })); }); return { ...bump(), P }; });
         },
-        del: r => { const k = SUP.findIndex(x => x.id === r.id); if (k >= 0) SUP.splice(k, 1); set({ ...bump(), supSel: null }); }
+        del: r => { const k = SUP.findIndex(x => x.id === r.id); if (k >= 0) { this.trashPut('sup', '', { x: SUP[k] }); SUP.splice(k, 1); } set({ ...bump(), supSel: null }); }
       },
       cal: {
         title: r => r.k ? 'Modifier le calendrier' : 'Nouveau calendrier', req: 'name', delLbl: 'Supprimer le calendrier',
         canDel: r => { const c = r.k && calL().find(x => x.k === r.k); return !!c && !c.auto && CALU.length > 1; },
         note: r => { const c = r.k && calL().find(x => x.k === r.k); if (!c) return ''; if (c.auto) return 'Calendrier automatique : ses éléments viennent du stock ou des factures. Pour le masquer, touchez-le en haut du planning.'; if (CALU.length < 2) return 'Il faut au moins un calendrier.'; const n = (st.evs || []).filter(e => e.cal === r.k).length, to = CALU.find(k => k !== r.k); return n ? 'Supprimer ce calendrier déplace ses ' + n + ' événement' + (n > 1 ? 's' : '') + ' dans « ' + CALS[to][0] + ' ».' : ''; },
         load: r => { const c = calL().find(x => x.k === r.k); return c ? { name: c.n, color: colorName(c.c), discs: [...(c.d || [])] } : { color: Object.keys(COLORS).find(n => !calL().some(x => x.c === COLORS[n])) || 'Bleu', discs: [] }; },
-        groups: () => { const c = calL().find(x => x.k === edRef.k); return [{ t: 'Calendrier', f: [['name', 'Nom', 'Ex. Réception de chantier'], ['color', 'Couleur', '', Object.keys(COLORS)]] }, ...(c && c.auto ? [] : [{ t: 'Disciplines', f: [['discs', 'Proposées dans ses événements (aucune = toutes)', '', st.discs, { multi: true }]] }])]; },
+        groups: () => { const c = calL().find(x => x.k === edRef.k); return [{ t: 'Calendrier', f: [['name', 'Nom', 'Ex. Réception de chantier'], ['color', 'Couleur', '', Object.keys(COLORS)]] }, ...(c && c.auto ? [] : [{ t: 'Disciplines', f: [['discs', 'Proposées dans ses événements (aucune = toutes)', '', st.discs, { multi: true, add: 'disc' }]] }])]; },
         save: (r, F) => { const L = calL(), c = { n: F.name.trim(), c: COLORS[F.color] || '#0A84FF', d: F.discs || [] }; set({ cals: r.k ? L.map(x => x.k === r.k ? { ...x, ...c, d: x.auto ? [] : c.d } : x) : [...L.filter(x => !x.auto), { k: 'k' + rid(), ...c }, ...L.filter(x => x.auto)] }); },
         del: r => { const L = calL().filter(x => x.k !== r.k), to = (L.find(x => !x.auto) || {}).k; if (!to) return; this.setState(s => ({ cals: L, evs: (s.evs || []).map(e => e.cal === r.k ? { ...e, cal: to } : e) })); }
       },
@@ -2503,26 +2573,28 @@ class Component extends DCLogic {
         load: r => { const x = findMail(r.id), m = x ? x.m : {}; return { from: m.from, org: m.org, subject: m.subject, summary: m.summary, body: m.body }; },
         groups: () => [{ t: 'Message', f: [['from', 'De', 'Nom'], ['org', 'Société', 'Ex. Plâtre Express'], ['subject', 'Objet', 'Objet'], ['summary', 'Résumé', 'En une phrase'], ['body', 'Texte', 'Contenu du message']] }],
         save: (r, F) => { const x = findMail(r.id); if (x) Object.assign(x.m, { from: F.from.trim(), org: F.org || '', subject: F.subject || '', summary: F.summary || '', body: F.body || '' }); set(bump()); },
-        del: r => { const x = findMail(r.id); if (x) x.arr.splice(x.i, 1); set({ ...bump(), mail: null }); }
+        del: r => { const loc = mailLoc(r.id); if (loc) this.trashPut('mail', '', loc); const x = findMail(r.id); if (x) x.arr.splice(x.i, 1); set({ ...bump(), mail: null }); }
       }
     };
     const EK = st.sheet === 'ed' ? EDK[F.kind] : null, edRef = F.ref || {};
     const FD = {
       ed: EK ? EK.groups() : [],
-      p: [{ t: 'Projet', f: [['a', 'Nom', 'Ex. Salle de bain lot 4'], ['b', 'Discipline', '', [...st.discs, 'Autre']], ['c', 'Échéance', 'Ex. 20 déc']] }, { t: 'Emplacement', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }]] }],
-      s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Discipline', '', [...st.discs, 'Autre']], ['u', 'Sous-catég.', 'Ex. Ampoules', subSugg(F.e), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir', null, { type: 'text' }]] }, { t: 'Quantités', f: [['b', 'Unité', 'Ex. sacs'], ['c', 'Quantité', '0'], ['d', 'Seuil', '0']] }],
+      p: [{ t: 'Projet', f: [['a', 'Nom', 'Ex. Salle de bain lot 4'], ['b', 'Disciplines', '', st.discs, { multi: true, add: 'disc' }], ['c', 'Échéance', 'Ex. 20 déc']] }, { t: 'Emplacement', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }]] }],
+      s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Discipline', '', [...st.discs, 'Autre'], { add: 'disc' }], ['u', 'Sous-catég.', 'Ex. Ampoules', subSugg(F.e), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir', null, { type: 'text' }]] }, { t: 'Quantités', f: [['b', 'Unité', 'Ex. sacs'], ['c', 'Quantité', '0'], ['d', 'Seuil', '0']] }],
       l: evGroups('a'),
       inv: [{ t: 'Facture', f: [['a', 'N°', 'Ex. F-2026-0520'], ['b', 'Montant HT', 'Ex. 1 250'], ['c', 'Échéance', 'Ex. 30 nov']] }]
     };
     const groups = (FD[sh] || []).map((g, gi) => { const mk = sh + gi, live = st.mic === mk, err = st.micErr === mk; return { t: g.t, micMsg: live || err, micLbl: live ? 'Écoute…' : 'Dictée indisponible', micCol: live ? '#FF5A5A' : 'var(--ink3)', micBg: live ? '#FF5A5A' : 'var(--tile)', micFg: live ? '#fff' : 'var(--ink)', mic: () => this.dictate(mk, g.f[0][0]), fields: g.f.map(([k, label, ph, ch, o = {}]) => {
       const val = F[k], multi = !!o.multi, combo = !!o.combo, has = v => multi ? (val || []).includes(v) : combo && o.list ? splitL(val).includes(v) : val === v;
       const pickV = v => setF({ [k]: multi ? (has(v) ? val.filter(x => x !== v) : [...(val || []), v]) : combo && o.list ? (has(v) ? splitL(val).filter(x => x !== v) : [...splitL(val), v]).join(', ') : has(v) && !combo ? '' : v, ...(k === 'siteN' ? { projN: '' } : {}) });
-      const edOn = !!o.edit && !!F.lvlEd;
+      const edOn = !!o.edit && !!F.lvlEd, ak = o.add, qk = 'qa_' + k, addOn = !!ak && F[qk] !== undefined;
       return { label, ph, type: o.type || 'text', val: multi ? '' : val || '', on: fset(k), isIn: !ch, isCh: !!ch && !combo, isCo: combo,
+        hasAdd: !!ak && canCfg(), addOn, addTog: () => setF({ [qk]: addOn ? undefined : '' }), addVal: F[qk] || '', addIn: fset(qk), addPh: { disc: 'Nouvelle discipline…', rub: 'Nouvelle rubrique…', cal: 'Nouveau calendrier…' }[ak] || '',
+        addOk: () => { const typed = up1(String(F[qk] || '').trim()), r = quickAdd(ak, F[qk]); if (!r) return; const lab = ak === 'disc' ? r : ak === 'rub' ? (RUB[r] || typed) : (CALS[r] ? CALS[r][0] : typed); setF({ [qk]: undefined, [k]: multi ? Array.from(new Set([...(val || []), lab])) : lab }); },
         hasEd: !!o.edit, edOn, edLbl: edOn ? 'Terminé' : 'Modifier', edBg: edOn ? 'var(--solid)' : 'transparent', edFg: edOn ? 'var(--solidTx)' : 'var(--acc)', edTog: () => setF({ lvlEd: !F.lvlEd, lvlNew: '' }), edVal: F.lvlNew || '', edIn: fset('lvlNew'), edAdd: () => lvlAdd(F.lvlNew),
         opts: (ch || []).map(v => { const a = has(v); return edOn ? { label: v + '  ✕', bg: 'var(--tile)', fg: 'var(--ink2)', pick: () => set({ lvls: lvlList.filter(x => x !== v) }) } : { label: v, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => pickV(v) }; }) }; }) }; });
     const edErr = EK && EK.err ? EK.err(edRef, F) : '';
-    const valid = sh === 'ed' ? !!(EK && String(F[EK.req] || '').trim()) && !edErr : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' || sh === 'cfg' ? true : sh === 'sup' ? (F.pick || []).length > 0 : sh === 'inv' ? !!(F.a && F.b && F.sup) : !!(F.a && F.a.trim());
+    const valid = sh === 'ed' ? !!(EK && String(F[EK.req] || '').trim()) && !edErr : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' || sh === 'cfg' || sh === 'trash' ? true : sh === 'sup' ? (F.pick || []).length > 0 : sh === 'inv' ? !!(F.a && F.b && F.sup) : !!(F.a && F.a.trim());
     const fs = F.steps || [];
     const fSteps = fs.map((s, i) => ({ l: s.l, cBg: s.t === 'c' ? 'var(--on)' : 'transparent', cFg: s.t === 'c' ? ACC : 'var(--ink2)', gBg: s.t === 'g' ? 'var(--on)' : 'transparent', gFg: s.t === 'g' ? ACC : 'var(--ink2)',
       pickC: () => setF({ steps: fs.map((x, j) => j === i ? { ...x, t: 'c' } : x) }), pickG: () => setF({ steps: fs.map((x, j) => j === i ? { ...x, t: 'g' } : x) }), del: () => setF({ steps: fs.filter((x, j) => j !== i) }) }));
@@ -2541,15 +2613,16 @@ class Component extends DCLogic {
     const submit = () => {
       if (!valid) return;
       if (sh === 'ed') { track('save:' + F.kind); EK.save(edRef, F); pop(); return; }
-      if (sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' || sh === 'cfg') { pop(); return; }
+      if (sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' || sh === 'cfg' || sh === 'trash') { pop(); return; }
       const a = (F.a || '').trim(), sq = st.seq + 1;
       track('create:' + sh);
       if (sh === 'p') {
-        const p = { id: newId, name: a, disc: F.b && F.b !== 'Autre' ? F.b : '', phase: F.b || 'Nouveau lot', due: F.c || (F.plan !== false && /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > (F.pdate || today) ? (d => d.getDate() + ' ' + MABRV[d.getMonth()])(dOf(F.pend)) : 'à planifier'), lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: '', geo: S.geo,
+        const dl = (Array.isArray(F.b) ? F.b : F.b ? [F.b] : []).filter(x => x && x !== 'Autre'), pcal = CALS[F.pcal] && CALU.includes(F.pcal) ? F.pcal : CALS.real ? 'real' : CALU[0];
+        const p = { id: newId, name: a, disc: dl[0] || '', discs: dl, cal: pcal, phase: dl[0] || 'Nouveau lot', due: F.c || (F.plan !== false && /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > (F.pdate || today) ? (d => d.getDate() + ' ' + MABRV[d.getMonth()])(dOf(F.pend)) : 'à planifier'), lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: '', geo: S.geo,
           steps: fs.map((s, i) => ({ id: newId + 's' + i, l: s.l, t: s.t, v: 0 })), notes: [],
           sup: fSelIds.map(supCopy), inv: [] };
         const pd0 = /^\d{4}-\d{2}-\d{2}$/.test(F.pdate || '') ? F.pdate : today, pto = /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > pd0 ? F.pend : '';
-        const addPlan = F.plan !== false, pev = { id: 'e' + rid(), date: pd0, to: pto, dur: '', t: '', end: '', site: st.site, title: ((F.pkind || '').trim() || (pto ? 'Réalisation' : 'Démarrage')) + ' · ' + a, cal: CALS.real ? 'real' : CALU[0], disc: p.disc, proj: newId, who: '', note: '' };
+        const addPlan = F.plan !== false, pev = { id: 'e' + rid(), date: pd0, to: pto, dur: '', t: '', end: '', site: st.site, title: ((F.pkind || '').trim() || (pto ? 'Réalisation' : 'Démarrage')) + ' · ' + a, cal: pcal, disc: p.disc, discs: dl, proj: newId, who: '', note: '' };
         const lu = countLvl(F.lvl, ''), cov = F.cover ? { cover: { ...(st.cover || {}), [newId]: F.cover }, ph: { ...(st.ph || {}), [newId]: [{ id: F.cover, sec: 'av', at: Date.now() }] } } : {};
         this.setState(s => ({ ...cov, lvlUse: lu, lvls: lvlMerge(F.lvl), P: { ...s.P, [s.site]: [...s.P[s.site], p] }, evs: addPlan ? [...(s.evs || []), pev] : s.evs, proj: newId, seg: 'e', sheet: null, seq: sq, tab: 'p' }));
       }
@@ -2571,7 +2644,7 @@ class Component extends DCLogic {
     return {
       dark: st.dark, light: !st.dark, toggleTheme: () => set({ dark: !st.dark }),
       themeStyle: { position: 'absolute', inset: 0, background: 'var(--bg)', color: 'var(--ink)', colorScheme: st.dark ? 'dark' : 'light', transition: 'background .3s', ...(st.dark ? DARK : {}) },
-      kp, sites, rubs, calCells, dayEv, calChips, plDiscs, dayLbl, dayN: dayEv.length ? dayEv.length + ' élément' + (dayEv.length > 1 ? 's' : '') : 'libre',
+      kp, sites, rubs, calWeeks, dayEv, calChips, dayLbl, dayN: dayEv.length ? dayEv.length + ' élément' + (dayEv.length > 1 ? 's' : '') : 'libre',
       calTitle: up1(MOIS[calMo - 1]) + ' ' + calY, calPrev: () => monthGo(-1), calNext: () => monthGo(1), calToday: () => set({ cal: today.slice(0, 7), calDay: today }),
       calDown: (e) => { this.calX = e.clientX; }, calUp: (e) => { if (this.calX == null) return; const dx = e.clientX - this.calX; this.calX = null; if (Math.abs(dx) > 50) { this.calSw = Date.now(); monthGo(dx < 0 ? 1 : -1); } },
       subtitle, tb, projects, stocks, mails, tones, chFilters, cats, contacts, cm, draftText, pj, segs, stepTypes,
@@ -2605,7 +2678,7 @@ class Component extends DCLogic {
       psecs, pdiscs, pdAdd, togglePdAdd: () => set({ pdAdd: !st.pdAdd, discText: '' }), segPh: segK === 'ph', phSecs, phv, phvOpen: !!phv, dirRubs,
       addCover: async () => { const f = await phPick(false); if (!f.length) return; try { const b = await phShrink(f[0]), id = 'ph' + Date.now().toString(36) + rid(); await phPut(id, b); PURL[id] = URL.createObjectURL(b); phMark([id]); setF({ cover: id }); } catch (e) { this.toast('Photo ignorée : ' + ((e && e.message) || e)); } },
       newHasCover: !!F.cover, newNoCover: !F.cover, newCoverSrc: F.cover ? phUrl(F.cover) : '',
-      noProj: st.tab === 'p' && !detail && projects.length === 0, projEmpty: pdisc ? 'Aucun projet ' + { d: 'terminé', r: 'en cours', t: 'à faire' }[psec] + ' en ' + pdisc : { d: 'Aucun projet terminé', r: 'Aucun projet en cours', t: 'Aucun projet à faire' }[psec],
+      noProj: st.tab === 'p' && !detail && projects.length === 0, secOn: st.projSecs !== false, projEmpty: st.projSecs === false ? 'Aucun projet' + (pdisc ? ' en ' + pdisc : '') : pdisc ? 'Aucun projet ' + { d: 'terminé', r: 'en cours', t: 'à faire' }[psec] + ' en ' + pdisc : { d: 'Aucun projet terminé', r: 'Aucun projet en cours', t: 'Aucun projet à faire' }[psec],
       title: titles[st.tab], noEvents: dayEv.length === 0, hasEvents: dayEv.length > 0, stop: (e) => e.stopPropagation(),
       isList: st.tab === 'p' && !detail, isDetail: detail, showHead: !detail && !(st.tab === 'c' && st.supSel),
       segE: segK === 'e', segL: segK === 'l', segC: segK === 'c',
@@ -2695,17 +2768,35 @@ class Component extends DCLogic {
         const chip = (list, cur, key) => list.map(v => { const a = cur === v; return { label: v, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => setF({ [key]: a ? '' : v }) }; });
         const num = (v, d) => { const n = parseInt(String(v).replace(/[^\d]/g, '')); return isNaN(n) ? d : n; };
         const kItems = stockOf(st.site).map(x => { const key = st.site + x[0], setC = (o) => set({ stkCfg: { ...(st.stkCfg || {}), [key]: { ...((st.stkCfg || {})[key] || {}), ...o } } });
-          return { name: x[1], unit: x[2], disc: (x[6] || SDISC[x[0]] || 'Autre') + ' › ' + subOf(x), min: String(x[4]), lot: String(x[5]), onMin: (e) => setC({ min: num(e.target.value, 0) }), onLot: (e) => setC({ lot: Math.max(1, num(e.target.value, 1)) }), del: () => set({ stkDel: { ...(st.stkDel || {}), [key]: true } }) }; });
+          return { name: x[1], unit: x[2], disc: (x[6] || SDISC[x[0]] || 'Autre') + ' › ' + subOf(x), min: String(x[4]), lot: String(x[5]), onMin: (e) => setC({ min: num(e.target.value, 0) }), onLot: (e) => setC({ lot: Math.max(1, num(e.target.value, 1)) }), del: () => this.undoable(x[1] + ' supprimé du stock', 'stk', 'bouton', { key, name: x[1] }, () => set({ stkDel: { ...(this.state.stkDel || {}), [key]: true } })),
+            sw: (() => { const k = 'kc:' + key; SW[k] = canDel() ? { del: how => this.undoable(x[1] + ' supprimé du stock', 'stk', how, { key, name: x[1] }, () => this.setState(z => ({ stkDel: { ...(z.stkDel || {}), [key]: true } }))) } : {}; return k; })() }; });
         const kc = { site: SL(st.site), n: kItems.length + ' articles', items: kItems, na: F.na || '', nu: F.nu || '', nq: F.nq || '', nm: F.nm || '', nl: F.nl || '', onNa: fset('na'), onNu: fset('nu'), onNq: fset('nq'), onNm: fset('nm'), onNl: fset('nl'), discs: chip([...st.discs, 'Autre'], F.nd, 'nd'),
           add: () => { const a = (F.na || '').trim(); if (!a) return; const sq = st.seq + 1, m = Math.max(1, num(F.nm, 1)); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), ['k' + DEV + sq, a.charAt(0).toUpperCase() + a.slice(1), (F.nu || '').trim() || 'unités', num(F.nq, 0), m, Math.max(1, num(F.nl, m)), F.nd || 'Autre']] }, seq: sq, form: {} }); } };
         const pOn = F.plan !== false;
         const pD = /^\d{4}-\d{2}-\d{2}$/.test(F.pdate || '') ? F.pdate : today, pE = /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > pD ? F.pend : '';
-        const dl = x => (d => d.getDate() + ' ' + MOIS[d.getMonth()])(dOf(x)), nJ = pE ? Math.round((dOf(pE) - dOf(pD)) / 864e5) + 1 : 1, calN = CALS.real ? CALS.real[0] : CALS[CALU[0]][0];
+        const pK = CALS[F.pcal] && CALU.includes(F.pcal) ? F.pcal : CALS.real ? 'real' : CALU[0];
+        const dl = x => (d => d.getDate() + ' ' + MOIS[d.getMonth()])(dOf(x)), nJ = pE ? Math.round((dOf(pE) - dOf(pD)) / 864e5) + 1 : 1, calN = CALS[pK][0];
         const pp = { on: pOn, toggle: () => setF({ plan: !pOn }), sub: !pOn ? 'Le projet ne sera pas planifié' : pE ? 'Du ' + dl(pD) + ' au ' + dl(pE) + ' · ' + nJ + ' jours · ' + calN : up1(JOURS[dOf(pD).getDay()]) + ' ' + dl(pD) + ' · ' + calN,
           track: pOn ? 'var(--ok)' : 'var(--track)', knob: pOn ? 'translateX(20px)' : 'none', date: pD, onDate: fset('pdate'), end: F.pend || '', onEnd: fset('pend'),
           hint: F.pend && !pE ? 'La fin doit être après le début.' : pE ? 'Le projet apparaît chaque jour de la période dans le planning' + (F.c ? '.' : ', et son échéance devient le ' + dl(pE) + '.') : 'Laissez « Au » vide pour un seul jour.',
-          time: F.ptime || '', onTime: fset('ptime'), kind: F.pkind || '', onKind: fset('pkind'), kindPh: pE ? 'Réalisation' : 'Démarrage' };
+          time: F.ptime || '', onTime: fset('ptime'), kind: F.pkind || '', onKind: fset('pkind'), kindPh: pE ? 'Réalisation' : 'Démarrage',
+          cals: CALU.map(k => ({ label: CALS[k][0], dot: CALS[k][1], bg: k === pK ? 'var(--acc)' : 'var(--tile)', fg: k === pK ? 'var(--accOn)' : INK, pick: () => setF({ pcal: k }) })),
+          canAdd: canCfg(), addOn: !!F.pcalAdd, addTog: () => setF({ pcalAdd: !F.pcalAdd, pcalNew: '' }), addVal: F.pcalNew || '', addIn: fset('pcalNew'),
+          addOk: () => { const k2 = quickAdd('cal', F.pcalNew); if (k2) setF({ pcal: k2, pcalAdd: false, pcalNew: '' }); } };
         return { kc, pp };
+      })(),
+      // corbeille : 30 jours pour restaurer
+      ...(() => {
+        const T = st.trash || {}, lim = Date.now() - 30 * 864e5, ids = Object.keys(T).filter(id => new Date(T[id].at).getTime() >= lim).sort((a, b) => String(T[b].at).localeCompare(T[a].at));
+        const KL = { proj: 'Projet', sup: 'Contact', ev: 'Événement', stk: 'Article', inv: 'Facture', step: 'Étape', note: 'Note', team: 'Intervenant', projSup: 'Fournisseur du projet', photo: 'Photo', mail: 'Message' };
+        const nm = t => { const d = t.d || {}; return ({ proj: d.p && d.p.name, sup: d.x && d.x.name, ev: d.e && d.e.title, stk: d.name, inv: d.x && 'Facture ' + d.x.num + (d.x.sup ? ' · ' + d.x.sup : ''), step: d.x && d.x.l, note: d.t, team: d.m && d.m[0], projSup: d.x && d.x.name, photo: 'Photo du projet', mail: d.m && (d.m.subject || d.m.from) })[t.k] || t.l || 'Élément'; };
+        const pn = pid => { const p = Object.values(st.P).flat().find(x => x.id === pid); return p ? p.name : ''; };
+        const trashL = ids.map(id => { const t = T[id], left = Math.max(1, 30 - Math.floor((Date.now() - new Date(t.at).getTime()) / 864e5)), sw = 'tr:' + id;
+          SW[sw] = canDel() ? { del: () => { track('trash:delete'); this.setState(z => { const n = { ...(z.trash || {}) }; delete n[id]; return { trash: n }; }); } } : {};
+          return { sw, name: nm(t), sub: [KL[t.k] || 'Élément', t.d && t.d.pid ? pn(t.d.pid) : '', 'supprimé le ' + bkWhen(t.at) + (t.by ? ' par ' + t.by : ''), 'encore ' + left + ' j'].filter(Boolean).join(' · '), restore: () => this.trashRestore(id) }; });
+        return { isTrash: sh === 'trash', trashL, trashHas: trashL.length > 0, trashEmpty: !trashL.length, trashN: trashL.length ? trashL.length + ' élément' + (trashL.length > 1 ? 's' : '') : 'Vide',
+          trashOpen: () => { this.trashPurge(); sub({ sheet: 'trash', form: {} }); }, trashClearLbl: F.trClr ? 'Toucher encore pour vider la corbeille' : 'Vider la corbeille',
+          trashClear: () => { if (!F.trClr) { setF({ trClr: true }); return; } track('trash:clear'); set({ trash: {}, form: {} }); } };
       })(),
       // réglages par section : Projets, Stocks, Mails, Planning, Contacts
       ...(() => {
@@ -2725,11 +2816,11 @@ class Component extends DCLogic {
         if (cfOn && sec === 'p') {
           const renDisc = (o, n) => {
             if (st.discs.some(x => x !== o && x.toLowerCase() === n.toLowerCase())) return 'Cette discipline existe déjà.';
-            const P = {}; Object.keys(st.P).forEach(k => { P[k] = st.P[k].map(p => discOf(p) === o ? { ...p, disc: n, phase: p.phase === o ? n : p.phase } : p); });
+            const P = {}; Object.keys(st.P).forEach(k => { P[k] = st.P[k].map(p => discsOf(p).includes(o) ? { ...p, disc: discOf(p) === o ? n : discOf(p), discs: discsOf(p).map(x => x === o ? n : x), phase: p.phase === o ? n : p.phase } : p); });
             const sc = { ...(st.stkCfg || {}) }; KS.forEach(k => stockOf(k).forEach(x => { if ((x[6] || SDISC[x[0]]) === o) sc[k + x[0]] = { ...(sc[k + x[0]] || {}), disc: n }; }));
             SUP.forEach(x => { if (cap(x.cat || '') === cap(o)) x.cat = n.toUpperCase(); });
             let rc = false; Object.keys(REF).forEach(c => { if (REF[c][2] === o) { REF[c][2] = n; rc = true; } }); if (rc) refSave();
-            set({ ...bump(), discs: st.discs.map(x => x === o ? n : x), P, stkCfg: sc, evs: (st.evs || []).map(e => e.disc === o ? { ...e, disc: n } : e), cals: calL().map(c => ({ ...c, d: (c.d || []).map(x => x === o ? n : x) })), pdisc: st.pdisc === o ? n : st.pdisc, pldisc: st.pldisc === o ? n : st.pldisc, stkD: st.stkD === o ? n : st.stkD, cat: st.cat === o.toUpperCase() ? n.toUpperCase() : st.cat });
+            set({ ...bump(), discs: st.discs.map(x => x === o ? n : x), P, stkCfg: sc, evs: (st.evs || []).map(e => e.disc === o || (e.discs || []).includes(o) ? { ...e, disc: e.disc === o ? n : e.disc, discs: (e.discs || []).map(x => x === o ? n : x) } : e), cals: calL().map(c => ({ ...c, d: (c.d || []).map(x => x === o ? n : x) })), pdisc: st.pdisc === o ? n : st.pdisc, pldisc: st.pldisc === o ? n : st.pldisc, stkD: st.stkD === o ? n : st.stkD, cat: st.cat === o.toUpperCase() ? n.toUpperCase() : st.cat });
             return '';
           };
           L.push(lister('d', { t: 'Disciplines', unit: 'discipline', items: st.discs.map(d => ({ k: d, label: d })), ph: 'Nouvelle discipline (ex. Isolation)…', delLbl: 'Supprimer la discipline',
@@ -2739,6 +2830,7 @@ class Component extends DCLogic {
             note: 'Proposés en boutons à la création d’un projet, les plus utilisés en premier. Un emplacement saisi à la main s’ajoute à la liste.',
             ren: (o, n) => { if (lvlList.some(x => x !== o && x.toLowerCase() === n.toLowerCase())) return 'Cet emplacement existe déjà.'; const P = {}; Object.keys(st.P).forEach(k => { P[k] = st.P[k].map(p => { const V = splitL(lvlOf(p)); return V.includes(o) ? { ...p, lvl: V.map(x => x === o ? n : x).join(', ') } : p; }); }); const lu = { ...lvlUse }; if (lu[o]) { lu[n] = (lu[n] || 0) + lu[o]; delete lu[o]; } set({ lvls: lvlList.map(x => x === o ? n : x), P, lvlUse: lu }); return ''; },
             del: v => set({ lvls: lvlList.filter(x => x !== v) }), add: t => lvlList.some(x => x.toLowerCase() === t.toLowerCase()) ? 'Cet emplacement existe déjà.' : (set({ lvls: [...lvlList, t] }), '') }));
+          T.push(tog(st.projSecs !== false, 'Tri par avancement', st.projSecs !== false ? 'Projets rangés en En cours, À faire et Terminés.' : 'Désactivé : tous les projets du site dans une seule liste.', () => { track('cfg:projSecs'); set({ projSecs: st.projSecs === false }); }));
           T.push(tog(projPhOn, 'Photos des projets', projPhOn ? 'Affichées dans la liste et en tête de chaque fiche.' : 'Masquées : liste plus compacte. Le dossier Photos (Avant / Après) reste dans chaque fiche.', () => { track('cfg:projPh'); set({ projPh: !projPhOn }); }));
           T.push(tog(projSupOn, 'Fournisseurs par projet', projSupOn ? 'Fournisseurs, sous-traitants et factures attachés à chaque projet.' : 'Désactivés : les fiches projet n’affichent plus fournisseurs ni factures (rien n’est effacé).', () => { track('cfg:projSup'); set({ projSup: !projSupOn }); }));
         }
@@ -2750,11 +2842,11 @@ class Component extends DCLogic {
             del: k => { SUP.forEach(x => { if (x.rub === k) x.rub = 'F'; }); set({ ...bump(), rubs: rl.filter(r => r.k !== k), rub: st.rub === k ? 'T' : st.rub }); },
             add: n => rl.some(r => r.n.toLowerCase() === n.toLowerCase()) ? 'Cette rubrique existe déjà.' : (set({ rubs: [...rl, { k: 'r' + rid(), n, p: plurFr(n) }] }), '') }));
           rows = { t: 'Annuaire', n: SUP.length + ' contact' + (SUP.length > 1 ? 's' : ''), add: () => openEdB('sup', { id: null, rub: 'F', sub: true }), addLbl: '+ Nouveau contact', note: 'Touchez un contact pour modifier sa fiche (rubrique, discipline, coordonnées, sites) ou le supprimer.',
-            items: SUP.slice().sort((a, b) => a.name.localeCompare(b.name, 'fr')).map(x => ({ av: CATC[cap(x.cat || '')] || '#7A8496', ini: ini(x.name || '?'), name: x.name, sub: [RUB[rubOf(x)], cap(x.cat || ''), sitesLbl(x)].filter(Boolean).join(' · '), open: () => openEdB('sup', { id: x.id, sub: true }) })) };
+            items: SUP.slice().sort((a, b) => a.name.localeCompare(b.name, 'fr')).map(x => ({ sw: (() => { const k = 'cs:' + x.id; SW[k] = canDel() ? { del: how => this.undoable(x.name + ' supprimé de l’annuaire', 'sup', how, { x }, () => { const i = SUP.indexOf(x); if (i >= 0) SUP.splice(i, 1); set({ rev: (this.state.rev || 0) + 1, supSel: null }); }) } : {}; return k; })(), av: CATC[cap(x.cat || '')] || '#7A8496', ini: ini(x.name || '?'), name: x.name, sub: [RUB[rubOf(x)], cap(x.cat || ''), sitesLbl(x)].filter(Boolean).join(' · '), open: () => openEdB('sup', { id: x.id, sub: true }) })) };
         }
         if (cfOn && sec === 'l') {
           rows = { t: 'Calendriers', n: CALU.length + ' calendrier' + (CALU.length > 1 ? 's' : '') + ' + 2 automatiques', add: () => openEdB('cal', { k: null }), addLbl: '+ Nouveau calendrier', note: 'Touchez un calendrier pour changer son nom, sa couleur et les disciplines proposées dans ses événements, ou pour le supprimer.',
-            items: calL().map(c => ({ av: c.c, ini: '', name: c.n, sub: c.auto ? 'Automatique · ' + (c.k === 'cmd' ? 'commandes et réceptions du stock' : 'factures à payer') : (c.d || []).length ? c.d.join(', ') : 'Toutes les disciplines', open: () => openEdB('cal', { k: c.k }) })) };
+            items: calL().map(c => ({ sw: (() => { const k = 'cc:' + c.k; SW[k] = canDel() && !c.auto && CALU.length > 1 ? { del: how => this.undoable('Calendrier « ' + c.n + ' » supprimé', 'cal', how, null, () => { const L = calL().filter(x => x.k !== c.k), to = (L.find(x => !x.auto) || {}).k; this.setState(z => ({ cals: L, evs: (z.evs || []).map(e => e.cal === c.k ? { ...e, cal: to } : e) })); }) } : {}; return k; })(), av: c.c, ini: '', name: c.n, sub: c.auto ? 'Automatique · ' + (c.k === 'cmd' ? 'commandes et réceptions du stock' : 'factures à payer') : (c.d || []).length ? c.d.join(', ') : 'Toutes les disciplines', open: () => openEdB('cal', { k: c.k }) })) };
         }
         const setMsg = (m, err) => this.setState(z => ({ rev: (z.rev || 0) + 1, form: { ...z.form, refMsg: m, refErr: !!err, refClr: false } }));
         const nI = stockOf(st.site).length, rn = refN.toLocaleString('fr-FR') + ' produit' + (refN > 1 ? 's' : '');
@@ -2780,6 +2872,9 @@ class Component extends DCLogic {
           mbxLims: [10, 30, 50, 100].map(n => ({ label: String(n), bg: mlim === n ? 'var(--on)' : 'transparent', fg: mlim === n ? INK : 'var(--ink2)', pick: () => set({ mbx: { ...mbx, limit: n } }) })),
           cfgGo: { p: go('p'), s: go('s'), m: go('m'), l: go('l'), c: go('c') },
           cfgSub: { p: st.discs.length + ' disciplines · ' + lvlList.length + ' emplacements · photos ' + (projPhOn ? 'affichées' : 'masquées'), s: 'Articles · base EAN de ' + rn, m: (mbx.user || (mbx.url ? 'Session cloud branchée' : 'À configurer')) + ' · ' + mlim + ' mails', l: CALU.length + ' calendriers · nom, couleur, disciplines', c: RUBK.length + ' rubriques · ' + SUP.length + ' contacts' },
+          qaStk: qaMk('stk', 'Nouvelle discipline (ex. Isolation)…', v => { const r = quickAdd('disc', v); if (r) this.toast('Discipline « ' + r + ' » ajoutée'); return r; }),
+          qaRub: qaMk('rub', 'Nouvelle rubrique (ex. Architecte)…', v => { const r = quickAdd('rub', v); if (r) set({ rub: r }); return r; }),
+          qaCal: qaMk('cal', 'Nouveau calendrier (ex. Réception)…', v => { const r = quickAdd('cal', v); if (r) this.toast('Calendrier ajouté : couleur et disciplines dans Réglages › Planning'); return r; }),
           calEdit: () => set({ sheet: 'cfg', cfgSec: 'l', form: {}, back: [], menu: false }), rubEdit: () => set({ sheet: 'cfg', cfgSec: 'c', form: {}, back: [], menu: false })
         };
       })(),
@@ -2787,9 +2882,9 @@ class Component extends DCLogic {
       edDelLbl: F.confirm ? 'Toucher encore pour confirmer' : (EK ? EK.delLbl : ''), edDelBg: F.confirm ? 'var(--warn)' : 'var(--warnBg)', edDelFg: F.confirm ? '#fff' : 'var(--warnTx)',
       edDel: () => { if (!F.confirm) { setF({ confirm: true }); return; } track('del:' + F.kind); EK.del(edRef); pop(); },
       editProj: () => openEd('proj', { id: pid }), editSup: () => openEd('sup', { id: S0.id }), editMail: () => openEd('mail', { id: cm0.id }), newSite: () => openEd('site', { k: null }),
-      openSheet: () => st.tab === 'c' ? openEd('sup', { id: null, rub: rub }) : st.tab === 'l' ? set({ sheet: 'l', back: [], form: { date: selD, cal: CALS[CALU[0]][0], siteN: SL(st.site), disc: pdf || '' }, menu: false }) : set({ sheet: st.tab, back: [], form: st.tab === 'p' ? { steps: DEFSTEPS, sups: [], b: pdisc || '' } : { day: st.day, site: st.site }, menu: false }),
-      sheetOpen: !!sh, closeSheet: pop, closeLbl, dismissSheet: () => { if (this.rec) try { this.rec.abort(); } catch (e) {} set({ sheet: null, mic: null, back: [] }); }, submit, submitCol: valid ? ACC : 'var(--ink3)', submitLabel: sh === 'ed' ? (edRef.k === null || edRef.i < 0 || edRef.id === null ? 'Créer' : 'OK') : sh === 'p' ? 'Créer' : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' || sh === 'cfg' ? 'OK' : 'Ajouter',
-      sheetTitle: sh === 'ed' ? (EK ? EK.title(edRef) : '') : sh === 'cfg' ? 'Réglages · ' + ({ p: 'Projets', s: 'Stocks', m: 'Mails', l: 'Planning', c: 'Contacts' }[st.cfgSec] || '') : { stkcfg: 'Réglages du stock', supcfg: 'Réglages fournisseurs', site: 'Configurer le site', acc: 'Compte', p: 'Nouveau projet', s: 'Nouveau produit', l: 'Nouvel événement', sup: 'Ajouter un fournisseur', inv: 'Nouvelle facture' }[sh] || '',
+      openSheet: () => st.tab === 'c' ? openEd('sup', { id: null, rub: rub }) : st.tab === 'l' ? set({ sheet: 'l', back: [], form: { date: selD, cal: CALS[CALU[0]][0], siteN: SL(st.site), disc: '' }, menu: false }) : set({ sheet: st.tab, back: [], form: st.tab === 'p' ? { steps: DEFSTEPS, sups: [], b: pdisc ? [pdisc] : [] } : { day: st.day, site: st.site }, menu: false }),
+      sheetOpen: !!sh, closeSheet: pop, closeLbl, dismissSheet: () => { if (this.rec) try { this.rec.abort(); } catch (e) {} set({ sheet: null, mic: null, back: [] }); }, submit, submitCol: valid ? ACC : 'var(--ink3)', submitLabel: sh === 'ed' ? (edRef.k === null || edRef.i < 0 || edRef.id === null ? 'Créer' : 'OK') : sh === 'p' ? 'Créer' : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' || sh === 'cfg' || sh === 'trash' ? 'OK' : 'Ajouter',
+      sheetTitle: sh === 'ed' ? (EK ? EK.title(edRef) : '') : sh === 'trash' ? 'Corbeille' : sh === 'cfg' ? 'Réglages · ' + ({ p: 'Projets', s: 'Stocks', m: 'Mails', l: 'Planning', c: 'Contacts' }[st.cfgSec] || '') : { stkcfg: 'Réglages du stock', supcfg: 'Réglages fournisseurs', site: 'Configurer le site', acc: 'Compte', p: 'Nouveau projet', s: 'Nouveau produit', l: 'Nouvel événement', sup: 'Ajouter un fournisseur', inv: 'Nouvelle facture' }[sh] || '',
       groups, fSteps, invSups, invSt, projSupOn, projPhCover: sh === 'p' && projPhOn,
       fSel: fSelL, hasFSel: fSelL.length > 0, fSelN: fSelL.length ? fSelL.length + ' sélectionné' + (fSelL.length > 1 ? 's' : '') : '', fSupQ: F.fq || '', onFSupQ: fset('fq'), hasFSupQ: !!F.fq, clearFSupQ: () => setF({ fq: '' }),
       fRes, hasFRes: fRes.length > 0, fResHint: !fRes.length, fResTxt: fq ? 'Aucun contact référencé ne correspond : ajoutez-le d’abord dans Contacts.' : 'Tapez un nom, une discipline ou une ville pour retrouver un contact de l’annuaire.',
