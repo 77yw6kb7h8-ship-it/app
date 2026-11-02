@@ -940,6 +940,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-for>
 </div>
 </sc-for>
+<sc-if value="{{ eanLook }}" hint-placeholder-val="{{ false }}"><div style="margin:10px 6px 0;font:500 13px/1.4 -apple-system,sans-serif;color:var(--ink2)">{{ eanLookTxt }} <a href="{{ eanWeb }}" target="_blank" style="color:var(--acc);font-weight:600;white-space:nowrap">Chercher sur le web ↗</a></div></sc-if>
 <sc-if value="{{ eanForm }}" hint-placeholder-val="{{ false }}"><div onClick="{{ scanForm }}" style="cursor:pointer;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:16px;background:var(--field);color:var(--acc);font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 7V4.5A1.5 1.5 0 0 1 4.5 3H7M17 3h2.5A1.5 1.5 0 0 1 21 4.5V7M21 17v2.5a1.5 1.5 0 0 1-1.5 1.5H17M7 21H4.5A1.5 1.5 0 0 1 3 19.5V17M7 8v8M10 8v8M13.5 8v8M17 8v8"></path></svg>Scanner le code EAN</div></sc-if>
 <sc-if value="{{ isProjSheet }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;justify-content:space-between;align-items:baseline;margin:20px 4px 8px">
@@ -1060,7 +1061,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:700 34px/1.05 -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.025em;margin-top:20px">Chantier</div>
 <div style="font:400 15px -apple-system,sans-serif;color:var(--ink2);margin-top:6px">Connectez-vous avec votre identifiant.</div>
 <div style="margin-top:24px;border-radius:16px;background:var(--field);border:1px solid var(--tileBd);overflow:hidden">
-<div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Identifiant</div><input value="{{ lgId }}" onChange="{{ onLgId }}" onKeyDown="{{ lgKey }}" autocapitalize="none" autocorrect="off" autocomplete="username" placeholder="Ex. thomas" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Identifiant</div><input value="{{ lgId }}" onChange="{{ onLgId }}" onKeyDown="{{ lgKey }}" autocapitalize="none" autocorrect="off" autocomplete="username" placeholder="Ex. boss" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 <div style="display:flex;align-items:center;padding:0 16px"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Mot de passe</div><input type="password" value="{{ lgPw }}" onChange="{{ onLgPw }}" onKeyDown="{{ lgKey }}" autocomplete="current-password" placeholder="••••" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
 </div>
 <sc-if value="{{ hasLgErr }}" hint-placeholder-val="{{ false }}"><div style="margin:10px 4px 0;font:500 13.5px -apple-system,sans-serif;color:var(--warnTx)">{{ lgErr }}</div></sc-if>
@@ -1306,6 +1307,14 @@ const seedUsers = () => {
   SEEDU.slice(1).forEach(x => { if (!USERS.some(u => u.login === x.login)) USERS.push({ ...x, id: USERS.some(u => u.id === x.id) ? 'u' + rid() : x.id }); });
   AUTH.seed = 1; AUTH.on = true;
 };
+// renommages demandés et profil du créateur de l'appli (une fois par appareil)
+const seedUsers2 = () => {
+  if ((AUTH.seed || 0) >= 2) return;
+  const o = USERS.find(u => u.login === 'thomas'); if (o) { o.login = 'boss'; if (!o.name || o.name === 'Thomas Martin') o.name = 'Boss'; }
+  const c = USERS.find(u => u.login === 'conducteur'); if (c) { c.login = 'rayane'; if (!c.name || c.name === 'Conducteur de travaux') c.name = 'Rayane'; }
+  if (!USERS.some(u => u.login === 'createur')) USERS.push({ id: USERS.some(u => u.id === 'u4') ? 'u' + rid() : 'u4', name: 'Créateur de l’appli', login: 'createur', role: 'owner', mail: '', pw: 'ea4ce22654077d534862d6e7:32fca613809c1ab2f223b3e959c71c7efe85be2455952bc073dda938b005fd53' });
+  AUTH.seed = 2;
+};
 const SESS_KEY = 'chantier-session';
 let ME = USERS[0];
 const meLoad = () => { let id = null; try { id = localStorage.getItem(SESS_KEY); } catch (e) {} ME = USERS.find(u => u.id === id) || (AUTH.on ? null : USERS.find(u => u.role === 'owner') || USERS[0]); };
@@ -1462,20 +1471,37 @@ const stockOfS = (st, k) => [...((SITES[k] || {}).stock || []), ...((st.addS || 
 const eanOk = c => { c = String(c || '').trim(); if (!/^\d+$/.test(c)) return c.length >= 4 && c.length <= 40; if (![8, 12, 13, 14].includes(c.length)) return false; const d = c.split('').map(Number), chk = d.pop(); const t = d.reverse().reduce((a, x, i) => a + x * (i % 2 ? 1 : 3), 0); return (10 - t % 10) % 10 === chk; };
 let zxP = null;
 const zxLoad = () => zxP || (zxP = window.ZXing ? Promise.resolve(window.ZXing) : new Promise((ok, ko) => { const sc = document.createElement('script'); sc.src = './vendor/zxing.min.js'; sc.onload = () => ok(window.ZXing); sc.onerror = () => { zxP = null; ko(new Error('lecteur de code indisponible')); }; document.head.appendChild(sc); }));
-const zxHints = Z => { const h = new Map(); h.set(Z.DecodeHintType.POSSIBLE_FORMATS, [Z.BarcodeFormat.EAN_13, Z.BarcodeFormat.EAN_8, Z.BarcodeFormat.UPC_A, Z.BarcodeFormat.UPC_E, Z.BarcodeFormat.CODE_128]); h.set(Z.DecodeHintType.TRY_HARDER, true); return h; };
+const zxHints = (Z, hard) => { const h = new Map(); h.set(Z.DecodeHintType.POSSIBLE_FORMATS, [Z.BarcodeFormat.EAN_13, Z.BarcodeFormat.EAN_8, Z.BarcodeFormat.UPC_A, Z.BarcodeFormat.UPC_E, Z.BarcodeFormat.CODE_128]); if (hard) h.set(Z.DecodeHintType.TRY_HARDER, true); return h; };
+const zxDecode = (Z, c, hard) => { const rd = new Z.MultiFormatReader(); rd.setHints(zxHints(Z, hard)); try { const t = rd.decode(new Z.BinaryBitmap(new Z.HybridBinarizer(new Z.HTMLCanvasElementLuminanceSource(c)))).getText(); return eanOk(t) ? t : null; } catch (e) { return null; } };
+// copie une zone (sx, sy, sw, sh en fraction) d'une image ou d'une vidéo, réduite à `max` px de large
+const zxCrop = (src, W, H, [fx, fy, fw, fh], max, c = document.createElement('canvas')) => { const sw = W * fw, sh = H * fh, k = Math.min(1, max / sw); c.width = Math.max(1, Math.round(sw * k)); c.height = Math.max(1, Math.round(sh * k)); c.getContext('2d', { willReadFrequently: true }).drawImage(src, W * fx, H * fy, sw, sh, 0, 0, c.width, c.height); return c; };
+const pickBD = r => { const x = (r || []).find(y => eanOk(y.rawValue)); return x ? x.rawValue : null; };
 const BDF = ['ean_13', 'ean_8', 'upc_a', 'upc_e', 'code_128'];
 const hasBD = async () => { try { return 'BarcodeDetector' in window && (await BarcodeDetector.getSupportedFormats()).includes('ean_13'); } catch (e) { return false; } };
-// lit un code-barres sur une photo (BarcodeDetector si présent, sinon ZXing)
+// lit un code-barres sur une photo : plusieurs cadrages et tailles, du plus rapide au plus poussé
 const decodeFile = async file => {
   const img = new Image(), u = URL.createObjectURL(file);
   try {
     img.src = u; await img.decode();
-    const k = Math.min(1, 1400 / Math.max(img.naturalWidth, img.naturalHeight)), c = document.createElement('canvas');
-    c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-    if (await hasBD()) { try { const r = await new BarcodeDetector({ formats: BDF }).detect(c); const x = r.find(y => eanOk(y.rawValue)); if (x) return x.rawValue; } catch (e) {} }
-    const Z = await zxLoad(), rd = new Z.MultiFormatReader(); rd.setHints(zxHints(Z));
-    try { return rd.decode(new Z.BinaryBitmap(new Z.HybridBinarizer(new Z.HTMLCanvasElementLuminanceSource(c)))).getText(); } catch (e) { return null; }
+    const W = img.naturalWidth, H = img.naturalHeight;
+    if (await hasBD()) { try { const r = pickBD(await new BarcodeDetector({ formats: BDF }).detect(zxCrop(img, W, H, [0, 0, 1, 1], 2000))); if (r) return r; } catch (e) {} }
+    const Z = await zxLoad();
+    for (const [box, max] of [[[0, 0, 1, 1], 1400], [[0.15, 0.3, 0.7, 0.4], 1600], [[0.05, 0.15, 0.9, 0.7], 2200], [[0, 0, 1, 1], 2600]]) { const r = zxDecode(Z, zxCrop(img, W, H, box, max), true); if (r) return r; }
+    return null;
   } finally { URL.revokeObjectURL(u); }
+};
+// nom d'un produit : bases ouvertes, puis recherche web par la session cloud (si branchée)
+const eanLookup = async (code, mbx) => {
+  const get = async (u, opt = {}, ms = 6000) => { const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), ms); try { const r = await fetch(u, { ...opt, signal: ctl.signal }); return r.ok ? await r.json() : null; } catch (e) { return null; } finally { clearTimeout(t); } };
+  for (const [host, src] of [['world.openproductsfacts.org', 'Open Products Facts'], ['world.openfoodfacts.org', 'Open Food Facts']]) {
+    const j = await get('https://' + host + '/api/v2/product/' + code + '.json?fields=product_name,brands');
+    if (j && j.product && j.product.product_name) return { found: true, name: [j.product.product_name, j.product.brands].filter(Boolean).join(' · '), src };
+  }
+  if (mbx && mbx.url && mbx.token) {
+    const j = await get(mbx.url.trim().replace(/\/+$/, '') + '/ean', { method: 'POST', headers: { Authorization: 'Bearer ' + mbx.token.trim(), 'Content-Type': 'application/json' }, body: JSON.stringify({ code }) }, 90000);
+    if (j && j.found && j.name) return { ...j, src: 'recherche web' };
+  }
+  return null;
 };
 const lvlOf = p => p.lvl ?? LVLP[p.id] ?? '';
 const START ={ 'Liste des projets': { proj: null }, 'Fiche projet · Étapes': { proj: 'a1', seg: 'e' }, 'Fiche projet · Fournisseurs': { proj: 'a1', seg: 'c' }, 'Nouveau projet': { proj: null, sheet: 'p', form: { steps: DEFSTEPS, sups: [], custom: [] } } };
@@ -1493,7 +1519,7 @@ class Component extends DCLogic {
     });
     return { dark: this.props.dark ?? false, site: 'a', tab: 'p', proj: null, seg: 'e', editSteps: false, stepText: '', stepType: 'g', supOpen: null, geo: {}, P, noteText: '', stk: {}, sentOrder: {}, mail: null, tone: 0, edits: {}, sentMail: {}, read: {}, wpos: 0, cfg: CFG0, cfgSite: 'a', cfgF: {}, sunday: false, discs: DISC0, discText: '', chf: 'TOUS', mbox: 'r', mq: '', who: null, vip: {}, treated: {}, cat: 'TOUS', sort: 'PRIX', day: 0, menu: false, sheet: null, form: {}, addS: {}, addE: {}, seq: 0, lg: {}, ...(START[this.props.start] || {}), ...this.boot() };
   }
-  boot() { const r = restore(); seedUsers(); meLoad(); if (r.mbx) r.mbx = { ...r.mbx, busy: false }; if (!Array.isArray(r.evs)) r.evs = evMigrate(r.addE); return r;
+  boot() { const r = restore(); seedUsers(); seedUsers2(); meLoad(); if (r.mbx) r.mbx = { ...r.mbx, busy: false }; if (!Array.isArray(r.evs)) r.evs = evMigrate(r.addE); return r;
   }
   componentWillUnmount() { this.stopScan(); if (this.wRaf) cancelAnimationFrame(this.wRaf); if (this.rec) try { this.rec.abort(); } catch (e) {} }
   dictate(mk, key) {
@@ -1545,27 +1571,33 @@ class Component extends DCLogic {
     this.setState({ scan: { target, msg: 'Cadrez le code-barres dans le rectangle', code: '' } });
     await new Promise(r => setTimeout(r, 80));
     const v = document.getElementById('scanv'); if (!v || !this.state.scan) return;
-    v.setAttribute('playsinline', ''); v.setAttribute('muted', ''); v.muted = true;
+    v.muted = true; v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('autoplay', '');
     try {
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error('pas de caméra');
-      if (await hasBD()) {
-        const det = new BarcodeDetector({ formats: BDF });
-        this.scanStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
-        v.srcObject = this.scanStream; await v.play();
-        const loop = async () => { if (!this.state.scan || !this.scanStream) return; try { const r = await det.detect(v); const x = r.find(y => eanOk(y.rawValue)); if (x) return this.gotCode(x.rawValue); } catch (e) {} this.scanT = setTimeout(loop, 180); };
-        loop();
-      } else {
-        const Z = await zxLoad();
-        if (!this.state.scan) return;
-        this.zx = new Z.BrowserMultiFormatReader(zxHints(Z), 250);
-        await this.zx.decodeFromConstraints({ video: { facingMode: 'environment' }, audio: false }, v, res => { if (res && eanOk(res.getText())) this.gotCode(res.getText()); });
-      }
-    } catch (e) { this.setState(s => s.scan ? { scan: { ...s.scan, msg: 'Caméra indisponible : prenez le code en photo ou saisissez-le.' } } : null); }
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: { ideal: 'environment' }, width: { ideal: 1920 }, height: { ideal: 1080 } } });
+      if (!this.state.scan) { stream.getTracks().forEach(t => t.stop()); return; }
+      this.scanStream = stream; v.srcObject = stream; await v.play().catch(() => {});
+      try { const tr = stream.getVideoTracks()[0], cap = tr.getCapabilities ? tr.getCapabilities() : {}; if ((cap.focusMode || []).includes('continuous')) await tr.applyConstraints({ advanced: [{ focusMode: 'continuous' }] }); } catch (e) {}
+      const bd = (await hasBD()) ? new BarcodeDetector({ formats: BDF }) : null, Z = bd ? null : await zxLoad(), cv = document.createElement('canvas');
+      let n = 0;
+      const loop = async () => {
+        if (!this.state.scan || this.scanStream !== stream) return;
+        if (v.readyState >= 2 && v.videoWidth) {
+          n++;
+          let code = null;
+          try { code = bd ? pickBD(await bd.detect(v)) : n % 3 ? zxDecode(Z, zxCrop(v, v.videoWidth, v.videoHeight, [0.06, 0.3, 0.88, 0.4], 1000, cv), false) : zxDecode(Z, zxCrop(v, v.videoWidth, v.videoHeight, [0, 0, 1, 1], 1000, cv), true); } catch (e) {}
+          if (code) return this.gotCode(code);
+          if (n === 60) this.setState(s => s.scan ? { scan: { ...s.scan, msg: 'Pas encore lu : rapprochez-vous (10-15 cm), code bien droit et éclairé, ou prenez-le en photo.' } } : null);
+        }
+        this.scanT = setTimeout(loop, 90);
+      };
+      loop();
+    } catch (e) { const no = e && /NotAllowed|Security/.test(e.name); this.setState(s => s.scan ? { scan: { ...s.scan, msg: no ? 'Accès à la caméra refusé : autorisez-le (Réglages › Safari › Caméra) ou prenez le code en photo.' : 'Caméra indisponible : prenez le code en photo ou saisissez-le.' } } : null); }
   }
   stopScan() {
     clearTimeout(this.scanT);
     if (this.scanStream) { this.scanStream.getTracks().forEach(t => t.stop()); this.scanStream = null; }
-    if (this.zx) { try { this.zx.reset(); } catch (e) {} this.zx = null; }
+    const v = document.getElementById('scanv'); if (v) v.srcObject = null;
   }
   async scanPhoto() {
     const f = await phPick(false); if (!f.length) return;
@@ -1594,14 +1626,23 @@ class Component extends DCLogic {
   }
   async lookupEan(code, quiet) {
     if (!/^\d{8,14}$/.test(code)) return;
-    let name = '';
-    try {
-      const ctl = new AbortController(); setTimeout(() => ctl.abort(), 4000);
-      const j = await (await fetch('https://world.openproductsfacts.org/api/v2/product/' + code + '.json?fields=product_name,brands', { signal: ctl.signal })).json();
-      name = j && j.product ? [j.product.product_name, j.product.brands].filter(Boolean).join(' · ') : '';
-    } catch (e) {}
-    if (name) this.setState(s => s.form && s.form.ean === code && !s.form.a && !s.form.name ? { form: { ...s.form, [s.sheet === 'ed' ? 'name' : 'a']: name } } : null);
-    else if (!quiet) this.toast('Nouveau code ' + code + ' : saisissez le nom du produit');
+    const mbx = this.state.mbx || {}, cloud = !!(mbx.url && mbx.token), same = s => s.form && s.form.ean === code;
+    this.setState(s => same(s) ? { form: { ...s.form, look: cloud ? 'Recherche du produit (bases ouvertes puis web)…' : 'Recherche du produit…' } } : null);
+    const r = await eanLookup(code, mbx);
+    this.setState(s => {
+      if (!same(s)) return null;
+      const ed = s.sheet === 'ed', F = { ...s.form };
+      if (r) {
+        const nk = ed ? 'name' : 'a'; if (!F[nk]) F[nk] = r.name;
+        const d = (s.discs || []).find(x => r.category && x.toLowerCase() === String(r.category).toLowerCase()), dk = ed ? 'disc' : 'e', uk = ed ? 'sub' : 'u', unk = ed ? 'unit' : 'b';
+        if (d && !F[dk]) F[dk] = d;
+        if (r.subcategory && !F[uk]) F[uk] = r.subcategory;
+        if (r.unit && !F[unk]) F[unk] = r.unit;
+        F.look = '✓ Produit reconnu (' + r.src + ')';
+      } else F.look = 'Code inconnu des bases ouvertes' + (cloud ? ' et du web' : '') + ' : saisissez le nom une fois, il sera reconnu ensuite.' + (cloud ? '' : ' Branchez la session cloud (Compte) pour chercher sur le web.');
+      return { form: F };
+    });
+    track('ean:' + (r ? 'found' : 'unknown'));
   }
   async addPhotos(pid, sec, replaceId, asCover) {
     const files = await phPick(!replaceId && !asCover);
@@ -2149,6 +2190,7 @@ class Component extends DCLogic {
       discText: st.discText, onDisc: (e) => set({ discText: e.target.value }),
       addDisc: () => { const t = st.discText.trim(); if (!t) return; const v = t.charAt(0).toUpperCase() + t.slice(1); track('create:disc'); if (!st.discs.some(x => x.toLowerCase() === v.toLowerCase())) set({ discs: [...st.discs, v], discText: '', pdAdd: false, ...(st.pdAdd ? { pdisc: v } : {}) }); else set({ discText: '', pdAdd: false }); },
       stDisc, stSub, hasStSub: stSub.length > 0, stGroups, stFilt,
+      eanLook: (sh === 's' || (sh === 'ed' && F.kind === 'stk')) && /^\d{8,14}$/.test(F.ean || ''), eanLookTxt: F.look || 'Code ' + (F.ean || ''), eanWeb: 'https://www.google.com/search?q=' + encodeURIComponent('EAN ' + (F.ean || '')),
       canScan: st.tab === 's', scanStock: () => this.startScan('stock'), scanForm: () => this.startScan('form'), eanForm: sh === 's' || (sh === 'ed' && F.kind === 'stk'),
       scanOpen: !!st.scan, scanMsg: st.scan ? st.scan.msg : '', scanCode: st.scan ? st.scan.code : '', onScanCode: (e) => set({ scan: { ...st.scan, code: e.target.value } }),
       scanClose: () => { this.stopScan(); set({ scan: null }); }, scanPhoto: () => this.scanPhoto(),

@@ -32,8 +32,9 @@ Chaque suppression demande deux touchers. Tout est sauvegardé sur le téléphon
 Compte › **Connexion** : identifiant et mot de passe (seule une empreinte PBKDF2 est gardée sur
 l’appareil). C’est un verrou d’usage sur l’appareil, pas une protection des données : quelqu’un qui
 a accès au téléphone déverrouillé et aux outils de développement peut lire les données de Safari.
-« Exiger l’identifiant » affiche l’écran de connexion à l’ouverture. Trois identifiants sont créés
-d’office (activés une fois par appareil) : `thomas` (Propriétaire), `conducteur` (Admin), `equipe` (User) ;
+« Exiger l’identifiant » affiche l’écran de connexion à l’ouverture. Quatre identifiants sont créés
+d’office (une fois par appareil) : `boss` (Propriétaire), `createur` (Propriétaire, créateur de l’appli),
+`rayane` (Admin), `equipe` (User) ;
 les mots de passe ont été remis au propriétaire et ne figurent pas dans le code (empreintes seulement). Le **propriétaire** gère les
 **Profils** : Propriétaire (tout), Admin (tout sauf les profils), User (consultation et saisie,
 sans suppression ni réglages). Les profils vivent sur l’appareil et voyagent dans les sauvegardes.
@@ -52,7 +53,10 @@ l’analyser et améliorer l’appli.
   (photos réduites à 1600 px, gardées sur l’appareil, incluses dans les sauvegardes).
 - **Stocks** : discipline › sous-catégorie (Électricité › Câbles / Ampoules / Prises…) ; bouton
   **scan EAN** (caméra, photo du code ou saisie) : un code connu ouvre l’article, un code nouveau
-  ouvre une fiche préremplie.
+  ouvre une fiche préremplie. Le nom est cherché dans Open Products Facts et Open Food Facts, puis sur le
+  web par la session cloud si elle est branchée (les matériaux du bâtiment ne sont presque jamais dans
+  les bases gratuites) ; sinon, « Chercher sur le web » ouvre la recherche et le nom saisi une fois est
+  reconnu ensuite.
 - **Planning** : vue du mois façon Calendrier d’Apple ; calendriers Prestation / visite,
   Administratif, Réalisation, Visite (devis), plus **Commandes** et **Factures** ajoutées
   automatiquement ; filtres par calendrier et discipline.
