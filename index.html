@@ -37,7 +37,8 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="position:relative;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:4px 20px 8px">
 <div style="flex:1;min-width:0;display:flex">
 <sc-if value="{{ showSel }}" hint-placeholder-val="{{ true }}">
-<div style="flex:1;min-width:0;display:flex;height:46px;border-radius:20px;background:var(--tile);border:1px solid var(--tileBd);overflow:hidden;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
+<div style="flex:1;min-width:0;display:flex;gap:8px">
+<div style="flex:1;min-width:0;display:flex;height:46px;opacity:{{ wheelOp }};transition:opacity .2s;border-radius:20px;background:var(--tile);border:1px solid var(--tileBd);overflow:hidden;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <div onWheel="{{ wWheel }}" onPointerDown="{{ wDown }}" onPointerMove="{{ wMove }}" onPointerUp="{{ wUp }}" onPointerCancel="{{ wUp }}" style="position:relative;flex:1;min-width:0;cursor:ns-resize;touch-action:none;user-select:none;-webkit-user-select:none;perspective:240px;-webkit-mask-image:linear-gradient(rgba(0,0,0,0),#000 32%,#000 68%,rgba(0,0,0,0));mask-image:linear-gradient(rgba(0,0,0,0),#000 32%,#000 68%,rgba(0,0,0,0))">
 <sc-for list="{{ wheel }}" as="r" hint-placeholder-count="3">
 <div style="position:absolute;left:0;right:0;top:11px;height:24px;display:flex;align-items:center;gap:10px;padding:0 14px;pointer-events:none;transform:{{ r.tf }};opacity:{{ r.op }};color:{{ r.col }}">
@@ -49,6 +50,8 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div onClick="{{ toggleMenu }}" title="Tous les sites" style="flex:none;width:44px;border-left:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink2)">
 <svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transform:{{ menuChev }};transition:transform .2s"><path d="M3 4.5l3 3 3-3"></path></svg>
 </div>
+</div>
+<sc-if value="{{ scopeOn }}" hint-placeholder-val="{{ false }}"><div onClick="{{ scopeToggle }}" title="Afficher tous les sites" style="flex:none;height:46px;padding:0 15px;border-radius:20px;cursor:pointer;display:flex;align-items:center;gap:7px;background:{{ scopeBg }};color:{{ scopeFg }};border:1px solid var(--tileBd);font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif;white-space:nowrap;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="6" cy="7" r="2.2"></circle><circle cx="18" cy="7" r="2.2"></circle><circle cx="12" cy="17" r="2.2"></circle></svg>Tous</div></sc-if>
 </div>
 </sc-if>
 <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
@@ -473,17 +476,14 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-if>
 
 <sc-if value="{{ isPlan }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;gap:4px;margin:-4px 0 12px;padding:4px;border-radius:16px;background:var(--chip);border:1px solid var(--cardBd)">
-<sc-for list="{{ lsites }}" as="c" hint-placeholder-count="2"><div onClick="{{ c.pick }}" style="flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;padding:9px 6px;border-radius:12px;background:{{ c.bg }};color:{{ c.fg }};font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;white-space:nowrap;overflow:hidden"><span style="width:8px;height:8px;border-radius:50%;flex:none;background:{{ c.dot }}"></span><span style="overflow:hidden;text-overflow:ellipsis">{{ c.label }}</span></div></sc-for>
-</div>
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:-4px 0 14px">
 <div onClick="{{ plSum.cmd.pick }}" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t4) 35%,var(--tile));color:var(--t4x);font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif"><span style="white-space:nowrap">À commander</span><span style="white-space:nowrap">{{ plSum.cmd.n }}</span></div>
 <div onClick="{{ plSum.fac.pick }}" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;background:linear-gradient(100deg,var(--t2) 35%,var(--tile));color:var(--t2x);font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif"><span>Factures</span><span style="white-space:nowrap">{{ plSum.fac.n }}</span></div>
 </div>
 <div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh);border-radius:24px;padding:12px 10px 8px">
 <div style="display:flex;align-items:center;gap:6px;padding:0 4px 10px">
-<div style="flex:1;min-width:0;font:700 21px/1.1 -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.02em;color:#FF3B30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ calTitle }}</div>
-<div onClick="{{ calToday }}" style="cursor:pointer;flex:none;padding:7px 11px;border-radius:999px;background:var(--tile);border:1px solid var(--tileBd);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:#FF3B30">Aujourd’hui</div>
+<div style="flex:1;min-width:0;font:700 19px/1.1 -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.02em;color:#FF3B30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ calTitle }}</div>
+<div onClick="{{ calToday }}" style="cursor:pointer;flex:none;padding:6px 9px;border-radius:999px;background:var(--tile);border:1px solid var(--tileBd);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:#FF3B30">Aujourd’hui</div>
 <div onClick="{{ calPrev }}" title="Mois précédent" style="cursor:pointer;flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#FF3B30"><svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg></div>
 <div onClick="{{ calNext }}" title="Mois suivant" style="cursor:pointer;flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#FF3B30"><svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6 4.5 9.5"></path></svg></div>
 </div>
@@ -524,9 +524,6 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 8px;padding:0 20px">
 <sc-for list="{{ rubs }}" as="r" hint-placeholder-count="4"><div onClick="{{ r.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:9px 13px;border-radius:14px;background:{{ r.bg }};color:{{ r.fg }};border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ r.label }}<span style="opacity:.55">{{ r.n }}</span></div></sc-for>
-</div>
-<div style="display:flex;gap:4px;margin:0 0 12px;padding:4px;border-radius:16px;background:var(--chip);border:1px solid var(--cardBd)">
-<sc-for list="{{ csites }}" as="c" hint-placeholder-count="2"><div onClick="{{ c.pick }}" style="flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;padding:9px 6px;border-radius:12px;background:{{ c.bg }};color:{{ c.fg }};font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;white-space:nowrap;overflow:hidden"><span style="width:8px;height:8px;border-radius:50%;flex:none;background:{{ c.dot }}"></span><span style="overflow:hidden;text-overflow:ellipsis">{{ c.label }}</span></div></sc-for>
 </div>
 <div style="display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);margin-bottom:10px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none;color:var(--ink2)"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L21 21"></path></svg>
@@ -882,6 +879,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </div>
 <div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Proposées comme type lors de la création d’un projet.</div></sc-if>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 12</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isSupSheet }}" hint-placeholder-val="{{ false }}">
@@ -1549,7 +1547,7 @@ class Component extends DCLogic {
   wheelGo(target) {
     this.wTarget = target;
     const k = KS[wrapI(Math.round(target))];
-    if (k !== this.state.site) this.setState({ site: k, mail: null, proj: null, who: null });
+    if (k !== this.state.site) this.setState({ site: k, mail: null, proj: null, who: null, allC: false, allL: false });
     if (this.wRaf) return;
     const tick = () => {
       const p = this.state.wpos, d = this.wTarget - p;
@@ -1958,7 +1956,7 @@ class Component extends DCLogic {
     const calChips = Object.keys(CALS).map(k => { const off = !!calOff[k]; return { label: CALS[k][0], dot: CALS[k][1], op: off ? 0.45 : 1, bg: off ? 'transparent' : 'var(--tile)', fg: off ? 'var(--ink3)' : INK, deco: off ? 'line-through' : 'none', pick: () => set({ calOff: { ...calOff, [k]: !off } }) }; });
     const plDiscs = [{ k: null, label: 'Toutes' }, ...st.discs.map(d => ({ k: d, label: d }))].map(d => { const a = pdf === d.k; return { label: d.label, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ pldisc: d.k }) }; });
     const monthN = Object.keys(byDay).filter(d => d.startsWith(calM)).reduce((a, d) => a + byDay[d].length, 0);
-    const toOrder = cmdEv.filter(e => e.date === today).length, facM = invEv.filter(e => e.date.startsWith(calM) || e.date < today);
+    const inScope = e => st.allL || e.site === st.site, toOrder = cmdEv.filter(e => e.date === today && inScope(e)).length, facM = invEv.filter(e => inScope(e) && (e.date.startsWith(calM) || e.date < today));
     const plSum = { cmd: { n: toOrder + ' article' + (toOrder > 1 ? 's' : ''), pick: () => solo('cmd') }, fac: { n: eur(facM.reduce((a, e) => a + e.amt, 0)), pick: () => solo('fac') } };
     const tb = {};
     ['p', 's', 'm', 'l', 'c'].forEach(k => { tb[k] = { bg: st.tab === k ? 'var(--on)' : 'transparent', fg: st.tab === k ? ACC : 'var(--ink2)', pick: () => set({ tab: k, mail: null, menu: false, proj: k === 'p' && st.tab === 'p' ? null : st.proj, supSel: k === 'c' && st.tab === 'c' ? null : st.supSel }) }; });
@@ -2176,7 +2174,7 @@ class Component extends DCLogic {
       }
     };
     const titles = { p: 'Projets', s: 'Stocks', m: 'Messages', l: 'Planning', c: 'Contacts' };
-    const subtitle = st.tab === 'l' ? (st.allL ? 'Tous les sites' : SL(st.site)) + ' · ' + monthN + ' élément' + (monthN > 1 ? 's' : '') + ' en ' + MOIS[calMo - 1] : st.tab === 'c' ? 'Fournisseurs, sous-traitants, clients · ' + SUP.length : 'Sam. 24 oct · ' + S.addr;
+    const subtitle = st.tab === 'l' ? (st.allL ? 'Tous les sites' : SL(st.site)) + ' · ' + monthN + ' élément' + (monthN > 1 ? 's' : '') + ' en ' + MOIS[calMo - 1] : st.tab === 'c' ? (st.allC ? 'Tous les sites' : SL(st.site)) + ' · ' + contacts.length + ' contact' + (contacts.length > 1 ? 's' : '') : 'Sam. 24 oct · ' + S.addr;
     const kAll = list.reduce((a, p) => { a.s += p.steps.length; a.d += p.steps.filter(x => x.v >= 100).length; a.pct += pctOf(p); a.o += p.inv.filter(i => i.st !== 'paid').reduce((b, i) => b + i.amt, 0); return a; }, { s: 0, d: 0, pct: 0, o: 0 });
     const kp = { n: list.length, avg: list.length ? Math.round(kAll.pct / list.length) : 0, steps: kAll.d + '/' + kAll.s, open: kAll.o >= 1000 ? (kAll.o / 1000).toLocaleString('fr-FR', { maximumFractionDigits: 1 }) + ' k€' : eur(kAll.o) };
     return {
@@ -2227,6 +2225,9 @@ class Component extends DCLogic {
       openSup: () => set({ sheet: 'sup', form: { mode: 'dir', pick: [] } }),
       openInv: () => set({ sheet: 'inv', form: { sup: (Q.sup[0] || {}).name, st: 'due' } }),
       isStock: st.tab === 's', isMail: st.tab === 'm', isPlan: st.tab === 'l', isSup: st.tab === 'c',
+      scopeOn: st.tab === 'c' || st.tab === 'l', wheelOp: (st.tab === 'c' && st.allC) || (st.tab === 'l' && st.allL) ? 0.45 : 1,
+      scopeBg: (st.tab === 'c' && st.allC) || (st.tab === 'l' && st.allL) ? 'var(--acc)' : 'var(--tile)', scopeFg: (st.tab === 'c' && st.allC) || (st.tab === 'l' && st.allL) ? 'var(--accOn)' : 'var(--ink)',
+      scopeToggle: () => { const k = st.tab === 'c' ? 'allC' : 'allL'; set({ [k]: !st[k] }); },
       showSel: !glob && !detail, noSel: glob, menuOpen: st.menu && !glob && !detail, toggleMenu: () => set({ menu: !st.menu }), closeMenu: () => set({ menu: false }),
       cur: { label: SL(st.site), dot: DOT[st.site] }, wheel, wWheel, wDown, wMove, wUp, menuChev: st.menu ? 'rotate(180deg)' : 'none',
       openAcc: () => set({ sheet: 'acc', form: {}, menu: false, bkPend: null, bkMsg: '' }), isAccSheet: sh === 'acc',
