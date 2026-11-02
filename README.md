@@ -93,8 +93,9 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
 - **Contacts** : rubriques modifiables (bouton « Modifier » au bout de la liste), discipline,
   adresse, affectation aux sites, sélecteur de site. Délai et prix ne sont plus demandés à la
   création (modifiables ensuite sur la fiche d'un fournisseur).
-- **Mails** : résumé en deux lignes et brouillon proposé ; Compte › Réglages › **Mails** pour
-  brancher votre boîte (voir `cloud/mail-session/README.md`).
+- **Mails** : résumé en deux lignes et brouillon proposé. Compte › Réglages › **Mails** : clé Claude
+  de l'entreprise (propriétaire, admin), puis pour chacun adresse et mot de passe d'application. La boîte
+  est lue par la fonction Supabase « chantier-ia » (voir `supabase/README.md`).
 
 ## Identifiants lisibles
 

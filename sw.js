@@ -1,5 +1,5 @@
 // Service worker : l'appli s'ouvre hors ligne, les photos et la carte sont mises en cache au passage.
-const VERSION = 'chantier-v16';
+const VERSION = 'chantier-v17';
 const SHELL = [
   './',
   './index.html',
@@ -29,8 +29,8 @@ self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  // géocodage : toujours en direct
-  if (url.hostname === 'nominatim.openstreetmap.org' || url.hostname.endsWith('openproductsfacts.org') || url.hostname.endsWith('openfoodfacts.org')) return;
+  // géocodage, bases produits, données partagées (Supabase) et toute requête authentifiée : toujours en direct
+  if (url.hostname === 'nominatim.openstreetmap.org' || url.hostname.endsWith('openproductsfacts.org') || url.hostname.endsWith('openfoodfacts.org') || url.hostname.endsWith('.supabase.co') || req.headers.has('authorization')) return;
 
   if (url.origin === location.origin) {
     // fichiers de l'appli : réseau d'abord pour avoir les mises à jour, cache si hors ligne

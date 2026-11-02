@@ -856,7 +856,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">Exporter → « Enregistrer dans Fichiers » → iCloud Drive › Chantier › Sauvegardes. Chaque sauvegarde porte un identifiant unique.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 16</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 17</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -898,6 +898,8 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Un code scanné est cherché dans cet ordre : vos articles, la base de référence, les bases ouvertes, puis la session cloud (Plateforme du Bâtiment, Point.P, Cedeo, BigMat, fabricants… puis le reste du web).</div>
 </sc-if>
 <sc-if value="{{ cfIsM }}" hint-placeholder-val="{{ false }}">
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Claude · intelligence artificielle</div>
+<div style="padding:12px 14px;border-radius:20px;background:var(--field)"><div style="display:flex;align-items:center;gap:9px"><span style="width:9px;height:9px;border-radius:50%;flex:none;background:{{ iaCol }}"></span><span style="font:500 14.5px/1.35 -apple-system,sans-serif">{{ iaTxt }}</span></div><sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:8px;margin-top:12px"><input type="password" value="{{ iaKey }}" onChange="{{ onIaKey }}" autocomplete="off" autocapitalize="none" autocorrect="off" placeholder="sk-ant-… (clé API Claude)" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"><div onClick="{{ iaSave }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;white-space:nowrap">Enregistrer</div></div><sc-if value="{{ iaHas }}" hint-placeholder-val="{{ false }}"><div onClick="{{ iaDel }}" style="cursor:pointer;margin-top:10px;font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--warnTx)">{{ iaDelLbl }}</div></sc-if></sc-if><div style="font:400 12px/1.4 -apple-system,sans-serif;color:var(--ink3);margin-top:10px">Clé à créer sur console.anthropic.com › API Keys (avec une limite de dépense dans Billing). Elle est rangée dans votre Supabase, où seule la fonction « chantier-ia » peut la lire : ni l’appli ni les membres ne peuvent l’afficher. Elle sert à toute l’entreprise : résumés des mails et recherche des codes EAN.</div></div>
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Adresse mail</div>
 <div style="border-radius:20px;background:var(--field);overflow:hidden">
 <div style="display:flex;align-items:center;padding:0 14px;border-bottom:2px solid var(--line)"><div style="width:96px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Adresse</div><input type="email" value="{{ mbxUser }}" onChange="{{ onMbxUser }}" autocapitalize="none" autocorrect="off" placeholder="nom@icloud.com" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
@@ -908,19 +910,22 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Nombre de mails à synchroniser</div>
 <div style="display:flex;gap:4px;padding:4px;border-radius:16px;background:var(--track)"><sc-for list="{{ mbxLims }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:9px 0;border-radius:12px;background:{{ o.bg }};color:{{ o.fg }};font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ o.label }}</div></sc-for></div>
 <div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Les derniers mails reçus sont lus, résumés en deux lignes et accompagnés de deux brouillons. Compter environ 2 centimes par nouveau mail ; un mail déjà traité ne coûte plus rien.</div>
-<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Session cloud · traitement des mails</div>
-<div style="border-radius:20px;background:var(--field);overflow:hidden">
-<div style="display:flex;align-items:center;padding:0 14px;border-bottom:2px solid var(--line)"><div style="width:96px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Session</div><input type="url" value="{{ mbxUrl }}" onChange="{{ onMbxUrl }}" autocapitalize="none" autocorrect="off" placeholder="https://… (adresse de la session)" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
-<div style="display:flex;align-items:center;padding:0 14px;border-bottom:2px solid var(--line)"><div style="width:96px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Jeton</div><input type="password" value="{{ mbxToken }}" onChange="{{ onMbxToken }}" autocomplete="off" placeholder="Jeton d’accès" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
-<div style="padding:12px 14px">
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Synchronisation</div>
+<div style="border-radius:20px;background:var(--field);overflow:hidden"><div style="padding:12px 14px">
 <div style="font:500 13.5px/1.35 -apple-system,sans-serif;color:{{ mbxCol }}">{{ mbxState }}</div>
 <div style="display:flex;gap:8px;margin-top:10px">
 <div onClick="{{ syncMail }}" style="flex:1;cursor:pointer;text-align:center;padding:11px 6px;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:var(--acc);color:var(--accOn)">{{ syncLbl }}</div>
 <sc-if value="{{ mbxOn }}" hint-placeholder-val="{{ false }}"><div onClick="{{ mbxOff }}" style="flex:none;cursor:pointer;text-align:center;padding:11px 14px;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)">Déconnecter</div></sc-if>
 </div>
-<div style="font:400 12px/1.4 -apple-system,sans-serif;color:var(--ink3);margin-top:10px">La session cloud lit votre boîte (IMAP) ; Claude résume chaque mail en deux lignes et prépare deux brouillons. Rien n’est envoyé sans vous : « Ouvrir dans Mail » reprend le brouillon pour que vous le relisiez.</div>
+<div style="font:400 12px/1.4 -apple-system,sans-serif;color:var(--ink3);margin-top:10px">La boîte est lue par la fonction « chantier-ia » de votre Supabase ; Claude résume chaque mail et prépare deux brouillons. Rien n’est envoyé sans vous : « Ouvrir dans Mail » reprend le brouillon pour que vous le relisiez.</div>
 </div>
 </div>
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Session personnalisée · facultatif</div>
+<div style="border-radius:20px;background:var(--field);overflow:hidden">
+<div style="display:flex;align-items:center;padding:0 14px;border-bottom:2px solid var(--line)"><div style="width:96px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Session</div><input type="url" value="{{ mbxUrl }}" onChange="{{ onMbxUrl }}" autocapitalize="none" autocorrect="off" placeholder="https://… (adresse de la session)" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="display:flex;align-items:center;padding:0 14px;"><div style="width:96px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Jeton</div><input type="password" value="{{ mbxToken }}" onChange="{{ onMbxToken }}" autocomplete="off" placeholder="Jeton d’accès" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+</div>
+<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">À laisser vide. Seulement pour une session hébergée ailleurs (Render, Mac), qui a alors sa propre clé.</div>
 </sc-if>
 </sc-if>
 <sc-if value="{{ isSupSheet }}" hint-placeholder-val="{{ false }}">
@@ -1562,6 +1567,8 @@ const eanLookup = async (code, mbx) => {
   if (mbx && mbx.url && mbx.token) {
     const j = await get(mbx.url.trim().replace(/\/+$/, '') + '/ean', { method: 'POST', headers: { Authorization: 'Bearer ' + mbx.token.trim(), 'Content-Type': 'application/json' }, body: JSON.stringify({ code }) }, 90000);
     if (j && j.found && j.name) return { ...j, src: 'recherche web' };
+  } else if (cloudReady() && CL.iaHint) {
+    try { const j = await sbJson('/functions/v1/chantier-ia/ean', { method: 'POST', json: { code } }); if (j && j.found && j.name) return { ...j, src: 'recherche web' }; } catch (e) {}
   }
   return null;
 };
@@ -1838,13 +1845,22 @@ class Component extends DCLogic {
   }
   async syncMail() {
     const M = this.state.mbx || {};
-    if (!M.url || !M.token) { this.toast('Renseignez l’adresse de la session cloud et le jeton (Compte › Réglages › Mails)'); return; }
+    const own = !!(M.url || '').trim();
+    if (own && !M.token) { this.toast('Session personnalisée : renseignez aussi son jeton (Réglages › Mails)'); return; }
+    if (!own && !((M.user || '').trim() && M.pass)) { this.toast('Renseignez l’adresse mail et le mot de passe d’application (Réglages › Mails)'); return; }
     this.setState(s => ({ mbx: { ...s.mbx, busy: true, err: '' } })); track('mailSync');
     try {
       const user = (M.user || '').trim(), imap = user && M.pass ? { host: (M.host || '').trim() || imapGuess(user), user, pass: M.pass } : undefined;
-      const r = await fetch(M.url.trim().replace(/\/+$/, '') + '/session', { method: 'POST', headers: { Authorization: 'Bearer ' + M.token.trim(), 'Content-Type': 'application/json' }, body: JSON.stringify({ limit: M.limit || 30, imap }) });
-      const j = await r.json().catch(() => ({}));
-      if (!r.ok) throw new Error(j.error || 'erreur ' + r.status);
+      let j;
+      if (own) {
+        const r = await fetch(M.url.trim().replace(/\/+$/, '') + '/session', { method: 'POST', headers: { Authorization: 'Bearer ' + M.token.trim(), 'Content-Type': 'application/json' }, body: JSON.stringify({ limit: M.limit || 30, imap }) });
+        j = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(j.error || 'erreur ' + r.status);
+      } else {
+        if (!cloudReady()) throw new Error('connectez-vous d’abord');
+        try { j = await sbJson('/functions/v1/chantier-ia/session', { method: 'POST', json: { limit: M.limit || 30, imap, sender: (ME && ME.name) || '' } }); }
+        catch (e) { throw new Error(e.status === 404 ? 'la fonction chantier-ia n’est pas encore déployée dans Supabase' : e.message); }
+      }
       const L = Array.isArray(j.mails) ? j.mails : [];
       this.setState(s => ({ inbox: L, msrc: 'box', mail: null, mbx: { ...s.mbx, busy: false, last: j.at || new Date().toISOString(), account: j.account || s.mbx.account || '', err: '' } }));
       this.toast('✓ ' + L.length + ' mails résumés, brouillons prêts');
@@ -1911,7 +1927,7 @@ class Component extends DCLogic {
   }
   async lookupEan(code, quiet) {
     if (!/^\d{8,14}$/.test(code)) return;
-    const mbx = this.state.mbx || {}, cloud = !!(mbx.url && mbx.token), same = s => s.form && s.form.ean === code;
+    const mbx = this.state.mbx || {}, cloud = !!(mbx.url && mbx.token) || (cloudReady() && !!CL.iaHint), same = s => s.form && s.form.ean === code;
     this.setState(s => same(s) ? { form: { ...s.form, look: cloud ? 'Recherche du produit (bases ouvertes puis web)…' : 'Recherche du produit…' } } : null);
     const r = await eanLookup(code, mbx);
     this.setState(s => {
@@ -1924,7 +1940,7 @@ class Component extends DCLogic {
         if (r.subcategory && !F[uk]) F[uk] = r.subcategory;
         if (r.unit && !F[unk]) F[unk] = r.unit;
         F.look = '✓ Produit reconnu (' + r.src + ')';
-      } else F.look = 'Code inconnu des bases ouvertes' + (cloud ? ' et du web' : '') + ' : saisissez le nom une fois, il sera reconnu ensuite.' + (cloud ? '' : ' Branchez la session cloud (Compte) pour chercher sur le web.');
+      } else F.look = 'Code inconnu des bases ouvertes' + (cloud ? ' et du web' : '') + ' : saisissez le nom une fois, il sera reconnu ensuite.' + (cloud ? '' : ' Enregistrez une clé Claude (Réglages › Mails) pour chercher sur le web.');
       return { form: F };
     });
     track('ean:' + (r ? 'found' : 'unknown'));
@@ -1971,6 +1987,7 @@ class Component extends DCLogic {
     // fiche partagée modifiée : envoi groupé un instant plus tard
     const sig = [this.state.P, this.state.addS, this.state.evs, this.state.cfg, this.state.rev, this.state.lvls, ...SH_DICT.map(k => this.state[k]), ...SH_CFG.map(k => this.state[k])];
     if (this.sig && sig.some((v, i) => v !== this.sig[i])) syncSoon();
+    if (this.state.sheet === 'cfg' && this.state.cfgSec === 'm' && !(prev.sheet === 'cfg' && prev.cfgSec === 'm')) this.iaRefresh();
     this.sig = sig;
     if (!this.wRaf && !this.wDrag && KS[wrapI(Math.round(this.state.wpos))] !== this.state.site) { const i = KS.indexOf(this.state.site); this.wTarget = i; this.setState({ wpos: i }); }
     if (prev.dark !== this.props.dark) this.setState({ dark: this.props.dark ?? false });
@@ -2021,6 +2038,17 @@ class Component extends DCLogic {
       this.setState({ lg: me ? {} : { mode: 'org', name: (L.name || '').trim() }, sheet: null, menu: false });
       if (me) syncSoon(100);
     } catch (e) { const m = (e && e.message) || String(e); bad(/create_org|login_email|schema cache|does not exist|relation/i.test(m) ? 'La base Supabase n’est pas encore préparée : collez supabase/schema.sql dans Supabase › SQL Editor, puis réessayez.' : m); }
+  }
+  // clé Claude enregistrée ? fonction chantier-ia déployée ?
+  async iaRefresh() {
+    if (!cloudReady()) return;
+    try { CL.iaHint = await rpc('ia_key_hint', {}); } catch (e) {}
+    try { const j = await sbJson('/functions/v1/chantier-ia/status'); CL.iaFn = j && j.ok ? 'ok' : 'erreur'; } catch (e) { CL.iaFn = e.status === 404 ? 'absente' : 'erreur'; }
+    clSave(); this.forceUpdate();
+  }
+  async iaSet(key) {
+    try { CL.iaHint = await rpc('set_ia_key', { p_key: key }); clSave(); this.setState(z => ({ form: { ...z.form, iaKey: '', iaDel: false } })); this.toast(key ? '✓ Clé Claude enregistrée pour l’entreprise' : 'Clé Claude retirée'); track(key ? 'ia:key' : 'ia:nokey'); this.iaRefresh(); }
+    catch (e) { this.toast('Clé non enregistrée : ' + ((e && e.message) || e)); }
   }
   async cloudLogout() {
     try { if (CL.sess) await fetch(SB.url + '/auth/v1/logout', { method: 'POST', headers: { apikey: SB.key, Authorization: 'Bearer ' + CL.sess.at } }); } catch (e) {}
@@ -2743,6 +2771,12 @@ class Component extends DCLogic {
             clear: () => { if (!fm.refClr) { setF({ refClr: true }); return; } const gone = Object.keys(REF); gone.forEach(k => delete REF[k]); refSave(); refMark(gone); track('ean:clear'); setMsg('Base de référence vidée'); } },
           mbxUser: mbx.user || '', onMbxUser: (e) => set({ mbx: { ...mbx, user: e.target.value.trim() } }), mbxHost: mbx.host || '', mbxHostPh: imapGuess(mbx.user) || 'imap.exemple.fr', onMbxHost: (e) => set({ mbx: { ...mbx, host: e.target.value.trim() } }),
           mbxPass: mbx.pass || '', onMbxPass: (e) => set({ mbx: { ...mbx, pass: e.target.value } }),
+          ...(() => { const h = CL.iaHint, fn = CL.iaFn, k = (fm.iaKey || '').trim();
+            return { iaKey: fm.iaKey || '', onIaKey: fset('iaKey'), iaHas: !!h,
+              iaTxt: !cloudReady() ? 'Connectez-vous pour utiliser Claude.' : fn === 'absente' ? 'Fonction « chantier-ia » pas encore déployée dans Supabase.' : fn === 'erreur' ? 'Fonction « chantier-ia » en erreur : voir ses journaux (Logs) dans Supabase.' : h ? 'Clé enregistrée : ' + h + (fn === 'ok' ? ' · prête' : '') : 'Aucune clé Claude enregistrée' + (canCfg() ? '.' : ' : le propriétaire peut la saisir ici.'),
+              iaCol: fn === 'absente' || fn === 'erreur' ? 'var(--warn)' : h && fn === 'ok' ? 'var(--ok)' : 'var(--ink3)',
+              iaSave: () => { if (!/^sk-ant-[A-Za-z0-9_-]{20,}$/.test(k)) { this.toast('Collez la clé complète : elle commence par sk-ant-'); return; } this.iaSet(k); },
+              iaDelLbl: fm.iaDel ? 'Toucher encore pour retirer la clé' : 'Retirer la clé', iaDel: () => { if (!fm.iaDel) { setF({ iaDel: true }); return; } this.iaSet(''); } }; })(),
           mbxLims: [10, 30, 50, 100].map(n => ({ label: String(n), bg: mlim === n ? 'var(--on)' : 'transparent', fg: mlim === n ? INK : 'var(--ink2)', pick: () => set({ mbx: { ...mbx, limit: n } }) })),
           cfgGo: { p: go('p'), s: go('s'), m: go('m'), l: go('l'), c: go('c') },
           cfgSub: { p: st.discs.length + ' disciplines · ' + lvlList.length + ' emplacements · photos ' + (projPhOn ? 'affichées' : 'masquées'), s: 'Articles · base EAN de ' + rn, m: (mbx.user || (mbx.url ? 'Session cloud branchée' : 'À configurer')) + ' · ' + mlim + ' mails', l: CALU.length + ' calendriers · nom, couleur, disciplines', c: RUBK.length + ' rubriques · ' + SUP.length + ' contacts' },
@@ -2770,9 +2804,9 @@ class Component extends DCLogic {
       addNote: () => { const t = st.noteText.trim(); if (t) { up(p => ({ ...p, notes: [...p.notes, t] })); set({ noteText: '' }); } },
       onDraft: (e) => set({ edits: { ...st.edits, [dk]: e.target.value } }),
       sendLabel: cm0.box ? 'Ouvrir dans Mail pour envoyer' : 'Envoyer la réponse', sendBg: ACC, cmBox: !!cm0.box, cmSite: !cm0.box,
-      msrcSeg, showMsrc: inbox.length > 0 || !!mbx.url, boxEmpty: boxOn && !inbox.length, syncMail: () => this.syncMail(), syncLbl: mbx.busy ? 'Synchronisation…' : 'Synchroniser les ' + mlim + ' derniers mails', mbxLim: mlim,
+      msrcSeg, showMsrc: inbox.length > 0 || !!mbx.url || !!mbx.user, boxEmpty: boxOn && !inbox.length, syncMail: () => this.syncMail(), syncLbl: mbx.busy ? 'Synchronisation…' : 'Synchroniser les ' + mlim + ' derniers mails', mbxLim: mlim,
       mbxUrl: mbx.url || '', mbxToken: mbx.token || '', onMbxUrl: (e) => set({ mbx: { ...mbx, url: e.target.value } }), onMbxToken: (e) => set({ mbx: { ...mbx, token: e.target.value } }),
-      mbxState: mbx.err ? mbx.err : mbx.last ? 'Connectée' + (mbx.account ? ' · ' + mbx.account : '') + ' · ' + inbox.length + ' mails · ' + bkWhen(mbx.last) : mbx.url ? 'Pas encore synchronisée' : 'Non connectée',
+      mbxState: mbx.err ? mbx.err : mbx.last ? 'Connectée' + (mbx.account ? ' · ' + mbx.account : '') + ' · ' + inbox.length + ' mails · ' + bkWhen(mbx.last) : mbx.url || mbx.user ? 'Pas encore synchronisée' : 'Non connectée',
       mbxCol: mbx.err ? 'var(--warnTx)' : mbx.last ? 'var(--okTx)' : 'var(--ink2)', mbxOn: !!mbx.last,
       mbxOff: () => set({ mbx: {}, inbox: [], msrc: 'site', mail: null }), openMbx: () => set({ sheet: 'cfg', cfgSec: 'm', form: {}, back: [], menu: false }),
       sendMail: () => {
