@@ -110,6 +110,7 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
   est lue par la fonction Supabase « chantier-ia » (voir `supabase/README.md`). Dans la fiche d'un mail,
   destinataire, objet et réponse se modifient, puis « Envoyer la réponse » l'envoie directement depuis la
   boîte (ou « Ouvrir dans l'app Mail »). Si Claude n'a pas préparé de brouillon, la raison est affichée.
+  Réglages › Mails › Claude : consommation du mois, solde estimé, « Recharger » (page Billing d'Anthropic).
 
 ## Identifiants lisibles
 
