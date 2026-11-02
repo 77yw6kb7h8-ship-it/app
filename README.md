@@ -27,17 +27,26 @@ Chaque suppression demande deux touchers. Tout est sauvegardé sur le téléphon
 - **Glisser vers la droite** sur un projet, ou bouton punaise dans sa fiche : **épingler**. Les projets
   épinglés restent en tête de liste, quelle que soit la section (Terminés, En cours, À faire).
 
-## Profils et connexion
+## Comptes et partage (Supabase)
 
-Compte › **Connexion** : identifiant et mot de passe (seule une empreinte PBKDF2 est gardée sur
-l’appareil). C’est un verrou d’usage sur l’appareil, pas une protection des données : quelqu’un qui
-a accès au téléphone déverrouillé et aux outils de développement peut lire les données de Safari.
-« Exiger l’identifiant » affiche l’écran de connexion à l’ouverture. Quatre identifiants sont créés
-d’office (une fois par appareil) : `boss` (Propriétaire), `createur` (Propriétaire, créateur de l’appli),
-`rayane` (Admin), `equipe` (User) ;
-les mots de passe ont été remis au propriétaire et ne figurent pas dans le code (empreintes seulement). Le **propriétaire** gère les
-**Profils** : Propriétaire (tout), Admin (tout sauf les profils), User (consultation et saisie,
-sans suppression ni réglages). Les profils vivent sur l’appareil et voyagent dans les sauvegardes.
+Les données saisies sont partagées entre tous les profils de l'entreprise et tous leurs appareils,
+via le projet Supabase (Irlande) décrit dans `supabase/README.md`.
+
+- **Connexion** par adresse mail ou identifiant et mot de passe (comptes Supabase). La première
+  personne crée son compte puis l'**entreprise** : elle en devient propriétaire et les données de son
+  appareil deviennent la base commune. Les appareils suivants reçoivent cette base à la connexion
+  (leurs anciennes données sont gardées dans `chantier-app-v6-avant-partage`).
+- **Profils** (Compte › Profils, propriétaire) : nom, identifiant, adresse, mot de passe de départ et
+  rôle. Propriétaire : tout, dont les profils ; Admin : tout sauf les profils ; User : consultation
+  et saisie, sans suppression ni réglages. Ces règles sont aussi appliquées par le serveur.
+- **Synchronisation** fiche par fiche (site, projet, article, événement, contact, réglage, photo,
+  base EAN) : envoi un instant après chaque saisie, réception à l'ouverture, au retour du réseau et
+  toutes les 15 s. Deux personnes qui modifient des fiches différentes ne perdent rien ; sur la même
+  fiche, la dernière modification l'emporte. Hors connexion, les saisies attendent le retour du réseau
+  (Compte › Partage indique l'état).
+- **Restent sur l'appareil** : thème, site affiché, boîte mail personnelle et son mot de passe,
+  jeton de la session cloud, journal d'usage. Une sauvegarde restaurée sur un appareil est ensuite
+  partagée avec tous.
 
 ## Journal d’usage
 

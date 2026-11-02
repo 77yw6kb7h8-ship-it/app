@@ -92,7 +92,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:-6px -20px 16px;padding:0 20px">
 <sc-for list="{{ pdiscs }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};opacity:{{ d.op }};border:1px solid var(--tileBd);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
-<div onClick="{{ togglePdAdd }}" title="Ajouter une discipline" style="flex:none;cursor:pointer;width:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div>
+<sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div onClick="{{ togglePdAdd }}" title="Ajouter une discipline" style="flex:none;cursor:pointer;width:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if>
 </div>
 <sc-if value="{{ pdAdd }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin:-6px 0 16px">
 <input value="{{ discText }}" onChange="{{ onDisc }}" placeholder="Nouvelle discipline (ex. Isolation)…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--field);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
@@ -788,7 +788,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Connexion</div>
 <div style="border-radius:20px;background:var(--field);overflow:hidden">
 <div onClick="{{ me.edit }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-bottom:2px solid var(--line)"><div style="min-width:0"><div style="font:400 15.5px -apple-system,sans-serif">Identifiant & mot de passe</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ me.loginLbl }}</div></div><svg width="8" height="13" viewBox="0 0 8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink3)"><path d="M1.5 1.5l5 5-5 5"></path></svg></div>
-<sc-if value="{{ me.owner }}" hint-placeholder-val="{{ true }}"><div onClick="{{ authToggle }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px">
+<sc-if value="{{ authLocal }}" hint-placeholder-val="{{ false }}"><div onClick="{{ authToggle }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px">
 <div><div style="font:400 15.5px -apple-system,sans-serif">Exiger l’identifiant</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ authSub }}</div></div>
 <div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ authTrack }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ authKnob }};transition:transform .2s"></div></div>
 </div></sc-if>
@@ -805,8 +805,10 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-for>
 <div onClick="{{ addUser }}" style="cursor:pointer;padding:13px 0;font:600 14px -apple-system,sans-serif;color:var(--acc)">+ Nouveau profil</div>
 </div>
-<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Propriétaire : tout, dont les profils. Admin : tout sauf les profils. User : consultation et saisie, sans suppression ni réglages.</div>
+<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Propriétaire : tout, dont les profils. Admin : tout sauf les profils. User : consultation et saisie, sans suppression ni réglages. Chaque profil se connecte avec son adresse mail ou son identifiant, sur n’importe quel appareil.</div>
 </sc-if>
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Partage · {{ syncOrg }}</div>
+<div style="padding:12px 14px;border-radius:20px;background:var(--field)"><div style="display:flex;align-items:center;gap:9px"><span style="width:9px;height:9px;border-radius:50%;flex:none;background:{{ syncCol }}"></span><span style="font:500 15px -apple-system,sans-serif">{{ syncTxt }}</span></div><div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin-top:5px">{{ syncSub }}</div><div onClick="{{ syncNow }}" style="cursor:pointer;margin-top:12px;text-align:center;padding:11px 0;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)">Synchroniser maintenant</div></div>
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Réglages</div>
 <div style="border-radius:20px;background:var(--field);overflow:hidden">
 <sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div onClick="{{ cfgGo.p }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:2px solid var(--line)"><div style="width:32px;height:32px;border-radius:9px;flex:none;background:#0A84FF;color:#fff;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"></rect></svg></div><div style="flex:1;min-width:0"><div style="font:400 15.5px -apple-system,sans-serif">Projets</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cfgSub.p }}</div></div><svg width="8" height="13" viewBox="0 0 8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink3)"><path d="M1.5 1.5l5 5-5 5"></path></svg></div><div onClick="{{ cfgGo.s }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:2px solid var(--line)"><div style="width:32px;height:32px;border-radius:9px;flex:none;background:#FF9F0A;color:#fff;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.5 7.5L12 3.5l8.5 4v9L12 20.5l-8.5-4z"></path><path d="M3.5 7.5L12 11.5l8.5-4M12 11.5v9"></path></svg></div><div style="flex:1;min-width:0"><div style="font:400 15.5px -apple-system,sans-serif">Stocks</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cfgSub.s }}</div></div><svg width="8" height="13" viewBox="0 0 8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink3)"><path d="M1.5 1.5l5 5-5 5"></path></svg></div></sc-if>
@@ -854,7 +856,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">Exporter → « Enregistrer dans Fichiers » → iCloud Drive › Chantier › Sauvegardes. Chaque sauvegarde porte un identifiant unique.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 14</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 15</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -1092,17 +1094,18 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-if>
 
 <sc-if value="{{ needLogin }}" hint-placeholder-val="{{ false }}">
-<div style="position:absolute;inset:0;z-index:90;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:24px 28px calc(24px + env(safe-area-inset-bottom, 0px))">
-<div style="width:64px;height:64px;border-radius:18px;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(10,122,255,.35)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"></rect></svg></div>
-<div style="font:700 34px/1.05 -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.025em;margin-top:20px">Chantier</div>
-<div style="font:400 15px -apple-system,sans-serif;color:var(--ink2);margin-top:6px">Connectez-vous avec votre identifiant.</div>
-<div style="margin-top:24px;border-radius:16px;background:var(--field);border:1px solid var(--tileBd);overflow:hidden">
-<div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Identifiant</div><input value="{{ lgId }}" onChange="{{ onLgId }}" onKeyDown="{{ lgKey }}" autocapitalize="none" autocorrect="off" autocomplete="username" placeholder="Ex. boss" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
-<div style="display:flex;align-items:center;padding:0 16px"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Mot de passe</div><input type="password" value="{{ lgPw }}" onChange="{{ onLgPw }}" onKeyDown="{{ lgKey }}" autocomplete="current-password" placeholder="••••" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
-</div>
-<sc-if value="{{ hasLgErr }}" hint-placeholder-val="{{ false }}"><div style="margin:10px 4px 0;font:500 13.5px -apple-system,sans-serif;color:var(--warnTx)">{{ lgErr }}</div></sc-if>
-<div onClick="{{ doLogin }}" style="cursor:pointer;margin-top:16px;padding:15px;border-radius:16px;background:var(--acc);color:var(--accOn);text-align:center;font:600 15.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Se connecter</div>
-<div style="margin-top:14px;text-align:center;font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink3)">Identifiant oublié ? Le propriétaire peut le changer dans Compte › Profils.</div>
+<div style="position:absolute;inset:0;z-index:90;background:var(--bg);display:flex;flex-direction:column;justify-content:center;overflow-y:auto;padding:24px 28px calc(24px + env(safe-area-inset-bottom, 0px))">
+<div style="width:64px;height:64px;flex:none;border-radius:18px;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(10,122,255,.35)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"></rect></svg></div>
+<div style="font:700 34px/1.05 -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.025em;margin-top:20px">{{ lgTitle }}</div>
+<div style="font:400 15px/1.4 -apple-system,sans-serif;color:var(--ink2);margin-top:6px">{{ lgSub }}</div>
+<sc-if value="{{ lgIn }}" hint-placeholder-val="{{ true }}"><div style="margin-top:24px;border-radius:16px;background:var(--field);border:1px solid var(--tileBd);overflow:hidden"><div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Identifiant</div><input value="{{ lgId }}" onChange="{{ onLgId }}" onKeyDown="{{ lgKey }}" autocapitalize="none" autocorrect="off" autocomplete="username" placeholder="Mail ou identifiant" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div><div style="display:flex;align-items:center;padding:0 16px"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Mot de passe</div><input value="{{ lgPw }}" onChange="{{ onLgPw }}" onKeyDown="{{ lgKey }}" type="password" autocomplete="current-password" placeholder="••••••" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div></div></sc-if>
+<sc-if value="{{ lgNew }}" hint-placeholder-val="{{ false }}"><div style="margin-top:24px;border-radius:16px;background:var(--field);border:1px solid var(--tileBd);overflow:hidden"><div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Nom</div><input value="{{ lgName }}" onChange="{{ onLgName }}" onKeyDown="{{ lgKey }}" autocomplete="name" placeholder="Ex. Thomas Martin" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div><div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Mail</div><input value="{{ lgMail }}" onChange="{{ onLgMail }}" onKeyDown="{{ lgKey }}" type="email" autocapitalize="none" autocorrect="off" autocomplete="email" placeholder="nom@entreprise.fr" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div><div style="display:flex;align-items:center;padding:0 16px"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Mot de passe</div><input value="{{ lgPw }}" onChange="{{ onLgPw }}" onKeyDown="{{ lgKey }}" type="password" autocomplete="new-password" placeholder="6 caractères minimum" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div></div></sc-if>
+<sc-if value="{{ lgOrg }}" hint-placeholder-val="{{ false }}"><div style="margin-top:24px;border-radius:16px;background:var(--field);border:1px solid var(--tileBd);overflow:hidden"><div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Entreprise</div><input value="{{ lgOrgN }}" onChange="{{ onLgOrgN }}" onKeyDown="{{ lgKey }}" autocomplete="organization" placeholder="Ex. Martin Rénovation" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div><div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Votre nom</div><input value="{{ lgName }}" onChange="{{ onLgName }}" onKeyDown="{{ lgKey }}" autocomplete="name" placeholder="Ex. Thomas Martin" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div><div style="display:flex;align-items:center;padding:0 16px"><div style="width:110px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Identifiant</div><input value="{{ lgLogin }}" onChange="{{ onLgLogin }}" onKeyDown="{{ lgKey }}" autocapitalize="none" autocorrect="off" placeholder="Ex. boss (facultatif)" style="flex:1;min-width:0;border:0;background:transparent;padding:15px 0;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div></div></sc-if>
+<sc-if value="{{ hasLgErr }}" hint-placeholder-val="{{ false }}"><div style="margin:10px 4px 0;font:500 13.5px/1.4 -apple-system,sans-serif;color:{{ lgErrCol }}">{{ lgErr }}</div></sc-if>
+<div onClick="{{ doLogin }}" style="cursor:pointer;margin-top:16px;padding:15px;border-radius:16px;background:var(--acc);color:var(--accOn);text-align:center;font:600 15.5px -apple-system,'SF Pro Text',system-ui,sans-serif;opacity:{{ lgOp }}">{{ lgBtn }}</div>
+<sc-if value="{{ lgOrg }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin-top:8px"><div onClick="{{ lgCheck }}" style="flex:1;cursor:pointer;padding:13px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);text-align:center;font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Vérifier</div><div onClick="{{ logout }}" style="flex:1;cursor:pointer;padding:13px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);text-align:center;font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--warnTx)">Se déconnecter</div></div></sc-if>
+<sc-if value="{{ hasLgAlt }}" hint-placeholder-val="{{ true }}"><div onClick="{{ lgSwitch }}" style="cursor:pointer;margin-top:14px;text-align:center;font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--acc)">{{ lgAlt }}</div></sc-if>
+<div style="margin-top:14px;text-align:center;font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink3)">{{ lgNote }}</div>
 </div>
 </sc-if>
 
@@ -1254,7 +1257,7 @@ const SAVE_KEY = 'chantier-app-v6';
 const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'usage', 'pdAdd', 'back', 'cfgSec'];
 const restore = () => {
   try {
-    if (location.hash === '#reset') { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(SESS_KEY); history.replaceState(null, '', location.pathname); return {}; }
+    if (location.hash === '#reset') { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(SESS_KEY); localStorage.removeItem(CL_KEY); Object.keys(CL).forEach(k => delete CL[k]); history.replaceState(null, '', location.pathname); return {}; }
     const d = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
     if (!d || !d.state) return {};
     return applyData(d);
@@ -1471,7 +1474,7 @@ const phGet = async id => { const v = await phTx('readonly', o => o.get(id)); re
 const phDel = id => phTx('readwrite', o => o.delete(id));
 const phKeys = () => phTx('readonly', o => o.getAllKeys());
 const PURL = {};
-const phUrl = id => { if (!id) return ''; if (PURL[id] === undefined) { PURL[id] = ''; phGet(id).then(b => { if (b) { PURL[id] = URL.createObjectURL(b); if (phWake) phWake(); } }).catch(() => {}); } return PURL[id]; };
+const phUrl = id => { if (!id) return ''; if (PURL[id] === undefined) { PURL[id] = ''; phGet(id).then(b => { if (b) { PURL[id] = URL.createObjectURL(b); if (phWake) phWake(); } else phFetch(id); }).catch(() => {}); } return PURL[id]; };
 const phShrink = file => new Promise((ok, ko) => {
   const img = new Image(), u = URL.createObjectURL(file);
   img.onload = () => { const k = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight)), c = document.createElement('canvas'); c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(u); c.toBlob(b => b ? ok(b) : ko(new Error('conversion impossible')), 'image/jpeg', 0.82); };
@@ -1565,7 +1568,7 @@ const EAN_KEY = 'chantier-ean-v1', REF = {};
 try { Object.assign(REF, JSON.parse(localStorage.getItem(EAN_KEY) || '{}')); } catch (e) {}
 let refN = Object.keys(REF).length;
 const refSave = () => { refN = Object.keys(REF).length; try { localStorage.setItem(EAN_KEY, JSON.stringify(REF)); return true; } catch (e) { return false; } };
-const refPut = (code, name, unit, disc, sub) => { code = String(code || '').replace(/\s/g, ''); name = String(name || '').trim(); if (!/^\d{8,14}$/.test(code) || !name) return; const v = [name, String(unit || '').trim(), disc && disc !== 'Autre' ? disc : '', String(sub || '').trim()]; if ((REF[code] || []).join('|') === v.join('|')) return; REF[code] = v; refSave(); };
+const refPut = (code, name, unit, disc, sub) => { code = String(code || '').replace(/\s/g, ''); name = String(name || '').trim(); if (!/^\d{8,14}$/.test(code) || !name) return; const v = [name, String(unit || '').trim(), disc && disc !== 'Autre' ? disc : '', String(sub || '').trim()]; if ((REF[code] || []).join('|') === v.join('|')) return; REF[code] = v; refSave(); refMark([code]); };
 const csvRows = (t, sep) => { const rows = []; let row = [], cur = '', q = false; for (let i = 0; i < t.length; i++) { const c = t[i]; if (q) { if (c === '"') { if (t[i + 1] === '"') { cur += '"'; i++; } else q = false; } else cur += c; } else if (c === '"') q = true; else if (c === sep) { row.push(cur); cur = ''; } else if (c === '\n' || c === '\r') { if (c === '\r' && t[i + 1] === '\n') i++; row.push(cur); rows.push(row); row = []; cur = ''; } else cur += c; } if (cur || row.length) { row.push(cur); rows.push(row); } return rows; };
 // lit un catalogue fournisseur (CSV ; , ou tabulation, UTF-8 ou Windows) et l'ajoute à la base
 const refImport = async (file, discs) => {
@@ -1591,9 +1594,193 @@ const refImport = async (file, discs) => {
   if (!add) throw new Error('aucune ligne avec un code EAN valide');
   const old = { ...REF }; Object.assign(REF, N);
   if (!refSave()) { Object.keys(REF).forEach(k => delete REF[k]); Object.assign(REF, old); refSave(); throw new Error('mémoire de l’appareil pleine : importez un fichier plus petit'); }
+  refMark(Object.keys(N));
   return { add, skip };
 };
 const imapGuess = mail => { const d = String(mail || '').split('@')[1] || '', h = d.toLowerCase(); return /^(icloud|me|mac)\.com$/.test(h) ? 'imap.mail.me.com' : /^(gmail|googlemail)\.com$/.test(h) ? 'imap.gmail.com' : /^(outlook|hotmail|live|msn)\.(com|fr)$/.test(h) ? 'outlook.office365.com' : /^(yahoo|ymail)\./.test(h) ? 'imap.mail.yahoo.com' : h === 'orange.fr' || h === 'wanadoo.fr' ? 'imap.orange.fr' : h === 'free.fr' ? 'imap.free.fr' : h === 'sfr.fr' || h === 'neuf.fr' ? 'imap.sfr.fr' : h === 'laposte.net' ? 'imap.laposte.net' : h === 'bbox.fr' ? 'imap.bbox.fr' : h ? 'ssl0.ovh.net' : ''; };
+// ---------- données partagées : comptes Supabase et synchronisation entre appareils et utilisateurs ----------
+// Chaque fiche (site, projet, article ajouté, événement, contact, réglage…) devient une ligne « records » de l'entreprise.
+// Les changements sont envoyés fiche par fiche ; ceux des autres arrivent à l'ouverture, au retour du réseau et toutes les 15 s.
+const SB = { url: 'https://lueltzfwkdwiuwrjzfho.supabase.co', key: 'sb_publishable_3j7cd_jl1Z8PEX2YkExUVg_NySlyiZS' };
+const CL_KEY = 'chantier-cloud-v1';
+// CL = { sess: { at, rt, exp, uid, email }, me: { org, orgName, role, name, login, email }, members, synced: { clé: empreinte }, org, cursor, refQ, phQ }
+const CL = (() => { try { return JSON.parse(localStorage.getItem(CL_KEY) || '{}') || {}; } catch (e) { return {}; } })();
+const clSave = () => { try { localStorage.setItem(CL_KEY, JSON.stringify(CL)); } catch (e) {} };
+const DEV = (() => { try { let d = localStorage.getItem('chantier-dev'); if (!d) { d = rid().slice(0, 4); localStorage.setItem('chantier-dev', d); } return d; } catch (e) { return rid().slice(0, 4); } })();
+const sbErr = async r => { let j = {}; try { j = await r.json(); } catch (e) {} const m = j.msg || j.message || j.error_description || j.error || 'erreur ' + r.status; return Object.assign(new Error(m), { status: r.status, code: j.code || j.error_code || '' }); };
+const sbSess = j => { CL.sess = { at: j.access_token, rt: j.refresh_token, exp: Date.now() / 1000 + (j.expires_in || 3600), uid: j.user && j.user.id, email: j.user && j.user.email }; clSave(); };
+let sbRefP = null;
+const sbRefresh = () => sbRefP || (sbRefP = (async () => {
+  try {
+    const r = await fetch(SB.url + '/auth/v1/token?grant_type=refresh_token', { method: 'POST', headers: { apikey: SB.key, 'Content-Type': 'application/json' }, body: JSON.stringify({ refresh_token: CL.sess && CL.sess.rt }) });
+    if (r.status === 400 || r.status === 401 || r.status === 403) { CL.sess = null; clSave(); throw Object.assign(new Error('session expirée : reconnectez-vous'), { auth: true }); }
+    if (!r.ok) throw await sbErr(r);
+    sbSess(await r.json());
+  } finally { sbRefP = null; }
+})());
+// appel à Supabase avec la clé publique et, si connecté, le jeton de l'utilisateur (renouvelé au besoin)
+const sb = async (path, opt = {}) => {
+  if (CL.sess && CL.sess.exp - Date.now() / 1000 < 60) await sbRefresh();
+  const go = () => fetch(SB.url + path, { method: opt.method || 'GET', body: opt.json !== undefined ? JSON.stringify(opt.json) : opt.body,
+    headers: { apikey: SB.key, ...(CL.sess && opt.auth !== false ? { Authorization: 'Bearer ' + CL.sess.at } : {}), ...(opt.json !== undefined ? { 'Content-Type': 'application/json' } : {}), ...(opt.headers || {}) } });
+  let r = await go();
+  if (r.status === 401 && CL.sess && opt.auth !== false) { await sbRefresh(); r = await go(); }
+  if (!r.ok) throw await sbErr(r);
+  return r;
+};
+const sbJson = async (path, opt) => { const t = await (await sb(path, opt)).text(); return t ? JSON.parse(t) : null; };
+const rpc = (fn, args, opt = {}) => sbJson('/rest/v1/rpc/' + fn, { method: 'POST', json: args, ...opt });
+
+// empreinte stable d'une valeur (clés triées, comme jsonb les renvoie dans un autre ordre)
+const canon = v => v === undefined ? 'null' : JSON.stringify(v, (k, x) => x && typeof x === 'object' && !Array.isArray(x) ? Object.keys(x).sort().reduce((o, y) => { o[y] = x[y]; return o; }, {}) : x);
+// dictionnaires partagés (une fiche par entrée) et réglages (une fiche chacun ; cfg/… réservé aux admins)
+const SH_DICT = ['stk', 'stkCfg', 'stkDel', 'stkZone', 'ph', 'cover', 'treated', 'vip', 'lvlUse', 'pins'];
+const SH_CFG = ['discs', 'cals', 'rubs', 'projPh', 'projSup'], SH_VAL = ['lvls'];
+// état de l'appli → fiches
+const toRecords = st => {
+  const R = new Map();
+  KS.forEach((k, i) => { if (!SITES[k]) return; const { projects, ...def } = SITES[k]; R.set('s/' + k, { def, dot: DOT[k] || '', team: TEAMS[k] || [], done: DONE[k] || [], cfg: (st.cfg || {})[k] || null, i }); });
+  Object.keys(st.P || {}).forEach(k => (st.P[k] || []).forEach((p, i) => R.set('p/' + k + '/' + p.id, { ...p, _i: i })));
+  Object.keys(st.addS || {}).forEach(k => (st.addS[k] || []).forEach((x, i) => R.set('a/' + k + '/' + x[0], { x, _i: i })));
+  (st.evs || []).forEach(e => R.set('ev/' + e.id, e));
+  SUP.forEach(x => R.set('u/' + x.id, x));
+  Object.keys(RID.map).forEach(k => R.set('r/' + k, RID.map[k]));
+  SH_DICT.forEach(d => Object.keys(st[d] || {}).forEach(k => { if (st[d][k] !== undefined && !(d === 'treated' && /^mx-/.test(k))) R.set('d/' + d + '/' + k, st[d][k]); }));
+  SH_CFG.forEach(d => { if (st[d] !== undefined) R.set('cfg/' + d, st[d]); });
+  SH_VAL.forEach(d => { if (st[d] !== undefined) R.set('v/' + d, st[d]); });
+  return R;
+};
+// fiches → données de l'appli (même forme que snap())
+const fromRecords = (R, st) => {
+  const sites = {}, dot = {}, teams = {}, done = {}, cfg = {}, ks = [], P = {}, addS = {}, evs = [], sup = [], map = {}, n = {}, out = {};
+  SH_DICT.forEach(d => { out[d] = {}; });
+  R.forEach((v, key) => {
+    const t = key.slice(0, key.indexOf('/')), rest = key.slice(t.length + 1), a = rest.split('/')[0];
+    if (t === 's') { sites[a] = { ...v.def, projects: [] }; dot[a] = v.dot; teams[a] = v.team || []; done[a] = v.done || []; cfg[a] = v.cfg || (st.cfg || {})[a] || { zones: [], contacts: [] }; ks.push([v.i, a]); }
+    else if (t === 'p') (P[a] = P[a] || []).push(v);
+    else if (t === 'a') (addS[a] = addS[a] || []).push(v);
+    else if (t === 'ev') evs.push(v);
+    else if (t === 'u') sup.push(v);
+    else if (t === 'r') { map[rest] = v; const m = String(v).match(/^([A-Z]+)-(\d+)$/); if (m) n[m[1]] = Math.max(n[m[1]] || 0, +m[2]); }
+    else if (t === 'd' && out[a]) out[a][rest.slice(a.length + 1)] = v;
+    else if (t === 'cfg' || t === 'v') out[a] = v;
+  });
+  const ord = (x, y) => (x._i ?? 0) - (y._i ?? 0);
+  const K = ks.sort((x, y) => x[0] - y[0] || String(x[1]).localeCompare(y[1])).map(x => x[1]);
+  K.forEach(k => { P[k] = (P[k] || []).sort(ord).map(({ _i, ...p }) => p); addS[k] = (addS[k] || []).sort(ord).map(v => v.x); });
+  return { state: { ...out, P, addS, evs: evs.sort((x, y) => String(x.date).localeCompare(y.date)), cfg }, sup, sites, ks: K, dot, teams, done, rid: { map, n } };
+};
+const SYNC = { comp: null, busy: false, again: false, err: '', last: 0, timer: null, pend: 0, up: 0 };
+const cloudReady = () => !!(CL.sess && CL.me && CL.me.org);
+const syncSoon = (ms = 1200) => { if (!cloudReady()) return; clearTimeout(SYNC.timer); SYNC.timer = setTimeout(() => syncRun(), ms); };
+const refMark = codes => { if (!CL.refQ) CL.refQ = []; const s = new Set(CL.refQ); codes.forEach(c => s.add(c)); CL.refQ = [...s]; clSave(); syncSoon(); };
+const phMark = ids => { if (!CL.phQ) CL.phQ = []; const s = new Set(CL.phQ); ids.forEach(c => s.add(c)); CL.phQ = [...s]; clSave(); syncSoon(); };
+const allPhotos = st => { const s = new Set(); Object.values(st.ph || {}).forEach(L => (L || []).forEach(x => s.add(x.id))); Object.values(st.cover || {}).forEach(id => { if (id) s.add(id); }); return [...s]; };
+// lit les fiches modifiées depuis le dernier passage (pages de 1000)
+const pullRows = async since => {
+  const rows = []; let off = 0;
+  for (;;) {
+    const page = await sbJson('/rest/v1/records?select=key,data,deleted,updated_at&org_id=eq.' + CL.me.org + (since ? '&updated_at=gt.' + encodeURIComponent(since) : '') + '&order=updated_at.asc,key.asc&limit=1000&offset=' + off);
+    rows.push(...page); if (page.length < 1000) return rows; off += 1000;
+  }
+};
+const cursorOf = rows => rows.length ? new Date(new Date(rows[rows.length - 1].updated_at).getTime() - 3000).toISOString() : CL.cursor;
+const applyRef = rows => { let ch = false; rows.forEach(r => { const c = r.key.slice(2); if (r.deleted) { if (REF[c]) { delete REF[c]; ch = true; } } else if (canon(REF[c]) !== canon(r.data)) { REF[c] = r.data; ch = true; } }); if (ch) refSave(); return ch; };
+const syncRun = async () => {
+  if (!cloudReady() || !SYNC.comp) return;
+  if (SYNC.busy) { SYNC.again = true; return; }
+  if (navigator.onLine === false) { SYNC.err = ''; SYNC.comp.forceUpdate(); return; }
+  SYNC.busy = true; SYNC.comp.forceUpdate();
+  const comp = SYNC.comp, org = CL.me.org;
+  try {
+    if (CL.org !== org || !CL.synced) {
+      // premier passage de cet appareil dans l'entreprise : la base commune l'emporte, sinon cet appareil la crée
+      const rows = await pullRows(null);
+      CL.org = org; CL.synced = {}; CL.cursor = cursorOf(rows);
+      if (rows.some(r => !r.deleted && r.key.startsWith('s/'))) {
+        try { localStorage.setItem('chantier-app-v6-avant-partage', localStorage.getItem(SAVE_KEY) || ''); } catch (e) {}
+        const R = new Map(); rows.forEach(r => { if (!r.deleted && !r.key.startsWith('e/')) { R.set(r.key, r.data); CL.synced[r.key] = canon(r.data); } });
+        applyRef(rows.filter(r => r.key.startsWith('e/')));
+        comp.applyRemote(fromRecords(R, comp.state), true);
+      } else { refMark(Object.keys(REF)); phMark(allPhotos(comp.state)); }
+      clSave();
+    } else {
+      const rows = await pullRows(CL.cursor), syn = CL.synced, st = comp.state, L = toRecords(st); let ch = false;
+      applyRef(rows.filter(r => r.key.startsWith('e/')));
+      rows.forEach(r => {
+        if (r.key.startsWith('e/')) return;
+        const lh = L.has(r.key) ? canon(L.get(r.key)) : undefined, sh = syn[r.key], rh = r.deleted ? undefined : canon(r.data);
+        if (rh === sh) return;
+        if (lh === sh) { if (r.deleted) L.delete(r.key); else L.set(r.key, r.data); ch = true; } // sinon modification locale en attente : elle l'emporte
+        if (rh === undefined) delete syn[r.key]; else syn[r.key] = rh;
+      });
+      CL.cursor = cursorOf(rows) || CL.cursor; clSave();
+      if (ch && L.size) comp.applyRemote(fromRecords(L, st));
+    }
+    await syncPush(comp);
+    SYNC.err = ''; SYNC.last = Date.now();
+  } catch (e) {
+    SYNC.err = (e && e.message) || String(e);
+    if (e && e.auth) { CL.me = null; ME = null; }
+  } finally {
+    SYNC.busy = false; comp.forceUpdate();
+    if (SYNC.again) { SYNC.again = false; syncSoon(300); }
+  }
+};
+// envoie les fiches modifiées, la base EAN et les photos
+const syncPush = async comp => {
+  const org = CL.me.org, syn = CL.synced, L = toRecords(comp.state), up = [];
+  L.forEach((v, k) => { const h = canon(v); if (syn[k] !== h) up.push({ key: k, data: v, deleted: false, h }); });
+  Object.keys(syn).forEach(k => { if (!L.has(k)) up.push({ key: k, data: null, deleted: true }); });
+  SYNC.pend = up.length + (CL.refQ || []).length + (CL.phQ || []).length;
+  const send = async B => sb('/rest/v1/records?on_conflict=org_id,key', { method: 'POST', headers: { Prefer: 'resolution=merge-duplicates,return=minimal' }, json: B.map(x => ({ org_id: org, key: x.key, data: x.data, deleted: x.deleted })) });
+  const done = x => { if (x.deleted) delete syn[x.key]; else syn[x.key] = x.h; };
+  const refused = [];
+  for (let i = 0; i < up.length; i += 200) {
+    const B = up.slice(i, i + 200);
+    try { await send(B); B.forEach(done); }
+    catch (e) {
+      if (e.status !== 403 && e.status !== 401 && !/row-level security/i.test(e.message)) throw e;
+      for (const x of B) { try { await send([x]); done(x); } catch (e2) { refused.push(x.key); } }
+    }
+    clSave();
+  }
+  if (refused.length) {
+    // modification refusée par le serveur (droits du profil) : on remet la version commune
+    const rows = await sbJson('/rest/v1/records?select=key,data,deleted&org_id=eq.' + org + '&key=in.(' + refused.map(k => '"' + k.replace(/"/g, '\\"') + '"').join(',') + ')');
+    const R = toRecords(comp.state); refused.forEach(k => R.delete(k));
+    (rows || []).forEach(r => { if (!r.deleted) { R.set(r.key, r.data); syn[r.key] = canon(r.data); } });
+    clSave(); comp.applyRemote(fromRecords(R, comp.state)); comp.toast('Modification non autorisée pour votre profil : annulée');
+  }
+  const Q = CL.refQ || [];
+  for (let i = 0; i < Q.length; i += 500) {
+    const B = Q.slice(i, i + 500);
+    await sb('/rest/v1/records?on_conflict=org_id,key', { method: 'POST', headers: { Prefer: 'resolution=merge-duplicates,return=minimal' }, json: B.map(c => ({ org_id: org, key: 'e/' + c, data: REF[c] || null, deleted: !REF[c] })) });
+    CL.refQ = Q.slice(i + 500); clSave();
+  }
+  for (const id of [...(CL.phQ || [])]) {
+    const b = await phGet(id).catch(() => null);
+    if (b) await sb('/storage/v1/object/photos/' + org + '/' + id, { method: 'POST', body: b, headers: { 'Content-Type': b.type || 'image/jpeg', 'x-upsert': 'true' } });
+    CL.phQ = (CL.phQ || []).filter(x => x !== id); clSave();
+  }
+  SYNC.pend = 0;
+};
+// photo absente de l'appareil : téléchargée depuis l'espace de l'entreprise
+const phFetch = async id => {
+  if (!cloudReady()) return;
+  try { const r = await sb('/storage/v1/object/authenticated/photos/' + CL.me.org + '/' + id); const b = await r.blob(); await phPut(id, b); PURL[id] = URL.createObjectURL(b); if (phWake) phWake(); } catch (e) {}
+};
+// profil de l'utilisateur connecté (entreprise, rôle) et liste des membres
+const cloudMe = async () => {
+  const m = (await sbJson('/rest/v1/members?select=org_id,role,name,login,email&user_id=eq.' + CL.sess.uid))[0];
+  if (!m) { CL.me = null; clSave(); return null; }
+  const o = (await sbJson('/rest/v1/orgs?select=name&id=eq.' + m.org_id))[0] || {};
+  CL.me = { org: m.org_id, orgName: o.name || '', role: m.role, name: m.name, login: m.login || '', email: m.email || CL.sess.email };
+  CL.members = await sbJson('/rest/v1/members?select=user_id,role,name,login,email&order=created_at.asc');
+  clSave(); return CL.me;
+};
+const cloudUser = () => CL.me ? { id: CL.sess.uid, name: CL.me.name || CL.me.email, login: CL.me.login, mail: CL.me.email, role: CL.me.role, org: CL.me.orgName, pw: 'cloud' } : null;
+const cloudUsers = () => (CL.members || []).map(m => ({ id: m.user_id, name: m.name || m.email, login: m.login || '', mail: m.email || '', role: m.role, pw: 'cloud' }));
 const lvlOf = p => p.lvl ?? LVLP[p.id] ?? '';
 const START ={ 'Liste des projets': { proj: null }, 'Fiche projet · Étapes': { proj: 'a1', seg: 'e' }, 'Fiche projet · Fournisseurs': { proj: 'a1', seg: 'c' }, 'Nouveau projet': { proj: null, sheet: 'p', form: { steps: DEFSTEPS, sups: [], custom: [] } } };
 
@@ -1610,9 +1797,9 @@ class Component extends DCLogic {
     });
     return { dark: this.props.dark ?? false, site: 'a', tab: 'p', proj: null, seg: 'e', editSteps: false, stepText: '', stepType: 'g', supOpen: null, geo: {}, P, noteText: '', stk: {}, sentOrder: {}, mail: null, tone: 0, edits: {}, sentMail: {}, read: {}, wpos: 0, cfg: CFG0, cfgSite: 'a', cfgF: {}, sunday: false, discs: DISC0, discText: '', chf: 'TOUS', mbox: 'r', mq: '', who: null, vip: {}, treated: {}, cat: 'TOUS', sort: 'PRIX', day: 0, menu: false, sheet: null, form: {}, addS: {}, addE: {}, seq: 0, lg: {}, ...(START[this.props.start] || {}), ...this.boot() };
   }
-  boot() { const r = restore(); seedUsers(); seedUsers2(); meLoad(); if (r.mbx) r.mbx = { ...r.mbx, busy: false }; if (!Array.isArray(r.evs)) r.evs = evMigrate(r.addE); return r;
+  boot() { const r = restore(); seedUsers(); seedUsers2(); meLoad(); ME = cloudUser(); if (r.mbx) r.mbx = { ...r.mbx, busy: false }; if (!Array.isArray(r.evs)) r.evs = evMigrate(r.addE); return r;
   }
-  componentWillUnmount() { this.stopScan(); if (this.wRaf) cancelAnimationFrame(this.wRaf); if (this.rec) try { this.rec.abort(); } catch (e) {} }
+  componentWillUnmount() { clearInterval(this.syncI); this.stopScan(); if (this.wRaf) cancelAnimationFrame(this.wRaf); if (this.rec) try { this.rec.abort(); } catch (e) {} }
   dictate(mk, key) {
     if (this.rec) { try { this.rec.stop(); } catch (e) {} this.rec = null; if (this.state.mic === mk) { this.setState({ mic: null }); return; } }
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -1639,6 +1826,10 @@ class Component extends DCLogic {
     this.wRaf = requestAnimationFrame(tick);
   }
   componentDidMount() {
+    SYNC.comp = this;
+    if (cloudReady()) { cloudMe().then(() => { ME = cloudUser(); this.forceUpdate(); }).catch(() => {}); syncSoon(300); }
+    this.syncI = setInterval(() => { if (!document.hidden) syncRun(); }, 15000);
+    addEventListener('online', () => syncSoon(200)); document.addEventListener('visibilitychange', () => { if (!document.hidden) syncSoon(200); });
     this.flags(); this.trackDiff(); if (ridScan(this.state)) this.forceUpdate();
     phWake = () => { clearTimeout(this.phT); this.phT = setTimeout(() => this.forceUpdate(), 30); };
     setTimeout(() => { const keep = new Set(); Object.values(this.state.ph || {}).forEach(L => L.forEach(x => keep.add(x.id))); if (window.indexedDB) phKeys().then(K => K.forEach(k => { if (!keep.has(k)) phDel(k); })).catch(() => {}); }, 4000);
@@ -1745,6 +1936,7 @@ class Component extends DCLogic {
       catch (e) { this.toast('Photo ignorée : ' + ((e && e.message) || e)); }
     }
     if (!ids.length) return null;
+    phMark(ids);
     track('photo:' + (replaceId ? 'replace' : 'add'), sec);
     this.setState(s => {
       const L = [...((s.ph || {})[pid] || [])], cover = { ...(s.cover || {}) };
@@ -1774,9 +1966,83 @@ class Component extends DCLogic {
     const wk = Math.round(this.state.wpos || 0); if (this.wLast !== undefined && wk !== this.wLast) haptic(); this.wLast = wk;
     if (ridScan(this.state)) { this.forceUpdate(); return; }
     persist(this.state);
+    // fiche partagée modifiée : envoi groupé un instant plus tard
+    const sig = [this.state.P, this.state.addS, this.state.evs, this.state.cfg, this.state.rev, this.state.lvls, ...SH_DICT.map(k => this.state[k]), ...SH_CFG.map(k => this.state[k])];
+    if (this.sig && sig.some((v, i) => v !== this.sig[i])) syncSoon();
+    this.sig = sig;
     if (!this.wRaf && !this.wDrag && KS[wrapI(Math.round(this.state.wpos))] !== this.state.site) { const i = KS.indexOf(this.state.site); this.wTarget = i; this.setState({ wpos: i }); }
     if (prev.dark !== this.props.dark) this.setState({ dark: this.props.dark ?? false });
     if (prev.start !== this.props.start) this.setState({ tab: 'p', site: 'a', wpos: 0, sheet: null, seg: 'e', ...(START[this.props.start] || {}) });
+  }
+  // données reçues de l'entreprise : remplacent les fiches partagées de l'appareil
+  applyRemote(d, first) {
+    if (!d.ks.length) return;
+    SUP.splice(0, SUP.length, ...d.sup); put(SITES, d.sites); put(DOT, d.dot); put(TEAMS, d.teams); put(DONE, d.done);
+    KS.splice(0, KS.length, ...d.ks.filter(k => SITES[k])); RID.map = d.rid.map; RID.n = d.rid.n;
+    const st = this.state, priv = {}; Object.keys(st.treated || {}).forEach(k => { if (/^mx-/.test(k)) priv[k] = st.treated[k]; });
+    const s = { ...d.state, treated: { ...d.state.treated, ...priv }, rev: (st.rev || 0) + 1 };
+    if (!SITES[st.site]) { s.site = KS[0]; s.proj = null; s.mail = null; }
+    if (!SITES[st.cfgSite]) s.cfgSite = s.site || st.site;
+    this.setState(s);
+    if (first) this.toast('✓ Données de l’entreprise chargées sur cet appareil');
+  }
+  async cloudLogin() {
+    const L = this.state.lg || {}, mode = !CL.sess ? (L.mode || 'in') : 'org', bad = err => this.setState(z => ({ lg: { ...z.lg, err, busy: false } }));
+    if (L.busy) return;
+    this.setState(z => ({ lg: { ...z.lg, busy: true, err: '' } }));
+    try {
+      if (mode === 'in') {
+        let email = (L.id || '').trim().toLowerCase();
+        if (!email || !L.pw) return bad('Saisissez votre adresse mail (ou identifiant) et votre mot de passe.');
+        if (!email.includes('@')) { email = await rpc('login_email', { p_login: email }, { auth: false }); if (!email) { track('login:fail'); return bad('Identifiant inconnu.'); } }
+        const r = await fetch(SB.url + '/auth/v1/token?grant_type=password', { method: 'POST', headers: { apikey: SB.key, 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password: L.pw }) });
+        if (!r.ok) { const e = await sbErr(r); track('login:fail'); return bad(/confirm/i.test(e.message + e.code) ? 'Adresse pas encore confirmée : ouvrez le lien reçu par mail.' : 'Identifiant ou mot de passe incorrect.'); }
+        sbSess(await r.json());
+      } else if (mode === 'new') {
+        const email = (L.mail || '').trim().toLowerCase(), name = (L.name || '').trim();
+        if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return bad('Nom et adresse mail obligatoires.');
+        if ((L.pw || '').length < 6) return bad('Mot de passe : 6 caractères minimum.');
+        const r = await fetch(SB.url + '/auth/v1/signup', { method: 'POST', headers: { apikey: SB.key, 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password: L.pw, data: { name } }) });
+        if (!r.ok) { const e = await sbErr(r); return bad(/already|exists/i.test(e.message + e.code) ? 'Un compte existe déjà avec cette adresse : connectez-vous.' : 'Compte non créé : ' + e.message); }
+        const j = await r.json();
+        if (!j.access_token) { this.setState({ lg: { mode: 'in', id: email, err: 'Compte créé : ouvrez le lien de confirmation reçu par mail, puis connectez-vous.' } }); return; }
+        sbSess(j); track('signup');
+      } else {
+        const org = (L.org || '').trim(), login = (L.login || '').trim().toLowerCase();
+        if (!org) return bad('Nom de l’entreprise obligatoire.');
+        if (login && !/^[a-z0-9._-]{2,40}$/.test(login)) return bad('Identifiant : lettres minuscules, chiffres, point ou tiret.');
+        await rpc('create_org', { p_name: org, p_member_name: (L.name || '').trim() || (CL.sess.email || '').split('@')[0], p_login: login });
+        track('org:create');
+      }
+      const me = await cloudMe();
+      ME = cloudUser(); track('login');
+      this.setState({ lg: me ? {} : { mode: 'org', name: (L.name || '').trim() }, sheet: null, menu: false });
+      if (me) syncSoon(100);
+    } catch (e) { const m = (e && e.message) || String(e); bad(/create_org|login_email|schema cache|does not exist|relation/i.test(m) ? 'La base Supabase n’est pas encore préparée : collez supabase/schema.sql dans Supabase › SQL Editor, puis réessayez.' : m); }
+  }
+  async cloudLogout() {
+    try { if (CL.sess) await fetch(SB.url + '/auth/v1/logout', { method: 'POST', headers: { apikey: SB.key, Authorization: 'Bearer ' + CL.sess.at } }); } catch (e) {}
+    CL.sess = null; CL.me = null; CL.members = []; clSave(); ME = null; track('logout');
+    this.setState({ sheet: null, lg: {}, menu: false });
+  }
+  async cloudCall(fn, ok) {
+    try { await fn(); if (ok) this.toast(ok); await cloudMe(); ME = cloudUser(); this.forceUpdate(); }
+    catch (e) { this.toast('Non enregistré : ' + ((e && e.message) || e)); }
+  }
+  cloudUserSave(r, F) {
+    const name = F.name.trim(), login = (F.login || '').trim().toLowerCase(), role = Object.keys(ROLES).find(k => ROLES[k] === F.role) || 'user';
+    return this.cloudCall(async () => {
+      if (!r.id) {
+        const email = (F.mail || '').trim().toLowerCase();
+        // compte de connexion créé sans quitter la session du propriétaire
+        const res = await fetch(SB.url + '/auth/v1/signup', { method: 'POST', headers: { apikey: SB.key, 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password: F.pw, data: { name } }) });
+        if (!res.ok) { const e = await sbErr(res); if (!/already|exists/i.test(e.message + e.code)) throw e; }
+        await rpc('add_member', { p_email: email, p_role: role, p_name: name, p_login: login });
+      } else if (r.id === CL.sess.uid) {
+        await sb('/rest/v1/members?user_id=eq.' + r.id, { method: 'PATCH', json: { name, login: login || null } });
+        if (F.pw) await sb('/auth/v1/user', { method: 'PUT', json: { password: F.pw } });
+      } else await rpc('set_member', { p_user: r.id, p_role: role, p_name: name, p_login: login });
+    }, !r.id ? '✓ Profil créé : transmettez l’adresse mail et le mot de passe' : '✓ Profil enregistré');
   }
   updP(pid, fn) {
     this.setState(s => { const P = {}; Object.keys(s.P).forEach(k => { P[k] = s.P[k].map(p => p.id === pid ? fn(p) : p); }); return { P }; });
@@ -2184,32 +2450,23 @@ class Component extends DCLogic {
         del: r => { const L = calL().filter(x => x.k !== r.k), to = (L.find(x => !x.auto) || {}).k; if (!to) return; this.setState(s => ({ cals: L, evs: (s.evs || []).map(e => e.cal === r.k ? { ...e, cal: to } : e) })); }
       },
       user: {
-        title: r => !r.id ? 'Nouveau profil' : ME && r.id === ME.id ? 'Mon profil' : 'Modifier le profil', req: 'name', delLbl: 'Supprimer ce profil',
-        canDel: r => isOwner() && !!r.id && r.id !== ME.id && (USERS.find(u => u.id === r.id) || {}).role !== 'owner',
-        note: r => (USERS.find(u => u.id === r.id) || {}).role === 'owner' ? 'Le propriétaire gère les profils ; il ne peut pas être supprimé.' : 'Propriétaire : tout, dont les profils. Admin : tout sauf les profils. User : consultation et saisie, sans suppression ni réglages.',
+        title: r => !r.id ? 'Nouveau profil' : CL.sess && r.id === CL.sess.uid ? 'Mon profil' : 'Modifier le profil', req: 'name', delLbl: 'Retirer de l’entreprise',
+        canDel: r => isOwner() && !!r.id && !!CL.sess && r.id !== CL.sess.uid,
+        note: r => !r.id ? 'Le compte de connexion est créé avec cette adresse et ce mot de passe : transmettez-les à la personne. Elle pourra changer son mot de passe dans Compte › Mon profil.' : CL.sess && r.id === CL.sess.uid ? '' : 'Propriétaire : tout, dont les profils. Admin : tout sauf les profils. User : consultation et saisie, sans suppression ni réglages. Le mot de passe se change par la personne elle-même.',
         err: (r, F) => {
-          const l = (F.login || '').trim().toLowerCase(), u = USERS.find(x => x.id === r.id);
-          if (!l) return 'Identifiant obligatoire.';
-          if (!/^[a-z0-9._-]{2,}$/.test(l)) return 'Identifiant : lettres, chiffres, point ou tiret, 2 caractères minimum.';
-          if (USERS.some(x => x.id !== r.id && (x.login || '').toLowerCase() === l)) return 'Cet identifiant est déjà utilisé.';
-          if (F.pw && F.pw.length < 4) return 'Mot de passe : 4 caractères minimum.';
-          if (!F.pw && !(u && u.pw) && !(u && u.role === 'owner')) return 'Choisissez un mot de passe pour ce profil.';
+          const l = (F.login || '').trim().toLowerCase();
+          if (l && !/^[a-z0-9._-]{2,40}$/.test(l)) return 'Identifiant : lettres minuscules, chiffres, point ou tiret, 2 caractères minimum.';
+          if (l && cloudUsers().some(u => u.id !== r.id && u.login === l)) return 'Cet identifiant est déjà utilisé.';
+          if (!r.id && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test((F.mail || '').trim())) return 'Adresse mail obligatoire.';
+          if ((!r.id || F.pw) && (F.pw || '').length < 6) return 'Mot de passe : 6 caractères minimum.';
           return '';
         },
-        load: r => { const u = USERS.find(x => x.id === r.id) || { role: 'user' }; return { name: u.name, login: u.login, mail: u.mail, org: u.org, role: ROLES[u.role], pw: '' }; },
-        groups: () => { const u = USERS.find(x => x.id === edRef.id), hasPw = !!(u && u.pw);
-          return [{ t: 'Profil', f: [['name', 'Nom', 'Ex. Ali Diallo'], ['login', 'Identifiant', 'Ex. ali'], ['mail', 'Mail', 'nom@entreprise.fr', null, { type: 'email' }], ...(u && u.role === 'owner' ? [['org', 'Entreprise', 'Ex. Martin Rénovation']] : []), ...(isOwner() && !(u && u.role === 'owner') ? [['role', 'Rôle', '', [ROLES.admin, ROLES.user]]] : [])] },
-            { t: 'Mot de passe', f: [['pw', hasPw ? 'Nouveau' : 'Mot de passe', hasPw ? 'Laisser vide pour le garder' : '4 caractères minimum', null, { type: 'password' }]] }]; },
-        save: (r, F) => { (async () => {
-          const h = F.pw ? await pwHash(F.pw) : null;
-          let u = USERS.find(x => x.id === r.id);
-          if (!u) { u = { id: 'u' + rid(), role: 'user', pw: null }; USERS.push(u); }
-          Object.assign(u, { name: F.name.trim(), login: F.login.trim().toLowerCase(), mail: (F.mail || '').trim(), ...(u.role === 'owner' ? { org: (F.org || '').trim() } : {}) });
-          if (u.role !== 'owner' && F.role) u.role = F.role === ROLES.admin ? 'admin' : 'user';
-          if (h) u.pw = h;
-          this.setState(s => ({ rev: (s.rev || 0) + 1 }));
-        })(); },
-        del: r => { const i = USERS.findIndex(u => u.id === r.id); if (i >= 0) USERS.splice(i, 1); set(bump()); }
+        load: r => { const u = cloudUsers().find(x => x.id === r.id) || { role: 'user' }; return { name: u.name, login: u.login, mail: u.mail, role: ROLES[u.role], pw: '' }; },
+        groups: () => { const self = !!edRef.id && !!CL.sess && edRef.id === CL.sess.uid, isNew = !edRef.id;
+          return [{ t: 'Profil', f: [['name', 'Nom', 'Ex. Ali Diallo'], ['login', 'Identifiant', 'Ex. ali'], ...(isNew ? [['mail', 'Mail', 'nom@entreprise.fr', null, { type: 'email' }]] : []), ...(isOwner() && !self ? [['role', 'Rôle', '', [ROLES.owner, ROLES.admin, ROLES.user]]] : [])] },
+            ...(isNew || self ? [{ t: 'Mot de passe', f: [['pw', self ? 'Nouveau' : 'Mot de passe', self ? 'Laisser vide pour le garder' : '6 caractères minimum', null, { type: 'password' }]] }] : [])]; },
+        save: (r, F) => { this.cloudUserSave(r, F); },
+        del: r => { this.cloudCall(() => rpc('remove_member', { p_user: r.id }), 'Profil retiré de l’entreprise'); }
       },
       mail: {
         title: () => 'Modifier le message', req: 'from', delLbl: 'Supprimer le message', canDel: () => true,
@@ -2250,7 +2507,7 @@ class Component extends DCLogic {
     const dirList = SUP.filter(s => !Q.sup.some(f => f.ref === s.id)).filter(s => rf === 'T' || rubOf(s) === rf).filter(s => !dq || supTxt(s).includes(dq)).sort((x, y) => (sitesOf(y).includes(st.site) - sitesOf(x).includes(st.site)) || x.name.localeCompare(y.name, 'fr')).map(s => { const sel = pick.includes(s.id); return { name: s.name, ini: ini(s.name), av: CATC[cap(s.cat)] || '#7A8496', sub: [RUB[rubOf(s)], cap(s.cat), s.delay].filter(Boolean).join(' · '), ckBg: sel ? ACC : 'transparent', ckBd: sel ? ACC : 'var(--ink3)', pick: () => setF({ pick: sel ? pick.filter(x => x !== s.id) : [...pick, s.id] }) }; });
     const invSups = Q.sup.map(f => ({ name: f.name, bg: F.sup === f.name ? ACC : 'var(--field)', fg: F.sup === f.name ? 'var(--accOn)' : INK, pick: () => setF({ sup: f.name }) }));
     const invSt = [['due', 'À payer'], ['paid', 'Payée']].map(([k, label]) => { const a = (F.st || 'due') === k; return { label, bg: a ? 'var(--on)' : 'transparent', fg: a ? INK : 'var(--ink2)', pick: () => setF({ st: k }) }; });
-    const newId = 'n' + (st.seq + 1);
+    const newId = 'n' + DEV + (st.seq + 1);
     const submit = () => {
       if (!valid) return;
       if (sh === 'ed') { track('save:' + F.kind); EK.save(edRef, F); pop(); return; }
@@ -2273,7 +2530,7 @@ class Component extends DCLogic {
       }
       if (sh === 'inv') {
         const amt = parseFloat(String(F.b).replace(/\s/g, '').replace(',', '.').replace(/[^\d.]/g, '')) || 0;
-        up(p => ({ ...p, inv: [...p.inv, { id: 'iv' + sq, sup: F.sup, num: a, amt, date: F.c || '—', st: F.st || 'due' }] })); set({ sheet: null, seq: sq });
+        up(p => ({ ...p, inv: [...p.inv, { id: 'iv' + DEV + sq, sup: F.sup, num: a, amt, date: F.c || '—', st: F.st || 'due' }] })); set({ sheet: null, seq: sq });
       }
     };
     const titles = { p: 'Projets', s: 'Stocks', m: 'Messages', l: 'Planning', c: 'Contacts' };
@@ -2315,7 +2572,7 @@ class Component extends DCLogic {
       sd, isSupList: st.tab === 'c' && !st.supSel, isSupDet: st.tab === 'c' && !!st.supSel, backSup: () => set({ supSel: null }), hasSup: contacts.length > 0, noSup: contacts.length === 0,
       sq: st.sq || '', onSq: (e) => set({ sq: e.target.value }), clearSq: () => set({ sq: '' }), hasSq: !!st.sq,
       psecs, pdiscs, pdAdd, togglePdAdd: () => set({ pdAdd: !st.pdAdd, discText: '' }), segPh: segK === 'ph', phSecs, phv, phvOpen: !!phv, dirRubs,
-      addCover: async () => { const f = await phPick(false); if (!f.length) return; try { const b = await phShrink(f[0]), id = 'ph' + Date.now().toString(36) + rid(); await phPut(id, b); PURL[id] = URL.createObjectURL(b); setF({ cover: id }); } catch (e) { this.toast('Photo ignorée : ' + ((e && e.message) || e)); } },
+      addCover: async () => { const f = await phPick(false); if (!f.length) return; try { const b = await phShrink(f[0]), id = 'ph' + Date.now().toString(36) + rid(); await phPut(id, b); PURL[id] = URL.createObjectURL(b); phMark([id]); setF({ cover: id }); } catch (e) { this.toast('Photo ignorée : ' + ((e && e.message) || e)); } },
       newHasCover: !!F.cover, newNoCover: !F.cover, newCoverSrc: F.cover ? phUrl(F.cover) : '',
       noProj: st.tab === 'p' && !detail && projects.length === 0, projEmpty: pdisc ? 'Aucun projet ' + { d: 'terminé', r: 'en cours', t: 'à faire' }[psec] + ' en ' + pdisc : { d: 'Aucun projet terminé', r: 'Aucun projet en cours', t: 'Aucun projet à faire' }[psec],
       title: titles[st.tab], noEvents: dayEv.length === 0, hasEvents: dayEv.length > 0, stop: (e) => e.stopPropagation(),
@@ -2332,7 +2589,7 @@ class Component extends DCLogic {
         return { scopeOn: !!key && !(st.tab === 'm' && boxOn), wheelOp: on ? 0.45 : 1, scopeBg: on ? 'var(--acc)' : 'var(--tile)', scopeFg: on ? 'var(--accOn)' : 'var(--ink)', scopeToggle: () => set({ [key]: !st[key], mail: null, who: null }) }; })(),
       showSel: !glob && !detail, noSel: glob, menuOpen: st.menu && !glob && !detail, toggleMenu: () => set({ menu: !st.menu }), closeMenu: () => set({ menu: false }),
       cur: { label: SL(st.site), dot: DOT[st.site] }, wheel, wWheel, wDown, wMove, wUp, menuChev: st.menu ? 'rotate(180deg)' : 'none',
-      openAcc: () => set({ sheet: 'acc', form: {}, back: [], menu: false, bkPend: null, bkMsg: '' }), isAccSheet: sh === 'acc',
+      openAcc: () => { set({ sheet: 'acc', form: {}, back: [], menu: false, bkPend: null, bkMsg: '' }); if (cloudReady()) cloudMe().then(() => { ME = cloudUser(); this.forceUpdate(); }).catch(() => {}); }, isAccSheet: sh === 'acc',
       bkLast: st.bkLast ? 'Dernière : ' + bkWhen(st.bkLast.at) + (st.bkLast.imp ? ' · restaurée' : '') : 'Aucune sauvegarde pour l’instant', bkLastId: st.bkLast ? st.bkLast.id : '', hasBkId: !!st.bkLast,
       bkMsg: st.bkMsg || '', hasBkMsg: !!st.bkMsg, bkPending: !!st.bkPend, bkIdle: !st.bkPend,
       bkPendTxt: st.bkPend ? 'Remplacer toutes les données actuelles par la sauvegarde ' + st.bkPend.id + ' du ' + bkWhen(st.bkPend.at) + ' ?' : '',
@@ -2364,24 +2621,36 @@ class Component extends DCLogic {
       },
       ...(() => {
         const me = ME || USERS[0], U = logStats(), max = U.top.length ? U.top[0].n : 1, L = st.lg || {};
-        const doLogin = async () => {
-          const id = (L.id || '').trim().toLowerCase(), u = USERS.find(x => (x.login || '').toLowerCase() === id);
-          if (!u || !u.pw || !(await pwCheck(L.pw || '', u.pw))) { track('login:fail'); set({ lg: { id: L.id, pw: '', err: 'Identifiant ou mot de passe incorrect.' } }); return; }
-          ME = u; try { localStorage.setItem(SESS_KEY, u.id); } catch (e) {}
-          track('login'); set({ lg: {}, sheet: null, menu: false });
-        };
+        const doLogin = () => this.cloudLogin();
         return {
-          me: { name: me.name, ini: ini(me.name || '?'), org: me.org || '', mail: me.mail || '', role: ROLES[me.role], loginLbl: me.login ? me.login + (me.pw ? ' · mot de passe défini' : ' · sans mot de passe') : 'À définir', owner: isOwner(), admin: canCfg(), edit: () => openEd('user', { id: me.id }) },
-          users: USERS.map(u => ({ name: u.name, ini: ini(u.name || '?'), sub: (u.login || '—') + (u.pw ? '' : ' · sans mot de passe'), role: ROLES[u.role], me: !!ME && u.id === ME.id, edit: () => openEd('user', { id: u.id }) })),
-          usersN: USERS.length + ' profil' + (USERS.length > 1 ? 's' : ''), addUser: () => openEd('user', { id: null }),
+          me: { name: me.name, ini: ini(me.name || '?'), org: me.org || '', mail: me.mail || '', role: ROLES[me.role], loginLbl: [me.login, me.mail].filter(Boolean).join(' · ') || 'À définir', owner: isOwner(), admin: canCfg(), edit: () => openEdB('user', { id: me.id }) },
+          users: cloudUsers().map(u => ({ name: u.name, ini: ini(u.name || '?'), sub: [u.login, u.mail].filter(Boolean).join(' · ') || '—', role: ROLES[u.role], me: !!ME && u.id === ME.id, edit: () => openEdB('user', { id: u.id }) })),
+          usersN: cloudUsers().length + ' profil' + (cloudUsers().length > 1 ? 's' : ''), addUser: () => openEdB('user', { id: null }),
           authTrack: AUTH.on ? 'var(--ok)' : 'var(--track)', authKnob: AUTH.on ? 'translateX(20px)' : 'none', authSub: AUTH.on ? 'Identifiant et mot de passe demandés à l’ouverture' : 'L’appli s’ouvre sans connexion',
           authToggle: () => { if (!AUTH.on && !me.pw) { this.toast('Définissez d’abord votre mot de passe (Identifiant & mot de passe)'); return; } AUTH.on = !AUTH.on; if (AUTH.on) { try { localStorage.setItem(SESS_KEY, me.id); } catch (e) {} } track(AUTH.on ? 'auth:on' : 'auth:off'); set(bump()); },
-          canLogout: AUTH.on, logout: () => { try { localStorage.removeItem(SESS_KEY); } catch (e) {} track('logout'); ME = null; set({ sheet: null, lg: {}, menu: false }); },
+          canLogout: !!CL.sess, logout: () => this.cloudLogout(), authLocal: false,
+          ...(() => { const n = (CL.members || []).length, t = SYNC.last ? new Date(SYNC.last) : null, off = navigator.onLine === false;
+            return { syncOrg: (CL.me && CL.me.orgName) || 'entreprise', syncNow: () => { syncSoon(0); this.toast('Synchronisation…'); },
+              syncTxt: SYNC.busy ? 'Synchronisation…' : off ? 'Hors connexion' : SYNC.err ? 'Erreur : ' + SYNC.err : t ? 'À jour · ' + p2(t.getHours()) + 'h' + p2(t.getMinutes()) : 'En attente',
+              syncCol: SYNC.err ? 'var(--warn)' : off || !t ? 'var(--ink3)' : 'var(--ok)',
+              syncSub: SYNC.pend ? SYNC.pend + ' modification' + (SYNC.pend > 1 ? 's' : '') + ' à envoyer' + (off ? ' au retour du réseau' : '') : off ? 'Vos saisies sont gardées et partiront au retour du réseau.' : 'Les données sont partagées' + (n > 1 ? ' avec ' + (n - 1) + ' autre' + (n > 2 ? 's' : '') + ' profil' + (n > 2 ? 's' : '') : '') + ', sur tous les appareils connectés.' }; })(),
           use: { total: U.total + ' actions', top: U.top.map(t => ({ label: logName(t.a), n: t.n, w: Math.round(t.n / max * 100) + '%' })), rep: U.rep.map(r => ({ label: r.k.split('>').map(logName).join(' → '), n: '×' + r.n })), hasRep: U.rep.length > 0, empty: !U.top.length, since: 'Depuis le ' + bkWhen(LOG.since || new Date().toISOString()) },
           logExport: async () => { const d = new Date(); try { await bkSave('chantier-journal-' + bkStamp(d) + '.json', JSON.stringify({ app: 'chantier', kind: 'journal', at: d.toISOString(), since: LOG.since, users: USERS.map(u => ({ id: u.id, name: u.name, role: u.role })), stats: logStats(), counts: LOG.n, ev: LOG.ev })); this.toast('✓ Journal exporté'); } catch (e) { if (!e || e.name !== 'AbortError') this.toast('Export impossible'); } },
           logClear: () => { if (!st.usage) { set({ usage: 'clr' }); return; } LOG.ev = []; LOG.n = {}; LOG.since = new Date().toISOString(); try { localStorage.setItem(LOG_KEY, JSON.stringify(LOG)); } catch (e) {} set({ usage: null }); },
           logClearLbl: st.usage ? 'Toucher encore pour effacer' : 'Effacer',
-          needLogin: !ME, lgId: L.id || '', lgPw: L.pw || '', lgErr: L.err || '', hasLgErr: !!L.err,
+          ...(() => { const mode = !CL.sess ? (L.mode || 'in') : 'org';
+            return { needLogin: !cloudReady(), lgIn: mode === 'in', lgNew: mode === 'new', lgOrg: mode === 'org',
+              lgTitle: mode === 'org' ? 'Votre entreprise' : mode === 'new' ? 'Créer un compte' : 'Chantier',
+              lgSub: mode === 'org' ? 'Connecté : ' + ((CL.sess || {}).email || '') + '. Ce compte n’appartient encore à aucune entreprise.' : mode === 'new' ? 'Créez votre compte de connexion.' : 'Connectez-vous avec votre adresse mail ou votre identifiant.',
+              lgBtn: L.busy ? 'Un instant…' : mode === 'org' ? 'Créer l’entreprise' : mode === 'new' ? 'Créer le compte' : 'Se connecter', lgOp: L.busy ? 0.6 : 1,
+              hasLgAlt: mode !== 'org', lgAlt: mode === 'new' ? 'J’ai déjà un compte' : 'Créer un compte', lgSwitch: () => set({ lg: { mode: mode === 'new' ? 'in' : 'new', id: L.id, err: '' } }),
+              lgNote: mode === 'org' ? 'Créer l’entreprise : vous en serez propriétaire et les données de cet appareil deviendront la base commune. Si l’entreprise existe déjà, demandez au propriétaire de vous ajouter (Compte › Profils), puis touchez « Vérifier ».' : mode === 'new' ? 'Le propriétaire de l’entreprise peut aussi créer votre compte depuis Compte › Profils.' : 'Mot de passe oublié ? Le propriétaire peut vous recréer un accès dans Compte › Profils.',
+              lgCheck: () => this.cloudCall(async () => { await cloudMe(); ME = cloudUser(); if (!CL.me) throw new Error('pas encore ajouté par le propriétaire'); syncSoon(100); }),
+              lgErrCol: /^Compte créé/.test(L.err || '') ? 'var(--okTx)' : 'var(--warnTx)',
+              lgName: L.name || '', lgMail: L.mail || '', lgOrgN: L.org || '', lgLogin: L.login || '',
+              onLgName: (e) => set({ lg: { ...L, name: e.target.value, err: '' } }), onLgMail: (e) => set({ lg: { ...L, mail: e.target.value, err: '' } }),
+              onLgOrgN: (e) => set({ lg: { ...L, org: e.target.value, err: '' } }), onLgLogin: (e) => set({ lg: { ...L, login: e.target.value, err: '' } }) }; })(),
+          lgId: L.id || '', lgPw: L.pw || '', lgErr: L.err || '', hasLgErr: !!L.err,
           onLgId: (e) => set({ lg: { ...L, id: e.target.value, err: '' } }), onLgPw: (e) => set({ lg: { ...L, pw: e.target.value, err: '' } }),
           doLogin, lgKey: (e) => { if (e.key === 'Enter') doLogin(); },
           toast: st.toast ? st.toast.msg : '', hasToast: !!st.toast, toastUndo: !!(st.toast && st.toast.undo), undo: () => this.undo(), noDel: !canDel(), cfgOk: canCfg()
@@ -2397,7 +2666,7 @@ class Component extends DCLogic {
         const kItems = stockOf(st.site).map(x => { const key = st.site + x[0], setC = (o) => set({ stkCfg: { ...(st.stkCfg || {}), [key]: { ...((st.stkCfg || {})[key] || {}), ...o } } });
           return { name: x[1], unit: x[2], disc: (x[6] || SDISC[x[0]] || 'Autre') + ' › ' + subOf(x), min: String(x[4]), lot: String(x[5]), onMin: (e) => setC({ min: num(e.target.value, 0) }), onLot: (e) => setC({ lot: Math.max(1, num(e.target.value, 1)) }), del: () => set({ stkDel: { ...(st.stkDel || {}), [key]: true } }) }; });
         const kc = { site: SL(st.site), n: kItems.length + ' articles', items: kItems, na: F.na || '', nu: F.nu || '', nq: F.nq || '', nm: F.nm || '', nl: F.nl || '', onNa: fset('na'), onNu: fset('nu'), onNq: fset('nq'), onNm: fset('nm'), onNl: fset('nl'), discs: chip([...st.discs, 'Autre'], F.nd, 'nd'),
-          add: () => { const a = (F.na || '').trim(); if (!a) return; const sq = st.seq + 1, m = Math.max(1, num(F.nm, 1)); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), ['k' + sq, a.charAt(0).toUpperCase() + a.slice(1), (F.nu || '').trim() || 'unités', num(F.nq, 0), m, Math.max(1, num(F.nl, m)), F.nd || 'Autre']] }, seq: sq, form: {} }); } };
+          add: () => { const a = (F.na || '').trim(); if (!a) return; const sq = st.seq + 1, m = Math.max(1, num(F.nm, 1)); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), ['k' + DEV + sq, a.charAt(0).toUpperCase() + a.slice(1), (F.nu || '').trim() || 'unités', num(F.nq, 0), m, Math.max(1, num(F.nl, m)), F.nd || 'Autre']] }, seq: sq, form: {} }); } };
         const pOn = F.plan !== false;
         const pp = { on: pOn, toggle: () => setF({ plan: !pOn }), sub: pOn ? (d => up1(JOURS[d.getDay()]) + ' ' + d.getDate() + ' ' + MOIS[d.getMonth()])(dOf(F.pdate || today)) + ' · ' + (CALS.real ? CALS.real[0] : CALS[CALU[0]][0]) : 'Le projet ne sera pas planifié', track: pOn ? 'var(--ok)' : 'var(--track)', knob: pOn ? 'translateX(20px)' : 'none', date: F.pdate || today, onDate: fset('pdate'), time: F.ptime || '', onTime: fset('ptime'), kind: F.pkind || '', onKind: fset('pkind') };
         return { kc, pp };
@@ -2463,7 +2732,7 @@ class Component extends DCLogic {
             imp: async () => { const fl = await filePick('.csv,.txt,text/csv,text/plain,text/comma-separated-values'); if (!fl) return; setMsg('Lecture du catalogue…'); try { const r = await refImport(fl, st.discs); track('ean:import'); setMsg('✓ ' + r.add.toLocaleString('fr-FR') + ' produit' + (r.add > 1 ? 's' : '') + ' ajouté' + (r.add > 1 ? 's' : '') + (r.skip ? ' · ' + r.skip.toLocaleString('fr-FR') + ' ligne' + (r.skip > 1 ? 's' : '') + ' sans code EAN valide ignorée' + (r.skip > 1 ? 's' : '') : '')); } catch (e) { setMsg('Import impossible : ' + ((e && e.message) || e), true); } },
             exp: async () => { if (!refN) { setMsg('La base est vide.', true); return; } const q = v => /[;"\n]/.test(v) ? '"' + String(v).replace(/"/g, '""') + '"' : v, text = '﻿' + [['EAN', 'Désignation', 'Unité', 'Discipline', 'Sous-catégorie'], ...Object.keys(REF).map(c => [c, ...REF[c]])].map(r => r.map(q).join(';')).join('\r\n'); try { await bkSave('chantier-base-ean-' + bkStamp(new Date()) + '.csv', text, 'text/csv'); track('ean:export'); } catch (e) { if (!e || e.name !== 'AbortError') setMsg('Export impossible', true); } },
             msg: fm.refMsg || '', hasMsg: !!fm.refMsg, msgCol: fm.refErr ? 'var(--warnTx)' : 'var(--okTx)', clearLbl: fm.refClr ? 'Toucher encore pour vider la base' : 'Vider la base',
-            clear: () => { if (!fm.refClr) { setF({ refClr: true }); return; } Object.keys(REF).forEach(k => delete REF[k]); refSave(); track('ean:clear'); setMsg('Base de référence vidée'); } },
+            clear: () => { if (!fm.refClr) { setF({ refClr: true }); return; } const gone = Object.keys(REF); gone.forEach(k => delete REF[k]); refSave(); refMark(gone); track('ean:clear'); setMsg('Base de référence vidée'); } },
           mbxUser: mbx.user || '', onMbxUser: (e) => set({ mbx: { ...mbx, user: e.target.value.trim() } }), mbxHost: mbx.host || '', mbxHostPh: imapGuess(mbx.user) || 'imap.exemple.fr', onMbxHost: (e) => set({ mbx: { ...mbx, host: e.target.value.trim() } }),
           mbxPass: mbx.pass || '', onMbxPass: (e) => set({ mbx: { ...mbx, pass: e.target.value } }),
           mbxLims: [10, 30, 50, 100].map(n => ({ label: String(n), bg: mlim === n ? 'var(--on)' : 'transparent', fg: mlim === n ? INK : 'var(--ink2)', pick: () => set({ mbx: { ...mbx, limit: n } }) })),

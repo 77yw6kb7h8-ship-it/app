@@ -1,5 +1,5 @@
 // Service worker : l'appli s'ouvre hors ligne, les photos et la carte sont mises en cache au passage.
-const VERSION = 'chantier-v14';
+const VERSION = 'chantier-v15';
 const SHELL = [
   './',
   './index.html',
