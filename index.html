@@ -375,6 +375,10 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 
 <sc-if value="{{ isMail }}" hint-placeholder-val="{{ false }}">
 <sc-if value="{{ listMail }}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{ showMsrc }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:4px;margin-bottom:12px;padding:4px;border-radius:16px;background:var(--chip);border:1px solid var(--cardBd)">
+<sc-for list="{{ msrcSeg }}" as="g" hint-placeholder-count="2"><div onClick="{{ g.pick }}" style="flex:1;text-align:center;cursor:pointer;padding:9px 0;border-radius:12px;background:{{ g.bg }};color:{{ g.fg }};white-space:nowrap;font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ g.label }}</div></sc-for>
+</div></sc-if>
+<sc-if value="{{ boxEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:16px;border-radius:20px;background:var(--chip);margin-bottom:12px"><div style="font:600 15px -apple-system,sans-serif">Boîte mail connectée à la session cloud</div><div style="font:400 13.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin-top:4px">Les 30 derniers mails sont résumés en deux lignes, avec un brouillon de réponse prêt.</div><div onClick="{{ syncMail }}" style="cursor:pointer;margin-top:12px;padding:12px;border-radius:14px;background:var(--acc);color:var(--accOn);text-align:center;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ syncLbl }}</div></div></sc-if>
 <div style="display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);margin-bottom:12px;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none;color:var(--ink2)"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L21 21"></path></svg>
 <input value="{{ mq }}" onChange="{{ onMq }}" placeholder="Rechercher un message, un contact…" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)">
@@ -404,7 +408,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasMails }}" hint-placeholder-val="{{ true }}">
 <div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-for list="{{ mails }}" as="m" hint-placeholder-count="3">
-<div onClick="{{ m.open }}" style="cursor:pointer;display:flex;gap:12px;padding:14px 16px;border-bottom:2px solid var(--line)">
+<div class="sw" data-sw="{{ m.sw }}" style="border-bottom:2px solid var(--line)"><div class="sw-fg" onClick="{{ m.open }}" style="cursor:pointer;display:flex;gap:12px;padding:14px 16px">
 <div style="width:40px;height:40px;border-radius:16px;flex:none;background:{{ m.avBg }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 14px -apple-system,sans-serif">{{ m.ini }}</div>
 <div style="flex:1;min-width:0">
 <div style="display:flex;align-items:center;gap:6px">
@@ -417,6 +421,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:3px 0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.ch }} · {{ m.org }}</div>
 <sc-if value="{{ isRecv }}" hint-placeholder-val="{{ true }}">
 <div style="font:400 14px/1.4 -apple-system,sans-serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-wrap:pretty">{{ m.summary }}</div>
+<sc-if value="{{ m.hasDraft }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:6px;align-items:baseline;margin-top:6px;font:400 12.5px -apple-system,sans-serif;color:var(--ink2);min-width:0"><span style="flex:none;padding:2px 7px;border-radius:999px;background:var(--accSoft);color:var(--accTx);font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif">Brouillon</span><span style="min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.draft }}</span></div></sc-if>
 </sc-if>
 <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
 <div style="font:400 13.5px/1.4 -apple-system,sans-serif;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.summary }}</div>
@@ -426,7 +431,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </sc-if>
 </div>
-</div>
+</div><div class="sw-r">Supprimer</div></div>
 </sc-for>
 </div>
 </sc-if>
@@ -440,7 +445,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div onClick="{{ cm.vipToggle }}" style="cursor:pointer;flex:none;display:flex;align-items:center;gap:6px;padding:8px 11px;border-radius:16px;background:{{ cm.vipBg }};border:1px solid var(--tileBd);color:{{ cm.vipFg }};font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums"><svg width="13" height="13" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="fill:{{ cm.vipFill }}"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"></path></svg>VIP</div>
 </div>
 <div style="font:700 22px/1.15 -apple-system,'SF Pro Display',sans-serif;margin-bottom:14px;letter-spacing:-.02em">{{ cm.subject }}</div>
-<div style="border-radius:20px;background:var(--t3);color:var(--t3x);padding:14px 16px;font-size:14.5px;line-height:1.45"><div style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;margin-bottom:5px;opacity:.9">Résumé de la demande</div>{{ cm.summary }}</div>
+<div style="border-radius:20px;background:var(--t3);color:var(--t3x);padding:14px 16px;font-size:14.5px;line-height:1.45"><div style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;margin-bottom:5px;opacity:.9">Résumé en deux lignes</div>{{ cm.summary }}</div>
 <div style="border-radius:20px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--kaOn);color:var(--ink);padding:14px 16px;font-size:14px;line-height:1.5;margin-top:10px;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)"><div style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;margin-bottom:5px;color:var(--ink2)">Contenu du mail</div>{{ cm.body }}</div>
 <sc-if value="{{ cmTodo }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;justify-content:space-between;align-items:center;margin:20px 2px 8px">
@@ -463,7 +468,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div onClick="{{ reopen }}" style="cursor:pointer;margin-top:10px;padding:13px;border-radius:16px;text-align:center;border:1px solid var(--tileBd);color:var(--ink);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">Remettre dans Reçu</div>
 </sc-if>
-<div onClick="{{ editMail }}" style="cursor:pointer;text-align:center;font:600 14px -apple-system,sans-serif;color:var(--acc);margin-top:18px">Modifier ou supprimer le message</div>
+<sc-if value="{{ cmSite }}" hint-placeholder-val="{{ true }}"><div onClick="{{ editMail }}" style="cursor:pointer;text-align:center;font:600 14px -apple-system,sans-serif;color:var(--acc);margin-top:18px">Modifier ou supprimer le message</div></sc-if>
 </sc-if>
 </sc-if>
 
@@ -678,11 +683,11 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid {{ s.sep }}">
 <span style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;opacity:.6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.cfgMeta }}</span>
-<div onClick="{{ s.config }}" style="flex:none;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:12px;border:1px solid {{ s.sep }};font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>Configurer</div>
+<sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div onClick="{{ s.config }}" style="flex:none;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:12px;border:1px solid {{ s.sep }};font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>Configurer</div></sc-if>
 </div>
 </div>
 </sc-for>
-<div onClick="{{ newSite }}" style="cursor:pointer;flex:none;padding:16px;border-radius:20px;border:1.5px dashed var(--ink3);text-align:center;font:600 15px -apple-system,sans-serif;color:var(--acc)">+ Nouveau site</div>
+<sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div onClick="{{ newSite }}" style="cursor:pointer;flex:none;padding:16px;border-radius:20px;border:1.5px dashed var(--ink3);text-align:center;font:600 15px -apple-system,sans-serif;color:var(--acc)">+ Nouveau site</div></sc-if>
 </div>
 </div>
 </sc-if>
@@ -835,13 +840,26 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div><div style="font:400 15.5px -apple-system,sans-serif">Afficher les identifiants</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ idsSub }}</div></div>
 <div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ idsTrack }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ idsKnob }};transition:transform .2s"></div></div>
 </div>
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Boîte mail · session cloud</div>
+<div style="border-radius:20px;background:var(--field);overflow:hidden">
+<div style="display:flex;align-items:center;padding:0 14px;border-bottom:2px solid var(--line)"><div style="width:96px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Session</div><input type="url" value="{{ mbxUrl }}" onChange="{{ onMbxUrl }}" autocapitalize="none" autocorrect="off" placeholder="https://… (adresse de la session)" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="display:flex;align-items:center;padding:0 14px;border-bottom:2px solid var(--line)"><div style="width:96px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Jeton</div><input type="password" value="{{ mbxToken }}" onChange="{{ onMbxToken }}" autocomplete="off" placeholder="Jeton d’accès" style="flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="padding:12px 14px">
+<div style="font:500 13.5px/1.35 -apple-system,sans-serif;color:{{ mbxCol }}">{{ mbxState }}</div>
+<div style="display:flex;gap:8px;margin-top:10px">
+<div onClick="{{ syncMail }}" style="flex:1;cursor:pointer;text-align:center;padding:11px 6px;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:var(--acc);color:var(--accOn)">{{ syncLbl }}</div>
+<sc-if value="{{ mbxOn }}" hint-placeholder-val="{{ false }}"><div onClick="{{ mbxOff }}" style="flex:none;cursor:pointer;text-align:center;padding:11px 14px;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)">Déconnecter</div></sc-if>
+</div>
+<div style="font:400 12px/1.4 -apple-system,sans-serif;color:var(--ink3);margin-top:10px">La session cloud lit votre boîte (IMAP) ; Claude résume chaque mail en deux lignes et prépare deux brouillons. Rien n’est envoyé sans vous : « Ouvrir dans Mail » reprend le brouillon pour que vous le relisiez.</div>
+</div>
+</div>
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Sauvegarde · iCloud Drive</div>
 <div style="padding:12px 14px;border-radius:20px;background:var(--field)">
 <div style="font:400 15.5px -apple-system,sans-serif">{{ bkLast }}</div>
 <sc-if value="{{ hasBkId }}" hint-placeholder-val="{{ false }}"><div style="font:600 12px ui-monospace,'SF Mono',monospace;color:var(--ink2);margin-top:3px">{{ bkLastId }}</div></sc-if>
 <sc-if value="{{ bkIdle }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:8px;margin-top:12px">
 <div onClick="{{ bkExport }}" style="flex:1;cursor:pointer;text-align:center;padding:11px 0;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:var(--acc);color:var(--accOn)">Exporter</div>
-<div onClick="{{ bkImport }}" style="flex:1;cursor:pointer;text-align:center;padding:11px 0;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)">Importer</div>
+<sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div onClick="{{ bkImport }}" style="flex:1;cursor:pointer;text-align:center;padding:11px 0;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)">Importer</div></sc-if>
 </div></sc-if>
 <sc-if value="{{ bkPending }}" hint-placeholder-val="{{ false }}"><div style="margin-top:12px;font:400 13.5px -apple-system,sans-serif">{{ bkPendTxt }}</div><div style="display:flex;gap:8px;margin-top:10px">
 <div onClick="{{ bkApply }}" style="flex:1;cursor:pointer;text-align:center;padding:11px 0;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:#FF3B30;color:#fff">Remplacer</div>
@@ -850,7 +868,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">Exporter → « Enregistrer dans Fichiers » → iCloud Drive › Chantier › Sauvegardes. Chaque sauvegarde porte un identifiant unique.</div>
 </div>
-<div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Disciplines</div><div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink3)">{{ discN }}</div></div>
+<sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Disciplines</div><div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink3)">{{ discN }}</div></div>
 <div style="padding:12px;border-radius:20px;background:var(--field)">
 <div style="display:flex;flex-wrap:wrap;gap:6px">
 <sc-for list="{{ discs }}" as="d" hint-placeholder-count="4"><div style="display:flex;align-items:center;gap:8px;padding:7px 8px 7px 11px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ d.label }}<div onClick="{{ d.del }}" style="cursor:pointer;width:18px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></div></sc-for>
@@ -860,7 +878,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div onClick="{{ addDisc }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">Ajouter</div>
 </div>
 </div>
-<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Proposées comme type lors de la création d’un projet.</div>
+<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Proposées comme type lors de la création d’un projet.</div></sc-if>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isSupSheet }}" hint-placeholder-val="{{ false }}">
@@ -1459,7 +1477,7 @@ class Component extends DCLogic {
     });
     return { dark: this.props.dark ?? false, site: 'a', tab: 'p', proj: null, seg: 'e', editSteps: false, stepText: '', stepType: 'g', supOpen: null, geo: {}, P, noteText: '', stk: {}, sentOrder: {}, mail: null, tone: 0, edits: {}, sentMail: {}, read: {}, wpos: 0, cfg: CFG0, cfgSite: 'a', cfgF: {}, sunday: false, discs: DISC0, discText: '', chf: 'TOUS', mbox: 'r', mq: '', who: null, vip: {}, treated: {}, cat: 'TOUS', sort: 'PRIX', day: 0, menu: false, sheet: null, form: {}, addS: {}, addE: {}, seq: 0, lg: {}, ...(START[this.props.start] || {}), ...this.boot() };
   }
-  boot() { const r = restore(); meLoad(); if (!Array.isArray(r.evs)) r.evs = evMigrate(r.addE); return r;
+  boot() { const r = restore(); meLoad(); if (r.mbx) r.mbx = { ...r.mbx, busy: false }; if (!Array.isArray(r.evs)) r.evs = evMigrate(r.addE); return r;
   }
   componentWillUnmount() { this.stopScan(); if (this.wRaf) cancelAnimationFrame(this.wRaf); if (this.rec) try { this.rec.abort(); } catch (e) {} }
   dictate(mk, key) {
@@ -1491,6 +1509,19 @@ class Component extends DCLogic {
     this.flags(); this.trackDiff(); if (ridScan(this.state)) this.forceUpdate();
     phWake = () => { clearTimeout(this.phT); this.phT = setTimeout(() => this.forceUpdate(), 30); };
     setTimeout(() => { const keep = new Set(); Object.values(this.state.ph || {}).forEach(L => L.forEach(x => keep.add(x.id))); if (window.indexedDB) phKeys().then(K => K.forEach(k => { if (!keep.has(k)) phDel(k); })).catch(() => {}); }, 4000);
+  }
+  async syncMail() {
+    const M = this.state.mbx || {};
+    if (!M.url || !M.token) { this.toast('Renseignez l’adresse de la session cloud et le jeton (Compte › Boîte mail)'); return; }
+    this.setState(s => ({ mbx: { ...s.mbx, busy: true, err: '' } })); track('mailSync');
+    try {
+      const r = await fetch(M.url.trim().replace(/\/+$/, '') + '/session', { method: 'POST', headers: { Authorization: 'Bearer ' + M.token.trim() } });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.error || 'erreur ' + r.status);
+      const L = Array.isArray(j.mails) ? j.mails : [];
+      this.setState(s => ({ inbox: L, msrc: 'box', mail: null, mbx: { ...s.mbx, busy: false, last: j.at || new Date().toISOString(), account: j.account || s.mbx.account || '', err: '' } }));
+      this.toast('✓ ' + L.length + ' mails résumés, brouillons prêts');
+    } catch (e) { this.setState(s => ({ mbx: { ...s.mbx, busy: false, err: 'Synchronisation impossible : ' + ((e && e.message) || e) } })); }
   }
   async startScan(target) {
     track('scan:open', target);
@@ -1758,21 +1789,28 @@ class Component extends DCLogic {
     const sendOrder = () => { const n = { ...st.stk }, at = iso(new Date()); stItems.forEach(x => { if (x.o.o > 0 && !x.o.sent) n[x.key] = { ...x.o, sent: true, at }; }); track('order:send'); set({ stk: n, stkSent: true }); };
     // mails
     const isVip = n => st.vip[n] ?? !!VIP0[n];
-    const allM = [...(S.mails || []), ...(DONE[st.site] || [])].map(m => ({ ...m, drafts: m.drafts || [m.reply || '', m.reply || ''] }));
+    const inbox = Array.isArray(st.inbox) ? st.inbox : [], boxOn = st.msrc === 'box';
+    const whenM = x => { const d = new Date(x); if (isNaN(d)) return ''; return iso(d) === iso(new Date()) ? p2(d.getHours()) + ':' + p2(d.getMinutes()) : d.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' }); };
+    const boxM = inbox.map(m => ({ id: m.id, ch: 'MAIL', from: m.from || m.addr || '?', org: m.addr || '', time: whenM(m.date), unread: m.unread ? 1 : 0, subject: m.subject || '(sans objet)', summary: m.summary || m.subject || '', body: m.body || '', drafts: [(m.drafts || [])[0] || '', (m.drafts || [])[1] || ''], replyTo: m.replyTo || m.addr || '', box: true }));
+    const allM = boxOn ? boxM : [...(S.mails || []), ...(DONE[st.site] || [])].map(m => ({ ...m, drafts: m.drafts || [m.reply || '', m.reply || ''] }));
     const trOf = m => { const t = st.treated[m.id]; return t !== undefined ? t : (m.reply != null ? { reply: m.reply, at: m.at } : false); };
     const mq = st.mq.trim().toLowerCase();
     const match = m => (!st.who || m.from === st.who) && (!mq || [m.from, m.org, m.subject, m.summary, m.body].join(' ').toLowerCase().includes(mq));
     const recv = allM.filter(m => !trOf(m)), done = allM.filter(m => trOf(m));
     const mails = (st.mbox === 't' ? done : recv).filter(match).map(m => {
       const unread = m.unread && !st.read[m.id], t = trOf(m);
-      return { ch: CH[m.ch], ini: ini(m.from), avBg: AV[m.ch], from: m.from, org: m.org, time: t ? t.at : m.time, summary: m.summary, vip: isVip(m.from), dot: !!unread, fw: unread ? 700 : 500,
+      const sw = 'm:' + m.id, d0 = (m.drafts[0] || '').replace(/\s+/g, ' ').trim();
+      SW[sw] = canDel() ? { del: how => this.undoable('Message supprimé', 'mail', how, () => { if (m.box) this.setState(z => ({ inbox: (z.inbox || []).filter(x => x.id !== m.id) })); else { const x = findMail(m.id); if (x) x.arr.splice(x.i, 1); this.setState(z => ({ rev: (z.rev || 0) + 1 })); } }) } : {};
+      return { sw, hasDraft: !!d0 && !t, draft: d0, ch: CH[m.ch], ini: ini(m.from), avBg: AV[m.ch], from: m.from, org: m.org, time: t ? t.at : m.time, summary: m.summary, vip: isVip(m.from), dot: !!unread, fw: unread ? 700 : 500,
         replyLbl: t && t.reply ? 'Réponse envoyée' : 'Traité sans réponse', reply: t && t.reply ? t.reply.replace(/\n+/g, ' ') : 'Demande traitée directement (appel ou sur site).',
         open: () => set({ mail: m.id, tone: 0, read: { ...st.read, [m.id]: true } }) };
     });
     const mboxSeg = [['r', 'Reçu', recv.length], ['t', 'Traité', done.length]].map(([k, l, n]) => ({ label: l + ' · ' + n, bg: st.mbox === k ? 'var(--on)' : 'transparent', fg: st.mbox === k ? INK : 'var(--ink2)', pick: () => set({ mbox: k }) }));
     const mcnt = {}; allM.forEach(m => { mcnt[m.from] = (mcnt[m.from] || 0) + 1; });
     const ppl = Object.keys(mcnt).filter(n => isVip(n) || mcnt[n] > 1).sort((a, b) => (isVip(b) - isVip(a)) || mcnt[b] - mcnt[a]).map(n => { const a = st.who === n, m0 = allM.find(x => x.from === n); return { name: n, ini: ini(n), av: AV[m0.ch], vip: isVip(n), n: mcnt[n], bg: a ? ACC : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ who: a ? null : n }) }; });
-    const unreadN = Object.keys(SITES).reduce((n, k) => n + (SITES[k].mails || []).filter(m => m.unread && !st.read[m.id] && !st.treated[m.id]).length, 0);
+    const unreadN = Object.keys(SITES).reduce((n, k) => n + (SITES[k].mails || []).filter(m => m.unread && !st.read[m.id] && !st.treated[m.id]).length, 0) + inbox.filter(m => m.unread && !st.read[m.id] && !st.treated[m.id]).length;
+    const mbx = st.mbx || {};
+    const msrcSeg = [['site', 'Chantiers'], ['box', 'Boîte mail' + (inbox.length ? ' · ' + inbox.length : '')]].map(([k, l]) => { const a = (st.msrc || 'site') === k; return { label: l, bg: a ? 'var(--on)' : 'transparent', fg: a ? INK : 'var(--ink2)', pick: () => set({ msrc: k, mail: null, who: null }) }; });
     const cm0 = allM.find(m => m.id === st.mail) || { id: '', ch: 'MAIL', time: '', subject: '', from: ' ', org: '', summary: '', body: '', drafts: ['', ''] };
     const cmT = trOf(cm0), cv = isVip(cm0.from);
     const cm = { ...cm0, ch: CH[cm0.ch], ini: ini(cm0.from), avBg: AV[cm0.ch], vipBg: cv ? 'rgba(201,162,39,.16)' : 'var(--tile)', vipFg: cv ? '#C9A227' : 'var(--ink2)', vipFill: cv ? '#C9A227' : 'none', vipToggle: () => set({ vip: { ...st.vip, [cm0.from]: !cv } }) };
@@ -2123,7 +2161,10 @@ class Component extends DCLogic {
       bkPendTxt: st.bkPend ? 'Remplacer toutes les données actuelles par la sauvegarde ' + st.bkPend.id + ' du ' + bkWhen(st.bkPend.at) + ' ?' : '',
       bkExport: async () => {
         const d = new Date(), id = 'SAV-' + bkStamp(d) + '-' + rid().slice(0, 4).toUpperCase();
-        const text = JSON.stringify({ app: 'chantier', format: 1, id, at: d.toISOString(), data: snap(this.state) });
+        const data = JSON.parse(JSON.stringify(snap(this.state))), photos = {};
+        if (data.state.mbx) data.state.mbx = { ...data.state.mbx, token: '' };
+        for (const L of Object.values(this.state.ph || {})) for (const x of L) { try { const bl = await phGet(x.id); if (bl) photos[x.id] = await blobToData(bl); } catch (e) {} }
+        const text = JSON.stringify({ app: 'chantier', format: 2, id, at: d.toISOString(), data, photos });
         try { await bkSave('chantier-' + id + '.json', text); set({ bkLast: { id, at: d.toISOString() }, bkMsg: '✓ Sauvegarde ' + id + ' créée' }); }
         catch (e) { if (!e || e.name !== 'AbortError') set({ bkMsg: 'Échec de la sauvegarde : ' + ((e && e.message) || e) }); }
       },
@@ -2135,10 +2176,11 @@ class Component extends DCLogic {
         } catch (e) { set({ bkMsg: 'Import impossible : ' + ((e && e.message) || e) }); }
       },
       bkCancel: () => { bkData = null; set({ bkPend: null }); },
-      bkApply: () => {
+      bkApply: async () => {
         if (!bkData) return;
-        const d = bkData.data; d.state = { ...d.state, bkLast: { id: bkData.id, at: bkData.at, imp: true } };
+        const d = bkData.data; d.state = { ...d.state, bkLast: { id: bkData.id, at: bkData.at, imp: true }, mbx: { ...(d.state.mbx || {}), token: (st.mbx || {}).token || '' } };
         saveOff = true; clearTimeout(saveT);
+        try { for (const [k, v] of Object.entries(bkData.photos || {})) await phPut(k, await dataToBlob(v)); } catch (e) {}
         try { localStorage.setItem(SAVE_KEY, JSON.stringify(d)); location.reload(); }
         catch (e) { saveOff = false; set({ bkMsg: 'Import impossible : ' + ((e && e.message) || e) }); }
       },
@@ -2182,7 +2224,7 @@ class Component extends DCLogic {
         const pp = { on: pOn, toggle: () => setF({ plan: !pOn }), sub: pOn ? (d => up1(JOURS[d.getDay()]) + ' ' + d.getDate() + ' ' + MOIS[d.getMonth()])(dOf(F.pdate || today)) + ' · ' + (F.ptime || '08:00') + ' · Réalisation' : 'Le projet ne sera pas planifié', track: pOn ? 'var(--ok)' : 'var(--track)', knob: pOn ? 'translateX(20px)' : 'none', date: F.pdate || today, onDate: fset('pdate'), time: F.ptime || '', onTime: fset('ptime'), kind: F.pkind || '', onKind: fset('pkind') };
         return { kc, pp };
       })(),
-      isEdSheet: sh === 'ed', edCanDel: !!(EK && EK.canDel(edRef)), edNote: !!(edErr || (EK && EK.note && EK.note(edRef))), edNoteTxt: edErr || (EK && EK.note ? EK.note(edRef) : ''), edNoteCol: edErr ? 'var(--warnTx)' : 'var(--ink2)',
+      isEdSheet: sh === 'ed', edCanDel: canDel() && !!(EK && EK.canDel(edRef)), edNote: !!(edErr || (EK && EK.note && EK.note(edRef))), edNoteTxt: edErr || (EK && EK.note ? EK.note(edRef) : ''), edNoteCol: edErr ? 'var(--warnTx)' : 'var(--ink2)',
       edDelLbl: F.confirm ? 'Toucher encore pour confirmer' : (EK ? EK.delLbl : ''), edDelBg: F.confirm ? 'var(--warn)' : 'var(--warnBg)', edDelFg: F.confirm ? '#fff' : 'var(--warnTx)',
       edDel: () => { if (!F.confirm) { setF({ confirm: true }); return; } track('del:' + F.kind); EK.del(edRef); set({ sheet: null }); },
       editProj: () => openEd('proj', { id: pid }), editSup: () => openEd('sup', { id: S0.id }), editMail: () => openEd('mail', { id: cm0.id }), newSite: () => openEd('site', { k: null }),
@@ -2201,14 +2243,24 @@ class Component extends DCLogic {
       noteText: st.noteText, onNote: (e) => set({ noteText: e.target.value }),
       addNote: () => { const t = st.noteText.trim(); if (t) { up(p => ({ ...p, notes: [...p.notes, t] })); set({ noteText: '' }); } },
       onDraft: (e) => set({ edits: { ...st.edits, [dk]: e.target.value } }),
-      sendLabel: 'Envoyer la réponse', sendBg: ACC,
-      sendMail: () => { if (draftText.trim()) set({ treated: { ...st.treated, [cm0.id]: { reply: draftText, at: 'À l’instant' } } }); },
+      sendLabel: cm0.box ? 'Ouvrir dans Mail pour envoyer' : 'Envoyer la réponse', sendBg: ACC, cmBox: !!cm0.box, cmSite: !cm0.box,
+      msrcSeg, showMsrc: inbox.length > 0 || !!mbx.url, boxEmpty: boxOn && !inbox.length, syncMail: () => this.syncMail(), syncLbl: mbx.busy ? 'Synchronisation…' : 'Synchroniser les 30 derniers mails',
+      mbxUrl: mbx.url || '', mbxToken: mbx.token || '', onMbxUrl: (e) => set({ mbx: { ...mbx, url: e.target.value } }), onMbxToken: (e) => set({ mbx: { ...mbx, token: e.target.value } }),
+      mbxState: mbx.err ? mbx.err : mbx.last ? 'Connectée' + (mbx.account ? ' · ' + mbx.account : '') + ' · ' + inbox.length + ' mails · ' + bkWhen(mbx.last) : mbx.url ? 'Pas encore synchronisée' : 'Non connectée',
+      mbxCol: mbx.err ? 'var(--warnTx)' : mbx.last ? 'var(--okTx)' : 'var(--ink2)', mbxOn: !!mbx.last,
+      mbxOff: () => set({ mbx: {}, inbox: [], msrc: 'site', mail: null }), openMbx: () => set({ sheet: 'acc', form: {}, menu: false }),
+      sendMail: () => {
+        if (!draftText.trim()) return;
+        track('send', cm0.box ? 'box' : 'site');
+        if (cm0.box && cm0.replyTo) location.href = 'mailto:' + encodeURIComponent(cm0.replyTo) + '?subject=' + encodeURIComponent(/^re\s*:/i.test(cm0.subject) ? cm0.subject : 'Re: ' + cm0.subject) + '&body=' + encodeURIComponent(draftText);
+        set({ treated: { ...st.treated, [cm0.id]: { reply: draftText, at: 'À l’instant' } } });
+      },
       markDone: () => set({ treated: { ...st.treated, [cm0.id]: nowT } }),
       reopen: () => set({ treated: { ...st.treated, [cm0.id]: false }, mbox: 'r' }),
       cmDone: !!cmT, cmTodo: !cmT, cmReplyLbl: cmT && cmT.reply ? 'Réponse envoyée · ' + cmT.at : 'Traité sans réponse · ' + (cmT ? cmT.at : ''), cmReply: cmT && cmT.reply ? cmT.reply : 'Aucune réponse écrite : demande traitée directement.',
       mboxSeg, ppl, pplAll: { bg: st.who ? 'var(--tile)' : 'var(--acc)', fg: st.who ? 'var(--ink)' : 'var(--accOn)', pick: () => set({ who: null }) }, hasPpl: ppl.length > 0, mq: st.mq, onMq: (e) => set({ mq: e.target.value }), clearMq: () => set({ mq: '' }), hasMq: !!st.mq,
       hasMails: mails.length > 0, noMails: mails.length === 0, isRecv: st.mbox !== 't', isDone: st.mbox === 't',
-      mailEmpty: mq || st.who ? 'Aucun message ne correspond' : st.mbox === 't' ? 'Aucune demande traitée' : 'Tout est traité',
+      mailEmpty: mq || st.who ? 'Aucun message ne correspond' : st.mbox === 't' ? 'Aucune demande traitée' : boxOn && !inbox.length ? 'Boîte mail pas encore synchronisée' : 'Tout est traité',
       closeMail: () => set({ mail: null })
     };
   }
