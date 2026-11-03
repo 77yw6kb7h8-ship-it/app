@@ -44,15 +44,8 @@ via le projet Supabase (Irlande) décrit dans `supabase/README.md`.
   toutes les 15 s. Deux personnes qui modifient des fiches différentes ne perdent rien ; sur la même
   fiche, la dernière modification l'emporte. Hors connexion, les saisies attendent le retour du réseau
   (Compte › Partage indique l'état).
-- **Restent sur l'appareil** : thème, site affiché, boîte mail personnelle et son mot de passe,
-  jeton de la session cloud, journal d'usage. Une sauvegarde restaurée sur un appareil est ensuite
-  partagée avec tous.
-
-## Journal d’usage
-
-Compte › **Usage de l’appli** (propriétaire, admin) : fonctions les plus utilisées et enchaînements
-répétés. Le journal reste sur l’appareil ; « Exporter le journal » le range dans iCloud Drive pour
-l’analyser et améliorer l’appli.
+- **Restent sur l'appareil** : thème, site affiché, boîte mail personnelle et son mot de passe.
+  Une sauvegarde restaurée sur un appareil est ensuite partagée avec tous.
 
 ## Réglages
 
