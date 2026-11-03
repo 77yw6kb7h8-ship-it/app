@@ -11,7 +11,8 @@ Thème clair par défaut comme la v4 ; thème sombre dans Compte. Intitulés en 
 
 - **Sites** : menu Sites → « + Nouveau site » ; sur un site, Configurer → « Nom, couleur… »
   pour renommer, changer la description, la couleur, l'adresse, ou supprimer.
-- **Projets** : bouton « Modifier » sur la fiche (nom, phase, échéance, site, adresse, suppression).
+- **Projets** : bouton « Modifier » sur la fiche (nom, description d’une ligne, phase, site, adresse,
+  suppression). La fin affichée vient des dates « du … au … » choisies à la création.
 - **Étapes** (en mode Modifier), **notes**, **factures**, **intervenants**, **événements** :
   toucher l'élément pour le modifier ou le supprimer.
 - **Stock** : ouvrir un article → « Modifier l'article ».
@@ -26,6 +27,37 @@ Chaque suppression demande deux touchers. Tout est sauvegardé sur le téléphon
   **Annuler** reste 6 secondes.
 - **Glisser vers la droite** sur un projet, ou bouton punaise dans sa fiche : **épingler**. Les projets
   épinglés restent en tête de liste, quelle que soit la section (Terminés, En cours, À faire).
+- **Maintenir** un projet, un fichier, un dossier, une conversation ou un message de Claude : menu
+  d'options (comme sur iPhone). Sur un projet, **maintenir puis glisser** sans lever le doigt change
+  sa place dans la liste (les épinglés entre eux, les autres entre eux).
+
+## Barre d'onglets
+
+Compte › **Barre d’onglets** : 5 sections au choix parmi Projets, Stocks, Mails, Planning, Contacts,
+Claude et Fichiers. Une section retirée de la barre reste accessible par « Ouvrir » dans cette liste.
+
+## Fichiers
+
+- Dossiers et fichiers partagés par toute l'entreprise, rangés dans Supabase (espace privé « docs »,
+  50 Mo par fichier). Le stockage est isolé dans le code (`FST`) pour pouvoir passer plus tard sur
+  OVH Object Storage sans changer le reste de l'appli.
+- **+** : nouveau dossier, **importer depuis iCloud Drive** (ou Photos, ou un autre emplacement de
+  l'app Fichiers), prendre une photo. **…** : sélectionner, icônes ou liste, tri par nom, date, taille,
+  type. Recherche dans tous les dossiers.
+- Maintenir un élément : ouvrir, renommer, dupliquer, déplacer, partager (enregistrer dans Fichiers,
+  ouvrir dans une autre app), lire les informations, supprimer (corbeille de 30 jours ; le fichier
+  n'est effacé du stockage qu'à la corbeille vidée).
+- **Visionneuse** : photos (pincer ou toucher deux fois pour zoomer), vidéos, audio, PDF (pages dans
+  l'appli), texte, mails `.eml` et Outlook `.msg` (avec leurs pièces jointes). Word, Excel,
+  PowerPoint : « Ouvrir » (aperçu de Safari) ou « Ouvrir dans… ». Glisser à gauche ou à droite :
+  fichier suivant ou précédent ; glisser vers le bas : fermer ; toucher : afficher ou masquer les
+  boutons.
+
+## Claude
+
+Onglet **Claude** : conversations avec Claude Sonnet, avec un résumé des données de l'appli (projets,
+planning des 14 prochains jours, stock sous le seuil), que l'on peut retirer par conversation. Les
+conversations restent sur l'appareil (50 au plus) ; maintenir un message pour le copier.
 
 ## Comptes et partage (Supabase)
 
@@ -60,7 +92,8 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
 - **Mails** : adresse mail, serveur IMAP (deviné d'après l'adresse), mot de passe d'application
   (gardé sur l'appareil, jamais dans les sauvegardes), nombre de mails à synchroniser (10, 30, 50,
   100), session cloud.
-- **Planning** : calendriers (nom, couleur, disciplines proposées), ajout et suppression ; les
+- **Planning** : « Heures de début et de fin par défaut » (interrupteur proposé à chaque nouvel
+  événement) ; calendriers (nom, couleur, disciplines proposées), ajout et suppression ; les
   événements d'un calendrier supprimé passent dans le premier calendrier restant.
 - **Contacts** : rubriques (renommer, ajouter, supprimer ; « Fournisseur » reste car elle porte le
   stock et les factures), annuaire complet.

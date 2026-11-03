@@ -26,10 +26,10 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <x-dc>
 <helmet>
 <script src="./image-slot.js"></script>
-<style>html,body{overflow-x:hidden;max-width:100%}body{overflow-wrap:anywhere}html,body{margin:0;height:100%;background:#EEF0F3;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}a{color:inherit;text-decoration:none}a:hover{opacity:.8}*{box-sizing:border-box}::-webkit-scrollbar{display:none}textarea::placeholder,input::placeholder{color:var(--ink3)}.rid{display:none;padding:3px 7px;border-radius:7px;background:var(--tile);border:1px solid var(--tileBd);font:600 11px/1.3 ui-monospace,'SF Mono',Menlo,monospace;color:var(--ink2);letter-spacing:.02em;white-space:nowrap;vertical-align:middle}.show-ids .rid{display:inline-block}.sw{position:relative;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}img{-webkit-user-drag:none}.sw img{pointer-events:none}.sw-fg{position:relative;z-index:1}.sw-r,.sw-l{position:absolute;top:0;bottom:0;width:0;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff;font:600 13.5px -apple-system,system-ui,sans-serif;white-space:nowrap;cursor:pointer}.sw-r{right:0;background:#FF3B30}.sw-l{left:0;background:#FF9F0A;opacity:.75;transition:opacity .15s}.sw-go>.sw-l{opacity:1}.sw-card>.sw-r,.sw-card>.sw-l{border-radius:24px}.no-del .sw-r{display:none}</style>
+<style>html,body{overflow-x:hidden;max-width:100%}body{overflow-wrap:anywhere}html,body{margin:0;height:100%;background:#EEF0F3;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}a{color:inherit;text-decoration:none}a:hover{opacity:.8}*{box-sizing:border-box}::-webkit-scrollbar{display:none}textarea::placeholder,input::placeholder{color:var(--ink3)}.rid{display:none;padding:3px 7px;border-radius:7px;background:var(--tile);border:1px solid var(--tileBd);font:600 11px/1.3 ui-monospace,'SF Mono',Menlo,monospace;color:var(--ink2);letter-spacing:.02em;white-space:nowrap;vertical-align:middle}.show-ids .rid{display:inline-block}.sw{position:relative;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}img{-webkit-user-drag:none}.sw img{pointer-events:none}.sw-fg{position:relative;z-index:1}.sw-r,.sw-l{position:absolute;top:0;bottom:0;width:0;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff;font:600 13.5px -apple-system,system-ui,sans-serif;white-space:nowrap;cursor:pointer}.sw-r{right:0;background:#FF3B30}.sw-l{left:0;background:#FF9F0A;opacity:.75;transition:opacity .15s}.sw-go>.sw-l{opacity:1}.sw-card>.sw-r,.sw-card>.sw-l{border-radius:24px}.no-del .sw-r{display:none}[data-lp],[data-lp] *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}@keyframes ctxIn{from{opacity:0}to{opacity:1}}@keyframes ctxPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}@keyframes dots{0%,80%,100%{opacity:.25}40%{opacity:1}}</style>
 </helmet>
 <div style="height:100%;font-family:-apple-system,'SF Pro Text',system-ui,sans-serif">
-<div style="height:100%;position:relative;overflow:hidden;color:var(--ink);--ink:#0E1726;--ink2:rgba(14,23,38,.58);--ink3:rgba(14,23,38,.36);--line:rgba(14,23,38,.07);--tile:rgba(255,255,255,.62);--tileBd:rgba(255,255,255,.95);--field:rgba(255,255,255,.85);--track:rgba(14,23,38,.09);--chip:rgba(255,255,255,.5);--on:rgba(255,255,255,.92);--acc:#0A7AFF;--accOn:#FFFFFF;--accTx:#0A5FD0;--accSoft:rgba(10,122,255,.13);--warn:#E8590C;--warnTx:#B8470A;--warnBg:rgba(255,140,60,.16);--ok:#1FA45A;--okTx:#157A42;--okBg:rgba(31,164,90,.14);--solid:#0E1726;--solidTx:#FFFFFF;--sheet:rgba(246,247,249,.88);--scrim:rgba(14,23,38,.25);--knob:#fff;--card:rgba(255,255,255,.55);--cardB:1px solid rgba(255,255,255,.85);--cardBd:rgba(255,255,255,.85);--cardSh:0 10px 30px rgba(20,40,80,.10),inset 0 1px 0 #fff;--k1:#0E1726;--k2:rgba(14,23,38,.58);--k3:rgba(14,23,38,.36);--kl:rgba(14,23,38,.07);--kt:rgba(255,255,255,.62);--ktb:rgba(255,255,255,.95);--kf:rgba(255,255,255,.85);--ktr:rgba(14,23,38,.09);--kon:rgba(255,255,255,.92);--ka:#0A7AFF;--kaOn:#FFFFFF;--ks:#FFFFFF;--kas:rgba(10,122,255,.13);--kw:#B8470A;--kwb:rgba(255,140,60,.16);--kwarn:#E8590C;--kok:#157A42;--kokb:rgba(31,164,90,.14);--panel:rgba(14,23,38,.86);--bg:radial-gradient(120% 55% at 0% 0%,#C6DAF3 0,transparent 60%),radial-gradient(90% 50% at 100% 38%,#F3DBC6 0,transparent 62%),radial-gradient(100% 50% at 0% 100%,#D0E8DB 0,transparent 60%),#EEF0F3;--t1:rgba(214,226,140,.42);--t1x:#4A5410;--t2:rgba(170,190,240,.38);--t2x:#24324E;--t3:rgba(150,220,215,.40);--t3x:#14585A;--t4:rgba(240,180,220,.40);--t4x:#6A2058;background:var(--bg)">
+<div style="height:100%;position:relative;overflow:hidden;color:var(--ink);--menu:rgba(246,247,250,.97);--ink:#0E1726;--ink2:rgba(14,23,38,.58);--ink3:rgba(14,23,38,.36);--line:rgba(14,23,38,.07);--tile:rgba(255,255,255,.62);--tileBd:rgba(255,255,255,.95);--field:rgba(255,255,255,.85);--track:rgba(14,23,38,.09);--chip:rgba(255,255,255,.5);--on:rgba(255,255,255,.92);--acc:#0A7AFF;--accOn:#FFFFFF;--accTx:#0A5FD0;--accSoft:rgba(10,122,255,.13);--warn:#E8590C;--warnTx:#B8470A;--warnBg:rgba(255,140,60,.16);--ok:#1FA45A;--okTx:#157A42;--okBg:rgba(31,164,90,.14);--solid:#0E1726;--solidTx:#FFFFFF;--sheet:rgba(246,247,249,.88);--scrim:rgba(14,23,38,.25);--knob:#fff;--card:rgba(255,255,255,.55);--cardB:1px solid rgba(255,255,255,.85);--cardBd:rgba(255,255,255,.85);--cardSh:0 10px 30px rgba(20,40,80,.10),inset 0 1px 0 #fff;--k1:#0E1726;--k2:rgba(14,23,38,.58);--k3:rgba(14,23,38,.36);--kl:rgba(14,23,38,.07);--kt:rgba(255,255,255,.62);--ktb:rgba(255,255,255,.95);--kf:rgba(255,255,255,.85);--ktr:rgba(14,23,38,.09);--kon:rgba(255,255,255,.92);--ka:#0A7AFF;--kaOn:#FFFFFF;--ks:#FFFFFF;--kas:rgba(10,122,255,.13);--kw:#B8470A;--kwb:rgba(255,140,60,.16);--kwarn:#E8590C;--kok:#157A42;--kokb:rgba(31,164,90,.14);--panel:rgba(14,23,38,.86);--bg:radial-gradient(120% 55% at 0% 0%,#C6DAF3 0,transparent 60%),radial-gradient(90% 50% at 100% 38%,#F3DBC6 0,transparent 62%),radial-gradient(100% 50% at 0% 100%,#D0E8DB 0,transparent 60%),#EEF0F3;--t1:rgba(214,226,140,.42);--t1x:#4A5410;--t2:rgba(170,190,240,.38);--t2x:#24324E;--t3:rgba(150,220,215,.40);--t3x:#14585A;--t4:rgba(240,180,220,.40);--t4x:#6A2058;background:var(--bg)">
 <div style="{{ themeStyle }}">
 
 <div style="position:absolute;inset:0;display:flex;flex-direction:column;padding-top:calc(env(safe-area-inset-top, 0px) + 6px)">
@@ -64,7 +64,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </div>
 
-<div style="flex:1;overflow-y:auto;overflow-x:hidden;padding:8px 20px 130px">
+<div id="main-scroll" data-scroll="1" style="flex:1;overflow-y:auto;overflow-x:hidden;padding:8px 20px 130px">
 <sc-if value="{{ showHead }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:14px 0 20px">
 <div style="min-width:0">
@@ -74,6 +74,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="flex:none;display:flex;gap:10px;margin-left:auto">
 <sc-if value="{{ canCfg }}" hint-placeholder-val="{{ false }}"><div onClick="{{ openCfg }}" title="Réglages" style="flex:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg></div></sc-if>
 <sc-if value="{{ canScan }}" hint-placeholder-val="{{ false }}"><div onClick="{{ scanStock }}" title="Scanner un code EAN" style="flex:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 7V4.5A1.5 1.5 0 0 1 4.5 3H7M17 3h2.5A1.5 1.5 0 0 1 21 4.5V7M21 17v2.5a1.5 1.5 0 0 1-1.5 1.5H17M7 21H4.5A1.5 1.5 0 0 1 3 19.5V17M7 8v8M10 8v8M13.5 8v8M17 8v8"></path></svg></div></sc-if>
+<sc-if value="{{ canMore }}" hint-placeholder-val="{{ false }}"><div onClick="{{ moreOpen }}" title="Plus d’options" style="flex:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="12" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="18.5" cy="12" r="1.8"></circle></svg></div></sc-if>
 <sc-if value="{{ canAdd }}" hint-placeholder-val="{{ true }}">
 <div onClick="{{ openSheet }}" title="Ajouter" style="flex:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--acc);color:#fff;box-shadow:0 8px 20px rgba(10,122,255,.35),inset 0 1px 0 rgba(255,255,255,.4)">
 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 2.5v13M2.5 9h13"></path></svg>
@@ -105,14 +106,14 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;flex-direction:column;gap:16px">
 <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
-<div class="sw sw-card" data-sw="{{ p.sw }}">
+<div class="sw sw-card" data-sw="{{ p.sw }}" data-lp="{{ p.sw }}" data-lpg="{{ p.lpg }}">
 <div class="sw-l"><span style="display:flex;flex-direction:column;align-items:center;gap:5px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.2 2.6l6.2 6.2-1.9.8-3.8 3.8.4 4.6-1.7 1.7-3.9-3.9-5.6 5.6H3.4v-1.5L9 14.3l-3.9-3.9 1.7-1.7 4.6.4 3.8-3.8z"></path></svg>{{ p.pinLbl }}</span></div>
 <div class="sw-fg" onClick="{{ p.open }}" style="cursor:pointer;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--ks);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
 <sc-if value="{{ p.showPh }}" hint-placeholder-val="{{ true }}"><div style="position:relative;height:150px;margin:6px 6px 0;border-radius:16px;overflow:hidden;background:var(--tile);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
 <img src="{{ p.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
 <div style="position:absolute;left:10px;right:10px;top:10px;display:flex;justify-content:space-between;pointer-events:none">
 <span style="display:flex;gap:6px"><sc-if value="{{ p.pinned }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:4px;padding:5px 9px;border-radius:999px;background:#FF9F0A;color:#fff;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M15.2 2.6l6.2 6.2-1.9.8-3.8 3.8.4 4.6-1.7 1.7-3.9-3.9-5.6 5.6H3.4v-1.5L9 14.3l-3.9-3.9 1.7-1.7 4.6.4 3.8-3.8z"></path></svg></span></sc-if><span style="padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.75);color:#0E1726;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ p.phase }}</span></span>
-<span style="padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.75);color:#0E1726;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ p.due }}</span>
+<sc-if value="{{ p.hasDue }}" hint-placeholder-val="{{ true }}"><span style="padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.75);color:#0E1726;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ p.due }}</span></sc-if>
 </div>
 </div></sc-if>
 <sc-if value="{{ p.noPh }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:space-between;gap:8px;padding:14px 16px 0;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2)"><span style="display:flex;align-items:center;gap:6px"><sc-if value="{{ p.pinned }}" hint-placeholder-val="{{ false }}"><span style="color:#FF9F0A">● Épinglé ·</span></sc-if>{{ p.phase }}</span><span>{{ p.due }}</span></div></sc-if>
@@ -121,6 +122,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:500 18px/1.2 -apple-system,sans-serif;letter-spacing:-.01em">{{ p.name }}</div>
 <div style="flex:none;font:700 28px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.02em">{{ p.pct }}<span style="font-size:17px;letter-spacing:0"> %</span></div>
 </div>
+<sc-if value="{{ p.hasDesc }}" hint-placeholder-val="{{ false }}"><div style="font:400 13.5px/1.35 -apple-system,sans-serif;color:var(--ink2);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.desc }}</div></sc-if>
 <div style="display:flex;align-items:center;gap:5px;margin-top:4px;font:400 13px -apple-system,sans-serif;color:var(--ink2)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>{{ p.loc }}</div>
 <div style="height:6px;border-radius:999px;background:var(--track);overflow:hidden;margin:12px 0 9px"><div style="height:100%;border-radius:999px;background:var(--acc);width:{{ p.pctW }}"></div></div>
 <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;font:400 13px -apple-system,sans-serif;color:var(--ink2)"><span>{{ p.meta }}</span><span class="rid">{{ p.rid }}</span></div>
@@ -140,8 +142,9 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div onClick="{{ pj.goPh }}" style="position:absolute;top:10px;right:10px;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;background:rgba(0,0,0,.42);color:#fff;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"></path><circle cx="12" cy="13" r="3.6"></circle></svg>{{ pj.phN }}</div>
 <div style="position:absolute;left:0;right:0;bottom:0;padding:48px 18px 16px;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.62));color:#fff;pointer-events:none">
 <div class="rid" style="background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3);color:#fff;margin-bottom:6px">{{ pj.rid }}</div>
-<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;opacity:.88">{{ pj.phase }} · Fin {{ pj.due }}<sc-if value="{{ pj.hasDisc }}" hint-placeholder-val="{{ true }}"> · {{ pj.disc }}</sc-if></div>
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;opacity:.88">{{ pj.phase }}{{ pj.dueTxt }}<sc-if value="{{ pj.hasDisc }}" hint-placeholder-val="{{ true }}"> · {{ pj.disc }}</sc-if></div>
 <div style="font:400 28px/1.1 -apple-system,'SF Pro Display',sans-serif;letter-spacing:-.03em;margin-top:3px;text-wrap:pretty">{{ pj.name }}</div>
+<sc-if value="{{ pj.hasDesc }}" hint-placeholder-val="{{ false }}"><div style="font:400 13.5px/1.35 -apple-system,sans-serif;opacity:.9;margin-top:3px">{{ pj.desc }}</div></sc-if>
 <div style="display:flex;align-items:center;gap:5px;margin-top:5px;font:500 12.5px -apple-system,sans-serif;opacity:.9"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>{{ pj.addrLine }}</div>
 </div>
 </div>
@@ -636,27 +639,107 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-if>
 </sc-if>
 </sc-if>
+<sc-if value="{{ isFiles }}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{ fInDir }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:2px;overflow-x:auto;margin:-12px -20px 12px;padding:0 20px;white-space:nowrap"><sc-for list="{{ fCrumbs }}" as="b" hint-placeholder-count="2"><span style="flex:none;color:var(--ink3);font:600 13px -apple-system,sans-serif">{{ b.sep }}</span><div onClick="{{ b.go }}" style="flex:none;cursor:pointer;padding:6px 7px;border-radius:10px;font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:{{ b.col }}">{{ b.label }}</div></sc-for></div></sc-if>
+<div style="display:flex;align-items:center;gap:8px;height:40px;padding:0 12px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);margin-bottom:14px;color:var(--ink2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4.5 4.5"></path></svg><input value="{{ fQ }}" onChange="{{ fOnQ }}" placeholder="Rechercher" style="flex:1;min-width:0;border:0;background:transparent;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"><sc-if value="{{ fHasQ }}" hint-placeholder-val="{{ false }}"><div onClick="{{ fClearQ }}" style="flex:none;cursor:pointer;width:20px;height:20px;border-radius:50%;background:var(--ink3);color:#fff;display:flex;align-items:center;justify-content:center;font:700 10px -apple-system,sans-serif">✕</div></sc-if></div>
+<sc-if value="{{ fHasUps }}" hint-placeholder-val="{{ false }}"><div style="border-radius:16px;background:var(--field);padding:2px 14px;margin-bottom:12px"><sc-for list="{{ fUps }}" as="u" hint-placeholder-count="1"><div style="padding:10px 0"><div style="display:flex;justify-content:space-between;gap:10px;font:500 14px -apple-system,sans-serif"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ u.name }}</span><span style="flex:none;color:var(--ink2);font-size:12.5px">Envoi…</span></div><div style="height:4px;border-radius:2px;background:var(--track);margin-top:7px;overflow:hidden"><div style="height:100%;border-radius:2px;background:var(--acc);width:{{ u.w }};transition:width .2s"></div></div></div></sc-for></div></sc-if>
+<sc-if value="{{ fEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:44px 16px;text-align:center;color:var(--ink2)"><svg width="56" height="48" viewBox="0 0 40 34" style="opacity:.55"><path d="M2 6a4 4 0 0 1 4-4h9l4 4h15a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#5AA9F5"></path><path d="M2 11h36v17a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#7CBEFA"></path></svg><div style="font:600 17px -apple-system,sans-serif;margin-top:10px;color:var(--ink)">{{ fEmptyTxt }}</div><div style="font:400 14px/1.4 -apple-system,sans-serif;margin-top:4px">Touchez + pour importer depuis iCloud Drive ou créer un dossier.</div></div></sc-if>
+<sc-if value="{{ fList }}" hint-placeholder-val="{{ true }}">
+<div style="border-radius:20px;background:var(--field);overflow:hidden">
+<sc-for list="{{ fItems }}" as="f" hint-placeholder-count="2">
+<div class="sw" data-sw="{{ f.sw }}" data-lp="{{ f.sw }}" style="border-bottom:1px solid var(--line)">
+<div class="sw-fg" onClick="{{ f.open }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:9px 14px;background:{{ f.rowBg }}">
+<sc-if value="{{ f.selOn }}" hint-placeholder-val="{{ false }}"><div style="flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid {{ f.ckBd }};background:{{ f.ckBg }};color:#fff;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="opacity:{{ f.ckOp }}"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></sc-if>
+<div style="flex:none;width:42px;height:42px;display:flex;align-items:center;justify-content:center">
+<sc-if value="{{ f.isDir }}" hint-placeholder-val="{{ true }}"><svg width="40" height="34" viewBox="0 0 40 34"><path d="M2 6a4 4 0 0 1 4-4h9l4 4h15a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#5AA9F5"></path><path d="M2 11h36v17a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#7CBEFA"></path></svg></sc-if>
+<sc-if value="{{ f.hasTh }}" hint-placeholder-val="{{ false }}"><img src="{{ f.th }}" alt="" style="width:40px;height:40px;border-radius:7px;object-fit:cover;display:block"></sc-if>
+<sc-if value="{{ f.isDoc }}" hint-placeholder-val="{{ false }}"><div style="position:relative;width:31px;height:40px;border-radius:4px;background:#fff;border:1px solid rgba(0,0,0,.14);box-shadow:0 1px 2px rgba(0,0,0,.08)"><div style="position:absolute;left:-4px;right:-4px;bottom:6px;padding:2px 0;border-radius:3px;background:{{ f.icBg }};color:#fff;text-align:center;font:700 8.5px -apple-system,sans-serif;letter-spacing:.02em">{{ f.icTx }}</div></div></sc-if>
+</div>
+<div style="flex:1;min-width:0"><div style="font:400 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ f.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ f.sub }}</div></div>
+<sc-if value="{{ f.isDir }}" hint-placeholder-val="{{ true }}"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink3)"><path d="M1.5 1.5l5 5-5 5"></path></svg></sc-if>
+</div>
+<div class="sw-r">Supprimer</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ fGrid }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 8px">
+<sc-for list="{{ fItems }}" as="f" hint-placeholder-count="3">
+<div data-lp="{{ f.sw }}" onClick="{{ f.open }}" style="position:relative;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0;padding:8px 4px;border-radius:16px;background:{{ f.gridBg }}">
+<div style="width:86px;height:86px;display:flex;align-items:center;justify-content:center">
+<sc-if value="{{ f.isDir }}" hint-placeholder-val="{{ true }}"><svg width="80" height="68" viewBox="0 0 40 34"><path d="M2 6a4 4 0 0 1 4-4h9l4 4h15a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#5AA9F5"></path><path d="M2 11h36v17a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#7CBEFA"></path></svg></sc-if>
+<sc-if value="{{ f.hasTh }}" hint-placeholder-val="{{ false }}"><img src="{{ f.th }}" alt="" style="width:84px;height:84px;border-radius:10px;object-fit:cover;display:block;box-shadow:0 2px 8px rgba(0,0,0,.15)"></sc-if>
+<sc-if value="{{ f.isDoc }}" hint-placeholder-val="{{ false }}"><div style="position:relative;width:62px;height:80px;border-radius:6px;background:#fff;border:1px solid rgba(0,0,0,.14);box-shadow:0 2px 8px rgba(0,0,0,.1)"><div style="position:absolute;left:-6px;right:-6px;bottom:12px;padding:4px 0;border-radius:4px;background:{{ f.icBg }};color:#fff;text-align:center;font:800 12px -apple-system,sans-serif;letter-spacing:.02em">{{ f.icTx }}</div></div></sc-if>
+</div>
+<div style="font:500 13px/1.25 -apple-system,sans-serif;margin-top:7px;max-width:100%;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere">{{ f.name }}</div>
+<div style="font:400 11.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ f.gsub }}</div>
+<sc-if value="{{ f.selOn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:8px;right:12px;width:22px;height:22px;border-radius:50%;border:1.5px solid {{ f.ckBd }};background:{{ f.ckBg }};color:#fff;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="opacity:{{ f.ckOp }}"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></sc-if>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</sc-if>
+<sc-if value="{{ isChat }}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{ chList }}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{ chNone }}" hint-placeholder-val="{{ true }}">
+<div style="padding:20px 18px;border-radius:24px;background:var(--field)">
+<div style="width:44px;height:44px;border-radius:14px;background:#D97757;color:#fff;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.5l1.9 5.6 5.6 1.9-5.6 1.9L12 18.5l-1.9-5.6L4.5 11l5.6-1.9zM18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"></path></svg></div>
+<div style="font:600 18px -apple-system,sans-serif;margin-top:12px">Que puis-je faire pour vous ?</div>
+<div style="font:400 14px/1.45 -apple-system,sans-serif;color:var(--ink2);margin-top:4px">Claude connaît vos projets, votre planning et vos stocks. Les conversations restent sur cet appareil.</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:12px"><sc-for list="{{ chSugg }}" as="s" hint-placeholder-count="3"><div onClick="{{ s.pick }}" style="cursor:pointer;padding:12px 14px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:500 14.5px/1.35 -apple-system,sans-serif">{{ s.t }}</div></sc-for></div>
+</sc-if>
+<sc-if value="{{ chHasItems }}" hint-placeholder-val="{{ false }}">
+<div style="border-radius:20px;background:var(--field);overflow:hidden"><sc-for list="{{ chItems }}" as="c" hint-placeholder-count="2"><div class="sw" data-sw="{{ c.sw }}" data-lp="{{ c.sw }}" style="border-bottom:1px solid var(--line)"><div class="sw-fg" onClick="{{ c.open }}" style="cursor:pointer;padding:12px 14px;background:var(--field)"><div style="display:flex;justify-content:space-between;gap:10px"><div style="font:600 15px -apple-system,sans-serif;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.title }}</div><div style="flex:none;font:400 12.5px -apple-system,sans-serif;color:var(--ink2)">{{ c.when }}</div></div><div style="font:400 13.5px/1.35 -apple-system,sans-serif;color:var(--ink2);margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ c.prev }}</div></div><div class="sw-r">Supprimer</div></div></sc-for></div>
+</sc-if>
+<div style="height:70px"></div>
+</sc-if>
+<sc-if value="{{ chOpen }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:10px;margin:2px 0 12px">
+<div onClick="{{ chBack }}" style="flex:none;display:inline-flex;align-items:center;gap:4px;cursor:pointer;padding:9px 14px 9px 10px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"></path></svg>Conversations</div>
+<div style="flex:1;min-width:0;font:600 16px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ chTitle }}</div>
+</div>
+<div onClick="{{ chCtxTog }}" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;padding:6px 11px;border-radius:999px;background:{{ chCtxBg }};color:{{ chCtxFg }};font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;margin-bottom:14px">{{ chCtxLbl }}</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ chMsgs }}" as="m" hint-placeholder-count="2"><div style="display:flex;justify-content:{{ m.jc }}"><div data-lp="{{ m.lp }}" style="max-width:86%;padding:10px 14px;border-radius:{{ m.br }};background:{{ m.bg }};color:{{ m.fg }};font:400 15.5px/1.42 -apple-system,sans-serif;white-space:pre-wrap;overflow-wrap:anywhere">{{ m.x }}</div></div></sc-for>
+<sc-if value="{{ chBusy }}" hint-placeholder-val="{{ false }}"><div style="display:flex"><div style="padding:13px 16px;border-radius:20px 20px 20px 6px;background:var(--field);display:flex;gap:5px"><span style="width:7px;height:7px;border-radius:50%;background:var(--ink2);animation:dots 1.2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink2);animation:dots 1.2s .2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink2);animation:dots 1.2s .4s infinite"></span></div></div></sc-if>
+<sc-if value="{{ chHasErr }}" hint-placeholder-val="{{ false }}"><div style="padding:11px 14px;border-radius:16px;background:var(--warnBg);color:var(--warnTx);font:500 13.5px/1.4 -apple-system,sans-serif">{{ chErr }} · <span onClick="{{ chRetry }}" style="cursor:pointer;font-weight:700;text-decoration:underline">Réessayer</span></div></sc-if>
+</div>
+<div style="height:84px"></div>
+</sc-if>
+</sc-if>
 </div>
 </div>
 
-<div style="position:absolute;z-index:40;left:12px;right:12px;bottom:max(14px, calc(env(safe-area-inset-bottom, 0px) - 6px));padding:6px;border-radius:32px;background:var(--card);backdrop-filter:blur(30px) saturate(1.9);-webkit-backdrop-filter:blur(30px) saturate(1.9);border:1px solid var(--cardBd);box-shadow:0 14px 36px rgba(10,20,40,.22),inset 0 1px 0 rgba(255,255,255,.25);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px">
-<div onClick="{{ tb.p.pick }}" style="cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ tb.p.bg }};color:{{ tb.p.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
-<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"></rect></svg>
-<span style="font:600 10px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">Projets</span></div>
-<div onClick="{{ tb.s.pick }}" style="cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ tb.s.bg }};color:{{ tb.s.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
-<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M3.5 7.5L12 3.5l8.5 4v9L12 20.5l-8.5-4z"></path><path d="M3.5 7.5L12 11.5l8.5-4M12 11.5v9"></path></svg>
-<span style="font:600 10px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">Stocks</span></div>
-<div onClick="{{ tb.m.pick }}" style="cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ tb.m.bg }};color:{{ tb.m.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
-<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="M4.5 7.5l7.5 5.5 7.5-5.5"></path></svg>
-<span style="font:600 10px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">Mails</span>
-<sc-if value="{{ tb.m.badge }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:7px;right:9px;min-width:16px;height:16px;border-radius:999px;background:#FF5A5A;color:#fff;font:600 11.5px/16px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;text-align:center;padding:0 4px">{{ tb.m.count }}</span></sc-if></div>
-<div onClick="{{ tb.l.pick }}" style="cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ tb.l.bg }};color:{{ tb.l.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
-<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"></rect><path d="M3.5 10h17M8.5 3v4M15.5 3v4"></path></svg>
-<span style="font:600 10px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">Planning</span></div>
-<div onClick="{{ tb.c.pick }}" style="cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ tb.c.bg }};color:{{ tb.c.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
-<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="8.5" r="3.3"></circle><path d="M3 19.5c.8-3.2 3.2-5 6-5s5.2 1.8 6 5"></path><circle cx="17" cy="9.5" r="2.6"></circle><path d="M16.2 14.6c2.4.1 4.1 1.6 4.8 4.4"></path></svg>
-<span style="font:600 10px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">Contacts</span></div>
+<sc-if value="{{ tbShow }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;z-index:40;left:12px;right:12px;bottom:max(14px, calc(env(safe-area-inset-bottom, 0px) - 6px));padding:6px;border-radius:32px;background:var(--card);backdrop-filter:blur(30px) saturate(1.9);-webkit-backdrop-filter:blur(30px) saturate(1.9);border:1px solid var(--cardBd);box-shadow:0 14px 36px rgba(10,20,40,.22),inset 0 1px 0 rgba(255,255,255,.25);display:grid;grid-template-columns:{{ tbCols }};gap:2px">
+<sc-for list="{{ tbList }}" as="t" hint-placeholder-count="5">
+<div onClick="{{ t.pick }}" style="cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ t.bg }};color:{{ t.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="{{ t.d }}"></path></svg>
+<span style="font:600 10px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ t.label }}</span>
+<sc-if value="{{ t.badge }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:7px;right:9px;min-width:16px;height:16px;border-radius:999px;background:#FF5A5A;color:#fff;font:600 11.5px/16px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;text-align:center;padding:0 4px">{{ t.count }}</span></sc-if>
 </div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ selBar }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;z-index:42;left:12px;right:12px;bottom:max(14px, calc(env(safe-area-inset-bottom, 0px) - 6px));height:70px;padding:6px 8px;border-radius:32px;background:var(--card);backdrop-filter:blur(30px) saturate(1.9);-webkit-backdrop-filter:blur(30px) saturate(1.9);border:1px solid var(--cardBd);box-shadow:0 14px 36px rgba(10,20,40,.22);display:flex;align-items:center;gap:4px">
+<div onClick="{{ selAll }}" style="flex:none;cursor:pointer;padding:10px 12px;font:600 14.5px -apple-system,sans-serif;color:var(--acc)">{{ selAllLbl }}</div>
+<div style="flex:1;min-width:0;text-align:center;font:600 13px -apple-system,sans-serif;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ selN }}</div>
+<div onClick="{{ selMove }}" title="Déplacer" style="flex:none;cursor:pointer;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--acc);opacity:{{ selOp }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9.5 13h6M13 10.5l2.5 2.5-2.5 2.5"></path></svg></div>
+<sc-if value="{{ selCanDel }}" hint-placeholder-val="{{ true }}"><div onClick="{{ selDel }}" title="Supprimer" style="flex:none;cursor:pointer;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#FF3B30;opacity:{{ selOp }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13M10 11v6M14 11v6"></path></svg></div></sc-if>
+<div onClick="{{ selDone }}" style="flex:none;cursor:pointer;padding:11px 16px;border-radius:22px;background:var(--acc);color:#fff;font:600 14.5px -apple-system,sans-serif">OK</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ chBar }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;z-index:41;left:12px;right:12px;bottom:var(--chatb);display:flex;align-items:flex-end;gap:8px;padding:6px 6px 6px 16px;border-radius:24px;background:var(--card);backdrop-filter:blur(30px) saturate(1.9);-webkit-backdrop-filter:blur(30px) saturate(1.9);border:1px solid var(--cardBd);box-shadow:0 10px 30px rgba(10,20,40,.18)">
+<textarea value="{{ chTxt }}" onChange="{{ chOnTxt }}" placeholder="{{ chPh }}" rows="1" style="flex:1;min-width:0;max-height:130px;border:0;background:transparent;padding:8px 0;font:400 16px/1.35 -apple-system,sans-serif;resize:none;outline:none;color:var(--ink);field-sizing:content"></textarea>
+<div onClick="{{ chSend }}" title="Envoyer" style="flex:none;cursor:pointer;width:36px;height:36px;border-radius:50%;background:{{ chSendBg }};color:#fff;display:flex;align-items:center;justify-content:center;transition:background .2s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5.5 11.5L12 5l6.5 6.5"></path></svg></div>
+</div>
+</sc-if>
 
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
 <div style="position:absolute;inset:0;z-index:45;background:var(--bg);display:flex;flex-direction:column;padding:62px 20px 30px">
@@ -827,6 +910,10 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:400 15.5px -apple-system,sans-serif">Afficher les identifiants</div>
 <div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ idsTrack }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ idsKnob }};transition:transform .2s"></div></div>
 </div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2)">Barre d’onglets</div><div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink3)">{{ tabsN }}</div></div>
+<div style="border-radius:20px;background:var(--field);overflow:hidden">
+<sc-for list="{{ tabRows }}" as="t" hint-placeholder-count="7"><div style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--line)"><div onClick="{{ t.pick }}" style="flex:1;min-width:0;cursor:pointer;display:flex;align-items:center;gap:12px"><div style="width:30px;height:30px;border-radius:8px;flex:none;background:{{ t.icBg }};color:#fff;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="{{ t.d }}"></path></svg></div><div style="flex:1;min-width:0;font:400 15.5px -apple-system,sans-serif">{{ t.label }}</div><div style="flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid {{ t.ckBd }};background:{{ t.ckBg }};color:#fff;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="opacity:{{ t.ckOp }}"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div><sc-if value="{{ t.canGo }}" hint-placeholder-val="{{ false }}"><div onClick="{{ t.go }}" style="flex:none;cursor:pointer;padding:6px 10px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ouvrir</div></sc-if></div></sc-for>
+</div>
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Sauvegarde · iCloud Drive</div>
 <div style="padding:12px 14px;border-radius:20px;background:var(--field)">
 <div style="font:400 15.5px -apple-system,sans-serif">{{ bkLast }}</div>
@@ -842,7 +929,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">À enregistrer dans iCloud Drive › Chantier › Sauvegardes.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 27</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 28</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -953,6 +1040,9 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="width:96px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">{{ x.label }}</div>
 <input type="{{ x.type }}" value="{{ x.val }}" onChange="{{ x.on }}" placeholder="{{ x.ph }}" style="flex:1;min-width:0;border:0;background:transparent;padding:14px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
 </div>
+</sc-if>
+<sc-if value="{{ x.isSw }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ x.swTog }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;border-bottom:2px solid var(--line)"><div style="font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">{{ x.label }}</div><div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ x.swTrack }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ x.swKnob }};transition:transform .2s"></div></div></div>
 </sc-if>
 <sc-if value="{{ x.isCo }}" hint-placeholder-val="{{ false }}">
 <div style="padding:0 16px 12px;border-bottom:2px solid var(--line)">
@@ -1083,10 +1173,92 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </sc-if>
 
+<sc-if value="{{ fvOn }}" hint-placeholder-val="{{ false }}">
+<div id="fv-root" style="position:absolute;inset:0;z-index:80;background-color:#000;color:#fff">
+<div id="fv-stage" style="position:absolute;inset:0;overflow:hidden;touch-action:none">
+<div id="fv-strip" style="position:absolute;inset:0">
+<sc-for list="{{ fvPanels }}" as="x" hint-placeholder-count="3">
+<div class="{{ x.cls }}" style="position:absolute;top:0;bottom:0;left:{{ x.left }};width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden">
+<sc-if value="{{ x.isImg }}" hint-placeholder-val="{{ true }}"><img class="fv-img" src="{{ x.url }}" alt="" draggable="false" style="max-width:100%;max-height:100%;object-fit:contain;display:block;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none"></sc-if>
+<sc-if value="{{ x.isVid }}" hint-placeholder-val="{{ false }}"><video src="{{ x.url }}" controls="controls" playsinline="playsinline" preload="metadata" style="max-width:100%;max-height:calc(100% - 170px);display:block;background:#000"></video></sc-if>
+<sc-if value="{{ x.isAud }}" hint-placeholder-val="{{ false }}"><div style="width:100%;padding:0 24px;text-align:center"><div style="font:600 17px/1.3 -apple-system,sans-serif;margin-bottom:18px;overflow-wrap:anywhere">{{ x.name }}</div><audio src="{{ x.url }}" controls="controls" style="width:100%"></audio></div></sc-if>
+<sc-if value="{{ x.isPages }}" hint-placeholder-val="{{ false }}"><div class="fv-scroll" style="position:absolute;inset:0;overflow-y:auto;touch-action:pan-y;padding:calc(env(safe-area-inset-top, 0px) + 66px) 0 120px"><sc-for list="{{ x.pages }}" as="pg" hint-placeholder-count="2"><img src="{{ pg }}" alt="" draggable="false" style="display:block;width:calc(100% - 16px);margin:0 auto 10px;border-radius:3px;background:#fff"></sc-for><sc-if value="{{ x.more }}" hint-placeholder-val="{{ false }}"><div onClick="{{ x.openExt }}" data-fvbtn="1" style="cursor:pointer;margin:6px 16px;padding:12px;border-radius:14px;background:rgba(255,255,255,.16);text-align:center;font:600 14px -apple-system,sans-serif">Pages suivantes : ouvrir dans Safari</div></sc-if></div></sc-if>
+<sc-if value="{{ x.isText }}" hint-placeholder-val="{{ false }}"><div class="fv-scroll" style="position:absolute;inset:0;overflow-y:auto;touch-action:pan-y;padding:calc(env(safe-area-inset-top, 0px) + 66px) 10px 120px"><pre style="margin:0;padding:16px;border-radius:12px;background:#fff;color:#111;white-space:pre-wrap;overflow-wrap:anywhere;font:400 13px/1.45 ui-monospace,Menlo,monospace">{{ x.text }}</pre></div></sc-if>
+<sc-if value="{{ x.isMail }}" hint-placeholder-val="{{ false }}"><div class="fv-scroll" style="position:absolute;inset:0;overflow-y:auto;touch-action:pan-y;padding:calc(env(safe-area-inset-top, 0px) + 66px) 10px 120px"><div style="padding:18px 16px;border-radius:16px;background:#fff;color:#111">
+<div style="font:700 19px/1.25 -apple-system,sans-serif;overflow-wrap:anywhere">{{ x.mSubj }}</div>
+<div style="font:400 13.5px/1.5 -apple-system,sans-serif;color:#555;margin-top:10px;overflow-wrap:anywhere"><b>De :</b> {{ x.mFrom }}</div>
+<sc-if value="{{ x.mHasTo }}" hint-placeholder-val="{{ true }}"><div style="font:400 13.5px/1.5 -apple-system,sans-serif;color:#555;overflow-wrap:anywhere"><b>À :</b> {{ x.mTo }}</div></sc-if>
+<sc-if value="{{ x.mHasDate }}" hint-placeholder-val="{{ true }}"><div style="font:400 13.5px/1.5 -apple-system,sans-serif;color:#555">{{ x.mDate }}</div></sc-if>
+<div style="height:1px;background:#e5e5e5;margin:14px 0"></div>
+<div style="font:400 15px/1.5 -apple-system,sans-serif;white-space:pre-wrap;overflow-wrap:anywhere">{{ x.mBody }}</div>
+<sc-if value="{{ x.mHasAtts }}" hint-placeholder-val="{{ false }}"><div style="font:600 13px -apple-system,sans-serif;color:#555;margin:18px 0 8px">Pièces jointes</div><sc-for list="{{ x.mAtts }}" as="a" hint-placeholder-count="1"><div style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:#f2f2f4;margin-bottom:6px"><div style="flex:1;min-width:0"><div style="font:500 14px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.name }}</div><div style="font:400 12px -apple-system,sans-serif;color:#777">{{ a.size }}</div></div><div onClick="{{ a.add }}" data-fvbtn="1" style="flex:none;cursor:pointer;padding:7px 10px;border-radius:10px;background:#fff;color:#0A7AFF;font:600 12.5px -apple-system,sans-serif">Ajouter ici</div><div onClick="{{ a.share }}" data-fvbtn="1" style="flex:none;cursor:pointer;padding:7px 10px;border-radius:10px;background:#fff;color:#0A7AFF;font:600 12.5px -apple-system,sans-serif">Partager</div></div></sc-for></sc-if>
+</div></div></sc-if>
+<sc-if value="{{ x.isCard }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 30px">
+<div style="position:relative;width:96px;height:120px;border-radius:8px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.45)"><div style="position:absolute;left:-8px;right:-8px;bottom:18px;padding:5px 0;border-radius:6px;background:{{ x.icBg }};color:#fff;font:800 16px -apple-system,sans-serif">{{ x.icTx }}</div></div>
+<div style="font:600 17px/1.3 -apple-system,sans-serif;margin-top:22px;overflow-wrap:anywhere">{{ x.name }}</div>
+<div style="font:400 13.5px -apple-system,sans-serif;opacity:.65;margin-top:4px">{{ x.size }}</div>
+<div style="display:flex;gap:10px;margin-top:22px"><div onClick="{{ x.openExt }}" data-fvbtn="1" style="cursor:pointer;padding:12px 18px;border-radius:14px;background:#0A84FF;color:#fff;font:600 15px -apple-system,sans-serif">Ouvrir</div><div onClick="{{ x.share }}" data-fvbtn="1" style="cursor:pointer;padding:12px 18px;border-radius:14px;background:rgba(255,255,255,.16);color:#fff;font:600 15px -apple-system,sans-serif">Ouvrir dans…</div></div>
+</div></sc-if>
+<sc-if value="{{ x.loading }}" hint-placeholder-val="{{ false }}"><div style="font:500 14px -apple-system,sans-serif;opacity:.7">Chargement…</div></sc-if>
+<sc-if value="{{ x.err }}" hint-placeholder-val="{{ false }}"><div style="padding:0 30px;text-align:center"><div style="font:500 14.5px/1.4 -apple-system,sans-serif">{{ x.errTxt }}</div><div onClick="{{ x.retry }}" data-fvbtn="1" style="display:inline-block;cursor:pointer;margin-top:12px;padding:10px 16px;border-radius:12px;background:rgba(255,255,255,.16);font:600 14px -apple-system,sans-serif">Réessayer</div></div></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="position:absolute;left:0;right:0;top:0;padding:calc(env(safe-area-inset-top, 0px) + 8px) 12px 22px;display:flex;align-items:center;gap:10px;background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,0));opacity:{{ fvUiOp }};pointer-events:{{ fvUiPe }};transition:opacity .2s">
+<div onClick="{{ fvClose }}" title="Fermer" style="flex:none;cursor:pointer;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2.5 2.5l9 9M11.5 2.5l-9 9"></path></svg></div>
+<div style="flex:1;min-width:0;text-align:center"><div style="font:600 15px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ fvName }}</div><div style="font:500 12px -apple-system,sans-serif;opacity:.7;margin-top:1px">{{ fvPos }}</div></div>
+<div onClick="{{ fvMore }}" title="Plus" style="flex:none;cursor:pointer;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="12" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="18.5" cy="12" r="1.8"></circle></svg></div>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:0;padding:22px 30px calc(env(safe-area-inset-bottom, 0px) + 14px);display:flex;justify-content:space-around;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.62));opacity:{{ fvUiOp }};pointer-events:{{ fvUiPe }};transition:opacity .2s">
+<div onClick="{{ fvShare }}" title="Partager" style="cursor:pointer;width:46px;height:46px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11M8 7.5l4-4 4 4M5.5 11.5v7.5a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-7.5"></path></svg></div>
+<div onClick="{{ fvInfo }}" title="Informations" style="cursor:pointer;width:46px;height:46px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v5.5M12 7.6v.4"></path></svg></div>
+<sc-if value="{{ fvCanDel }}" hint-placeholder-val="{{ true }}"><div onClick="{{ fvDel }}" title="Supprimer" style="cursor:pointer;width:46px;height:46px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13M10 11v6M14 11v6"></path></svg></div></sc-if>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ ctxOn }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ ctxClose }}" style="position:absolute;inset:0;z-index:85;background:rgba(0,0,0,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:ctxIn .2s ease"></div>
+<div style="position:absolute;z-index:87;top:{{ ctxTop }};left:{{ ctxL }};right:{{ ctxR }};width:min(262px, calc(100% - 32px));max-height:calc(100% - 80px);overflow-y:auto;border-radius:14px;background:var(--menu);color:var(--ink);box-shadow:0 14px 44px rgba(0,0,0,.28);animation:ctxPop .22s cubic-bezier(.2,.9,.3,1.15)">
+<sc-if value="{{ ctxHasHead }}" hint-placeholder-val="{{ true }}"><div style="padding:11px 16px 10px;font:400 13px/1.3 -apple-system,sans-serif;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ctxHead }}</div></sc-if>
+<sc-for list="{{ ctxItems }}" as="it" hint-placeholder-count="3"><div onClick="{{ it.pick }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;border-top:{{ it.sep }};color:{{ it.col }};font:400 16.5px -apple-system,sans-serif"><span style="min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ it.l }}</span><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="{{ it.d }}"></path></svg></div></sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ mvOn }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ mvNo }}" style="position:absolute;inset:0;z-index:88;background:rgba(0,0,0,.32);animation:ctxIn .18s ease"></div>
+<div style="position:absolute;z-index:89;left:0;right:0;bottom:0;max-height:80%;display:flex;flex-direction:column;border-radius:22px 22px 0 0;background:var(--menu);color:var(--ink);padding-bottom:env(safe-area-inset-bottom, 0px);box-shadow:0 -10px 40px rgba(0,0,0,.25)">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)"><div onClick="{{ mvNo }}" style="cursor:pointer;font:400 16px -apple-system,sans-serif;color:var(--acc)">Annuler</div><div style="flex:1;min-width:0;text-align:center;font:600 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ mvTitle }}</div><div onClick="{{ mvGo }}" style="cursor:pointer;font:600 16px -apple-system,sans-serif;color:var(--acc)">Déplacer</div></div>
+<div style="flex:1;overflow-y:auto;padding:6px 0">
+<sc-for list="{{ mvRows }}" as="r" hint-placeholder-count="3"><div onClick="{{ r.pick }}" style="cursor:pointer;display:flex;align-items:center;gap:10px;padding:10px 16px 10px {{ r.pad }};background:{{ r.bg }};color:{{ r.fg }}"><svg width="26" height="22" viewBox="0 0 40 34" style="flex:none"><path d="M2 6a4 4 0 0 1 4-4h9l4 4h15a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#5AA9F5"></path><path d="M2 11h36v17a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#7CBEFA"></path></svg><span style="flex:1;min-width:0;font:400 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</span><sc-if value="{{ r.ck }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if></div></sc-for>
+</div>
+<div onClick="{{ mvNew }}" style="cursor:pointer;padding:14px 16px;border-top:1px solid var(--line);font:500 15px -apple-system,sans-serif;color:var(--acc)">+ Nouveau dossier ici</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ infoOn }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ infoClose }}" style="position:absolute;inset:0;z-index:88;background:rgba(0,0,0,.32);animation:ctxIn .18s ease"></div>
+<div style="position:absolute;z-index:89;left:0;right:0;bottom:0;border-radius:22px 22px 0 0;background:var(--menu);color:var(--ink);padding:0 0 calc(env(safe-area-inset-bottom, 0px) + 10px);box-shadow:0 -10px 40px rgba(0,0,0,.25)">
+<div style="display:flex;align-items:center;gap:10px;padding:16px;border-bottom:1px solid var(--line)"><div style="flex:1;min-width:0;font:600 16px -apple-system,sans-serif;overflow-wrap:anywhere">{{ infoName }}</div><div onClick="{{ infoClose }}" style="cursor:pointer;font:600 16px -apple-system,sans-serif;color:var(--acc)">OK</div></div>
+<sc-for list="{{ infoRows }}" as="r" hint-placeholder-count="4"><div style="display:flex;justify-content:space-between;gap:16px;padding:12px 16px;border-bottom:1px solid var(--line);font:400 15px -apple-system,sans-serif"><span style="flex:none;color:var(--ink2)">{{ r.l }}</span><span style="min-width:0;text-align:right;overflow-wrap:anywhere">{{ r.v }}</span></div></sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ dlgOn }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:90;background:rgba(0,0,0,.32);display:flex;align-items:center;justify-content:center;padding:24px;animation:ctxIn .18s ease">
+<div style="width:min(290px,100%);border-radius:16px;overflow:hidden;background:var(--menu);color:var(--ink);box-shadow:0 20px 50px rgba(0,0,0,.3);animation:ctxPop .22s ease">
+<div style="padding:18px 16px 14px;text-align:center"><div style="font:600 17px -apple-system,sans-serif">{{ dlgT }}</div><input id="fdlg-in" value="{{ dlgV }}" onChange="{{ dlgOnV }}" style="width:100%;margin-top:14px;border:1px solid var(--tileBd);background:var(--field);padding:9px 10px;border-radius:9px;font:400 16px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
+<div style="display:flex;border-top:1px solid var(--line)"><div onClick="{{ dlgNo }}" style="flex:1;cursor:pointer;padding:13px;text-align:center;font:400 17px -apple-system,sans-serif;color:var(--acc);border-right:1px solid var(--line)">Annuler</div><div onClick="{{ dlgOk }}" style="flex:1;cursor:pointer;padding:13px;text-align:center;font:600 17px -apple-system,sans-serif;color:var(--acc)">{{ dlgOkLbl }}</div></div>
+</div>
+</div>
+</sc-if>
+
 <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
 <div style="position:absolute;z-index:70;left:16px;right:16px;bottom:calc(max(14px, env(safe-area-inset-bottom, 0px) - 6px) + 78px);display:flex;align-items:center;gap:12px;padding:12px 12px 12px 16px;border-radius:18px;background:var(--panel);color:#F2F2F2;box-shadow:0 10px 30px rgba(0,0,0,.25);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6)">
 <span style="flex:1;min-width:0;font:500 14px/1.3 -apple-system,sans-serif">{{ toast }}</span>
 <sc-if value="{{ toastUndo }}" hint-placeholder-val="{{ true }}"><div onClick="{{ undo }}" style="cursor:pointer;flex:none;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.14);font:600 13.5px -apple-system,sans-serif;color:#7CC4FF">Annuler</div></sc-if>
+<sc-if value="{{ toastAct }}" hint-placeholder-val="{{ false }}"><div onClick="{{ toastGo }}" style="cursor:pointer;flex:none;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.14);font:600 13.5px -apple-system,sans-serif;color:#7CC4FF">{{ toastActLbl }}</div></sc-if>
 </div>
 </sc-if>
 
@@ -1228,7 +1400,7 @@ const PLAN = [
   { w: 'Ven', n: 30, ev: [['10:00', 'c', 'Échéance réservation lot carrelage', 'Échéance'], ['16:00', 'b', 'Validation planning bruit lourd', 'Réunion']] },
   { w: 'Sam', n: 31, ev: [] }
 ];
-const DARK = {'--ink':'#F2F4F8','--ink2':'rgba(235,240,250,.62)','--ink3':'rgba(235,240,250,.36)','--line':'rgba(255,255,255,.08)','--tile':'rgba(255,255,255,.07)','--tileBd':'rgba(255,255,255,.12)','--field':'rgba(255,255,255,.08)','--track':'rgba(255,255,255,.12)','--chip':'rgba(255,255,255,.07)','--on':'rgba(255,255,255,.16)','--acc':'#0A84FF','--accOn':'#FFFFFF','--accTx':'#6CB6FF','--accSoft':'rgba(10,132,255,.2)','--warn':'#FF8A3D','--warnTx':'#FFB27A','--warnBg':'rgba(255,138,61,.17)','--ok':'#30D158','--okTx':'#5BE07D','--okBg':'rgba(48,209,88,.16)','--solid':'#F2F4F8','--solidTx':'#0B0F17','--sheet':'rgba(24,28,38,.92)','--scrim':'rgba(0,0,0,.5)','--knob':'#F2F4F8','--card':'rgba(30,36,48,.55)','--cardB':'1px solid rgba(255,255,255,.10)','--cardBd':'rgba(255,255,255,.10)','--cardSh':'0 10px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.07)','--k1':'#F2F4F8','--k2':'rgba(235,240,250,.62)','--k3':'rgba(235,240,250,.36)','--kl':'rgba(255,255,255,.08)','--kt':'rgba(255,255,255,.07)','--ktb':'rgba(255,255,255,.12)','--kf':'rgba(255,255,255,.08)','--ktr':'rgba(255,255,255,.12)','--kon':'rgba(255,255,255,.16)','--ka':'#0A84FF','--kaOn':'#FFFFFF','--ks':'#0B0F17','--kas':'rgba(10,132,255,.2)','--kw':'#FFB27A','--kwb':'rgba(255,138,61,.17)','--kwarn':'#FF8A3D','--kok':'#5BE07D','--kokb':'rgba(48,209,88,.16)','--panel':'rgba(255,255,255,.09)','--bg':'radial-gradient(120% 55% at 0% 0%,#163052 0,transparent 60%),radial-gradient(90% 50% at 100% 38%,#3B2817 0,transparent 62%),radial-gradient(100% 50% at 0% 100%,#11382C 0,transparent 60%),#090D14','--t1':'rgba(170,185,70,.20)','--t1x':'#E8EDB8','--t2':'rgba(110,140,230,.20)','--t2x':'#DCE4FA','--t3':'rgba(60,180,175,.20)','--t3x':'#B5ECE8','--t4':'rgba(200,90,170,.20)','--t4x':'#F4C9E6'};
+const DARK = {'--menu':'rgba(38,42,52,.97)','--ink':'#F2F4F8','--ink2':'rgba(235,240,250,.62)','--ink3':'rgba(235,240,250,.36)','--line':'rgba(255,255,255,.08)','--tile':'rgba(255,255,255,.07)','--tileBd':'rgba(255,255,255,.12)','--field':'rgba(255,255,255,.08)','--track':'rgba(255,255,255,.12)','--chip':'rgba(255,255,255,.07)','--on':'rgba(255,255,255,.16)','--acc':'#0A84FF','--accOn':'#FFFFFF','--accTx':'#6CB6FF','--accSoft':'rgba(10,132,255,.2)','--warn':'#FF8A3D','--warnTx':'#FFB27A','--warnBg':'rgba(255,138,61,.17)','--ok':'#30D158','--okTx':'#5BE07D','--okBg':'rgba(48,209,88,.16)','--solid':'#F2F4F8','--solidTx':'#0B0F17','--sheet':'rgba(24,28,38,.92)','--scrim':'rgba(0,0,0,.5)','--knob':'#F2F4F8','--card':'rgba(30,36,48,.55)','--cardB':'1px solid rgba(255,255,255,.10)','--cardBd':'rgba(255,255,255,.10)','--cardSh':'0 10px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.07)','--k1':'#F2F4F8','--k2':'rgba(235,240,250,.62)','--k3':'rgba(235,240,250,.36)','--kl':'rgba(255,255,255,.08)','--kt':'rgba(255,255,255,.07)','--ktb':'rgba(255,255,255,.12)','--kf':'rgba(255,255,255,.08)','--ktr':'rgba(255,255,255,.12)','--kon':'rgba(255,255,255,.16)','--ka':'#0A84FF','--kaOn':'#FFFFFF','--ks':'#0B0F17','--kas':'rgba(10,132,255,.2)','--kw':'#FFB27A','--kwb':'rgba(255,138,61,.17)','--kwarn':'#FF8A3D','--kok':'#5BE07D','--kokb':'rgba(48,209,88,.16)','--panel':'rgba(255,255,255,.09)','--bg':'radial-gradient(120% 55% at 0% 0%,#163052 0,transparent 60%),radial-gradient(90% 50% at 100% 38%,#3B2817 0,transparent 62%),radial-gradient(100% 50% at 0% 100%,#11382C 0,transparent 60%),#090D14','--t1':'rgba(170,185,70,.20)','--t1x':'#E8EDB8','--t2':'rgba(110,140,230,.20)','--t2x':'#DCE4FA','--t3':'rgba(60,180,175,.20)','--t3x':'#B5ECE8','--t4':'rgba(200,90,170,.20)','--t4x':'#F4C9E6'};
 const cap = s => s ? s.charAt(0) + s.slice(1).toLowerCase() : s;
 const tc = s => s.toLowerCase().replace(/(^|\s)(\S)/g, (m, a, b) => a + b.toUpperCase());
 const CH = { TOUS: 'Tous', MAIL: 'Mail', SMS: 'SMS', APPEL: 'Appel' };
@@ -1251,7 +1423,7 @@ const put = (o, v) => { if (v && typeof v === 'object') { Object.keys(o).forEach
 const wrapI = j => ((j % KS.length) + KS.length) % KS.length;
 const DEFSTEPS = [{ l: 'Préparation', t: 'c' }, { l: 'Exécution', t: 'g' }, { l: 'Finitions', t: 'g' }, { l: 'Réception', t: 'c' }];
 const SAVE_KEY = 'chantier-app-v6';
-const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'pdAdd', 'back', 'cfgSec', 'qa', 'sending', 'gen'];
+const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'pdAdd', 'back', 'cfgSec', 'qa', 'sending', 'gen', 'ctx', 'fv', 'fvUi', 'fdlg', 'fmv', 'finfo', 'fsel', 'fup', 'chatBusy', 'chatErr'];
 const restore = () => {
   try {
     if (location.hash === '#reset') { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(SESS_KEY); localStorage.removeItem(CL_KEY); Object.keys(CL).forEach(k => delete CL[k]); history.replaceState(null, '', location.pathname); return {}; }
@@ -1395,6 +1567,7 @@ let swOpen = null, swJust = 0;
   }, true);
   addEventListener('pointermove', e => {
     if (!g || e.pointerId !== g.id) return;
+    if (LPG.on) { g = null; return; }
     const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
     if (!g.on) {
       if (Math.hypot(dx, dy) < 10) return;
@@ -1427,6 +1600,282 @@ let swOpen = null, swJust = 0;
     if (Date.now() - swJust < 400) { e.stopPropagation(); e.preventDefault(); }
   }, true);
 })();
+// appui long : menu d'options (comme sur iPhone) ; sur un élément déplaçable, glisser sans relâcher le réordonne
+const LP = {}, LPG = { on: false, open: null, close: null, el: null, at: 0 };
+const lpLift = (el, z) => { if (!el) return; el.style.transition = 'transform .2s ease, box-shadow .2s ease'; el.style.transform = z ? 'scale(1.03)' : ''; el.style.boxShadow = z ? '0 18px 40px rgba(0,0,0,.28)' : ''; el.style.zIndex = z ? String(z) : ''; if (z && getComputedStyle(el).position === 'static') el.style.position = 'relative'; };
+(() => {
+  const HOLD = 420;
+  let g = null, raf = 0;
+  const clear = D => D.items.forEach(x => { x.el.style.transition = 'none'; x.el.style.transform = ''; x.el.style.boxShadow = ''; x.el.style.zIndex = ''; });
+  const stop = () => { if (g) clearTimeout(g.tm); cancelAnimationFrame(raf); raf = 0; g = null; LPG.on = false; };
+  const startDrag = () => {
+    const items = [...document.querySelectorAll('[data-lpg="' + g.el.dataset.lpg + '"]')].map(el => ({ el, r: el.getBoundingClientRect() }));
+    const from = items.findIndex(x => x.el === g.el); if (from < 0 || items.length < 2) return false;
+    const sc = g.el.closest('[data-scroll]'), gap = Math.max(0, items[1].r.top - items[0].r.bottom);
+    g.D = { items, from, to: from, sc, s0: sc ? sc.scrollTop : 0, step: items[from].r.height + gap };
+    return true;
+  };
+  const dragMove = () => {
+    const D = g.D, dy = g.y - g.y0 + (D.sc ? D.sc.scrollTop - D.s0 : 0), me = D.items[D.from], cy = me.r.top + me.r.height / 2 + dy;
+    let to = 0; D.items.forEach((x, i) => { if (i !== D.from && x.r.top + x.r.height / 2 < cy) to++; });
+    D.to = to;
+    D.items.forEach((x, i) => { if (i === D.from) return; const sh = D.from < to && i > D.from && i <= to ? -D.step : D.from > to && i >= to && i < D.from ? D.step : 0; x.el.style.transition = 'transform .2s ease'; x.el.style.transform = sh ? 'translateY(' + sh + 'px)' : ''; });
+    g.el.style.transition = 'box-shadow .2s ease'; g.el.style.transform = 'translateY(' + dy + 'px) scale(1.03)';
+  };
+  // près du haut ou du bas de la liste, elle défile toute seule
+  const loop = () => { if (!g || !g.D) return; const sc = g.D.sc; if (sc) { const R = sc.getBoundingClientRect(), v = g.y < R.top + 80 ? -9 : g.y > R.bottom - 130 ? 9 : 0; if (v) { sc.scrollTop += v; dragMove(); } } raf = requestAnimationFrame(loop); };
+  const at = e => { const t = e.target.closest ? e.target : e.target.parentElement; return t && !t.closest('input, textarea, select, [data-nolp]') ? t.closest('[data-lp]') : null; };
+  addEventListener('pointerdown', e => {
+    if (e.button > 0 || g) return;
+    const el = at(e), a = el && LP[el.dataset.lp]; if (!a) return;
+    g = { el, a, x0: e.clientX, y0: e.clientY, x: e.clientX, y: e.clientY, id: e.pointerId, on: false };
+    g.tm = setTimeout(() => { if (!g) return; g.on = true; LPG.on = true; LPG.at = Date.now(); haptic(); lpLift(el, 86); LPG.el = el; if (a.menu && LPG.open) LPG.open(a, el); }, HOLD);
+  }, true);
+  addEventListener('pointermove', e => {
+    if (!g || e.pointerId !== g.id) return;
+    g.x = e.clientX; g.y = e.clientY;
+    const d = Math.hypot(g.x - g.x0, g.y - g.y0);
+    if (!g.on) { if (d > 9) stop(); return; }
+    if (!g.D) { if (!g.a.drag || d < 10) return; if (LPG.close) LPG.close(true); if (!startDrag()) { lpLift(g.el, 0); stop(); return; } g.el.style.zIndex = '6'; loop(); }
+    dragMove();
+  }, true);
+  addEventListener('touchmove', e => { if (g && g.on && e.cancelable) e.preventDefault(); }, { passive: false, capture: true });
+  addEventListener('pointerup', e => {
+    if (!g || e.pointerId !== g.id) return;
+    const G = g; stop();
+    if (!G.on) return;
+    LPG.sup = { el: G.el, at: Date.now() };
+    if (G.D) { const { from, to } = G.D; clear(G.D); LPG.el = null; if (to !== from) G.a.drag(from, to); }
+  }, true);
+  addEventListener('pointercancel', e => { if (!g || e.pointerId !== g.id) return; const G = g; stop(); if (G.D) clear(G.D); }, true);
+  // le toucher qui suit un appui long n'ouvre pas l'élément maintenu (le menu, lui, reste utilisable tout de suite)
+  addEventListener('click', e => { const S = LPG.sup; if (!S) return; LPG.sup = null; const t = e.target && e.target.nodeType === 1 ? e.target : e.target && e.target.parentElement; if (Date.now() - S.at < 700 && t && S.el.contains(t)) { e.stopPropagation(); e.preventDefault(); } }, true);
+  // clic droit sur ordinateur : même menu
+  addEventListener('contextmenu', e => {
+    const el = at(e), a = el && LP[el.dataset.lp]; if (!a || !a.menu) return;
+    e.preventDefault(); if (Date.now() - LPG.at < 800) return;
+    LPG.at = Date.now(); lpLift(el, 86); LPG.el = el; if (LPG.open) LPG.open(a, el);
+  }, true);
+})();
+
+// pictogrammes des menus (tracés 24 × 24)
+const ICO = {
+  open: 'M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5',
+  ren: 'M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4',
+  dup: 'M8.5 8.5h11v11h-11zM5 15.5V4.5h11',
+  move: 'M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9.5 13h6M13 10.5l2.5 2.5-2.5 2.5',
+  share: 'M12 3.5v11M8 7.5l4-4 4 4M5.5 11.5v7.5a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-7.5',
+  info: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v5.5M12 7.6v.4',
+  del: 'M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13M10 11v6M14 11v6',
+  newdir: 'M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM12 10v6M9 13h6',
+  imp: 'M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14',
+  cam: 'M4 8h3.2l1.8-2.5h6L16.8 8H20v11.5H4zM12 16.5a3.3 3.3 0 1 0 0-6.6 3.3 3.3 0 0 0 0 6.6z',
+  sel: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM8 12.2l2.8 2.8L16.3 9',
+  grid: 'M4.5 4.5h6v6h-6zM13.5 4.5h6v6h-6zM4.5 13.5h6v6h-6zM13.5 13.5h6v6h-6z',
+  list: 'M8.5 6.5h11M8.5 12h11M8.5 17.5h11M4.5 6.5h.1M4.5 12h.1M4.5 17.5h.1',
+  check: 'M5 12.5l4.5 4.5L19 7.5',
+  pin: 'M15.2 2.6l6.2 6.2-1.9.8-3.8 3.8.4 4.6-1.7 1.7-3.9-3.9-5.6 5.6H3.4v-1.5L9 14.3l-3.9-3.9 1.7-1.7 4.6.4 3.8-3.8z',
+  edit: 'M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4',
+  photo: 'M4 5.5h16v13H4zM4 15l4.5-4.5 4 4 3-3 4.5 4.5',
+  copy: 'M8.5 8.5h11v11h-11zM5 15.5V4.5h11',
+  sort: 'M7 4v16M3.5 16.5L7 20l3.5-3.5M17 20V4M13.5 7.5L17 4l3.5 3.5'
+};
+
+// fichiers : métadonnées partagées (st.files) et contenu rangé dans un stockage (Supabase « docs » ; OVH s'ajoutera ici, même interface)
+const extOf = n => ((String(n || '').match(/\.([a-z0-9]{1,8})$/i) || [])[1] || '').toLowerCase();
+const fKind = (n, m) => {
+  const e = extOf(n), t = String(m || '');
+  if (/^image\//.test(t) || /^(jpe?g|png|gif|webp|heic|heif|bmp|tiff?|svg)$/.test(e)) return 'img';
+  if (/^video\//.test(t) || /^(mp4|mov|m4v|webm|3gp|avi|mkv)$/.test(e)) return 'vid';
+  if (/^audio\//.test(t) || /^(mp3|m4a|wav|aac|ogg|flac)$/.test(e)) return 'aud';
+  if (e === 'pdf' || t === 'application/pdf') return 'pdf';
+  if (e === 'msg') return 'msg';
+  if (e === 'eml' || t === 'message/rfc822') return 'eml';
+  if (/^(docx?|odt|rtf|pages)$/.test(e)) return 'doc';
+  if (/^(xlsx?|ods|numbers)$/.test(e)) return 'xls';
+  if (/^(pptx?|odp|key)$/.test(e)) return 'ppt';
+  if (/^(txt|csv|json|md|log|xml|ini)$/.test(e) || /^text\//.test(t)) return 'txt';
+  if (/^(zip|rar|7z|tar|gz)$/.test(e)) return 'zip';
+  if (/^(dwg|dxf|ifc|skp)$/.test(e)) return 'cad';
+  return 'other';
+};
+// couleur et étiquette de l'icône de document
+const FICO = { pdf: ['#E5484D', 'PDF'], doc: ['#2B6BE6', 'W'], xls: ['#1F9D55', 'X'], ppt: ['#E8590C', 'P'], msg: ['#0F6CBD', 'MSG'], eml: ['#0F6CBD', 'EML'], txt: ['#7A8496', 'TXT'], zip: ['#8E6CE0', 'ZIP'], cad: ['#C2410C', 'DWG'], aud: ['#E0457B', '♪'], vid: ['#5B5BD6', '▶'], img: ['#30A46C', 'IMG'], other: ['#8E8E93', ''] };
+const fSize = b => { b = +b || 0; return b < 1024 ? b + ' o' : b < 1048576 ? Math.round(b / 1024) + ' Ko' : b < 1073741824 ? (b / 1048576).toFixed(1).replace('.', ',') + ' Mo' : (b / 1073741824).toFixed(2).replace('.', ',') + ' Go'; };
+const fDate = s => { const d = new Date(s); return isNaN(d) ? '' : d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' }); };
+const FMAX = 50 * 1048576;
+const fErr = (st, txt) => /bucket not found/i.test(txt) ? 'espace « docs » absent : relancez schema.sql dans Supabase' : st === 413 || /too large|exceeded the maximum/i.test(txt) ? 'fichier trop lourd (50 Mo au plus)' : st === 403 || /row-level security|unauthorized/i.test(txt) ? 'refusé : relancez schema.sql dans Supabase (espace « docs »)' : 'envoi impossible (' + st + ')';
+const FST = {
+  sb: {
+    put: (obj, file, prog) => new Promise(async (ok, ko) => {
+      try { if (CL.sess && CL.sess.exp - Date.now() / 1000 < 60) await sbRefresh(); } catch (e) { ko(e); return; }
+      const x = new XMLHttpRequest();
+      x.open('POST', SB.url + '/storage/v1/object/docs/' + obj);
+      x.setRequestHeader('apikey', SB.key); x.setRequestHeader('Authorization', 'Bearer ' + CL.sess.at);
+      x.setRequestHeader('Content-Type', file.type || 'application/octet-stream'); x.setRequestHeader('x-upsert', 'false');
+      x.upload.onprogress = e => { if (e.lengthComputable && prog) prog(e.loaded / e.total); };
+      x.onload = () => x.status < 300 ? ok() : ko(Object.assign(new Error(fErr(x.status, x.responseText || '')), { status: x.status }));
+      x.onerror = () => ko(new Error('réseau indisponible'));
+      x.send(file);
+    }),
+    url: async obj => { const j = await sbJson('/storage/v1/object/sign/docs/' + obj, { method: 'POST', json: { expiresIn: 3600 } }); return SB.url + '/storage/v1' + j.signedURL; },
+    del: objs => objs.length ? sb('/storage/v1/object/docs', { method: 'DELETE', json: { prefixes: objs } }) : null,
+    copy: (a, b) => sb('/storage/v1/object/copy', { method: 'POST', json: { bucketId: 'docs', sourceKey: a, destinationKey: b } })
+  }
+};
+const FURL = {}, FBLOB = {}, FPV = {};
+const fUrl = async (id, r) => { const c = FURL[id]; if (c && c.exp > Date.now()) return c.u; const u = await FST[r.st || 'sb'].url(r.o); FURL[id] = { u, exp: Date.now() + 50 * 60000 }; return u; };
+const fBlob = async (id, r) => { if (!FBLOB[id]) FBLOB[id] = await (await fetch(await fUrl(id, r))).blob(); return FBLOB[id]; };
+// vignette (images et vidéos) calculée à l'envoi : affichée tout de suite, même hors connexion
+const fThumb = file => new Promise(ok => {
+  const k = fKind(file.name, file.type); if (k !== 'img' && k !== 'vid') { ok(''); return; }
+  const u = URL.createObjectURL(file); let done = false;
+  const fin = v => { if (done) return; done = true; URL.revokeObjectURL(u); ok(v || ''); };
+  const draw = (src, w, h) => { try { const s = Math.min(1, 220 / Math.max(w, h)), c = document.createElement('canvas'); c.width = Math.max(1, Math.round(w * s)); c.height = Math.max(1, Math.round(h * s)); c.getContext('2d').drawImage(src, 0, 0, c.width, c.height); fin(c.toDataURL('image/jpeg', 0.7)); } catch (e) { fin(''); } };
+  setTimeout(() => fin(''), 6000);
+  if (k === 'img') { const im = new Image(); im.onload = () => draw(im, im.naturalWidth, im.naturalHeight); im.onerror = () => fin(''); im.src = u; return; }
+  const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.preload = 'auto';
+  v.onloadeddata = () => { try { v.currentTime = Math.min(1, (v.duration || 0) / 2); } catch (e) { fin(''); } };
+  v.onseeked = () => draw(v, v.videoWidth, v.videoHeight); v.onerror = () => fin(''); v.src = u;
+});
+const fPick = (multi, capture) => new Promise(ok => { const i = document.createElement('input'); i.type = 'file'; i.multiple = !!multi; if (capture) { i.accept = 'image/*'; i.capture = 'environment'; } i.style.display = 'none'; document.body.appendChild(i); i.onchange = () => { const L = [...(i.files || [])]; i.remove(); ok(L); }; i.click(); });
+const JSL = {};
+const loadJs = src => JSL[src] || (JSL[src] = new Promise((ok, ko) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = () => { delete JSL[src]; ko(new Error('module ' + src + ' introuvable')); }; document.head.appendChild(s); }));
+// PDF : pages rendues en images (défilement vertical, pincer pour zoomer comme une photo)
+const pdfPages = async (buf, v, wake) => {
+  await loadJs('vendor/pdf.min.js');
+  const L = window.pdfjsLib; L.GlobalWorkerOptions.workerSrc = 'vendor/pdf.worker.min.js';
+  const doc = await L.getDocument({ data: new Uint8Array(buf), isEvalSupported: false }).promise;
+  v.n = doc.numPages; v.pages = [];
+  const W = Math.min(1800, Math.round((innerWidth - 16) * Math.min(2, devicePixelRatio || 1))), max = Math.min(doc.numPages, 80);
+  for (let p = 1; p <= max; p++) {
+    if (v.dead) return;
+    const pg = await doc.getPage(p), vp = pg.getViewport({ scale: W / pg.getViewport({ scale: 1 }).width }), c = document.createElement('canvas');
+    c.width = Math.round(vp.width); c.height = Math.round(vp.height);
+    await pg.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+    const b = await new Promise(ok => c.toBlob(ok, 'image/jpeg', 0.86)); c.width = c.height = 0;
+    if (b) v.pages.push(URL.createObjectURL(b));
+    if (p <= 2 || p % 3 === 0 || p === max) wake();
+  }
+  v.more = doc.numPages > max;
+};
+// mails Outlook (.msg) et mails enregistrés (.eml)
+const msgParse = async buf => {
+  await loadJs('vendor/msgreader.min.js');
+  const r = new window.MsgReader(buf), d = r.getFileData();
+  if (d.error) throw new Error('mail illisible');
+  const who = x => x.name && x.email && x.name !== x.email ? x.name + ' <' + x.email + '>' : x.email || x.name || '';
+  return { subj: d.subject || '(sans objet)', from: who({ name: d.senderName, email: d.senderSmtpAddress || d.senderEmail }), to: (d.recipients || []).map(who).filter(Boolean).join(', '),
+    date: d.messageDeliveryTime || d.clientSubmitTime || d.creationTime || '', body: String(d.body || '').replace(/\r\n/g, '\n').trim(),
+    atts: (d.attachments || []).filter(a => !a.attachmentHidden).map((a, i) => ({ name: a.fileName || a.name || 'Pièce jointe ' + (i + 1), size: a.contentLength || 0, file: () => { const x = r.getAttachment(a); return new File([x.content], x.fileName || a.fileName || 'piece-jointe', { type: a.attachMimeTag || 'application/octet-stream' }); } })) };
+};
+const qpBytes = s => { const out = []; s = s.replace(/=\r?\n/g, ''); for (let i = 0; i < s.length; i++) { if (s[i] === '=' && /^[0-9A-F]{2}$/i.test(s.substr(i + 1, 2))) { out.push(parseInt(s.substr(i + 1, 2), 16)); i += 2; } else out.push(s.charCodeAt(i) & 255); } return new Uint8Array(out); };
+const mimeWords = v => String(v || '').replace(/=\?([^?]+)\?([bq])\?([^?]*)\?=\s*/gi, (x, cs, enc, t) => { try { const by = enc.toLowerCase() === 'b' ? Uint8Array.from(atob(t), c => c.charCodeAt(0)) : qpBytes(t.replace(/_/g, ' ')); return new TextDecoder(cs).decode(by); } catch (e) { return t; } });
+const emlParse = raw => {
+  const split = s => { const i = s.search(/\r?\n\r?\n/); const head = (i < 0 ? s : s.slice(0, i)).replace(/\r?\n[ \t]+/g, ' '), H = {}; head.split(/\r?\n/).forEach(l => { const m = l.match(/^([\w-]+):\s*(.*)$/); if (m) H[m[1].toLowerCase()] = m[2]; }); return { H, body: i < 0 ? '' : s.slice(i).replace(/^\r?\n\r?\n/, '') }; };
+  const text = (H, body) => {
+    const ct = H['content-type'] || 'text/plain', bd = (ct.match(/boundary="?([^";]+)"?/i) || [])[1];
+    if (/^multipart\//i.test(ct) && bd) { const parts = body.split('--' + bd).slice(1).filter(p => !/^--/.test(p)).map(p => split(p.replace(/^\r?\n/, ''))); const pl = parts.map(p => text(p.H, p.body)); return pl.find(t => t.plain) || pl.find(t => t.v) || { v: '' }; }
+    const cte = (H['content-transfer-encoding'] || '').toLowerCase(), cs = (ct.match(/charset="?([^";]+)"?/i) || [])[1] || 'utf-8';
+    let by; try { by = cte === 'base64' ? Uint8Array.from(atob(body.replace(/\s+/g, '')), c => c.charCodeAt(0)) : cte === 'quoted-printable' ? qpBytes(body) : Uint8Array.from(body, c => c.charCodeAt(0) & 255); } catch (e) { by = new Uint8Array(); }
+    let v; try { v = new TextDecoder(cs).decode(by); } catch (e) { v = new TextDecoder('utf-8').decode(by); }
+    if (/^text\/html/i.test(ct)) return { v: v.replace(/<(style|script|head)[\s\S]*?<\/\1>/gi, '').replace(/<br\s*\/?>|<\/(p|div|tr|li)>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\n{3,}/g, '\n\n').trim() };
+    return /^text\//i.test(ct) ? { v: v.trim(), plain: true } : { v: '' };
+  };
+  const { H, body } = split(String(raw));
+  return { subj: mimeWords(H.subject) || '(sans objet)', from: mimeWords(H.from), to: mimeWords(H.to), date: H.date || '', body: text(H, body).v, atts: [] };
+};
+// prépare l'aperçu d'un fichier (adresse signée, pages PDF, texte, mail) ; wake() redessine la visionneuse
+const fPrep = (id, r, wake) => {
+  if (FPV[id]) return FPV[id];
+  const v = FPV[id] = { st: 'load' }, k = fKind(r.n, r.m);
+  (async () => {
+    try {
+      v.url = await fUrl(id, r);
+      if (k === 'pdf') { const b = await fBlob(id, r); v.st = 'pages'; v.pages = []; wake(); await pdfPages(await b.arrayBuffer(), v, wake); }
+      else if (k === 'txt') { v.text = (await (await fBlob(id, r)).text()).slice(0, 300000); v.st = 'text'; }
+      else if (k === 'msg') { v.mail = await msgParse(await (await fBlob(id, r)).arrayBuffer()); v.st = 'mail'; }
+      else if (k === 'eml') { v.mail = emlParse(await (await fBlob(id, r)).text()); v.st = 'mail'; }
+      else { v.st = 'ready'; if ((+r.s || 0) < 30 * 1048576) fBlob(id, r).catch(() => {}); }
+    } catch (e) { v.st = 'err'; v.err = (e && e.message) || String(e); }
+    wake();
+  })();
+  return v;
+};
+const fFree = () => Object.keys(FPV).forEach(id => { const v = FPV[id]; v.dead = true; (v.pages || []).forEach(u => URL.revokeObjectURL(u)); delete FPV[id]; });
+
+// visionneuse : glisser à gauche ou à droite pour changer de fichier, vers le bas pour fermer, pincer ou toucher deux fois pour zoomer
+const FVG = { comp: null, z: { s: 1, x: 0, y: 0 }, reset: () => {} };
+(() => {
+  const P = new Map(); let g = null, lastTap = 0, tapT = 0;
+  const $ = id => document.getElementById(id);
+  const W = () => ($('fv-stage') || document.body).clientWidth, H = () => ($('fv-stage') || document.body).clientHeight;
+  const C = () => { const r = ($('fv-stage') || document.body).getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; };
+  const img = () => document.querySelector('#fv-strip .fv-cur img.fv-img');
+  const setZ = (z, anim) => { FVG.z = z; const i = img(); if (!i) return; i.style.transition = anim ? 'transform .25s ease' : 'none'; i.style.transform = z.s === 1 && !z.x && !z.y ? '' : 'translate(' + z.x + 'px,' + z.y + 'px) scale(' + z.s + ')'; };
+  const clampZ = () => { const i = img(), z = FVG.z; if (!i) return; if (z.s <= 1.02) { setZ({ s: 1, x: 0, y: 0 }, true); return; } const ex = Math.max(0, (i.offsetWidth * z.s - W()) / 2), ey = Math.max(0, (i.offsetHeight * z.s - H()) / 2); setZ({ s: Math.min(z.s, 5), x: Math.max(-ex, Math.min(ex, z.x)), y: Math.max(-ey, Math.min(ey, z.y)) }, true); };
+  const strip = (x, anim) => { const s = $('fv-strip'); if (!s) return; s.style.transition = anim ? 'transform .28s cubic-bezier(.2,.8,.2,1)' : 'none'; s.style.transform = x ? 'translateX(' + x + 'px)' : ''; };
+  const drop = (y, anim) => { const st = $('fv-stage'), r = $('fv-root'); if (!st || !r) return; const t = anim ? 'transform .25s ease, background-color .25s ease' : 'none'; st.style.transition = t; r.style.transition = t; st.style.transform = y ? 'translateY(' + y + 'px) scale(' + Math.max(0.82, 1 - y / 1400) + ')' : ''; r.style.backgroundColor = y ? 'rgba(0,0,0,' + Math.max(0, 1 - y / 450).toFixed(3) + ')' : ''; };
+  FVG.reset = () => { strip(0, false); drop(0, false); FVG.z = { s: 1, x: 0, y: 0 }; const i = img(); if (i) { i.style.transition = 'none'; i.style.transform = ''; } };
+  const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y), mid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
+  addEventListener('pointerdown', e => {
+    const t = e.target, stg = t && t.closest && t.closest('#fv-stage');
+    if (!stg || t.closest('video, audio, a, [data-fvbtn]')) return;
+    P.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (P.size === 2 && img()) { const [a, b] = [...P.values()]; g = { m: 'pinch', d0: dist(a, b), m0: mid(a, b), z0: { ...FVG.z } }; clearTimeout(tapT); return; }
+    if (P.size === 1) g = { m: '', x0: e.clientX, y0: e.clientY, t0: Date.now(), z0: { ...FVG.z }, sc: t.closest('.fv-scroll') };
+  }, true);
+  addEventListener('pointermove', e => {
+    if (!P.has(e.pointerId)) return;
+    P.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (!g) return;
+    if (g.m === 'pinch') {
+      if (P.size < 2) return;
+      const [a, b] = [...P.values()], m = mid(a, b), c = C(), s = Math.max(0.7, Math.min(6, g.z0.s * dist(a, b) / g.d0)), q = { x: (g.m0.x - c.x - g.z0.x) / g.z0.s, y: (g.m0.y - c.y - g.z0.y) / g.z0.s };
+      setZ({ s, x: m.x - c.x - s * q.x, y: m.y - c.y - s * q.y }, false); return;
+    }
+    const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
+    if (!g.m) {
+      if (Math.hypot(dx, dy) < 8) return;
+      g.m = FVG.z.s > 1.02 && img() ? 'pan' : Math.abs(dx) > Math.abs(dy) ? 'swipe' : dy > 0 && !(g.sc && g.sc.scrollTop > 0) ? 'close' : 'none';
+    }
+    if (g.m === 'swipe') { const c = FVG.comp; strip(c && c.fvCan(dx < 0 ? 1 : -1) ? dx : dx / 3, false); }
+    else if (g.m === 'close') drop(Math.max(0, dy), false);
+    else if (g.m === 'pan') setZ({ s: g.z0.s, x: g.z0.x + dx, y: g.z0.y + dy }, false);
+  }, true);
+  addEventListener('touchmove', e => { if (g && /^(swipe|close|pan|pinch)$/.test(g.m) && e.cancelable) e.preventDefault(); }, { passive: false, capture: true });
+  const up = e => {
+    if (!P.has(e.pointerId)) return;
+    P.delete(e.pointerId);
+    if (!g) return;
+    if (g.m === 'pinch') { if (!P.size) { g = null; clampZ(); } return; }
+    const G = g; g = null;
+    if (e.type === 'pointercancel') { if (G.m === 'swipe') strip(0, true); if (G.m === 'close') drop(0, true); return; }
+    const dx = e.clientX - G.x0, dy = e.clientY - G.y0, dt = Math.max(1, Date.now() - G.t0), w = W(), c = FVG.comp;
+    if (G.m === 'swipe') { const dir = dx < 0 ? 1 : -1; if (c && c.fvCan(dir) && (Math.abs(dx) > w * 0.22 || (Math.abs(dx) > 30 && Math.abs(dx) / dt > 0.5))) { strip(-dir * w, true); setTimeout(() => c.fvGo(dir), 280); } else strip(0, true); return; }
+    if (G.m === 'close') { if (dy > 110 || (dy > 40 && dy / dt > 0.6)) { drop(H(), true); setTimeout(() => c && c.fvClose(), 230); } else drop(0, true); return; }
+    if (G.m === 'pan') { clampZ(); return; }
+    if (G.m === '' && dt < 320) {
+      const now = Date.now();
+      if (now - lastTap < 300 && img()) { clearTimeout(tapT); lastTap = 0; if (FVG.z.s > 1.02) setZ({ s: 1, x: 0, y: 0 }, true); else { const cc = C(), s = 2.5; setZ({ s, x: (e.clientX - cc.x) * (1 - s), y: (e.clientY - cc.y) * (1 - s) }, true); clampZ(); } }
+      else { lastTap = now; tapT = setTimeout(() => c && c.fvChrome(), 260); }
+    }
+  };
+  addEventListener('pointerup', up, true);
+  addEventListener('pointercancel', up, true);
+})();
+
+// clavier de l'iPhone : la barre de saisie de Claude reste juste au-dessus
+const kbSet = () => { const vv = window.visualViewport, kb = vv ? Math.max(0, innerHeight - vv.height - vv.offsetTop) : 0; document.documentElement.style.setProperty('--chatb', kb > 60 ? kb + 8 + 'px' : 'calc(max(14px, env(safe-area-inset-bottom, 0px) - 6px) + 78px)'); };
+if (window.visualViewport) { visualViewport.addEventListener('resize', kbSet); visualViewport.addEventListener('scroll', kbSet); }
+kbSet();
+
+// sections possibles de la barre d'onglets : [clé, nom, couleur, pictogramme] ; 5 au choix (Compte › Barre d'onglets)
+const TABS = [['p', 'Projets', '#0A84FF', 'M3.5 3.5h7v7h-7zM13.5 3.5h7v7h-7zM3.5 13.5h7v7h-7zM13.5 13.5h7v7h-7z'], ['s', 'Stocks', '#FF9F0A', 'M3.5 7.5L12 3.5l8.5 4v9L12 20.5l-8.5-4zM3.5 7.5L12 11.5l8.5-4M12 11.5v9'], ['m', 'Mails', '#32ADE6', 'M3 5h18v14H3zM4.5 7.5l7.5 5.5 7.5-5.5'], ['l', 'Planning', '#FF3B30', 'M3.5 5h17v15.5h-17zM3.5 10h17M8.5 3v4M15.5 3v4'], ['c', 'Contacts', '#8E8E93', 'M9 11.8a3.3 3.3 0 1 0 0-6.6 3.3 3.3 0 0 0 0 6.6zM3 19.5c.8-3.2 3.2-5 6-5s5.2 1.8 6 5M17 12.1a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2zM16.2 14.6c2.4.1 4.1 1.6 4.8 4.4'], ['i', 'Claude', '#D97757', 'M12 3.5l1.9 5.6 5.6 1.9-5.6 1.9L12 18.5l-1.9-5.6L4.5 11l5.6-1.9zM18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z'], ['f', 'Fichiers', '#5856D6', 'M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z']];
+const tabsOf = st => { const v = Array.isArray(st.tabs) ? st.tabs.filter(k => TABS.some(t => t[0] === k)).slice(0, 5) : []; return v.length ? v : ['p', 's', 'm', 'l', 'c']; };
+// corbeille vidée : les fichiers eux-mêmes sont effacés du stockage
+const trashBlobs = list => { const objs = []; list.forEach(t => { if (t && t.k === 'file' && t.d && t.d.recs) Object.values(t.d.recs).forEach(r => { if (r && r.k === 'f' && r.o && (r.st || 'sb') === 'sb') objs.push(r.o); }); }); if (objs.length && cloudReady()) Promise.resolve(FST.sb.del(objs)).catch(() => {}); };
+
 let undoD = null, toastT;
 // petit « tic » tactile : vibreur sur Android ; sur iPhone (Safari n'a pas de vibreur), l'interrupteur iOS 18+ donne un retour haptique
 let hapL = null;
@@ -1611,8 +2060,8 @@ const rpc = (fn, args, opt = {}) => sbJson('/rest/v1/rpc/' + fn, { method: 'POST
 // empreinte stable d'une valeur (clés triées, comme jsonb les renvoie dans un autre ordre)
 const canon = v => v === undefined ? 'null' : JSON.stringify(v, (k, x) => x && typeof x === 'object' && !Array.isArray(x) ? Object.keys(x).sort().reduce((o, y) => { o[y] = x[y]; return o; }, {}) : x);
 // dictionnaires partagés (une fiche par entrée) et réglages (une fiche chacun ; cfg/… réservé aux admins)
-const SH_DICT = ['stk', 'stkCfg', 'stkDel', 'stkZone', 'ph', 'cover', 'treated', 'vip', 'lvlUse', 'pins', 'trash'];
-const SH_CFG = ['discs', 'cals', 'rubs', 'projPh', 'projSup', 'projSecs'], SH_VAL = ['lvls'];
+const SH_DICT = ['stk', 'stkCfg', 'stkDel', 'stkZone', 'ph', 'cover', 'treated', 'vip', 'lvlUse', 'pins', 'trash', 'files'];
+const SH_CFG = ['discs', 'cals', 'rubs', 'projPh', 'projSup', 'projSecs', 'evTimes'], SH_VAL = ['lvls'];
 // état de l'appli → fiches
 const toRecords = st => {
   const R = new Map();
@@ -1696,6 +2145,7 @@ const syncRun = async () => {
     }
     await syncPush(comp);
     SYNC.err = ''; SYNC.last = Date.now();
+    if (comp.seedFiles) comp.seedFiles();
   } catch (e) {
     SYNC.err = (e && e.message) || String(e);
     if (e && e.auth) { CL.me = null; ME = null; }
@@ -1772,7 +2222,7 @@ class Component extends DCLogic {
         sup: p.sup.map(x => typeof x === 'string' ? supCopy(x) : { id: 'f' + rid(), ...x }),
         inv: p.inv.map((r, i) => ({ id: p.id + 'i' + i, sup: SN(r[0]), num: r[1], amt: r[2], date: r[3], st: r[4] })) }));
     });
-    return { dark: this.props.dark ?? false, site: 'a', tab: 'p', proj: null, seg: 'e', editSteps: false, stepText: '', stepType: 'g', supOpen: null, geo: {}, P, noteText: '', stk: {}, sentOrder: {}, mail: null, edits: {}, sentMail: {}, read: {}, wpos: 0, cfg: CFG0, cfgSite: 'a', cfgF: {}, sunday: false, discs: DISC0, discText: '', chf: 'TOUS', mbox: 'r', mq: '', who: null, vip: {}, treated: {}, cat: 'TOUS', sort: 'PRIX', day: 0, menu: false, sheet: null, form: {}, addS: {}, addE: {}, seq: 0, lg: {}, ...(START[this.props.start] || {}), ...this.boot() };
+    return { dark: this.props.dark ?? false, site: 'a', tab: 'p', proj: null, seg: 'e', editSteps: false, stepText: '', stepType: 'g', supOpen: null, geo: {}, P, noteText: '', stk: {}, sentOrder: {}, mail: null, edits: {}, sentMail: {}, read: {}, wpos: 0, cfg: CFG0, cfgSite: 'a', cfgF: {}, sunday: false, discs: DISC0, discText: '', chf: 'TOUS', mbox: 'r', mq: '', who: null, vip: {}, treated: {}, cat: 'TOUS', sort: 'PRIX', day: 0, menu: false, sheet: null, form: {}, addS: {}, addE: {}, files: {}, chats: {}, seq: 0, lg: {}, ...(START[this.props.start] || {}), ...this.boot() };
   }
   boot() { const r = restore(); seedUsers(); seedUsers2(); meLoad(); ME = cloudUser(); if (r.mbx) r.mbx = { ...r.mbx, busy: false }; if (!Array.isArray(r.evs)) r.evs = evMigrate(r.addE); return r;
   }
@@ -1803,7 +2253,7 @@ class Component extends DCLogic {
     this.wRaf = requestAnimationFrame(tick);
   }
   componentDidMount() {
-    SYNC.comp = this;
+    SYNC.comp = this; FVG.comp = this; LPG.open = (a, el) => this.ctxOpen(a, el); LPG.close = keep => this.ctxClose(keep);
     if (cloudReady()) { cloudMe().then(() => { ME = cloudUser(); this.forceUpdate(); }).catch(() => {}); syncSoon(300); }
     this.syncI = setInterval(() => { if (!document.hidden) syncRun(); }, 15000);
     addEventListener('online', () => syncSoon(200)); document.addEventListener('visibilitychange', () => { if (!document.hidden) syncSoon(200); });
@@ -1932,11 +2382,11 @@ class Component extends DCLogic {
     return ids;
   }
   flags() { const c = document.documentElement.classList; c.toggle('show-ids', !!this.state.showIds); c.toggle('no-del', !canDel()); }
-  toast(msg, undo) { clearTimeout(toastT); if (!undo) undoD = null; this.setState({ toast: { msg, undo: !!undo } }); toastT = setTimeout(() => { undoD = null; this.setState({ toast: null }); }, undo ? 6000 : 3000); }
+  toast(msg, undo, act) { clearTimeout(toastT); if (!undo) undoD = null; this.setState({ toast: { msg, undo: !!undo, act: act || null } }); toastT = setTimeout(() => { undoD = null; this.setState({ toast: null }); }, undo || act ? 6000 : 3000); }
   undoable(label, kind, how, d, fn) { undoD = JSON.stringify(snap(this.state)); fn(); this.trashPut(kind, label, d); this.toast(label, true); }
   // corbeille partagée : un élément supprimé reste 30 jours, avec de quoi le remettre en place
   trashPut(k, l, d) { if (!d) return; const id = 't' + Date.now().toString(36) + rid(); this.setState(s => ({ trash: { ...(s.trash || {}), [id]: { k, l, at: new Date().toISOString(), by: (ME && ME.name) || '', d } } })); }
-  trashPurge() { if (!canDel()) return; const T = this.state.trash || {}, lim = Date.now() - 30 * 864e5, keep = {}; let ch = false; Object.keys(T).forEach(id => { if (new Date(T[id].at).getTime() >= lim) keep[id] = T[id]; else ch = true; }); if (ch) this.setState({ trash: keep }); }
+  trashPurge() { if (!canDel()) return; const T = this.state.trash || {}, lim = Date.now() - 30 * 864e5, keep = {}; let ch = false; Object.keys(T).forEach(id => { if (new Date(T[id].at).getTime() >= lim) keep[id] = T[id]; else { ch = true; trashBlobs([T[id]]); } }); if (ch) this.setState({ trash: keep }); }
   trashRestore(id) {
     const s = this.state, t = (s.trash || {})[id]; if (!t) return;
     const d = t.d || {}, hasP = pid => KS.some(k => (s.P[k] || []).some(p => p.id === pid)), ins = (L, x, i) => { const a = [...(L || [])]; a.splice(Math.min(i ?? a.length, a.length), 0, x); return a; };
@@ -1947,6 +2397,7 @@ class Component extends DCLogic {
     else if (t.k === 'stk') { const n = { ...(s.stkDel || {}) }; delete n[d.key]; up = { stkDel: n }; }
     else if (t.k === 'team') { const T = TEAMS[d.site] = TEAMS[d.site] || []; if (!SITES[d.site]) fail = 'Site introuvable.'; else { T.splice(Math.min(d.i ?? T.length, T.length), 0, d.m); up = { rev: (s.rev || 0) + 1 }; } }
     else if (t.k === 'mail') { const arr = !SITES[d.site] ? null : d.done ? (DONE[d.site] = DONE[d.site] || []) : (SITES[d.site].mails = SITES[d.site].mails || []); if (!arr) fail = 'Site introuvable.'; else { if (!arr.some(x => x.id === d.m.id)) arr.splice(Math.min(d.i, arr.length), 0, d.m); up = { rev: (s.rev || 0) + 1 }; } }
+    else if (t.k === 'file') { const G = { ...(s.files || {}) }; Object.keys(d.recs || {}).forEach(id => { const r = d.recs[id]; if (r) G[id] = r.p && !G[r.p] && !(d.recs || {})[r.p] ? { ...r, p: '' } : r; }); up = { files: G }; }
     else if (!hasP(d.pid)) fail = 'Projet introuvable : restaurez d’abord le projet.';
     else if (t.k === 'photo') up = { ph: { ...(s.ph || {}), [d.pid]: [...((s.ph || {})[d.pid] || []).filter(x => x.id !== d.x.id), d.x] }, ...(d.cover && !(s.cover || {})[d.pid] ? { cover: { ...(s.cover || {}), [d.pid]: d.x.id } } : {}) };
     else { const fld = { inv: 'inv', step: 'steps', note: 'notes', projSup: 'sup' }[t.k], P = {};
@@ -1958,6 +2409,8 @@ class Component extends DCLogic {
   undo() { if (!undoD) return; const d = JSON.parse(undoD); undoD = null; clearTimeout(toastT); const s = applyData(d); Object.keys(this.state).forEach(k => { if (!(k in s) && !VOLATILE.includes(k)) s[k] = undefined; }); this.setState({ ...s, toast: null, sheet: null }); }
   componentDidUpdate(prev) {
     this.flags();
+    if (this.fvReset) { this.fvReset = false; FVG.reset(); }
+    const dOn = !!this.state.fdlg; if (dOn && !this.dlgWas) setTimeout(() => { const i = document.getElementById('fdlg-in'); if (i) { i.focus(); i.select(); } }, 80); this.dlgWas = dOn;
     const wk = Math.round(this.state.wpos || 0); if (this.wLast !== undefined && wk !== this.wLast) haptic(); this.wLast = wk;
     if (ridScan(this.state)) { this.forceUpdate(); return; }
     persist(this.state);
@@ -2039,6 +2492,278 @@ class Component extends DCLogic {
       if (!text) throw new Error('réponse vide');
       this.setState(s => ({ gen: null, edits: { ...s.edits, [m.id + ':r']: text, [m.id + ':pts']: points } }));
     } catch (e) { this.setState({ gen: null }); this.toast('Pas de réponse : ' + (e.status === 404 ? 'mettez à jour la fonction chantier-ia dans Supabase' : (e && e.message) || e)); }
+  }
+  // ---------- Fichiers : deux dossiers d'exemple, créés une seule fois pour toute l'entreprise (après une synchronisation) ----------
+  seedFiles() {
+    const F = this.state.files || {}; if (F._seed) return;
+    const at = '2026-11-03T12:00:00.000Z';
+    this.setState({ files: { ...F, _seed: 1, 'fx-plans': { n: 'Plans', p: '', k: 'd', at, by: '' }, 'fx-docs': { n: 'Documents administratifs', p: '', k: 'd', at, by: '' } } });
+  }
+  // nom libre dans un dossier : « Devis.pdf », puis « Devis 2.pdf »… (comme dans l'app Fichiers)
+  fUniq(F, name, dir, skip, isDir) {
+    const used = new Set(Object.keys(F).filter(id => id[0] !== '_' && id !== skip && F[id] && (F[id].p || '') === (dir || '')).map(id => String(F[id].n).toLowerCase()));
+    if (!used.has(String(name).toLowerCase())) return name;
+    const e = isDir ? '' : extOf(name), base = e ? name.slice(0, -(e.length + 1)) : name, ext = e ? '.' + name.slice(-e.length) : '';
+    for (let i = 2; ; i++) { const n = base + ' ' + i + ext; if (!used.has(n.toLowerCase())) return n; }
+  }
+  fTree(id) { const F = this.state.files || {}, out = [], walk = d => Object.keys(F).forEach(k => { if (k[0] !== '_' && F[k] && (F[k].p || '') === d) { out.push(k); if (F[k].k === 'd') walk(k); } }); walk(id); return out; }
+  async fileUpload(list, dir) {
+    if (!list || !list.length) return;
+    if (!cloudReady()) { this.toast('Connectez-vous pour ajouter des fichiers'); return; }
+    for (const file of list) {
+      if (file.size > FMAX) { this.toast('« ' + file.name + ' » dépasse 50 Mo'); continue; }
+      const id = 'f' + Date.now().toString(36) + rid(), obj = CL.me.org + '/' + id; let last = 0;
+      this.setState(s => ({ fup: { ...(s.fup || {}), [id]: { n: file.name, p: dir || '', pr: 0 } } }));
+      try {
+        const th = await fThumb(file);
+        await FST.sb.put(obj, file, pr => { if (pr - last < 0.04 && pr < 1) return; last = pr; this.setState(s => s.fup && s.fup[id] ? { fup: { ...s.fup, [id]: { ...s.fup[id], pr } } } : null); });
+        FBLOB[id] = file;
+        this.setState(s => { const u = { ...(s.fup || {}) }, G = s.files || {}; delete u[id]; return { fup: u, files: { ...G, [id]: { n: this.fUniq(G, file.name || 'Fichier', dir), p: dir || '', k: 'f', m: file.type || '', s: file.size, o: obj, st: 'sb', at: new Date().toISOString(), by: (ME && ME.name) || '', ...(th ? { th } : {}) } } }; });
+      } catch (e) {
+        this.setState(s => { const u = { ...(s.fup || {}) }; delete u[id]; return { fup: u }; });
+        this.toast('« ' + file.name + ' » non ajouté : ' + ((e && e.message) || e));
+      }
+    }
+  }
+  fileNewDir(dir) {
+    const mk = name => { const id = 'd' + Date.now().toString(36) + rid(); this.setState(s => ({ files: { ...(s.files || {}), [id]: { n: this.fUniq(s.files || {}, name, dir, null, true), p: dir || '', k: 'd', at: new Date().toISOString(), by: (ME && ME.name) || '' } } })); };
+    this.setState({ ctx: null, fdlg: { t: 'Nouveau dossier', v: this.fUniq(this.state.files || {}, 'Nouveau dossier', dir, null, true), ok: 'Créer', fn: mk } });
+  }
+  fileRename(id) {
+    const r = (this.state.files || {})[id]; if (!r) return;
+    this.setState({ fdlg: { t: 'Renommer', v: r.n, ok: 'Renommer', fn: name => this.setState(s => {
+      const F = s.files || {}, x = F[id]; if (!x) return null;
+      const e = x.k === 'f' ? extOf(x.n) : '', n = e && extOf(name) !== e ? name + '.' + e : name;
+      return { files: { ...F, [id]: { ...x, n: this.fUniq(F, n, x.p, id, x.k === 'd') } } };
+    }) } });
+  }
+  dlgOk() { const d = this.state.fdlg; if (!d) return; const v = (d.raw ? String(d.v || '') : String(d.v || '').replace(/[/\\]/g, '-')).trim(); if (!v) { this.toast('Indiquez un nom'); return; } this.setState({ fdlg: null }); d.fn(v); }
+  fileMoveTo(ids, to) {
+    const F = this.state.files || {}, bad = new Set();
+    ids.forEach(id => { if (F[id] && F[id].k === 'd') { bad.add(id); this.fTree(id).forEach(x => bad.add(x)); } });
+    if (to && bad.has(to)) { this.toast('Un dossier ne peut pas aller dans lui-même'); return; }
+    this.setState(s => { const G = { ...(s.files || {}) }; ids.forEach(id => { if (G[id]) G[id] = { ...G[id], p: to || '', n: this.fUniq(G, G[id].n, to, id, G[id].k === 'd') }; }); return { files: G, fmv: null, fsel: null }; });
+    this.toast(ids.length > 1 ? ids.length + ' éléments déplacés' : '« ' + ((F[ids[0]] || {}).n || '') + ' » déplacé');
+  }
+  async fileDup(id) {
+    const r = (this.state.files || {})[id]; if (!r || r.k !== 'f') return;
+    if (!cloudReady()) { this.toast('Connectez-vous pour dupliquer'); return; }
+    const nid = 'f' + Date.now().toString(36) + rid(), obj = CL.me.org + '/' + nid;
+    try { await FST[r.st || 'sb'].copy(r.o, obj); this.setState(s => ({ files: { ...(s.files || {}), [nid]: { ...r, n: this.fUniq(s.files || {}, r.n, r.p), o: obj, at: new Date().toISOString(), by: (ME && ME.name) || '' } } })); this.toast('« ' + r.n + ' » dupliqué'); }
+    catch (e) { this.toast('Duplication impossible : ' + ((e && e.message) || e)); }
+  }
+  // supprimer : le dossier et son contenu partent à la corbeille (30 jours), le fichier lui-même n'est effacé qu'en la vidant
+  fileDel(ids, how) {
+    if (!canDel()) return;
+    const F = this.state.files || {}, all = new Set();
+    ids.forEach(id => { if (F[id]) { all.add(id); if (F[id].k === 'd') this.fTree(id).forEach(x => all.add(x)); } });
+    if (!all.size) return;
+    const recs = {}; all.forEach(id => { recs[id] = F[id]; });
+    const one = ids.length === 1 && F[ids[0]];
+    this.undoable(one ? '« ' + one.n + ' » supprimé' : ids.length + ' éléments supprimés', 'file', how || 'menu', { recs, n: one ? one.n : ids.length + ' éléments', dir: !!(one && one.k === 'd') },
+      () => this.setState(s => { const G = { ...(s.files || {}) }; all.forEach(id => delete G[id]); return { files: G, fsel: null, fv: s.fv && all.has(s.fv.ids[s.fv.i]) ? null : s.fv }; }));
+  }
+  async fileShare(id) {
+    const r = (this.state.files || {})[id]; if (!r || r.k !== 'f') return;
+    let b = FBLOB[id];
+    if (!b) { this.toast('Préparation du fichier…'); try { b = await fBlob(id, r); } catch (e) { this.toast('Fichier indisponible : ' + ((e && e.message) || e)); return; } }
+    this.shareFile(new File([b], r.n, { type: r.m || b.type || 'application/octet-stream' }), () => this.fileShare(id));
+  }
+  async shareFile(file, again) {
+    try {
+      if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: file.name }); return; }
+      const a = document.createElement('a'), u = URL.createObjectURL(file); a.href = u; a.download = file.name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 5000);
+    } catch (e) { if (e && e.name === 'NotAllowedError' && again) this.toast('Fichier prêt', false, { l: 'Partager', fn: again }); }
+  }
+  fileOpenExt(id) {
+    const r = (this.state.files || {})[id]; if (!r) return;
+    const w = window.open('', '_blank');
+    fUrl(id, r).then(u => { if (w) w.location.href = u; else location.href = u; }).catch(e => { if (w) w.close(); this.toast('Ouverture impossible : ' + ((e && e.message) || e)); });
+  }
+  // visionneuse
+  fvOpen(id, ids) { const L = ids && ids.includes(id) ? ids : [id]; FVG.z = { s: 1, x: 0, y: 0 }; this.setState({ fv: { ids: L, i: L.indexOf(id) }, fvUi: true, ctx: null }); }
+  fvCan(dir) { const v = this.state.fv; return !!v && v.i + dir >= 0 && v.i + dir < v.ids.length; }
+  fvGo(dir) { if (!this.fvCan(dir)) { FVG.reset(); return; } this.fvReset = true; this.setState(s => ({ fv: { ...s.fv, i: s.fv.i + dir } })); }
+  fvClose() { fFree(); Object.keys(FBLOB).forEach(k => delete FBLOB[k]); FVG.z = { s: 1, x: 0, y: 0 }; this.setState({ fv: null }); }
+  fvChrome() { this.setState(s => ({ fvUi: s.fvUi === false })); }
+  // menu de l'appui long, placé sous l'élément (ou au-dessus s'il manque de place)
+  ctxOpen(a, el) {
+    const spec = a && a.menu ? a.menu() : null; if (!spec || !spec.items || !spec.items.length) { lpLift(LPG.el, 0); LPG.el = null; return; }
+    const r = el && el.getBoundingClientRect ? el.getBoundingClientRect() : { top: innerHeight / 3, bottom: innerHeight / 3, left: 16, width: 0 };
+    const h = (spec.head ? 36 : 0) + spec.items.length * 44 + spec.items.filter(x => x.grp).length * 7, room = innerHeight - 24, below = room - r.bottom - 8, above = r.top - 8 - 56;
+    let top = below >= h || below >= above ? r.bottom + 8 : r.top - 8 - h;
+    top = Math.max(56, Math.min(top, room - h));
+    this.setState({ ctx: { ...spec, top, right: r.left + r.width / 2 > innerWidth / 2 } });
+  }
+  ctxClose(keep) { if (!keep) { lpLift(LPG.el, 0); LPG.el = null; } if (this.state.ctx) this.setState({ ctx: null }); }
+  // projets : ordre choisi en maintenant puis en glissant une carte
+  projMove(ids, from, to, pinned) {
+    const order = [...ids], [x] = order.splice(from, 1); order.splice(to, 0, x);
+    if (pinned) { const base = Date.now(), pins = { ...(this.state.pins || {}) }; order.forEach((id, i) => { pins[id] = base + i; }); this.setState({ pins }); return; }
+    this.setState(s => {
+      const L = [...(s.P[s.site] || [])], byId = {}; L.forEach(p => { byId[p.id] = p; });
+      const slots = order.map(id => L.findIndex(p => p.id === id)).filter(i => i >= 0).sort((a, b) => a - b);
+      order.forEach((id, i) => { if (slots[i] !== undefined && byId[id]) L[slots[i]] = byId[id]; });
+      return { P: { ...s.P, [s.site]: L } };
+    });
+  }
+  // ---------- Claude : conversations (gardées sur l'appareil) ----------
+  chatScroll() { setTimeout(() => { const m = document.getElementById('main-scroll'); if (m) m.scrollTop = m.scrollHeight; }, 60); }
+  chatContext() {
+    const s = this.state, today = iso(new Date()), end = addDays(today, 14), L = [];
+    L.push('Date du jour : ' + today + (ME ? ' · utilisateur : ' + ME.name + ' (' + (ROLES[ME.role] || ME.role) + ')' : '') + (CL.me && CL.me.orgName ? ' · entreprise : ' + CL.me.orgName : ''));
+    const pct = p => p.steps && p.steps.length ? Math.round(p.steps.reduce((a, x) => a + x.v, 0) / p.steps.length) : 0;
+    KS.forEach(k => { const P = s.P[k] || []; L.push('Site ' + SL(k) + (SITES[k] && SITES[k].addr ? ' (' + SITES[k].addr + ')' : '') + ' : ' + P.length + ' projet' + (P.length > 1 ? 's' : ''));
+      P.slice(0, 30).forEach(p => L.push('  • ' + p.name + ' — ' + [p.phase, pct(p) + ' % fait', p.due && p.due !== 'à planifier' ? 'fin ' + p.due : '', p.lvl, p.desc].filter(Boolean).join(' · '))); });
+    const evs = (s.evs || []).filter(e => e.date >= today && e.date <= end).sort((a, b) => String(a.date + (a.t || '')).localeCompare(b.date + (b.t || ''))).slice(0, 40);
+    L.push('Planning des 14 prochains jours :' + (evs.length ? '' : ' rien de prévu'));
+    evs.forEach(e => L.push('  • ' + e.date + (e.t ? ' ' + e.t + (e.end ? '–' + e.end : '') : '') + ' — ' + e.title + (e.site && SITES[e.site] ? ' (' + SL(e.site) + ')' : '')));
+    const low = [];
+    KS.forEach(k => stockOfS(s, k).forEach(x => { const o = (s.stk || {})[k + x[0]] || {}, q = o.q ?? x[3]; if (q < x[4]) low.push('  • ' + x[1] + ' : ' + q + ' ' + x[2] + ' (seuil ' + x[4] + ', ' + SL(k) + ')'); }));
+    L.push('Stock sous le seuil :' + (low.length ? '' : ' aucun')); L.push(...low.slice(0, 40));
+    return L.join('\n').slice(0, 10000);
+  }
+  async chatSend(text, retry) {
+    const s = this.state; if (s.chatBusy) return;
+    if (!cloudReady()) { this.toast('Connectez-vous pour parler à Claude'); return; }
+    const C = { ...(s.chats || {}) }, now = new Date().toISOString(); let id = s.chat && C[s.chat] ? s.chat : null;
+    if (!retry) {
+      const txt = String(text ?? s.chatTxt ?? '').trim(); if (!txt) return;
+      if (!id) { id = 'c' + Date.now().toString(36) + rid(); C[id] = { t: txt.replace(/\s+/g, ' ').slice(0, 60), at: now, ctx: true, m: [] }; }
+      C[id] = { ...C[id], at: now, m: [...C[id].m, { r: 'u', x: txt, at: now }].slice(-200) };
+      // au plus 50 conversations gardées
+      Object.keys(C).sort((a, b) => String(C[b].at).localeCompare(C[a].at)).slice(50).forEach(k => delete C[k]);
+    } else if (!id) return;
+    const conv = C[id];
+    this.setState({ chats: C, chat: id, chatTxt: retry ? s.chatTxt : '', chatBusy: true, chatErr: '' }); this.chatScroll();
+    try {
+      let n = 0; const msgs = [];
+      for (let i = conv.m.length - 1; i >= 0 && msgs.length < 40; i--) { n += conv.m[i].x.length; if (n > 60000 && msgs.length) break; msgs.unshift({ role: conv.m[i].r === 'u' ? 'user' : 'assistant', content: conv.m[i].x }); }
+      const j = await sbJson('/functions/v1/chantier-ia/chat', { method: 'POST', json: { messages: msgs, context: conv.ctx !== false ? this.chatContext() : '', sender: (ME && ME.name) || '' } });
+      const ans = String((j && j.text) || '').trim() || '(réponse vide)', at = new Date().toISOString();
+      this.setState(z => { const c = (z.chats || {})[id]; return c ? { chatBusy: false, chats: { ...z.chats, [id]: { ...c, at, m: [...c.m, { r: 'a', x: ans, at }].slice(-200) } } } : { chatBusy: false }; });
+      this.chatScroll();
+    } catch (e) { this.setState({ chatBusy: false, chatErr: e.status === 404 ? 'mettez à jour la fonction chantier-ia dans Supabase' : (e && e.message) || String(e) }); this.chatScroll(); }
+  }
+  chatRename(id) {
+    const c = (this.state.chats || {})[id]; if (!c) return;
+    this.setState({ fdlg: { t: 'Renommer la conversation', v: c.t, ok: 'Renommer', raw: true, fn: t => this.setState(s => s.chats && s.chats[id] ? { chats: { ...s.chats, [id]: { ...s.chats[id], t } } } : null) } });
+  }
+  // ---------- valeurs d'affichage : Fichiers, visionneuse, menus d'appui long, Claude, barre d'onglets ----------
+  xVals(st, set) {
+    const ACC = 'var(--acc)', INK = 'var(--ink)', noop = () => {};
+    const F = st.files || {}, ok = id => id[0] !== '_' && !!F[id];
+    const fdir = st.fdir && F[st.fdir] && F[st.fdir].k === 'd' ? st.fdir : '';
+    const kidsOf = d => Object.keys(F).filter(id => ok(id) && (F[id].p || '') === d);
+    const pathOf = id => { const L = []; let c = id, n = 0; while (c && F[c] && n++ < 40) { L.unshift(c); c = F[c].p; } return L; };
+    const q = (st.fq || '').trim().toLowerCase(), sort = st.fsort || 'name', grid = st.fview === 'grid', sel = st.tab === 'f' ? st.fsel : null;
+    const cmp = (a, b) => { const x = F[a], y = F[b]; if (x.k !== y.k) return x.k === 'd' ? -1 : 1; const nm = String(x.n).localeCompare(String(y.n), 'fr', { numeric: true, sensitivity: 'base' });
+      return sort === 'date' ? String(y.at).localeCompare(String(x.at)) || nm : sort === 'size' ? (x.k === 'd' ? 0 : (+y.s || 0) - (+x.s || 0)) || nm : sort === 'kind' ? extOf(x.n).localeCompare(extOf(y.n)) || nm : nm; };
+    const ids = (q ? Object.keys(F).filter(id => ok(id) && String(F[id].n).toLowerCase().includes(q)) : kidsOf(fdir)).sort(cmp);
+    const fileIds = ids.filter(id => F[id].k === 'f'), selIds = sel ? ids.filter(id => sel[id]) : [];
+    const KN = { img: 'Image', vid: 'Vidéo', aud: 'Audio', pdf: 'Document PDF', doc: 'Document Word', xls: 'Classeur', ppt: 'Présentation', msg: 'Mail Outlook', eml: 'Mail', txt: 'Texte', zip: 'Archive', cad: 'Plan', other: 'Fichier' };
+    const openF = id => F[id].k === 'd' ? set({ fdir: id, fq: '' }) : this.fvOpen(id, fileIds.includes(id) ? fileIds : [id]);
+    const fMenu = id => () => { const r = F[id]; if (!r) return null; const dir = r.k === 'd', it = [{ l: 'Ouvrir', ic: 'open', fn: () => openF(id) }, { l: 'Renommer', ic: 'ren', grp: true, fn: () => this.fileRename(id) }];
+      if (!dir) it.push({ l: 'Dupliquer', ic: 'dup', fn: () => this.fileDup(id) });
+      it.push({ l: 'Déplacer', ic: 'move', fn: () => set({ fmv: { ids: [id], to: r.p || '' } }) });
+      if (!dir) it.push({ l: 'Partager', ic: 'share', grp: true, fn: () => this.fileShare(id) });
+      it.push({ l: 'Lire les informations', ic: 'info', grp: dir, fn: () => set({ finfo: id }) });
+      if (canDel()) it.push({ l: 'Supprimer', ic: 'del', red: true, grp: true, fn: () => this.fileDel([id], 'menu') });
+      return { head: r.n, items: it }; };
+    const items = ids.map(id => {
+      const r = F[id], dir = r.k === 'd', k = fKind(r.n, r.m), ico = FICO[k] || FICO.other, n = dir ? kidsOf(id).length : 0, on = !!(sel && sel[id]), sw = 'f:' + id;
+      SW[sw] = canDel() && !sel ? { del: how => this.fileDel([id], how) } : {};
+      LP[sw] = sel ? {} : { menu: fMenu(id) };
+      return { sw, name: r.n, isDir: dir, hasTh: !dir && !!r.th, th: r.th || '', isDoc: !dir && !r.th, icBg: ico[0], icTx: ico[1] || extOf(r.n).toUpperCase().slice(0, 4),
+        sub: (q ? ['Fichiers', ...pathOf(r.p).map(x => F[x].n)].join(' › ') + ' · ' : '') + (dir ? n + ' élément' + (n > 1 ? 's' : '') : fDate(r.at) + ' · ' + fSize(r.s)),
+        gsub: dir ? n + ' élément' + (n > 1 ? 's' : '') : fSize(r.s),
+        selOn: !!sel, ckBg: on ? ACC : 'transparent', ckBd: on ? ACC : 'var(--ink3)', ckOp: on ? 1 : 0, rowBg: on ? 'var(--accSoft)' : 'var(--field)', gridBg: on ? 'var(--accSoft)' : 'transparent',
+        open: () => sel ? set({ fsel: { ...sel, [id]: !on } }) : openF(id) };
+    });
+    const ups = Object.keys(st.fup || {}).filter(id => (st.fup[id].p || '') === fdir).map(id => ({ name: st.fup[id].n, w: Math.max(4, Math.round((st.fup[id].pr || 0) * 100)) + '%' }));
+    const crumbs = [{ id: '', n: 'Fichiers' }, ...pathOf(fdir).map(id => ({ id, n: F[id].n }))].map((c, i, A) => ({ label: c.n, col: i === A.length - 1 ? INK : ACC, sep: i ? '›' : '', go: () => set({ fdir: c.id, fq: '', fsel: null }) }));
+    const totS = ids.reduce((a, id) => a + (F[id].k === 'f' ? +F[id].s || 0 : 0), 0);
+    const addItems = [{ l: 'Nouveau dossier', ic: 'newdir', fn: () => this.fileNewDir(fdir) }, { l: 'Importer (iCloud Drive, Photos…)', ic: 'imp', fn: async () => this.fileUpload(await fPick(true), fdir) }, { l: 'Prendre une photo', ic: 'cam', fn: async () => this.fileUpload(await fPick(false, true), fdir) }];
+    const moreMenu = () => ({ items: [{ l: 'Sélectionner', ic: 'sel', fn: () => set({ fsel: {} }) }, ...addItems.map((x, i) => ({ ...x, grp: i === 0 })),
+      { l: 'Icônes', ic: grid ? 'check' : 'grid', grp: true, fn: () => set({ fview: 'grid' }) }, { l: 'Liste', ic: grid ? 'list' : 'check', fn: () => set({ fview: 'list' }) },
+      ...[['name', 'Nom'], ['date', 'Date'], ['size', 'Taille'], ['kind', 'Type']].map(([k, l], i) => ({ l: 'Trier par ' + l.toLowerCase(), ic: sort === k ? 'check' : '', grp: i === 0, fn: () => set({ fsort: k }) }))] });
+    const files = {
+      isFiles: st.tab === 'f', fTitle: fdir ? F[fdir].n : 'Fichiers', fSub: q ? ids.length + ' résultat' + (ids.length > 1 ? 's' : '') : ids.length + ' élément' + (ids.length > 1 ? 's' : '') + (totS ? ' · ' + fSize(totS) : ''),
+      fAdd: e => this.ctxOpen({ menu: () => ({ items: addItems }) }, e && e.currentTarget), fMore: e => this.ctxOpen({ menu: moreMenu }, e && e.currentTarget),
+      fInDir: !!fdir && !q, fCrumbs: crumbs, fUp: () => set({ fdir: F[fdir] ? F[fdir].p || '' : '', fsel: null }), fUpLbl: fdir ? (F[F[fdir].p] || { n: 'Fichiers' }).n : '',
+      fQ: st.fq || '', fOnQ: e => set({ fq: e.target.value }), fHasQ: !!q, fClearQ: () => set({ fq: '' }),
+      fList: !grid && items.length > 0, fGrid: grid && items.length > 0, fItems: items, fEmpty: !items.length && !ups.length, fEmptyTxt: q ? 'Aucun résultat' : fdir ? 'Dossier vide' : 'Aucun fichier',
+      fUps: ups, fHasUps: ups.length > 0,
+      selBar: !!sel, selN: selIds.length ? selIds.length + ' sélectionné' + (selIds.length > 1 ? 's' : '') : 'Touchez les éléments', selAllLbl: ids.length && selIds.length === ids.length ? 'Aucun' : 'Tout',
+      selAll: () => set({ fsel: selIds.length === ids.length ? {} : Object.fromEntries(ids.map(i => [i, true])) }), selDone: () => set({ fsel: null }),
+      selMove: () => { if (selIds.length) set({ fmv: { ids: selIds, to: fdir } }); }, selDel: () => { if (selIds.length) this.fileDel(selIds, 'bouton'); }, selCanDel: canDel(), selOp: selIds.length ? 1 : 0.4
+    };
+    // visionneuse
+    const fv = st.fv && st.fv.ids.length ? st.fv : null; let viewer = { fvOn: false, fvPanels: [] };
+    if (fv) {
+      const wake = () => this.forceUpdate(), cur = fv.ids[fv.i], cr = F[cur] || {};
+      const panel = (j, left) => {
+        const id = fv.ids[j], r = id && F[id], base = { left, cls: 'fv-p', isImg: false, isVid: false, isAud: false, isPages: false, isText: false, isMail: false, isCard: false, loading: false, err: false, pages: [], mAtts: [] };
+        if (!r) return base;
+        const k = fKind(r.n, r.m), ico = FICO[k] || FICO.other, isCur = j === fv.i, media = k === 'img' || k === 'vid';
+        const card = { ...base, cls: isCur ? 'fv-p fv-cur' : 'fv-p', icBg: ico[0], icTx: ico[1] || extOf(r.n).toUpperCase().slice(0, 4), name: r.n, size: fSize(r.s) + ' · ' + (KN[k] || 'Fichier'), openExt: () => this.fileOpenExt(id), share: () => this.fileShare(id) };
+        if (!isCur && !media) return { ...card, isCard: true };
+        const v = fPrep(id, r, wake), m = v.mail || {}, ld = v.st === 'load';
+        return { ...card, url: v.url || '', loading: ld || (v.st === 'pages' && !(v.pages || []).length), err: v.st === 'err', errTxt: 'Aperçu impossible : ' + (v.err || ''), retry: () => { delete FPV[id]; delete FURL[id]; delete FBLOB[id]; wake(); },
+          isImg: v.st === 'ready' && k === 'img', isVid: v.st === 'ready' && k === 'vid', isAud: v.st === 'ready' && k === 'aud', isCard: v.st === 'ready' && !/^(img|vid|aud)$/.test(k),
+          isPages: v.st === 'pages' && (v.pages || []).length > 0, pages: v.pages || [], more: !!v.more, isText: v.st === 'text', text: v.text || '',
+          isMail: v.st === 'mail', mSubj: m.subj || '', mFrom: m.from || '', mTo: m.to || '', mHasTo: !!m.to, mDate: m.date ? bkWhen(m.date) : '', mHasDate: !!m.date && !isNaN(new Date(m.date)), mBody: m.body || '', mHasAtts: !!(m.atts || []).length,
+          mAtts: (m.atts || []).map(a => ({ name: a.name, size: a.size ? fSize(a.size) : '', share: () => { try { this.shareFile(a.file()); } catch (e) { this.toast('Pièce jointe illisible'); } }, add: () => { try { this.fileUpload([a.file()], r.p || ''); } catch (e) { this.toast('Pièce jointe illisible'); } } })) };
+      };
+      const vMenu = () => ({ head: cr.n, items: [{ l: 'Ouvrir dans Safari', ic: 'open', fn: () => this.fileOpenExt(cur) }, { l: 'Renommer', ic: 'ren', grp: true, fn: () => this.fileRename(cur) }, { l: 'Dupliquer', ic: 'dup', fn: () => this.fileDup(cur) }, { l: 'Déplacer', ic: 'move', fn: () => set({ fmv: { ids: [cur], to: cr.p || '' } }) }] });
+      viewer = { fvOn: true, fvPanels: [panel(fv.i - 1, '-100%'), panel(fv.i, '0%'), panel(fv.i + 1, '100%')], fvName: cr.n || '', fvPos: fv.ids.length > 1 ? (fv.i + 1) + ' sur ' + fv.ids.length : fSize(cr.s),
+        fvUiOp: st.fvUi === false ? 0 : 1, fvUiPe: st.fvUi === false ? 'none' : 'auto', fvClose: () => this.fvClose(), fvShare: () => this.fileShare(cur), fvInfo: () => set({ finfo: cur }),
+        fvCanDel: canDel(), fvDel: () => this.fileDel([cur], 'bouton'), fvMore: e => this.ctxOpen({ menu: vMenu }, e && e.currentTarget) };
+    }
+    // menu d'appui long
+    const cx = st.ctx;
+    const ctx = { ctxOn: !!cx, ctxHead: cx ? cx.head || '' : '', ctxHasHead: !!(cx && cx.head), ctxTop: cx ? cx.top + 'px' : '0', ctxL: cx && cx.right ? 'auto' : '16px', ctxR: cx && cx.right ? '16px' : 'auto', ctxClose: () => this.ctxClose(),
+      ctxItems: cx ? cx.items.map((it, i) => ({ l: it.l, d: ICO[it.ic] || '', col: it.red ? '#FF3B30' : INK, sep: i === 0 ? (cx.head ? '1px solid var(--line)' : 'none') : it.grp ? '7px solid var(--track)' : '1px solid var(--line)', pick: () => { this.ctxClose(); it.fn(); } })) : [] };
+    // fenêtres : nom (nouveau dossier, renommer), déplacer, informations
+    const dl = st.fdlg, mv = st.fmv, fi = st.finfo && F[st.finfo] ? F[st.finfo] : null;
+    const dlg = { dlgOn: !!dl, dlgT: dl ? dl.t : '', dlgV: dl ? dl.v : '', dlgOnV: e => set({ fdlg: { ...this.state.fdlg, v: e.target.value } }), dlgOk: () => this.dlgOk(), dlgOkLbl: dl ? dl.ok : 'OK', dlgNo: () => set({ fdlg: null }) };
+    let move = { mvOn: false, mvRows: [] };
+    if (mv) {
+      const bad = new Set(); mv.ids.forEach(id => { if (F[id] && F[id].k === 'd') { bad.add(id); this.fTree(id).forEach(x => bad.add(x)); } });
+      const rows = [{ id: '', n: 'Fichiers', d: 0 }], walk = (p, d) => kidsOf(p).filter(id => F[id].k === 'd').sort(cmp).forEach(id => { rows.push({ id, n: F[id].n, d }); walk(id, d + 1); }); walk('', 1);
+      const one = mv.ids.length === 1 && F[mv.ids[0]];
+      move = { mvOn: true, mvTitle: one ? 'Déplacer « ' + one.n + ' »' : 'Déplacer ' + mv.ids.length + ' éléments', mvNo: () => set({ fmv: null }), mvGo: () => this.fileMoveTo(mv.ids, mv.to), mvNew: () => this.fileNewDir(mv.to),
+        mvRows: rows.map(x => { const b = bad.has(x.id), a = mv.to === x.id; return { name: x.n, pad: (14 + x.d * 20) + 'px', bg: a ? 'var(--accSoft)' : 'transparent', fg: b ? 'var(--ink3)' : a ? ACC : INK, ck: a, pick: b ? noop : () => set({ fmv: { ...mv, to: x.id } }) }; }) };
+    }
+    const fk = fi ? (fi.k === 'd' ? 'dir' : fKind(fi.n, fi.m)) : '', fn = fi && fi.k === 'd' ? kidsOf(st.finfo).length : 0;
+    const info = { infoOn: !!fi, infoName: fi ? fi.n : '', infoClose: () => set({ finfo: null }),
+      infoRows: fi ? [['Type', fk === 'dir' ? 'Dossier' : (KN[fk] || 'Fichier') + (extOf(fi.n) ? ' (.' + extOf(fi.n) + ')' : '')], fk === 'dir' ? ['Contenu', fn + ' élément' + (fn > 1 ? 's' : '')] : ['Taille', fSize(fi.s)], ['Emplacement', ['Fichiers', ...pathOf(fi.p).map(x => F[x].n)].join(' › ')], ['Ajouté', fi.at ? bkWhen(fi.at) : '—'], ['Par', fi.by || '—']].map(([l, v]) => ({ l, v })) : [] };
+    // Claude
+    const CH = st.chats || {}, cid = st.chat && CH[st.chat] ? st.chat : null, conv = cid ? CH[cid] : null;
+    const chItems = Object.keys(CH).sort((a, b) => String(CH[b].at).localeCompare(String(CH[a].at))).map(id => {
+      const c = CH[id], last = c.m[c.m.length - 1], sw = 'ch:' + id;
+      SW[sw] = { del: how => this.undoable('Conversation supprimée', 'chat', how, null, () => this.setState(s => { const C = { ...(s.chats || {}) }; delete C[id]; return { chats: C, chat: s.chat === id ? null : s.chat }; })) };
+      LP[sw] = { menu: () => ({ head: c.t, items: [{ l: 'Renommer', ic: 'ren', fn: () => this.chatRename(id) }, { l: 'Supprimer', ic: 'del', red: true, grp: true, fn: () => SW[sw].del('menu') }] }) };
+      return { sw, title: c.t, prev: last ? (last.r === 'a' ? 'Claude : ' : '') + last.x.replace(/\s+/g, ' ').slice(0, 90) : '', when: fDate(c.at), open: () => set({ chat: id, chatErr: '' }) };
+    });
+    const chMsgs = conv ? conv.m.map((m, i) => { const mine = m.r === 'u', lp = 'cm:' + cid + ':' + i;
+      LP[lp] = { menu: () => ({ items: [{ l: 'Copier', ic: 'copy', fn: () => { try { navigator.clipboard.writeText(m.x); this.toast('Copié'); } catch (e) {} } }, ...(mine ? [{ l: 'Reprendre ce message', ic: 'edit', fn: () => set({ chatTxt: m.x }) }] : [])] }) };
+      return { lp, x: m.x, jc: mine ? 'flex-end' : 'flex-start', bg: mine ? 'var(--acc)' : 'var(--field)', fg: mine ? '#fff' : INK, br: mine ? '20px 20px 6px 20px' : '20px 20px 20px 6px' }; }) : [];
+    const ctxOn = !conv || conv.ctx !== false, can = !!(st.chatTxt || '').trim() && !st.chatBusy;
+    const nC = chItems.length;
+    const chat = { isChat: st.tab === 'i', chSubT: nC ? nC + ' conversation' + (nC > 1 ? 's' : '') + ' · sur cet appareil' : 'Assistant de chantier', chList: !conv, chOpen: !!conv, chNone: !chItems.length, chItems, chHasItems: chItems.length > 0, chMsgs, chTitle: conv ? conv.t : '',
+      chBack: () => set({ chat: null, chatErr: '' }), chBusy: !!st.chatBusy, chHasErr: !!st.chatErr && !!conv, chErr: 'Pas de réponse : ' + (st.chatErr || ''), chRetry: () => this.chatSend(null, true),
+      chTxt: st.chatTxt || '', chOnTxt: e => set({ chatTxt: e.target.value }), chSend: () => this.chatSend(), chSendBg: can ? ACC : 'var(--track)', chPh: conv ? 'Répondre à Claude…' : 'Demander à Claude…',
+      chCtxLbl: ctxOn ? 'Avec les données de l’appli' : 'Sans les données de l’appli', chCtxBg: ctxOn ? 'var(--accSoft)' : 'var(--tile)', chCtxFg: ctxOn ? 'var(--accTx)' : 'var(--ink2)',
+      chCtxTog: () => { if (conv) set({ chats: { ...CH, [cid]: { ...conv, ctx: !ctxOn } } }); },
+      chSugg: ['Résume l’avancement de mes chantiers', 'Qu’est-ce qui est prévu cette semaine ?', 'Quels articles faut-il commander ?', 'Rédige un message pour annoncer un retard de livraison'].map(t => ({ t, pick: () => this.chatSend(t) })),
+      chBar: st.tab === 'i' && !st.sheet };
+    // barre d'onglets : 5 sections au choix (Compte › Barre d'onglets)
+    const tabsOn = tabsOf(st);
+    const tabRows = TABS.map(([k, l, c, d]) => { const on = tabsOn.includes(k); return { label: l, icBg: c, d, ck: on, ckBg: on ? ACC : 'transparent', ckBd: on ? ACC : 'var(--ink3)', ckOp: on ? 1 : 0, canGo: !on,
+      go: () => set({ tab: k, sheet: null, back: [], menu: false }),
+      pick: () => { if (on) { if (tabsOn.length <= 1) { this.toast('Gardez au moins une section'); return; } set({ tabs: tabsOn.filter(x => x !== k) }); } else { if (tabsOn.length >= 5) { this.toast('5 sections au maximum : retirez-en une d’abord'); return; } set({ tabs: TABS.map(t => t[0]).filter(x => x === k || tabsOn.includes(x)) }); } } }; });
+    return { ...files, ...viewer, ...ctx, ...dlg, ...move, ...info, ...chat, tabRows, tabsN: tabsOn.length + ' sur 5' };
   }
   async iaRefresh() {
     if (!cloudReady()) return;
@@ -2130,12 +2855,16 @@ class Component extends DCLogic {
       const pct = pctOf(p), done = p.steps.filter(s => s.v >= 100).length, late = p.inv.filter(i => i.st === 'late').length, todo = p.sup.filter(f => !f.tel || !f.mail).length, pinned = !!pins[p.id], sw = 'p:' + p.id, lv = lvlOf(p);
       SW[sw] = { pin: () => togglePin(p),
         ...(canDel() ? { del: how => this.undoable('Projet « ' + p.name + ' » supprimé', 'proj', how, { site: st.site, p, i: list.indexOf(p) }, () => this.setState(s => ({ P: { ...s.P, [st.site]: (s.P[st.site] || []).filter(x => x.id !== p.id) } }))) } : {}) };
-      return { sw, pinned, pinLbl: pinned ? 'Désépingler' : 'Épingler', name: p.name, rid: RI('P:' + p.id), img: 'proj-' + p.id, src: coverOf(p), ph: 'Photo · ' + p.name, phase: p.phase, due: 'Fin ' + p.due, pct, pctW: pct + '%',
+      return { sw, pinned, pinLbl: pinned ? 'Désépingler' : 'Épingler', name: p.name, rid: RI('P:' + p.id), img: 'proj-' + p.id, src: coverOf(p), ph: 'Photo · ' + p.name, phase: p.phase, due: p.due && p.due !== 'à planifier' ? 'Fin ' + p.due : '', hasDue: !!(p.due && p.due !== 'à planifier'), desc: p.desc || '', hasDesc: !!p.desc, lpg: 'pg-' + (pinned ? 'pin' : 'reg'), pct, pctW: pct + '%',
         loc: [lv, p.addr ? p.addr + (p.city ? ' · ' + p.city.replace(/^\d+\s*/, '') : '') : ''].filter(Boolean).join(' · ') || 'Emplacement à renseigner',
         meta: done + '/' + p.steps.length + ' étapes' + (projSupOn ? ' · ' + p.sup.length + ' fourn.' : ''), showPh: projPhOn, noPh: !projPhOn,
         hasAlert: projSupOn && !!(late || todo), alert: late ? late + ' facture' + (late > 1 ? 's' : '') + ' en retard' : todo ? todo + ' fourn. à renseigner' : '',
         open: () => set({ proj: p.id, seg: 'e', editSteps: false, supOpen: null, noteText: '', stepText: '' }) };
     });
+    { const pOrd = projects.map(x => x.sw.slice(2)), pinG = pOrd.filter(id => pins[id]), regG = pOrd.filter(id => !pins[id]);
+      projects.forEach(x => { const id = x.sw.slice(2), p = list.find(y => y.id === id), pn = !!pins[id]; if (!p) return;
+        LP[x.sw] = { drag: (a, b) => this.projMove(pn ? pinG : regG, a, b, pn), menu: () => ({ head: p.name, items: [{ l: 'Ouvrir', ic: 'open', fn: () => set({ proj: p.id, seg: 'e', editSteps: false, supOpen: null }) }, { l: 'Modifier', ic: 'edit', fn: () => openEd('proj', { id: p.id }) }, { l: pn ? 'Désépingler' : 'Épingler', ic: 'pin', fn: () => togglePin(p) },
+          ...(projPhOn ? [{ l: 'Photos', ic: 'photo', fn: () => set({ proj: p.id, seg: 'ph', editSteps: false }) }] : []), ...(canDel() ? [{ l: 'Supprimer', ic: 'del', red: true, grp: true, fn: () => SW[x.sw].del('menu') }] : [])] }) }; }); }
     const pdAdd = !!st.pdAdd;
     // project detail
     const Q = P0 || list[0] || { id: '_', name: '', phase: '', due: '', addr: '', city: '', steps: [], notes: [], sup: [], inv: [] }, pid = Q.id, up = fn => this.updP(pid, fn);
@@ -2187,7 +2916,7 @@ class Component extends DCLogic {
     const inv = Q.inv.map(i => mkInv(i, pid));
     const total = Q.inv.reduce((a, i) => a + i.amt, 0), paid = Q.inv.filter(i => i.st === 'paid').reduce((a, i) => a + i.amt, 0), anyLate = Q.inv.some(i => i.st === 'late');
     const PH = (st.ph || {})[pid] || [], lvQ = lvlOf(Q);
-    const pj = { setCover: () => { this.addPhotos(pid, 'av', null, true); }, showPh: projPhOn, heroH: projPhOn ? '200px' : '150px', heroBg: projPhOn ? 'var(--tile)' : 'linear-gradient(135deg,' + (DOT[st.site] || '#0A84FF') + ',#1C2333)', name: Q.name, rid: RI('P:' + Q.id), phase: Q.phase, due: Q.due, img: 'proj-' + Q.id, src: coverOf(Q), ph: 'Photo · ' + Q.name, addrLine: [lvQ, Q.addr ? Q.addr + (Q.city ? ' · ' + Q.city : '') : ''].filter(Boolean).join(' · ') || 'Emplacement non renseigné', pct,
+    const pj = { setCover: () => { this.addPhotos(pid, 'av', null, true); }, showPh: projPhOn, heroH: projPhOn ? '200px' : '150px', heroBg: projPhOn ? 'var(--tile)' : 'linear-gradient(135deg,' + (DOT[st.site] || '#0A84FF') + ',#1C2333)', name: Q.name, rid: RI('P:' + Q.id), phase: Q.phase, due: Q.due, dueTxt: Q.due && Q.due !== 'à planifier' ? ' · Fin ' + Q.due : '', desc: Q.desc || '', hasDesc: !!Q.desc, img: 'proj-' + Q.id, src: coverOf(Q), ph: 'Photo · ' + Q.name, addrLine: [lvQ, Q.addr ? Q.addr + (Q.city ? ' · ' + Q.city : '') : ''].filter(Boolean).join(' · ') || 'Emplacement non renseigné', pct,
       disc: discsOf(Q).join(', '), hasDisc: discsOf(Q).length > 0, pinned: !!pins[Q.id], pinLbl: pins[Q.id] ? 'Épinglé' : 'Épingler', pinBg: pins[Q.id] ? '#FF9F0A' : 'var(--tile)', pinFg: pins[Q.id] ? '#fff' : 'var(--ink)', pin: () => togglePin(Q), phN: (n => n ? n + ' photo' + (n > 1 ? 's' : '') : 'Photos')(PH.filter(x => PHS[x.sec]).length), goPh: () => set({ seg: 'ph', editSteps: false }), goSup: () => set({ seg: 'c', editSteps: false }), dash: (C * pct / 100) + ' ' + C,
       stepsDone: Q.steps.filter(s => s.v >= 100).length + '/' + Q.steps.length, supN: Q.sup.length, openAmt: eur(total - paid), openCol: anyLate ? 'var(--warnTx)' : INK,
       steps, notes: Q.notes.map((t, i) => { const sw = 'n:' + pid + '/' + i; SW[sw] = canDel() ? { del: how => this.undoable('Note supprimée', 'note', how, { pid, t, i }, () => up(p => ({ ...p, notes: p.notes.filter((x, j) => j !== i) }))) } : {}; return { sw, t, edit: () => openEd('note', { i }) }; }), locFields: loc,
@@ -2357,8 +3086,9 @@ class Component extends DCLogic {
     const calChips = Object.keys(CALS).map(k => { const off = !!calOff[k]; return { label: CALS[k][0], dot: CALS[k][1], op: off ? 0.45 : 1, bg: off ? 'transparent' : 'var(--tile)', fg: off ? 'var(--ink3)' : INK, deco: off ? 'line-through' : 'none', pick: () => set({ calOff: { ...calOff, [k]: !off } }) }; });
     const monthN = Object.keys(byDay).filter(d => d.startsWith(calM)).reduce((a, d) => a + byDay[d].length, 0);
     const tb = {};
-    ['p', 's', 'm', 'l', 'c'].forEach(k => { tb[k] = { bg: st.tab === k ? 'var(--on)' : 'transparent', fg: st.tab === k ? ACC : 'var(--ink2)', pick: () => set({ tab: k, mail: null, menu: false, proj: k === 'p' && st.tab === 'p' ? null : st.proj, supSel: k === 'c' && st.tab === 'c' ? null : st.supSel }) }; });
+    TABS.forEach(([k]) => { tb[k] = { bg: st.tab === k ? 'var(--on)' : 'transparent', fg: st.tab === k ? ACC : 'var(--ink2)', pick: () => set({ tab: k, mail: null, menu: false, proj: k === 'p' && st.tab === 'p' ? null : st.proj, supSel: k === 'c' && st.tab === 'c' ? null : st.supSel, fdir: k === 'f' && st.tab === 'f' ? '' : st.fdir, chat: k === 'i' && st.tab === 'i' ? null : st.chat, fsel: null, ctx: null }) }; });
     tb.m.badge = unreadN > 0; tb.m.count = unreadN;
+    const tbOn = tabsOf(st), tbList = TABS.filter(t => tbOn.includes(t[0])).map(([k, label, c, d]) => ({ ...tb[k], label, d, badge: !!tb[k].badge, count: tb[k].count || 0 }));
     // sheets
     const F = st.form, sh = st.sheet, setF = (o) => set({ form: { ...F, ...o } }), fset = (k) => (e) => setF({ [k]: e.target.value });
     const splitL = v => String(v || '').split(',').map(x => x.trim()).filter(Boolean);
@@ -2385,11 +3115,11 @@ class Component extends DCLogic {
     const siteNames = KS.map(SL), keyOfName = n => KS.find(k => SL(k) === n);
     const calKey = n => CALU.find(k => CALS[k][0] === n) || CALU[0];
     const evGroups = tk => { const sk = keyOfName(F.siteN), multi = /^\d{4}-\d{2}-\d{2}$/.test(F.to || '') && F.to > (F.date || ''), cd = (CALS[calKey(F.cal)] || [])[2] || [], prj = sk ? (st.P[sk] || []).map(p => p.name) : []; return [
-      { t: 'Événement', f: [[tk, 'Intitulé', 'Ex. Visite client'], ['cal', 'Calendrier', '', CALU.map(k => CALS[k][0]), { add: 'cal' }], ['date', 'Début', '', null, { type: 'date' }], ['to', 'Fin', 'Même jour', null, { type: 'date' }], ...(multi ? [] : [['dur', 'Durée', '', DURS]])] },
+      { t: 'Événement', f: [[tk, 'Intitulé', 'Ex. Visite client'], ['cal', 'Calendrier', '', CALU.map(k => CALS[k][0]), { add: 'cal' }], ['date', 'Début', '', null, { type: 'date' }], ['to', 'Fin', 'Même jour', null, { type: 'date' }], ['hrs', 'Heures de début et de fin', '', null, { sw: true }], ...(F.hrs ? [['t', 'De', '', null, { type: 'time' }], ['end', 'À', '', null, { type: 'time' }]] : multi ? [] : [['dur', 'Durée', '', DURS]])] },
       ...(CALS.devis && F.cal === CALS.devis[0] ? [{ t: 'Visite de devis', f: [['client', 'Client', 'Nom du client', SUP.filter(x => x.rub === 'C').map(x => x.name), { combo: true }], ['addr', 'Adresse', 'Adresse de la visite'], ['tel', 'Téléphone', '06 …', null, { type: 'tel' }]] }] : []),
       { t: 'Chantier', f: [['siteN', 'Site', '', siteNames], ...(prj.length ? [['projN', 'Projet', '', prj]] : []), ['disc', 'Discipline', '', cd.length ? cd : st.discs, { add: 'disc' }], ['who', 'Contact', 'Nom', SUP.filter(x => !sk || !(x.sites || []).length || (x.sites || []).includes(sk)).map(x => x.name), { combo: true }], ['note', 'Notes', 'Matériel, accès…']] }]; };
-    const evFromForm = (F, id, tk, base = {}) => { const sk = keyOfName(F.siteN) || base.site || st.site, pr = (st.P[sk] || []).find(p => p.name === F.projN), date = /^\d{4}-\d{2}-\d{2}$/.test(F.date || '') ? F.date : (base.date || selD), to = /^\d{4}-\d{2}-\d{2}$/.test(F.to || '') && F.to > date ? F.to : '', dur = to ? '' : (F.dur || ''), keepT = !to && !dur;
-      return { ...base, id, title: (F[tk] || '').trim(), cal: calKey(F.cal), date, to, dur, t: keepT ? (base.t || '') : '', end: keepT ? (base.end || '') : '', site: sk, proj: pr ? pr.id : '', disc: F.disc || (pr ? discOf(pr) : ''), discs: F.disc ? [F.disc] : pr ? discsOf(pr) : [], who: (F.who || '').trim(), note: (F.note || '').trim(), client: (F.client || '').trim(), addr: (F.addr || '').trim(), tel: (F.tel || '').trim() }; };
+    const evFromForm = (F, id, tk, base = {}) => { const sk = keyOfName(F.siteN) || base.site || st.site, pr = (st.P[sk] || []).find(p => p.name === F.projN), date = /^\d{4}-\d{2}-\d{2}$/.test(F.date || '') ? F.date : (base.date || selD), to = /^\d{4}-\d{2}-\d{2}$/.test(F.to || '') && F.to > date ? F.to : '', hm = v => /^\d{1,2}:\d{2}/.test(v || '') ? String(v).slice(0, 5).padStart(5, '0') : '', hrs = F.hrs === undefined ? !!base.t : !!F.hrs, t0 = hrs ? hm(F.t) : '', t1 = hrs && t0 && hm(F.end) > t0 ? hm(F.end) : '', dur = to || hrs ? '' : (F.dur || '');
+      return { ...base, id, title: (F[tk] || '').trim(), cal: calKey(F.cal), date, to, dur, t: t0, end: t1, site: sk, proj: pr ? pr.id : '', disc: F.disc || (pr ? discOf(pr) : ''), discs: F.disc ? [F.disc] : pr ? discsOf(pr) : [], who: (F.who || '').trim(), note: (F.note || '').trim(), client: (F.client || '').trim(), addr: (F.addr || '').trim(), tel: (F.tel || '').trim() }; };
     const STK = { 'Payée': 'paid', 'À payer': 'due', 'En retard': 'late' };
     const amtOf = v => parseFloat(String(v || '').replace(/\s/g, '').replace(',', '.').replace(/[^\d.]/g, '')) || 0;
     const numOf = v => Math.max(0, parseInt(String(v || '').replace(/[^\d]/g, '')) || 0);
@@ -2423,13 +3153,13 @@ class Component extends DCLogic {
       proj: {
         title: () => 'Modifier le projet', req: 'name', delLbl: 'Supprimer ce projet', canDel: () => true,
         note: () => 'Supprimer le projet efface aussi ses étapes, notes, fournisseurs et factures.',
-        load: r => { const p = list.find(x => x.id === r.id) || {}; return { name: p.name, disc: discsOf(p), cal: CALS[p.cal] ? CALS[p.cal][0] : '', phase: p.phase, due: p.due, site: SL(st.site), lvl: lvlOf(p), addr: p.addr, city: p.city, access: p.access, hours: p.hours }; },
-        groups: () => [{ t: 'Projet', f: [['name', 'Nom', 'Ex. Salle de bain lot 4'], ['disc', 'Disciplines', '', st.discs, { multi: true, add: 'disc' }], ['cal', 'Calendrier', '', CALU.map(k => CALS[k][0]), { add: 'cal' }], ['phase', 'Phase / lot', 'Ex. Second œuvre'], ['due', 'Échéance', 'Ex. 20 déc'], ['site', 'Site', '', siteNames]] }, { t: 'Localisation', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }], ...LOC] }],
+        load: r => { const p = list.find(x => x.id === r.id) || {}; return { name: p.name, disc: discsOf(p), cal: CALS[p.cal] ? CALS[p.cal][0] : '', phase: p.phase, desc: p.desc, site: SL(st.site), lvl: lvlOf(p), addr: p.addr, city: p.city, access: p.access, hours: p.hours }; },
+        groups: () => [{ t: 'Projet', f: [['name', 'Nom', 'Ex. Salle de bain lot 4'], ['disc', 'Disciplines', '', st.discs, { multi: true, add: 'disc' }], ['cal', 'Calendrier', '', CALU.map(k => CALS[k][0]), { add: 'cal' }], ['phase', 'Phase / lot', 'Ex. Second œuvre'], ['desc', 'Description', 'Une ligne (ex. Reprise des cloisons R+2)'], ['site', 'Site', '', siteNames]] }, { t: 'Localisation', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }], ...LOC] }],
         save: (r, F) => {
           const nk = keyOfName(F.site) || st.site;
           this.setState(s => {
             const cur = (s.P[s.site] || []).find(p => p.id === r.id); if (!cur) return null;
-            const dl = (Array.isArray(F.disc) ? F.disc : F.disc ? [F.disc] : []).filter(x => x !== 'Autre'), p = { ...cur, name: F.name.trim(), disc: dl[0] || '', discs: dl, cal: CALU.find(k => CALS[k][0] === F.cal) || cur.cal || '', phase: F.phase || '', due: F.due || '', lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: F.hours || '' };
+            const dl = (Array.isArray(F.disc) ? F.disc : F.disc ? [F.disc] : []).filter(x => x !== 'Autre'), p = { ...cur, name: F.name.trim(), disc: dl[0] || '', discs: dl, cal: CALU.find(k => CALS[k][0] === F.cal) || cur.cal || '', phase: F.phase || '', due: cur.due || '', desc: (F.desc || '').trim().slice(0, 140), lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: F.hours || '' };
             const lu = countLvl(F.lvl, lvlOf(cur));
             if (nk === s.site) return { lvlUse: lu, lvls: lvlMerge(F.lvl), P: { ...s.P, [s.site]: s.P[s.site].map(x => x.id === r.id ? p : x) } };
             return { lvlUse: lu, lvls: lvlMerge(F.lvl), P: { ...s.P, [s.site]: s.P[s.site].filter(x => x.id !== r.id), [nk]: [...(s.P[nk] || []), p] }, site: nk, wpos: KS.indexOf(nk) };
@@ -2478,7 +3208,7 @@ class Component extends DCLogic {
       },
       ev: {
         title: r => r.id ? 'Modifier l’événement' : 'Nouvel événement', req: 'title', delLbl: 'Supprimer l’événement', canDel: r => !!r.id,
-        load: r => { const e = (st.evs || []).find(x => x.id === r.id) || {}, pr = e.proj ? Object.keys(st.P).flatMap(k => st.P[k]).find(x => x.id === e.proj) : null; return { title: e.title, cal: (CALS[e.cal] || CALS[CALU[0]])[0], date: e.date, to: e.to, dur: e.dur, siteN: e.site && SITES[e.site] ? SL(e.site) : '', projN: pr ? pr.name : '', disc: e.disc, who: e.who, note: e.note, client: e.client, addr: e.addr, tel: e.tel }; },
+        load: r => { const e = (st.evs || []).find(x => x.id === r.id) || {}, pr = e.proj ? Object.keys(st.P).flatMap(k => st.P[k]).find(x => x.id === e.proj) : null; return { title: e.title, cal: (CALS[e.cal] || CALS[CALU[0]])[0], date: e.date, to: e.to, dur: e.dur, hrs: !!e.t, t: e.t || '', end: e.end || '', siteN: e.site && SITES[e.site] ? SL(e.site) : '', projN: pr ? pr.name : '', disc: e.disc, who: e.who, note: e.note, client: e.client, addr: e.addr, tel: e.tel }; },
         groups: () => evGroups('title'),
         save: (r, F) => this.setState(s => ({ evs: (s.evs || []).map(x => x.id === r.id ? evFromForm(F, r.id, 'title', x) : x), calDay: /^\d{4}-\d{2}-\d{2}$/.test(F.date || '') ? F.date : s.calDay, cal: /^\d{4}-\d{2}-\d{2}$/.test(F.date || '') ? F.date.slice(0, 7) : s.cal })),
         del: r => { const e = (st.evs || []).find(x => x.id === r.id); if (e) this.trashPut('ev', '', { e }); this.setState(s => ({ evs: (s.evs || []).filter(x => x.id !== r.id) })); }
@@ -2540,7 +3270,7 @@ class Component extends DCLogic {
     const EK = st.sheet === 'ed' ? EDK[F.kind] : null, edRef = F.ref || {};
     const FD = {
       ed: EK ? EK.groups() : [],
-      p: [{ t: 'Projet', f: [['a', 'Nom', 'Ex. Salle de bain lot 4'], ['b', 'Disciplines', '', st.discs, { multi: true, add: 'disc' }], ['c', 'Échéance', 'Ex. 20 déc']] }, { t: 'Emplacement', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }]] }],
+      p: [{ t: 'Projet', f: [['a', 'Nom', 'Ex. Salle de bain lot 4'], ['b', 'Disciplines', '', st.discs, { multi: true, add: 'disc' }], ['desc', 'Description', 'Une ligne (ex. Reprise des cloisons R+2)']] }, { t: 'Emplacement', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }]] }],
       s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Discipline', '', [...st.discs, 'Autre'], { add: 'disc' }], ['u', 'Sous-catég.', 'Ex. Ampoules', subSugg(F.e), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir', null, { type: 'text' }]] }, { t: 'Quantités', f: [['b', 'Unité', 'Ex. sacs'], ['c', 'Quantité', '0'], ['d', 'Seuil', '0']] }],
       l: evGroups('a'),
       inv: [{ t: 'Facture', f: [['a', 'N°', 'Ex. F-2026-0520'], ['b', 'Montant HT', 'Ex. 1 250'], ['c', 'Échéance', 'Ex. 30 nov']] }]
@@ -2549,7 +3279,7 @@ class Component extends DCLogic {
       const val = F[k], multi = !!o.multi, combo = !!o.combo, has = v => multi ? (val || []).includes(v) : combo && o.list ? splitL(val).includes(v) : val === v;
       const pickV = v => setF({ [k]: multi ? (has(v) ? val.filter(x => x !== v) : [...(val || []), v]) : combo && o.list ? (has(v) ? splitL(val).filter(x => x !== v) : [...splitL(val), v]).join(', ') : has(v) && !combo ? '' : v, ...(k === 'siteN' ? { projN: '' } : {}) });
       const edOn = !!o.edit && !!F.lvlEd, ak = o.add, qk = 'qa_' + k, addOn = !!ak && F[qk] !== undefined;
-      return { label, ph, type: o.type || 'text', val: multi ? '' : val || '', on: fset(k), isIn: !ch, isCh: !!ch && !combo, isCo: combo,
+      return { label, ph, type: o.type || 'text', val: multi ? '' : val || '', on: fset(k), isIn: !ch && !o.sw, isCh: !!ch && !combo, isCo: combo, isSw: !!o.sw, swTog: () => setF({ [k]: !val, ...(k === 'hrs' && !val && !F.t ? { t: '08:00', end: '09:00' } : {}) }), swTrack: val ? 'var(--ok)' : 'var(--track)', swKnob: val ? 'translateX(20px)' : 'none',
         hasAdd: !!ak && canCfg(), addOn, addTog: () => setF({ [qk]: addOn ? undefined : '' }), addVal: F[qk] || '', addIn: fset(qk), addPh: { disc: 'Nouvelle discipline…', rub: 'Nouvelle rubrique…', cal: 'Nouveau calendrier…' }[ak] || '',
         addOk: () => { const typed = up1(String(F[qk] || '').trim()), r = quickAdd(ak, F[qk]); if (!r) return; const lab = ak === 'disc' ? r : ak === 'rub' ? (RUB[r] || typed) : (CALS[r] ? CALS[r][0] : typed); setF({ [qk]: undefined, [k]: multi ? Array.from(new Set([...(val || []), lab])) : lab }); },
         hasEd: !!o.edit, edOn, edLbl: edOn ? 'Terminé' : 'Modifier', edBg: edOn ? 'var(--solid)' : 'transparent', edFg: edOn ? 'var(--solidTx)' : 'var(--acc)', edTog: () => setF({ lvlEd: !F.lvlEd, lvlNew: '' }), edVal: F.lvlNew || '', edIn: fset('lvlNew'), edAdd: () => lvlAdd(F.lvlNew),
@@ -2578,7 +3308,7 @@ class Component extends DCLogic {
       const a = (F.a || '').trim(), sq = st.seq + 1;
       if (sh === 'p') {
         const dl = (Array.isArray(F.b) ? F.b : F.b ? [F.b] : []).filter(x => x && x !== 'Autre'), pcal = CALS[F.pcal] && CALU.includes(F.pcal) ? F.pcal : CALS.real ? 'real' : CALU[0];
-        const p = { id: newId, name: a, disc: dl[0] || '', discs: dl, cal: pcal, phase: dl[0] || 'Nouveau lot', due: F.c || (F.plan !== false && /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > (F.pdate || today) ? (d => d.getDate() + ' ' + MABRV[d.getMonth()])(dOf(F.pend)) : 'à planifier'), lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: '', geo: S.geo,
+        const p = { id: newId, name: a, disc: dl[0] || '', discs: dl, cal: pcal, phase: dl[0] || 'Nouveau lot', due: F.plan !== false && /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > (F.pdate || today) ? (d => d.getDate() + ' ' + MABRV[d.getMonth()])(dOf(F.pend)) : '', desc: (F.desc || '').trim().slice(0, 140), lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: '', geo: S.geo,
           steps: fs.map((s, i) => ({ id: newId + 's' + i, l: s.l, t: s.t, v: 0 })), notes: [],
           sup: fSelIds.map(supCopy), inv: [] };
         const pd0 = /^\d{4}-\d{2}-\d{2}$/.test(F.pdate || '') ? F.pdate : today, pto = /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > pd0 ? F.pend : '';
@@ -2597,17 +3327,19 @@ class Component extends DCLogic {
         up(p => ({ ...p, inv: [...p.inv, { id: 'iv' + DEV + sq, sup: F.sup, num: a, amt, date: F.c || '—', st: F.st || 'due' }] })); set({ sheet: null, seq: sq });
       }
     };
-    const titles = { p: 'Projets', s: 'Stocks', m: 'Messages', l: 'Planning', c: 'Contacts' };
-    const subtitle = st.tab === 'm' && !boxOn ? (st.allM ? 'Tous les sites' : SL(st.site)) + ' · ' + recv.length + ' à traiter' : st.tab === 'l' ? (st.allL ? 'Tous les sites' : SL(st.site)) + ' · ' + monthN + ' élément' + (monthN > 1 ? 's' : '') + ' en ' + MOIS[calMo - 1] : st.tab === 'c' ? (st.allC ? 'Tous les sites' : SL(st.site)) + ' · ' + contacts.length + ' contact' + (contacts.length > 1 ? 's' : '') : 'Sam. 24 oct · ' + S.addr;
+    const X = this.xVals(st, set);
+    const titles = { p: 'Projets', s: 'Stocks', m: 'Messages', l: 'Planning', c: 'Contacts', i: 'Claude', f: X.fTitle };
+    const subtitle = st.tab === 'f' ? X.fSub : st.tab === 'i' ? X.chSubT : st.tab === 'm' && !boxOn ? (st.allM ? 'Tous les sites' : SL(st.site)) + ' · ' + recv.length + ' à traiter' : st.tab === 'l' ? (st.allL ? 'Tous les sites' : SL(st.site)) + ' · ' + monthN + ' élément' + (monthN > 1 ? 's' : '') + ' en ' + MOIS[calMo - 1] : st.tab === 'c' ? (st.allC ? 'Tous les sites' : SL(st.site)) + ' · ' + contacts.length + ' contact' + (contacts.length > 1 ? 's' : '') : 'Sam. 24 oct · ' + S.addr;
     const kAll = list.reduce((a, p) => { a.s += p.steps.length; a.d += p.steps.filter(x => x.v >= 100).length; a.pct += pctOf(p); a.o += p.inv.filter(i => i.st !== 'paid').reduce((b, i) => b + i.amt, 0); return a; }, { s: 0, d: 0, pct: 0, o: 0 });
     const kp = { n: list.length, avg: list.length ? Math.round(kAll.pct / list.length) : 0, steps: kAll.d + '/' + kAll.s, open: kAll.o >= 1000 ? (kAll.o / 1000).toLocaleString('fr-FR', { maximumFractionDigits: 1 }) + ' k€' : eur(kAll.o) };
     return {
+      ...X,
       dark: st.dark, light: !st.dark, toggleTheme: () => set({ dark: !st.dark }),
       themeStyle: { position: 'absolute', inset: 0, background: 'var(--bg)', color: 'var(--ink)', colorScheme: st.dark ? 'dark' : 'light', transition: 'background .3s', ...(st.dark ? DARK : {}) },
       kp, sites, rubs, calWeeks, dayEv, calChips, dayLbl, dayN: dayEv.length ? dayEv.length + ' élément' + (dayEv.length > 1 ? 's' : '') : 'libre',
       calTitle: up1(MOIS[calMo - 1]) + ' ' + calY, calPrev: () => monthGo(-1), calNext: () => monthGo(1), calToday: () => set({ cal: today.slice(0, 7), calDay: today }),
       calDown: (e) => { this.calX = e.clientX; }, calUp: (e) => { if (this.calX == null) return; const dx = e.clientX - this.calX; this.calX = null; if (Math.abs(dx) > 50) { this.calSw = Date.now(); monthGo(dx < 0 ? 1 : -1); } },
-      subtitle, tb, projects, stocks, mails, chFilters, cats, contacts, cm, draftText, pj, segs, stepTypes,
+      subtitle, tb, tbList, tbCols: 'repeat(' + tbList.length + ',minmax(0,1fr))', tbShow: !X.selBar, projects, stocks, mails, chFilters, cats, contacts, cm, draftText, pj, segs, stepTypes,
       catCur: ccat === 'TOUS' ? 'Toutes les disciplines' : cap(ccat), catOpen: !!st.catOpen, catChev: st.catOpen ? 'rotate(180deg)' : 'none', toggleCat: () => set({ catOpen: !st.catOpen }),
       ...(() => { const k = st.cfgSite, C = st.cfg[k], CF = st.cfgF, upC = (o) => set({ cfg: { ...st.cfg, [k]: { ...C, ...o } } }), fld = (f) => (e) => upC({ [f]: e.target.value }), cf = (f) => (e) => set({ cfgF: { ...CF, [f]: e.target.value } });
         const nEt = C.zones.filter(z => /^Étage \d+$/.test(z)).map(z => +z.split(' ')[1]), nextEt = 'Étage ' + (nEt.length ? Math.max(...nEt) + 1 : 1);
@@ -2640,7 +3372,7 @@ class Component extends DCLogic {
       newHasCover: !!F.cover, newNoCover: !F.cover, newCoverSrc: F.cover ? phUrl(F.cover) : '',
       noProj: st.tab === 'p' && !detail && projects.length === 0, secOn: st.projSecs !== false, projEmpty: st.projSecs === false ? 'Aucun projet' + (pdisc ? ' en ' + pdisc : '') : pdisc ? 'Aucun projet ' + { d: 'terminé', r: 'en cours', t: 'à faire' }[psec] + ' en ' + pdisc : { d: 'Aucun projet terminé', r: 'Aucun projet en cours', t: 'Aucun projet à faire' }[psec],
       title: titles[st.tab], noEvents: dayEv.length === 0, hasEvents: dayEv.length > 0, stop: (e) => e.stopPropagation(),
-      isList: st.tab === 'p' && !detail, isDetail: detail, showHead: !detail && !(st.tab === 'c' && st.supSel),
+      isList: st.tab === 'p' && !detail, isDetail: detail, showHead: !detail && !(st.tab === 'c' && st.supSel) && !(st.tab === 'i' && X.chOpen),
       segE: segK === 'e', segL: segK === 'l', segC: segK === 'c',
       editLabel: st.editSteps ? 'OK' : 'Modifier', toggleEdit: () => set({ editSteps: !st.editSteps }),
       stepText: st.stepText, onStep: (e) => set({ stepText: e.target.value }),
@@ -2651,7 +3383,7 @@ class Component extends DCLogic {
       isStock: st.tab === 's', isMail: st.tab === 'm', isPlan: st.tab === 'l', isSup: st.tab === 'c',
       ...(() => { const key = { c: 'allC', l: 'allL', m: 'allM' }[st.tab], on = !!(key && st[key]) && !(st.tab === 'm' && boxOn);
         return { scopeOn: !!key && !(st.tab === 'm' && boxOn), wheelOp: on ? 0.45 : 1, scopeBg: on ? 'var(--acc)' : 'var(--tile)', scopeFg: on ? 'var(--accOn)' : 'var(--ink)', scopeToggle: () => set({ [key]: !st[key], mail: null, who: null }) }; })(),
-      showSel: !glob && !detail, noSel: glob, menuOpen: st.menu && !glob && !detail, toggleMenu: () => set({ menu: !st.menu }), closeMenu: () => set({ menu: false }),
+      showSel: !glob && !detail && !/^[fi]$/.test(st.tab), noSel: glob || /^[fi]$/.test(st.tab), menuOpen: st.menu && !glob && !detail, toggleMenu: () => set({ menu: !st.menu }), closeMenu: () => set({ menu: false }),
       cur: { label: SL(st.site), dot: DOT[st.site] }, wheel, wWheel, wDown, wMove, wUp, menuChev: st.menu ? 'rotate(180deg)' : 'none',
       openAcc: () => { set({ sheet: 'acc', form: {}, back: [], menu: false, bkPend: null, bkMsg: '' }); if (cloudReady()) cloudMe().then(() => { ME = cloudUser(); this.forceUpdate(); }).catch(() => {}); }, isAccSheet: sh === 'acc',
       bkLast: st.bkLast ? 'Dernière : ' + bkWhen(st.bkLast.at) + (st.bkLast.imp ? ' · restaurée' : '') : 'Aucune sauvegarde pour l’instant', bkLastId: st.bkLast ? st.bkLast.id : '', hasBkId: !!st.bkLast,
@@ -2713,12 +3445,12 @@ class Component extends DCLogic {
           lgId: L.id || '', lgPw: L.pw || '', lgErr: L.err || '', hasLgErr: !!L.err,
           onLgId: (e) => set({ lg: { ...L, id: e.target.value, err: '' } }), onLgPw: (e) => set({ lg: { ...L, pw: e.target.value, err: '' } }),
           doLogin, lgKey: (e) => { if (e.key === 'Enter') doLogin(); },
-          toast: st.toast ? st.toast.msg : '', hasToast: !!st.toast, toastUndo: !!(st.toast && st.toast.undo), undo: () => this.undo(), noDel: !canDel(), cfgOk: canCfg()
+          toast: st.toast ? st.toast.msg : '', hasToast: !!st.toast, toastUndo: !!(st.toast && st.toast.undo), toastAct: !!(st.toast && st.toast.act), toastActLbl: st.toast && st.toast.act ? st.toast.act.l : '', toastGo: () => { const a = st.toast && st.toast.act; set({ toast: null }); if (a) a.fn(); }, undo: () => this.undo(), noDel: !canDel(), cfgOk: canCfg()
         };
       })(),
       themeOpts: [[true, 'Sombre'], [false, 'Clair']].map(([v, label]) => ({ label, bg: st.dark === v ? ACC : 'transparent', fg: st.dark === v ? 'var(--accOn)' : 'var(--ink2)', pick: () => set({ dark: v }) })),
-      canAdd: st.tab === 'p' || st.tab === 's' || st.tab === 'l' || st.tab === 'c',
-      canCfg: canCfg(), openCfg: () => set({ sheet: 'cfg', cfgSec: st.tab, form: {}, back: [], menu: false }),
+      canAdd: st.tab === 'p' || st.tab === 's' || st.tab === 'l' || st.tab === 'c' || st.tab === 'f' || (st.tab === 'i' && X.chOpen), canMore: st.tab === 'f', moreOpen: X.fMore,
+      canCfg: canCfg() && !/^[fi]$/.test(st.tab), openCfg: () => set({ sheet: 'cfg', cfgSec: st.tab, form: {}, back: [], menu: false }),
       isStkCfg: sh === 'stkcfg',
       ...(() => {
         const chip = (list, cur, key) => list.map(v => { const a = cur === v; return { label: v, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => setF({ [key]: a ? '' : v }) }; });
@@ -2744,15 +3476,15 @@ class Component extends DCLogic {
       // corbeille : 30 jours pour restaurer
       ...(() => {
         const T = st.trash || {}, lim = Date.now() - 30 * 864e5, ids = Object.keys(T).filter(id => new Date(T[id].at).getTime() >= lim).sort((a, b) => String(T[b].at).localeCompare(T[a].at));
-        const KL = { proj: 'Projet', sup: 'Contact', ev: 'Événement', stk: 'Article', inv: 'Facture', step: 'Étape', note: 'Note', team: 'Intervenant', projSup: 'Fournisseur du projet', photo: 'Photo', mail: 'Message' };
-        const nm = t => { const d = t.d || {}; return ({ proj: d.p && d.p.name, sup: d.x && d.x.name, ev: d.e && d.e.title, stk: d.name, inv: d.x && 'Facture ' + d.x.num + (d.x.sup ? ' · ' + d.x.sup : ''), step: d.x && d.x.l, note: d.t, team: d.m && d.m[0], projSup: d.x && d.x.name, photo: 'Photo du projet', mail: d.m && (d.m.subject || d.m.from) })[t.k] || t.l || 'Élément'; };
+        const KL = { proj: 'Projet', sup: 'Contact', ev: 'Événement', stk: 'Article', inv: 'Facture', step: 'Étape', note: 'Note', team: 'Intervenant', projSup: 'Fournisseur du projet', photo: 'Photo', mail: 'Message', file: 'Fichier' };
+        const nm = t => { const d = t.d || {}; return ({ proj: d.p && d.p.name, sup: d.x && d.x.name, ev: d.e && d.e.title, stk: d.name, inv: d.x && 'Facture ' + d.x.num + (d.x.sup ? ' · ' + d.x.sup : ''), step: d.x && d.x.l, note: d.t, team: d.m && d.m[0], projSup: d.x && d.x.name, photo: 'Photo du projet', mail: d.m && (d.m.subject || d.m.from), file: d.n })[t.k] || t.l || 'Élément'; };
         const pn = pid => { const p = Object.values(st.P).flat().find(x => x.id === pid); return p ? p.name : ''; };
         const trashL = ids.map(id => { const t = T[id], left = Math.max(1, 30 - Math.floor((Date.now() - new Date(t.at).getTime()) / 864e5)), sw = 'tr:' + id;
-          SW[sw] = canDel() ? { del: () => { this.setState(z => { const n = { ...(z.trash || {}) }; delete n[id]; return { trash: n }; }); } } : {};
+          SW[sw] = canDel() ? { del: () => { trashBlobs([T[id]]); this.setState(z => { const n = { ...(z.trash || {}) }; delete n[id]; return { trash: n }; }); } } : {};
           return { sw, name: nm(t), sub: [KL[t.k] || 'Élément', t.d && t.d.pid ? pn(t.d.pid) : '', 'supprimé le ' + bkWhen(t.at) + (t.by ? ' par ' + t.by : ''), 'encore ' + left + ' j'].filter(Boolean).join(' · '), restore: () => this.trashRestore(id) }; });
         return { isTrash: sh === 'trash', trashL, trashHas: trashL.length > 0, trashEmpty: !trashL.length, trashN: trashL.length ? trashL.length + ' élément' + (trashL.length > 1 ? 's' : '') : 'Vide',
           trashOpen: () => { this.trashPurge(); sub({ sheet: 'trash', form: {} }); }, trashClearLbl: F.trClr ? 'Toucher encore pour vider la corbeille' : 'Vider la corbeille',
-          trashClear: () => { if (!F.trClr) { setF({ trClr: true }); return; } set({ trash: {}, form: {} }); } };
+          trashClear: () => { if (!F.trClr) { setF({ trClr: true }); return; } trashBlobs(Object.values(st.trash || {})); set({ trash: {}, form: {} }); } };
       })(),
       // réglages par section : Projets, Stocks, Mails, Planning, Contacts
       ...(() => {
@@ -2801,6 +3533,7 @@ class Component extends DCLogic {
             items: SUP.slice().sort((a, b) => a.name.localeCompare(b.name, 'fr')).map(x => ({ sw: (() => { const k = 'cs:' + x.id; SW[k] = canDel() ? { del: how => this.undoable(x.name + ' supprimé de l’annuaire', 'sup', how, { x }, () => { const i = SUP.indexOf(x); if (i >= 0) SUP.splice(i, 1); set({ rev: (this.state.rev || 0) + 1, supSel: null }); }) } : {}; return k; })(), av: CATC[cap(x.cat || '')] || '#7A8496', ini: ini(x.name || '?'), name: x.name, sub: [RUB[rubOf(x)], cap(x.cat || ''), sitesLbl(x)].filter(Boolean).join(' · '), open: () => openEdB('sup', { id: x.id, sub: true }) })) };
         }
         if (cfOn && sec === 'l') {
+          T.push(tog(!!st.evTimes, 'Heures de début et de fin par défaut', '', () => { set({ evTimes: !st.evTimes }); }));
           rows = { t: 'Calendriers', n: CALU.length + ' calendrier' + (CALU.length > 1 ? 's' : '') + ' + 2 automatiques', add: () => openEdB('cal', { k: null }), addLbl: '+ Nouveau calendrier', note: '',
             items: calL().map(c => ({ sw: (() => { const k = 'cc:' + c.k; SW[k] = canDel() && !c.auto && CALU.length > 1 ? { del: how => this.undoable('Calendrier « ' + c.n + ' » supprimé', 'cal', how, null, () => { const L = calL().filter(x => x.k !== c.k), to = (L.find(x => !x.auto) || {}).k; this.setState(z => ({ cals: L, evs: (z.evs || []).map(e => e.cal === c.k ? { ...e, cal: to } : e) })); }) } : {}; return k; })(), av: c.c, ini: '', name: c.n, sub: c.auto ? 'Automatique · ' + (c.k === 'cmd' ? 'commandes et réceptions du stock' : 'factures à payer') : (c.d || []).length ? c.d.join(', ') : 'Toutes les disciplines', open: () => openEdB('cal', { k: c.k }) })) };
         }
@@ -2827,7 +3560,7 @@ class Component extends DCLogic {
               ...(() => { const S = CL.iaStats || {}, n = x => +x || 0, d = new Date(), crSet = S.credit != null, bal = n(S.credit) - n(S.since_cost), mode = fm.crMode || 'add';
                 const pl = (k, one, many) => k + ' ' + (k > 1 ? many : one);
                 return { iaUseOn: canCfg() && !!h, iaMonthLbl: MOIS[d.getMonth()] + ' ' + d.getFullYear(), iaMonth: usd(S.month_cost),
-                  iaMonthSub: [pl(n(S.month_calls), 'mail analysé', 'mails analysés'), pl(n(S.month_drafts), 'réponse rédigée', 'réponses rédigées'), pl(n(S.month_ean), 'code EAN cherché', 'codes EAN cherchés'), pl(n(S.month_searches), 'recherche web', 'recherches web')].join(' · ') + (n(S.total_cost) > n(S.month_cost) ? ' · depuis le début : ' + usd(S.total_cost) : ''),
+                  iaMonthSub: [pl(n(S.month_calls), 'mail analysé', 'mails analysés'), pl(n(S.month_drafts), 'réponse rédigée', 'réponses rédigées'), pl(n(S.month_chats), 'message à Claude', 'messages à Claude'), pl(n(S.month_ean), 'code EAN cherché', 'codes EAN cherchés'), pl(n(S.month_searches), 'recherche web', 'recherches web')].join(' · ') + (n(S.total_cost) > n(S.month_cost) ? ' · depuis le début : ' + usd(S.total_cost) : ''),
                   iaBal: crSet ? usd(bal) : '—', iaBalCol: !crSet ? 'var(--ink3)' : bal < 2 ? 'var(--warn)' : 'var(--ok)',
                   iaBalSub: crSet ? usd(S.credit) + ' déclarés le ' + bkWhen(S.credit_at).replace(/ à .*$/, '') + (bal < 2 ? ' · pensez à recharger' : '') : 'Indiquez le solde affiché par Anthropic.',
                   iaBillUrl: 'https://platform.claude.com/settings/billing', iaCrOn: !!fm.crOpen, iaCrLbl: crSet ? 'J’ai rechargé' : 'Indiquer le solde', iaCrTog: () => setF({ crOpen: !fm.crOpen, crMode: crSet ? 'add' : 'set', crAmt: '' }),
@@ -2848,7 +3581,7 @@ class Component extends DCLogic {
       edDelLbl: F.confirm ? 'Toucher encore pour confirmer' : (EK ? EK.delLbl : ''), edDelBg: F.confirm ? 'var(--warn)' : 'var(--warnBg)', edDelFg: F.confirm ? '#fff' : 'var(--warnTx)',
       edDel: () => { if (!F.confirm) { setF({ confirm: true }); return; } EK.del(edRef); pop(); },
       editProj: () => openEd('proj', { id: pid }), editSup: () => openEd('sup', { id: S0.id }), editMail: () => openEd('mail', { id: cm0.id }), newSite: () => openEd('site', { k: null }),
-      openSheet: () => st.tab === 'c' ? openEd('sup', { id: null, rub: rub }) : st.tab === 'l' ? set({ sheet: 'l', back: [], form: { date: selD, cal: CALS[CALU[0]][0], siteN: SL(st.site), disc: '' }, menu: false }) : set({ sheet: st.tab, back: [], form: st.tab === 'p' ? { steps: DEFSTEPS, sups: [], b: pdisc ? [pdisc] : [] } : { day: st.day, site: st.site }, menu: false }),
+      openSheet: (e) => st.tab === 'f' ? X.fAdd(e) : st.tab === 'i' ? set({ chat: null, chatErr: '' }) : st.tab === 'c' ? openEd('sup', { id: null, rub: rub }) : st.tab === 'l' ? set({ sheet: 'l', back: [], form: { date: selD, cal: CALS[CALU[0]][0], siteN: SL(st.site), disc: '', hrs: !!st.evTimes, ...(st.evTimes ? { t: '08:00', end: '09:00' } : {}) }, menu: false }) : set({ sheet: st.tab, back: [], form: st.tab === 'p' ? { steps: DEFSTEPS, sups: [], b: pdisc ? [pdisc] : [] } : { day: st.day, site: st.site }, menu: false }),
       sheetOpen: !!sh, closeSheet: pop, closeLbl, dismissSheet: () => { if (this.rec) try { this.rec.abort(); } catch (e) {} set({ sheet: null, mic: null, back: [] }); }, submit, submitCol: valid ? ACC : 'var(--ink3)', submitLabel: sh === 'ed' ? (edRef.k === null || edRef.i < 0 || edRef.id === null ? 'Créer' : 'OK') : sh === 'p' ? 'Créer' : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' || sh === 'cfg' || sh === 'trash' ? 'OK' : 'Ajouter',
       sheetTitle: sh === 'ed' ? (EK ? EK.title(edRef) : '') : sh === 'trash' ? 'Corbeille' : sh === 'cfg' ? 'Réglages · ' + ({ p: 'Projets', s: 'Stocks', m: 'Mails', l: 'Planning', c: 'Contacts' }[st.cfgSec] || '') : { stkcfg: 'Réglages du stock', supcfg: 'Réglages fournisseurs', site: 'Configurer le site', acc: 'Compte', p: 'Nouveau projet', s: 'Nouveau produit', l: 'Nouvel événement', sup: 'Ajouter un fournisseur', inv: 'Nouvelle facture' }[sh] || '',
       groups, fSteps, invSups, invSt, projSupOn, projPhCover: sh === 'p' && projPhOn,
