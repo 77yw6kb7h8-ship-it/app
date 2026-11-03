@@ -98,11 +98,13 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
 - **Contacts** : rubriques modifiables (bouton « Modifier » au bout de la liste), discipline,
   adresse, affectation aux sites, sélecteur de site. Délai et prix ne sont plus demandés à la
   création (modifiables ensuite sur la fiche d'un fournisseur).
-- **Mails** : résumé en deux lignes et brouillon proposé. Compte › Réglages › **Mails** : clé Claude
-  de l'entreprise (propriétaire, admin), puis pour chacun adresse et mot de passe d'application. La boîte
-  est lue par la fonction Supabase « chantier-ia » (voir `supabase/README.md`). Dans la fiche d'un mail,
-  destinataire, objet et réponse se modifient, puis « Envoyer la réponse » l'envoie directement depuis la
-  boîte (ou « Ouvrir dans l'app Mail »). Si Claude n'a pas préparé de brouillon, la raison est affichée.
+- **Mails** : résumé en deux lignes. Compte › Réglages › **Mails** : clé Claude de l'entreprise
+  (propriétaire, admin), puis pour chacun adresse et mot de passe d'application. La boîte est lue par la
+  fonction Supabase « chantier-ia » (voir `supabase/README.md`). Dans la fiche d'un mail, la case de
+  réponse est vide : on y tape ses éléments de réponse (ou une réponse complète), puis « Générer une
+  réponse » demande à Claude de la rédiger (« Mes éléments » revient aux notes). Destinataire, objet et
+  réponse se modifient, puis « Envoyer la réponse » l'envoie directement depuis la boîte (ou « Ouvrir dans
+  l'app Mail »).
   Réglages › Mails › Claude : consommation du mois, solde estimé, « Recharger » (page Billing d'Anthropic).
 
 ## Identifiants lisibles

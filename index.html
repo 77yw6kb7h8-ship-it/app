@@ -427,7 +427,6 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:3px 0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.ch }} · {{ m.org }}</div>
 <sc-if value="{{ isRecv }}" hint-placeholder-val="{{ true }}">
 <div style="font:400 14px/1.4 -apple-system,sans-serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-wrap:pretty">{{ m.summary }}</div>
-<sc-if value="{{ m.hasDraft }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:6px;align-items:baseline;margin-top:6px;font:400 12.5px -apple-system,sans-serif;color:var(--ink2);min-width:0"><span style="flex:none;padding:2px 7px;border-radius:999px;background:var(--accSoft);color:var(--accTx);font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif">Brouillon</span><span style="min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.draft }}</span></div></sc-if>
 </sc-if>
 <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
 <div style="font:400 13.5px/1.4 -apple-system,sans-serif;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.summary }}</div>
@@ -454,18 +453,15 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="border-radius:20px;background:var(--t3);color:var(--t3x);padding:14px 16px;font-size:14.5px;line-height:1.45"><div style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;margin-bottom:5px;opacity:.9">Résumé en deux lignes</div>{{ cm.summary }}</div>
 <div style="border-radius:20px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--ks);color:var(--ink);padding:14px 16px;font-size:14px;line-height:1.5;margin-top:10px;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)"><div style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;margin-bottom:5px;color:var(--ink2)">Contenu du mail</div><div style="white-space:pre-line">{{ cm.body }}</div></div>
 <sc-if value="{{ cmTodo }}" hint-placeholder-val="{{ true }}">
-<div style="display:flex;justify-content:space-between;align-items:center;margin:20px 2px 8px">
-<div style="font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Brouillon de réponse</div>
-<div style="display:flex;gap:6px">
-<sc-for list="{{ tones }}" as="t" hint-placeholder-count="2">
-<div onClick="{{ t.pick }}" style="cursor:pointer;padding:6px 12px;border-radius:16px;border:1px solid var(--cardBd);background:{{ t.bg }};color:{{ t.fg }};font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ t.label }}</div>
-</sc-for>
-</div>
-</div>
+<div style="margin:20px 2px 8px;font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2)">Réponse</div>
 <sc-if value="{{ cmNote }}" hint-placeholder-val="{{ false }}"><div style="margin:0 0 10px;padding:11px 14px;border-radius:16px;background:var(--warnBg);color:var(--warnTx);font:500 13px/1.4 -apple-system,sans-serif">{{ cmNoteTxt }}</div></sc-if>
 <sc-if value="{{ cmBox }}" hint-placeholder-val="{{ false }}"><div style="border-radius:16px;background:var(--field);border:1px solid var(--tileBd);overflow:hidden;margin-bottom:8px"><div style="display:flex;align-items:center;padding:0 14px;border-bottom:2px solid var(--line)"><div style="width:52px;flex:none;font:500 13.5px -apple-system,sans-serif;color:var(--ink2)">À</div><input type="email" value="{{ replyTo }}" onChange="{{ onReplyTo }}" autocapitalize="none" autocorrect="off" style="flex:1;min-width:0;border:0;background:transparent;padding:11px 0;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div><div style="display:flex;align-items:center;padding:0 14px"><div style="width:52px;flex:none;font:500 13.5px -apple-system,sans-serif;color:var(--ink2)">Objet</div><input value="{{ replySub }}" onChange="{{ onReplySub }}" style="flex:1;min-width:0;border:0;background:transparent;padding:11px 0;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div></div></sc-if>
-<textarea value="{{ draftText }}" onChange="{{ onDraft }}" placeholder="Écrivez votre réponse…" rows="7" style="width:100%;border:1px solid var(--tileBd);background:var(--field);padding:14px 16px;border-radius:20px;font:400 14.5px/1.5 -apple-system,sans-serif;resize:none;outline:none;color:var(--ink)"></textarea>
-<div onClick="{{ sendMail }}" style="cursor:pointer;margin-top:10px;background:{{ sendBg }};color:var(--accOn);padding:15px;border-radius:16px;text-align:center;font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;opacity:{{ sendOp }}">{{ sendLabel }}</div>
+<textarea value="{{ draftText }}" onChange="{{ onDraft }}" placeholder="Éléments de réponse (ex. ok pour jeudi 8h, 60 plaques) ou réponse complète…" rows="7" style="width:100%;border:1px solid var(--tileBd);background:var(--field);padding:14px 16px;border-radius:20px;font:400 14.5px/1.5 -apple-system,sans-serif;resize:none;outline:none;color:var(--ink)"></textarea>
+<div style="display:flex;gap:8px;margin-top:10px">
+<div onClick="{{ genReply }}" style="flex:1;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;opacity:{{ genOp }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l1.9 5.6 5.6 1.9-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.9zM19 15l.9 2.1 2.1.9-2.1.9L19 21l-.9-2.1-2.1-.9 2.1-.9z"></path></svg>{{ genLbl }}</div>
+<sc-if value="{{ genBack }}" hint-placeholder-val="{{ false }}"><div onClick="{{ genUndo }}" style="flex:none;cursor:pointer;padding:13px 14px;border-radius:16px;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink2);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">Mes éléments</div></sc-if>
+</div>
+<div onClick="{{ sendMail }}" style="cursor:pointer;margin-top:8px;background:{{ sendBg }};color:var(--accOn);padding:15px;border-radius:16px;text-align:center;font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;opacity:{{ sendOp }}">{{ sendLabel }}</div>
 <sc-if value="{{ cmBox }}" hint-placeholder-val="{{ false }}"><div onClick="{{ openInMail }}" style="cursor:pointer;margin-top:8px;padding:12px;border-radius:16px;text-align:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">Ouvrir dans l’app Mail</div></sc-if>
 
 <div onClick="{{ markDone }}" style="cursor:pointer;margin-top:8px;padding:13px;border-radius:16px;text-align:center;border:1px solid var(--tileBd);color:var(--ink2);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">Traité sans réponse</div>
@@ -846,7 +842,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">À enregistrer dans iCloud Drive › Chantier › Sauvegardes.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 26</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 27</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -1161,9 +1157,9 @@ const SITES = {
         notes: ['Démarrer après les enduits'], sup: ['s2'], inv: [] }],
     stock: [['placo', 'Plaques BA13', 'plaques', 48, 80, 60], ['rail', 'Rails & montants R48', 'lots', 30, 20, 20], ['enduit', 'Enduit de lissage', 'sacs', 10, 20, 30], ['cable', 'Câble 3G2.5', 'couronnes', 4, 6, 6]],
     mails: [
-      { id: 'a-m1', ch: 'MAIL', from: 'Karim Benali', org: 'Plâtre Express', time: '08:42', unread: 1, subject: 'Livraison plaques BA13 — jeudi', summary: 'Livraison de 60 plaques possible jeudi matin. Demande confirmation avant 16h.', body: 'Bonjour, nous pouvons livrer les 60 plaques BA13 jeudi entre 7h et 9h, avec hayon. Merci de nous confirmer avant 16h aujourd’hui.', drafts: ['Bonjour Karim,\n\nLe créneau de jeudi 7h-9h nous convient pour les 60 plaques BA13. Merci de nous envoyer la confirmation écrite.\n\nCordialement,', 'OK jeudi 7h-9h pour 60 plaques. Merci de confirmer par mail.'] },
-      { id: 'a-m2', ch: 'SMS', from: 'Julie Marchand', org: 'Conductrice de travaux', time: '07:15', unread: 1, subject: 'SMS · Contrôle électrique', summary: 'Le bureau de contrôle passe demain 9h avant fermeture des cloisons étage 3.', body: 'Le bureau de contrôle passe demain à 9h avant la fermeture des cloisons de l’étage 3. Merci de dégager les accès.', drafts: ['Bien reçu Julie, accès dégagés dès 8h30. Je vous tiens au courant.', 'Reçu, ce sera prêt à 8h30.'] },
-      { id: 'a-m3', ch: 'APPEL', from: 'Marc Dubois', org: 'Elec Pro', time: 'Hier', unread: 0, subject: 'Appel manqué · Câble', summary: 'Rupture partielle câble 3G2.5 : 3 couronnes dispo, solde sous 10 jours.', body: 'Message vocal (0:48) : rupture partielle sur le câble 3G2.5. 3 couronnes disponibles, le solde sous 10 jours.', drafts: ['Bonjour Marc,\n\nMerci pour l’info. Pouvez-vous livrer les 3 couronnes demain ? Le solde sous 10 jours est acceptable.\n\nCordialement,', 'Livrez les 3 couronnes demain, solde sous 10 j OK.'] }] },
+      { id: 'a-m1', ch: 'MAIL', from: 'Karim Benali', org: 'Plâtre Express', time: '08:42', unread: 1, subject: 'Livraison plaques BA13 — jeudi', summary: 'Livraison de 60 plaques possible jeudi matin. Demande confirmation avant 16h.', body: 'Bonjour, nous pouvons livrer les 60 plaques BA13 jeudi entre 7h et 9h, avec hayon. Merci de nous confirmer avant 16h aujourd’hui.' },
+      { id: 'a-m2', ch: 'SMS', from: 'Julie Marchand', org: 'Conductrice de travaux', time: '07:15', unread: 1, subject: 'SMS · Contrôle électrique', summary: 'Le bureau de contrôle passe demain 9h avant fermeture des cloisons étage 3.', body: 'Le bureau de contrôle passe demain à 9h avant la fermeture des cloisons de l’étage 3. Merci de dégager les accès.' },
+      { id: 'a-m3', ch: 'APPEL', from: 'Marc Dubois', org: 'Elec Pro', time: 'Hier', unread: 0, subject: 'Appel manqué · Câble', summary: 'Rupture partielle câble 3G2.5 : 3 couronnes dispo, solde sous 10 jours.', body: 'Message vocal (0:48) : rupture partielle sur le câble 3G2.5. 3 couronnes disponibles, le solde sous 10 jours.' }] },
   b: { label: 'COLLÈGE PASTEUR', addr: 'Villeurbanne · Rénovation', geo: [45.766, 4.8795],
     projects: [
       { id: 'b1', name: 'Peinture des couloirs', phase: 'Finitions', due: '28 nov', addr: '12 rue Pasteur', city: '69100 Villeurbanne', access: 'Entrée rue Pasteur · badge à l’accueil', hours: '8h – 16h30 (hors cours)', geo: [45.766, 4.8795],
@@ -1178,8 +1174,8 @@ const SITES = {
         notes: ['Rapport de fin de chantier transmis'], sup: [], inv: [] }],
     stock: [['peinture', 'Peinture acrylique mat', 'pots 15 L', 9, 12, 20], ['sousc', 'Sous-couche', 'pots', 14, 8, 10], ['dalle', 'Dalles faux-plafond', 'cartons', 30, 40, 20]],
     mails: [
-      { id: 'b-m1', ch: 'MAIL', from: 'Direction Pasteur', org: 'M. Lefèvre', time: '09:10', unread: 1, subject: 'Planning vacances Toussaint', summary: 'Le collège autorise le bruit lourd uniquement pendant les vacances (24 oct – 3 nov).', body: 'Bonjour, merci de concentrer les travaux bruyants pendant les vacances scolaires. Accès libre au bâtiment A du 24 octobre au 3 novembre.', drafts: ['Bonjour M. Lefèvre,\n\nNous concentrerons les travaux bruyants sur la période du 24 octobre au 3 novembre. Un planning détaillé vous sera envoyé demain.\n\nCordialement,', 'Bien noté, planning envoyé demain.'] },
-      { id: 'b-m2', ch: 'APPEL', from: 'Sophie Aubry', org: 'Couleurs & Cie', time: 'Hier', unread: 0, subject: 'Appel · Peinture', summary: 'Peinture RAL 9010 : teinteuse en panne, livraison décalée au 30 octobre.', body: 'Message vocal (0:32) : teinteuse en panne, livraison de la peinture RAL 9010 décalée au 30 octobre.', drafts: ['Bonjour Sophie,\n\nUn décalage au 30 octobre est difficile pour nous. Pouvez-vous livrer au plus tôt, même partiellement ?\n\nCordialement,', 'Impossible d’attendre le 30. Livraison partielle dès demain ?'] }] },
+      { id: 'b-m1', ch: 'MAIL', from: 'Direction Pasteur', org: 'M. Lefèvre', time: '09:10', unread: 1, subject: 'Planning vacances Toussaint', summary: 'Le collège autorise le bruit lourd uniquement pendant les vacances (24 oct – 3 nov).', body: 'Bonjour, merci de concentrer les travaux bruyants pendant les vacances scolaires. Accès libre au bâtiment A du 24 octobre au 3 novembre.' },
+      { id: 'b-m2', ch: 'APPEL', from: 'Sophie Aubry', org: 'Couleurs & Cie', time: 'Hier', unread: 0, subject: 'Appel · Peinture', summary: 'Peinture RAL 9010 : teinteuse en panne, livraison décalée au 30 octobre.', body: 'Message vocal (0:32) : teinteuse en panne, livraison de la peinture RAL 9010 décalée au 30 octobre.' }] },
   c: { label: 'LOFT CONFLUENCE', addr: 'Lyon 2e · Réhabilitation', geo: [45.742, 4.819],
     projects: [
       { id: 'c1', name: 'Plomberie salles d’eau', phase: 'Lot plomberie', due: '7 nov', addr: '5 cours Charlemagne', city: '69002 Lyon', access: 'Interphone « Loft 3 » · 2e étage', hours: '8h – 18h', geo: [45.742, 4.819],
@@ -1193,7 +1189,7 @@ const SITES = {
         notes: ['Plan à valider avec le client'], sup: ['s8'], inv: [] }],
     stock: [['carrelage', 'Carrelage 60×60', 'm²', 40, 60, 50], ['colle', 'Colle C2', 'sacs', 12, 10, 25], ['tube', 'Tube multicouche Ø16', 'couronnes', 5, 4, 5]],
     mails: [
-      { id: 'c-m1', ch: 'MAIL', from: 'Paul Girard', org: 'Céramique Sud', time: '10:05', unread: 1, subject: 'Carrelage — même lot de teinte', summary: 'Un seul lot disponible pour 50 m² ; au-delà, risque de différence de teinte.', body: 'Bonjour, nous pouvons vous réserver 50 m² du même lot de teinte jusqu’à vendredi. Au-delà, le lot ne sera plus garanti.', drafts: ['Bonjour Paul,\n\nMerci de réserver 50 m² du lot actuel. Nous confirmons la commande avant vendredi.\n\nCordialement,', 'Réservez 50 m² du lot, commande confirmée avant vendredi.'] }] }
+      { id: 'c-m1', ch: 'MAIL', from: 'Paul Girard', org: 'Céramique Sud', time: '10:05', unread: 1, subject: 'Carrelage — même lot de teinte', summary: 'Un seul lot disponible pour 50 m² ; au-delà, risque de différence de teinte.', body: 'Bonjour, nous pouvons vous réserver 50 m² du même lot de teinte jusqu’à vendredi. Au-delà, le lot ne sera plus garanti.' }] }
 };
 const DONE = {
   a: [
@@ -1255,7 +1251,7 @@ const put = (o, v) => { if (v && typeof v === 'object') { Object.keys(o).forEach
 const wrapI = j => ((j % KS.length) + KS.length) % KS.length;
 const DEFSTEPS = [{ l: 'Préparation', t: 'c' }, { l: 'Exécution', t: 'g' }, { l: 'Finitions', t: 'g' }, { l: 'Réception', t: 'c' }];
 const SAVE_KEY = 'chantier-app-v6';
-const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'pdAdd', 'back', 'cfgSec', 'qa', 'sending'];
+const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'pdAdd', 'back', 'cfgSec', 'qa', 'sending', 'gen'];
 const restore = () => {
   try {
     if (location.hash === '#reset') { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(SESS_KEY); localStorage.removeItem(CL_KEY); Object.keys(CL).forEach(k => delete CL[k]); history.replaceState(null, '', location.pathname); return {}; }
@@ -1776,7 +1772,7 @@ class Component extends DCLogic {
         sup: p.sup.map(x => typeof x === 'string' ? supCopy(x) : { id: 'f' + rid(), ...x }),
         inv: p.inv.map((r, i) => ({ id: p.id + 'i' + i, sup: SN(r[0]), num: r[1], amt: r[2], date: r[3], st: r[4] })) }));
     });
-    return { dark: this.props.dark ?? false, site: 'a', tab: 'p', proj: null, seg: 'e', editSteps: false, stepText: '', stepType: 'g', supOpen: null, geo: {}, P, noteText: '', stk: {}, sentOrder: {}, mail: null, tone: 0, edits: {}, sentMail: {}, read: {}, wpos: 0, cfg: CFG0, cfgSite: 'a', cfgF: {}, sunday: false, discs: DISC0, discText: '', chf: 'TOUS', mbox: 'r', mq: '', who: null, vip: {}, treated: {}, cat: 'TOUS', sort: 'PRIX', day: 0, menu: false, sheet: null, form: {}, addS: {}, addE: {}, seq: 0, lg: {}, ...(START[this.props.start] || {}), ...this.boot() };
+    return { dark: this.props.dark ?? false, site: 'a', tab: 'p', proj: null, seg: 'e', editSteps: false, stepText: '', stepType: 'g', supOpen: null, geo: {}, P, noteText: '', stk: {}, sentOrder: {}, mail: null, edits: {}, sentMail: {}, read: {}, wpos: 0, cfg: CFG0, cfgSite: 'a', cfgF: {}, sunday: false, discs: DISC0, discText: '', chf: 'TOUS', mbox: 'r', mq: '', who: null, vip: {}, treated: {}, cat: 'TOUS', sort: 'PRIX', day: 0, menu: false, sheet: null, form: {}, addS: {}, addE: {}, seq: 0, lg: {}, ...(START[this.props.start] || {}), ...this.boot() };
   }
   boot() { const r = restore(); seedUsers(); seedUsers2(); meLoad(); ME = cloudUser(); if (r.mbx) r.mbx = { ...r.mbx, busy: false }; if (!Array.isArray(r.evs)) r.evs = evMigrate(r.addE); return r;
   }
@@ -2033,6 +2029,17 @@ class Component extends DCLogic {
       this.toast('✓ Réponse envoyée à ' + String(r.to).trim());
     } catch (e) { this.setState({ sending: null }); this.toast('Non envoyé : ' + (e.status === 404 ? 'mettez à jour la fonction chantier-ia dans Supabase' : (e && e.message) || e)); }
   }
+  async genReply(m, points) {
+    if (this.state.gen) return;
+    if (!cloudReady()) { this.toast('Connectez-vous à votre compte pour utiliser Claude'); return; }
+    this.setState({ gen: m.id });
+    try {
+      const j = await sbJson('/functions/v1/chantier-ia/draft', { method: 'POST', json: { mail: { from: m.from, addr: m.replyTo || m.org || '', subject: m.subject, date: m.date || '', body: String(m.body || '').slice(0, 20000) }, points, sender: (ME && ME.name) || '' } });
+      const text = String((j && j.text) || '').trim();
+      if (!text) throw new Error('réponse vide');
+      this.setState(s => ({ gen: null, edits: { ...s.edits, [m.id + ':r']: text, [m.id + ':pts']: points } }));
+    } catch (e) { this.setState({ gen: null }); this.toast('Pas de réponse : ' + (e.status === 404 ? 'mettez à jour la fonction chantier-ia dans Supabase' : (e && e.message) || e)); }
+  }
   async iaRefresh() {
     if (!cloudReady()) return;
     try { CL.iaHint = await rpc('ia_key_hint', {}); } catch (e) {}
@@ -2239,19 +2246,19 @@ class Component extends DCLogic {
     const isVip = n => st.vip[n] ?? !!VIP0[n];
     const inbox = Array.isArray(st.inbox) ? st.inbox : [], boxOn = st.msrc === 'box';
     const whenM = x => { const d = new Date(x); if (isNaN(d)) return ''; return iso(d) === iso(new Date()) ? p2(d.getHours()) + ':' + p2(d.getMinutes()) : d.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' }); };
-    const boxM = inbox.map(m => ({ messageId: m.messageId || '', note: m.note || '', id: m.id, ch: 'MAIL', from: m.from || m.addr || '?', org: m.addr || '', time: whenM(m.date), unread: m.unread ? 1 : 0, subject: m.subject || '(sans objet)', summary: m.summary || m.subject || '', body: m.body || '', drafts: [(m.drafts || [])[0] || '', (m.drafts || [])[1] || ''], replyTo: m.replyTo || m.addr || '', box: true }));
-    const allM = boxOn ? boxM : (st.allM ? KS : [st.site]).flatMap(k => [...((SITES[k] || {}).mails || []), ...(DONE[k] || [])].map(m => ({ ...m, org: st.allM ? [m.org, SL(k)].filter(Boolean).join(' · ') : m.org, drafts: m.drafts || [m.reply || '', m.reply || ''] })));
+    const boxM = inbox.map(m => ({ messageId: m.messageId || '', note: m.note || '', id: m.id, ch: 'MAIL', from: m.from || m.addr || '?', org: m.addr || '', time: whenM(m.date), unread: m.unread ? 1 : 0, subject: m.subject || '(sans objet)', summary: m.summary || m.subject || '', body: m.body || '', date: m.date || '', replyTo: m.replyTo || m.addr || '', box: true }));
+    const allM = boxOn ? boxM : (st.allM ? KS : [st.site]).flatMap(k => [...((SITES[k] || {}).mails || []), ...(DONE[k] || [])].map(m => ({ ...m, org: st.allM ? [m.org, SL(k)].filter(Boolean).join(' · ') : m.org })));
     const trOf = m => { const t = st.treated[m.id]; return t !== undefined ? t : (m.reply != null ? { reply: m.reply, at: m.at } : false); };
     const mq = st.mq.trim().toLowerCase();
     const match = m => (!st.who || m.from === st.who) && (!mq || [m.from, m.org, m.subject, m.summary, m.body].join(' ').toLowerCase().includes(mq));
     const recv = allM.filter(m => !trOf(m)), done = allM.filter(m => trOf(m));
     const mails = (st.mbox === 't' ? done : recv).filter(match).map(m => {
       const unread = m.unread && !st.read[m.id], t = trOf(m);
-      const sw = 'm:' + m.id, d0 = (m.drafts[0] || '').replace(/\s+/g, ' ').trim();
+      const sw = 'm:' + m.id;
       SW[sw] = canDel() ? { del: how => this.undoable('Message supprimé', 'mail', how, m.box ? null : mailLoc(m.id), () => { if (m.box) this.setState(z => ({ inbox: (z.inbox || []).filter(x => x.id !== m.id) })); else { const x = findMail(m.id); if (x) x.arr.splice(x.i, 1); this.setState(z => ({ rev: (z.rev || 0) + 1 })); } }) } : {};
-      return { sw, hasDraft: !!d0 && !t, draft: d0, ch: CH[m.ch], ini: ini(m.from), avBg: AV[m.ch], from: m.from, org: m.org, time: t ? t.at : m.time, summary: m.summary, vip: isVip(m.from), dot: !!unread, fw: unread ? 700 : 500,
+      return { sw, ch: CH[m.ch], ini: ini(m.from), avBg: AV[m.ch], from: m.from, org: m.org, time: t ? t.at : m.time, summary: m.summary, vip: isVip(m.from), dot: !!unread, fw: unread ? 700 : 500,
         replyLbl: t && t.reply ? 'Réponse envoyée' : 'Traité sans réponse', reply: t && t.reply ? t.reply.replace(/\n+/g, ' ') : 'Demande traitée directement (appel ou sur site).',
-        open: () => set({ mail: m.id, tone: 0, read: { ...st.read, [m.id]: true } }) };
+        open: () => set({ mail: m.id, read: { ...st.read, [m.id]: true } }) };
     });
     const mboxSeg = [['r', 'Reçu', recv.length], ['t', 'Traité', done.length]].map(([k, l, n]) => ({ label: l + ' · ' + n, bg: st.mbox === k ? 'var(--on)' : 'transparent', fg: st.mbox === k ? INK : 'var(--ink2)', pick: () => set({ mbox: k }) }));
     const mcnt = {}; allM.forEach(m => { mcnt[m.from] = (mcnt[m.from] || 0) + 1; });
@@ -2259,13 +2266,12 @@ class Component extends DCLogic {
     const unreadN = Object.keys(SITES).reduce((n, k) => n + (SITES[k].mails || []).filter(m => m.unread && !st.read[m.id] && !st.treated[m.id]).length, 0) + inbox.filter(m => m.unread && !st.read[m.id] && !st.treated[m.id]).length;
     const mbx = st.mbx || {}, mlim = mbx.limit || 30;
     const msrcSeg = [['site', 'Chantiers'], ['box', 'Boîte mail' + (inbox.length ? ' · ' + inbox.length : '')]].map(([k, l]) => { const a = (st.msrc || 'site') === k; return { label: l, bg: a ? 'var(--on)' : 'transparent', fg: a ? INK : 'var(--ink2)', pick: () => set({ msrc: k, mail: null, who: null }) }; });
-    const cm0 = allM.find(m => m.id === st.mail) || { id: '', ch: 'MAIL', time: '', subject: '', from: ' ', org: '', summary: '', body: '', drafts: ['', ''] };
+    const cm0 = allM.find(m => m.id === st.mail) || { id: '', ch: 'MAIL', time: '', subject: '', from: ' ', org: '', summary: '', body: '' };
     const cmT = trOf(cm0), cv = isVip(cm0.from);
     const cm = { ...cm0, ch: CH[cm0.ch], ini: ini(cm0.from), avBg: AV[cm0.ch], vipBg: cv ? 'rgba(201,162,39,.16)' : 'var(--tile)', vipFg: cv ? '#C9A227' : 'var(--ink2)', vipFill: cv ? '#C9A227' : 'none', vipToggle: () => set({ vip: { ...st.vip, [cm0.from]: !cv } }) };
-    const dk = cm0.id + st.tone, draftText = st.edits[dk] ?? cm0.drafts[st.tone] ?? '';
+    const dk = cm0.id + ':r', draftText = st.edits[dk] ?? '', genPts = st.edits[cm0.id + ':pts'];
     const replyTo = st.edits[cm0.id + ':to'] ?? (cm0.replyTo || ''), replySub = st.edits[cm0.id + ':sub'] ?? (/^re\s*:/i.test(cm0.subject || '') ? cm0.subject : 'Re: ' + (cm0.subject || ''));
     const nowT = { reply: '', at: 'À l’instant' };
-    const tones = ['Courtois', 'Bref'].map((l, i) => ({ label: l, bg: on(st.tone === i), fg: fg(st.tone === i), pick: () => set({ tone: i }) }));
     const chFilters = ['TOUS', 'MAIL', 'SMS', 'APPEL'].map(l => ({ label: CH[l], bg: on(st.chf === l), fg: fg(st.chf === l), pick: () => set({ chf: l }) }));
     // annuaire : fournisseurs, sous-traitants, clients, par site
     const rubOf = s => RUB[s.rub] ? s.rub : 'F', sitesOf = s => (s.sites || []).filter(k => SITES[k]);
@@ -2601,7 +2607,7 @@ class Component extends DCLogic {
       kp, sites, rubs, calWeeks, dayEv, calChips, dayLbl, dayN: dayEv.length ? dayEv.length + ' élément' + (dayEv.length > 1 ? 's' : '') : 'libre',
       calTitle: up1(MOIS[calMo - 1]) + ' ' + calY, calPrev: () => monthGo(-1), calNext: () => monthGo(1), calToday: () => set({ cal: today.slice(0, 7), calDay: today }),
       calDown: (e) => { this.calX = e.clientX; }, calUp: (e) => { if (this.calX == null) return; const dx = e.clientX - this.calX; this.calX = null; if (Math.abs(dx) > 50) { this.calSw = Date.now(); monthGo(dx < 0 ? 1 : -1); } },
-      subtitle, tb, projects, stocks, mails, tones, chFilters, cats, contacts, cm, draftText, pj, segs, stepTypes,
+      subtitle, tb, projects, stocks, mails, chFilters, cats, contacts, cm, draftText, pj, segs, stepTypes,
       catCur: ccat === 'TOUS' ? 'Toutes les disciplines' : cap(ccat), catOpen: !!st.catOpen, catChev: st.catOpen ? 'rotate(180deg)' : 'none', toggleCat: () => set({ catOpen: !st.catOpen }),
       ...(() => { const k = st.cfgSite, C = st.cfg[k], CF = st.cfgF, upC = (o) => set({ cfg: { ...st.cfg, [k]: { ...C, ...o } } }), fld = (f) => (e) => upC({ [f]: e.target.value }), cf = (f) => (e) => set({ cfgF: { ...CF, [f]: e.target.value } });
         const nEt = C.zones.filter(z => /^Étage \d+$/.test(z)).map(z => +z.split(' ')[1]), nextEt = 'Étage ' + (nEt.length ? Math.max(...nEt) + 1 : 1);
@@ -2821,7 +2827,7 @@ class Component extends DCLogic {
               ...(() => { const S = CL.iaStats || {}, n = x => +x || 0, d = new Date(), crSet = S.credit != null, bal = n(S.credit) - n(S.since_cost), mode = fm.crMode || 'add';
                 const pl = (k, one, many) => k + ' ' + (k > 1 ? many : one);
                 return { iaUseOn: canCfg() && !!h, iaMonthLbl: MOIS[d.getMonth()] + ' ' + d.getFullYear(), iaMonth: usd(S.month_cost),
-                  iaMonthSub: [pl(n(S.month_calls), 'mail analysé', 'mails analysés'), pl(n(S.month_ean), 'code EAN cherché', 'codes EAN cherchés'), pl(n(S.month_searches), 'recherche web', 'recherches web')].join(' · ') + (n(S.total_cost) > n(S.month_cost) ? ' · depuis le début : ' + usd(S.total_cost) : ''),
+                  iaMonthSub: [pl(n(S.month_calls), 'mail analysé', 'mails analysés'), pl(n(S.month_drafts), 'réponse rédigée', 'réponses rédigées'), pl(n(S.month_ean), 'code EAN cherché', 'codes EAN cherchés'), pl(n(S.month_searches), 'recherche web', 'recherches web')].join(' · ') + (n(S.total_cost) > n(S.month_cost) ? ' · depuis le début : ' + usd(S.total_cost) : ''),
                   iaBal: crSet ? usd(bal) : '—', iaBalCol: !crSet ? 'var(--ink3)' : bal < 2 ? 'var(--warn)' : 'var(--ok)',
                   iaBalSub: crSet ? usd(S.credit) + ' déclarés le ' + bkWhen(S.credit_at).replace(/ à .*$/, '') + (bal < 2 ? ' · pensez à recharger' : '') : 'Indiquez le solde affiché par Anthropic.',
                   iaBillUrl: 'https://platform.claude.com/settings/billing', iaCrOn: !!fm.crOpen, iaCrLbl: crSet ? 'J’ai rechargé' : 'Indiquer le solde', iaCrTog: () => setF({ crOpen: !fm.crOpen, crMode: crSet ? 'add' : 'set', crAmt: '' }),
@@ -2858,6 +2864,8 @@ class Component extends DCLogic {
       noteText: st.noteText, onNote: (e) => set({ noteText: e.target.value }),
       addNote: () => { const t = st.noteText.trim(); if (t) { up(p => ({ ...p, notes: [...p.notes, t] })); set({ noteText: '' }); } },
       onDraft: (e) => set({ edits: { ...st.edits, [dk]: e.target.value } }),
+      genReply: () => this.genReply(cm0, draftText), genLbl: st.gen === cm0.id ? 'Rédaction…' : 'Générer une réponse', genOp: st.gen === cm0.id ? 0.6 : 1,
+      genBack: genPts != null && genPts !== draftText, genUndo: () => set({ edits: { ...st.edits, [dk]: genPts, [cm0.id + ':pts']: undefined } }),
       sendLabel: st.sending === cm0.id ? 'Envoi en cours…' : 'Envoyer la réponse', sendOp: st.sending === cm0.id ? 0.6 : 1, sendBg: ACC, cmBox: !!cm0.box, cmSite: !cm0.box,
       msrcSeg, showMsrc: inbox.length > 0 || !!mbx.user, boxEmpty: boxOn && !inbox.length, syncMail: () => this.syncMail(), syncLbl: mbx.busy ? 'Synchronisation…' : 'Synchroniser les ' + mlim + ' derniers mails', mbxLim: mlim,
       mbxState: mbx.err ? mbx.err : mbx.last ? 'Connectée' + (mbx.account ? ' · ' + mbx.account : '') + ' · ' + inbox.length + ' mails · ' + bkWhen(mbx.last) : mbx.user ? 'Pas encore synchronisée' : 'Non connectée',
@@ -2870,7 +2878,7 @@ class Component extends DCLogic {
       },
       openInMail: () => { if (!replyTo) return; location.href = 'mailto:' + encodeURIComponent(replyTo) + '?subject=' + encodeURIComponent(replySub) + '&body=' + encodeURIComponent(draftText); set({ treated: { ...st.treated, [cm0.id]: { reply: draftText, at: 'À l’instant' } } }); },
       replyTo, replySub, onReplyTo: (e) => set({ edits: { ...st.edits, [cm0.id + ':to']: e.target.value } }), onReplySub: (e) => set({ edits: { ...st.edits, [cm0.id + ':sub']: e.target.value } }),
-      cmNote: !!cm0.box && !!cm0.note && !cmT, cmNoteTxt: cm0.note === 'à analyser' ? 'Pas encore analysé : touchez Synchroniser.' : 'Pas de brouillon : ' + String(cm0.note).replace(/^analyse indisponible : /, ''),
+      cmNote: !!cm0.box && !!cm0.note && !cmT, cmNoteTxt: cm0.note === 'à analyser' ? 'Pas encore analysé : touchez Synchroniser.' : 'Résumé indisponible : ' + String(cm0.note).replace(/^analyse indisponible : /, ''),
       markDone: () => set({ treated: { ...st.treated, [cm0.id]: nowT } }),
       reopen: () => set({ treated: { ...st.treated, [cm0.id]: false }, mbox: 'r' }),
       cmDone: !!cmT, cmTodo: !cmT, cmReplyLbl: cmT && cmT.reply ? 'Réponse envoyée · ' + cmT.at : 'Traité sans réponse · ' + (cmT ? cmT.at : ''), cmReply: cmT && cmT.reply ? cmT.reply : 'Aucune réponse écrite : demande traitée directement.',
