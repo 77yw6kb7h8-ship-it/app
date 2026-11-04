@@ -26,7 +26,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <x-dc>
 <helmet>
 <script src="./image-slot.js"></script>
-<style>html,body{overflow-x:hidden;max-width:100%}body{overflow-wrap:anywhere}html,body{margin:0;height:100%;background:#EEF0F3;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}a{color:inherit;text-decoration:none}a:hover{opacity:.8}*{box-sizing:border-box}::-webkit-scrollbar{display:none}textarea::placeholder,input::placeholder{color:var(--ink3)}.rid{display:none;padding:3px 7px;border-radius:7px;background:var(--tile);border:1px solid var(--tileBd);font:600 11px/1.3 ui-monospace,'SF Mono',Menlo,monospace;color:var(--ink2);letter-spacing:.02em;white-space:nowrap;vertical-align:middle}.show-ids .rid{display:inline-block}.sw{position:relative;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}img{-webkit-user-drag:none}.sw img{pointer-events:none}.sw-fg{position:relative;z-index:1}.sw-r,.sw-l{position:absolute;top:0;bottom:0;width:0;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff;font:600 13.5px -apple-system,system-ui,sans-serif;white-space:nowrap;cursor:pointer}.sw-r{right:0;background:#FF3B30}.sw-l{left:0;background:#FF9F0A;opacity:.75;transition:opacity .15s}.sw-go>.sw-l{opacity:1}.sw-card>.sw-r,.sw-card>.sw-l{border-radius:24px}.no-del .sw-r{display:none}[data-lp],[data-lp] *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}@keyframes ctxIn{from{opacity:0}to{opacity:1}}@keyframes ctxPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}@keyframes dots{0%,80%,100%{opacity:.25}40%{opacity:1}}</style>
+<style>html,body{overflow-x:hidden;max-width:100%}body{overflow-wrap:anywhere}html,body{margin:0;height:100%;background:#EEF0F3;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}a{color:inherit;text-decoration:none}a:hover{opacity:.8}*{box-sizing:border-box}::-webkit-scrollbar{display:none}textarea::placeholder,input::placeholder{color:var(--ink3)}.rid{display:none;padding:3px 7px;border-radius:7px;background:var(--tile);border:1px solid var(--tileBd);font:600 11px/1.3 ui-monospace,'SF Mono',Menlo,monospace;color:var(--ink2);letter-spacing:.02em;white-space:nowrap;vertical-align:middle}.show-ids .rid{display:inline-block}.sw{position:relative;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}img{-webkit-user-drag:none}.sw img{pointer-events:none}.sw-fg{position:relative;z-index:1}.sw-r,.sw-l{position:absolute;top:0;bottom:0;width:0;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff;font:600 13.5px -apple-system,system-ui,sans-serif;white-space:nowrap;cursor:pointer}.sw-r{right:0;background:#FF3B30}.sw-l{left:0;background:#FF9F0A;opacity:.75;transition:opacity .15s}.sw-go>.sw-l{opacity:1}.sw-card>.sw-r,.sw-card>.sw-l{border-radius:24px}.no-del .sw-r{display:none}[data-lp],[data-lp] *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}.tb-sc{scrollbar-width:none}.tb-sc::-webkit-scrollbar{display:none}@keyframes ctxIn{from{opacity:0}to{opacity:1}}@keyframes ctxPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}@keyframes dots{0%,80%,100%{opacity:.25}40%{opacity:1}}</style>
 </helmet>
 <div style="height:100%;font-family:-apple-system,'SF Pro Text',system-ui,sans-serif">
 <div style="height:100%;position:relative;overflow:hidden;color:var(--ink);--menu:rgba(246,247,250,.97);--ink:#0E1726;--ink2:rgba(14,23,38,.58);--ink3:rgba(14,23,38,.36);--line:rgba(14,23,38,.07);--tile:rgba(255,255,255,.62);--tileBd:rgba(255,255,255,.95);--field:rgba(255,255,255,.85);--track:rgba(14,23,38,.09);--chip:rgba(255,255,255,.5);--on:rgba(255,255,255,.92);--acc:#0A7AFF;--accOn:#FFFFFF;--accTx:#0A5FD0;--accSoft:rgba(10,122,255,.13);--warn:#E8590C;--warnTx:#B8470A;--warnBg:rgba(255,140,60,.16);--ok:#1FA45A;--okTx:#157A42;--okBg:rgba(31,164,90,.14);--solid:#0E1726;--solidTx:#FFFFFF;--sheet:rgba(246,247,249,.88);--scrim:rgba(14,23,38,.25);--knob:#fff;--card:rgba(255,255,255,.55);--cardB:1px solid rgba(255,255,255,.85);--cardBd:rgba(255,255,255,.85);--cardSh:0 10px 30px rgba(20,40,80,.10),inset 0 1px 0 #fff;--k1:#0E1726;--k2:rgba(14,23,38,.58);--k3:rgba(14,23,38,.36);--kl:rgba(14,23,38,.07);--kt:rgba(255,255,255,.62);--ktb:rgba(255,255,255,.95);--kf:rgba(255,255,255,.85);--ktr:rgba(14,23,38,.09);--kon:rgba(255,255,255,.92);--ka:#0A7AFF;--kaOn:#FFFFFF;--ks:#FFFFFF;--kas:rgba(10,122,255,.13);--kw:#B8470A;--kwb:rgba(255,140,60,.16);--kwarn:#E8590C;--kok:#157A42;--kokb:rgba(31,164,90,.14);--panel:rgba(14,23,38,.86);--bg:radial-gradient(120% 55% at 0% 0%,#C6DAF3 0,transparent 60%),radial-gradient(90% 50% at 100% 38%,#F3DBC6 0,transparent 62%),radial-gradient(100% 50% at 0% 100%,#D0E8DB 0,transparent 60%),#EEF0F3;--t1:rgba(214,226,140,.42);--t1x:#4A5410;--t2:rgba(170,190,240,.38);--t2x:#24324E;--t3:rgba(150,220,215,.40);--t3x:#14585A;--t4:rgba(240,180,220,.40);--t4x:#6A2058;background:var(--bg)">
@@ -161,6 +161,8 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 
 <sc-if value="{{ segE }}" hint-placeholder-val="{{ true }}">
+<div style="margin:0 0 18px;padding:0 14px;border-radius:20px;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--ks);color:var(--ink);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh);display:flex;align-items:flex-start;gap:10px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:12px;color:var(--ink3)"><path d="M5.5 3.5h13v17h-13zM9 8.5h6M9 12h6M9 15.5h3.5"></path></svg><textarea data-grow="1" value="{{ pj.memo }}" onChange="{{ pj.onMemo }}" onFocus="{{ pj.memoFocus }}" placeholder="Notes du projet…" rows="1" style="flex:1;min-width:0;height:42px;max-height:{{ pj.memoMax }};-webkit-mask-image:{{ pj.memoMask }};mask-image:{{ pj.memoMask }};overflow:hidden;border:0;background:transparent;padding:11px 0;font:400 15px/1.4 -apple-system,sans-serif;resize:none;outline:none;color:var(--ink)"></textarea></div>
+<sc-if value="{{ pj.memoLong }}" hint-placeholder-val="{{ false }}"><div onClick="{{ pj.memoTog }}" style="cursor:pointer;margin:-12px 8px 14px;text-align:right;font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--acc)">{{ pj.memoTogLbl }}</div></sc-if>
 <div style="display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 8px">
 <div style="font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Étapes du projet</div>
 <div onClick="{{ toggleEdit }}" style="cursor:pointer;font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--acc)">{{ editLabel }}</div>
@@ -713,14 +715,17 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 
 <sc-if value="{{ tbShow }}" hint-placeholder-val="{{ true }}">
-<div style="position:absolute;z-index:40;left:12px;right:12px;bottom:max(14px, calc(env(safe-area-inset-bottom, 0px) - 6px));padding:6px;border-radius:32px;background:var(--card);backdrop-filter:blur(30px) saturate(1.9);-webkit-backdrop-filter:blur(30px) saturate(1.9);border:1px solid var(--cardBd);box-shadow:0 14px 36px rgba(10,20,40,.22),inset 0 1px 0 rgba(255,255,255,.25);display:grid;grid-template-columns:{{ tbCols }};gap:2px">
+<div data-lpbar="1" style="position:absolute;z-index:40;left:12px;right:12px;bottom:max(14px, calc(env(safe-area-inset-bottom, 0px) - 6px));padding:6px;border-radius:32px;background:var(--card);backdrop-filter:blur(30px) saturate(1.9);-webkit-backdrop-filter:blur(30px) saturate(1.9);border:1px solid var(--cardBd);box-shadow:0 14px 36px rgba(10,20,40,.22),inset 0 1px 0 rgba(255,255,255,.25)">
+<div data-scrollx="tb" class="tb-sc" style="position:relative;display:flex;gap:2px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;border-radius:26px">
 <sc-for list="{{ tbList }}" as="t" hint-placeholder-count="5">
-<div onClick="{{ t.pick }}" style="cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ t.bg }};color:{{ t.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+<div data-lp="{{ t.lp }}" data-lpg="tb" data-lpx="1" onClick="{{ t.pick }}" style="flex:none;width:{{ tbW }};scroll-snap-align:start;cursor:pointer;position:relative;height:56px;border-radius:26px;background:{{ t.bg }};color:{{ t.fg }};transition:background .25s,color .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="{{ t.d }}"></path></svg>
 <span style="font:600 10px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ t.label }}</span>
 <sc-if value="{{ t.badge }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:7px;right:9px;min-width:16px;height:16px;border-radius:999px;background:#FF5A5A;color:#fff;font:600 11.5px/16px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;text-align:center;padding:0 4px">{{ t.count }}</span></sc-if>
 </div>
 </sc-for>
+</div>
+<div data-tbind="1" style="position:absolute;left:50%;bottom:2px;width:30px;margin-left:-15px;height:3px;border-radius:2px;background:var(--line);overflow:hidden;opacity:0;transition:opacity .2s;pointer-events:none"><div style="height:100%;border-radius:2px;background:var(--ink3)"></div></div>
 </div>
 </sc-if>
 
@@ -910,10 +915,17 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:400 15.5px -apple-system,sans-serif">Afficher les identifiants</div>
 <div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ idsTrack }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ idsKnob }};transition:transform .2s"></div></div>
 </div>
-<div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2)">Barre d’onglets</div><div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink3)">{{ tabsN }}</div></div>
+<div id="tabs-cfg" style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2)">Barre d’onglets</div><div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink3)">{{ tabsN }}</div></div>
 <div style="border-radius:20px;background:var(--field);overflow:hidden">
-<sc-for list="{{ tabRows }}" as="t" hint-placeholder-count="7"><div style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--line)"><div onClick="{{ t.pick }}" style="flex:1;min-width:0;cursor:pointer;display:flex;align-items:center;gap:12px"><div style="width:30px;height:30px;border-radius:8px;flex:none;background:{{ t.icBg }};color:#fff;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="{{ t.d }}"></path></svg></div><div style="flex:1;min-width:0;font:400 15.5px -apple-system,sans-serif">{{ t.label }}</div><div style="flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid {{ t.ckBd }};background:{{ t.ckBg }};color:#fff;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="opacity:{{ t.ckOp }}"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div><sc-if value="{{ t.canGo }}" hint-placeholder-val="{{ false }}"><div onClick="{{ t.go }}" style="flex:none;cursor:pointer;padding:6px 10px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ouvrir</div></sc-if></div></sc-for>
+<sc-for list="{{ tabRows }}" as="t" hint-placeholder-count="5"><div data-lp="{{ t.lp }}" data-lpg="tabs" style="display:flex;align-items:center;gap:12px;padding:8px 6px 8px 14px;border-bottom:1px solid var(--line);background:var(--field)"><div onClick="{{ t.rm }}" data-nolp="1" title="Retirer de la barre" style="cursor:pointer;flex:none;width:22px;height:22px;border-radius:50%;background:{{ t.rmBg }};color:#fff;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M6 12h12"></path></svg></div><div style="width:30px;height:30px;border-radius:8px;flex:none;background:{{ t.icBg }};color:#fff;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="{{ t.d }}"></path></svg></div><div style="flex:1;min-width:0"><div style="font:400 15.5px -apple-system,sans-serif">{{ t.label }}</div><sc-if value="{{ t.late }}" hint-placeholder-val="{{ false }}"><div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:1px">Visible en glissant la barre</div></sc-if></div><div style="flex:none;width:36px;height:34px;display:flex;align-items:center;justify-content:center;color:var(--ink3)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4.5 8h15M4.5 12h15M4.5 16h15"></path></svg></div></div></sc-for>
 </div>
+<sc-if value="{{ tabHasOther }}" hint-placeholder-val="{{ true }}">
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2);margin:16px 4px 8px">Autres sections</div>
+<div style="border-radius:20px;background:var(--field);overflow:hidden">
+<sc-for list="{{ tabOther }}" as="t" hint-placeholder-count="2"><div style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--line)"><div onClick="{{ t.add }}" style="flex:1;min-width:0;cursor:pointer;display:flex;align-items:center;gap:12px"><div style="flex:none;width:22px;height:22px;border-radius:50%;background:#34C759;color:#fff;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M12 6v12M6 12h12"></path></svg></div><div style="width:30px;height:30px;border-radius:8px;flex:none;background:{{ t.icBg }};color:#fff;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="{{ t.d }}"></path></svg></div><div style="flex:1;min-width:0;font:400 15.5px -apple-system,sans-serif">{{ t.label }}</div></div><div onClick="{{ t.go }}" style="flex:none;cursor:pointer;padding:6px 10px;border-radius:10px;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ouvrir</div></div></sc-for>
+</div>
+</sc-if>
+<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink3);margin:8px 6px 0">Maintenez une section puis glissez-la pour changer l’ordre, ici ou dans la barre.</div>
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Sauvegarde · iCloud Drive</div>
 <div style="padding:12px 14px;border-radius:20px;background:var(--field)">
 <div style="font:400 15.5px -apple-system,sans-serif">{{ bkLast }}</div>
@@ -929,7 +941,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">À enregistrer dans iCloud Drive › Chantier › Sauvegardes.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 28</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 29</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -1423,7 +1435,7 @@ const put = (o, v) => { if (v && typeof v === 'object') { Object.keys(o).forEach
 const wrapI = j => ((j % KS.length) + KS.length) % KS.length;
 const DEFSTEPS = [{ l: 'Préparation', t: 'c' }, { l: 'Exécution', t: 'g' }, { l: 'Finitions', t: 'g' }, { l: 'Réception', t: 'c' }];
 const SAVE_KEY = 'chantier-app-v6';
-const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'pdAdd', 'back', 'cfgSec', 'qa', 'sending', 'gen', 'ctx', 'fv', 'fvUi', 'fdlg', 'fmv', 'finfo', 'fsel', 'fup', 'chatBusy', 'chatErr'];
+const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'pdAdd', 'back', 'cfgSec', 'qa', 'sending', 'gen', 'ctx', 'fv', 'fvUi', 'fdlg', 'fmv', 'finfo', 'fsel', 'fup', 'chatBusy', 'chatErr', 'memoOpen'];
 const restore = () => {
   try {
     if (location.hash === '#reset') { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(SESS_KEY); localStorage.removeItem(CL_KEY); Object.keys(CL).forEach(k => delete CL[k]); history.replaceState(null, '', location.pathname); return {}; }
@@ -1602,28 +1614,30 @@ let swOpen = null, swJust = 0;
 })();
 // appui long : menu d'options (comme sur iPhone) ; sur un élément déplaçable, glisser sans relâcher le réordonne
 const LP = {}, LPG = { on: false, open: null, close: null, el: null, at: 0 };
-const lpLift = (el, z) => { if (!el) return; el.style.transition = 'transform .2s ease, box-shadow .2s ease'; el.style.transform = z ? 'scale(1.03)' : ''; el.style.boxShadow = z ? '0 18px 40px rgba(0,0,0,.28)' : ''; el.style.zIndex = z ? String(z) : ''; if (z && getComputedStyle(el).position === 'static') el.style.position = 'relative'; };
+const lpLift = (el, z) => { if (!el) return; el.style.transition = 'transform .2s ease, box-shadow .2s ease'; el.style.transform = z ? 'scale(1.03)' : ''; el.style.boxShadow = z ? '0 18px 40px rgba(0,0,0,.28)' : ''; el.style.zIndex = z ? String(z) : ''; if (z && getComputedStyle(el).position === 'static') el.style.position = 'relative'; const bar = el.closest('[data-lpbar]'); if (bar) bar.style.zIndex = z ? '86' : ''; };
 (() => {
   const HOLD = 420;
   let g = null, raf = 0;
-  const clear = D => D.items.forEach(x => { x.el.style.transition = 'none'; x.el.style.transform = ''; x.el.style.boxShadow = ''; x.el.style.zIndex = ''; });
+  const clear = D => { D.items.forEach(x => { x.el.style.transition = 'none'; x.el.style.transform = ''; x.el.style.boxShadow = ''; x.el.style.zIndex = ''; }); if (D.X && D.sc) D.sc.style.scrollSnapType = ''; const bar = D.items[0].el.closest('[data-lpbar]'); if (bar) bar.style.zIndex = ''; };
   const stop = () => { if (g) clearTimeout(g.tm); cancelAnimationFrame(raf); raf = 0; g = null; LPG.on = false; };
   const startDrag = () => {
     const items = [...document.querySelectorAll('[data-lpg="' + g.el.dataset.lpg + '"]')].map(el => ({ el, r: el.getBoundingClientRect() }));
     const from = items.findIndex(x => x.el === g.el); if (from < 0 || items.length < 2) return false;
-    const sc = g.el.closest('[data-scroll]'), gap = Math.max(0, items[1].r.top - items[0].r.bottom);
-    g.D = { items, from, to: from, sc, s0: sc ? sc.scrollTop : 0, step: items[from].r.height + gap };
+    const X = g.el.hasAttribute('data-lpx'), sc = g.el.closest(X ? '[data-scrollx]' : '[data-scroll]'), gap = Math.max(0, X ? items[1].r.left - items[0].r.right : items[1].r.top - items[0].r.bottom);
+    if (X && sc) sc.style.scrollSnapType = 'none';
+    g.D = { X, items, from, to: from, sc, s0: sc ? (X ? sc.scrollLeft : sc.scrollTop) : 0, step: (X ? items[from].r.width : items[from].r.height) + gap };
     return true;
   };
   const dragMove = () => {
-    const D = g.D, dy = g.y - g.y0 + (D.sc ? D.sc.scrollTop - D.s0 : 0), me = D.items[D.from], cy = me.r.top + me.r.height / 2 + dy;
-    let to = 0; D.items.forEach((x, i) => { if (i !== D.from && x.r.top + x.r.height / 2 < cy) to++; });
+    const D = g.D, X = D.X, T = X ? 'translateX(' : 'translateY(', mid = r => X ? r.left + r.width / 2 : r.top + r.height / 2;
+    const dy = (X ? g.x - g.x0 : g.y - g.y0) + (D.sc ? (X ? D.sc.scrollLeft : D.sc.scrollTop) - D.s0 : 0), cy = mid(D.items[D.from].r) + dy;
+    let to = 0; D.items.forEach((x, i) => { if (i !== D.from && mid(x.r) < cy) to++; });
     D.to = to;
-    D.items.forEach((x, i) => { if (i === D.from) return; const sh = D.from < to && i > D.from && i <= to ? -D.step : D.from > to && i >= to && i < D.from ? D.step : 0; x.el.style.transition = 'transform .2s ease'; x.el.style.transform = sh ? 'translateY(' + sh + 'px)' : ''; });
-    g.el.style.transition = 'box-shadow .2s ease'; g.el.style.transform = 'translateY(' + dy + 'px) scale(1.03)';
+    D.items.forEach((x, i) => { if (i === D.from) return; const sh = D.from < to && i > D.from && i <= to ? -D.step : D.from > to && i >= to && i < D.from ? D.step : 0; x.el.style.transition = 'transform .2s ease'; x.el.style.transform = sh ? T + sh + 'px)' : ''; });
+    g.el.style.transition = 'box-shadow .2s ease'; g.el.style.transform = T + dy + 'px) scale(1.03)';
   };
   // près du haut ou du bas de la liste, elle défile toute seule
-  const loop = () => { if (!g || !g.D) return; const sc = g.D.sc; if (sc) { const R = sc.getBoundingClientRect(), v = g.y < R.top + 80 ? -9 : g.y > R.bottom - 130 ? 9 : 0; if (v) { sc.scrollTop += v; dragMove(); } } raf = requestAnimationFrame(loop); };
+  const loop = () => { if (!g || !g.D) return; const sc = g.D.sc; if (sc) { const R = sc.getBoundingClientRect(), v = g.D.X ? (g.x < R.left + 22 ? -6 : g.x > R.right - 22 ? 6 : 0) : g.y < R.top + 80 ? -9 : g.y > R.bottom - 130 ? 9 : 0; if (v) { if (g.D.X) sc.scrollLeft += v; else sc.scrollTop += v; dragMove(); } } raf = requestAnimationFrame(loop); };
   const at = e => { const t = e.target.closest ? e.target : e.target.parentElement; return t && !t.closest('input, textarea, select, [data-nolp]') ? t.closest('[data-lp]') : null; };
   addEventListener('pointerdown', e => {
     if (e.button > 0 || g) return;
@@ -1646,8 +1660,9 @@ const lpLift = (el, z) => { if (!el) return; el.style.transition = 'transform .2
     if (!G.on) return;
     LPG.sup = { el: G.el, at: Date.now() };
     if (G.D) { const { from, to } = G.D; clear(G.D); LPG.el = null; if (to !== from) G.a.drag(from, to); }
+    else if (!G.a.menu) lpLift(G.el, 0);
   }, true);
-  addEventListener('pointercancel', e => { if (!g || e.pointerId !== g.id) return; const G = g; stop(); if (G.D) clear(G.D); }, true);
+  addEventListener('pointercancel', e => { if (!g || e.pointerId !== g.id) return; const G = g; stop(); if (G.D) clear(G.D); else if (G.on && !G.a.menu) lpLift(G.el, 0); }, true);
   // le toucher qui suit un appui long n'ouvre pas l'élément maintenu (le menu, lui, reste utilisable tout de suite)
   addEventListener('click', e => { const S = LPG.sup; if (!S) return; LPG.sup = null; const t = e.target && e.target.nodeType === 1 ? e.target : e.target && e.target.parentElement; if (Date.now() - S.at < 700 && t && S.el.contains(t)) { e.stopPropagation(); e.preventDefault(); } }, true);
   // clic droit sur ordinateur : même menu
@@ -1660,6 +1675,7 @@ const lpLift = (el, z) => { if (!el) return; el.style.transition = 'transform .2
 
 // pictogrammes des menus (tracés 24 × 24)
 const ICO = {
+  rm: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM8 12h8',
   open: 'M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5',
   ren: 'M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4',
   dup: 'M8.5 8.5h11v11h-11zM5 15.5V4.5h11',
@@ -1870,9 +1886,25 @@ const kbSet = () => { const vv = window.visualViewport, kb = vv ? Math.max(0, in
 if (window.visualViewport) { visualViewport.addEventListener('resize', kbSet); visualViewport.addEventListener('scroll', kbSet); }
 kbSet();
 
-// sections possibles de la barre d'onglets : [clé, nom, couleur, pictogramme] ; 5 au choix (Compte › Barre d'onglets)
+// sections possibles de la barre d'onglets : [clé, nom, couleur, pictogramme] ; jusqu'à 7 dans l'ordre choisi, 5 visibles à la fois (Compte › Barre d'onglets)
+// barre d'onglets : fondu sur le bord où d'autres sections attendent, petit indicateur de défilement ; l'onglet actif est ramené en vue
+const tbFade = sc => { if (!sc) return; const m = sc.scrollWidth - sc.clientWidth, l = m > 2 && sc.scrollLeft > 2, r = m > 2 && sc.scrollLeft < m - 2, g = l || r ? 'linear-gradient(to right,' + (l ? 'transparent,#000 28px' : '#000') + ',' + (r ? '#000 calc(100% - 28px),transparent' : '#000') + ')' : ''; sc.style.webkitMaskImage = g; sc.style.maskImage = g;
+  const ind = sc.parentElement.querySelector('[data-tbind]'); if (ind) { ind.style.opacity = m > 2 ? '1' : '0'; if (m > 2) { ind.firstElementChild.style.width = 100 * sc.clientWidth / sc.scrollWidth + '%'; ind.firstElementChild.style.transform = 'translateX(' + 100 * sc.scrollLeft / sc.clientWidth + '%)'; } } };
+const tbSync = comp => {
+  const sc = document.querySelector('[data-scrollx="tb"]'), tab = comp.state.tab;
+  if (sc && (sc !== comp.tbEl || tab !== comp.tbTab)) {
+    const el = sc.querySelectorAll('[data-lpg="tb"]')[tabsOf(comp.state).indexOf(tab)];
+    if (el) { const a = el.offsetLeft, b = a + el.offsetWidth, L = sc.scrollLeft, W = sc.clientWidth, to = a < L ? a : b > L + W ? b - W : L; if (Math.abs(to - L) > 1) sc.scrollTo({ left: to, behavior: sc === comp.tbEl ? 'smooth' : 'auto' }); }
+    comp.tbEl = sc; comp.tbTab = tab;
+  }
+  tbFade(sc);
+};
+addEventListener('scroll', e => { const t = e.target; if (t && t.dataset && t.dataset.scrollx === 'tb') tbFade(t); }, true);
+addEventListener('resize', () => tbFade(document.querySelector('[data-scrollx="tb"]')));
+// zone de texte qui grandit avec son contenu (notes du projet)
+const growTa = el => { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; };
 const TABS = [['p', 'Projets', '#0A84FF', 'M3.5 3.5h7v7h-7zM13.5 3.5h7v7h-7zM3.5 13.5h7v7h-7zM13.5 13.5h7v7h-7z'], ['s', 'Stocks', '#FF9F0A', 'M3.5 7.5L12 3.5l8.5 4v9L12 20.5l-8.5-4zM3.5 7.5L12 11.5l8.5-4M12 11.5v9'], ['m', 'Mails', '#32ADE6', 'M3 5h18v14H3zM4.5 7.5l7.5 5.5 7.5-5.5'], ['l', 'Planning', '#FF3B30', 'M3.5 5h17v15.5h-17zM3.5 10h17M8.5 3v4M15.5 3v4'], ['c', 'Contacts', '#8E8E93', 'M9 11.8a3.3 3.3 0 1 0 0-6.6 3.3 3.3 0 0 0 0 6.6zM3 19.5c.8-3.2 3.2-5 6-5s5.2 1.8 6 5M17 12.1a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2zM16.2 14.6c2.4.1 4.1 1.6 4.8 4.4'], ['i', 'Claude', '#D97757', 'M12 3.5l1.9 5.6 5.6 1.9-5.6 1.9L12 18.5l-1.9-5.6L4.5 11l5.6-1.9zM18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z'], ['f', 'Fichiers', '#5856D6', 'M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z']];
-const tabsOf = st => { const v = Array.isArray(st.tabs) ? st.tabs.filter(k => TABS.some(t => t[0] === k)).slice(0, 5) : []; return v.length ? v : ['p', 's', 'm', 'l', 'c']; };
+const tabsOf = st => { const v = Array.isArray(st.tabs) ? st.tabs.filter((k, i, a) => TABS.some(t => t[0] === k) && a.indexOf(k) === i).slice(0, 7) : []; return v.length ? v : ['p', 's', 'm', 'l', 'c']; };
 // corbeille vidée : les fichiers eux-mêmes sont effacés du stockage
 const trashBlobs = list => { const objs = []; list.forEach(t => { if (t && t.k === 'file' && t.d && t.d.recs) Object.values(t.d.recs).forEach(r => { if (r && r.k === 'f' && r.o && (r.st || 'sb') === 'sb') objs.push(r.o); }); }); if (objs.length && cloudReady()) Promise.resolve(FST.sb.del(objs)).catch(() => {}); };
 
@@ -1935,7 +1967,6 @@ const CALS = {}, CALU = [];
 // CALS[k] = [nom, couleur, disciplines] ; CALU = calendriers saisis à la main (hors Commandes et Factures)
 const calSync = L => { Object.keys(CALS).forEach(k => delete CALS[k]); CALU.splice(0); (L && L.length ? L : CAL0).forEach(c => { CALS[c.k] = [c.n, c.c, c.d || []]; if (!c.auto) CALU.push(c.k); }); };
 calSync(CAL0);
-const DURS = ['1 h', '2 h', '3 h', '½ journée', 'Journée'];
 const MABRV = ['janv', 'févr', 'mars', 'avr', 'mai', 'juin', 'juil', 'août', 'sept', 'oct', 'nov', 'déc'];
 const TYPE2CAL = { Chantier: 'real', Contrôle: 'real', Livraison: 'presta', Réunion: 'presta', Échéance: 'admin' };
 const discGuess = t => /plaque|placo|cloison|plafond|enduit/i.test(t) ? 'Placo' : /élec|câble|tableau|consuel/i.test(t) ? 'Électricité' : /plomb|pression|sanitaire/i.test(t) ? 'Plomberie' : /peint|ral /i.test(t) ? 'Peinture' : /carrel|faïence/i.test(t) ? 'Carrelage' : '';
@@ -2258,6 +2289,7 @@ class Component extends DCLogic {
     this.syncI = setInterval(() => { if (!document.hidden) syncRun(); }, 15000);
     addEventListener('online', () => syncSoon(200)); document.addEventListener('visibilitychange', () => { if (!document.hidden) syncSoon(200); });
     this.flags(); if (ridScan(this.state)) this.forceUpdate();
+    tbSync(this); document.querySelectorAll('textarea[data-grow]').forEach(growTa);
     phWake = () => { clearTimeout(this.phT); this.phT = setTimeout(() => this.forceUpdate(), 30); };
     setTimeout(() => { const keep = new Set(); Object.values(this.state.ph || {}).forEach(L => L.forEach(x => keep.add(x.id))); Object.values(this.state.trash || {}).forEach(t => { if (t.k === 'photo' && t.d && t.d.x) keep.add(t.d.x.id); }); this.trashPurge(); if (window.indexedDB) phKeys().then(K => K.forEach(k => { if (!keep.has(k)) phDel(k); })).catch(() => {}); }, 4000);
   }
@@ -2410,6 +2442,7 @@ class Component extends DCLogic {
   componentDidUpdate(prev) {
     this.flags();
     if (this.fvReset) { this.fvReset = false; FVG.reset(); }
+    tbSync(this); document.querySelectorAll('textarea[data-grow]').forEach(growTa);
     const dOn = !!this.state.fdlg; if (dOn && !this.dlgWas) setTimeout(() => { const i = document.getElementById('fdlg-in'); if (i) { i.focus(); i.select(); } }, 80); this.dlgWas = dOn;
     const wk = Math.round(this.state.wpos || 0); if (this.wLast !== undefined && wk !== this.wLast) haptic(); this.wLast = wk;
     if (ridScan(this.state)) { this.forceUpdate(); return; }
@@ -2614,7 +2647,7 @@ class Component extends DCLogic {
     L.push('Date du jour : ' + today + (ME ? ' · utilisateur : ' + ME.name + ' (' + (ROLES[ME.role] || ME.role) + ')' : '') + (CL.me && CL.me.orgName ? ' · entreprise : ' + CL.me.orgName : ''));
     const pct = p => p.steps && p.steps.length ? Math.round(p.steps.reduce((a, x) => a + x.v, 0) / p.steps.length) : 0;
     KS.forEach(k => { const P = s.P[k] || []; L.push('Site ' + SL(k) + (SITES[k] && SITES[k].addr ? ' (' + SITES[k].addr + ')' : '') + ' : ' + P.length + ' projet' + (P.length > 1 ? 's' : ''));
-      P.slice(0, 30).forEach(p => L.push('  • ' + p.name + ' — ' + [p.phase, pct(p) + ' % fait', p.due && p.due !== 'à planifier' ? 'fin ' + p.due : '', p.lvl, p.desc].filter(Boolean).join(' · '))); });
+      P.slice(0, 30).forEach(p => L.push('  • ' + p.name + ' — ' + [p.phase, pct(p) + ' % fait', p.due && p.due !== 'à planifier' ? 'fin ' + p.due : '', p.lvl, p.desc, p.memo ? 'notes : ' + String(p.memo).replace(/\s+/g, ' ').slice(0, 300) : ''].filter(Boolean).join(' · '))); });
     const evs = (s.evs || []).filter(e => e.date >= today && e.date <= end).sort((a, b) => String(a.date + (a.t || '')).localeCompare(b.date + (b.t || ''))).slice(0, 40);
     L.push('Planning des 14 prochains jours :' + (evs.length ? '' : ' rien de prévu'));
     evs.forEach(e => L.push('  • ' + e.date + (e.t ? ' ' + e.t + (e.end ? '–' + e.end : '') : '') + ' — ' + e.title + (e.site && SITES[e.site] ? ' (' + SL(e.site) + ')' : '')));
@@ -2758,12 +2791,12 @@ class Component extends DCLogic {
       chCtxTog: () => { if (conv) set({ chats: { ...CH, [cid]: { ...conv, ctx: !ctxOn } } }); },
       chSugg: ['Résume l’avancement de mes chantiers', 'Qu’est-ce qui est prévu cette semaine ?', 'Quels articles faut-il commander ?', 'Rédige un message pour annoncer un retard de livraison'].map(t => ({ t, pick: () => this.chatSend(t) })),
       chBar: st.tab === 'i' && !st.sheet };
-    // barre d'onglets : 5 sections au choix (Compte › Barre d'onglets)
-    const tabsOn = tabsOf(st);
-    const tabRows = TABS.map(([k, l, c, d]) => { const on = tabsOn.includes(k); return { label: l, icBg: c, d, ck: on, ckBg: on ? ACC : 'transparent', ckBd: on ? ACC : 'var(--ink3)', ckOp: on ? 1 : 0, canGo: !on,
-      go: () => set({ tab: k, sheet: null, back: [], menu: false }),
-      pick: () => { if (on) { if (tabsOn.length <= 1) { this.toast('Gardez au moins une section'); return; } set({ tabs: tabsOn.filter(x => x !== k) }); } else { if (tabsOn.length >= 5) { this.toast('5 sections au maximum : retirez-en une d’abord'); return; } set({ tabs: TABS.map(t => t[0]).filter(x => x === k || tabsOn.includes(x)) }); } } }; });
-    return { ...files, ...viewer, ...ctx, ...dlg, ...move, ...info, ...chat, tabRows, tabsN: tabsOn.length + ' sur 5' };
+    // barre d'onglets : jusqu'à 7 sections dans l'ordre choisi, 5 visibles à la fois (Compte › Barre d'onglets)
+    const tabsOn = tabsOf(st), tabMv = (a, b) => { const L = [...tabsOn], [x] = L.splice(a, 1); L.splice(b, 0, x); set({ tabs: L }); };
+    const tabRows = tabsOn.map((k, i) => { const [, l, c, d] = TABS.find(t => t[0] === k); LP['tr-' + k] = { drag: tabMv }; return { lp: 'tr-' + k, label: l, icBg: c, d, late: i >= 5, rmBg: tabsOn.length > 1 ? '#FF3B30' : 'var(--ink3)',
+      rm: () => { if (tabsOn.length <= 1) { this.toast('Gardez au moins une section'); return; } set({ tabs: tabsOn.filter(x => x !== k) }); } }; });
+    const tabOther = TABS.filter(t => !tabsOn.includes(t[0])).map(([k, l, c, d]) => ({ label: l, icBg: c, d, add: () => set({ tabs: [...tabsOn, k] }), go: () => set({ tab: k, sheet: null, back: [], menu: false }) }));
+    return { ...files, ...viewer, ...ctx, ...dlg, ...move, ...info, ...chat, tabRows, tabOther, tabHasOther: tabOther.length > 0, tabsN: tabsOn.length + (tabsOn.length > 1 ? ' sections' : ' section') + (tabsOn.length > 5 ? ' · 5 visibles' : '') };
   }
   async iaRefresh() {
     if (!cloudReady()) return;
@@ -2916,7 +2949,10 @@ class Component extends DCLogic {
     const inv = Q.inv.map(i => mkInv(i, pid));
     const total = Q.inv.reduce((a, i) => a + i.amt, 0), paid = Q.inv.filter(i => i.st === 'paid').reduce((a, i) => a + i.amt, 0), anyLate = Q.inv.some(i => i.st === 'late');
     const PH = (st.ph || {})[pid] || [], lvQ = lvlOf(Q);
-    const pj = { setCover: () => { this.addPhotos(pid, 'av', null, true); }, showPh: projPhOn, heroH: projPhOn ? '200px' : '150px', heroBg: projPhOn ? 'var(--tile)' : 'linear-gradient(135deg,' + (DOT[st.site] || '#0A84FF') + ',#1C2333)', name: Q.name, rid: RI('P:' + Q.id), phase: Q.phase, due: Q.due, dueTxt: Q.due && Q.due !== 'à planifier' ? ' · Fin ' + Q.due : '', desc: Q.desc || '', hasDesc: !!Q.desc, img: 'proj-' + Q.id, src: coverOf(Q), ph: 'Photo · ' + Q.name, addrLine: [lvQ, Q.addr ? Q.addr + (Q.city ? ' · ' + Q.city : '') : ''].filter(Boolean).join(' · ') || 'Emplacement non renseigné', pct,
+    const memoLong = String(Q.memo || '').split('\n').reduce((a, l) => a + Math.max(1, Math.ceil(l.length / 38)), 0) > 4;
+    const pj = { setCover: () => { this.addPhotos(pid, 'av', null, true); }, showPh: projPhOn, heroH: projPhOn ? '200px' : '150px', heroBg: projPhOn ? 'var(--tile)' : 'linear-gradient(135deg,' + (DOT[st.site] || '#0A84FF') + ',#1C2333)', name: Q.name, rid: RI('P:' + Q.id), phase: Q.phase, due: Q.due, dueTxt: Q.due && Q.due !== 'à planifier' ? ' · Fin ' + Q.due : '', desc: Q.desc || '', hasDesc: !!Q.desc,
+      memo: Q.memo || '', onMemo: e => { growTa(e.target); const v = e.target.value; up(p => ({ ...p, memo: v })); }, memoFocus: () => { if (st.memoOpen !== pid) set({ memoOpen: pid }); },
+      memoLong: memoLong, memoMax: memoLong && st.memoOpen !== pid ? '106px' : 'none', memoMask: memoLong && st.memoOpen !== pid ? 'linear-gradient(#000 70%, transparent)' : 'none', memoTog: () => set({ memoOpen: st.memoOpen === pid ? null : pid }), memoTogLbl: st.memoOpen === pid ? 'Réduire' : 'Afficher tout', img: 'proj-' + Q.id, src: coverOf(Q), ph: 'Photo · ' + Q.name, addrLine: [lvQ, Q.addr ? Q.addr + (Q.city ? ' · ' + Q.city : '') : ''].filter(Boolean).join(' · ') || 'Emplacement non renseigné', pct,
       disc: discsOf(Q).join(', '), hasDisc: discsOf(Q).length > 0, pinned: !!pins[Q.id], pinLbl: pins[Q.id] ? 'Épinglé' : 'Épingler', pinBg: pins[Q.id] ? '#FF9F0A' : 'var(--tile)', pinFg: pins[Q.id] ? '#fff' : 'var(--ink)', pin: () => togglePin(Q), phN: (n => n ? n + ' photo' + (n > 1 ? 's' : '') : 'Photos')(PH.filter(x => PHS[x.sec]).length), goPh: () => set({ seg: 'ph', editSteps: false }), goSup: () => set({ seg: 'c', editSteps: false }), dash: (C * pct / 100) + ' ' + C,
       stepsDone: Q.steps.filter(s => s.v >= 100).length + '/' + Q.steps.length, supN: Q.sup.length, openAmt: eur(total - paid), openCol: anyLate ? 'var(--warnTx)' : INK,
       steps, notes: Q.notes.map((t, i) => { const sw = 'n:' + pid + '/' + i; SW[sw] = canDel() ? { del: how => this.undoable('Note supprimée', 'note', how, { pid, t, i }, () => up(p => ({ ...p, notes: p.notes.filter((x, j) => j !== i) }))) } : {}; return { sw, t, edit: () => openEd('note', { i }) }; }), locFields: loc,
@@ -3088,7 +3124,11 @@ class Component extends DCLogic {
     const tb = {};
     TABS.forEach(([k]) => { tb[k] = { bg: st.tab === k ? 'var(--on)' : 'transparent', fg: st.tab === k ? ACC : 'var(--ink2)', pick: () => set({ tab: k, mail: null, menu: false, proj: k === 'p' && st.tab === 'p' ? null : st.proj, supSel: k === 'c' && st.tab === 'c' ? null : st.supSel, fdir: k === 'f' && st.tab === 'f' ? '' : st.fdir, chat: k === 'i' && st.tab === 'i' ? null : st.chat, fsel: null, ctx: null }) }; });
     tb.m.badge = unreadN > 0; tb.m.count = unreadN;
-    const tbOn = tabsOf(st), tbList = TABS.filter(t => tbOn.includes(t[0])).map(([k, label, c, d]) => ({ ...tb[k], label, d, badge: !!tb[k].badge, count: tb[k].count || 0 }));
+    const tbOn = tabsOf(st), tbMv = (a, b) => { const L = [...tbOn], [x] = L.splice(a, 1); L.splice(b, 0, x); set({ tabs: L }); };
+    const tbList = tbOn.map(k => { const [, label, , d] = TABS.find(t => t[0] === k), lp = 'tb-' + k;
+      LP[lp] = { drag: tbMv, menu: () => ({ head: label, items: [{ l: 'Ouvrir', ic: 'open', fn: tb[k].pick }, { l: 'Personnaliser la barre', ic: 'sort', fn: () => { set({ sheet: 'acc', form: {}, back: [], menu: false, bkPend: null, bkMsg: '' }); setTimeout(() => { const h = document.getElementById('tabs-cfg'); if (h) h.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, 350); } },
+        ...(tbOn.length > 1 ? [{ l: 'Retirer de la barre', ic: 'rm', red: true, grp: true, fn: () => set({ tabs: tbOn.filter(x => x !== k) }) }] : [])] }) };
+      return { ...tb[k], lp, label, d, badge: !!tb[k].badge, count: tb[k].count || 0 }; });
     // sheets
     const F = st.form, sh = st.sheet, setF = (o) => set({ form: { ...F, ...o } }), fset = (k) => (e) => setF({ [k]: e.target.value });
     const splitL = v => String(v || '').split(',').map(x => x.trim()).filter(Boolean);
@@ -3115,10 +3155,10 @@ class Component extends DCLogic {
     const siteNames = KS.map(SL), keyOfName = n => KS.find(k => SL(k) === n);
     const calKey = n => CALU.find(k => CALS[k][0] === n) || CALU[0];
     const evGroups = tk => { const sk = keyOfName(F.siteN), multi = /^\d{4}-\d{2}-\d{2}$/.test(F.to || '') && F.to > (F.date || ''), cd = (CALS[calKey(F.cal)] || [])[2] || [], prj = sk ? (st.P[sk] || []).map(p => p.name) : []; return [
-      { t: 'Événement', f: [[tk, 'Intitulé', 'Ex. Visite client'], ['cal', 'Calendrier', '', CALU.map(k => CALS[k][0]), { add: 'cal' }], ['date', 'Début', '', null, { type: 'date' }], ['to', 'Fin', 'Même jour', null, { type: 'date' }], ['hrs', 'Heures de début et de fin', '', null, { sw: true }], ...(F.hrs ? [['t', 'De', '', null, { type: 'time' }], ['end', 'À', '', null, { type: 'time' }]] : multi ? [] : [['dur', 'Durée', '', DURS]])] },
+      { t: 'Événement', f: [[tk, 'Intitulé', 'Ex. Visite client'], ['cal', 'Calendrier', '', CALU.map(k => CALS[k][0]), { add: 'cal' }], ['date', 'Début', '', null, { type: 'date' }], ['to', 'Fin', 'Même jour', null, { type: 'date' }], ['hrs', 'Heures de début et de fin', '', null, { sw: true }], ...(F.hrs ? [['t', 'De', '', null, { type: 'time' }], ['end', 'À', '', null, { type: 'time' }]] : [])] },
       ...(CALS.devis && F.cal === CALS.devis[0] ? [{ t: 'Visite de devis', f: [['client', 'Client', 'Nom du client', SUP.filter(x => x.rub === 'C').map(x => x.name), { combo: true }], ['addr', 'Adresse', 'Adresse de la visite'], ['tel', 'Téléphone', '06 …', null, { type: 'tel' }]] }] : []),
       { t: 'Chantier', f: [['siteN', 'Site', '', siteNames], ...(prj.length ? [['projN', 'Projet', '', prj]] : []), ['disc', 'Discipline', '', cd.length ? cd : st.discs, { add: 'disc' }], ['who', 'Contact', 'Nom', SUP.filter(x => !sk || !(x.sites || []).length || (x.sites || []).includes(sk)).map(x => x.name), { combo: true }], ['note', 'Notes', 'Matériel, accès…']] }]; };
-    const evFromForm = (F, id, tk, base = {}) => { const sk = keyOfName(F.siteN) || base.site || st.site, pr = (st.P[sk] || []).find(p => p.name === F.projN), date = /^\d{4}-\d{2}-\d{2}$/.test(F.date || '') ? F.date : (base.date || selD), to = /^\d{4}-\d{2}-\d{2}$/.test(F.to || '') && F.to > date ? F.to : '', hm = v => /^\d{1,2}:\d{2}/.test(v || '') ? String(v).slice(0, 5).padStart(5, '0') : '', hrs = F.hrs === undefined ? !!base.t : !!F.hrs, t0 = hrs ? hm(F.t) : '', t1 = hrs && t0 && hm(F.end) > t0 ? hm(F.end) : '', dur = to || hrs ? '' : (F.dur || '');
+    const evFromForm = (F, id, tk, base = {}) => { const sk = keyOfName(F.siteN) || base.site || st.site, pr = (st.P[sk] || []).find(p => p.name === F.projN), date = /^\d{4}-\d{2}-\d{2}$/.test(F.date || '') ? F.date : (base.date || selD), to = /^\d{4}-\d{2}-\d{2}$/.test(F.to || '') && F.to > date ? F.to : '', hm = v => /^\d{1,2}:\d{2}/.test(v || '') ? String(v).slice(0, 5).padStart(5, '0') : '', hrs = F.hrs === undefined ? !!base.t : !!F.hrs, t0 = hrs ? hm(F.t) : '', t1 = hrs && t0 && hm(F.end) > t0 ? hm(F.end) : '', dur = to || hrs ? '' : (base.dur || '');
       return { ...base, id, title: (F[tk] || '').trim(), cal: calKey(F.cal), date, to, dur, t: t0, end: t1, site: sk, proj: pr ? pr.id : '', disc: F.disc || (pr ? discOf(pr) : ''), discs: F.disc ? [F.disc] : pr ? discsOf(pr) : [], who: (F.who || '').trim(), note: (F.note || '').trim(), client: (F.client || '').trim(), addr: (F.addr || '').trim(), tel: (F.tel || '').trim() }; };
     const STK = { 'Payée': 'paid', 'À payer': 'due', 'En retard': 'late' };
     const amtOf = v => parseFloat(String(v || '').replace(/\s/g, '').replace(',', '.').replace(/[^\d.]/g, '')) || 0;
@@ -3339,7 +3379,7 @@ class Component extends DCLogic {
       kp, sites, rubs, calWeeks, dayEv, calChips, dayLbl, dayN: dayEv.length ? dayEv.length + ' élément' + (dayEv.length > 1 ? 's' : '') : 'libre',
       calTitle: up1(MOIS[calMo - 1]) + ' ' + calY, calPrev: () => monthGo(-1), calNext: () => monthGo(1), calToday: () => set({ cal: today.slice(0, 7), calDay: today }),
       calDown: (e) => { this.calX = e.clientX; }, calUp: (e) => { if (this.calX == null) return; const dx = e.clientX - this.calX; this.calX = null; if (Math.abs(dx) > 50) { this.calSw = Date.now(); monthGo(dx < 0 ? 1 : -1); } },
-      subtitle, tb, tbList, tbCols: 'repeat(' + tbList.length + ',minmax(0,1fr))', tbShow: !X.selBar, projects, stocks, mails, chFilters, cats, contacts, cm, draftText, pj, segs, stepTypes,
+      subtitle, tb, tbList, tbW: tbList.length > 5 ? 'calc((100% - 8px) / 5)' : 'calc((100% - ' + 2 * (tbList.length - 1) + 'px) / ' + tbList.length + ')', tbShow: !X.selBar, projects, stocks, mails, chFilters, cats, contacts, cm, draftText, pj, segs, stepTypes,
       catCur: ccat === 'TOUS' ? 'Toutes les disciplines' : cap(ccat), catOpen: !!st.catOpen, catChev: st.catOpen ? 'rotate(180deg)' : 'none', toggleCat: () => set({ catOpen: !st.catOpen }),
       ...(() => { const k = st.cfgSite, C = st.cfg[k], CF = st.cfgF, upC = (o) => set({ cfg: { ...st.cfg, [k]: { ...C, ...o } } }), fld = (f) => (e) => upC({ [f]: e.target.value }), cf = (f) => (e) => set({ cfgF: { ...CF, [f]: e.target.value } });
         const nEt = C.zones.filter(z => /^Étage \d+$/.test(z)).map(z => +z.split(' ')[1]), nextEt = 'Étage ' + (nEt.length ? Math.max(...nEt) + 1 : 1);

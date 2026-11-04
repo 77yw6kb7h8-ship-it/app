@@ -15,6 +15,9 @@ Thème clair par défaut comme la v4 ; thème sombre dans Compte. Intitulés en 
   suppression). La fin affichée vient des dates « du … au … » choisies à la création.
 - **Étapes** (en mode Modifier), **notes**, **factures**, **intervenants**, **événements** :
   toucher l'élément pour le modifier ou le supprimer.
+- **Notes du projet** : au-dessus des étapes, une ligne qui grandit avec le texte (une ligne si
+  vide). Au-delà de 4 lignes, elle s’affiche réduite avec « Afficher tout » / « Réduire ». Partagées
+  comme le reste du projet et connues de Claude.
 - **Stock** : ouvrir un article → « Modifier l'article ».
 - **Fournisseurs** : fiche → « Modifier ». **Messages** : « Modifier ou supprimer le message ».
 
@@ -33,8 +36,12 @@ Chaque suppression demande deux touchers. Tout est sauvegardé sur le téléphon
 
 ## Barre d'onglets
 
-Compte › **Barre d’onglets** : 5 sections au choix parmi Projets, Stocks, Mails, Planning, Contacts,
-Claude et Fichiers. Une section retirée de la barre reste accessible par « Ouvrir » dans cette liste.
+Compte › **Barre d’onglets** : jusqu’à 7 sections parmi Projets, Stocks, Mails, Planning, Contacts,
+Claude et Fichiers, dans l’ordre choisi. 5 sont visibles à la fois ; au-delà, la barre se fait glisser
+à gauche ou à droite (fondu sur le bord et petit indicateur sous les icônes), et l’onglet ouvert est
+ramené en vue. **Maintenir puis glisser** une ligne du réglage, ou une icône directement dans la barre,
+change l’ordre. Maintenir une icône sans glisser : Ouvrir, Personnaliser la barre, Retirer de la barre.
+Une section retirée reste accessible par « Ouvrir » sous « Autres sections ».
 
 ## Fichiers
 
@@ -125,8 +132,8 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
   du Bâtiment, Point.P, Cedeo, BigMat…) et enfin le reste du web.
 - **Planning** : calendriers en haut (avec « + » et « Modifier »), vue du mois façon Calendrier
   d’Apple ; un projet ou un événement sur plusieurs jours y est tracé en barre continue. Un
-  événement a une date de début et de fin ; sur un seul jour, une durée (1 h, 2 h, 3 h, ½ journée,
-  journée) ; sur plusieurs jours, il apparaît chaque jour (J1/3, J2/3…). Le choix du site ne propose
+  événement a une date de début et de fin, et des heures de début et de fin si l’interrupteur est
+  activé (sinon toute la journée) ; sur plusieurs jours, il apparaît chaque jour (J1/3, J2/3…). Le choix du site ne propose
   que ses projets. **Commandes** et **Factures** restent des calendriers automatiques.
 - **Contacts** : rubriques modifiables (bouton « Modifier » au bout de la liste), discipline,
   adresse, affectation aux sites, sélecteur de site. Délai et prix ne sont plus demandés à la
