@@ -38,7 +38,7 @@ Chaque suppression demande deux touchers. Tout est sauvegardé sur le téléphon
 
 Compte › **Barre d’onglets** : jusqu’à 7 sections parmi Projets, Stocks, Mails, Planning, Contacts,
 Claude et Fichiers, dans l’ordre choisi. 5 sont visibles à la fois ; au-delà, la barre se fait glisser
-à gauche ou à droite (fondu sur le bord et petit indicateur sous les icônes), et l’onglet ouvert est
+à gauche ou à droite (fondu sur le bord et indicateur de position sur les 2/3 de la barre), et l’onglet ouvert est
 ramené en vue. **Maintenir puis glisser** une ligne du réglage, ou une icône directement dans la barre,
 change l’ordre. Maintenir une icône sans glisser : Ouvrir, Personnaliser la barre, Retirer de la barre.
 Une section retirée reste accessible par « Ouvrir » sous « Autres sections ».
@@ -59,6 +59,13 @@ Une section retirée reste accessible par « Ouvrir » sous « Autres sections �
   PowerPoint : « Ouvrir » (aperçu de Safari) ou « Ouvrir dans… ». Glisser à gauche ou à droite :
   fichier suivant ou précédent ; glisser vers le bas : fermer ; toucher : afficher ou masquer les
   boutons.
+- **Projets** (archive) : chaque projet a son dossier, créé avec lui : Fichiers › Projets › site ›
+  projet › Photos (Avant, Pendant, Après), Devis, Factures. Les photos du projet y figurent par lien
+  (stockées une seule fois, dans l'espace « photos »), les documents joints aux devis et factures y
+  sont rangés, et le **rapport PDF** du projet est à sa racine. Ces dossiers sont tenus à jour par
+  l'appli (nom du projet, déplacement de site) : ni renommés, ni déplacés, ni supprimés tant que le
+  projet existe ; on peut y ajouter ses propres fichiers et dossiers. Un projet supprimé laisse son
+  dossier (archive), qui redevient libre.
 
 ## Claude
 
@@ -121,11 +128,22 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
   l'**emplacement** est demandé (RDC, 2ème étage…, en boutons ; « Modifier » au bout pour changer
   la liste). Planning du projet à la création : une date (« Du ») ou une période (« Du 15 mai au 12 juin »),
   affichée chaque jour dans le planning ; sans échéance saisie, la fin devient l'échéance.
-  Les fournisseurs s'ajoutent par une **barre de recherche** dans l'annuaire, à la
-  création comme avec « + Attacher ». Onglet **Photos** : dossier Avant / Après, couverture,
-  remplacer, déplacer, supprimer (photos réduites à 1600 px, gardées sur l'appareil, incluses dans
-  les sauvegardes).
-- **Stocks** : discipline › sous-catégorie (Électricité › Câbles / Ampoules / Prises…) ; bouton
+  Fiche : **Avancé** et **Fourn. ›** (descend jusqu'aux intervenants), puis la section **Budget** :
+  montant engagé (devis acceptés), barre payé / à payer / à facturer, budget prévu facultatif
+  (« Définir le budget ») et une ligne d'alerte (dépassement du budget, facturé au-delà des devis,
+  reste disponible, devis en attente). Onglets **Étapes**, **Devis & facture**, **Photos**,
+  **Documents** ; les **Intervenants** (fournisseurs du projet et équipe du site) sont en bas de la
+  fiche, avec « + Ajouter ». **Devis & facture** : une case « + Devis », une case « + Facture » ;
+  fournisseur au choix ou saisi (il rejoint les intervenants), statut à toucher (devis : en attente,
+  accepté, refusé ; facture : à payer, payée), trombone pour joindre le document (rangé dans le
+  dossier du projet). Onglet **Photos** : Avant et Après en grille, **Pendant** en journal avec
+  l'heure de prise de vue (lue dans la photo) et une description ; couverture, déplacer, remplacer,
+  supprimer (photos réduites à 1600 px, gardées sur l'appareil, incluses dans les sauvegardes).
+  **Documents** : rapport PDF du projet (synthèse, budget, notes, étapes avec leur date
+  d'achèvement, devis, factures, intervenants, photos avec date et description), dossiers Photos,
+  Devis, Factures et documents ajoutés, « Ouvrir le dossier dans Fichiers ».
+- **Stocks** : disciplines propres au stock (le « + » de la barre et Réglages › Stocks ; elles ne
+  s'ajoutent plus aux disciplines des projets) ; discipline › sous-catégorie (Électricité › Câbles / Ampoules / Prises…) ; bouton
   **scan EAN** (caméra, photo du code ou saisie). Un code est cherché dans vos articles, puis la
   **base de référence** (catalogue du négoce importé + produits déjà nommés, sans réseau), puis Open
   Products Facts et Open Food Facts, puis par la session cloud sur les sites du bâtiment (Plateforme
@@ -134,7 +152,8 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
   d’Apple ; un projet ou un événement sur plusieurs jours y est tracé en barre continue. Un
   événement a une date de début et de fin, et des heures de début et de fin si l’interrupteur est
   activé (sinon toute la journée) ; sur plusieurs jours, il apparaît chaque jour (J1/3, J2/3…). Le choix du site ne propose
-  que ses projets. **Commandes** et **Factures** restent des calendriers automatiques.
+  que ses projets. Plus de calendriers Commandes ni Factures : les échéances de factures et les
+  commandes à passer vont dans **Administratif**, les réceptions attendues dans **Prestation / visite**.
 - **Contacts** : rubriques modifiables (bouton « Modifier » au bout de la liste), discipline,
   adresse, affectation aux sites, sélecteur de site. Délai et prix ne sont plus demandés à la
   création (modifiables ensuite sur la fiche d'un fournisseur).
