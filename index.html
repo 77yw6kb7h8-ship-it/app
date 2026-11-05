@@ -878,7 +878,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Connexion</div>
 <div style="border-radius:20px;background:var(--field);overflow:hidden">
-<div onClick="{{ me.edit }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-bottom:2px solid var(--line)"><div style="min-width:0"><div style="font:400 15.5px -apple-system,sans-serif">Identifiant & mot de passe</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ me.loginLbl }}</div></div><svg width="8" height="13" viewBox="0 0 8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink3)"><path d="M1.5 1.5l5 5-5 5"></path></svg></div>
+<div onClick="{{ me.edit }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-bottom:2px solid var(--line)"><div style="min-width:0"><div style="font:400 15.5px -apple-system,sans-serif">Identifiant, mail et mot de passe</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ me.loginLbl }}</div></div><svg width="8" height="13" viewBox="0 0 8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink3)"><path d="M1.5 1.5l5 5-5 5"></path></svg></div>
 <sc-if value="{{ authLocal }}" hint-placeholder-val="{{ false }}"><div onClick="{{ authToggle }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px">
 <div><div style="font:400 15.5px -apple-system,sans-serif">Exiger l’identifiant</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ authSub }}</div></div>
 <div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ authTrack }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ authKnob }};transition:transform .2s"></div></div>
@@ -897,6 +897,25 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div onClick="{{ addUser }}" style="cursor:pointer;padding:13px 0;font:600 14px -apple-system,sans-serif;color:var(--acc)">+ Nouveau profil</div>
 </div>
 <div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Admin : tout sauf les profils · User : saisie, sans suppression ni réglages.</div>
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Maintenance de l’appli</div>
+<div style="border-radius:20px;background:var(--field);padding:0 14px">
+<sc-for list="{{ devs }}" as="u" hint-placeholder-count="1"><div onClick="{{ u.edit }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:2px solid var(--line)"><div style="width:36px;height:36px;border-radius:50%;flex:none;background:#3A3F4B;color:#fff;display:flex;align-items:center;justify-content:center;font:600 13px -apple-system,sans-serif">{{ u.ini }}</div><div style="flex:1;min-width:0"><div style="font:500 15px -apple-system,sans-serif">{{ u.name }}</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:1px">{{ u.sub }}</div></div><span style="flex:none;padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--ink2);font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Développeur</span></div></sc-for>
+<div onClick="{{ addDev }}" style="cursor:pointer;padding:13px 0;font:600 14px -apple-system,sans-serif;color:var(--acc)">+ Profil développeur</div>
+</div>
+<div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">Développeur : droits d’un admin pour entretenir l’appli (panneau Maintenance), sans gestion des profils. Hors de l’équipe.</div>
+</sc-if>
+<sc-if value="{{ me.dev }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Maintenance</div><div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink3)">{{ mt.when }}</div></div>
+<div style="border-radius:20px;background:var(--field);padding:0 14px">
+<sc-for list="{{ mt.rows }}" as="r" hint-placeholder-count="6"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid var(--line)"><div style="flex:none;font:400 14.5px -apple-system,sans-serif;color:var(--ink2)">{{ r.k }}</div><div style="min-width:0;text-align:right;overflow-wrap:anywhere;font:500 14.5px -apple-system,sans-serif;font-variant-numeric:tabular-nums;color:{{ r.c }}">{{ r.v }}</div></div></sc-for>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:12px 0"><div onClick="{{ mt.refresh }}" style="cursor:pointer;text-align:center;padding:11px 6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ mt.refreshLbl }}</div><div onClick="{{ mt.sync }}" style="cursor:pointer;text-align:center;padding:11px 6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Synchroniser</div><div onClick="{{ mt.cache }}" style="cursor:pointer;text-align:center;padding:11px 6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Vider le cache</div><div onClick="{{ mt.copy }}" style="cursor:pointer;text-align:center;padding:11px 6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Copier le diagnostic</div></div>
+</div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Journal des erreurs</div><div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink3)">{{ mt.errN }}</div></div>
+<div style="border-radius:20px;background:var(--field);padding:0 14px">
+<sc-for list="{{ mt.errs }}" as="x" hint-placeholder-count="2"><div style="padding:10px 0;border-bottom:1px solid var(--line)"><div style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink3)">{{ x.when }} · {{ x.src }}</div><div style="font:400 13.5px/1.4 -apple-system,sans-serif;margin-top:2px;overflow-wrap:anywhere">{{ x.m }}</div></div></sc-for>
+<sc-if value="{{ mt.noErr }}" hint-placeholder-val="{{ false }}"><div style="padding:13px 0;font:400 13.5px -apple-system,sans-serif;color:var(--ink2)">Aucune erreur enregistrée sur cet appareil</div></sc-if>
+<sc-if value="{{ mt.hasErr }}" hint-placeholder-val="{{ true }}"><div onClick="{{ mt.clear }}" style="cursor:pointer;padding:13px 0;font:600 14px -apple-system,sans-serif;color:var(--warnTx)">Effacer le journal</div></sc-if>
+</div>
 </sc-if>
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Partage · {{ syncOrg }}</div>
 <div style="padding:12px 14px;border-radius:20px;background:var(--field)"><div style="display:flex;align-items:center;gap:9px"><span style="width:9px;height:9px;border-radius:50%;flex:none;background:{{ syncCol }}"></span><span style="font:500 15px -apple-system,sans-serif">{{ syncTxt }}</span></div><div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin-top:5px">{{ syncSub }}</div><div onClick="{{ syncNow }}" style="cursor:pointer;margin-top:12px;text-align:center;padding:11px 0;border-radius:14px;font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)">Synchroniser maintenant</div></div>
@@ -941,7 +960,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">À enregistrer dans iCloud Drive › Chantier › Sauvegardes.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 30</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 31</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -1439,7 +1458,7 @@ const put = (o, v) => { if (v && typeof v === 'object') { Object.keys(o).forEach
 const wrapI = j => ((j % KS.length) + KS.length) % KS.length;
 const DEFSTEPS = [{ l: 'Préparation', t: 'c' }, { l: 'Exécution', t: 'g' }, { l: 'Finitions', t: 'g' }, { l: 'Réception', t: 'c' }];
 const SAVE_KEY = 'chantier-app-v6';
-const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'pdAdd', 'back', 'cfgSec', 'qa', 'sending', 'gen', 'ctx', 'fv', 'fvUi', 'fdlg', 'fmv', 'finfo', 'fsel', 'fup', 'chatBusy', 'chatErr', 'memoOpen', 'repBusy'];
+const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'pdAdd', 'back', 'cfgSec', 'qa', 'sending', 'gen', 'ctx', 'fv', 'fvUi', 'fdlg', 'fmv', 'finfo', 'fsel', 'fup', 'chatBusy', 'chatErr', 'memoOpen', 'repBusy', 'mt'];
 const restore = () => {
   try {
     if (location.hash === '#reset') { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(SESS_KEY); localStorage.removeItem(CL_KEY); Object.keys(CL).forEach(k => delete CL[k]); history.replaceState(null, '', location.pathname); return {}; }
@@ -1520,7 +1539,7 @@ const ridScan = st => {
   return Object.keys(RID.map).length !== n0;
 };
 // profils et connexion par identifiant (gardés sur l'appareil, inclus dans les sauvegardes)
-const ROLES = { owner: 'Propriétaire', admin: 'Admin', user: 'User' };
+const ROLES = { owner: 'Propriétaire', admin: 'Admin', user: 'User', dev: 'Développeur' };
 const USERS = [{ id: 'u1', name: 'Thomas Martin', login: 'thomas', role: 'owner', mail: 'thomas@martin-renovation.fr', org: 'Martin Rénovation · Lyon', pw: null }];
 const AUTH = { on: false };
 // identifiants remis au propriétaire : empreintes PBKDF2 seulement (les mots de passe ne sont pas dans le code)
@@ -1555,6 +1574,12 @@ const pwHash = async (pw, salt) => {
   return s + ':' + hex(await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: te.encode(s), iterations: 120000, hash: 'SHA-256' }, k, 256));
 };
 const pwCheck = async (pw, h) => !!h && (await pwHash(pw, h.split(':')[0])) === h;
+// journal des erreurs : gardé sur l'appareil (40 dernières), lu dans Compte › Maintenance par le profil développeur
+const ERRK = 'chantier-errors-v1';
+const errList = () => { try { return JSON.parse(localStorage.getItem(ERRK) || '[]') || []; } catch (e) { return []; } };
+const errLog = (msg, src) => { try { const L = errList(), m = String(msg || '').slice(0, 300); if (L[0] && L[0].m === m && Date.now() - new Date(L[0].at).getTime() < 60000) return; L.unshift({ at: new Date().toISOString(), m, s: String(src || '').slice(0, 80) }); localStorage.setItem(ERRK, JSON.stringify(L.slice(0, 40))); } catch (e) {} };
+addEventListener('error', e => { const f = String(e.filename || '').split('/').pop(); errLog(e.message || 'erreur', f && f !== 'undefined' ? f + (e.lineno ? ':' + e.lineno : '') : 'page'); });
+addEventListener('unhandledrejection', e => errLog((e.reason && (e.reason.message || e.reason)) || 'promesse rejetée', 'promesse'));
 const canDel = () => !!ME && ME.role !== 'user', canCfg = canDel, isOwner = () => !!ME && ME.role === 'owner';
 
 
@@ -2001,11 +2026,12 @@ const projFilesRun = comp => { const s = comp.state; if (s.P === comp.pfP && s.p
 const tbFade = sc => { if (!sc) return; const m = sc.scrollWidth - sc.clientWidth, l = m > 2 && sc.scrollLeft > 2, r = m > 2 && sc.scrollLeft < m - 2, g = l || r ? 'linear-gradient(to right,' + (l ? 'transparent,#000 28px' : '#000') + ',' + (r ? '#000 calc(100% - 28px),transparent' : '#000') + ')' : ''; sc.style.webkitMaskImage = g; sc.style.maskImage = g;
   const ind = sc.parentElement.querySelector('[data-tbind]'); if (ind) { ind.style.opacity = m > 2 ? '1' : '0'; if (m > 2) { ind.firstElementChild.style.width = 100 * sc.clientWidth / sc.scrollWidth + '%'; ind.firstElementChild.style.transform = 'translateX(' + 100 * sc.scrollLeft / sc.clientWidth + '%)'; } } };
 const tbSync = comp => {
-  const sc = document.querySelector('[data-scrollx="tb"]'), tab = comp.state.tab;
-  if (sc && (sc !== comp.tbEl || tab !== comp.tbTab)) {
-    const el = sc.querySelectorAll('[data-lpg="tb"]')[tabsOf(comp.state).indexOf(tab)];
-    if (el) { const a = el.offsetLeft, b = a + el.offsetWidth, L = sc.scrollLeft, W = sc.clientWidth, to = a < L ? a : b > L + W ? b - W : L; if (Math.abs(to - L) > 1) sc.scrollTo({ left: to, behavior: sc === comp.tbEl ? 'smooth' : 'auto' }); }
-    comp.tbEl = sc; comp.tbTab = tab;
+  const sc = document.querySelector('[data-scrollx="tb"]'), tab = comp.state.tab, key = tabsOf(comp.state).join();
+  if (sc && (sc !== comp.tbEl || tab !== comp.tbTab || key !== comp.tbKey)) {
+    // liste des sections changée : retour au début si l'onglet ouvert y est visible (Safari peut laisser la barre au bout)
+    const re = key !== comp.tbKey && sc === comp.tbEl, go = smooth => { const el = sc.querySelectorAll('[data-lpg="tb"]')[tabsOf(comp.state).indexOf(comp.state.tab)]; if (!el) return; const a = el.offsetLeft, b = a + el.offsetWidth, L = sc.scrollLeft, W = sc.clientWidth, to = re && b <= W ? 0 : a < L ? a : b > L + W ? b - W : L; if (Math.abs(to - L) > 1) sc.scrollTo({ left: to, behavior: smooth ? 'smooth' : 'auto' }); };
+    go(sc === comp.tbEl && !re); if (re) requestAnimationFrame(() => { go(false); tbFade(sc); });
+    comp.tbEl = sc; comp.tbTab = tab; comp.tbKey = key;
   }
   tbFade(sc);
 };
@@ -2309,7 +2335,7 @@ const syncRun = async () => {
     SYNC.err = ''; SYNC.last = Date.now();
     if (comp.seedFiles) comp.seedFiles();
   } catch (e) {
-    SYNC.err = (e && e.message) || String(e);
+    SYNC.err = (e && e.message) || String(e); errLog(SYNC.err, 'synchronisation');
     if (e && e.auth) { CL.me = null; ME = null; }
   } finally {
     SYNC.busy = false; comp.forceUpdate();
@@ -2550,7 +2576,7 @@ class Component extends DCLogic {
     return ids;
   }
   flags() { const c = document.documentElement.classList; c.toggle('show-ids', !!this.state.showIds); c.toggle('no-del', !canDel()); }
-  toast(msg, undo, act) { clearTimeout(toastT); if (!undo) undoD = null; this.setState({ toast: { msg, undo: !!undo, act: act || null } }); toastT = setTimeout(() => { undoD = null; this.setState({ toast: null }); }, undo || act ? 6000 : 3000); }
+  toast(msg, undo, act) { if (/^(Non enregistré|Rapport impossible|Duplication impossible)|non ajouté|introuvable/.test(String(msg))) errLog(msg, 'message'); clearTimeout(toastT); if (!undo) undoD = null; this.setState({ toast: { msg, undo: !!undo, act: act || null } }); toastT = setTimeout(() => { undoD = null; this.setState({ toast: null }); }, undo || act ? 6000 : 3000); }
   undoable(label, kind, how, d, fn) { undoD = JSON.stringify(snap(this.state)); fn(); this.trashPut(kind, label, d); this.toast(label, true); }
   // corbeille partagée : un élément supprimé reste 30 jours, avec de quoi le remettre en place
   trashPut(k, l, d) { if (!d) return; const id = 't' + Date.now().toString(36) + rid(); this.setState(s => ({ trash: { ...(s.trash || {}), [id]: { k, l, at: new Date().toISOString(), by: (ME && ME.name) || '', d } } })); }
@@ -2991,8 +3017,44 @@ class Component extends DCLogic {
     try { await fn(); if (ok) this.toast(ok); await cloudMe(); ME = cloudUser(); this.forceUpdate(); }
     catch (e) { this.toast('Non enregistré : ' + ((e && e.message) || e)); }
   }
+  // Maintenance (profil développeur) : versions, cache, synchronisation, stockage, serveur, erreurs
+  async mtRefresh() {
+    if (this.mtBusy) return; this.mtBusy = true; this.setState(s => ({ mt: { ...(s.mt || {}), busy: true } }));
+    const M = { at: Date.now() };
+    const vOf = t => (String(t || '').match(/Chantier · version (\d+)/) || [])[1] || '';
+    M.local = vOf(document.body.innerText);
+    try { M.online = vOf(await (await fetch('./index.html?nc=' + Date.now(), { cache: 'no-store' })).text()) || '?'; } catch (e) { M.online = 'hors connexion'; }
+    try { M.caches = window.caches ? await caches.keys() : []; } catch (e) { M.caches = []; }
+    try { M.sw = navigator.serviceWorker && navigator.serviceWorker.controller ? 'actif' : 'inactif'; } catch (e) { M.sw = '?'; }
+    try { const q = navigator.storage && navigator.storage.estimate ? await navigator.storage.estimate() : null; M.store = q ? fSize(q.usage || 0) + ' sur ' + fSize(q.quota || 0) : '?'; } catch (e) { M.store = '?'; }
+    try { M.phN = (await phKeys()).length; } catch (e) { M.phN = '?'; }
+    const t0 = performance.now();
+    try { const r = await fetch(SB.url + '/functions/v1/chantier-ia/health', { headers: { apikey: SB.key } }); M.srv = r.ok ? 'en ligne · ' + Math.round(performance.now() - t0) + ' ms' : 'erreur ' + r.status; M.srvOk = r.ok; } catch (e) { M.srv = 'injoignable'; M.srvOk = false; }
+    this.mtBusy = false; this.setState({ mt: M });
+  }
+  mtVals() {
+    const M = this.state.mt || {}, st = this.state, recs = Object.keys(CL.synced || {}).length, errs = errList();
+    const t = SYNC.last ? new Date(SYNC.last) : null, hm = d => p2(d.getHours()) + 'h' + p2(d.getMinutes()), old = M.local && M.online && /^\d+$/.test(M.online) && M.online !== M.local;
+    const diag = () => JSON.stringify({ at: new Date().toISOString(), version: M.local, online: M.online, caches: M.caches, sw: M.sw, store: M.store, photos: M.phN, server: M.srv, org: CL.me && CL.me.orgName, role: ME && ME.role, members: (CL.members || []).length, records: recs, sync: { last: SYNC.last ? new Date(SYNC.last).toISOString() : null, pending: SYNC.pend, err: SYNC.err }, online: navigator.onLine, ua: navigator.userAgent, screen: innerWidth + 'x' + innerHeight, files: Object.keys(st.files || {}).length, projects: Object.values(st.P || {}).flat().length, errors: errs.slice(0, 20) }, null, 1);
+    const rows = M.at ? [
+      ['Version', 'v' + (M.local || '?') + (old ? ' · en ligne v' + M.online : ''), old ? 'var(--warnTx)' : 'var(--ink)'],
+      ['Cache', (M.caches || []).join(', ') || 'aucun', 'var(--ink)'], ['Service worker', M.sw, 'var(--ink)'],
+      ['Synchronisation', SYNC.err ? 'erreur : ' + SYNC.err : (t ? 'à jour à ' + hm(t) : 'en attente') + (SYNC.pend ? ' · ' + SYNC.pend + ' en attente' : ''), SYNC.err ? 'var(--warnTx)' : 'var(--ink)'],
+      ['Fiches partagées', String(recs), 'var(--ink)'], ['Stockage appareil', M.store + ' · ' + M.phN + ' photos', 'var(--ink)'],
+      ['Serveur', M.srv, M.srvOk ? 'var(--okTx)' : 'var(--warnTx)'], ['Réseau', navigator.onLine === false ? 'hors connexion' : 'connecté', 'var(--ink)']
+    ].map(([k, v, c]) => ({ k, v, c })) : [{ k: 'État', v: M.busy ? 'Lecture…' : 'Touchez « Actualiser »', c: 'var(--ink2)' }];
+    return {
+      rows, when: M.at ? 'à ' + hm(new Date(M.at)) : '', refreshLbl: M.busy ? 'Lecture…' : 'Actualiser', refresh: () => this.mtRefresh(),
+      sync: () => { syncSoon(0); this.toast('Synchronisation…'); setTimeout(() => this.mtRefresh(), 2500); },
+      cache: async () => { try { if (window.caches) for (const k of await caches.keys()) await caches.delete(k); if (navigator.serviceWorker) for (const r of await navigator.serviceWorker.getRegistrations()) await r.update(); } catch (e) {} location.reload(); },
+      copy: async () => { try { await navigator.clipboard.writeText(diag()); this.toast('Diagnostic copié'); } catch (e) { this.toast('Copie impossible sur cet appareil'); } },
+      errs: errs.map(x => ({ when: (d => d.getDate() + ' ' + MABRV[d.getMonth()] + ' ' + hm(d))(new Date(x.at)), src: x.s || '—', m: x.m })), errN: errs.length ? errs.length + ' sur cet appareil' : '', noErr: !errs.length, hasErr: errs.length > 0,
+      clear: () => { try { localStorage.removeItem(ERRK); } catch (e) {} this.forceUpdate(); }
+    };
+  }
   cloudUserSave(r, F) {
-    const name = F.name.trim(), login = (F.login || '').trim().toLowerCase(), role = Object.keys(ROLES).find(k => ROLES[k] === F.role) || 'user';
+    const name = F.name.trim(), login = (F.login || '').trim().toLowerCase(), cur = cloudUsers().find(u => u.id === r.id), mail = (F.mail || '').trim().toLowerCase();
+    const role = r.dev || (cur && cur.role === 'dev') ? 'dev' : Object.keys(ROLES).find(k => ROLES[k] === F.role && k !== 'dev') || 'user';
     return this.cloudCall(async () => {
       if (!r.id) {
         const email = (F.mail || '').trim().toLowerCase();
@@ -3004,7 +3066,9 @@ class Component extends DCLogic {
         await sb('/rest/v1/members?user_id=eq.' + r.id, { method: 'PATCH', json: { name, login: login || null } });
         if (F.pw) await sb('/auth/v1/user', { method: 'PUT', json: { password: F.pw } });
       } else await rpc('set_member', { p_user: r.id, p_role: role, p_name: name, p_login: login });
-    }, !r.id ? '✓ Profil créé : transmettez l’adresse mail et le mot de passe' : '✓ Profil enregistré');
+      // nouvelle adresse : connexion par mail et par identifiant (fonction change_email)
+      if (r.id && cur && mail && mail !== (cur.mail || '').toLowerCase()) { await rpc('change_email', { p_user: r.id, p_email: mail }); if (CL.sess && r.id === CL.sess.uid) { CL.sess.email = mail; clSave(); } }
+    }, !r.id ? '✓ Profil créé : transmettez l’adresse mail et le mot de passe' : cur && mail && mail !== (cur.mail || '').toLowerCase() ? '✓ Profil enregistré · connexion avec ' + mail : '✓ Profil enregistré');
   }
   updP(pid, fn) {
     this.setState(s => { const P = {}; Object.keys(s.P).forEach(k => { P[k] = s.P[k].map(p => p.id === pid ? fn(p) : p); }); return { P }; });
@@ -3494,20 +3558,21 @@ class Component extends DCLogic {
         del: r => { const L = calL().filter(x => x.k !== r.k), to = (L.find(x => !x.auto) || {}).k; if (!to) return; this.setState(s => ({ cals: L, evs: (s.evs || []).map(e => e.cal === r.k ? { ...e, cal: to } : e) })); }
       },
       user: {
-        title: r => !r.id ? 'Nouveau profil' : CL.sess && r.id === CL.sess.uid ? 'Mon profil' : 'Modifier le profil', req: 'name', delLbl: 'Retirer de l’entreprise',
+        title: r => !r.id ? (r.dev ? 'Nouveau profil développeur' : 'Nouveau profil') : CL.sess && r.id === CL.sess.uid ? 'Mon profil' : 'Modifier le profil', req: 'name', delLbl: 'Retirer de l’entreprise',
         canDel: r => isOwner() && !!r.id && !!CL.sess && r.id !== CL.sess.uid,
-        note: r => !r.id ? 'Transmettez l’adresse et le mot de passe à la personne.' : '',
+        note: r => !r.id ? (r.dev ? 'Profil de maintenance : droits d’un admin (données, réglages, corbeille) et panneau Maintenance, sans gestion des profils. Rangé à part de l’équipe. Transmettez l’adresse et le mot de passe au développeur.' : 'Transmettez l’adresse et le mot de passe à la personne.') : '',
         err: (r, F) => {
           const l = (F.login || '').trim().toLowerCase();
           if (l && !/^[a-z0-9._-]{2,40}$/.test(l)) return 'Identifiant : lettres minuscules, chiffres, point ou tiret, 2 caractères minimum.';
           if (l && cloudUsers().some(u => u.id !== r.id && u.login === l)) return 'Cet identifiant est déjà utilisé.';
-          if (!r.id && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test((F.mail || '').trim())) return 'Adresse mail obligatoire.';
+          if ((!r.id || (F.mail || '').trim()) && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test((F.mail || '').trim())) return r.id ? 'Adresse mail invalide.' : 'Adresse mail obligatoire.';
+          if (r.id && (F.mail || '').trim() && cloudUsers().some(u => u.id !== r.id && (u.mail || '').toLowerCase() === F.mail.trim().toLowerCase())) return 'Cette adresse est déjà celle d’un autre profil.';
           if ((!r.id || F.pw) && (F.pw || '').length < 6) return 'Mot de passe : 6 caractères minimum.';
           return '';
         },
         load: r => { const u = cloudUsers().find(x => x.id === r.id) || { role: 'user' }; return { name: u.name, login: u.login, mail: u.mail, role: ROLES[u.role], pw: '' }; },
-        groups: () => { const self = !!edRef.id && !!CL.sess && edRef.id === CL.sess.uid, isNew = !edRef.id;
-          return [{ t: 'Profil', f: [['name', 'Nom', 'Ex. Ali Diallo'], ['login', 'Identifiant', 'Ex. ali'], ...(isNew ? [['mail', 'Mail', 'nom@entreprise.fr', null, { type: 'email' }]] : []), ...(isOwner() && !self ? [['role', 'Rôle', '', [ROLES.owner, ROLES.admin, ROLES.user]]] : [])] },
+        groups: () => { const self = !!edRef.id && !!CL.sess && edRef.id === CL.sess.uid, isNew = !edRef.id, tgt = cloudUsers().find(u => u.id === edRef.id), devP = !!edRef.dev || (tgt && tgt.role === 'dev');
+          return [{ t: 'Profil', f: [['name', 'Nom', devP ? 'Ex. Maintenance' : 'Ex. Ali Diallo'], ['login', 'Identifiant', devP ? 'Ex. dev' : 'Ex. ali'], ...(isNew || self || isOwner() ? [['mail', 'Mail', 'nom@entreprise.fr', null, { type: 'email' }]] : []), ...(isOwner() && !self && !devP ? [['role', 'Rôle', '', [ROLES.owner, ROLES.admin, ROLES.user]]] : [])] },
             ...(isNew || self ? [{ t: 'Mot de passe', f: [['pw', self ? 'Nouveau' : 'Mot de passe', self ? 'Laisser vide pour le garder' : '6 caractères minimum', null, { type: 'password' }]] }] : [])]; },
         save: (r, F) => { this.cloudUserSave(r, F); },
         del: r => { this.cloudCall(() => rpc('remove_member', { p_user: r.id }), 'Profil retiré de l’entreprise'); }
@@ -3638,7 +3703,7 @@ class Component extends DCLogic {
         return { scopeOn: !!key && !(st.tab === 'm' && boxOn), wheelOp: on ? 0.45 : 1, scopeBg: on ? 'var(--acc)' : 'var(--tile)', scopeFg: on ? 'var(--accOn)' : 'var(--ink)', scopeToggle: () => set({ [key]: !st[key], mail: null, who: null }) }; })(),
       showSel: !glob && !detail && !/^[fi]$/.test(st.tab), noSel: glob || /^[fi]$/.test(st.tab), menuOpen: st.menu && !glob && !detail, toggleMenu: () => set({ menu: !st.menu }), closeMenu: () => set({ menu: false }),
       cur: { label: SL(st.site), dot: DOT[st.site] }, wheel, wWheel, wDown, wMove, wUp, menuChev: st.menu ? 'rotate(180deg)' : 'none',
-      openAcc: () => { set({ sheet: 'acc', form: {}, back: [], menu: false, bkPend: null, bkMsg: '' }); if (cloudReady()) cloudMe().then(() => { ME = cloudUser(); this.forceUpdate(); }).catch(() => {}); }, isAccSheet: sh === 'acc',
+      openAcc: () => { set({ sheet: 'acc', form: {}, back: [], menu: false, bkPend: null, bkMsg: '' }); if (ME && ME.role === 'dev') setTimeout(() => this.mtRefresh(), 400); if (cloudReady()) cloudMe().then(() => { ME = cloudUser(); this.forceUpdate(); }).catch(() => {}); }, isAccSheet: sh === 'acc',
       bkLast: st.bkLast ? 'Dernière : ' + bkWhen(st.bkLast.at) + (st.bkLast.imp ? ' · restaurée' : '') : 'Aucune sauvegarde pour l’instant', bkLastId: st.bkLast ? st.bkLast.id : '', hasBkId: !!st.bkLast,
       bkMsg: st.bkMsg || '', hasBkMsg: !!st.bkMsg, bkPending: !!st.bkPend, bkIdle: !st.bkPend,
       bkPendTxt: st.bkPend ? 'Remplacer toutes les données actuelles par la sauvegarde ' + st.bkPend.id + ' du ' + bkWhen(st.bkPend.at) + ' ?' : '',
@@ -3672,13 +3737,16 @@ class Component extends DCLogic {
         const me = ME || USERS[0], L = st.lg || {};
         const doLogin = () => this.cloudLogin();
         return {
-          me: { name: me.name, ini: ini(me.name || '?'), org: me.org || '', mail: me.mail || '', role: ROLES[me.role], loginLbl: [me.login, me.mail].filter(Boolean).join(' · ') || 'À définir', owner: isOwner(), admin: canCfg(), edit: () => openEdB('user', { id: me.id }) },
-          users: cloudUsers().map(u => ({ name: u.name, ini: ini(u.name || '?'), sub: [u.login, u.mail].filter(Boolean).join(' · ') || '—', role: ROLES[u.role], me: !!ME && u.id === ME.id, edit: () => openEdB('user', { id: u.id }) })),
-          usersN: cloudUsers().length + ' profil' + (cloudUsers().length > 1 ? 's' : ''), addUser: () => openEdB('user', { id: null }),
+          me: { name: me.name, ini: ini(me.name || '?'), org: me.org || '', mail: me.mail || '', role: ROLES[me.role], loginLbl: [me.login, me.mail].filter(Boolean).join(' · ') || 'À définir', owner: isOwner(), admin: canCfg(), dev: me.role === 'dev', edit: () => openEdB('user', { id: me.id }) },
+          users: cloudUsers().filter(u => u.role !== 'dev').map(u => ({ name: u.name, ini: ini(u.name || '?'), sub: [u.login, u.mail].filter(Boolean).join(' · ') || '—', role: ROLES[u.role], me: !!ME && u.id === ME.id, edit: () => openEdB('user', { id: u.id }) })),
+          usersN: (n => n + ' profil' + (n > 1 ? 's' : ''))(cloudUsers().filter(u => u.role !== 'dev').length), addUser: () => openEdB('user', { id: null }),
+          devs: cloudUsers().filter(u => u.role === 'dev').map(u => ({ name: u.name, ini: ini(u.name || '?'), sub: [u.login, u.mail].filter(Boolean).join(' · ') || '—', edit: () => openEdB('user', { id: u.id }) })),
+          addDev: () => openEdB('user', { id: null, dev: true }),
+          mt: this.mtVals(),
           authTrack: AUTH.on ? 'var(--ok)' : 'var(--track)', authKnob: AUTH.on ? 'translateX(20px)' : 'none', authSub: AUTH.on ? 'Identifiant et mot de passe demandés à l’ouverture' : 'L’appli s’ouvre sans connexion',
           authToggle: () => { if (!AUTH.on && !me.pw) { this.toast('Définissez d’abord votre mot de passe (Identifiant & mot de passe)'); return; } AUTH.on = !AUTH.on; if (AUTH.on) { try { localStorage.setItem(SESS_KEY, me.id); } catch (e) {} } set(bump()); },
           canLogout: !!CL.sess, logout: () => this.cloudLogout(), authLocal: false,
-          ...(() => { const n = (CL.members || []).length, t = SYNC.last ? new Date(SYNC.last) : null, off = navigator.onLine === false;
+          ...(() => { const n = (CL.members || []).filter(m => m.role !== 'dev').length, t = SYNC.last ? new Date(SYNC.last) : null, off = navigator.onLine === false;
             return { syncOrg: (CL.me && CL.me.orgName) || 'entreprise', syncNow: () => { syncSoon(0); this.toast('Synchronisation…'); },
               syncTxt: SYNC.busy ? 'Synchronisation…' : off ? 'Hors connexion' : SYNC.err ? 'Erreur : ' + SYNC.err : t ? 'À jour · ' + p2(t.getHours()) + 'h' + p2(t.getMinutes()) : 'En attente',
               syncCol: SYNC.err ? 'var(--warn)' : off || !t ? 'var(--ink3)' : 'var(--ok)',
@@ -3836,7 +3904,7 @@ class Component extends DCLogic {
           calEdit: () => set({ sheet: 'cfg', cfgSec: 'l', form: {}, back: [], menu: false }), rubEdit: () => set({ sheet: 'cfg', cfgSec: 'c', form: {}, back: [], menu: false })
         };
       })(),
-      isEdSheet: sh === 'ed', edCanDel: canDel() && !!(EK && EK.canDel(edRef)), edNote: !!(edErr || (EK && EK.note && EK.note(edRef))), edNoteTxt: edErr || (EK && EK.note ? EK.note(edRef) : ''), edNoteCol: edErr ? 'var(--warnTx)' : 'var(--ink2)',
+      isEdSheet: sh === 'ed', edCanDel: canDel() && !!(EK && EK.canDel(edRef)), ...(() => { const nt = EK && EK.note ? EK.note(edRef) : '', quiet = !!nt && /obligatoire\.$/.test(edErr || ''), er = quiet ? '' : edErr; return { edNote: !!(er || nt), edNoteTxt: er || nt, edNoteCol: er ? 'var(--warnTx)' : 'var(--ink2)' }; })(),
       edDelLbl: F.confirm ? 'Toucher encore pour confirmer' : (EK ? EK.delLbl : ''), edDelBg: F.confirm ? 'var(--warn)' : 'var(--warnBg)', edDelFg: F.confirm ? '#fff' : 'var(--warnTx)',
       edDel: () => { if (!F.confirm) { setF({ confirm: true }); return; } EK.del(edRef); pop(); },
       editProj: () => openEd('proj', { id: pid }), editSup: () => openEd('sup', { id: S0.id }), editMail: () => openEd('mail', { id: cm0.id }), newSite: () => openEd('site', { k: null }),

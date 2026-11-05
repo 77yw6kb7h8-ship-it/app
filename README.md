@@ -85,6 +85,13 @@ via le projet Supabase (Irlande) décrit dans `supabase/README.md`.
 - **Profils** (Compte › Profils, propriétaire) : nom, identifiant, adresse, mot de passe de départ et
   rôle. Propriétaire : tout, dont les profils ; Admin : tout sauf les profils ; User : consultation
   et saisie, sans suppression ni réglages. Ces règles sont aussi appliquées par le serveur.
+  **Adresse mail** modifiable dans l'appli : chacun la sienne (Compte › Identifiant, mail et mot de
+  passe), le propriétaire celles des membres ; elle sert aussitôt pour se connecter.
+- **Profil développeur** (Compte › Maintenance de l'appli › « + Profil développeur ») : droits d'un
+  admin pour entretenir l'appli, sans gestion des profils, rangé hors de l'équipe. Il voit le
+  panneau **Maintenance** : version installée et en ligne, cache et service worker,
+  synchronisation, stockage de l'appareil, serveur, journal des erreurs de l'appareil, « Vider le
+  cache », « Copier le diagnostic ».
 - **Synchronisation** fiche par fiche (site, projet, article, événement, contact, réglage, photo,
   base EAN) : envoi un instant après chaque saisie, réception à l'ouverture, au retour du réseau et
   toutes les 15 s. Deux personnes qui modifient des fiches différentes ne perdent rien ; sur la même
