@@ -960,7 +960,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">À enregistrer dans iCloud Drive › Chantier › Sauvegardes.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 31</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 32</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -2021,6 +2021,17 @@ const projFiles = s => {
   Object.keys(G).forEach(id => { const r = G[id]; if (!r || !r.sys || live.has(id)) return; if (id.startsWith('fl-') && !allPh.has(id.slice(3))) delete G[id]; else { const c = { ...r }; delete c.sys; G[id] = c; } ch = true; });
   return ch ? G : null;
 };
+// barre d'onglets propre à chaque compte : la configuration de l'appareil est adoptée par le premier compte connecté ;
+// un autre compte repart de la sienne (fiche me/<compte>, reçue à la synchronisation) ou de la barre par défaut
+const tabsOwn = comp => {
+  const uid = cloudReady() && CL.sess.uid, s = comp.state; if (!uid || s.tabsU === uid) return;
+  comp.setState(s.tabsU ? { tabsU: uid, tabs: undefined, tab: 'p' } : { tabsU: uid });
+  // la barre déjà enregistrée pour ce compte l'emporte sur celle de l'appareil
+  sbJson('/rest/v1/records?select=data,deleted&org_id=eq.' + CL.me.org + '&key=eq.' + encodeURIComponent('me/' + uid)).then(r => {
+    const d = r && r[0] && !r[0].deleted && r[0].data; if (!d || !Array.isArray(d.tabs) || comp.state.tabsU !== uid) return;
+    if (CL.synced) { CL.synced['me/' + uid] = canon(d); clSave(); } comp.setState({ tabs: d.tabs });
+  }).catch(() => {});
+};
 const projFilesRun = comp => { const s = comp.state; if (s.P === comp.pfP && s.ph === comp.pfH && s.files === comp.pfF && s.rev === comp.pfR) return; comp.pfP = s.P; comp.pfH = s.ph; comp.pfF = s.files; comp.pfR = s.rev; const G = projFiles(s); if (G) comp.setState({ files: G }); };
 // barre d'onglets : fondu sur le bord où d'autres sections attendent, petit indicateur de défilement ; l'onglet actif est ramené en vue
 const tbFade = sc => { if (!sc) return; const m = sc.scrollWidth - sc.clientWidth, l = m > 2 && sc.scrollLeft > 2, r = m > 2 && sc.scrollLeft < m - 2, g = l || r ? 'linear-gradient(to right,' + (l ? 'transparent,#000 28px' : '#000') + ',' + (r ? '#000 calc(100% - 28px),transparent' : '#000') + ')' : ''; sc.style.webkitMaskImage = g; sc.style.maskImage = g;
@@ -2247,7 +2258,7 @@ const rpc = (fn, args, opt = {}) => sbJson('/rest/v1/rpc/' + fn, { method: 'POST
 
 // empreinte stable d'une valeur (clés triées, comme jsonb les renvoie dans un autre ordre)
 const canon = v => v === undefined ? 'null' : JSON.stringify(v, (k, x) => x && typeof x === 'object' && !Array.isArray(x) ? Object.keys(x).sort().reduce((o, y) => { o[y] = x[y]; return o; }, {}) : x);
-// dictionnaires partagés (une fiche par entrée) et réglages (une fiche chacun ; cfg/… réservé aux admins)
+// dictionnaires partagés (une fiche par entrée) et réglages (une fiche chacun ; cfg/… réservé aux admins) ; me/<compte> : réglages personnels
 const SH_DICT = ['stk', 'stkCfg', 'stkDel', 'stkZone', 'ph', 'cover', 'treated', 'vip', 'lvlUse', 'pins', 'trash', 'files'];
 const SH_CFG = ['discs', 'sdiscs', 'cals', 'rubs', 'projPh', 'projSup', 'projSecs', 'evTimes'], SH_VAL = ['lvls'];
 // état de l'appli → fiches
@@ -2262,6 +2273,8 @@ const toRecords = st => {
   SH_DICT.forEach(d => Object.keys(st[d] || {}).forEach(k => { if (st[d][k] !== undefined && !(d === 'treated' && /^mx-/.test(k))) R.set('d/' + d + '/' + k, st[d][k]); }));
   SH_CFG.forEach(d => { if (st[d] !== undefined) R.set('cfg/' + d, st[d]); });
   SH_VAL.forEach(d => { if (st[d] !== undefined) R.set('v/' + d, st[d]); });
+  // réglages propres au compte connecté (barre d'onglets) : me/<compte>, suivent la personne sur ses appareils
+  const uid = CL.sess && CL.sess.uid; if (uid && st.tabsU === uid && Array.isArray(st.tabs)) R.set('me/' + uid, { tabs: st.tabs });
   return R;
 };
 // fiches → données de l'appli (même forme que snap())
@@ -2278,6 +2291,7 @@ const fromRecords = (R, st) => {
     else if (t === 'r') { map[rest] = v; const m = String(v).match(/^([A-Z]+)-(\d+)$/); if (m) n[m[1]] = Math.max(n[m[1]] || 0, +m[2]); }
     else if (t === 'd' && out[a]) out[a][rest.slice(a.length + 1)] = v;
     else if (t === 'cfg' || t === 'v') out[a] = v;
+    else if (t === 'me' && CL.sess && a === CL.sess.uid && v && Array.isArray(v.tabs)) { out.tabs = v.tabs; out.tabsU = a; }
   });
   const ord = (x, y) => (x._i ?? 0) - (y._i ?? 0);
   const K = ks.sort((x, y) => x[0] - y[0] || String(x[1]).localeCompare(y[1])).map(x => x[1]);
@@ -2346,7 +2360,7 @@ const syncRun = async () => {
 const syncPush = async comp => {
   const org = CL.me.org, syn = CL.synced, L = toRecords(comp.state), up = [];
   L.forEach((v, k) => { const h = canon(v); if (syn[k] !== h) up.push({ key: k, data: v, deleted: false, h }); });
-  Object.keys(syn).forEach(k => { if (!L.has(k)) up.push({ key: k, data: null, deleted: true }); });
+  Object.keys(syn).forEach(k => { if (!L.has(k) && !k.startsWith('me/')) up.push({ key: k, data: null, deleted: true }); });
   SYNC.pend = up.length + (CL.refQ || []).length + (CL.phQ || []).length;
   const send = async B => sb('/rest/v1/records?on_conflict=org_id,key', { method: 'POST', headers: { Prefer: 'resolution=merge-duplicates,return=minimal' }, json: B.map(x => ({ org_id: org, key: x.key, data: x.data, deleted: x.deleted })) });
   const done = x => { if (x.deleted) delete syn[x.key]; else syn[x.key] = x.h; };
@@ -2447,7 +2461,7 @@ class Component extends DCLogic {
     this.syncI = setInterval(() => { if (!document.hidden) syncRun(); }, 15000);
     addEventListener('online', () => syncSoon(200)); document.addEventListener('visibilitychange', () => { if (!document.hidden) syncSoon(200); });
     this.flags(); if (ridScan(this.state)) this.forceUpdate();
-    tbSync(this); document.querySelectorAll('textarea[data-grow]').forEach(growTa); projFilesRun(this);
+    tbSync(this); document.querySelectorAll('textarea[data-grow]').forEach(growTa); projFilesRun(this); tabsOwn(this);
     phWake = () => { clearTimeout(this.phT); this.phT = setTimeout(() => this.forceUpdate(), 30); };
     setTimeout(() => { const keep = new Set(); Object.values(this.state.ph || {}).forEach(L => L.forEach(x => keep.add(x.id))); Object.values(this.state.trash || {}).forEach(t => { if (t.k === 'photo' && t.d && t.d.x) keep.add(t.d.x.id); }); this.trashPurge(); if (window.indexedDB) phKeys().then(K => K.forEach(k => { if (!keep.has(k)) phDel(k); })).catch(() => {}); }, 4000);
   }
@@ -2604,13 +2618,13 @@ class Component extends DCLogic {
   componentDidUpdate(prev) {
     this.flags();
     if (this.fvReset) { this.fvReset = false; FVG.reset(); }
-    tbSync(this); document.querySelectorAll('textarea[data-grow]').forEach(growTa); projFilesRun(this);
+    tbSync(this); document.querySelectorAll('textarea[data-grow]').forEach(growTa); projFilesRun(this); tabsOwn(this);
     const dOn = !!this.state.fdlg; if (dOn && !this.dlgWas) setTimeout(() => { const i = document.getElementById('fdlg-in'); if (i) { i.focus(); i.select(); } }, 80); this.dlgWas = dOn;
     const wk = Math.round(this.state.wpos || 0); if (this.wLast !== undefined && wk !== this.wLast) haptic(); this.wLast = wk;
     if (ridScan(this.state)) { this.forceUpdate(); return; }
     persist(this.state);
     // fiche partagée modifiée : envoi groupé un instant plus tard
-    const sig = [this.state.P, this.state.addS, this.state.evs, this.state.cfg, this.state.rev, this.state.lvls, ...SH_DICT.map(k => this.state[k]), ...SH_CFG.map(k => this.state[k])];
+    const sig = [this.state.P, this.state.addS, this.state.evs, this.state.cfg, this.state.rev, this.state.lvls, this.state.tabs, this.state.tabsU, ...SH_DICT.map(k => this.state[k]), ...SH_CFG.map(k => this.state[k])];
     if (this.sig && sig.some((v, i) => v !== this.sig[i])) syncSoon();
     if (this.state.sheet === 'cfg' && this.state.cfgSec === 'm' && !(prev.sheet === 'cfg' && prev.cfgSec === 'm')) this.iaRefresh();
     this.sig = sig;

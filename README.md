@@ -42,6 +42,9 @@ Claude et Fichiers, dans l’ordre choisi. 5 sont visibles à la fois ; au-delà
 ramené en vue. **Maintenir puis glisser** une ligne du réglage, ou une icône directement dans la barre,
 change l’ordre. Maintenir une icône sans glisser : Ouvrir, Personnaliser la barre, Retirer de la barre.
 Une section retirée reste accessible par « Ouvrir » sous « Autres sections ».
+La barre est **propre à chaque compte** (fiche `me/<compte>` dans Supabase) : elle suit la personne sur
+tous ses appareils, et deux comptes sur un même téléphone ont chacun la leur. À la première connexion,
+la barre déjà réglée sur l'appareil devient celle du compte (sauf s'il en a déjà une).
 
 ## Fichiers
 
