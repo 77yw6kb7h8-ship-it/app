@@ -111,7 +111,7 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
   projets, le planning et les contacts, jamais dans le stock), emplacements proposés, tri par avancement
   (En cours / À faire / Terminés) activé ou non, photos des projets affichées ou masquées,
   fournisseurs par projet activés ou non.
-- **Stocks** : thèmes (toucher pour renommer ou supprimer), articles, seuils et lots du site ; **base de référence EAN** (import du catalogue CSV
+- **Stocks** : thèmes et types d’article de chaque thème (toucher pour renommer ou supprimer, « Ajouter » pour en créer), articles et seuils du site (le bouton de commande ajoute un pack s’il est connu, sinon 1) ; **base de référence EAN** (import du catalogue CSV
   du négoce, export, vider).
 - **Mails** : adresse mail, serveur IMAP (deviné d'après l'adresse), mot de passe d'application
   (gardé sur l'appareil, jamais dans les sauvegardes), nombre de mails à synchroniser (10, 30, 50,
@@ -155,7 +155,10 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
 - **Stocks** : **thèmes** propres au stock (le « + » de la ligne et Réglages › Stocks), sans aucun lien avec les
   disciplines des projets. Une seule ligne déroulante : d'abord les thèmes ; un thème choisi, la même ligne
   propose ses **types d'article** (Électricité › Câbles / Ampoules / Prises…) avec une pastille « ‹ thème » pour
-  revenir ; bouton
+  revenir. Le « + » de la ligne ajoute un thème (premier niveau) ou un type d’article (dans un thème) ; « Modifier »
+  (propriétaire et admins) affiche un ✕ sur chaque pastille : toucher la pastille la renomme, deux touches sur ✕
+  la suppriment (ses articles passent en « Autre » pour un thème, en « Divers » pour un type). Mêmes réglages
+  dans Réglages › Stocks. Un type créé sans article est gardé et partagé avec l'équipe ; bouton
   **scan EAN** (caméra, photo du code ou saisie). Un code est cherché dans vos articles, puis la
   **base de référence** (catalogue du négoce importé + produits déjà nommés, sans réseau), puis Open
   Products Facts et Open Food Facts, puis par la session cloud sur les sites du bâtiment (Plateforme
