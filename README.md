@@ -108,10 +108,10 @@ via le projet Supabase (Irlande) décrit dans `supabase/README.md`.
 Compte › **Réglages** : une page par section (aussi par la roue dentée en haut de chaque onglet).
 
 - **Projets** : disciplines (toucher pour renommer ou supprimer ; un nouveau nom est repris dans les
-  projets, le stock, le planning et les contacts), emplacements proposés, tri par avancement
+  projets, le planning et les contacts, jamais dans le stock), emplacements proposés, tri par avancement
   (En cours / À faire / Terminés) activé ou non, photos des projets affichées ou masquées,
   fournisseurs par projet activés ou non.
-- **Stocks** : articles, seuils et lots du site ; **base de référence EAN** (import du catalogue CSV
+- **Stocks** : thèmes (toucher pour renommer ou supprimer), articles, seuils et lots du site ; **base de référence EAN** (import du catalogue CSV
   du négoce, export, vider).
 - **Mails** : adresse mail, serveur IMAP (deviné d'après l'adresse), mot de passe d'application
   (gardé sur l'appareil, jamais dans les sauvegardes), nombre de mails à synchroniser (10, 30, 50,
@@ -152,8 +152,10 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
   **Documents** : rapport PDF du projet (synthèse, budget, notes, étapes avec leur date
   d'achèvement, devis, factures, intervenants, photos avec date et description), dossiers Photos,
   Devis, Factures et documents ajoutés, « Ouvrir le dossier dans Fichiers ».
-- **Stocks** : disciplines propres au stock (le « + » de la barre et Réglages › Stocks ; elles ne
-  s'ajoutent plus aux disciplines des projets) ; discipline › sous-catégorie (Électricité › Câbles / Ampoules / Prises…) ; bouton
+- **Stocks** : **thèmes** propres au stock (le « + » de la ligne et Réglages › Stocks), sans aucun lien avec les
+  disciplines des projets. Une seule ligne déroulante : d'abord les thèmes ; un thème choisi, la même ligne
+  propose ses **types d'article** (Électricité › Câbles / Ampoules / Prises…) avec une pastille « ‹ thème » pour
+  revenir ; bouton
   **scan EAN** (caméra, photo du code ou saisie). Un code est cherché dans vos articles, puis la
   **base de référence** (catalogue du négoce importé + produits déjà nommés, sans réseau), puis Open
   Products Facts et Open Food Facts, puis par la session cloud sur les sites du bâtiment (Plateforme
@@ -212,6 +214,9 @@ Le dossier `chantier/` est un site statique : il suffit de l'héberger en **HTTP
 
 ## Bon à savoir
 
-- Remettre les données de démo : ouvrir l'adresse suivie de `#reset`.
+- Plus aucune donnée d'exemple : l'appli démarre vide (aucun site, projet, contact, stock, mail, événement ni photo).
+  Les exemples des versions précédentes sont retirés une seule fois de chaque appareil et, par la synchronisation,
+  de la base commune ; ce qui a été renommé, complété ou ajouté est conservé.
+- Repartir de zéro sur cet appareil : ouvrir l'adresse suivie de `#reset`.
 - Les photos et la carte viennent d'internet ; une fois vues, elles restent en cache.
 - Après une mise à jour du site, changer `VERSION` dans `sw.js` pour forcer le rafraîchissement.

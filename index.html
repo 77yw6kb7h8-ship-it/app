@@ -313,14 +313,12 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </sc-for>
 </div>
+<div style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);margin:2px 4px 6px">{{ stCap }}</div>
 <div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 4px;padding:0 20px">
-<sc-for list="{{ stDisc }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
-<sc-if value="{{ qaStk.can }}" hint-placeholder-val="{{ false }}"><div onClick="{{ qaStk.tog }}" title="Ajouter une discipline" style="flex:none;cursor:pointer;min-width:36px;padding:0 10px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if>
+<sc-for list="{{ stLine }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
+<sc-if value="{{ stTop }}" hint-placeholder-val="{{ true }}"><sc-if value="{{ qaStk.can }}" hint-placeholder-val="{{ false }}"><div onClick="{{ qaStk.tog }}" title="Ajouter un thème" style="flex:none;cursor:pointer;min-width:36px;padding:0 10px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if></sc-if>
 </div>
 <sc-if value="{{ qaStk.on }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin:8px 0 0"><input value="{{ qaStk.v }}" onChange="{{ qaStk.onV }}" placeholder="{{ qaStk.ph }}" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:9px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"><div onClick="{{ qaStk.ok }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ajouter</div></div></sc-if>
-<sc-if value="{{ hasStSub }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:4px;overflow-x:auto;margin:8px -20px 0;padding:0 20px">
-<sc-for list="{{ stSub }}" as="d" hint-placeholder-count="4"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:10px;background:{{ d.bg }};color:{{ d.fg }};font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
-</div></sc-if>
 <sc-if value="{{ hasStock }}" hint-placeholder-val="{{ true }}">
 <sc-for list="{{ stGroups }}" as="sg" hint-placeholder-count="2">
 <div style="display:flex;justify-content:space-between;align-items:baseline;margin:18px 4px 8px"><span style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">{{ sg.label }}</span><span style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink3)">{{ sg.n }}</span></div>
@@ -960,7 +958,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">À enregistrer dans iCloud Drive › Chantier › Sauvegardes.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 32</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 33</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -1316,23 +1314,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;dark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Thème&quot;},&quot;start&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Liste des projets&quot;,&quot;options&quot;:[&quot;Liste des projets&quot;,&quot;Fiche projet · Étapes&quot;,&quot;Fiche projet · Fournisseurs&quot;,&quot;Nouveau projet&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Écran de départ&quot;}}">
-const SUP = [
-  { id: 's1', name: 'Plâtre Express', cat: 'PLACO', sub: 'Lyon · 12 km', delay: '24 h', h: 24, price: '€€', p: 2, rel: 96, tag: 'LE + FIABLE', k: ['placo', 'rail', 'enduit'], why: 'Livraison avec hayon, 96 % à l’heure sur vos 3 derniers chantiers.', tel: '04 78 61 22 40', mail: 'commandes@platre-express.fr', who: 'Karim Benali', rub: 'F', sites: ['a'], addr: '17 rue Paul Bert', city: '69003 Lyon' },
-  { id: 's2', name: 'Point Matériaux', cat: 'PLACO', sub: 'Vénissieux · 8 km', delay: '48 h', h: 48, price: '€', p: 1, rel: 88, tag: 'LE - CHER', k: ['placo', 'rail', 'enduit', 'colle'], why: 'Plaques et enduits −9 % vs moyenne ; retrait possible sur place.', tel: '04 72 50 18 93', mail: 'venissieux@pointmat.fr', who: 'Accueil pro', rub: 'F', sites: [], addr: '45 boulevard Joliot-Curie', city: '69200 Vénissieux' },
-  { id: 's3', name: 'Couleurs & Cie', cat: 'PEINTURE', sub: 'Bron · 6 km', delay: '72 h', h: 72, price: '€€', p: 2, rel: 82, tag: 'RETARD', k: ['peinture', 'sousc'], why: 'Teinteuse en panne. Alternative : Peintures Pro, livraison 48 h.', tel: '04 78 26 71 05', mail: 'contact@couleurs-cie.fr', who: 'Sophie Aubry', rub: 'F', sites: ['b'], addr: '8 avenue Franklin Roosevelt', city: '69500 Bron' },
-  { id: 's4', name: 'Peintures Pro', cat: 'PEINTURE', sub: 'Meyzieu · 14 km', delay: '48 h', h: 48, price: '€€€', p: 3, rel: 93, tag: 'LE + RAPIDE', k: ['peinture', 'sousc', 'dalle'], why: 'Teintes sur mesure en 24 h ; surcoût ~8 %.', tel: '04 72 02 44 18', mail: 'pro@peintures-pro.fr', who: 'Service teinte', rub: 'F', sites: ['a', 'b'], addr: '22 rue de la République', city: '69330 Meyzieu' },
-  { id: 's5', name: 'Elec Pro', cat: 'ÉLEC', sub: 'Saint-Fons · 10 km', delay: '5 j', h: 120, price: '€€', p: 2, rel: 85, tag: 'RUPTURE', k: ['cable'], why: 'Rupture partielle 3G2.5. Alternative : Volt Distribution, 48 h.', tel: '04 78 70 31 62', mail: 'agence@elecpro.fr', who: 'Marc Dubois', rub: 'F', sites: ['a'], addr: '3 rue du Port', city: '69190 Saint-Fons' },
-  { id: 's6', name: 'Volt Distribution', cat: 'ÉLEC', sub: 'Lyon 3e · 5 km', delay: '48 h', h: 48, price: '€€€', p: 3, rel: 94, tag: 'LE + RAPIDE', k: ['cable'], why: 'Stock permanent câbles et tableaux ; dépannage sous 4 h.', tel: '04 78 95 10 07', mail: 'lyon@volt-distrib.fr', who: 'Comptoir', rub: 'F', sites: ['a'], addr: '110 cours Lafayette', city: '69003 Lyon' },
-  { id: 's7', name: 'Céramique Sud', cat: 'CARRELAGE', sub: 'Lyon 2e · 3 km', delay: '72 h', h: 72, price: '€€', p: 2, rel: 91, tag: 'LOT GARANTI', k: ['carrelage', 'colle'], why: 'Réserve un même lot de teinte jusqu’à vendredi.', tel: '04 78 42 88 30', mail: 'paul.girard@ceramique-sud.fr', who: 'Paul Girard', rub: 'F', sites: ['c'], addr: '14 rue Victor Hugo', city: '69002 Lyon' },
-  { id: 's8', name: 'Sanit’Eau', cat: 'PLOMBERIE', sub: 'Lyon 7e · 4 km', delay: '24 h', h: 24, price: '€€', p: 2, rel: 92, tag: 'LE + RAPIDE', k: ['tube'], why: 'Multicouche, raccords et sanitaires ; livraison J+1.', tel: '04 78 72 64 11', mail: 'cde@sanit-eau.fr', who: 'Comptoir', rub: 'F', sites: ['c'], addr: '61 avenue Jean Jaurès', city: '69007 Lyon' }
-];
-const SEED = [
-  { id: 'x1', name: 'Bureau Qualiconsult', rub: 'S', cat: 'ÉLECTRICITÉ', sub: 'Lyon 7e', delay: '', h: 0, price: '', p: 0, rel: 0, tag: '', k: [], why: 'Contrôle électrique avant fermeture des cloisons.', tel: '04 72 33 10 50', mail: 'lyon@qualiconsult.exemple.fr', who: 'Accueil', sites: ['a'], addr: '9 rue de Gerland', city: '69007 Lyon' },
-  { id: 'x2', name: 'Carrelage Pro', rub: 'S', cat: 'CARRELAGE', sub: 'Villeurbanne', delay: '', h: 0, price: '', p: 0, rel: 0, tag: '', k: [], why: 'Pose sols & faïence, équipe de 3.', tel: '04 78 37 62 25', mail: 'contact@carrelage-pro.exemple.fr', who: 'Hugo Martins', sites: ['c'], addr: '27 rue Francis de Pressensé', city: '69100 Villeurbanne' },
-  { id: 'x3', name: 'Collège Pasteur', rub: 'C', cat: 'PEINTURE', sub: 'Villeurbanne', delay: '', h: 0, price: '', p: 0, rel: 0, tag: '', k: [], why: 'Travaux bruyants uniquement pendant les vacances scolaires.', tel: '04 78 85 20 14', mail: 'direction@college-pasteur.exemple.fr', who: 'M. Lefèvre, directeur', sites: ['b'], addr: '12 rue Pasteur', city: '69100 Villeurbanne' },
-  { id: 'x4', name: 'Mme Bertin', rub: 'C', cat: 'PLOMBERIE', sub: 'Lyon 2e', delay: '', h: 0, price: '', p: 0, rel: 0, tag: '', k: [], why: 'Cliente du loft ; valide le plan de cuisine.', tel: '06 71 20 55 38', mail: 'bertin@exemple.fr', who: 'Mme Bertin', sites: ['c'], addr: '5 cours Charlemagne', city: '69002 Lyon' }
-];
-SUP.push(...SEED.map(x => ({ ...x })));
+const SUP = [];
 // rubriques de l'annuaire : modifiables dans Réglages › Contacts (Fournisseur reste : elle porte le stock et les factures)
 const RUB0 = [{ k: 'F', n: 'Fournisseur', p: 'Fournisseurs' }, { k: 'S', n: 'Sous-traitant', p: 'Sous-traitants' }, { k: 'C', n: 'Client', p: 'Clients' }];
 const RUB = {}, RUBP = {}, RUBC = {}, RUBK = [];
@@ -1341,117 +1323,46 @@ const rubSync = L => { [RUB, RUBP, RUBC].forEach(o => Object.keys(o).forEach(k =
 rubSync(RUB0);
 const plurFr = n => { const m = String(n).trim().match(/^(\S+)(.*)$/); if (!m) return n; const w = m[1]; return (/[sxz]$/i.test(w) ? w : /(eau|au|eu)$/i.test(w) ? w + 'x' : w + 's') + m[2]; };
 const hoursOf = t => { const m = String(t || '').match(/(\d+)\s*(h|j|jour|sem)?/i); if (!m) return 0; const n = +m[1], u = (m[2] || 'h').toLowerCase(); return u.startsWith('j') ? n * 24 : u.startsWith('s') ? n * 168 : n; };
-const SN = id => SUP.find(s => s.id === id).name;
-const SITES = {
-  a: { label: 'LES TILLEULS', addr: 'Lyon 7e · 24 logements', geo: [45.7337, 4.8329],
-    projects: [
-      { id: 'a1', name: 'Cloisons & doublages', phase: 'Second œuvre', due: '14 nov', addr: '38 rue de Gerland', city: '69007 Lyon', access: 'Bât. B · portail code 4721', hours: '7h30 – 17h', geo: [45.7337, 4.8329],
-        steps: [['Traçage des rails', 'c', 100], ['Montants + isolant', 'g', 100], ['Pose plaques BA13', 'g', 55], ['Bandes & enduit', 'g', 0], ['Réception', 'c', 0]],
-        notes: ['Contrôle électrique avant fermeture des cloisons', 'Prévoir 120 plaques pour les étages 3 à 5'],
-        sup: ['s1', 's2', { name: 'Isol’Rhône', cat: 'Isolation', tel: '', mail: '', who: '' }],
-        inv: [['s1', 'F-2026-0412', 4280, '12 oct', 'paid'], ['s1', 'F-2026-0451', 2640, '20 oct', 'late'], ['s2', 'PM-88213', 1915.5, '30 oct', 'due']] },
-      { id: 'a2', name: 'Électricité · reprise des tableaux', phase: 'Lot élec', due: '5 déc', addr: '38 rue de Gerland', city: '69007 Lyon', access: 'Local TGBT sous-sol · clé gardien', hours: '7h30 – 17h', geo: [45.7337, 4.8329],
-        steps: [['Dépose anciens tableaux', 'c', 100], ['Tirage des câbles', 'g', 70], ['Pose tableaux', 'g', 0], ['Consuel', 'c', 0]],
-        notes: ['Coupure générale à planifier avec le syndic', 'Câble 3G2.5 : stock à renouveler'],
-        sup: ['s5', 's6'], inv: [['s5', 'EP-7731', 3120, '5 nov', 'due']] },
-      { id: 'a3', name: 'Peinture cages d’escalier', phase: 'Finitions', due: '10 oct', addr: '38 rue de Gerland', city: '69007 Lyon', access: 'Bât. A · cages 1 et 2', hours: '7h30 – 17h', geo: [45.7337, 4.8329],
-        steps: [['Protection', 'c', 100], ['Préparation des murs', 'g', 100], ['Deux couches', 'g', 100], ['Réception', 'c', 100]],
-        notes: ['PV de réception signé le 10 oct'], sup: ['s4'], inv: [['s4', 'PP-1102', 1840, '5 oct', 'paid']] },
-      { id: 'a4', name: 'Menuiseries intérieures', phase: 'Lot menuiserie', due: '16 janv', addr: '38 rue de Gerland', city: '69007 Lyon', access: 'Bât. B · étages 1 à 5', hours: '7h30 – 17h', geo: [45.7337, 4.8329],
-        steps: [['Relevé des cotes', 'c', 0], ['Commande blocs-portes', 'c', 0], ['Pose', 'g', 0], ['Réglages', 'c', 0]],
-        notes: ['Démarrer après les enduits'], sup: ['s2'], inv: [] }],
-    stock: [['placo', 'Plaques BA13', 'plaques', 48, 80, 60], ['rail', 'Rails & montants R48', 'lots', 30, 20, 20], ['enduit', 'Enduit de lissage', 'sacs', 10, 20, 30], ['cable', 'Câble 3G2.5', 'couronnes', 4, 6, 6]],
-    mails: [
-      { id: 'a-m1', ch: 'MAIL', from: 'Karim Benali', org: 'Plâtre Express', time: '08:42', unread: 1, subject: 'Livraison plaques BA13 — jeudi', summary: 'Livraison de 60 plaques possible jeudi matin. Demande confirmation avant 16h.', body: 'Bonjour, nous pouvons livrer les 60 plaques BA13 jeudi entre 7h et 9h, avec hayon. Merci de nous confirmer avant 16h aujourd’hui.' },
-      { id: 'a-m2', ch: 'SMS', from: 'Julie Marchand', org: 'Conductrice de travaux', time: '07:15', unread: 1, subject: 'SMS · Contrôle électrique', summary: 'Le bureau de contrôle passe demain 9h avant fermeture des cloisons étage 3.', body: 'Le bureau de contrôle passe demain à 9h avant la fermeture des cloisons de l’étage 3. Merci de dégager les accès.' },
-      { id: 'a-m3', ch: 'APPEL', from: 'Marc Dubois', org: 'Elec Pro', time: 'Hier', unread: 0, subject: 'Appel manqué · Câble', summary: 'Rupture partielle câble 3G2.5 : 3 couronnes dispo, solde sous 10 jours.', body: 'Message vocal (0:48) : rupture partielle sur le câble 3G2.5. 3 couronnes disponibles, le solde sous 10 jours.' }] },
-  b: { label: 'COLLÈGE PASTEUR', addr: 'Villeurbanne · Rénovation', geo: [45.766, 4.8795],
-    projects: [
-      { id: 'b1', name: 'Peinture des couloirs', phase: 'Finitions', due: '28 nov', addr: '12 rue Pasteur', city: '69100 Villeurbanne', access: 'Entrée rue Pasteur · badge à l’accueil', hours: '8h – 16h30 (hors cours)', geo: [45.766, 4.8795],
-        steps: [['Protection sols', 'c', 100], ['Rebouchage & ponçage', 'g', 80], ['Sous-couche', 'g', 20], ['Finition deux couches', 'g', 0]],
-        notes: ['Zone élèves interdite jusqu’au 2 nov', 'Teinte validée par la direction : RAL 9010'],
-        sup: ['s3', 's4'], inv: [['s3', 'CC-2291', 1480, '2 oct', 'paid'], ['s4', 'PP-1180', 960, '8 nov', 'due']] },
-      { id: 'b2', name: 'Faux-plafonds salles A', phase: 'Second œuvre', due: '19 déc', addr: '12 rue Pasteur', city: '69100 Villeurbanne', access: 'Bât. A · accès par la cour', hours: '8h – 16h30 (hors cours)', geo: [45.766, 4.8795],
-        steps: [['Relevé des cotes', 'c', 100], ['Ossature', 'g', 60], ['Pose des dalles', 'g', 0], ['Luminaires', 'c', 0]],
-        notes: ['Livraison dalles : 5 jours après commande'], sup: ['s4', 's2'], inv: [] },
-      { id: 'b3', name: 'Désamiantage salles B', phase: 'Préparation', due: '20 sept', addr: '12 rue Pasteur', city: '69100 Villeurbanne', access: 'Bât. B', hours: '8h – 16h30', geo: [45.766, 4.8795],
-        steps: [['Confinement', 'c', 100], ['Retrait', 'g', 100], ['Mesures d’empoussièrement', 'c', 100]],
-        notes: ['Rapport de fin de chantier transmis'], sup: [], inv: [] }],
-    stock: [['peinture', 'Peinture acrylique mat', 'pots 15 L', 9, 12, 20], ['sousc', 'Sous-couche', 'pots', 14, 8, 10], ['dalle', 'Dalles faux-plafond', 'cartons', 30, 40, 20]],
-    mails: [
-      { id: 'b-m1', ch: 'MAIL', from: 'Direction Pasteur', org: 'M. Lefèvre', time: '09:10', unread: 1, subject: 'Planning vacances Toussaint', summary: 'Le collège autorise le bruit lourd uniquement pendant les vacances (24 oct – 3 nov).', body: 'Bonjour, merci de concentrer les travaux bruyants pendant les vacances scolaires. Accès libre au bâtiment A du 24 octobre au 3 novembre.' },
-      { id: 'b-m2', ch: 'APPEL', from: 'Sophie Aubry', org: 'Couleurs & Cie', time: 'Hier', unread: 0, subject: 'Appel · Peinture', summary: 'Peinture RAL 9010 : teinteuse en panne, livraison décalée au 30 octobre.', body: 'Message vocal (0:32) : teinteuse en panne, livraison de la peinture RAL 9010 décalée au 30 octobre.' }] },
-  c: { label: 'LOFT CONFLUENCE', addr: 'Lyon 2e · Réhabilitation', geo: [45.742, 4.819],
-    projects: [
-      { id: 'c1', name: 'Plomberie salles d’eau', phase: 'Lot plomberie', due: '7 nov', addr: '5 cours Charlemagne', city: '69002 Lyon', access: 'Interphone « Loft 3 » · 2e étage', hours: '8h – 18h', geo: [45.742, 4.819],
-        steps: [['Dépose sanitaires', 'c', 100], ['Alimentations multicouche', 'g', 100], ['Évacuations PVC', 'g', 40], ['Test de pression', 'c', 0], ['Pose appareils', 'c', 0]],
-        notes: ['Test de pression avant carrelage'], sup: ['s8'], inv: [['s8', 'SE-4402', 2210, '28 oct', 'due']] },
-      { id: 'c2', name: 'Carrelage sols & faïence', phase: 'Finitions', due: '30 nov', addr: '5 cours Charlemagne', city: '69002 Lyon', access: 'Interphone « Loft 3 » · monte-charge', hours: '8h – 18h', geo: [45.742, 4.819],
-        steps: [['Ragréage', 'c', 100], ['Pose sol 60×60', 'g', 30], ['Faïence salles d’eau', 'g', 0], ['Joints', 'c', 0]],
-        notes: ['Vérifier le lot de carrelage (même teinte)', 'Attendre séchage ragréage 48 h'], sup: ['s7', 's2'], inv: [['s7', 'CS-0907', 5600, '15 oct', 'paid']] },
-      { id: 'c3', name: 'Cuisine & crédences', phase: 'Agencement', due: '12 déc', addr: '5 cours Charlemagne', city: '69002 Lyon', access: 'Interphone « Loft 3 »', hours: '8h – 18h', geo: [45.742, 4.819],
-        steps: [['Validation du plan', 'c', 0], ['Pose des meubles', 'g', 0], ['Crédences', 'g', 0], ['Raccordements', 'c', 0]],
-        notes: ['Plan à valider avec le client'], sup: ['s8'], inv: [] }],
-    stock: [['carrelage', 'Carrelage 60×60', 'm²', 40, 60, 50], ['colle', 'Colle C2', 'sacs', 12, 10, 25], ['tube', 'Tube multicouche Ø16', 'couronnes', 5, 4, 5]],
-    mails: [
-      { id: 'c-m1', ch: 'MAIL', from: 'Paul Girard', org: 'Céramique Sud', time: '10:05', unread: 1, subject: 'Carrelage — même lot de teinte', summary: 'Un seul lot disponible pour 50 m² ; au-delà, risque de différence de teinte.', body: 'Bonjour, nous pouvons vous réserver 50 m² du même lot de teinte jusqu’à vendredi. Au-delà, le lot ne sera plus garanti.' }] }
+const DEMO = {
+  sites: { a: 'LES TILLEULS', b: 'COLLÈGE PASTEUR', c: 'LOFT CONFLUENCE' },
+  proj: ['a1', 'a2', 'a3', 'a4', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'], mail: /^[abc]-[mt]\d$/,
+  stock: ['placo', 'rail', 'enduit', 'cable', 'peinture', 'sousc', 'dalle', 'carrelage', 'colle', 'tube'],
+  sup: { s1: 'Plâtre Express', s2: 'Point Matériaux', s3: 'Couleurs & Cie', s4: 'Peintures Pro', s5: 'Elec Pro', s6: 'Volt Distribution', s7: 'Céramique Sud', s8: 'Sanit’Eau', x1: 'Bureau Qualiconsult', x2: 'Carrelage Pro', x3: 'Collège Pasteur', x4: 'Mme Bertin' },
+  ev: ['Démarrage faux-plafonds salles A', 'Réunion de chantier', 'Contrôle électrique · étage 3', 'Test de pression plomberie', 'Livraison peinture RAL 9010 (partielle)', 'Visite M. Lefèvre', 'Livraison 60 plaques BA13', 'Livraison câbles 3G2.5', 'Échéance réservation lot carrelage', 'Validation planning bruit lourd'],
+  day: /^2026-(10-(2[6-9]|3[01])|11-01)$/, dirs: { 'fx-plans': 'Plans', 'fx-docs': 'Documents administratifs' }
 };
-const DONE = {
-  a: [
-    { id: 'a-t1', ch: 'MAIL', from: 'Karim Benali', org: 'Plâtre Express', time: 'Lun.', subject: 'Devis rails R48', summary: 'Demande validation du devis pour 20 lots de rails R48 livrés sur site.', body: 'Bonjour, voici notre devis pour 20 lots de rails R48, livraison sur site sous 48 h. Merci de nous le retourner signé.', reply: 'Bonjour Karim,\n\nDevis validé pour 20 lots, livraison lundi matin.\n\nCordialement,', at: 'Lun. 16:20' },
-    { id: 'a-t2', ch: 'SMS', from: 'Julie Marchand', org: 'Conductrice de travaux', time: 'Ven.', subject: 'SMS · Planning plâtrerie', summary: 'Demande le planning plâtrerie de la semaine prochaine pour les étages 3 à 5.', body: 'Tu peux m’envoyer le planning plâtrerie de la semaine prochaine ? Étages 3 à 5.', reply: 'Planning envoyé par mail : étages 3 à 5 de lundi à mercredi.', at: 'Ven. 18:05' },
-    { id: 'a-t3', ch: 'APPEL', from: 'Ali Diallo', org: 'Chef d’équipe plâtrerie', time: 'Jeu.', subject: 'Appel · Matériel', summary: 'Besoin de 2 escabeaux supplémentaires à l’étage 4.', body: 'Appel (1:12) : il manque 2 escabeaux à l’étage 4 pour l’équipe.', reply: '', at: 'Jeu. 10:30' }],
-  b: [
-    { id: 'b-t1', ch: 'MAIL', from: 'Thomas Nguyen', org: 'Conducteur de travaux', time: 'Mar.', subject: 'Teinte couloirs', summary: 'Teinte RAL 9010 validée ; attend le bon de commande peinture.', body: 'La direction valide le RAL 9010 pour les couloirs. Peux-tu passer le bon de commande ?', reply: 'Bon de commande transmis à Peintures Pro ce matin.', at: 'Mar. 09:12' },
-    { id: 'b-t2', ch: 'MAIL', from: 'Direction Pasteur', org: 'M. Lefèvre', time: 'Lun.', subject: 'Attestation décennale', summary: 'Demande l’attestation d’assurance décennale 2026 avant démarrage.', body: 'Bonjour, merci de nous transmettre votre attestation d’assurance décennale à jour.', reply: 'Bonjour M. Lefèvre,\n\nVous trouverez notre attestation 2026 en pièce jointe.\n\nCordialement,', at: 'Lun. 11:40' }],
-  c: [
-    { id: 'c-t1', ch: 'SMS', from: 'Nadia Haddad', org: 'Conductrice de travaux', time: 'Mer.', subject: 'SMS · Avancement', summary: 'Demande des photos de l’avancement plomberie pour le client.', body: 'Tu peux m’envoyer des photos de l’avancement plomberie ? Le client les demande.', reply: 'Photos envoyées : évacuations à 40 %, alimentations terminées.', at: 'Mer. 17:48' },
-    { id: 'c-t2', ch: 'MAIL', from: 'Paul Girard', org: 'Céramique Sud', time: 'Lun.', subject: 'Échantillon carrelage', summary: 'Propose un échantillon du lot de carrelage 60×60 avant réservation.', body: 'Bonjour, je peux vous déposer un échantillon du lot en cours. Dites-moi quand passer.', reply: 'Merci Paul, échantillon reçu et validé.', at: 'Lun. 15:02' }]
-};
-const CFG0 = {
-  a: { addr: '38 rue de Gerland', city: '69007 Lyon', access: 'Portail code 4721 · Bât. A et B', hours: '7h30 – 17h', zones: ['Sous-sol', 'RDC', 'Étage 1', 'Étage 2', 'Étage 3', 'Étage 4', 'Étage 5', 'Local TGBT', 'Parking'], contacts: [['Julie Marchand', 'Conductrice de travaux', '06 12 48 30 77'], ['M. Rossi', 'Gardien · clés', '06 33 18 40 12']] },
-  b: { addr: '12 rue Pasteur', city: '69100 Villeurbanne', access: 'Badge à l’accueil · entrée rue Pasteur', hours: '8h – 16h30', zones: ['Bât. A · RDC', 'Bât. A · Étage 1', 'Bât. B', 'Cour', 'Préau', 'Chaufferie'], contacts: [['M. Lefèvre', 'Directeur', '04 78 85 20 14'], ['Thomas Nguyen', 'Conducteur de travaux', '06 41 92 07 63']] },
-  c: { addr: '5 cours Charlemagne', city: '69002 Lyon', access: 'Interphone « Loft 3 » · monte-charge', hours: '8h – 18h', zones: ['RDC', 'Mezzanine', 'Salle d’eau 1', 'Salle d’eau 2', 'Cuisine', 'Cave'], contacts: [['Nadia Haddad', 'Conductrice de travaux', '06 25 60 18 94'], ['Mme Bertin', 'Cliente', '06 71 20 55 38']] }
-};
-// disciplines du stock : liste à part de celle des projets (Réglages › Stocks)
-const sdiscsOf = st => Array.isArray(st.sdiscs) && st.sdiscs.length ? st.sdiscs : Array.from(new Set(Object.values(SDISC)));
-const SDISC = { placo: 'Placo', rail: 'Placo', enduit: 'Placo', dalle: 'Placo', cable: 'Électricité', peinture: 'Peinture', sousc: 'Peinture', carrelage: 'Carrelage', colle: 'Carrelage', tube: 'Plomberie' };
-const STZ = { placo: 'Étage 3', rail: 'Sous-sol', enduit: 'Sous-sol', cable: 'Local TGBT', peinture: 'Préau', sousc: 'Préau', dalle: 'Bât. A · RDC', carrelage: 'Cave', colle: 'Cave', tube: 'RDC' };
+const SN = id => (SUP.find(s => s.id === id) || {}).name || '';
+const SITES = {};
+const NOSITE = { label: '', addr: '', geo: [46.6, 2.4], projects: [], stock: [], mails: [] }; // repère tant qu'aucun site n'est créé
+const DONE = {};
+const CFG0 = {};
+// thèmes du stock (et leurs types d'article) : aucun lien avec les disciplines des projets (Réglages › Stocks)
+const sdiscsOf = st => Array.isArray(st.sdiscs) ? st.sdiscs : [];
+const SDISC = {};
+const STZ = {};
 const ZSUG = ['RDC', 'Étage', 'Sous-sol', 'Jardin', 'Local technique', 'Combles', 'Toiture', 'Cave', 'Parking', 'Cour'];
 const SUN = { w: 'Dim', n: 1, ev: [] };
 const DISC0 = ['Électricité', 'Plomberie', 'Peinture', 'Menuiserie', 'Placo', 'Carrelage'];
-const VIP0 = { 'Julie Marchand': 1, 'Direction Pasteur': 1, 'Paul Girard': 1, 'Thomas Nguyen': 1 };
-const TEAMS = {
-  a: [['Julie Marchand', 'Conductrice de travaux', 'Référente', '06 12 48 30 77'], ['Ali Diallo', 'Chef d’équipe plâtrerie · 6 pers.', 'Sur site', '06 70 21 55 09'], ['Bureau Qualiconsult', 'Contrôle électrique', 'Sous-traitant', '04 72 33 10 50']],
-  b: [['Thomas Nguyen', 'Conducteur de travaux', 'Référent', '06 41 92 07 63'], ['Éric Roux', 'Chef d’équipe peinture · 4 pers.', 'Sur site', '06 88 15 42 30'], ['M. Lefèvre', 'Directeur du collège', 'Client', '04 78 85 20 14']],
-  c: [['Nadia Haddad', 'Conductrice de travaux', 'Référente', '06 25 60 18 94'], ['Luc Perrin', 'Chef d’équipe plomberie · 3 pers.', 'Sur site', '06 52 77 43 01'], ['Carrelage Pro', 'Pose sols & faïence', 'Sous-traitant', '04 78 37 62 25']]
-};
-const ADV = { placo: 'Plâtre Express · 24 h', enduit: 'Point Matériaux · 48 h', cable: 'Volt Distribution · 48 h', peinture: 'Peintures Pro · 48 h', dalle: 'Peintures Pro · 48 h', carrelage: 'Céramique Sud · 72 h', rail: 'Point Matériaux', sousc: 'Peintures Pro', colle: 'Point Matériaux', tube: 'Sanit’Eau · 24 h' };
-const PLAN = [
-  { w: 'Lun', n: 26, ev: [['08:00', 'b', 'Démarrage faux-plafonds salles A', 'Chantier'], ['14:00', 'a', 'Réunion de chantier', 'Réunion']] },
-  { w: 'Mar', n: 27, ev: [['09:00', 'a', 'Contrôle électrique · étage 3', 'Contrôle'], ['13:30', 'c', 'Test de pression plomberie', 'Contrôle']] },
-  { w: 'Mer', n: 28, ev: [['08:00', 'b', 'Livraison peinture RAL 9010 (partielle)', 'Livraison'], ['15:00', 'b', 'Visite M. Lefèvre', 'Réunion']] },
-  { w: 'Jeu', n: 29, ev: [['07:00', 'a', 'Livraison 60 plaques BA13', 'Livraison'], ['11:00', 'a', 'Livraison câbles 3G2.5', 'Livraison']] },
-  { w: 'Ven', n: 30, ev: [['10:00', 'c', 'Échéance réservation lot carrelage', 'Échéance'], ['16:00', 'b', 'Validation planning bruit lourd', 'Réunion']] },
-  { w: 'Sam', n: 31, ev: [] }
-];
+const VIP0 = {};
+const TEAMS = {};
+const ADV = {};
+const PLAN = [];
 const DARK = {'--menu':'rgba(38,42,52,.97)','--ink':'#F2F4F8','--ink2':'rgba(235,240,250,.62)','--ink3':'rgba(235,240,250,.36)','--line':'rgba(255,255,255,.08)','--tile':'rgba(255,255,255,.07)','--tileBd':'rgba(255,255,255,.12)','--field':'rgba(255,255,255,.08)','--track':'rgba(255,255,255,.12)','--chip':'rgba(255,255,255,.07)','--on':'rgba(255,255,255,.16)','--acc':'#0A84FF','--accOn':'#FFFFFF','--accTx':'#6CB6FF','--accSoft':'rgba(10,132,255,.2)','--warn':'#FF8A3D','--warnTx':'#FFB27A','--warnBg':'rgba(255,138,61,.17)','--ok':'#30D158','--okTx':'#5BE07D','--okBg':'rgba(48,209,88,.16)','--solid':'#F2F4F8','--solidTx':'#0B0F17','--sheet':'rgba(24,28,38,.92)','--scrim':'rgba(0,0,0,.5)','--knob':'#F2F4F8','--card':'rgba(30,36,48,.55)','--cardB':'1px solid rgba(255,255,255,.10)','--cardBd':'rgba(255,255,255,.10)','--cardSh':'0 10px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.07)','--k1':'#F2F4F8','--k2':'rgba(235,240,250,.62)','--k3':'rgba(235,240,250,.36)','--kl':'rgba(255,255,255,.08)','--kt':'rgba(255,255,255,.07)','--ktb':'rgba(255,255,255,.12)','--kf':'rgba(255,255,255,.08)','--ktr':'rgba(255,255,255,.12)','--kon':'rgba(255,255,255,.16)','--ka':'#0A84FF','--kaOn':'#FFFFFF','--ks':'#0B0F17','--kas':'rgba(10,132,255,.2)','--kw':'#FFB27A','--kwb':'rgba(255,138,61,.17)','--kwarn':'#FF8A3D','--kok':'#5BE07D','--kokb':'rgba(48,209,88,.16)','--panel':'rgba(255,255,255,.09)','--bg':'radial-gradient(120% 55% at 0% 0%,#163052 0,transparent 60%),radial-gradient(90% 50% at 100% 38%,#3B2817 0,transparent 62%),radial-gradient(100% 50% at 0% 100%,#11382C 0,transparent 60%),#090D14','--t1':'rgba(170,185,70,.20)','--t1x':'#E8EDB8','--t2':'rgba(110,140,230,.20)','--t2x':'#DCE4FA','--t3':'rgba(60,180,175,.20)','--t3x':'#B5ECE8','--t4':'rgba(200,90,170,.20)','--t4x':'#F4C9E6'};
 const cap = s => s ? s.charAt(0) + s.slice(1).toLowerCase() : s;
 const tc = s => s.toLowerCase().replace(/(^|\s)(\S)/g, (m, a, b) => a + b.toUpperCase());
 const CH = { TOUS: 'Tous', MAIL: 'Mail', SMS: 'SMS', APPEL: 'Appel' };
 const AV = { MAIL: '#5B6478', SMS: '#3C8487', APPEL: '#8E4F7C' };
-const DOT = { a: '#9AA34E', b: '#B06E9C', c: '#4E9FA2' };
+const DOT = {};
 const CATC = { Placo: '#5B6478', Peinture: '#8E4F7C', 'Élec': '#7D8540', Carrelage: '#3C8487', Plomberie: '#4F6F8F' };
-const PX = id => 'https://images.pexels.com/photos/' + id + '/pexels-photo-' + id + '.jpeg?auto=compress&cs=tinysrgb&w=600';
-const IMG = { a3: 1887946, a4: 6474309, b3: 5691590, c3: 6419128, a1: 4981812, a2: 5767595, b1: 5493653, b2: 6474309, c1: 6419128, c2: 1144871, placo: 4981812, rail: 4981812, enduit: 2293819, cable: 5691590, peinture: 1887946, sousc: 6474309, dalle: 7218011, carrelage: 1144871, colle: 2293819, tube: 6419128, s1: 4981812, s2: 6474309, s3: 1887946, s4: 5583116, s5: 5767595, s6: 5691590, s7: 1144871, s8: 6419128 };
-const DEF = 6474471;
-const src = k => PX(IMG[k] || DEF);
+// plus de photo d'exemple par défaut : une teinte neutre tant que la personne n'a pas ajouté la sienne
+const NOIMG = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 3"><rect width="4" height="3" fill="#8e8e93" fill-opacity=".16"/></svg>');
+const src = k => NOIMG;
 const ini = s => s.replace(/[’']/g, ' ').split(/\s+/).filter(Boolean).map(w => w[0]).slice(0, 2).join('').toUpperCase();
 const eur = n => n.toLocaleString('fr-FR', { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + ' €';
 const rid = () => Math.random().toString(36).slice(2, 8);
 const supCopy = id => { const s = SUP.find(x => x.id === id); return { id: 'f' + rid(), ref: id, name: s.name, cat: cap(s.cat), tel: s.tel, mail: s.mail, who: s.who, rub: s.rub || 'F' }; };
 const KS = Object.keys(SITES);
-const SL = k => SITES[k] ? (SITES[k].name || tc(SITES[k].label)) : 'Site supprimé';
+const SL = k => SITES[k] ? (SITES[k].name || tc(SITES[k].label)) : k ? 'Site supprimé' : 'Aucun site';
 const COLORS = { Olive: '#9AA34E', Prune: '#B06E9C', Canard: '#4E9FA2', Bleu: '#0A84FF', Orange: '#E8590C', Ardoise: '#5B6478', Rose: '#E0569B', Vert: '#30A46C', Violet: '#AF52DE', Ambre: '#FF9F0A', Rouge: '#FF3B30', Gris: '#8E8E93' };
 const colorName = hex => Object.keys(COLORS).find(n => COLORS[n] === hex) || '';
 const put = (o, v) => { if (v && typeof v === 'object') { Object.keys(o).forEach(k => delete o[k]); Object.assign(o, v); } };
@@ -1474,7 +1385,6 @@ const applyData = d => {
       if (old) {
         const def = {}; SUP.forEach(x => { def[x.id] = x; });
         SUP.forEach(x => { x.rub = 'F'; if (!x.sites) x.sites = []; });
-        SEED.forEach(x => { if (!def[x.id]) SUP.push({ ...x }); });
       }
     }
     if (Array.isArray(d.users) && d.users.length) USERS.splice(0, USERS.length, ...d.users);
@@ -1485,7 +1395,7 @@ const applyData = d => {
     if (d.rid && d.rid.map) { RID.map = d.rid.map; RID.n = d.rid.n || {}; }
     const s = d.state;
     if (s.geo) Object.keys(s.geo).forEach(k => { if (s.geo[k] === 'busy') delete s.geo[k]; });
-    if (!s.site || !SITES[s.site]) s.site = KS[0];
+    if (!s.site || !SITES[s.site]) s.site = KS[0] || null;
     if (s.cfgSite && !SITES[s.cfgSite]) s.cfgSite = s.site;
     s.wpos = KS.indexOf(s.site);
     return s;
@@ -2107,8 +2017,8 @@ const exifTime = async f => {
   return 0;
 };
 const phWhen = ms => { const d = new Date(ms); return d.getDate() + ' ' + MABRV[d.getMonth()] + ' ' + d.getFullYear() + ' · ' + String(d.getHours()).padStart(2, '0') + 'h' + String(d.getMinutes()).padStart(2, '0'); };
-const DISCP = { a1: 'Placo', a2: 'Électricité', a3: 'Peinture', a4: 'Menuiserie', b1: 'Peinture', b2: 'Placo', c1: 'Plomberie', c2: 'Carrelage', c3: 'Menuiserie' };
-const LVLP = { a1: 'Étage 3, Étage 4, Étage 5', a2: 'Sous-sol', a3: 'Cages 1 et 2', b1: 'RDC, 1er étage', b2: 'Bât. A · RDC', c1: '2ème étage', c2: '2ème étage', c3: '2ème étage' };
+const DISCP = {};
+const LVLP = {};
 const LVL0 = ['RDC', '1er étage', '2ème étage', '3ème étage', 'Sous-sol', 'Combles', 'Toiture', 'Extérieur', 'Cave', 'Parking', 'Façade', 'Cour'];
 const discOf = p => p.disc ?? DISCP[p.id] ?? '';
 // un projet peut avoir plusieurs disciplines (la première reste « disc »)
@@ -2148,7 +2058,7 @@ const evMigrate = addE => {
 };
 // stock : discipline › sous-catégorie, code EAN
 const SUBS = { 'Électricité': ['Câbles', 'Ampoules', 'Prises & interrupteurs', 'Tableaux', 'Gaines'], 'Plomberie': ['Tubes', 'Raccords', 'Sanitaires', 'Évacuation'], 'Peinture': ['Peintures', 'Sous-couches', 'Outillage'], 'Placo': ['Plaques', 'Rails & montants', 'Enduits', 'Isolants', 'Dalles'], 'Carrelage': ['Carreaux', 'Colles', 'Joints'], 'Menuiserie': ['Portes', 'Quincaillerie', 'Bois'] };
-const SSUB = { placo: 'Plaques', rail: 'Rails & montants', enduit: 'Enduits', dalle: 'Dalles', cable: 'Câbles', peinture: 'Peintures', sousc: 'Sous-couches', carrelage: 'Carreaux', colle: 'Colles', tube: 'Tubes' };
+const SSUB = {};
 const stockOfS = (st, k) => [...((SITES[k] || {}).stock || []), ...((st.addS || {})[k] || [])].filter(x => !(st.stkDel || {})[k + x[0]]).map(x => { const c = (st.stkCfg || {})[k + x[0]]; return c ? [x[0], c.name ?? x[1], c.unit ?? x[2], x[3], c.min ?? x[4], c.lot ?? x[5], c.disc ?? x[6], c.sub ?? x[7], c.ean ?? x[8]] : x; });
 const eanOk = c => { c = String(c || '').trim(); if (!/^\d+$/.test(c)) return c.length >= 4 && c.length <= 40; if (![8, 12, 13, 14].includes(c.length)) return false; const d = c.split('').map(Number), chk = d.pop(); const t = d.reverse().reduce((a, x, i) => a + x * (i % 2 ? 1 : 3), 0); return (10 - t % 10) % 10 === chk; };
 let zxP = null;
@@ -2347,7 +2257,7 @@ const syncRun = async () => {
     }
     await syncPush(comp);
     SYNC.err = ''; SYNC.last = Date.now();
-    if (comp.seedFiles) comp.seedFiles();
+    if (comp.demoPurge) comp.demoPurge();
   } catch (e) {
     SYNC.err = (e && e.message) || String(e); errLog(SYNC.err, 'synchronisation');
     if (e && e.auth) { CL.me = null; ME = null; }
@@ -2425,7 +2335,7 @@ class Component extends DCLogic {
         sup: p.sup.map(x => typeof x === 'string' ? supCopy(x) : { id: 'f' + rid(), ...x }),
         inv: p.inv.map((r, i) => ({ id: p.id + 'i' + i, sup: SN(r[0]), num: r[1], amt: r[2], date: r[3], st: r[4] })) }));
     });
-    return { dark: this.props.dark ?? false, site: 'a', tab: 'p', proj: null, seg: 'e', editSteps: false, stepText: '', stepType: 'g', supOpen: null, geo: {}, P, noteText: '', stk: {}, sentOrder: {}, mail: null, edits: {}, sentMail: {}, read: {}, wpos: 0, cfg: CFG0, cfgSite: 'a', cfgF: {}, sunday: false, discs: DISC0, discText: '', chf: 'TOUS', mbox: 'r', mq: '', who: null, vip: {}, treated: {}, cat: 'TOUS', sort: 'PRIX', day: 0, menu: false, sheet: null, form: {}, addS: {}, addE: {}, files: {}, chats: {}, seq: 0, lg: {}, ...(START[this.props.start] || {}), ...this.boot() };
+    return { dark: this.props.dark ?? false, site: KS[0] || null, tab: 'p', proj: null, seg: 'e', editSteps: false, stepText: '', stepType: 'g', supOpen: null, geo: {}, P, noteText: '', stk: {}, sentOrder: {}, mail: null, edits: {}, sentMail: {}, read: {}, wpos: 0, cfg: CFG0, cfgSite: KS[0] || null, cfgF: {}, sunday: false, discs: DISC0, discText: '', chf: 'TOUS', mbox: 'r', mq: '', who: null, vip: {}, treated: {}, cat: 'TOUS', sort: 'PRIX', day: 0, menu: false, sheet: null, form: {}, addS: {}, addE: {}, files: {}, chats: {}, seq: 0, lg: {}, ...(START[this.props.start] || {}), ...this.boot() };
   }
   boot() { const r = restore(); seedUsers(); seedUsers2(); meLoad(); ME = cloudUser(); if (r.mbx) r.mbx = { ...r.mbx, busy: false }; if (!Array.isArray(r.evs)) r.evs = evMigrate(r.addE); return r;
   }
@@ -2460,7 +2370,7 @@ class Component extends DCLogic {
     if (cloudReady()) { cloudMe().then(() => { ME = cloudUser(); this.forceUpdate(); }).catch(() => {}); syncSoon(300); }
     this.syncI = setInterval(() => { if (!document.hidden) syncRun(); }, 15000);
     addEventListener('online', () => syncSoon(200)); document.addEventListener('visibilitychange', () => { if (!document.hidden) syncSoon(200); });
-    this.flags(); if (ridScan(this.state)) this.forceUpdate();
+    this.flags(); this.demoPurge(); if (ridScan(this.state)) this.forceUpdate();
     tbSync(this); document.querySelectorAll('textarea[data-grow]').forEach(growTa); projFilesRun(this); tabsOwn(this);
     phWake = () => { clearTimeout(this.phT); this.phT = setTimeout(() => this.forceUpdate(), 30); };
     setTimeout(() => { const keep = new Set(); Object.values(this.state.ph || {}).forEach(L => L.forEach(x => keep.add(x.id))); Object.values(this.state.trash || {}).forEach(t => { if (t.k === 'photo' && t.d && t.d.x) keep.add(t.d.x.id); }); this.trashPurge(); if (window.indexedDB) phKeys().then(K => K.forEach(k => { if (!keep.has(k)) phDel(k); })).catch(() => {}); }, 4000);
@@ -2628,7 +2538,7 @@ class Component extends DCLogic {
     if (this.sig && sig.some((v, i) => v !== this.sig[i])) syncSoon();
     if (this.state.sheet === 'cfg' && this.state.cfgSec === 'm' && !(prev.sheet === 'cfg' && prev.cfgSec === 'm')) this.iaRefresh();
     this.sig = sig;
-    if (!this.wRaf && !this.wDrag && KS[wrapI(Math.round(this.state.wpos))] !== this.state.site) { const i = KS.indexOf(this.state.site); this.wTarget = i; this.setState({ wpos: i }); }
+    if (KS.length && !this.wRaf && !this.wDrag && KS[wrapI(Math.round(this.state.wpos))] !== this.state.site) { const i = KS.indexOf(this.state.site); this.wTarget = i; this.setState({ wpos: i }); }
     if (prev.dark !== this.props.dark) this.setState({ dark: this.props.dark ?? false });
     if (prev.start !== this.props.start) this.setState({ tab: 'p', site: 'a', wpos: 0, sheet: null, seg: 'e', ...(START[this.props.start] || {}) });
   }
@@ -2639,7 +2549,7 @@ class Component extends DCLogic {
     KS.splice(0, KS.length, ...d.ks.filter(k => SITES[k])); RID.map = d.rid.map; RID.n = d.rid.n;
     const st = this.state, priv = {}; Object.keys(st.treated || {}).forEach(k => { if (/^mx-/.test(k)) priv[k] = st.treated[k]; });
     const s = { ...d.state, treated: { ...d.state.treated, ...priv }, rev: (st.rev || 0) + 1 };
-    if (!SITES[st.site]) { s.site = KS[0]; s.proj = null; s.mail = null; }
+    if (!SITES[st.site]) { s.site = KS[0] || null; s.proj = null; s.mail = null; }
     if (!SITES[st.cfgSite]) s.cfgSite = s.site || st.site;
     this.setState(s);
     if (first) this.toast('✓ Données de l’entreprise chargées sur cet appareil');
@@ -2702,11 +2612,34 @@ class Component extends DCLogic {
       this.setState(s => ({ gen: null, edits: { ...s.edits, [m.id + ':r']: text, [m.id + ':pts']: points } }));
     } catch (e) { this.setState({ gen: null }); this.toast('Pas de réponse : ' + (e.status === 404 ? 'mettez à jour la fonction chantier-ia dans Supabase' : (e && e.message) || e)); }
   }
-  // ---------- Fichiers : deux dossiers d'exemple, créés une seule fois pour toute l'entreprise (après une synchronisation) ----------
-  seedFiles() {
-    const F = this.state.files || {}; if (F._seed) return;
-    const at = '2026-11-03T12:00:00.000Z';
-    this.setState({ files: { ...F, _seed: 1, 'fx-plans': { n: 'Plans', p: '', k: 'd', at, by: '' }, 'fx-docs': { n: 'Documents administratifs', p: '', k: 'd', at, by: '' } } });
+  // ---------- Exemples d'origine : retirés de l'appareil et, par la synchronisation, de la base commune. Ce qui a été renommé, complété ou ajouté est conservé ----------
+  demoPurge() {
+    const st = this.state; let ch = false;
+    const P = { ...(st.P || {}) }, cfg = { ...(st.cfg || {}) };
+    Object.keys(P).forEach(k => { const L = (P[k] || []).filter(p => !DEMO.proj.includes(p.id)); if (L.length !== (P[k] || []).length) { P[k] = L; ch = true; } });
+    Object.keys(DEMO.sites).forEach(k => {
+      const S = SITES[k]; if (!S) return;
+      const mails = (S.mails || []).filter(x => !DEMO.mail.test(x.id)), stock = (S.stock || []).filter(x => !DEMO.stock.includes(x[0]));
+      if (mails.length !== (S.mails || []).length || stock.length !== (S.stock || []).length) { S.mails = mails; S.stock = stock; ch = true; }
+      if ((S.projects || []).some(p => DEMO.proj.includes(p.id))) S.projects = S.projects.filter(p => !DEMO.proj.includes(p.id));
+      if ((DONE[k] || []).some(x => DEMO.mail.test(x.id))) { DONE[k] = DONE[k].filter(x => !DEMO.mail.test(x.id)); ch = true; }
+      const left = (P[k] || []).length || mails.length || stock.length || (DONE[k] || []).length || ((st.addS || {})[k] || []).length;
+      if (!left && S.label === DEMO.sites[k] && !S.name) { delete SITES[k]; delete DOT[k]; delete TEAMS[k]; delete DONE[k]; delete P[k]; delete cfg[k]; const i = KS.indexOf(k); if (i >= 0) KS.splice(i, 1); ch = true; }
+    });
+    for (let i = SUP.length - 1; i >= 0; i--) if (DEMO.sup[SUP[i].id] === SUP[i].name) { SUP.splice(i, 1); ch = true; }
+    Object.keys(RID.map).forEach(key => {
+      const m = /^([SPFKU]):(.*)$/.exec(key); if (!m) return; const v = m[2];
+      const gone = m[1] === 'S' ? DEMO.sites[v] && !SITES[v] : m[1] === 'P' ? DEMO.proj.includes(v) : m[1] === 'F' ? DEMO.proj.includes(v.split('/')[0]) : m[1] === 'K' ? DEMO.sites[v[0]] && DEMO.stock.includes(v.slice(1)) && !stockOfS(st, v[0]).some(x => x[0] === v.slice(1)) : DEMO.sup[v] && !SUP.some(x => x.id === v);
+      if (gone) { delete RID.map[key]; ch = true; }
+    });
+    const evs = (st.evs || []).filter(e => !(DEMO.ev.includes(e.title) && DEMO.day.test(e.date || '')));
+    const F = { ...(st.files || {}) }; let fch = false;
+    Object.keys(DEMO.dirs).forEach(id => { if (F[id] && F[id].k === 'd' && F[id].n === DEMO.dirs[id] && !Object.values(F).some(x => x && x.p === id)) { delete F[id]; fch = true; } });
+    if (!ch && !fch && evs.length === (st.evs || []).length) return;
+    const up = { P, cfg, evs, files: F };
+    if (!SITES[st.site]) { up.site = KS[0] || null; up.wpos = Math.max(0, KS.indexOf(up.site)); up.proj = null; up.mail = null; }
+    if (st.cfgSite && !SITES[st.cfgSite]) up.cfgSite = up.site !== undefined ? up.site : st.site;
+    this.setState(up); syncSoon(400);
   }
   // nom libre dans un dossier : « Devis.pdf », puis « Devis 2.pdf »… (comme dans l'app Fichiers)
   fUniq(F, name, dir, skip, isDir) {
@@ -3097,7 +3030,7 @@ class Component extends DCLogic {
     } catch (e) { this.setState(s => ({ geo: { ...s.geo, [pid]: 'err' } })); }
   }
   renderVals() {
-    const st = this.state, S = SITES[st.site], set = (o) => this.setState(o);
+    const st = this.state, S = SITES[st.site] || NOSITE, set = (o) => this.setState(o);
     calSync(st.cals); rubSync(st.rubs);
     const projPhOn = st.projPh !== false, projSupOn = st.projSup !== false;
     const RI = key => RID.map[key] || '';
@@ -3265,25 +3198,27 @@ class Component extends DCLogic {
     const stFilt = [['low', 'À commander', 'var(--t4)', 'var(--t4x)'], ['ord', 'En commande', 'var(--t2)', 'var(--t2x)'], ['ok', 'En stock', 'var(--t3)', 'var(--t3x)']].map(([k, label, bg, fx]) => { const a = sf === k; return { label, bg, fg: fx, n: stItems.filter(x => x.stt === k).length, bd: a ? fx : 'transparent', op: !sf || a ? 1 : 0.5, pick: () => set({ stkF: a ? null : k }) }; });
     const sdL = sdiscsOf(st), dOrder = Array.from(new Set([...sdL, ...stItems.map(x => x.disc)])).filter(d => d !== 'Autre').concat('Autre');
     const sdSel = st.stkD || null, inStt = stItems.filter(x => !sf || x.stt === sf);
-    const stDisc = [{ k: null, label: 'Toutes', n: inStt.length }, ...dOrder.filter(d => sdL.includes(d) || inStt.some(x => x.disc === d)).map(d => ({ k: d, label: d, n: inStt.filter(x => x.disc === d).length }))].map(d => { const a = sdSel === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ stkD: d.k, stkU: null }) }; });
+    const stDisc = [{ k: null, label: 'Tous', n: inStt.length }, ...dOrder.filter(d => sdL.includes(d) || inStt.some(x => x.disc === d)).map(d => ({ k: d, label: d, n: inStt.filter(x => x.disc === d).length }))].map(d => { const a = sdSel === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ stkD: d.k, stkU: null }) }; });
     const inD = inStt.filter(x => !sdSel || x.disc === sdSel), suSel = sdSel && inD.some(x => x.sub === st.stkU) ? st.stkU : null;
-    const stSub = !sdSel ? [] : [{ k: null, label: 'Toutes', n: inD.length }, ...Array.from(new Set(inD.map(x => x.sub))).sort((a, b) => a.localeCompare(b, 'fr')).map(u => ({ k: u, label: u, n: inD.filter(x => x.sub === u).length }))].map(d => { const a = suSel === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--solid)' : 'transparent', fg: a ? 'var(--solidTx)' : 'var(--ink2)', pick: () => set({ stkU: d.k }) }; });
+    const stSub = !sdSel ? [] : [{ k: null, label: 'Tous les types', n: inD.length }, ...Array.from(new Set(inD.map(x => x.sub))).sort((a, b) => a.localeCompare(b, 'fr')).map(u => ({ k: u, label: u, n: inD.filter(x => x.sub === u).length }))].map(d => { const a = suSel === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ stkU: d.k }) }; });
+    // une seule ligne : les thèmes, puis (un thème choisi) ses types d'article avec un retour sur le thème
+    const stLine = !sdSel ? stDisc : [{ label: '‹ ' + sdSel, n: '', bg: 'var(--solid)', fg: 'var(--solidTx)', pick: () => set({ stkD: null, stkU: null }) }, ...stSub];
     const stocks = inD.filter(x => !suSel || x.sub === suSel).map(({ s, key, o, low, disc, sub }) => {
       const max = Math.max(s[4] * 2, o.q, 1), step = Math.max(1, Math.round(s[5] / 10)), open = st.stkOpen === key;
       const zone = (st.stkZone || {})[key] || STZ[s[0]] || zonesS[0] || '—';
       const sw = 'k:' + key;
       SW[sw] = canDel() ? { del: how => this.undoable(s[1] + ' supprimé du stock', 'stk', how, { key, name: s[1] }, () => this.setState(z => ({ stkDel: { ...(z.stkDel || {}), [key]: true }, stkOpen: null }))) } : {};
-      return { sw, sub, ean: s[8] || '', hasEan: !!s[8], img: 'stk-' + s[0], src: src(s[0]), name: s[1], rid: RI('K:' + key), unit: s[2], q: o.q, col: low ? WARN : INK, barCol: low ? WARN : ACC, w: Math.min(100, o.q / max * 100) + '%', markL: (s[4] / max * 100) + '%',
+      return { sw, sub, ean: s[8] || '', hasEan: !!s[8], img: 'stk-' + s[0], src: '', name: s[1], rid: RI('K:' + key), unit: s[2], q: o.q, col: low ? WARN : INK, barCol: low ? WARN : ACC, w: Math.min(100, o.q / max * 100) + '%', markL: (s[4] / max * 100) + '%',
         meta: 'Seuil ' + s[4] + ' · ' + zone + (s[8] ? ' · EAN ' + s[8] : ''), hasPend: o.o > 0, pend: '+' + o.o + ' ' + s[2] + (o.sent ? ' · commandés' : ' · au panier'), pendBg: o.sent ? 'var(--t2)' : 'var(--warnBg)', pendFg: o.sent ? 'var(--t2x)' : 'var(--warnTx)',
         open, toggle: () => set({ stkOpen: open ? null : key }), step: step + ' ' + s[2],
         minus: () => updS(key, { ...o, q: Math.max(0, o.q - step) }), plus: () => updS(key, { ...o, q: o.q + step }),
         zones: zonesS.map(z => ({ label: z, bg: z === zone ? 'var(--acc)' : 'var(--tile)', fg: z === zone ? 'var(--accOn)' : INK, pick: () => set({ stkZone: { ...(st.stkZone || {}), [key]: z } }) })),
-        adv: o.sup || ADV[s[0]] || 'Point Matériaux · 48 h', lotLbl: '+ 1 lot · ' + s[5], order: () => updS(key, { ...o, o: o.o + s[5], sent: false }),
+        adv: o.sup || ADV[s[0]] || 'Fournisseur à choisir', lotLbl: '+ 1 lot · ' + s[5], order: () => updS(key, { ...o, o: o.o + s[5], sent: false }),
         disc, canRecv: o.sent && o.o > 0, canOrder: !(o.sent && o.o > 0), recvLbl: 'Réceptionner +' + o.o, recv: () => updS(key, { ...o, q: o.q + o.o, o: 0, sent: false }), edit: () => openEd('stk', { key }) };
     });
     const stGroups = [];
     dOrder.forEach(d => Array.from(new Set(stocks.filter(x => x.disc === d).map(x => x.sub))).sort((a, b) => a.localeCompare(b, 'fr')).forEach(u => { const items = stocks.filter(x => x.disc === d && x.sub === u); stGroups.push({ label: sdSel ? u : d + ' › ' + u, items, n: items.length + ' article' + (items.length > 1 ? 's' : '') }); }));
-    const bk = {}; stItems.filter(x => x.o.o > 0 && !x.o.sent).forEach(x => { const sup = (x.o.sup || ADV[x.s[0]] || 'Point Matériaux').split(' · ')[0]; (bk[sup] = bk[sup] || []).push({ name: x.s[1], qty: '+' + x.o.o + ' ' + x.s[2], rm: () => updS(x.key, { ...x.o, o: 0 }) }); });
+    const bk = {}; stItems.filter(x => x.o.o > 0 && !x.o.sent).forEach(x => { const sup = (x.o.sup || ADV[x.s[0]] || 'Sans fournisseur').split(' · ')[0]; (bk[sup] = bk[sup] || []).push({ name: x.s[1], qty: '+' + x.o.o + ' ' + x.s[2], rm: () => updS(x.key, { ...x.o, o: 0 }) }); });
     const basket = Object.keys(bk).map(sup => ({ sup, lines: bk[sup] })), basketLines = stItems.filter(x => x.o.o > 0 && !x.o.sent).length;
     const sendOrder = () => { const n = { ...st.stk }, at = iso(new Date()); stItems.forEach(x => { if (x.o.o > 0 && !x.o.sent) n[x.key] = { ...x.o, sent: true, at }; }); set({ stk: n, stkSent: true }); };
     // mails
@@ -3457,7 +3392,7 @@ class Component extends DCLogic {
     const LOC = [['addr', 'Adresse', 'Ex. 14 rue Garibaldi'], ['city', 'Ville', 'Ex. 69006 Lyon'], ['access', 'Accès', 'Code, badge, clé…'], ['hours', 'Horaires', 'Ex. 7h30 – 17h']];
     const EDK = {
       site: {
-        title: r => r.k ? 'Modifier le site' : 'Nouveau site', req: 'name', delLbl: 'Supprimer ce site', canDel: r => !!r.k && KS.length > 1,
+        title: r => r.k ? 'Modifier le site' : 'Nouveau site', req: 'name', delLbl: 'Supprimer ce site', canDel: r => !!r.k,
         note: r => !r.k ? '' : KS.length > 1 ? 'Supprimer le site efface aussi ses projets, son stock, ses messages et ses événements.' : 'Il faut au moins un site : créez-en un autre avant de supprimer celui-ci.',
         load: r => { if (!r.k) return { color: Object.keys(COLORS).find(n => !Object.values(DOT).includes(COLORS[n])) || 'Bleu' }; const C = st.cfg[r.k] || {}; return { name: SL(r.k), desc: SITES[r.k].addr, color: colorName(DOT[r.k]), addr: C.addr, city: C.city, access: C.access, hours: C.hours }; },
         groups: () => [{ t: 'Site', f: [['name', 'Nom', 'Ex. Résidence Les Lilas'], ['desc', 'Description', 'Ex. Lyon 3e · 12 logements'], ['color', 'Couleur', '', Object.keys(COLORS)]] }, { t: 'Adresse', f: LOC }],
@@ -3471,7 +3406,7 @@ class Component extends DCLogic {
         del: r => {
           const k = r.k, i = KS.indexOf(k); if (i < 0 || KS.length < 2) return;
           KS.splice(i, 1); delete SITES[k]; delete DOT[k]; delete TEAMS[k]; delete DONE[k];
-          this.setState(s => { const P = { ...s.P }, cfg = { ...s.cfg }, addE = {}, evs = (s.evs || []).filter(e => e.site !== k); delete P[k]; delete cfg[k]; const nk = s.site === k ? KS[0] : s.site; return { ...bump(), P, cfg, addE, evs, site: nk, wpos: KS.indexOf(nk), cfgSite: nk, proj: null, mail: null, who: null }; });
+          this.setState(s => { const P = { ...s.P }, cfg = { ...s.cfg }, addE = {}, evs = (s.evs || []).filter(e => e.site !== k); delete P[k]; delete cfg[k]; const nk = s.site === k ? (KS[0] || null) : s.site; return { ...bump(), P, cfg, addE, evs, site: nk, wpos: Math.max(0, KS.indexOf(nk)), cfgSite: nk, proj: null, mail: null, who: null }; });
         }
       },
       proj: {
@@ -3529,7 +3464,7 @@ class Component extends DCLogic {
       stk: {
         title: () => 'Modifier l’article', req: 'name', delLbl: 'Supprimer l’article', canDel: () => true,
         load: r => { const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || []; const o = st.stk[r.key] || {}; return { name: x[1], unit: x[2], disc: x[6] || SDISC[x[0]] || 'Autre', sub: x[0] ? subOf(x) : '', ean: x[8] || '', q: String(o.q ?? x[3]), min: String(x[4]), lot: String(x[5]) }; },
-        groups: () => [{ t: 'Article', f: [['name', 'Produit', 'Ex. Joint carrelage'], ['unit', 'Unité', 'Ex. sacs'], ['disc', 'Discipline', '', [...sdiscsOf(st), 'Autre'], { add: 'sdisc' }], ['sub', 'Sous-catég.', 'Ex. Câbles', subSugg(F.disc), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir']] }, { t: 'Quantités', f: [['q', 'En stock', '0'], ['min', 'Seuil', '0'], ['lot', 'Lot', '1']] }],
+        groups: () => [{ t: 'Article', f: [['name', 'Produit', 'Ex. Joint carrelage'], ['unit', 'Unité', 'Ex. sacs'], ['disc', 'Thème', '', [...sdiscsOf(st), 'Autre'], { add: 'sdisc' }], ['sub', 'Type article', 'Ex. Câbles', subSugg(F.disc), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir']] }, { t: 'Quantités', f: [['q', 'En stock', '0'], ['min', 'Seuil', '0'], ['lot', 'Lot', '1']] }],
         save: (r, F) => {
           refPut(F.ean, F.name, F.unit, F.disc, F.sub);
           const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || [], o = { q: x[3], o: 0, sent: false, ...(st.stk[r.key] || {}) };
@@ -3603,7 +3538,7 @@ class Component extends DCLogic {
     const FD = {
       ed: EK ? EK.groups() : [],
       p: [{ t: 'Projet', f: [['a', 'Nom', 'Ex. Salle de bain lot 4'], ['b', 'Disciplines', '', st.discs, { multi: true, add: 'disc' }], ['desc', 'Description', 'Une ligne (ex. Reprise des cloisons R+2)']] }, { t: 'Emplacement', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }]] }],
-      s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Discipline', '', [...st.discs, 'Autre'], { add: 'disc' }], ['u', 'Sous-catég.', 'Ex. Ampoules', subSugg(F.e), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir', null, { type: 'text' }]] }, { t: 'Quantités', f: [['b', 'Unité', 'Ex. sacs'], ['c', 'Quantité', '0'], ['d', 'Seuil', '0']] }],
+      s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Thème', '', [...sdiscsOf(st), 'Autre'], { add: 'sdisc' }], ['u', 'Type article', 'Ex. Ampoules', subSugg(F.e), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir', null, { type: 'text' }]] }, { t: 'Quantités', f: [['b', 'Unité', 'Ex. sacs'], ['c', 'Quantité', '0'], ['d', 'Seuil', '0']] }],
       l: evGroups('a'),
       inv: [{ t: 'Facture', f: [['a', 'N°', 'Ex. F-2026-0520'], ['b', 'Montant HT', 'Ex. 1 250'], ['c', 'Échéance', 'Ex. 30 nov']] }]
     };
@@ -3612,7 +3547,7 @@ class Component extends DCLogic {
       const pickV = v => setF({ [k]: multi ? (has(v) ? val.filter(x => x !== v) : [...(val || []), v]) : combo && o.list ? (has(v) ? splitL(val).filter(x => x !== v) : [...splitL(val), v]).join(', ') : has(v) && !combo ? '' : v, ...(k === 'siteN' ? { projN: '' } : {}) });
       const edOn = !!o.edit && !!F.lvlEd, ak = o.add, qk = 'qa_' + k, addOn = !!ak && F[qk] !== undefined;
       return { label, ph, type: o.type || 'text', val: multi ? '' : val || '', on: fset(k), isIn: !ch && !o.sw, isCh: !!ch && !combo, isCo: combo, isSw: !!o.sw, swTog: () => setF({ [k]: !val, ...(k === 'hrs' && !val && !F.t ? { t: '08:00', end: '09:00' } : {}) }), swTrack: val ? 'var(--ok)' : 'var(--track)', swKnob: val ? 'translateX(20px)' : 'none',
-        hasAdd: !!ak && canCfg(), addOn, addTog: () => setF({ [qk]: addOn ? undefined : '' }), addVal: F[qk] || '', addIn: fset(qk), addPh: { disc: 'Nouvelle discipline…', sdisc: 'Nouvelle discipline…', rub: 'Nouvelle rubrique…', cal: 'Nouveau calendrier…' }[ak] || '',
+        hasAdd: !!ak && canCfg(), addOn, addTog: () => setF({ [qk]: addOn ? undefined : '' }), addVal: F[qk] || '', addIn: fset(qk), addPh: { disc: 'Nouvelle discipline…', sdisc: 'Nouveau thème…', rub: 'Nouvelle rubrique…', cal: 'Nouveau calendrier…' }[ak] || '',
         addOk: () => { const typed = up1(String(F[qk] || '').trim()), r = quickAdd(ak, F[qk]); if (!r) return; const lab = ak === 'disc' || ak === 'sdisc' ? r : ak === 'rub' ? (RUB[r] || typed) : (CALS[r] ? CALS[r][0] : typed); setF({ [qk]: undefined, [k]: multi ? Array.from(new Set([...(val || []), lab])) : lab }); },
         hasEd: !!o.edit, edOn, edLbl: edOn ? 'Terminé' : 'Modifier', edBg: edOn ? 'var(--solid)' : 'transparent', edFg: edOn ? 'var(--solidTx)' : 'var(--acc)', edTog: () => setF({ lvlEd: !F.lvlEd, lvlNew: '' }), edVal: F.lvlNew || '', edIn: fset('lvlNew'), edAdd: () => lvlAdd(F.lvlNew),
         opts: (ch || []).map(v => { const a = has(v); return edOn ? { label: v + '  ✕', bg: 'var(--tile)', fg: 'var(--ink2)', pick: () => set({ lvls: lvlList.filter(x => x !== v) }) } : { label: v, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => pickV(v) }; }) }; }) }; });
@@ -3673,7 +3608,7 @@ class Component extends DCLogic {
       calDown: (e) => { this.calX = e.clientX; }, calUp: (e) => { if (this.calX == null) return; const dx = e.clientX - this.calX; this.calX = null; if (Math.abs(dx) > 50) { this.calSw = Date.now(); monthGo(dx < 0 ? 1 : -1); } },
       subtitle, tb, tbList, tbW: tbList.length > 5 ? 'calc((100% - 8px) / 5)' : 'calc((100% - ' + 2 * (tbList.length - 1) + 'px) / ' + tbList.length + ')', tbShow: !X.selBar, projects, stocks, mails, chFilters, cats, contacts, cm, draftText, pj, segs, stepTypes,
       catCur: ccat === 'TOUS' ? 'Toutes les disciplines' : cap(ccat), catOpen: !!st.catOpen, catChev: st.catOpen ? 'rotate(180deg)' : 'none', toggleCat: () => set({ catOpen: !st.catOpen }),
-      ...(() => { const k = st.cfgSite, C = st.cfg[k], CF = st.cfgF, upC = (o) => set({ cfg: { ...st.cfg, [k]: { ...C, ...o } } }), fld = (f) => (e) => upC({ [f]: e.target.value }), cf = (f) => (e) => set({ cfgF: { ...CF, [f]: e.target.value } });
+      ...(() => { const k = st.cfgSite, C = st.cfg[k] || { addr: '', city: '', access: '', hours: '', zones: [], contacts: [] }, CF = st.cfgF, upC = (o) => set({ cfg: { ...st.cfg, [k]: { ...C, ...o } } }), fld = (f) => (e) => upC({ [f]: e.target.value }), cf = (f) => (e) => set({ cfgF: { ...CF, [f]: e.target.value } });
         const nEt = C.zones.filter(z => /^Étage \d+$/.test(z)).map(z => +z.split(' ')[1]), nextEt = 'Étage ' + (nEt.length ? Math.max(...nEt) + 1 : 1);
         const addZ = (z) => { if (z && !C.zones.some(x => x.toLowerCase() === z.toLowerCase())) upC({ zones: [...C.zones, z] }); };
         return { isSiteSheet: sh === 'site', sc: { edit: () => openEd('site', { k }), label: SL(k), rid: RI('S:' + k), dot: DOT[k], addr: C.addr, city: C.city, access: C.access, hours: C.hours, onAddr: fld('addr'), onCity: fld('city'), onAccess: fld('access'), onHours: fld('hours'),
@@ -3690,7 +3625,7 @@ class Component extends DCLogic {
       discs: st.discs.map(d => ({ label: d, del: () => set({ discs: st.discs.filter(x => x !== d) }) })), discN: st.discs.length + ' active' + (st.discs.length > 1 ? 's' : ''),
       discText: st.discText, onDisc: (e) => set({ discText: e.target.value }),
       addDisc: () => { const t = st.discText.trim(); if (!t) return; const v = t.charAt(0).toUpperCase() + t.slice(1); if (!st.discs.some(x => x.toLowerCase() === v.toLowerCase())) set({ discs: [...st.discs, v], discText: '', pdAdd: false, ...(st.pdAdd ? { pdisc: v } : {}) }); else set({ discText: '', pdAdd: false }); },
-      stDisc, stSub, hasStSub: stSub.length > 0, stGroups, stFilt,
+      stLine, stCap: sdSel ? 'Type article · ' + sdSel : 'Thème', stTop: !sdSel, stGroups, stFilt,
       eanLook: (sh === 's' || (sh === 'ed' && F.kind === 'stk')) && /^\d{8,14}$/.test(F.ean || ''), eanLookTxt: F.look || 'Code ' + (F.ean || ''), eanWeb: 'https://www.google.com/search?q=' + encodeURIComponent((F.ean || '') + ' (site:laplateformedubatiment.fr OR site:pointp.fr OR site:cedeo.fr OR site:bigmat.fr OR site:leroymerlin.fr OR site:castorama.fr OR site:manomano.fr)'),
       canScan: st.tab === 's', scanStock: () => this.startScan('stock'), scanForm: () => this.startScan('form'), eanForm: sh === 's' || (sh === 'ed' && F.kind === 'stk'),
       scanOpen: !!st.scan, scanMsg: st.scan ? st.scan.msg : '', scanCode: st.scan ? st.scan.code : '', onScanCode: (e) => set({ scan: { ...st.scan, code: e.target.value } }),
@@ -3702,7 +3637,7 @@ class Component extends DCLogic {
       psecs, pdiscs, pdAdd, togglePdAdd: () => set({ pdAdd: !st.pdAdd, discText: '' }), segPh: segK === 'ph', segD: segK === 'd', phSecs, phv, phvOpen: !!phv, dirRubs,
       addCover: async () => { const f = await phPick(false); if (!f.length) return; try { const b = await phShrink(f[0]), id = 'ph' + Date.now().toString(36) + rid(); await phPut(id, b); PURL[id] = URL.createObjectURL(b); phMark([id]); setF({ cover: id }); } catch (e) { this.toast('Photo ignorée : ' + ((e && e.message) || e)); } },
       newHasCover: !!F.cover, newNoCover: !F.cover, newCoverSrc: F.cover ? phUrl(F.cover) : '',
-      noProj: st.tab === 'p' && !detail && projects.length === 0, secOn: st.projSecs !== false, projEmpty: st.projSecs === false ? 'Aucun projet' + (pdisc ? ' en ' + pdisc : '') : pdisc ? 'Aucun projet ' + { d: 'terminé', r: 'en cours', t: 'à faire' }[psec] + ' en ' + pdisc : { d: 'Aucun projet terminé', r: 'Aucun projet en cours', t: 'Aucun projet à faire' }[psec],
+      noProj: st.tab === 'p' && !detail && projects.length === 0, secOn: st.projSecs !== false, projEmpty: !KS.length ? 'Aucun site pour l’instant. Touchez le sélecteur en haut (▾) pour créer votre premier site.' : st.projSecs === false ? 'Aucun projet' + (pdisc ? ' en ' + pdisc : '') : pdisc ? 'Aucun projet ' + { d: 'terminé', r: 'en cours', t: 'à faire' }[psec] + ' en ' + pdisc : { d: 'Aucun projet terminé', r: 'Aucun projet en cours', t: 'Aucun projet à faire' }[psec],
       title: titles[st.tab], noEvents: dayEv.length === 0, hasEvents: dayEv.length > 0, stop: (e) => e.stopPropagation(),
       isList: st.tab === 'p' && !detail, isDetail: detail, showHead: !detail && !(st.tab === 'c' && st.supSel) && !(st.tab === 'i' && X.chOpen),
       segE: segK === 'e', segL: segK === 'l', segC: segK === 'c',
@@ -3840,10 +3775,8 @@ class Component extends DCLogic {
           const renDisc = (o, n) => {
             if (st.discs.some(x => x !== o && x.toLowerCase() === n.toLowerCase())) return 'Cette discipline existe déjà.';
             const P = {}; Object.keys(st.P).forEach(k => { P[k] = st.P[k].map(p => discsOf(p).includes(o) ? { ...p, disc: discOf(p) === o ? n : discOf(p), discs: discsOf(p).map(x => x === o ? n : x), phase: p.phase === o ? n : p.phase } : p); });
-            const sc = { ...(st.stkCfg || {}) }; KS.forEach(k => stockOf(k).forEach(x => { if ((x[6] || SDISC[x[0]]) === o) sc[k + x[0]] = { ...(sc[k + x[0]] || {}), disc: n }; }));
             SUP.forEach(x => { if (cap(x.cat || '') === cap(o)) x.cat = n.toUpperCase(); });
-            let rc = false; Object.keys(REF).forEach(c => { if (REF[c][2] === o) { REF[c][2] = n; rc = true; } }); if (rc) refSave();
-            set({ ...bump(), discs: st.discs.map(x => x === o ? n : x), P, stkCfg: sc, evs: (st.evs || []).map(e => e.disc === o || (e.discs || []).includes(o) ? { ...e, disc: e.disc === o ? n : e.disc, discs: (e.discs || []).map(x => x === o ? n : x) } : e), cals: calL().map(c => ({ ...c, d: (c.d || []).map(x => x === o ? n : x) })), pdisc: st.pdisc === o ? n : st.pdisc, pldisc: st.pldisc === o ? n : st.pldisc, stkD: st.stkD === o ? n : st.stkD, cat: st.cat === o.toUpperCase() ? n.toUpperCase() : st.cat });
+            set({ ...bump(), discs: st.discs.map(x => x === o ? n : x), P, evs: (st.evs || []).map(e => e.disc === o || (e.discs || []).includes(o) ? { ...e, disc: e.disc === o ? n : e.disc, discs: (e.discs || []).map(x => x === o ? n : x) } : e), cals: calL().map(c => ({ ...c, d: (c.d || []).map(x => x === o ? n : x) })), pdisc: st.pdisc === o ? n : st.pdisc, pldisc: st.pldisc === o ? n : st.pldisc, cat: st.cat === o.toUpperCase() ? n.toUpperCase() : st.cat });
             return '';
           };
           L.push(lister('d', { t: 'Disciplines', unit: 'discipline', items: st.discs.map(d => ({ k: d, label: d })), ph: 'Nouvelle discipline (ex. Isolation)…', delLbl: 'Supprimer la discipline',
@@ -3858,8 +3791,8 @@ class Component extends DCLogic {
           T.push(tog(projSupOn, 'Fournisseurs par projet', '', () => { set({ projSup: !projSupOn }); }));
         }
         if (cfOn && sec === 's') {
-          const sdL = sdiscsOf(st), dupS = (t, o) => sdL.some(x => x !== o && x.toLowerCase() === t.toLowerCase()) ? 'Cette discipline existe déjà.' : '';
-          L.push(lister('sd', { t: 'Disciplines du stock', unit: 'discipline', items: sdL.map(d => ({ k: d, label: d })), ph: 'Nouvelle discipline (ex. Isolation)…', delLbl: 'Supprimer la discipline', note: '',
+          const sdL = sdiscsOf(st), dupS = (t, o) => sdL.some(x => x !== o && x.toLowerCase() === t.toLowerCase()) ? 'Ce thème existe déjà.' : '';
+          L.push(lister('sd', { t: 'Thèmes du stock', unit: 'thème', items: sdL.map(d => ({ k: d, label: d })), ph: 'Nouveau thème (ex. Isolation)…', delLbl: 'Supprimer le thème', note: '',
             ren: (o, n) => { const e = dupS(n, o); if (e) return e; const sc = { ...(st.stkCfg || {}) }; KS.forEach(k => stockOf(k).forEach(x => { if ((x[6] || SDISC[x[0]]) === o) sc[k + x[0]] = { ...(sc[k + x[0]] || {}), disc: n }; })); set({ ...bump(), sdiscs: sdL.map(x => x === o ? n : x), stkCfg: sc, stkD: st.stkD === o ? n : st.stkD }); return ''; },
             del: d => set({ sdiscs: sdL.filter(x => x !== d), stkD: st.stkD === d ? null : st.stkD }), add: t => dupS(t) || (set({ sdiscs: [...sdL, t] }), '') }));
         }
@@ -3911,8 +3844,8 @@ class Component extends DCLogic {
               iaDelLbl: fm.iaDel ? 'Toucher encore pour retirer la clé' : 'Retirer la clé', iaDel: () => { if (!fm.iaDel) { setF({ iaDel: true }); return; } this.iaSet(''); } }; })(),
           mbxLims: [10, 30, 50, 100].map(n => ({ label: String(n), bg: mlim === n ? 'var(--on)' : 'transparent', fg: mlim === n ? INK : 'var(--ink2)', pick: () => set({ mbx: { ...mbx, limit: n } }) })),
           cfgGo: { p: go('p'), s: go('s'), m: go('m'), l: go('l'), c: go('c') },
-          cfgSub: { p: st.discs.length + ' disciplines · ' + lvlList.length + ' emplacements · photos ' + (projPhOn ? 'affichées' : 'masquées'), s: sdiscsOf(st).length + ' disciplines · articles · base EAN de ' + rn, m: '', l: CALU.length + ' calendriers · nom, couleur, disciplines', c: RUBK.length + ' rubriques · ' + SUP.length + ' contacts' },
-          qaStk: qaMk('stk', 'Nouvelle discipline (ex. Isolation)…', v => { const r = quickAdd('sdisc', v); if (r) { set({ stkD: r, stkU: null, stkF: null }); this.toast('Discipline « ' + r + ' » ajoutée au stock'); } return r; }),
+          cfgSub: { p: st.discs.length + ' disciplines · ' + lvlList.length + ' emplacements · photos ' + (projPhOn ? 'affichées' : 'masquées'), s: sdiscsOf(st).length + ' thèmes · types d’article · base EAN de ' + rn, m: '', l: CALU.length + ' calendriers · nom, couleur, disciplines', c: RUBK.length + ' rubriques · ' + SUP.length + ' contacts' },
+          qaStk: qaMk('stk', 'Nouveau thème (ex. Isolation)…', v => { const r = quickAdd('sdisc', v); if (r) { set({ stkD: r, stkU: null, stkF: null }); this.toast('Thème « ' + r + ' » ajouté au stock'); } return r; }),
           qaRub: qaMk('rub', 'Nouvelle rubrique (ex. Architecte)…', v => { const r = quickAdd('rub', v); if (r) set({ rub: r }); return r; }),
           qaCal: qaMk('cal', 'Nouveau calendrier (ex. Réception)…', v => { const r = quickAdd('cal', v); if (r) this.toast('Calendrier ajouté : couleur et disciplines dans Réglages › Planning'); return r; }),
           calEdit: () => set({ sheet: 'cfg', cfgSec: 'l', form: {}, back: [], menu: false }), rubEdit: () => set({ sheet: 'cfg', cfgSec: 'c', form: {}, back: [], menu: false })
@@ -3930,7 +3863,7 @@ class Component extends DCLogic {
       fRes, hasFRes: fRes.length > 0, fResHint: !fRes.length && !!fq, fResTxt: fq ? 'Aucun contact référencé ne correspond.' : '',
       dirList, dirQ: F.dq || '', onDirQ: fset('dq'), hasDirQ: !!F.dq, clearDirQ: () => setF({ dq: '' }), dirT: dq ? 'Résultats' : 'Annuaire · ce site en premier', dirNone: !dirList.length, dirNoneTxt: dq ? 'Aucun contact référencé ne correspond à « ' + (F.dq || '').trim() + ' ». Ajoutez-le d’abord dans Contacts.' : 'Tous les contacts de cette rubrique sont déjà attachés au projet.',
       isProjSheet: sh === 'p', isSupSheet: sh === 'sup', isInvSheet: sh === 'inv', supDir: F.mode !== 'new',
-      newImg: 'proj-' + newId, newSrc: PX(DEF), invImg: 'inv-' + pid + '-' + (st.seq + 1),
+      newImg: 'proj-' + newId, newSrc: NOIMG, invImg: 'inv-' + pid + '-' + (st.seq + 1),
       allC: () => setF({ steps: fs.map(x => ({ ...x, t: 'c' })) }), allG: () => setF({ steps: fs.map(x => ({ ...x, t: 'g' })) }),
       fStepText: F.stepText || '', onFStep: fset('stepText'),
       addFStep: () => { const t = (F.stepText || '').trim(); if (t) setF({ steps: [...fs, { l: t, t: 'c' }], stepText: '' }); },
