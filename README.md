@@ -9,7 +9,7 @@ Thème clair par défaut comme la v4 ; thème sombre dans Compte. Intitulés en 
 
 ## Tout est configurable
 
-- **Sites** : menu Sites → « + Nouveau site » ; sur un site, Configurer → « Nom, couleur… »
+- **Sites** : menu Sites → « + Nouveau site » ; sur un site, Configurer → « Paramètres »
   pour renommer, changer la description, la couleur, l'adresse, ou supprimer.
 - **Projets** : bouton « Modifier » sur la fiche (nom, description d’une ligne, phase, site, adresse,
   suppression). La fin affichée vient des dates « du … au … » choisies à la création.
@@ -160,6 +160,12 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
   **base de référence** (catalogue du négoce importé + produits déjà nommés, sans réseau), puis Open
   Products Facts et Open Food Facts, puis par la session cloud sur les sites du bâtiment (Plateforme
   du Bâtiment, Point.P, Cedeo, BigMat…) et enfin le reste du web.
+  **Photo du produit** : dans la fiche de l'article, « Ajouter une photo » (appareil photo ou photothèque) ou
+  « Rechercher la photo (Claude) » (Open Food Facts par code EAN, sinon recherche web de Claude) ; la photo
+  est synchronisée et s'affiche sur la carte de l'article.
+  **Scan et packs** : un article déjà connu ouvre « Ajouter au stock » : à l'unité ou par pack. Un carton de 12
+  scanné en pack compte 12 « à l'unité » pour 1 pack ; l'unité de base reste « à l'unité » et le nombre
+  d'unités par pack se retient pour les scans suivants (aussi réglable dans la fiche).
 - **Planning** : calendriers en haut (avec « + » et « Modifier »), vue du mois façon Calendrier
   d’Apple ; un projet ou un événement sur plusieurs jours y est tracé en barre continue. Un
   événement a une date de début et de fin, et des heures de début et de fin si l’interrupteur est
@@ -214,6 +220,9 @@ Le dossier `chantier/` est un site statique : il suffit de l'héberger en **HTTP
 
 ## Bon à savoir
 
+- **Suppression** : un élément supprimé demande une confirmation avec un avertissement : il est placé dans la
+  corbeille pendant 30 jours (Compte › Corbeille) avant suppression définitive ; les éléments qui ne passent pas
+  par la corbeille (site, calendrier, profil) l'annoncent aussi.
 - Plus aucune donnée d'exemple : l'appli démarre vide (aucun site, projet, contact, stock, mail, événement ni photo).
   Les exemples des versions précédentes sont retirés une seule fois de chaque appareil et, par la synchronisation,
   de la base commune ; ce qui a été renommé, complété ou ajouté est conservé.

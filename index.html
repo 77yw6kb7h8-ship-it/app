@@ -326,7 +326,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-for list="{{ sg.items }}" as="i" hint-placeholder-count="2">
 <div class="sw" data-sw="{{ i.sw }}" style="border-bottom:2px solid var(--line)"><div class="sw-fg">
 <div onClick="{{ i.toggle }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 14px">
-<div style="width:46px;height:46px;border-radius:12px;overflow:hidden;flex:none;background:var(--tile)"><image-slot id="{{ i.img }}" src="{{ i.src }}" placeholder="Photo" compact="" shape="rect" style="width:100%;height:100%"></image-slot></div>
+<div style="width:46px;height:46px;border-radius:12px;overflow:hidden;flex:none;background:var(--tile)"><sc-if value="{{ i.hasPh }}" hint-placeholder-val="{{ false }}"><img src="{{ i.phSrc }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></sc-if><sc-if value="{{ i.noPh }}" hint-placeholder-val="{{ true }}"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--ink3)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5"></path></svg></div></sc-if></div>
 <div style="flex:1;min-width:0">
 <div style="font:500 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"><span class="rid" style="margin-right:6px">{{ i.rid }}</span>{{ i.name }}</div>
 <div style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ i.meta }}</div>
@@ -794,7 +794,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </sc-if>
 <sc-if value="{{ isSiteSheet }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;align-items:center;gap:10px;padding:2px 4px 4px"><span style="width:10px;height:10px;border-radius:50%;background:{{ sc.dot }}"></span><span style="font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ sc.label }}</span><span class="rid">{{ sc.rid }}</span><div onClick="{{ sc.edit }}" style="margin-left:auto;cursor:pointer;font:600 13.5px -apple-system,sans-serif;color:var(--acc)">Nom, couleur…</div></div>
+<div style="display:flex;align-items:center;gap:10px;padding:2px 4px 4px"><span style="width:10px;height:10px;border-radius:50%;background:{{ sc.dot }}"></span><span style="font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ sc.label }}</span><span class="rid">{{ sc.rid }}</span><div onClick="{{ sc.edit }}" style="margin-left:auto;cursor:pointer;font:600 13.5px -apple-system,sans-serif;color:var(--acc)">Paramètres</div></div>
 <div style="display:flex;align-items:center;justify-content:space-between;margin:16px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Adresse</div><a href="{{ sc.maps }}" target="_blank" style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)">Ouvrir dans Plans ↗</a></div>
 <div style="border-radius:16px;background:var(--field);overflow:hidden">
 <div style="display:flex;align-items:center;padding:0 16px;border-bottom:2px solid var(--line)"><div style="width:86px;flex:none;font:500 14.5px -apple-system,sans-serif;color:var(--ink2)">Adresse</div><input value="{{ sc.addr }}" onChange="{{ sc.onAddr }}" placeholder="Ex. 14 rue Garibaldi" style="flex:1;min-width:0;border:0;background:transparent;padding:14px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
@@ -958,7 +958,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">À enregistrer dans iCloud Drive › Chantier › Sauvegardes.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 33</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 34</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -1150,8 +1150,21 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:16px 4px 8px">Scan de la facture</div>
 <div style="height:96px;border-radius:16px;overflow:hidden;background:var(--field)"><image-slot id="{{ invImg }}" placeholder="Photo ou PDF de la facture" shape="rect" style="width:100%;height:100%"></image-slot></div>
 </sc-if>
+<sc-if value="{{ isStkSheet }}" hint-placeholder-val="{{ false }}">
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2);margin:16px 4px 8px">Photo du produit</div>
+<div style="display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;background:var(--field)">
+<div style="width:84px;height:84px;border-radius:14px;overflow:hidden;flex:none;background:var(--tile);display:flex;align-items:center;justify-content:center;color:var(--ink3)"><sc-if value="{{ stkPh.has }}" hint-placeholder-val="{{ false }}"><img src="{{ stkPh.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></sc-if><sc-if value="{{ stkPh.no }}" hint-placeholder-val="{{ true }}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5"></path></svg></sc-if></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">
+<div onClick="{{ stkPh.add }}" style="cursor:pointer;text-align:center;padding:9px 8px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ stkPh.addLbl }}</div>
+<div onClick="{{ stkPh.find }}" style="cursor:pointer;text-align:center;padding:9px 8px;border-radius:12px;background:var(--acc);color:var(--accOn);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ stkPh.findLbl }}</div>
+<sc-if value="{{ stkPh.has }}" hint-placeholder-val="{{ false }}"><div onClick="{{ stkPh.rm }}" style="cursor:pointer;text-align:center;padding:6px 8px;font:600 12.5px -apple-system,sans-serif;color:var(--warnTx)">Retirer la photo</div></sc-if>
+</div></div>
+<sc-if value="{{ stkPh.hasMsg }}" hint-placeholder-val="{{ false }}"><div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">{{ stkPh.msg }}</div></sc-if>
+</sc-if>
 <sc-if value="{{ edNote }}" hint-placeholder-val="{{ false }}"><div style="margin:18px 4px 0;font:400 13px/1.4 -apple-system,sans-serif;color:{{ edNoteCol }}">{{ edNoteTxt }}</div></sc-if>
+<sc-if value="{{ edConfirm }}" hint-placeholder-val="{{ false }}"><div style="margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--warnBg);color:var(--warnTx);font:500 13.5px/1.4 -apple-system,sans-serif">{{ edWarnTxt }}</div></sc-if>
 <sc-if value="{{ edCanDel }}" hint-placeholder-val="{{ false }}"><div onClick="{{ edDel }}" style="cursor:pointer;margin-top:14px;padding:14px;border-radius:16px;text-align:center;background:{{ edDelBg }};color:{{ edDelFg }};font:600 15px -apple-system,sans-serif;transition:background .2s">{{ edDelLbl }}</div></sc-if>
+<sc-if value="{{ edConfirm }}" hint-placeholder-val="{{ false }}"><div onClick="{{ edCancel }}" style="cursor:pointer;margin-top:8px;padding:12px;border-radius:16px;text-align:center;background:var(--tile);border:1px solid var(--tileBd);font:600 15px -apple-system,sans-serif">Annuler</div></sc-if>
 </div>
 </div>
 </div>
@@ -1199,6 +1212,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div onClick="{{ phv.move }}" style="cursor:pointer;text-align:center;padding:12px 2px;border-radius:14px;background:rgba(255,255,255,.12);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ phv.moveLbl }}</div>
 <div onClick="{{ phv.desc }}" style="cursor:pointer;text-align:center;padding:12px 2px;border-radius:14px;background:rgba(255,255,255,.12);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif">Description</div>
 <div onClick="{{ phv.replace }}" style="cursor:pointer;text-align:center;padding:12px 2px;border-radius:14px;background:rgba(255,255,255,.12);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif">Remplacer</div>
+<sc-if value="{{ phv.warn }}" hint-placeholder-val="{{ false }}"><div style="padding:10px 12px;border-radius:12px;background:rgba(255,59,48,.14);color:#FF6A60;font:500 12.5px/1.4 -apple-system,sans-serif;text-align:center">Cette photo sera placée dans la corbeille pendant 30 jours, puis supprimée définitivement.</div></sc-if>
 <sc-if value="{{ phv.canDel }}" hint-placeholder-val="{{ true }}"><div onClick="{{ phv.del }}" style="cursor:pointer;text-align:center;padding:12px 2px;border-radius:14px;background:{{ phv.delBg }};color:#fff;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ phv.delLbl }}</div></sc-if>
 </div>
 </div>
@@ -2059,7 +2073,7 @@ const evMigrate = addE => {
 // stock : discipline › sous-catégorie, code EAN
 const SUBS = { 'Électricité': ['Câbles', 'Ampoules', 'Prises & interrupteurs', 'Tableaux', 'Gaines'], 'Plomberie': ['Tubes', 'Raccords', 'Sanitaires', 'Évacuation'], 'Peinture': ['Peintures', 'Sous-couches', 'Outillage'], 'Placo': ['Plaques', 'Rails & montants', 'Enduits', 'Isolants', 'Dalles'], 'Carrelage': ['Carreaux', 'Colles', 'Joints'], 'Menuiserie': ['Portes', 'Quincaillerie', 'Bois'] };
 const SSUB = {};
-const stockOfS = (st, k) => [...((SITES[k] || {}).stock || []), ...((st.addS || {})[k] || [])].filter(x => !(st.stkDel || {})[k + x[0]]).map(x => { const c = (st.stkCfg || {})[k + x[0]]; return c ? [x[0], c.name ?? x[1], c.unit ?? x[2], x[3], c.min ?? x[4], c.lot ?? x[5], c.disc ?? x[6], c.sub ?? x[7], c.ean ?? x[8]] : x; });
+const stockOfS = (st, k) => [...((SITES[k] || {}).stock || []), ...((st.addS || {})[k] || [])].filter(x => !(st.stkDel || {})[k + x[0]]).map(x => { const c = (st.stkCfg || {})[k + x[0]]; return c ? [x[0], c.name ?? x[1], c.unit ?? x[2], x[3], c.min ?? x[4], c.lot ?? x[5], c.disc ?? x[6], c.sub ?? x[7], c.ean ?? x[8], c.pack ?? x[9]] : x; });
 const eanOk = c => { c = String(c || '').trim(); if (!/^\d+$/.test(c)) return c.length >= 4 && c.length <= 40; if (![8, 12, 13, 14].includes(c.length)) return false; const d = c.split('').map(Number), chk = d.pop(); const t = d.reverse().reduce((a, x, i) => a + x * (i % 2 ? 1 : 3), 0); return (10 - t % 10) % 10 === chk; };
 let zxP = null;
 const zxLoad = () => zxP || (zxP = window.ZXing ? Promise.resolve(window.ZXing) : new Promise((ok, ko) => { const sc = document.createElement('script'); sc.src = './vendor/zxing.min.js'; sc.onload = () => ok(window.ZXing); sc.onerror = () => { zxP = null; ko(new Error('lecteur de code indisponible')); }; document.head.appendChild(sc); }));
@@ -2452,7 +2466,7 @@ class Component extends DCLogic {
     if (target === 'form') { this.setState(s => ({ form: { ...s.form, ean: code } })); this.lookupEan(code, true); return; }
     for (const k of [st.site, ...KS.filter(x => x !== st.site)]) {
       const x = stockOfS(st, k).find(y => y[8] === code);
-      if (x) { this.setState({ site: k, wpos: KS.indexOf(k), tab: 's', stkF: null, stkD: null, stkU: null, stkOpen: k + x[0], sheet: null }); this.toast('Article trouvé : ' + x[1] + (k !== st.site ? ' · ' + SL(k) : '')); return; }
+      if (x) { this.setState({ site: k, wpos: KS.indexOf(k), tab: 's', stkF: null, stkD: null, stkU: null, stkOpen: k + x[0], sheet: 'ed', menu: false, back: [], form: { kind: 'qty', ref: { key: k + x[0] }, mode: x[9] ? 'Par pack' : 'À l’unité', n: '1', per: x[9] ? String(x[9]) : '' } }); this.toast('Article trouvé : ' + x[1] + (k !== st.site ? ' · ' + SL(k) : '')); return; }
     }
     this.setState({ sheet: 's', form: { ean: code, e: st.stkD || '' } });
     this.lookupEan(code, false);
@@ -2475,6 +2489,32 @@ class Component extends DCLogic {
       } else F.look = 'Code inconnu des bases ouvertes' + (cloud ? ' et du web' : '') + ' : saisissez le nom une fois, il sera reconnu ensuite.' + (cloud ? '' : ' Enregistrez une clé Claude (Réglages › Mails) pour chercher sur le web.');
       return { form: F };
     });
+  }
+  // ---------- Photo d'un article (dans sa fiche) : prise de vue, photothèque, ou recherche par Claude ----------
+  async stkPhotoAdd(key) {
+    const pk = 'k:' + key, cur = (this.state.cover || {})[pk], has = ((this.state.ph || {})[pk] || []).some(x => x.id === cur);
+    await this.addPhotos(pk, 'stk', has ? cur : undefined, true);
+  }
+  stkPhotoRm(key) { const pk = 'k:' + key; this.setState(s => { const cover = { ...(s.cover || {}) }; delete cover[pk]; return { ph: { ...(s.ph || {}), [pk]: [] }, cover, form: { ...s.form, imgMsg: '' } }; }); }
+  async addPhotoBlob(pk, blob) {
+    const b = await phShrink(new File([blob], 'produit.jpg', { type: blob.type || 'image/jpeg' })), id = 'ph' + Date.now().toString(36) + rid();
+    await phPut(id, b); PURL[id] = URL.createObjectURL(b); phMark([id]);
+    this.setState(s => { const L = [...((s.ph || {})[pk] || [])], cover = { ...(s.cover || {}) }, i = L.findIndex(x => x.id === cover[pk]), e = { id, sec: 'stk', at: Date.now(), tk: Date.now() }; if (i >= 0) L[i] = e; else L.push(e); cover[pk] = id; return { ph: { ...(s.ph || {}), [pk]: L }, cover }; });
+  }
+  async stkImgFind(key) {
+    const st = this.state, F0 = st.form || {}; if (F0.imgBusy) return;
+    const x = stockOfS(st, st.site).find(y => st.site + y[0] === key) || [], name = String(F0.name || x[1] || '').trim(), ean = String(F0.ean || x[8] || '').trim();
+    const msg = m => this.setState(s => s.sheet === 'ed' && s.form && s.form.kind === 'stk' ? { form: { ...s.form, imgMsg: m, imgBusy: false } } : null);
+    if (!name && !ean) { msg('Indiquez d’abord le nom ou le code EAN du produit.'); return; }
+    if (!cloudReady() || !CL.iaHint) { msg('La recherche utilise Claude : le propriétaire enregistre la clé dans Réglages › Mails.'); return; }
+    this.setState(s => ({ form: { ...s.form, imgBusy: true, imgMsg: 'Claude cherche la photo du produit…' } }));
+    try {
+      const j = await sbJson('/functions/v1/chantier-ia/image', { method: 'POST', json: { name, ean, unit: F0.unit || x[2] || '' } });
+      if (!j || !j.found || !j.b64) { msg('Aucune photo trouvée : ajoutez-la avec l’appareil photo ou la photothèque.'); return; }
+      const bin = atob(j.b64), u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+      await this.addPhotoBlob('k:' + key, new Blob([u], { type: j.type || 'image/jpeg' }));
+      msg('✓ Photo trouvée et ajoutée à la fiche' + (j.source ? ' (' + j.source + ')' : ''));
+    } catch (e) { const m = String((e && e.message) || e); msg(/404|not found|introuvable/i.test(m) ? 'La fonction chantier-ia doit être redéployée (nouvelle route /image).' : 'Recherche impossible : ' + m); }
   }
   phDesc(pid, id) {
     const x = ((this.state.ph || {})[pid] || []).find(y => y.id === id); if (!x) return;
@@ -3184,7 +3224,7 @@ class Component extends DCLogic {
       isCover: (st.cover || {})[st.phv.pid] === vx.id, coverLbl: (st.cover || {})[st.phv.pid] === vx.id ? 'Couverture ✓' : 'Couverture', setCover: () => { set({ cover: { ...(st.cover || {}), [st.phv.pid]: vx.id } }); },
       moveLbl: 'Vers ' + PHS[PHN[vx.sec]], move: () => { const to = PHN[vx.sec]; set({ ph: { ...st.ph, [st.phv.pid]: st.ph[st.phv.pid].map(x => x.id === vx.id ? { ...x, sec: to } : x) } }); },
       replace: () => this.addPhotos(st.phv.pid, vx.sec, vx.id), canDel: canDel(),
-      delLbl: st.phv.confirm ? 'Confirmer' : 'Supprimer', delBg: st.phv.confirm ? '#FF3B30' : 'rgba(255,59,48,.18)',
+      warn: !!st.phv.confirm, delLbl: st.phv.confirm ? 'Confirmer la suppression' : 'Supprimer', delBg: st.phv.confirm ? '#FF3B30' : 'rgba(255,59,48,.18)',
       del: () => { if (!st.phv.confirm) { set({ phv: { ...st.phv, confirm: true } }); return; } const ppid = st.phv.pid, nx = V.length > 1 ? V[(vi + 1) % V.length].id : null;
         this.undoable('Photo supprimée', 'photo', 'bouton', { pid: ppid, x: vx, cover: (st.cover || {})[ppid] === vx.id }, () => this.setState(s => { const cover = { ...(s.cover || {}) }; if (cover[ppid] === vx.id) delete cover[ppid]; return { ph: { ...s.ph, [ppid]: s.ph[ppid].filter(x => x.id !== vx.id) }, cover, phv: nx ? { pid: ppid, id: nx } : null }; })); } } : null;
     const segK = st.seg === 'c' && !projSupOn ? 'e' : st.seg;
@@ -3208,7 +3248,8 @@ class Component extends DCLogic {
       const zone = (st.stkZone || {})[key] || STZ[s[0]] || zonesS[0] || '—';
       const sw = 'k:' + key;
       SW[sw] = canDel() ? { del: how => this.undoable(s[1] + ' supprimé du stock', 'stk', how, { key, name: s[1] }, () => this.setState(z => ({ stkDel: { ...(z.stkDel || {}), [key]: true }, stkOpen: null }))) } : {};
-      return { sw, sub, ean: s[8] || '', hasEan: !!s[8], img: 'stk-' + s[0], src: '', name: s[1], rid: RI('K:' + key), unit: s[2], q: o.q, col: low ? WARN : INK, barCol: low ? WARN : ACC, w: Math.min(100, o.q / max * 100) + '%', markL: (s[4] / max * 100) + '%',
+      const pu = phUrl((st.cover || {})['k:' + key]);
+      return { sw, sub, ean: s[8] || '', hasEan: !!s[8], img: 'stk-' + s[0], phSrc: pu, hasPh: !!pu, noPh: !pu, name: s[1], rid: RI('K:' + key), unit: s[2], q: o.q, col: low ? WARN : INK, barCol: low ? WARN : ACC, w: Math.min(100, o.q / max * 100) + '%', markL: (s[4] / max * 100) + '%',
         meta: 'Seuil ' + s[4] + ' · ' + zone + (s[8] ? ' · EAN ' + s[8] : ''), hasPend: o.o > 0, pend: '+' + o.o + ' ' + s[2] + (o.sent ? ' · commandés' : ' · au panier'), pendBg: o.sent ? 'var(--t2)' : 'var(--warnBg)', pendFg: o.sent ? 'var(--t2x)' : 'var(--warnTx)',
         open, toggle: () => set({ stkOpen: open ? null : key }), step: step + ' ' + s[2],
         minus: () => updS(key, { ...o, q: Math.max(0, o.q - step) }), plus: () => updS(key, { ...o, q: o.q + step }),
@@ -3461,14 +3502,26 @@ class Component extends DCLogic {
         save: (r, F) => { const T = TEAMS[st.site] = TEAMS[st.site] || [], m = [F.name.trim(), F.role || '', F.tag || 'Sur site', F.tel || '']; if (r.i < 0) T.push(m); else T[r.i] = m; set(bump()); },
         del: r => { const m = (TEAMS[st.site] || [])[r.i]; if (m) this.trashPut('team', '', { site: st.site, m, i: r.i }); (TEAMS[st.site] || []).splice(r.i, 1); set(bump()); }
       },
+      qty: {
+        title: () => 'Ajouter au stock', req: 'n', delLbl: '', canDel: () => false,
+        load: r => { const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || []; return { mode: x[9] ? 'Par pack' : 'À l’unité', n: '1', per: x[9] ? String(x[9]) : '' }; },
+        groups: () => { const x = stockOf(st.site).find(y => st.site + y[0] === edRef.key) || [], pk = F.mode === 'Par pack'; return [{ t: (x[1] || 'Article') + ' · en ' + (x[2] || 'unités'), f: [['mode', 'Ajouter', '', ['À l’unité', 'Par pack']], ['n', pk ? 'Nombre de packs' : 'Nombre d’unités', '1'], ...(pk ? [['per', 'Unités par pack', 'Ex. 12']] : [])] }]; },
+        err: (r, F) => !(numOf(F.n) > 0) ? 'Indiquez un nombre supérieur à 0.' : F.mode === 'Par pack' && !(numOf(F.per) > 0) ? 'Indiquez le nombre d’unités par pack.' : '',
+        note: r => { const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || [], pk = F.mode === 'Par pack', n = numOf(F.n), per = numOf(F.per), tot = n * (pk ? per : 1), cur = (st.stk[r.key] || {}).q ?? x[3]; return tot > 0 ? '+ ' + tot + ' ' + (x[2] || 'unités') + (pk ? ' (' + n + ' pack' + (n > 1 ? 's' : '') + ' de ' + per + ')' : '') + ' → ' + (cur + tot) + ' en stock' : ''; },
+        save: (r, F) => {
+          const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || [], o = { q: x[3], o: 0, sent: false, ...(st.stk[r.key] || {}) }, pk = F.mode === 'Par pack', per = pk ? numOf(F.per) : 0, n = numOf(F.n), tot = n * (pk ? per : 1);
+          set({ stk: { ...st.stk, [r.key]: { ...o, q: o.q + tot } }, ...(pk ? { stkCfg: { ...(st.stkCfg || {}), [r.key]: { ...((st.stkCfg || {})[r.key] || {}), pack: per } } } : {}), stkOpen: r.key });
+          this.toast('+' + tot + ' ' + (x[2] || 'unités') + (pk ? ' · ' + n + ' pack' + (n > 1 ? 's' : '') + ' de ' + per : ''));
+        }
+      },
       stk: {
         title: () => 'Modifier l’article', req: 'name', delLbl: 'Supprimer l’article', canDel: () => true,
-        load: r => { const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || []; const o = st.stk[r.key] || {}; return { name: x[1], unit: x[2], disc: x[6] || SDISC[x[0]] || 'Autre', sub: x[0] ? subOf(x) : '', ean: x[8] || '', q: String(o.q ?? x[3]), min: String(x[4]), lot: String(x[5]) }; },
-        groups: () => [{ t: 'Article', f: [['name', 'Produit', 'Ex. Joint carrelage'], ['unit', 'Unité', 'Ex. sacs'], ['disc', 'Thème', '', [...sdiscsOf(st), 'Autre'], { add: 'sdisc' }], ['sub', 'Type article', 'Ex. Câbles', subSugg(F.disc), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir']] }, { t: 'Quantités', f: [['q', 'En stock', '0'], ['min', 'Seuil', '0'], ['lot', 'Lot', '1']] }],
+        load: r => { const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || []; const o = st.stk[r.key] || {}; return { name: x[1], unit: x[2], disc: x[6] || SDISC[x[0]] || 'Autre', sub: x[0] ? subOf(x) : '', ean: x[8] || '', q: String(o.q ?? x[3]), min: String(x[4]), lot: String(x[5]), pack: x[9] ? String(x[9]) : '' }; },
+        groups: () => [{ t: 'Article', f: [['name', 'Produit', 'Ex. Joint carrelage'], ['unit', 'Unité de base', 'Ex. à l’unité'], ['disc', 'Thème', '', [...sdiscsOf(st), 'Autre'], { add: 'sdisc' }], ['sub', 'Type article', 'Ex. Câbles', subSugg(F.disc), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir']] }, { t: 'Quantités', f: [['q', 'En stock', '0'], ['min', 'Seuil', '0'], ['lot', 'Lot', '1'], ['pack', 'Unités par pack', 'Ex. 12 (vide : vendu à l’unité)']] }],
         save: (r, F) => {
           refPut(F.ean, F.name, F.unit, F.disc, F.sub);
           const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || [], o = { q: x[3], o: 0, sent: false, ...(st.stk[r.key] || {}) };
-          set({ stkCfg: { ...(st.stkCfg || {}), [r.key]: { ...((st.stkCfg || {})[r.key] || {}), name: F.name.trim(), unit: (F.unit || '').trim() || 'unités', disc: F.disc || 'Autre', sub: (F.sub || '').trim(), ean: (F.ean || '').trim(), min: numOf(F.min), lot: Math.max(1, numOf(F.lot)) } }, stk: { ...st.stk, [r.key]: { ...o, q: numOf(F.q) } } });
+          set({ stkCfg: { ...(st.stkCfg || {}), [r.key]: { ...((st.stkCfg || {})[r.key] || {}), name: F.name.trim(), unit: (F.unit || '').trim() || 'à l’unité', disc: F.disc || 'Autre', sub: (F.sub || '').trim(), ean: (F.ean || '').trim(), min: numOf(F.min), lot: Math.max(1, numOf(F.lot)), pack: Math.max(0, numOf(F.pack)) } }, stk: { ...st.stk, [r.key]: { ...o, q: numOf(F.q) } } });
         },
         del: r => { this.trashPut('stk', '', { key: r.key, name: F.name }); set({ stkDel: { ...(st.stkDel || {}), [r.key]: true }, stkOpen: null }); }
       },
@@ -3538,7 +3591,7 @@ class Component extends DCLogic {
     const FD = {
       ed: EK ? EK.groups() : [],
       p: [{ t: 'Projet', f: [['a', 'Nom', 'Ex. Salle de bain lot 4'], ['b', 'Disciplines', '', st.discs, { multi: true, add: 'disc' }], ['desc', 'Description', 'Une ligne (ex. Reprise des cloisons R+2)']] }, { t: 'Emplacement', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }]] }],
-      s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Thème', '', [...sdiscsOf(st), 'Autre'], { add: 'sdisc' }], ['u', 'Type article', 'Ex. Ampoules', subSugg(F.e), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir', null, { type: 'text' }]] }, { t: 'Quantités', f: [['b', 'Unité', 'Ex. sacs'], ['c', 'Quantité', '0'], ['d', 'Seuil', '0']] }],
+      s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Thème', '', [...sdiscsOf(st), 'Autre'], { add: 'sdisc' }], ['u', 'Type article', 'Ex. Ampoules', subSugg(F.e), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir', null, { type: 'text' }]] }, { t: 'Quantités', f: [['b', 'Unité de base', 'Ex. à l’unité'], ['c', 'Quantité (en unités)', '0'], ['d', 'Seuil', '0'], ['p', 'Unités par pack', 'Ex. 12 (vide : vendu à l’unité)']] }],
       l: evGroups('a'),
       inv: [{ t: 'Facture', f: [['a', 'N°', 'Ex. F-2026-0520'], ['b', 'Montant HT', 'Ex. 1 250'], ['c', 'Échéance', 'Ex. 30 nov']] }]
     };
@@ -3583,7 +3636,7 @@ class Component extends DCLogic {
         const lu = countLvl(F.lvl, ''), cov = F.cover ? { cover: { ...(st.cover || {}), [newId]: F.cover }, ph: { ...(st.ph || {}), [newId]: [{ id: F.cover, sec: 'av', at: Date.now() }] } } : {};
         this.setState(s => ({ ...cov, lvlUse: lu, lvls: lvlMerge(F.lvl), P: { ...s.P, [s.site]: [...s.P[s.site], p] }, evs: addPlan ? [...(s.evs || []), pev] : s.evs, proj: newId, seg: 'e', sheet: null, seq: sq, tab: 'p' }));
       }
-      if (sh === 's') { refPut(F.ean, a, F.b, F.e, F.u); const n = Math.max(0, parseInt(F.c) || 0), m = Math.max(1, parseInt(F.d) || 1); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), [newId, a, F.b || 'unités', n, m, m, F.e || 'Autre', (F.u || '').trim(), (F.ean || '').trim()]] }, sheet: null, seq: sq, stkD: null, stkU: null, stkF: null, stkOpen: st.site + newId }); }
+      if (sh === 's') { refPut(F.ean, a, F.b, F.e, F.u); const n = Math.max(0, parseInt(F.c) || 0), m = Math.max(1, parseInt(F.d) || 1); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), [newId, a, (F.b || '').trim() || 'à l’unité', n, m, m, F.e || 'Autre', (F.u || '').trim(), (F.ean || '').trim(), Math.max(0, parseInt(F.p) || 0)]] }, sheet: null, seq: sq, stkD: null, stkU: null, stkF: null, stkOpen: st.site + newId }); }
       if (sh === 'l') { const e = evFromForm(F, 'e' + rid(), 'a'); set({ evs: [...(st.evs || []), e], calDay: e.date, cal: e.date.slice(0, 7), sheet: null, seq: sq }); }
       if (sh === 'sup') {
         const add = pick.map(supCopy);
@@ -3729,7 +3782,7 @@ class Component extends DCLogic {
           return { name: x[1], unit: x[2], disc: (x[6] || SDISC[x[0]] || 'Autre') + ' › ' + subOf(x), min: String(x[4]), lot: String(x[5]), onMin: (e) => setC({ min: num(e.target.value, 0) }), onLot: (e) => setC({ lot: Math.max(1, num(e.target.value, 1)) }), del: () => this.undoable(x[1] + ' supprimé du stock', 'stk', 'bouton', { key, name: x[1] }, () => set({ stkDel: { ...(this.state.stkDel || {}), [key]: true } })),
             sw: (() => { const k = 'kc:' + key; SW[k] = canDel() ? { del: how => this.undoable(x[1] + ' supprimé du stock', 'stk', how, { key, name: x[1] }, () => this.setState(z => ({ stkDel: { ...(z.stkDel || {}), [key]: true } }))) } : {}; return k; })() }; });
         const kc = { site: SL(st.site), n: kItems.length + ' articles', items: kItems, na: F.na || '', nu: F.nu || '', nq: F.nq || '', nm: F.nm || '', nl: F.nl || '', onNa: fset('na'), onNu: fset('nu'), onNq: fset('nq'), onNm: fset('nm'), onNl: fset('nl'), discs: chip([...st.discs, 'Autre'], F.nd, 'nd'),
-          add: () => { const a = (F.na || '').trim(); if (!a) return; const sq = st.seq + 1, m = Math.max(1, num(F.nm, 1)); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), ['k' + DEV + sq, a.charAt(0).toUpperCase() + a.slice(1), (F.nu || '').trim() || 'unités', num(F.nq, 0), m, Math.max(1, num(F.nl, m)), F.nd || 'Autre']] }, seq: sq, form: {} }); } };
+          add: () => { const a = (F.na || '').trim(); if (!a) return; const sq = st.seq + 1, m = Math.max(1, num(F.nm, 1)); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), ['k' + DEV + sq, a.charAt(0).toUpperCase() + a.slice(1), (F.nu || '').trim() || 'à l’unité', num(F.nq, 0), m, Math.max(1, num(F.nl, m)), F.nd || 'Autre']] }, seq: sq, form: {} }); } };
         const pOn = F.plan !== false;
         const pD = /^\d{4}-\d{2}-\d{2}$/.test(F.pdate || '') ? F.pdate : today, pE = /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > pD ? F.pend : '';
         const pK = CALS[F.pcal] && CALU.includes(F.pcal) ? F.pcal : CALS.real ? 'real' : CALU[0];
@@ -3852,8 +3905,11 @@ class Component extends DCLogic {
         };
       })(),
       isEdSheet: sh === 'ed', edCanDel: canDel() && !!(EK && EK.canDel(edRef)), ...(() => { const nt = EK && EK.note ? EK.note(edRef) : '', quiet = !!nt && /obligatoire\.$/.test(edErr || ''), er = quiet ? '' : edErr; return { edNote: !!(er || nt), edNoteTxt: er || nt, edNoteCol: er ? 'var(--warnTx)' : 'var(--ink2)' }; })(),
-      edDelLbl: F.confirm ? 'Toucher encore pour confirmer' : (EK ? EK.delLbl : ''), edDelBg: F.confirm ? 'var(--warn)' : 'var(--warnBg)', edDelFg: F.confirm ? '#fff' : 'var(--warnTx)',
+      edDelLbl: F.confirm ? 'Confirmer la suppression' : (EK ? EK.delLbl : ''), edDelBg: F.confirm ? 'var(--warn)' : 'var(--warnBg)', edDelFg: F.confirm ? '#fff' : 'var(--warnTx)',
       edDel: () => { if (!F.confirm) { setF({ confirm: true }); return; } EK.del(edRef); pop(); },
+      ...(() => { const key = sh === 'ed' && F.kind === 'stk' ? edRef.key : null, cid = key ? (st.cover || {})['k:' + key] : null, src = cid ? phUrl(cid) : '';
+        return { isStkSheet: !!key, stkPh: { has: !!src, no: !src, src, addLbl: src ? 'Changer la photo' : 'Ajouter une photo', add: () => this.stkPhotoAdd(key), findLbl: F.imgBusy ? 'Recherche…' : 'Rechercher la photo (Claude)', find: () => this.stkImgFind(key), rm: () => this.stkPhotoRm(key), hasMsg: !!F.imgMsg, msg: F.imgMsg || '' } }; })(),
+      edConfirm: !!F.confirm, edWarnTxt: ['proj', 'step', 'note', 'inv', 'dv', 'team', 'stk', 'ev', 'sup', 'mail'].includes(F.kind) ? 'Cet élément sera placé dans la corbeille pendant 30 jours, puis supprimé définitivement. Vous pouvez le restaurer d’ici là (Compte › Corbeille).' : 'Cette suppression est définitive : elle ne passe pas par la corbeille.', edCancel: () => setF({ confirm: false }),
       editProj: () => openEd('proj', { id: pid }), editSup: () => openEd('sup', { id: S0.id }), editMail: () => openEd('mail', { id: cm0.id }), newSite: () => openEd('site', { k: null }),
       openSheet: (e) => st.tab === 'f' ? X.fAdd(e) : st.tab === 'i' ? set({ chat: null, chatErr: '' }) : st.tab === 'c' ? openEd('sup', { id: null, rub: rub }) : st.tab === 'l' ? set({ sheet: 'l', back: [], form: { date: selD, cal: CALS[CALU[0]][0], siteN: SL(st.site), disc: '', hrs: !!st.evTimes, ...(st.evTimes ? { t: '08:00', end: '09:00' } : {}) }, menu: false }) : set({ sheet: st.tab, back: [], form: st.tab === 'p' ? { steps: DEFSTEPS, sups: [], b: pdisc ? [pdisc] : [] } : { day: st.day, site: st.site }, menu: false }),
       sheetOpen: !!sh, closeSheet: pop, closeLbl, dismissSheet: () => { if (this.rec) try { this.rec.abort(); } catch (e) {} set({ sheet: null, mic: null, back: [] }); }, submit, submitCol: valid ? ACC : 'var(--ink3)', submitLabel: sh === 'ed' ? (edRef.k === null || edRef.i < 0 || edRef.id === null ? 'Créer' : 'OK') : sh === 'p' ? 'Créer' : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' || sh === 'cfg' || sh === 'trash' ? 'OK' : 'Ajouter',
