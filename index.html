@@ -67,15 +67,12 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div id="main-scroll" data-scroll="1" style="flex:1;overflow-y:auto;overflow-x:hidden;padding:8px 20px 130px">
 <sc-if value="{{ showHead }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:14px 0 20px">
-<div style="min-width:0;display:flex;align-items:center;gap:12px">
-<sc-if value="{{ hdIcon }}" hint-placeholder-val="{{ false }}"><div style="flex:none;width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="{{ hdIconPath }}"></path></svg></div></sc-if>
 <div style="min-width:0">
-<div style="font:700 {{ titleFs }}/1.05 -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.025em">{{ title }}</div>
-<sc-if value="{{ hasSub }}" hint-placeholder-val="{{ true }}"><div style="font:400 14px -apple-system,sans-serif;color:var(--ink2);margin-top:5px">{{ subtitle }}</div></sc-if>
-</div></div>
+<div style="font:700 34px/1.05 -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.025em">{{ title }}</div>
+<div style="font:400 14px -apple-system,sans-serif;color:var(--ink2);margin-top:5px">{{ subtitle }}</div>
+</div>
 <div style="flex:none;display:flex;gap:10px;margin-left:auto">
 <sc-if value="{{ canCfg }}" hint-placeholder-val="{{ false }}"><div onClick="{{ openCfg }}" title="Réglages" style="flex:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg></div></sc-if>
-<sc-if value="{{ canSearch }}" hint-placeholder-val="{{ false }}"><div onClick="{{ pqTog }}" title="Rechercher un projet" style="flex:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:{{ pqBg }};border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M10.5 17a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13zM15.5 15.5L21 21"></path></svg></div></sc-if>
 <sc-if value="{{ canScan }}" hint-placeholder-val="{{ false }}"><div onClick="{{ scanStock }}" title="Scanner un code EAN" style="flex:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 7V4.5A1.5 1.5 0 0 1 4.5 3H7M17 3h2.5A1.5 1.5 0 0 1 21 4.5V7M21 17v2.5a1.5 1.5 0 0 1-1.5 1.5H17M7 21H4.5A1.5 1.5 0 0 1 3 19.5V17M7 8v8M10 8v8M13.5 8v8M17 8v8"></path></svg></div></sc-if>
 <sc-if value="{{ canMore }}" hint-placeholder-val="{{ false }}"><div onClick="{{ moreOpen }}" title="Plus d’options" style="flex:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="12" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="18.5" cy="12" r="1.8"></circle></svg></div></sc-if>
 <sc-if value="{{ canAdd }}" hint-placeholder-val="{{ true }}">
@@ -86,56 +83,50 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </div>
 <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
-<sc-if value="{{ pqOn }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:10px;padding:0 14px;margin:0 0 12px;border-radius:999px;background:var(--tile);border:1px solid var(--tileBd);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none;color:var(--ink2)"><path d="M10.5 17a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13zM15.5 15.5L21 21"></path></svg><input id="pq-in" value="{{ pq }}" onChange="{{ onPq }}" placeholder="Rechercher un projet…" autocorrect="off" style="flex:1;min-width:0;border:0;background:transparent;padding:12px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"></div></sc-if>
-<sc-if value="{{ secOn }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:6px;margin:0 0 18px">
+<sc-if value="{{ secOn }}" hint-placeholder-val="{{ true }}"><div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:-4px 0 18px">
 <sc-for list="{{ psecs }}" as="g" hint-placeholder-count="3">
-<div onClick="{{ g.pick }}" style="flex:1;min-width:0;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 6px;border-radius:999px;background:{{ g.bg }};color:{{ g.fg }};border:1px solid {{ g.bd }};font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap;transition:background .2s;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="{{ g.ic }}"></path></svg>{{ g.label }} <span style="opacity:.7">({{ g.n }})</span></div>
+<div onClick="{{ g.pick }}" style="cursor:pointer;padding:11px 12px 12px;border-radius:12px;background:linear-gradient(160deg,{{ g.bg }} 35%,var(--tile));color:{{ g.fg }};border:1px solid {{ g.bd }};opacity:{{ g.op }};transition:opacity .2s">
+<div style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap">{{ g.label }}</div>
+<div style="font:700 26px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.02em;margin-top:12px">{{ g.n }}</div>
+</div>
 </sc-for>
 </div></sc-if>
-<div style="display:flex;align-items:center;justify-content:space-between;margin:0 4px 8px"><div style="font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Priorités</div>
-<sc-if value="{{ canCfgP }}" hint-placeholder-val="{{ false }}"><div onClick="{{ openCfgP }}" title="Réglages des projets" style="cursor:pointer;width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9M15 4.5v5M9 14.5v5"></path></svg></div></sc-if></div>
-<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:0 0 16px">
-<sc-for list="{{ pprios }}" as="g" hint-placeholder-count="4">
-<div onClick="{{ g.pick }}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 4px 8px;border-radius:16px;background:{{ g.bg }};color:{{ g.fg }};border:1.5px solid {{ g.bd }};opacity:{{ g.op }};font:600 12px/1.2 -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;transition:opacity .2s"><span style="display:flex;align-items:center;gap:4px;white-space:nowrap"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ g.ic }}"></path></svg>{{ g.label }}</span><span style="font-size:15px;font-weight:700">{{ g.n }}</span></div>
-</sc-for>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:-6px -20px 16px;padding:0 20px">
+<sc-for list="{{ pdiscs }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};opacity:{{ d.op }};border:1px solid var(--tileBd);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span></div></sc-for>
+<sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div onClick="{{ togglePdAdd }}" title="Ajouter une discipline" style="flex:none;cursor:pointer;width:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if>
 </div>
-<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 12px;padding:0 20px">
-<sc-for list="{{ pdiscs }}" as="d" hint-placeholder-count="4"><div onClick="{{ d.pick }}" style="flex:1 0 auto;min-width:78px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 10px 10px;border-radius:16px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;white-space:nowrap;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="{{ d.ic }}"></path></svg>{{ d.label }}</div></sc-for>
-<sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div onClick="{{ togglePdAdd }}" title="Ajouter une discipline" style="flex:none;cursor:pointer;width:42px;border-radius:16px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if>
-</div>
-<sc-if value="{{ pdAdd }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin:-2px 0 12px">
+<sc-if value="{{ pdAdd }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin:-6px 0 16px">
 <input value="{{ discText }}" onChange="{{ onDisc }}" placeholder="Nouvelle discipline (ex. Isolation)…" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--field);padding:10px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)">
 <div onClick="{{ addDisc }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ajouter</div>
-</div></sc-if>
-<sc-if value="{{ psubOn }}" hint-placeholder-val="{{ false }}"><div style="margin:0 0 16px;padding:12px 12px 12px;border-radius:20px;background:var(--tile);border:1px solid var(--tileBd);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 2px 10px"><div style="font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ psubTitle }}</div>
-<div style="display:flex;align-items:center;gap:4px"><sc-if value="{{ cfgOk }}" hint-placeholder-val="{{ true }}"><div onClick="{{ psubAdd }}" title="Ajouter une sous-discipline" style="cursor:pointer;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--acc)"><svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if><div onClick="{{ psubFold }}" style="cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ psubChev }}"></path></svg></div></div></div>
-<sc-if value="{{ psubOpen }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:6px;overflow-x:auto;margin:0 -12px;padding:0 12px">
-<sc-for list="{{ psubs }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:8px 13px;border-radius:999px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ d.label }}</div></sc-for>
-<sc-if value="{{ psubNone }}" hint-placeholder-val="{{ false }}"><div style="padding:6px 2px;font:400 13px -apple-system,sans-serif;color:var(--ink2)">Aucune sous-discipline : touchez + pour en ajouter.</div></sc-if>
-</div></sc-if>
 </div></sc-if>
 </sc-if>
 </sc-if>
 
 <sc-if value="{{ noProj }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:20px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">{{ projEmpty }}</div></sc-if>
 <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
-<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;flex-direction:column;gap:16px">
 <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
 <div class="sw sw-card" data-sw="{{ p.sw }}" data-lp="{{ p.sw }}" data-lpg="{{ p.lpg }}">
 <div class="sw-l"><span style="display:flex;flex-direction:column;align-items:center;gap:5px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.2 2.6l6.2 6.2-1.9.8-3.8 3.8.4 4.6-1.7 1.7-3.9-3.9-5.6 5.6H3.4v-1.5L9 14.3l-3.9-3.9 1.7-1.7 4.6.4 3.8-3.8z"></path></svg>{{ p.pinLbl }}</span></div>
-<div class="sw-fg" onClick="{{ p.open }}" style="cursor:pointer;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--ks);color:var(--ink);border-radius:20px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
-<div style="display:flex;align-items:center;gap:12px;padding:10px 12px 10px 10px">
-<sc-if value="{{ p.showPh }}" hint-placeholder-val="{{ true }}"><div style="width:64px;height:64px;border-radius:14px;overflow:hidden;flex:none;background:var(--tile)"><img src="{{ p.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div></sc-if>
-<div style="flex:1;min-width:0">
-<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
-<div style="flex:1;min-width:0;font:600 16px/1.25 -apple-system,'SF Pro Text',system-ui,sans-serif;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden"><sc-if value="{{ p.pinned }}" hint-placeholder-val="{{ false }}"><span style="color:#FF9F0A">● </span></sc-if>{{ p.name }}</div>
-<span style="flex:none;display:flex;align-items:center;gap:4px;padding:4px 9px;border-radius:999px;background:{{ p.prioBg }};color:{{ p.prioFg }};font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;white-space:nowrap"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ p.prioIc }}"></path></svg>{{ p.prioLbl }}</span>
+<div class="sw-fg" onClick="{{ p.open }}" style="cursor:pointer;background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--ks);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
+<sc-if value="{{ p.showPh }}" hint-placeholder-val="{{ true }}"><div style="position:relative;height:150px;margin:6px 6px 0;border-radius:16px;overflow:hidden;background:var(--tile);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
+<img src="{{ p.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+<div style="position:absolute;left:10px;right:10px;top:10px;display:flex;justify-content:space-between;pointer-events:none">
+<span style="display:flex;gap:6px"><sc-if value="{{ p.pinned }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:4px;padding:5px 9px;border-radius:999px;background:#FF9F0A;color:#fff;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M15.2 2.6l6.2 6.2-1.9.8-3.8 3.8.4 4.6-1.7 1.7-3.9-3.9-5.6 5.6H3.4v-1.5L9 14.3l-3.9-3.9 1.7-1.7 4.6.4 3.8-3.8z"></path></svg></span></sc-if><span style="padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.75);color:#0E1726;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ p.phase }}</span></span>
+<sc-if value="{{ p.hasDue }}" hint-placeholder-val="{{ true }}"><span style="padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.75);color:#0E1726;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ p.due }}</span></sc-if>
 </div>
-<div style="display:flex;align-items:center;gap:6px;margin-top:6px;font:400 13px -apple-system,sans-serif;color:var(--ink2);min-width:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4.5 4.5h6v6h-6zM13.5 4.5h6v6h-6zM4.5 13.5h6v6h-6zM13.5 13.5h6v6h-6z"></path></svg><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.meta }}</span><span class="rid" style="margin-left:auto">{{ p.rid }}</span></div>
-<sc-if value="{{ p.hasAlert }}" hint-placeholder-val="{{ false }}"><div style="margin-top:4px;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--warnTx)">{{ p.alert }}</div></sc-if>
+</div></sc-if>
+<sc-if value="{{ p.noPh }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:space-between;gap:8px;padding:14px 16px 0;font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2)"><span style="display:flex;align-items:center;gap:6px"><sc-if value="{{ p.pinned }}" hint-placeholder-val="{{ false }}"><span style="color:#FF9F0A">● Épinglé ·</span></sc-if>{{ p.phase }}</span><span>{{ p.due }}</span></div></sc-if>
+<div style="padding:14px 16px 16px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+<div style="font:500 18px/1.2 -apple-system,sans-serif;letter-spacing:-.01em">{{ p.name }}</div>
+<div style="flex:none;font:700 28px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.02em">{{ p.pct }}<span style="font-size:17px;letter-spacing:0"> %</span></div>
 </div>
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink2)"><path d="M9 5l7 7-7 7"></path></svg>
+<sc-if value="{{ p.hasDesc }}" hint-placeholder-val="{{ false }}"><div style="font:400 13.5px/1.35 -apple-system,sans-serif;color:var(--ink2);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.desc }}</div></sc-if>
+<div style="display:flex;align-items:center;gap:5px;margin-top:4px;font:400 13px -apple-system,sans-serif;color:var(--ink2)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>{{ p.loc }}</div>
+<div style="height:6px;border-radius:999px;background:var(--track);overflow:hidden;margin:12px 0 9px"><div style="height:100%;border-radius:999px;background:var(--acc);width:{{ p.pctW }}"></div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;font:400 13px -apple-system,sans-serif;color:var(--ink2)"><span>{{ p.meta }}</span><span class="rid">{{ p.rid }}</span></div>
+<sc-if value="{{ p.hasAlert }}" hint-placeholder-val="{{ false }}"><div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 10px 10px 12px;border-radius:12px;background:var(--panel);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6)"><span style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:rgba(242,242,242,.6)">Alerte</span><span style="padding:6px 9px;border-radius:999px;background:rgba(255,90,90,.16);color:#FF8F8F;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ p.alert }}</span></div></sc-if>
 </div>
 </div>
 <div class="sw-r">Supprimer</div>
@@ -145,22 +136,18 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-if>
 
 <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;gap:14px;align-items:flex-start;margin-top:2px">
-<sc-if value="{{ pj.showPh }}" hint-placeholder-val="{{ true }}"><div onClick="{{ pj.setCover }}" title="Changer la photo" style="cursor:pointer;position:relative;width:76px;height:76px;flex:none;border-radius:18px;overflow:hidden;background:var(--tile);border:1px solid var(--tileBd);box-shadow:var(--cardSh)"><img src="{{ pj.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;right:4px;bottom:4px;width:20px;height:20px;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;display:flex;align-items:center;justify-content:center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path></svg></span></div></sc-if>
-<div style="flex:1;min-width:0">
-<div class="rid" style="margin-bottom:4px">{{ pj.rid }}</div>
-<div style="font:700 24px/1.15 -apple-system,'SF Pro Display',sans-serif;letter-spacing:-.025em;text-wrap:pretty">{{ pj.name }}</div>
-<div style="display:flex;align-items:center;gap:5px;margin-top:5px;font:500 13.5px -apple-system,sans-serif;color:var(--ink2)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg><span style="min-width:0">{{ pj.addrLine }}</span></div>
+<div style="position:relative;height:{{ pj.heroH }};border-radius:24px;overflow:hidden;background:{{ pj.heroBg }};box-shadow:var(--cardSh);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">
+<sc-if value="{{ pj.showPh }}" hint-placeholder-val="{{ true }}"><img src="{{ pj.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></sc-if>
+<div onClick="{{ pj.setCover }}" style="position:absolute;top:10px;left:10px;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;background:rgba(0,0,0,.42);color:#fff;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg>Photo</div>
+<div onClick="{{ pj.goPh }}" style="position:absolute;top:10px;right:10px;cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;background:rgba(0,0,0,.42);color:#fff;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"></path><circle cx="12" cy="13" r="3.6"></circle></svg>{{ pj.phN }}</div>
+<div style="position:absolute;left:0;right:0;bottom:0;padding:48px 18px 16px;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.62));color:#fff;pointer-events:none">
+<div class="rid" style="background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3);color:#fff;margin-bottom:6px">{{ pj.rid }}</div>
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;opacity:.88">{{ pj.phase }}{{ pj.dueTxt }}<sc-if value="{{ pj.hasDisc }}" hint-placeholder-val="{{ true }}"> · {{ pj.disc }}</sc-if></div>
+<div style="font:400 28px/1.1 -apple-system,'SF Pro Display',sans-serif;letter-spacing:-.03em;margin-top:3px;text-wrap:pretty">{{ pj.name }}</div>
+<sc-if value="{{ pj.hasDesc }}" hint-placeholder-val="{{ false }}"><div style="font:400 13.5px/1.35 -apple-system,sans-serif;opacity:.9;margin-top:3px">{{ pj.desc }}</div></sc-if>
+<div style="display:flex;align-items:center;gap:5px;margin-top:5px;font:500 12.5px -apple-system,sans-serif;opacity:.9"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>{{ pj.addrLine }}</div>
 </div>
 </div>
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-<span style="display:flex;align-items:center;gap:5px;padding:6px 11px;border-radius:999px;background:{{ pj.prioBg }};color:{{ pj.prioFg }};font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ pj.prioIc }}"></path></svg>{{ pj.prioLbl }}</span>
-<sc-if value="{{ pj.hasDisc }}" hint-placeholder-val="{{ true }}"><span style="padding:6px 11px;border-radius:999px;background:var(--tile);border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ pj.disc }}</span></sc-if>
-<sc-if value="{{ pj.hasPhz }}" hint-placeholder-val="{{ false }}"><span style="padding:6px 11px;border-radius:999px;background:var(--tile);border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ pj.phase }}{{ pj.dueTxt }}</span></sc-if>
-<sc-if value="{{ pj.hasBm }}" hint-placeholder-val="{{ false }}"><span style="padding:6px 11px;border-radius:999px;background:var(--tile);border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ pj.bmTxt }}</span></sc-if>
-<span onClick="{{ pj.goPh }}" style="cursor:pointer;display:flex;align-items:center;gap:5px;padding:6px 11px;border-radius:999px;background:var(--tile);border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"></path><circle cx="12" cy="13" r="3.6"></circle></svg>{{ pj.phN }}</span>
-</div>
-<sc-if value="{{ pj.hasDesc }}" hint-placeholder-val="{{ false }}"><div style="font:400 14px/1.4 -apple-system,sans-serif;color:var(--ink2);margin-top:12px">{{ pj.desc }}</div></sc-if>
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:10px">
 <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;color:var(--t1x);background:linear-gradient(100deg,var(--t1) 35%,var(--tile));font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums"><span>Avancé</span><span>{{ pj.pct }} %</span></div>
 <sc-if value="{{ projSupOn }}" hint-placeholder-val="{{ true }}"><div onClick="{{ pj.goTeam }}" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px 14px;border-radius:12px;color:var(--t3x);background:linear-gradient(100deg,var(--t3) 35%,var(--tile));font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums"><span>Fourn. ›</span><span>{{ pj.supN }}</span></div></sc-if>
@@ -318,50 +305,45 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-if>
 
 <sc-if value="{{ isStock }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;gap:8px;margin:0 0 18px">
-<sc-for list="{{ stFilt }}" as="g" hint-placeholder-count="2">
-<div onClick="{{ g.pick }}" style="flex:1;min-width:0;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 8px;border-radius:999px;background:{{ g.bg }};color:{{ g.fg }};border:1px solid {{ g.bd }};font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;white-space:nowrap;font-variant-numeric:tabular-nums;transition:background .2s;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="{{ g.ic }}"></path></svg><span>{{ g.label }} ({{ g.n }})</span></div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:-4px 0 16px">
+<sc-for list="{{ stFilt }}" as="g" hint-placeholder-count="3">
+<div onClick="{{ g.pick }}" style="cursor:pointer;padding:11px 12px 12px;border-radius:12px;background:linear-gradient(160deg,{{ g.bg }} 35%,var(--tile));color:{{ g.fg }};border:1px solid {{ g.bd }};opacity:{{ g.op }};transition:opacity .2s">
+<div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap">{{ g.label }}</div>
+<div style="font:700 26px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.02em;margin-top:12px">{{ g.n }}</div>
+</div>
 </sc-for>
 </div>
-<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 2px 10px"><div style="font:700 19px -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.01em">Disciplines</div>
-<div style="display:flex;align-items:center;gap:8px"><sc-if value="{{ stCanEd }}" hint-placeholder-val="{{ false }}"><div onClick="{{ stEdTog }}" style="cursor:pointer;padding:6px 8px;color:var(--acc);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ stEdLbl }}</div></sc-if><sc-if value="{{ qaStk.can }}" hint-placeholder-val="{{ false }}"><div onClick="{{ qaStk.tog }}" title="Ajouter une discipline" style="flex:none;cursor:pointer;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc)"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if></div></div>
-<sc-if value="{{ qaStk.on }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin:0 0 10px"><input value="{{ qaStk.v }}" onChange="{{ qaStk.onV }}" placeholder="{{ qaStk.ph }}" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:9px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"><div onClick="{{ qaStk.ok }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ajouter</div></div></sc-if>
-<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 16px;padding:0 20px">
-<sc-for list="{{ stDiscL }}" as="d" hint-placeholder-count="4"><div onClick="{{ d.pick }}" style="flex:1 0 auto;min-width:78px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 10px 10px;border-radius:16px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;white-space:nowrap;backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="{{ d.ic }}"></path></svg><span>{{ d.label }}<sc-if value="{{ d.ed }}" hint-placeholder-val="{{ false }}"><span onClick="{{ d.rm }}" style="margin-left:6px;padding:0 3px;opacity:.85">✕</span></sc-if></span></div></sc-for>
+<div style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);margin:2px 4px 6px">{{ stCap }}</div>
+<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 4px;padding:0 20px">
+<sc-for list="{{ stLine }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ d.label }}<span style="opacity:.55">{{ d.n }}</span><sc-if value="{{ d.ed }}" hint-placeholder-val="{{ false }}"><span onClick="{{ d.rm }}" style="margin-left:2px;padding:0 3px;opacity:.85">✕</span></sc-if></div></sc-for>
+<sc-if value="{{ qaStk.can }}" hint-placeholder-val="{{ false }}"><div onClick="{{ qaStk.tog }}" title="{{ stAddTitle }}" style="flex:none;cursor:pointer;min-width:36px;padding:0 10px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--ink3);color:var(--acc)"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if>
+<sc-if value="{{ stCanEd }}" hint-placeholder-val="{{ false }}"><div onClick="{{ stEdTog }}" style="flex:none;cursor:pointer;padding:0 12px;border-radius:12px;display:flex;align-items:center;color:var(--acc);font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ stEdLbl }}</div></sc-if>
 </div>
-<sc-if value="{{ stSubOn }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 2px 10px"><div style="font:700 19px -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.01em">Sous-catégories</div><sc-if value="{{ qaSub.can }}" hint-placeholder-val="{{ false }}"><div onClick="{{ qaSub.tog }}" title="Ajouter une sous-catégorie" style="flex:none;cursor:pointer;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc)"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></div></sc-if></div>
-<sc-if value="{{ qaSub.on }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin:0 0 10px"><input value="{{ qaSub.v }}" onChange="{{ qaSub.onV }}" placeholder="{{ qaSub.ph }}" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:9px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"><div onClick="{{ qaSub.ok }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ajouter</div></div></sc-if>
-<div style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 16px;padding:0 20px">
-<sc-for list="{{ stSubL }}" as="d" hint-placeholder-count="5"><div onClick="{{ d.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:999px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ d.label }}<sc-if value="{{ d.ed }}" hint-placeholder-val="{{ false }}"><span onClick="{{ d.rm }}" style="padding:0 2px;opacity:.85">✕</span></sc-if></div></sc-for>
-<sc-if value="{{ stSubNone }}" hint-placeholder-val="{{ false }}"><div style="padding:8px 2px;font:400 13px -apple-system,sans-serif;color:var(--ink2)">Aucune sous-catégorie : touchez + pour en ajouter.</div></sc-if>
-</div>
-</sc-if>
-<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 2px 10px"><div style="font:700 19px -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.01em">Articles</div><sc-if value="{{ canCfgS }}" hint-placeholder-val="{{ false }}"><div onClick="{{ openCfgS }}" title="Réglages du stock" style="cursor:pointer;width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9M15 4.5v5M9 14.5v5"></path></svg></div></sc-if></div>
+<sc-if value="{{ qaStk.on }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin:8px 0 0"><input value="{{ qaStk.v }}" onChange="{{ qaStk.onV }}" placeholder="{{ qaStk.ph }}" style="flex:1;min-width:0;border:1px solid var(--tileBd);background:var(--tile);padding:9px 12px;border-radius:12px;font:400 14.5px -apple-system,sans-serif;outline:none;color:var(--ink)"><div onClick="{{ qaStk.ok }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 14px;border-radius:12px;display:flex;align-items:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">Ajouter</div></div></sc-if>
 <sc-if value="{{ hasStock }}" hint-placeholder-val="{{ true }}">
-<div style="display:flex;flex-direction:column;gap:10px">
-<sc-for list="{{ stocks }}" as="i" hint-placeholder-count="2">
-<div class="sw" data-sw="{{ i.sw }}"><div class="sw-fg" style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--ks);color:var(--ink);border-radius:20px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
-<div onClick="{{ i.toggle }}" style="cursor:pointer;display:flex;align-items:flex-start;gap:12px;padding:12px 12px 8px 12px">
-<div style="width:84px;height:84px;border-radius:14px;overflow:hidden;flex:none;background:var(--tile)"><sc-if value="{{ i.hasPh }}" hint-placeholder-val="{{ false }}"><img src="{{ i.phSrc }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></sc-if><sc-if value="{{ i.noPh }}" hint-placeholder-val="{{ true }}"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--ink3)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5"></path></svg></div></sc-if></div>
+<sc-for list="{{ stGroups }}" as="sg" hint-placeholder-count="2">
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin:18px 4px 8px"><span style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">{{ sg.label }}</span><span style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink3)">{{ sg.n }}</span></div>
+<div style="background:var(--card);border:var(--cardB);--ink:var(--k1);--ink2:var(--k2);--ink3:var(--k3);--line:var(--kl);--tile:var(--kt);--tileBd:var(--ktb);--field:var(--kf);--track:var(--ktr);--on:var(--kon);--chip:var(--kt);--acc:var(--ka);--accOn:var(--kaOn);--accTx:var(--ka);--accSoft:var(--kas);--warnTx:var(--kw);--warnBg:var(--kwb);--warn:var(--kwarn);--okTx:var(--kok);--okBg:var(--kokb);--ok:var(--kok);--solid:var(--k1);--solidTx:var(--ks);color:var(--ink);border-radius:24px;overflow:hidden;backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--cardSh)">
+<sc-for list="{{ sg.items }}" as="i" hint-placeholder-count="2">
+<div class="sw" data-sw="{{ i.sw }}" style="border-bottom:2px solid var(--line)"><div class="sw-fg">
+<div onClick="{{ i.toggle }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 14px">
+<div style="width:46px;height:46px;border-radius:12px;overflow:hidden;flex:none;background:var(--tile)"><sc-if value="{{ i.hasPh }}" hint-placeholder-val="{{ false }}"><img src="{{ i.phSrc }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></sc-if><sc-if value="{{ i.noPh }}" hint-placeholder-val="{{ true }}"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--ink3)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5"></path></svg></div></sc-if></div>
 <div style="flex:1;min-width:0">
-<div style="font:600 16px/1.25 -apple-system,'SF Pro Text',system-ui,sans-serif;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden"><span class="rid" style="margin-right:6px">{{ i.rid }}</span>{{ i.name }}</div>
-<div style="font:500 13px -apple-system,sans-serif;color:var(--acc);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ i.cat }}</div>
-<sc-if value="{{ i.hasBm }}" hint-placeholder-val="{{ false }}"><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ i.bm }}</div></sc-if>
-<div style="font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif;margin-top:6px;color:{{ i.col }}">{{ i.qtxt }}</div>
-<div style="font:500 12.5px -apple-system,sans-serif;margin-top:2px;color:{{ i.thCol }}">{{ i.thTxt }}</div>
+<div style="font:500 15.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"><span class="rid" style="margin-right:6px">{{ i.rid }}</span>{{ i.name }}</div>
+<div style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ i.meta }}</div>
+<div style="height:4px;border-radius:2px;background:var(--track);margin-top:9px;position:relative"><div style="height:100%;border-radius:2px;width:{{ i.w }};background:{{ i.barCol }}"></div><div style="position:absolute;top:-3px;bottom:-3px;width:2px;border-radius:1px;background:var(--ink2);left:{{ i.markL }}"></div></div>
 </div>
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;align-self:center;color:var(--ink2)"><path d="M9 5l7 7-7 7"></path></svg>
+<div style="flex:none;min-width:58px;text-align:right"><div style="font:700 26px/1 -apple-system,'SF Pro Display','Helvetica Neue',sans-serif;letter-spacing:-.02em;color:{{ i.col }}">{{ i.q }}</div><div style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin-top:4px;white-space:nowrap">{{ i.unit }}</div></div>
 </div>
-<sc-if value="{{ i.hasPend }}" hint-placeholder-val="{{ false }}"><div style="display:flex;margin:0 12px 8px 108px"><span style="padding:4px 8px;border-radius:999px;background:{{ i.pendBg }};color:{{ i.pendFg }};font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ i.pend }}</span></div></sc-if>
-<div data-nosw="1" style="display:flex;align-items:center;justify-content:center;gap:14px;margin:0 12px 12px;padding:6px;border-radius:999px;background:var(--tile);border:1px solid var(--tileBd)">
-<div onClick="{{ i.minus }}" style="cursor:pointer;flex:none;width:52px;height:38px;border-radius:999px;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:700 20px -apple-system,sans-serif">−</div>
-<div style="min-width:46px;text-align:center;font:700 20px -apple-system,'SF Pro Display',sans-serif;font-variant-numeric:tabular-nums">{{ i.q }}</div>
-<div onClick="{{ i.plus }}" style="cursor:pointer;flex:none;width:52px;height:38px;border-radius:999px;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center;font:700 20px -apple-system,sans-serif">+</div>
-</div>
+<sc-if value="{{ i.hasPend }}" hint-placeholder-val="{{ false }}"><div style="display:flex;margin:-4px 14px 12px 72px"><span style="padding:4px 8px;border-radius:999px;background:{{ i.pendBg }};color:{{ i.pendFg }};font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ i.pend }}</span></div></sc-if>
 <sc-if value="{{ i.open }}" hint-placeholder-val="{{ false }}">
 <div style="padding:0 14px 14px">
-<div style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:2px 2px 7px">Emplacement</div>
+<div style="display:flex;align-items:center;gap:6px">
+<div onClick="{{ i.minus }}" style="cursor:pointer;flex:none;width:52px;height:44px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:700 20px -apple-system,sans-serif">−</div>
+<div style="flex:1;text-align:center;font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Ajuster · {{ i.step }}</div>
+<div onClick="{{ i.plus }}" style="cursor:pointer;flex:none;width:52px;height:44px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;font:700 20px -apple-system,sans-serif">+</div>
+</div>
+<div style="font:600 11px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:14px 2px 7px">Emplacement</div>
 <div data-nosw="1" style="display:flex;gap:6px;overflow-x:auto;margin:0 -14px;padding:0 14px">
 <sc-for list="{{ i.zones }}" as="z" hint-placeholder-count="4"><div onClick="{{ z.pick }}" style="flex:none;white-space:nowrap;cursor:pointer;padding:7px 10px;border-radius:12px;background:{{ z.bg }};color:{{ z.fg }};border:1px solid var(--tileBd);font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ z.label }}</div></sc-for>
 </div>
@@ -377,6 +359,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </sc-for>
 </div>
+</sc-for>
 </sc-if>
 <sc-if value="{{ noStock }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 16px;text-align:center;border-radius:20px;background:var(--chip);font:400 14.5px -apple-system,sans-serif;color:var(--ink2);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6)">Aucun article pour ce filtre</div></sc-if>
 <sc-if value="{{ hasBasket }}" hint-placeholder-val="{{ false }}">
@@ -798,82 +781,19 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div style="position:relative;margin:0 8px calc(8px + env(safe-area-inset-bottom, 0px));max-height:calc(100% - env(safe-area-inset-top, 0px) - 24px);display:flex;flex-direction:column;border-radius:32px;background:var(--sheet);border:1px solid var(--cardBd);box-shadow:0 -10px 40px rgba(10,20,40,.3);backdrop-filter:blur(40px) saturate(1.9);-webkit-backdrop-filter:blur(40px) saturate(1.9)">
 <div style="flex:none;padding:10px 18px 0">
 <div style="width:38px;height:5px;border-radius:12px;background:var(--ink3);margin:0 auto 12px"></div>
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-<div onClick="{{ closeSheet }}" title="{{ closeLbl }}" aria-label="{{ closeLbl }}" style="cursor:pointer;position:relative;flex:none;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--tile);border:1px solid var(--tileBd);color:var(--ink)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">{{ closeLbl }}</span></div>
-<div style="flex:1;min-width:0;font:700 22px/1.15 -apple-system,'SF Pro Display',system-ui,sans-serif;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sheetTitle }}</div>
-<div onClick="{{ submit }}" style="cursor:pointer;flex:none;display:flex;align-items:center;gap:6px;padding:10px 16px;border-radius:999px;background:{{ submitBg }};color:{{ submitFg }};font:700 15px -apple-system,sans-serif;transition:background .2s"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{ submitLabel }}</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+<div onClick="{{ closeSheet }}" style="cursor:pointer;font:500 15px -apple-system,sans-serif;color:var(--acc);white-space:nowrap">{{ closeLbl }}</div>
+<div style="font:700 16px -apple-system,sans-serif">{{ sheetTitle }}</div>
+<div onClick="{{ submit }}" style="cursor:pointer;font:700 15px -apple-system,sans-serif;color:{{ submitCol }}">{{ submitLabel }}</div>
 </div>
 </div>
 <div style="flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 18px 26px">
-<sc-if value="{{ isKForm }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;gap:12px;align-items:flex-start;padding:12px 14px 14px;border-radius:20px;background:var(--field);margin-bottom:10px">
-<div onClick="{{ stkPh.add }}" title="Importer ou prendre une photo" style="cursor:pointer;position:relative;width:104px;height:104px;flex:none;border-radius:16px;overflow:hidden;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;color:var(--ink3)">
-<sc-if value="{{ stkPh.has }}" hint-placeholder-val="{{ false }}"><img src="{{ stkPh.src }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if>
-<sc-if value="{{ stkPh.no }}" hint-placeholder-val="{{ true }}"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 8h3.2l1.8-2.5h6L16.8 8H20v11.5H4zM12 16.5a3.3 3.3 0 1 0 0-6.6 3.3 3.3 0 0 0 0 6.6z"></path></svg></sc-if>
-<span style="position:absolute;right:5px;bottom:5px;width:24px;height:24px;border-radius:50%;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path></svg></span>
-</div>
-<div style="flex:1;min-width:0"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2);margin:0 0 5px 2px">Nom du produit *</div><input value="{{ kf.name }}" onChange="{{ kf.onName }}" placeholder="Ex : Ampoule LED 15W" style="width:100%;box-sizing:border-box;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:10px 12px;border-radius:14px;font:400 15.5px -apple-system,sans-serif;outline:none">
-<div style="display:flex;gap:8px;margin-top:8px"><div style="flex:1;min-width:0"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2);margin:0 0 5px 2px">Marque</div><input value="{{ kf.brand }}" onChange="{{ kf.onBrand }}" placeholder="Philips" style="width:100%;box-sizing:border-box;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:10px 12px;border-radius:14px;font:400 15.5px -apple-system,sans-serif;outline:none"></div><div style="flex:1;min-width:0"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2);margin:0 0 5px 2px">Modèle</div><input value="{{ kf.model }}" onChange="{{ kf.onModel }}" placeholder="CorePro" style="width:100%;box-sizing:border-box;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:10px 12px;border-radius:14px;font:400 15.5px -apple-system,sans-serif;outline:none"></div></div></div>
-</div>
-<div style="display:flex;gap:8px;align-items:center;margin:-2px 2px 10px"><div onClick="{{ stkPh.find }}" style="cursor:pointer;flex:1;text-align:center;padding:9px 8px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);color:var(--acc);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ stkPh.findLbl }}</div><sc-if value="{{ stkPh.has }}" hint-placeholder-val="{{ false }}"><div onClick="{{ stkPh.rm }}" style="cursor:pointer;flex:none;padding:9px 12px;border-radius:14px;color:var(--warnTx);font:600 13px -apple-system,sans-serif">Retirer</div></sc-if></div>
-<sc-if value="{{ stkPh.hasMsg }}" hint-placeholder-val="{{ false }}"><div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:-4px 6px 10px">{{ stkPh.msg }}</div></sc-if>
-<div style="display:flex;gap:10px;margin-bottom:10px">
-<div style="flex:1;min-width:0;padding:12px;border-radius:20px;background:var(--field)"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink)"><path d="M12 3l8 4.2v9.6L12 21l-8-4.2V7.2zM4 7.2l8 4.3 8-4.3M12 11.5V21"></path></svg><span style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Discipline</span></div><div onClick="{{ kf.discTog }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:11px 12px;border-radius:14px;font:500 15px -apple-system,sans-serif"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ kf.discLbl }}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink2)"><path d="M5 9l7 7 7-7"></path></svg></div><sc-if value="{{ kf.discOpen }}" hint-placeholder-val="{{ false }}"><div style="margin-top:6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);max-height:230px;overflow-y:auto"><sc-for list="{{ kf.discOpts }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="cursor:pointer;padding:11px 12px;border-bottom:1px solid var(--line);font:{{ o.fw }} 15px -apple-system,sans-serif;color:{{ o.fg }}">{{ o.l }}</div></sc-for></div></sc-if></div>
-<div style="flex:1;min-width:0;padding:12px;border-radius:20px;background:var(--field)"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink)"><path d="M12 3l9 5-9 5-9-5zM3 12.5l9 5 9-5M3 16.5l9 5 9-5"></path></svg><span style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Sous-discipline</span></div><div onClick="{{ kf.subTog }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:11px 12px;border-radius:14px;font:500 15px -apple-system,sans-serif"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ kf.subLbl }}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink2)"><path d="M5 9l7 7 7-7"></path></svg></div><sc-if value="{{ kf.subOpen }}" hint-placeholder-val="{{ false }}"><div style="margin-top:6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);max-height:230px;overflow-y:auto"><sc-for list="{{ kf.subOpts }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="cursor:pointer;padding:11px 12px;border-bottom:1px solid var(--line);font:{{ o.fw }} 15px -apple-system,sans-serif;color:{{ o.fg }}">{{ o.l }}</div></sc-for></div></sc-if></div>
-</div>
-<div style="padding:12px 14px 14px;border-radius:20px;background:var(--field);margin-bottom:10px">
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink)"><path d="M12 3l8 4.2v9.6L12 21l-8-4.2V7.2zM4 7.2l8 4.3 8-4.3M12 11.5V21"></path></svg><span style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Quantités</span></div>
-<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--line)"><div style="flex:1;min-width:0;font:500 15px -apple-system,sans-serif;color:var(--ink)">Unité de base</div><input value="{{ kf.unit }}" onChange="{{ kf.onUnit }}" placeholder="à l’unité" style="flex:none;width:130px;box-sizing:border-box;text-align:center;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:9px 8px;border-radius:14px;font:600 15px -apple-system,sans-serif;outline:none"></div>
-<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--line)"><div style="flex:1;min-width:0;font:500 15px -apple-system,sans-serif;color:var(--ink)">Unités par boîte / pack</div><input value="{{ kf.per }}" onChange="{{ kf.onPer }}" inputmode="numeric" placeholder="1" style="flex:none;width:96px;box-sizing:border-box;text-align:center;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:9px 8px;border-radius:14px;font:600 16px -apple-system,sans-serif;outline:none"></div>
-<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--line)"><div style="flex:1;min-width:0;font:500 15px -apple-system,sans-serif;color:var(--ink)">Quantité à l’unité</div><input value="{{ kf.loose }}" onChange="{{ kf.onLoose }}" inputmode="numeric" placeholder="0" style="flex:none;width:96px;box-sizing:border-box;text-align:center;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:9px 8px;border-radius:14px;font:600 16px -apple-system,sans-serif;outline:none"></div>
-<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--line)"><div style="flex:1;min-width:0;font:500 15px -apple-system,sans-serif;color:var(--ink)">Nombre de boîtes / packs</div><input value="{{ kf.boxes }}" onChange="{{ kf.onBoxes }}" inputmode="numeric" placeholder="0" style="flex:none;width:96px;box-sizing:border-box;text-align:center;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:9px 8px;border-radius:14px;font:600 16px -apple-system,sans-serif;outline:none"></div>
-<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--line)"><div style="flex:1;min-width:0;font:500 15px -apple-system,sans-serif;color:var(--ink)">Seuil d’alerte (en unités)</div><input value="{{ kf.min }}" onChange="{{ kf.onMin }}" inputmode="numeric" placeholder="0" style="flex:none;width:96px;box-sizing:border-box;text-align:center;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:9px 8px;border-radius:14px;font:600 16px -apple-system,sans-serif;outline:none"></div>
-<div style="margin-top:6px;padding:10px 12px;border-radius:14px;background:{{ kf.sumBg }};color:{{ kf.sumFg }};font:600 13.5px/1.35 -apple-system,'SF Pro Text',system-ui,sans-serif">{{ kf.sum }}</div>
-<div style="font:400 12px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 2px 0">Quand le stock atteint le seuil d’alerte, le produit passe automatiquement dans « À commander ».</div>
-</div>
-<div style="padding:12px 14px 14px;border-radius:20px;background:var(--field);margin-bottom:10px">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px"><div style="display:flex;align-items:center;gap:8px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink)"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10.5a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5zM14 3.5V8h4M9 12h6M9 15.5h6"></path></svg><span style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Description</span></div>
-<div style="display:flex;align-items:center;gap:8px"><sc-if value="{{ kf.micMsg }}" hint-placeholder-val="{{ false }}"><span style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:{{ kf.micCol }}">{{ kf.micLbl }}</span></sc-if><div onClick="{{ kf.mic }}" title="Dicter" style="cursor:pointer;flex:none;width:34px;height:34px;border-radius:12px;background:{{ kf.micBg }};color:{{ kf.micFg }};border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"></path></svg></div></div></div>
-<textarea value="{{ kf.desc }}" onChange="{{ kf.onDesc }}" placeholder="Décrivez ce produit…" rows="3" style="width:100%;box-sizing:border-box;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:10px 12px;border-radius:14px;font:400 15.5px -apple-system,sans-serif;outline:none;resize:none;line-height:1.4"></textarea>
-</div>
-<div style="padding:12px 14px 14px;border-radius:20px;background:var(--field);margin-bottom:10px">
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink)"><path d="M20 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.4 3.4 0 0 1 5 5L10 17.5a1.8 1.8 0 0 1-2.5-2.5l7.5-7.5"></path></svg><span style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Pièces jointes</span></div>
-<div style="padding:12px;border-radius:16px;border:1.5px dashed var(--ink3)"><div style="text-align:center;margin-bottom:10px"><div style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--acc)">Ajouter des pièces jointes</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ kf.attSub }}</div></div>
-<div style="display:flex;gap:8px"><div onClick="{{ kf.attPh }}" style="flex:1;cursor:pointer;text-align:center;padding:10px 6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">Photos</div><div onClick="{{ kf.attDoc }}" style="flex:1;cursor:pointer;text-align:center;padding:10px 6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">Plans, documents</div></div></div>
-<sc-if value="{{ kf.hasAtt }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px"><sc-for list="{{ kf.atts }}" as="a" hint-placeholder-count="2"><div onClick="{{ a.rm }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;background:var(--tile);border:1px solid var(--tileBd);font:500 12.5px -apple-system,sans-serif">{{ a.n }}<span style="opacity:.6">✕</span></div></sc-for></div></sc-if>
-</div>
-<div style="padding:12px 14px 14px;border-radius:20px;background:var(--field);margin-bottom:10px">
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink)"><path d="M3 7V4.5A1.5 1.5 0 0 1 4.5 3H7M17 3h2.5A1.5 1.5 0 0 1 21 4.5V7M21 17v2.5a1.5 1.5 0 0 1-1.5 1.5H17M7 21H4.5A1.5 1.5 0 0 1 3 19.5V17M7 8v8M10 8v8M13.5 8v8M17 8v8"></path></svg><span style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Référence · code-barres</span></div>
-<input value="{{ kf.ean }}" onChange="{{ kf.onEan }}" placeholder="Code EAN ou référence" style="width:100%;box-sizing:border-box;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:10px 12px;border-radius:14px;font:400 15.5px -apple-system,sans-serif;outline:none">
-<sc-if value="{{ eanLook }}" hint-placeholder-val="{{ false }}"><div style="margin:8px 4px 0;font:500 13px/1.4 -apple-system,sans-serif;color:var(--ink2)">{{ eanLookTxt }} <a href="{{ eanWeb }}" target="_blank" style="color:var(--acc);font-weight:600;white-space:nowrap">Chercher sur le web ↗</a></div></sc-if>
-</div>
-<div onClick="{{ scanForm }}" style="cursor:pointer;display:flex;align-items:center;gap:14px;padding:18px 16px;border-radius:22px;background:var(--accSoft);color:var(--accTx);margin-bottom:4px"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M3 7V4.5A1.5 1.5 0 0 1 4.5 3H7M17 3h2.5A1.5 1.5 0 0 1 21 4.5V7M21 17v2.5a1.5 1.5 0 0 1-1.5 1.5H17M7 21H4.5A1.5 1.5 0 0 1 3 19.5V17M7 8v8M10 8v8M13.5 8v8M17 8v8"></path></svg><div style="flex:1;min-width:0"><div style="font:700 17px -apple-system,'SF Pro Text',system-ui,sans-serif">Scanner le QR code / code-barres</div><div style="font:400 13.5px/1.35 -apple-system,sans-serif;margin-top:3px;opacity:.85">Remplir automatiquement le nom, la marque, le modèle, la référence et le conditionnement</div></div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M9 5l7 7-7 7"></path></svg></div>
-</sc-if>
-<sc-if value="{{ isProjSheet }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;gap:12px;align-items:stretch;padding:12px 14px 14px;border-radius:20px;background:var(--field);margin-bottom:10px">
-<sc-if value="{{ projPhCover }}" hint-placeholder-val="{{ true }}"><div onClick="{{ addCover }}" title="Ajouter une photo" style="cursor:pointer;position:relative;width:88px;height:88px;flex:none;border-radius:16px;overflow:hidden;background:var(--tile);border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center;color:var(--ink3)">
+<sc-if value="{{ projPhCover }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ addCover }}" style="cursor:pointer;position:relative;height:104px;border-radius:16px;overflow:hidden;margin-bottom:4px;background:var(--field);display:flex;align-items:center;justify-content:center;gap:8px;color:var(--acc);font:600 14px -apple-system,'SF Pro Text',system-ui,sans-serif">
 <sc-if value="{{ newHasCover }}" hint-placeholder-val="{{ false }}"><img src="{{ newCoverSrc }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if>
-<sc-if value="{{ newNoCover }}" hint-placeholder-val="{{ true }}"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 8h3.2l1.8-2.5h6L16.8 8H20v11.5H4zM12 16.5a3.3 3.3 0 1 0 0-6.6 3.3 3.3 0 0 0 0 6.6z"></path></svg></sc-if>
-<span style="position:absolute;right:5px;bottom:5px;width:22px;height:22px;border-radius:50%;background:var(--acc);color:var(--accOn);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 3v12M3 9h12"></path></svg></span>
-</div></sc-if>
-<div style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2);margin:0 0 6px 2px">Titre du projet *</div><input id="pf-name" value="{{ pf.name }}" onChange="{{ pf.onName }}" placeholder="Ex : Réalisation poignée" style="width:100%;box-sizing:border-box;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:11px 12px;border-radius:14px;font:400 15.5px -apple-system,sans-serif;outline:none"></div>
-</div>
-<div style="display:flex;gap:10px;margin-bottom:10px">
-<div style="flex:1;min-width:0;padding:12px 12px 12px;border-radius:20px;background:var(--field)"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink)"><path d="M15 12l-8.4 8.4a1.4 1.4 0 0 1-2-2L13 10M18 15l3-3M21.5 11.5l-1.9-1.9a2 2 0 0 1-.6-1.4V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"></path></svg><span style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Discipline</span></div><div onClick="{{ pf.discTog }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:11px 12px;border-radius:14px;font:500 15px -apple-system,sans-serif"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ pf.discLbl }}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink2)"><path d="M5 9l7 7 7-7"></path></svg></div><sc-if value="{{ pf.discOpen }}" hint-placeholder-val="{{ false }}"><div style="margin-top:6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);max-height:230px;overflow-y:auto"><sc-for list="{{ pf.discOpts }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="cursor:pointer;padding:11px 12px;border-bottom:1px solid var(--line);font:{{ o.fw }} 15px -apple-system,sans-serif;color:{{ o.fg }}">{{ o.l }}</div></sc-for></div></sc-if></div>
-<div style="flex:1;min-width:0;padding:12px 12px 12px;border-radius:20px;background:var(--field)"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink)"><path d="M12 3l9 5-9 5-9-5zM3 12.5l9 5 9-5M3 16.5l9 5 9-5"></path></svg><span style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Sous-discipline</span></div><div onClick="{{ pf.subTog }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:11px 12px;border-radius:14px;font:500 15px -apple-system,sans-serif"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ pf.subLbl }}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink2)"><path d="M5 9l7 7 7-7"></path></svg></div><sc-if value="{{ pf.subOpen }}" hint-placeholder-val="{{ false }}"><div style="margin-top:6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);max-height:230px;overflow-y:auto"><sc-for list="{{ pf.subOpts }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="cursor:pointer;padding:11px 12px;border-bottom:1px solid var(--line);font:{{ o.fw }} 15px -apple-system,sans-serif;color:{{ o.fg }}">{{ o.l }}</div></sc-for></div></sc-if></div>
-</div>
-<div style="display:flex;align-items:center;gap:12px;padding:12px 14px 14px;border-radius:20px;background:var(--field);margin-bottom:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink)"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7.5v5.5M12 16.2v.3"></path></svg><span style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink);flex:none">Priorité</span><div style="flex:1;min-width:0"><div onClick="{{ pf.prioTog }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:11px 12px;border-radius:14px;font:500 15px -apple-system,sans-serif"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ pf.prioLbl }}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink2)"><path d="M5 9l7 7 7-7"></path></svg></div><sc-if value="{{ pf.prioOpen }}" hint-placeholder-val="{{ false }}"><div style="margin-top:6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);max-height:230px;overflow-y:auto"><sc-for list="{{ pf.prioOpts }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="cursor:pointer;padding:11px 12px;border-bottom:1px solid var(--line);font:{{ o.fw }} 15px -apple-system,sans-serif;color:{{ o.fg }}">{{ o.l }}</div></sc-for></div></sc-if></div></div>
-<div style="padding:12px 14px 14px;border-radius:20px;background:var(--field);margin-bottom:10px">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px"><div style="display:flex;align-items:center;gap:8px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink)"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10.5a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5zM14 3.5V8h4M9 12h6M9 15.5h6"></path></svg><span style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Description</span></div>
-<div style="display:flex;align-items:center;gap:8px"><sc-if value="{{ pf.micMsg }}" hint-placeholder-val="{{ false }}"><span style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:{{ pf.micCol }}">{{ pf.micLbl }}</span></sc-if><div onClick="{{ pf.mic }}" title="Dicter" style="cursor:pointer;flex:none;width:34px;height:34px;border-radius:12px;background:{{ pf.micBg }};color:{{ pf.micFg }};border:1px solid var(--tileBd);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"></path></svg></div></div></div>
-<textarea value="{{ pf.desc }}" onChange="{{ pf.onDesc }}" placeholder="Décrivez ici les détails de votre projet…" rows="3" style="width:100%;box-sizing:border-box;border:1px solid var(--tileBd);background:var(--tile);color:var(--ink);padding:11px 12px;border-radius:14px;font:400 15.5px -apple-system,sans-serif;outline:none;resize:none;line-height:1.4"></textarea>
-</div>
-<div style="margin-bottom:10px;padding:12px 14px;border-radius:20px;border:1.5px dashed var(--ink3)">
-<div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--acc)"><path d="M20 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.4 3.4 0 0 1 5 5L10 17.5a1.8 1.8 0 0 1-2.5-2.5l7.5-7.5"></path></svg><div style="text-align:center"><div style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--acc)">Ajouter des pièces jointes</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ pf.attSub }}</div></div></div>
-<div style="display:flex;gap:8px"><div onClick="{{ pf.attPh }}" style="flex:1;cursor:pointer;text-align:center;padding:10px 6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">Photos</div><div onClick="{{ pf.attDoc }}" style="flex:1;cursor:pointer;text-align:center;padding:10px 6px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">Plans, documents</div></div>
+<sc-if value="{{ newNoCover }}" hint-placeholder-val="{{ true }}"><span style="display:flex;align-items:center;gap:8px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"></path><circle cx="12" cy="13" r="3.6"></circle></svg>Ajouter une photo</span></sc-if>
 </div>
 </sc-if>
-
 <sc-if value="{{ isSiteSheet }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;align-items:center;gap:10px;padding:2px 4px 4px"><span style="width:10px;height:10px;border-radius:50%;background:{{ sc.dot }}"></span><span style="font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">{{ sc.label }}</span><span class="rid">{{ sc.rid }}</span><div onClick="{{ sc.edit }}" style="margin-left:auto;cursor:pointer;font:600 13.5px -apple-system,sans-serif;color:var(--acc)">Paramètres</div></div>
 <div style="display:flex;align-items:center;justify-content:space-between;margin:16px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Adresse</div><a href="{{ sc.maps }}" target="_blank" style="font:600 12px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)">Ouvrir dans Plans ↗</a></div>
@@ -1037,7 +957,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <sc-if value="{{ hasBkMsg }}" hint-placeholder-val="{{ false }}"><div style="font:600 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:10px">{{ bkMsg }}</div></sc-if>
 <div style="font:400 12px -apple-system,sans-serif;color:var(--ink3);margin-top:10px">À enregistrer dans iCloud Drive › Chantier › Sauvegardes.</div>
 </div>
-<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 36</div>
+<div style="margin-top:16px;text-align:center;font:500 12px -apple-system,sans-serif;color:var(--ink3)">Chantier · version 35</div>
 <sc-if value="{{ canLogout }}" hint-placeholder-val="{{ false }}"><div onClick="{{ logout }}" style="margin-top:20px;padding:14px;border-radius:20px;background:var(--field);text-align:center;color:var(--warnTx);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer">Se déconnecter</div></sc-if>
 </sc-if>
 <sc-if value="{{ isCfgSheet }}" hint-placeholder-val="{{ false }}">
@@ -1171,9 +1091,11 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </sc-for>
 </div>
 </sc-for>
+<sc-if value="{{ eanLook }}" hint-placeholder-val="{{ false }}"><div style="margin:10px 6px 0;font:500 13px/1.4 -apple-system,sans-serif;color:var(--ink2)">{{ eanLookTxt }} <a href="{{ eanWeb }}" target="_blank" style="color:var(--acc);font-weight:600;white-space:nowrap">Chercher sur le web ↗</a></div></sc-if>
+<sc-if value="{{ eanForm }}" hint-placeholder-val="{{ false }}"><div onClick="{{ scanForm }}" style="cursor:pointer;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:16px;background:var(--field);color:var(--acc);font:600 14.5px -apple-system,'SF Pro Text',system-ui,sans-serif"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 7V4.5A1.5 1.5 0 0 1 4.5 3H7M17 3h2.5A1.5 1.5 0 0 1 21 4.5V7M21 17v2.5a1.5 1.5 0 0 1-1.5 1.5H17M7 21H4.5A1.5 1.5 0 0 1 3 19.5V17M7 8v8M10 8v8M13.5 8v8M17 8v8"></path></svg>Scanner le code EAN</div></sc-if>
 <sc-if value="{{ isProjSheet }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;justify-content:space-between;align-items:baseline;margin:20px 4px 8px">
-<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Étapes du projet · coche ou jauge</div>
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Étapes · coche ou jauge</div>
 <div style="display:flex;gap:12px;font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--acc)"><span onClick="{{ allC }}" style="cursor:pointer">Tout en coches</span><span onClick="{{ allG }}" style="cursor:pointer">Tout en jauges</span></div>
 </div>
 <div style="border-radius:16px;background:var(--field);padding:2px 14px 10px">
@@ -1192,9 +1114,17 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 <div onClick="{{ addFStep }}" style="cursor:pointer;background:var(--solid);color:var(--solidTx);padding:0 16px;border-radius:16px;display:flex;align-items:center;font:600 13.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums">Ajouter</div>
 </div>
 </div>
-<div style="margin:12px 0 10px;padding:12px 14px 14px;border-radius:20px;background:var(--field)">
+<sc-if value="{{ projSupOn }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:20px 4px 8px"><div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2)">Fournisseurs du projet</div><div style="font:600 11.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink3)">{{ fSelN }}</div></div>
+<sc-if value="{{ hasFSel }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><sc-for list="{{ fSel }}" as="s" hint-placeholder-count="2"><div onClick="{{ s.del }}" style="cursor:pointer;display:flex;align-items:center;gap:7px;padding:8px 10px 8px 12px;border-radius:16px;background:var(--acc);color:var(--accOn);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ s.name }}<svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></sc-for></div></sc-if>
+<div style="display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:14px;background:var(--field);border:1px solid var(--tileBd)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none;color:var(--ink2)"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L21 21"></path></svg><input value="{{ fSupQ }}" onChange="{{ onFSupQ }}" placeholder="Rechercher un fournisseur, sous-traitant…" autocorrect="off" style="flex:1;min-width:0;border:0;background:transparent;padding:12px 0;font:400 15px -apple-system,sans-serif;outline:none;color:var(--ink)"><sc-if value="{{ hasFSupQ }}" hint-placeholder-val="{{ false }}"><div onClick="{{ clearFSupQ }}" style="cursor:pointer;flex:none;width:22px;height:22px;border-radius:50%;background:var(--track);color:var(--ink2);display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2L2 8"></path></svg></div></sc-if></div>
+<sc-if value="{{ hasFRes }}" hint-placeholder-val="{{ false }}"><div style="border-radius:16px;background:var(--field);padding:0 14px;margin-top:8px"><sc-for list="{{ fRes }}" as="d" hint-placeholder-count="3"><div onClick="{{ d.pick }}" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:2px solid var(--line)"><div style="width:34px;height:34px;border-radius:17px;flex:none;background:{{ d.av }};color:#fff;display:flex;align-items:center;justify-content:center;font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ d.ini }}</div><div style="flex:1;min-width:0"><div style="font:600 14.5px -apple-system,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ d.name }}</div><div style="font:400 12px -apple-system,sans-serif;color:var(--ink2);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ d.sub }}</div></div><span style="flex:none;font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--acc)">Ajouter</span></div></sc-for></div></sc-if>
+<sc-if value="{{ fResHint }}" hint-placeholder-val="{{ true }}"><div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">{{ fResTxt }}</div></sc-if>
+</sc-if>
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:20px 4px 8px">Planning</div>
+<div style="padding:12px;border-radius:20px;background:var(--field)">
 <div onClick="{{ pp.toggle }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px">
-<div style="display:flex;align-items:center;gap:10px;min-width:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink)"><path d="M5 5.5h14a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1zM4 10h16M8 3.5v4M16 3.5v4"></path></svg><div style="min-width:0"><div style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Planning</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ pp.sub }}</div></div></div>
+<div><div style="font:400 15.5px -apple-system,sans-serif">Ajouter au planning</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ pp.sub }}</div></div>
 <div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ pp.track }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ pp.knob }};transition:transform .2s"></div></div>
 </div>
 <sc-if value="{{ pp.on }}" hint-placeholder-val="{{ true }}">
@@ -1210,17 +1140,6 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 </sc-if>
 </div>
-<div style="padding:12px 14px 14px;border-radius:20px;background:var(--field);margin-bottom:10px">
-<div onClick="{{ pf.budTog }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px">
-<div style="display:flex;align-items:center;gap:10px;min-width:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--ink)"><path d="M12 9c4.4 0 8-1.3 8-3s-3.6-3-8-3-8 1.3-8 3 3.6 3 8 3zM4 6v4c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 10v4c0 1.7 3.6 3 8 3s8-1.3 8-3v-4M4 14v4c0 1.7 3.6 3 8 3s8-1.3 8-3v-4"></path></svg><div style="min-width:0"><div style="font:600 15px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink)">Budget estimatif</div><div style="font:400 12.5px -apple-system,sans-serif;color:var(--ink2);margin-top:2px">{{ pf.budSub }}</div></div></div>
-<div style="flex:none;width:50px;height:30px;border-radius:15px;padding:2px;background:{{ pf.budTrack }};transition:background .2s"><div style="width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:{{ pf.budKnob }};transition:transform .2s"></div></div>
-</div>
-<sc-if value="{{ pf.budOn }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin-top:12px">
-<div style="flex:1;min-width:0;display:flex;align-items:center;gap:6px;padding:0 12px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:600 13px -apple-system,sans-serif;color:var(--ink2)">€</span><input value="{{ pf.bmin }}" onChange="{{ pf.onBmin }}" inputmode="decimal" placeholder="Min." style="flex:1;min-width:0;border:0;background:transparent;padding:11px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
-<div style="flex:1;min-width:0;display:flex;align-items:center;gap:6px;padding:0 12px;border-radius:14px;background:var(--tile);border:1px solid var(--tileBd)"><span style="font:600 13px -apple-system,sans-serif;color:var(--ink2)">€</span><input value="{{ pf.bmax }}" onChange="{{ pf.onBmax }}" inputmode="decimal" placeholder="Max." style="flex:1;min-width:0;border:0;background:transparent;padding:11px 0;font:400 15.5px -apple-system,sans-serif;outline:none;color:var(--ink)"></div>
-</div></sc-if>
-</div>
-<div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:18px;background:var(--accSoft);color:var(--accTx);font:400 13.5px/1.35 -apple-system,sans-serif"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" style="flex:none"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v5.5M12 7.6v.4"></path></svg>Vous pouvez modifier ces informations plus tard si besoin.</div>
 </sc-if>
 <sc-if value="{{ isInvSheet }}" hint-placeholder-val="{{ false }}">
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:16px 4px 8px">Statut</div>
@@ -1229,6 +1148,17 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 </div>
 <div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink2);margin:16px 4px 8px">Scan de la facture</div>
 <div style="height:96px;border-radius:16px;overflow:hidden;background:var(--field)"><image-slot id="{{ invImg }}" placeholder="Photo ou PDF de la facture" shape="rect" style="width:100%;height:100%"></image-slot></div>
+</sc-if>
+<sc-if value="{{ isStkSheet }}" hint-placeholder-val="{{ false }}">
+<div style="font:600 12.5px -apple-system,'SF Pro Text',system-ui,sans-serif;color:var(--ink2);margin:16px 4px 8px">Photo du produit</div>
+<div style="display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;background:var(--field)">
+<div style="width:84px;height:84px;border-radius:14px;overflow:hidden;flex:none;background:var(--tile);display:flex;align-items:center;justify-content:center;color:var(--ink3)"><sc-if value="{{ stkPh.has }}" hint-placeholder-val="{{ false }}"><img src="{{ stkPh.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></sc-if><sc-if value="{{ stkPh.no }}" hint-placeholder-val="{{ true }}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5"></path></svg></sc-if></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">
+<div onClick="{{ stkPh.add }}" style="cursor:pointer;text-align:center;padding:9px 8px;border-radius:12px;background:var(--tile);border:1px solid var(--tileBd);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ stkPh.addLbl }}</div>
+<div onClick="{{ stkPh.find }}" style="cursor:pointer;text-align:center;padding:9px 8px;border-radius:12px;background:var(--acc);color:var(--accOn);font:600 13px -apple-system,'SF Pro Text',system-ui,sans-serif">{{ stkPh.findLbl }}</div>
+<sc-if value="{{ stkPh.has }}" hint-placeholder-val="{{ false }}"><div onClick="{{ stkPh.rm }}" style="cursor:pointer;text-align:center;padding:6px 8px;font:600 12.5px -apple-system,sans-serif;color:var(--warnTx)">Retirer la photo</div></sc-if>
+</div></div>
+<sc-if value="{{ stkPh.hasMsg }}" hint-placeholder-val="{{ false }}"><div style="font:400 12.5px/1.4 -apple-system,sans-serif;color:var(--ink2);margin:8px 6px 0">{{ stkPh.msg }}</div></sc-if>
 </sc-if>
 <sc-if value="{{ edNote }}" hint-placeholder-val="{{ false }}"><div style="margin:18px 4px 0;font:400 13px/1.4 -apple-system,sans-serif;color:{{ edNoteCol }}">{{ edNoteTxt }}</div></sc-if>
 <sc-if value="{{ edConfirm }}" hint-placeholder-val="{{ false }}"><div style="margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--warnBg);color:var(--warnTx);font:500 13.5px/1.4 -apple-system,sans-serif">{{ edWarnTxt }}</div></sc-if>
@@ -1425,13 +1355,7 @@ const SDISC = {};
 const STZ = {};
 const ZSUG = ['RDC', 'Étage', 'Sous-sol', 'Jardin', 'Local technique', 'Combles', 'Toiture', 'Cave', 'Parking', 'Cour'];
 const SUN = { w: 'Dim', n: 1, ev: [] };
-const DISC_OLD = ['Électricité', 'Plomberie', 'Peinture', 'Menuiserie', 'Placo', 'Carrelage'];
-// disciplines des projets (Travaux, Dépannage…) et leurs sous-disciplines ; thèmes du stock (Électricité…) et sous-catégories : deux listes distinctes
-const DISC0 = ['Travaux', 'Dépannage', 'Vérification', 'Maintenance'], PSUB0 = { Travaux: ['Menuiserie', 'Peinture', 'Maçonnerie', 'Revêtements', 'Aménagement'] };
-const SDISC0 = ['Électricité', 'Plomberie', 'Chaufferie'], STYPE0 = { 'Électricité': ['Disjoncteurs', 'Câbles', 'Interrupteurs', 'Prises', 'Éclairage'] };
-const PRIOS = [['u', 'Urgent', 'rgba(255,69,58,.14)', '#D2372D'], ['p', 'Prioritaire', 'rgba(255,159,10,.16)', '#B86E00'], ['n', 'Normal', 'rgba(52,199,89,.15)', '#1B8A3C'], ['f', 'Faible', 'rgba(120,128,150,.16)', '#5B6478']];
-const prioOf = p => PRIOS.find(x => x[0] === p.prio) || PRIOS[2];
-const DICO = { 'Travaux': 'hammer', 'Dépannage': 'wrench', 'Vérification': 'shield', 'Maintenance': 'gear', 'Électricité': 'bolt', 'Plomberie': 'drop', 'Chaufferie': 'flame', 'Autre': 'gear' };
+const DISC0 = ['Électricité', 'Plomberie', 'Peinture', 'Menuiserie', 'Placo', 'Carrelage'];
 const VIP0 = {};
 const TEAMS = {};
 const ADV = {};
@@ -1458,7 +1382,7 @@ const put = (o, v) => { if (v && typeof v === 'object') { Object.keys(o).forEach
 const wrapI = j => ((j % KS.length) + KS.length) % KS.length;
 const DEFSTEPS = [{ l: 'Préparation', t: 'c' }, { l: 'Exécution', t: 'g' }, { l: 'Finitions', t: 'g' }, { l: 'Réception', t: 'c' }];
 const SAVE_KEY = 'chantier-app-v6';
-const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'pdAdd', 'pq', 'pqOn', 'back', 'cfgSec', 'qa', 'sending', 'gen', 'ctx', 'fv', 'fvUi', 'fdlg', 'fmv', 'finfo', 'fsel', 'fup', 'chatBusy', 'chatErr', 'stkEd', 'stkRm', 'memoOpen', 'repBusy', 'mt'];
+const VOLATILE = ['mic', 'micErr', 'menu', 'sheet', 'form', 'catOpen', 'mail', 'wpos', 'bkPend', 'bkMsg', 'toast', 'lg', 'scan', 'phv', 'pdAdd', 'back', 'cfgSec', 'qa', 'sending', 'gen', 'ctx', 'fv', 'fvUi', 'fdlg', 'fmv', 'finfo', 'fsel', 'fup', 'chatBusy', 'chatErr', 'stkEd', 'stkRm', 'memoOpen', 'repBusy', 'mt'];
 const restore = () => {
   try {
     if (location.hash === '#reset') { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(SESS_KEY); localStorage.removeItem(CL_KEY); Object.keys(CL).forEach(k => delete CL[k]); history.replaceState(null, '', location.pathname); return {}; }
@@ -1703,36 +1627,6 @@ const lpLift = (el, z) => { if (!el) return; el.style.transition = 'transform .2
 
 // pictogrammes des menus (tracés 24 × 24)
 const ICO = {
-  hammer: 'M15 12l-8.4 8.4a1.4 1.4 0 0 1-2-2L13 10M18 15l3-3M21.5 11.5l-1.9-1.9a2 2 0 0 1-.6-1.4V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9',
-  wrench: 'M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.1-3.1a6 6 0 0 1-8.3 7.1l-7.9 7.9a2.1 2.1 0 0 1-3-3l7.9-7.9a6 6 0 0 1 7.1-8.3z',
-  shield: 'M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.7 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.500-1.200 6.200-2.700a1.200 1.200 0 0 1 1.500 0C14.500 3.800 17 5 19 5a1 1 0 0 1 1 1zM9 12l2 2 4-4',
-  gear: 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z',
-  bolt: 'M13 2.5L4.500 13.500H11L10 21.500l8.500-11H12z',
-  drop: 'M12 3s6 6.200 6 11a6 6 0 0 1-12 0c0-4.800 6-11 6-11z',
-  flame: 'M12 3c1 3.500 5 5.500 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 .5 1.500 1.500 2 2 2 0-3-1-5 1-8z',
-  box: 'M12 3l8 4.200v9.600L12 21l-8-4.200V7.200zM4 7.200l8 4.300 8-4.300M12 11.500V21',
-  scan: 'M3 7V4.500A1.500 1.500 0 0 1 4.500 3H7M17 3h2.500A1.500 1.500 0 0 1 21 4.500V7M21 17v2.500a1.500 1.500 0 0 1-1.500 1.500H17M7 21H4.500A1.500 1.500 0 0 1 3 19.500V17M7 8v8M10 8v8M13.500 8v8M17 8v8',
-  search: 'M10.500 17a6.500 6.500 0 1 0 0-13 6.500 6.500 0 0 0 0 13zM15.500 15.500L21 21',
-  brief: 'M4 8h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1zM9 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18',
-  alert: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7.500v5.500M12 16.200v.3',
-  star: 'M12 3.500l2.600 5.400 5.900.8-4.300 4.100 1 5.900L12 16.900 6.800 19.700l1-5.900L3.500 9.700l5.900-.8z',
-  down: 'M12 4.500v15M6 13.500l6 6 6-6',
-  chev: 'M9 5l7 7-7 7',
-  chevL: 'M15 5l-7 7 7 7',
-  chevD: 'M5 9l7 7 7-7',
-  chevU: 'M5 15l7-7 7 7',
-  clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2',
-  sliders: 'M4 7h9M17 7h3M4 17h3M11 17h9M15 4.500v5M9 14.500v5',
-  plus: 'M12 5v14M5 12h14',
-  layers: 'M12 3l9 5-9 5-9-5zM3 12.500l9 5 9-5M3 16.500l9 5 9-5',
-  home: 'M4 11l8-7 8 7M6 9.500V20h12V9.500M10 20v-5h4v5',
-  coins: 'M12 9c4.400 0 8-1.300 8-3s-3.600-3-8-3-8 1.300-8 3 3.600 3 8 3zM4 6v4c0 1.700 3.600 3 8 3s8-1.300 8-3V6M4 10v4c0 1.700 3.600 3 8 3s8-1.300 8-3v-4M4 14v4c0 1.700 3.600 3 8 3s8-1.300 8-3v-4',
-  clip: 'M20 11.500l-8 8a5 5 0 0 1-7-7l8.500-8.500a3.400 3.400 0 0 1 5 5L10 17.500a1.800 1.800 0 0 1-2.500-2.500l7.500-7.500',
-  mic: 'M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5.500 11a6.500 6.500 0 0 0 13 0M12 17.500V21M8.500 21h7',
-  cal: 'M5 5.500h14a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6.500a1 1 0 0 1 1-1zM4 10h16M8 3.500v4M16 3.500v4',
-  camera: 'M4 8h3.200l1.800-2.500h6L16.800 8H20v11.500H4zM12 16.500a3.300 3.300 0 1 0 0-6.600 3.300 3.300 0 0 0 0 6.600z',
-  bulb: 'M9 18h6M10 21h4M12 3a6 6 0 0 0-3.500 10.900c.6.5 1 1.300 1 2.100h5c0-.8.4-1.600 1-2.100A6 6 0 0 0 12 3z',
-  info2: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v5.500M12 7.600v.4',
   people: 'M9 11.8a3.3 3.3 0 1 0 0-6.6 3.3 3.3 0 0 0 0 6.6zM3 19.5c.8-3.2 3.2-5 6-5s5.2 1.8 6 5M17 12.1a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2zM16.2 14.6c2.4.1 4.1 1.6 4.8 4.4',
   rm: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM8 12h8',
   open: 'M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5',
@@ -2178,7 +2072,7 @@ const evMigrate = addE => {
 // stock : discipline › sous-catégorie, code EAN
 const SUBS = { 'Électricité': ['Câbles', 'Ampoules', 'Prises & interrupteurs', 'Tableaux', 'Gaines'], 'Plomberie': ['Tubes', 'Raccords', 'Sanitaires', 'Évacuation'], 'Peinture': ['Peintures', 'Sous-couches', 'Outillage'], 'Placo': ['Plaques', 'Rails & montants', 'Enduits', 'Isolants', 'Dalles'], 'Carrelage': ['Carreaux', 'Colles', 'Joints'], 'Menuiserie': ['Portes', 'Quincaillerie', 'Bois'] };
 const SSUB = {};
-const stockOfS = (st, k) => [...((SITES[k] || {}).stock || []), ...((st.addS || {})[k] || [])].filter(x => !(st.stkDel || {})[k + x[0]]).map(x => { const c = (st.stkCfg || {})[k + x[0]]; return c ? [x[0], c.name ?? x[1], c.unit ?? x[2], x[3], c.min ?? x[4], c.lot ?? x[5], c.disc ?? x[6], c.sub ?? x[7], c.ean ?? x[8], c.pack ?? x[9], c.brand ?? x[10], c.model ?? x[11], c.desc ?? x[12]] : x; });
+const stockOfS = (st, k) => [...((SITES[k] || {}).stock || []), ...((st.addS || {})[k] || [])].filter(x => !(st.stkDel || {})[k + x[0]]).map(x => { const c = (st.stkCfg || {})[k + x[0]]; return c ? [x[0], c.name ?? x[1], c.unit ?? x[2], x[3], c.min ?? x[4], c.lot ?? x[5], c.disc ?? x[6], c.sub ?? x[7], c.ean ?? x[8], c.pack ?? x[9]] : x; });
 const eanOk = c => { c = String(c || '').trim(); if (!/^\d+$/.test(c)) return c.length >= 4 && c.length <= 40; if (![8, 12, 13, 14].includes(c.length)) return false; const d = c.split('').map(Number), chk = d.pop(); const t = d.reverse().reduce((a, x, i) => a + x * (i % 2 ? 1 : 3), 0); return (10 - t % 10) % 10 === chk; };
 let zxP = null;
 const zxLoad = () => zxP || (zxP = window.ZXing ? Promise.resolve(window.ZXing) : new Promise((ok, ko) => { const sc = document.createElement('script'); sc.src = './vendor/zxing.min.js'; sc.onload = () => ok(window.ZXing); sc.onerror = () => { zxP = null; ko(new Error('lecteur de code indisponible')); }; document.head.appendChild(sc); }));
@@ -2203,11 +2097,11 @@ const decodeFile = async file => {
 };
 // nom d'un produit : bases ouvertes, puis recherche web par la session cloud (si branchée)
 const eanLookup = async (code, mbx) => {
-  const r0 = REF[code]; if (r0) return { found: true, name: r0[0], unit: r0[1], category: r0[2], subcategory: r0[3], brand: r0[4] || '', model: r0[5] || '', pack: r0[6] || 0, src: 'base de référence' };
+  const r0 = REF[code]; if (r0) return { found: true, name: r0[0], unit: r0[1], category: r0[2], subcategory: r0[3], src: 'base de référence' };
   const get = async (u, opt = {}, ms = 6000) => { const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), ms); try { const r = await fetch(u, { ...opt, signal: ctl.signal }); return r.ok ? await r.json() : null; } catch (e) { return null; } finally { clearTimeout(t); } };
   for (const [host, src] of [['world.openproductsfacts.org', 'Open Products Facts'], ['world.openfoodfacts.org', 'Open Food Facts']]) {
-    const j = await get('https://' + host + '/api/v2/product/' + code + '.json?fields=product_name,brands,quantity');
-    if (j && j.product && j.product.product_name) { const pm = /(\d+)\s*[x×]/i.exec(j.product.quantity || ''); return { found: true, name: j.product.product_name, brand: String(j.product.brands || '').split(',')[0].trim(), pack: pm ? +pm[1] : 0, src }; }
+    const j = await get('https://' + host + '/api/v2/product/' + code + '.json?fields=product_name,brands');
+    if (j && j.product && j.product.product_name) return { found: true, name: [j.product.product_name, j.product.brands].filter(Boolean).join(' · '), src };
   }
   if (cloudReady() && CL.iaHint) {
     try { const j = await sbJson('/functions/v1/chantier-ia/ean', { method: 'POST', json: { code } }); if (j && j.found && j.name) return { ...j, src: 'recherche web' }; } catch (e) {}
@@ -2219,7 +2113,7 @@ const EAN_KEY = 'chantier-ean-v1', REF = {};
 try { Object.assign(REF, JSON.parse(localStorage.getItem(EAN_KEY) || '{}')); } catch (e) {}
 let refN = Object.keys(REF).length;
 const refSave = () => { refN = Object.keys(REF).length; try { localStorage.setItem(EAN_KEY, JSON.stringify(REF)); return true; } catch (e) { return false; } };
-const refPut = (code, name, unit, disc, sub, brand, model, pack) => { code = String(code || '').replace(/\s/g, ''); name = String(name || '').trim(); if (!/^\d{8,14}$/.test(code) || !name) return; const v = [name, String(unit || '').trim(), disc && disc !== 'Autre' ? disc : '', String(sub || '').trim(), String(brand || '').trim(), String(model || '').trim(), pack > 1 ? +pack : 0]; if ((REF[code] || []).join('|') === v.join('|')) return; REF[code] = v; refSave(); refMark([code]); };
+const refPut = (code, name, unit, disc, sub) => { code = String(code || '').replace(/\s/g, ''); name = String(name || '').trim(); if (!/^\d{8,14}$/.test(code) || !name) return; const v = [name, String(unit || '').trim(), disc && disc !== 'Autre' ? disc : '', String(sub || '').trim()]; if ((REF[code] || []).join('|') === v.join('|')) return; REF[code] = v; refSave(); refMark([code]); };
 const csvRows = (t, sep) => { const rows = []; let row = [], cur = '', q = false; for (let i = 0; i < t.length; i++) { const c = t[i]; if (q) { if (c === '"') { if (t[i + 1] === '"') { cur += '"'; i++; } else q = false; } else cur += c; } else if (c === '"') q = true; else if (c === sep) { row.push(cur); cur = ''; } else if (c === '\n' || c === '\r') { if (c === '\r' && t[i + 1] === '\n') i++; row.push(cur); rows.push(row); row = []; cur = ''; } else cur += c; } if (cur || row.length) { row.push(cur); rows.push(row); } return rows; };
 // lit un catalogue fournisseur (CSV ; , ou tabulation, UTF-8 ou Windows) et l'ajoute à la base
 const refImport = async (file, discs) => {
@@ -2289,7 +2183,7 @@ const rpc = (fn, args, opt = {}) => sbJson('/rest/v1/rpc/' + fn, { method: 'POST
 const canon = v => v === undefined ? 'null' : JSON.stringify(v, (k, x) => x && typeof x === 'object' && !Array.isArray(x) ? Object.keys(x).sort().reduce((o, y) => { o[y] = x[y]; return o; }, {}) : x);
 // dictionnaires partagés (une fiche par entrée) et réglages (une fiche chacun ; cfg/… réservé aux admins) ; me/<compte> : réglages personnels
 const SH_DICT = ['stk', 'stkCfg', 'stkDel', 'stkZone', 'ph', 'cover', 'treated', 'vip', 'lvlUse', 'pins', 'trash', 'files'];
-const SH_CFG = ['discs', 'psubs', 'sdiscs', 'cals', 'rubs', 'projPh', 'projSup', 'projSecs', 'evTimes', 'stypes'], SH_VAL = ['lvls'];
+const SH_CFG = ['discs', 'sdiscs', 'cals', 'rubs', 'projPh', 'projSup', 'projSecs', 'evTimes', 'stypes'], SH_VAL = ['lvls'];
 // état de l'appli → fiches
 const toRecords = st => {
   const R = new Map();
@@ -2489,7 +2383,7 @@ class Component extends DCLogic {
     if (cloudReady()) { cloudMe().then(() => { ME = cloudUser(); this.forceUpdate(); }).catch(() => {}); syncSoon(300); }
     this.syncI = setInterval(() => { if (!document.hidden) syncRun(); }, 15000);
     addEventListener('online', () => syncSoon(200)); document.addEventListener('visibilitychange', () => { if (!document.hidden) syncSoon(200); });
-    this.flags(); this.demoPurge(); this.catMigrate(); if (ridScan(this.state)) this.forceUpdate();
+    this.flags(); this.demoPurge(); if (ridScan(this.state)) this.forceUpdate();
     tbSync(this); document.querySelectorAll('textarea[data-grow]').forEach(growTa); projFilesRun(this); tabsOwn(this);
     phWake = () => { clearTimeout(this.phT); this.phT = setTimeout(() => this.forceUpdate(), 30); };
     setTimeout(() => { const keep = new Set(); Object.values(this.state.ph || {}).forEach(L => L.forEach(x => keep.add(x.id))); Object.values(this.state.trash || {}).forEach(t => { if (t.k === 'photo' && t.d && t.d.x) keep.add(t.d.x.id); }); this.trashPurge(); if (window.indexedDB) phKeys().then(K => K.forEach(k => { if (!keep.has(k)) phDel(k); })).catch(() => {}); }, 4000);
@@ -2573,13 +2467,8 @@ class Component extends DCLogic {
       const x = stockOfS(st, k).find(y => y[8] === code);
       if (x) { this.setState({ site: k, wpos: KS.indexOf(k), tab: 's', stkF: null, stkD: null, stkU: null, stkOpen: k + x[0], sheet: 'ed', menu: false, back: [], form: { kind: 'qty', ref: { key: k + x[0] }, mode: x[9] ? 'Par pack' : 'À l’unité', n: '1', per: x[9] ? String(x[9]) : '' } }); this.toast('Article trouvé : ' + x[1] + (k !== st.site ? ' · ' + SL(k) : '')); return; }
     }
-    this.setState({ sheet: 'ed', menu: false, back: [], form: this.stkNewForm(code) });
+    this.setState({ sheet: 's', form: { ean: code, e: st.stkD || '' } });
     this.lookupEan(code, false);
-  }
-  // fiche « Nouveau produit » : valeurs de départ
-  stkNewForm(ean, ref) {
-    const st = this.state, id = ref && ref.id ? ref.id : 'n' + DEV + (st.seq + 1);
-    return { kind: 'stk', ref: ref && ref.nw ? ref : { nw: true, id, key: st.site + id }, name: '', brand: '', model: '', desc: '', disc: st.stkD || '', sub: st.stkU || '', ean: ean || '', unit: 'à l’unité', per: '', boxes: '', loose: '', min: '', att: [] };
   }
   async lookupEan(code, quiet) {
     if (!/^\d{8,14}$/.test(code)) return;
@@ -2591,13 +2480,10 @@ class Component extends DCLogic {
       const ed = s.sheet === 'ed', F = { ...s.form };
       if (r) {
         const nk = ed ? 'name' : 'a'; if (!F[nk]) F[nk] = r.name;
-        const d = [...sdiscsOf(s), 'Autre'].find(x => r.category && x.toLowerCase() === String(r.category).toLowerCase()), dk = ed ? 'disc' : 'e', uk = ed ? 'sub' : 'u', unk = ed ? 'unit' : 'b';
+        const d = (s.discs || []).find(x => r.category && x.toLowerCase() === String(r.category).toLowerCase()), dk = ed ? 'disc' : 'e', uk = ed ? 'sub' : 'u', unk = ed ? 'unit' : 'b';
         if (d && !F[dk]) F[dk] = d;
         if (r.subcategory && !F[uk]) F[uk] = r.subcategory;
-        if (r.unit && !F[unk] && !/^pi[eè]ces?$/i.test(r.unit)) F[unk] = r.unit;
-        if (ed && r.brand && !F.brand) F.brand = r.brand;
-        if (ed && r.model && !F.model) F.model = r.model;
-        if (ed && r.pack > 1 && !F.per) F.per = String(r.pack);
+        if (r.unit && !F[unk]) F[unk] = r.unit;
         F.look = '✓ Produit reconnu (' + r.src + ')';
       } else F.look = 'Code inconnu des bases ouvertes' + (cloud ? ' et du web' : '') + ' : saisissez le nom une fois, il sera reconnu ensuite.' + (cloud ? '' : ' Enregistrez une clé Claude (Réglages › Mails) pour chercher sur le web.');
       return { form: F };
@@ -2766,15 +2652,6 @@ class Component extends DCLogic {
     } catch (e) { this.setState({ gen: null }); this.toast('Pas de réponse : ' + (e.status === 404 ? 'mettez à jour la fonction chantier-ia dans Supabase' : (e && e.message) || e)); }
   }
   // ---------- Exemples d'origine : retirés de l'appareil et, par la synchronisation, de la base commune. Ce qui a été renommé, complété ou ajouté est conservé ----------
-  // v36 : disciplines des projets (Travaux, Dépannage, Vérification, Maintenance) et thèmes du stock (Électricité, Plomberie, Chaufferie) proposés une fois ; ensuite chacun les modifie librement
-  catMigrate() {
-    const st = this.state; if (st.cat36) return;
-    const up = { cat36: true }, od = Array.isArray(st.discs) ? st.discs : [];
-    up.discs = !od.length || od.join('|') === DISC_OLD.join('|') ? [...DISC0] : [...DISC0, ...od.filter(d => !DISC0.includes(d))];
-    if (!st.psubs) up.psubs = { ...PSUB0 };
-    if (!sdiscsOf(st).length && !Object.keys(st.stypes || {}).length) { up.sdiscs = [...SDISC0]; up.stypes = { ...STYPE0 }; }
-    this.setState(up); syncSoon(600);
-  }
   demoPurge() {
     const st = this.state; let ch = false;
     const P = { ...(st.P || {}) }, cfg = { ...(st.cfg || {}) };
@@ -2954,7 +2831,7 @@ class Component extends DCLogic {
     L.push('Planning des 14 prochains jours :' + (evs.length ? '' : ' rien de prévu'));
     evs.forEach(e => L.push('  • ' + e.date + (e.t ? ' ' + e.t + (e.end ? '–' + e.end : '') : '') + ' — ' + e.title + (e.site && SITES[e.site] ? ' (' + SL(e.site) + ')' : '')));
     const low = [];
-    KS.forEach(k => stockOfS(s, k).forEach(x => { const o = (s.stk || {})[k + x[0]] || {}, q = o.q ?? x[3]; if (q <= x[4]) low.push('  • ' + x[1] + ' : ' + q + ' ' + x[2] + ' (seuil ' + x[4] + ', ' + SL(k) + ')'); }));
+    KS.forEach(k => stockOfS(s, k).forEach(x => { const o = (s.stk || {})[k + x[0]] || {}, q = o.q ?? x[3]; if (q < x[4]) low.push('  • ' + x[1] + ' : ' + q + ' ' + x[2] + ' (seuil ' + x[4] + ', ' + SL(k) + ')'); }));
     L.push('Stock sous le seuil :' + (low.length ? '' : ' aucun')); L.push(...low.slice(0, 40));
     return L.join('\n').slice(0, 10000);
   }
@@ -3218,27 +3095,21 @@ class Component extends DCLogic {
       this.wheelGo(cur + off); if (off === 0) this.setState(s => ({ menu: !s.menu })); };
     const pctOf = p => p.steps.length ? Math.round(p.steps.reduce((a, s) => a + s.v, 0) / p.steps.length) : 0;
     const stOf = p => { const v = pctOf(p); return v >= 100 ? 'd' : v === 0 ? 't' : 'r'; };
-    const psec = st.psec === 'd' || st.psec === 'r' ? st.psec : 'a';
-    const PS = [['a', 'Tous', ICO.list], ['r', 'En cours', ICO.clock], ['d', 'Terminés', ICO.sel]], inPs = (p, k) => k === 'a' || (k === 'd' ? stOf(p) === 'd' : stOf(p) !== 'd');
-    const psecs = PS.map(([k, label, ic]) => { const a = psec === k; return { label, ic, bg: a ? 'var(--solid)' : 'var(--tile)', fg: a ? 'var(--solidTx)' : INK, n: list.filter(p => inPs(p, k)).length, bd: a ? 'transparent' : 'var(--tileBd)', pick: () => set({ psec: k }) }; });
+    const psec = st.psec || 'r';
+    const PS = [['d', 'Terminés', 'var(--t3)', 'var(--t3x)'], ['r', 'En cours', 'var(--t1)', 'var(--t1x)'], ['t', 'À faire', 'var(--t4)', 'var(--t4x)']];
+    const psecs = PS.map(([k, label, bg, fx]) => { const a = psec === k; return { label, bg, fg: fx, n: list.filter(p => stOf(p) === k).length, bd: a ? fx : 'transparent', op: a ? 1 : 0.55, pick: () => set({ psec: k }) }; });
     const pins = st.pins || {}, pdisc = st.pdisc || null;
     const togglePin = p => { const was = !!(this.state.pins || {})[p.id], n = { ...(this.state.pins || {}) }; if (was) delete n[p.id]; else n[p.id] = Date.now(); set({ pins: n }); this.toast(was ? '« ' + p.name + ' » n’est plus épinglé' : '« ' + p.name + ' » épinglé en tête de liste'); };
-    const secOn = st.projSecs !== false, pq = (st.pq || '').trim().toLowerCase(), pqOn = !!st.pqOn || !!pq;
-    const inSec = (secOn ? list.filter(p => inPs(p, psec)) : list).filter(p => !pq || [p.name, p.desc, p.sub, p.phase, p.lvl, discsOf(p).join(' ')].join(' ').toLowerCase().includes(pq));
-    const discAll = Array.from(new Set([...st.discs, ...list.flatMap(discsOf)]));
-    const pdiscs = discAll.map(d => { const a = pdisc === d; return { k: d, label: d, ic: ICO[DICO[d] || 'box'], n: inSec.filter(p => discsOf(p).includes(d)).length, bg: a ? 'var(--solid)' : 'var(--tile)', fg: a ? 'var(--solidTx)' : INK, pick: () => set({ pdisc: a ? null : d, psub: null, psubFold: false }) }; });
-    const psubL = d => Array.from(new Set([...(((st.psubs || {})[d]) || []), ...list.filter(p => discsOf(p).includes(d) && p.sub).map(p => p.sub)])), psubSel = pdisc && psubL(pdisc).includes(st.psub) ? st.psub : null;
-    const psubItems = !pdisc ? [] : psubL(pdisc).map(u => { const a = psubSel === u; return { label: u, bg: a ? 'var(--solid)' : 'var(--tile)', fg: a ? 'var(--solidTx)' : INK, pick: () => set({ psub: a ? null : u }) }; });
-    const prioBase = inSec.filter(p => (!pdisc || discsOf(p).includes(pdisc)) && (!psubSel || p.sub === psubSel)), pprio = ['u', 'p', 'n', 'f'].includes(st.pprio) ? st.pprio : null;
-    const pprios = PRIOS.map(([k, label, bg, fx]) => { const a = pprio === k; return { label, ic: ({ u: ICO.alert, p: ICO.star, n: ICO.sel, f: ICO.down })[k], bg, fg: fx, n: prioBase.filter(p => prioOf(p)[0] === k).length, bd: a ? fx : 'transparent', op: !pprio || a ? 1 : 0.55, pick: () => set({ pprio: a ? null : k }) }; });
+    const secOn = st.projSecs !== false, inSec = secOn ? list.filter(p => stOf(p) === psec) : list;
+    const pdiscs = [{ k: null, label: 'Toutes', n: inSec.length }, ...Array.from(new Set([...st.discs, ...list.flatMap(discsOf)])).map(d => ({ k: d, label: d, n: inSec.filter(p => discsOf(p).includes(d)).length }))].map(d => { const a = pdisc === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, op: a || d.n ? 1 : 0.5, pick: () => set({ pdisc: a && d.k ? null : d.k }) }; });
     const coverOf = p => phUrl((st.cover || {})[p.id]) || src(p.id);
-    const projects = [...(secOn ? list.filter(p => pins[p.id] && !inSec.includes(p) && !pq) : []), ...inSec].filter(p => (!pdisc || discsOf(p).includes(pdisc)) && (!psubSel || p.sub === psubSel) && (!pprio || prioOf(p)[0] === pprio)).map((p, i) => ({ p, i })).sort((x, y) => ((pins[y.p.id] ? 1 : 0) - (pins[x.p.id] ? 1 : 0)) || ((pins[x.p.id] || 0) - (pins[y.p.id] || 0)) || x.i - y.i).map(({ p }) => {
+    const projects = [...(secOn ? list.filter(p => pins[p.id] && stOf(p) !== psec) : []), ...inSec].filter(p => !pdisc || discsOf(p).includes(pdisc)).map((p, i) => ({ p, i })).sort((x, y) => ((pins[y.p.id] ? 1 : 0) - (pins[x.p.id] ? 1 : 0)) || ((pins[x.p.id] || 0) - (pins[y.p.id] || 0)) || x.i - y.i).map(({ p }) => {
       const pct = pctOf(p), done = p.steps.filter(s => s.v >= 100).length, late = p.inv.filter(i => i.st === 'late').length, todo = p.sup.filter(f => !f.tel || !f.mail).length, pinned = !!pins[p.id], sw = 'p:' + p.id, lv = lvlOf(p);
       SW[sw] = { pin: () => togglePin(p),
         ...(canDel() ? { del: how => this.undoable('Projet « ' + p.name + ' » supprimé', 'proj', how, { site: st.site, p, i: list.indexOf(p) }, () => this.setState(s => ({ P: { ...s.P, [st.site]: (s.P[st.site] || []).filter(x => x.id !== p.id) } }))) } : {}) };
       return { sw, pinned, pinLbl: pinned ? 'Désépingler' : 'Épingler', name: p.name, rid: RI('P:' + p.id), img: 'proj-' + p.id, src: coverOf(p), ph: 'Photo · ' + p.name, phase: p.phase, due: p.due && p.due !== 'à planifier' ? 'Fin ' + p.due : '', hasDue: !!(p.due && p.due !== 'à planifier'), desc: p.desc || '', hasDesc: !!p.desc, lpg: 'pg-' + (pinned ? 'pin' : 'reg'), pct, pctW: pct + '%',
         loc: [lv, p.addr ? p.addr + (p.city ? ' · ' + p.city.replace(/^\d+\s*/, '') : '') : ''].filter(Boolean).join(' · ') || 'Emplacement à renseigner',
-        meta: [p.sub || discsOf(p)[0], done + '/' + p.steps.length + ' étapes'].filter(Boolean).join(' · '), showPh: projPhOn, noPh: !projPhOn, prioLbl: prioOf(p)[1], prioBg: prioOf(p)[2], prioFg: prioOf(p)[3], prioIc: ({ u: ICO.alert, p: ICO.star, n: ICO.sel, f: ICO.down })[prioOf(p)[0]],
+        meta: done + '/' + p.steps.length + ' étapes' + (projSupOn ? ' · ' + p.sup.length + ' fourn.' : ''), showPh: projPhOn, noPh: !projPhOn,
         hasAlert: projSupOn && !!(late || todo), alert: late ? late + ' facture' + (late > 1 ? 's' : '') + ' en retard' : todo ? todo + ' fourn. à renseigner' : '',
         open: () => set({ proj: p.id, seg: 'e', editSteps: false, supOpen: null, noteText: '', stepText: '' }) };
     });
@@ -3319,10 +3190,10 @@ class Component extends DCLogic {
     const repBusy = st.repBusy === pid;
     const people = [{ l: 'Fournisseur, sous-traitant ou client', ic: 'people', fn: () => set({ sheet: 'sup', form: { mode: 'dir', pick: [] } }) }, { l: 'Membre de l’équipe', ic: 'edit', fn: () => openEd('team', { i: -1 }) }];
     const memoLong = String(Q.memo || '').split('\n').reduce((a, l) => a + Math.max(1, Math.ceil(l.length / 38)), 0) > 4;
-    const pj = { prioLbl: prioOf(Q)[1], prioBg: prioOf(Q)[2], prioFg: prioOf(Q)[3], prioIc: ({ u: ICO.alert, p: ICO.star, n: ICO.sel, f: ICO.down })[prioOf(Q)[0]], hasBm: !!(Q.bmin || Q.bmax), hasPhz: !!((Q.phase && !discsOf(Q).includes(Q.phase)) || (Q.due && Q.due !== 'à planifier')), bmTxt: 'Budget ' + (Q.bmin && Q.bmax ? eur(Q.bmin) + ' – ' + eur(Q.bmax) : eur(Q.bmax || Q.bmin || 0)), setCover: () => { this.addPhotos(pid, 'av', null, true); }, showPh: projPhOn, heroH: projPhOn ? '200px' : '150px', heroBg: projPhOn ? 'var(--tile)' : 'linear-gradient(135deg,' + (DOT[st.site] || '#0A84FF') + ',#1C2333)', name: Q.name, rid: RI('P:' + Q.id), phase: Q.phase, due: Q.due, dueTxt: Q.due && Q.due !== 'à planifier' ? ' · Fin ' + Q.due : '', desc: Q.desc || '', hasDesc: !!Q.desc,
+    const pj = { setCover: () => { this.addPhotos(pid, 'av', null, true); }, showPh: projPhOn, heroH: projPhOn ? '200px' : '150px', heroBg: projPhOn ? 'var(--tile)' : 'linear-gradient(135deg,' + (DOT[st.site] || '#0A84FF') + ',#1C2333)', name: Q.name, rid: RI('P:' + Q.id), phase: Q.phase, due: Q.due, dueTxt: Q.due && Q.due !== 'à planifier' ? ' · Fin ' + Q.due : '', desc: Q.desc || '', hasDesc: !!Q.desc,
       memo: Q.memo || '', onMemo: e => { growTa(e.target); const v = e.target.value; up(p => ({ ...p, memo: v })); }, memoFocus: () => { if (st.memoOpen !== pid) set({ memoOpen: pid }); },
       memoLong: memoLong, memoMax: memoLong && st.memoOpen !== pid ? '106px' : 'none', memoMask: memoLong && st.memoOpen !== pid ? 'linear-gradient(#000 70%, transparent)' : 'none', memoTog: () => set({ memoOpen: st.memoOpen === pid ? null : pid }), memoTogLbl: st.memoOpen === pid ? 'Réduire' : 'Afficher tout', img: 'proj-' + Q.id, src: coverOf(Q), ph: 'Photo · ' + Q.name, addrLine: [lvQ, Q.addr ? Q.addr + (Q.city ? ' · ' + Q.city : '') : ''].filter(Boolean).join(' · ') || 'Emplacement non renseigné', pct,
-      disc: [discsOf(Q).join(', '), Q.sub].filter(Boolean).join(' · '), hasDisc: discsOf(Q).length > 0 || !!Q.sub, pinned: !!pins[Q.id], pinLbl: pins[Q.id] ? 'Épinglé' : 'Épingler', pinBg: pins[Q.id] ? '#FF9F0A' : 'var(--tile)', pinFg: pins[Q.id] ? '#fff' : 'var(--ink)', pin: () => togglePin(Q), phN: (n => n ? n + ' photo' + (n > 1 ? 's' : '') : 'Photos')(PH.filter(x => PHS[x.sec]).length), goPh: () => set({ seg: 'ph', editSteps: false }), goSup: () => set({ seg: 'c', editSteps: false }), dash: (C * pct / 100) + ' ' + C,
+      disc: discsOf(Q).join(', '), hasDisc: discsOf(Q).length > 0, pinned: !!pins[Q.id], pinLbl: pins[Q.id] ? 'Épinglé' : 'Épingler', pinBg: pins[Q.id] ? '#FF9F0A' : 'var(--tile)', pinFg: pins[Q.id] ? '#fff' : 'var(--ink)', pin: () => togglePin(Q), phN: (n => n ? n + ' photo' + (n > 1 ? 's' : '') : 'Photos')(PH.filter(x => PHS[x.sec]).length), goPh: () => set({ seg: 'ph', editSteps: false }), goSup: () => set({ seg: 'c', editSteps: false }), dash: (C * pct / 100) + ' ' + C,
       stepsDone: Q.steps.filter(s => s.v >= 100).length + '/' + Q.steps.length, supN: Q.sup.length, noSup: !projSupOn,
       goTeam: () => { const e = document.getElementById('proj-team'); if (e) e.scrollIntoView({ behavior: 'smooth', block: 'start' }); },
       budLbl: bud ? 'Prévu ' + eur(bud) : 'Définir le budget', budEdit: () => set({ fdlg: { t: 'Budget prévu (€ HT)', v: bud ? String(bud).replace('.', ',') : '', ok: 'Enregistrer', raw: true, empty: true, fn: v => up(p => ({ ...p, bud: amtOf(v) })) } }),
@@ -3360,33 +3231,33 @@ class Component extends DCLogic {
     const stepTypes = [['c', 'Coche'], ['g', 'Jauge']].map(([k, label]) => ({ label, bg: st.stepType === k ? 'var(--on)' : 'transparent', fg: st.stepType === k ? ACC : 'var(--ink2)', pick: () => set({ stepType: k }) }));
     // stocks
     const zonesS = (st.cfg[st.site] || { zones: [] }).zones;
-    const stItems = stockOf(st.site).map(s => { const key = st.site + s[0], o = { q: s[3], o: 0, sent: false, ...(st.stk[key] || {}) }, low = o.q <= s[4]; return { s, key, o, low, disc: s[6] || SDISC[s[0]] || 'Autre', sub: subOf(s), stt: low ? 'low' : 'ok' }; });
+    const stItems = stockOf(st.site).map(s => { const key = st.site + s[0], o = { q: s[3], o: 0, sent: false, ...(st.stk[key] || {}) }, low = o.q < s[4]; return { s, key, o, low, disc: s[6] || SDISC[s[0]] || 'Autre', sub: subOf(s), stt: o.o > 0 ? 'ord' : low ? 'low' : 'ok' }; });
     const updS = (key, n) => set({ stk: { ...st.stk, [key]: n }, stkSent: false });
-    const sf = st.stkF === 'low' || st.stkF === 'ok' ? st.stkF : null;
-    const stFilt = [['low', 'À commander'], ['ok', 'En stock']].map(([k, label]) => { const a = sf === k; return { label, ic: ICO.box, bg: a ? 'var(--solid)' : 'var(--tile)', fg: a ? 'var(--solidTx)' : INK, bd: a ? 'transparent' : 'var(--tileBd)', n: stItems.filter(x => x.stt === k).length, pick: () => set({ stkF: a ? null : k }) }; });
+    const sf = st.stkF || null;
+    const stFilt = [['low', 'À commander', 'var(--t4)', 'var(--t4x)'], ['ord', 'En commande', 'var(--t2)', 'var(--t2x)'], ['ok', 'En stock', 'var(--t3)', 'var(--t3x)']].map(([k, label, bg, fx]) => { const a = sf === k; return { label, bg, fg: fx, n: stItems.filter(x => x.stt === k).length, bd: a ? fx : 'transparent', op: !sf || a ? 1 : 0.5, pick: () => set({ stkF: a ? null : k }) }; });
     const sdL = sdiscsOf(st), dOrder = Array.from(new Set([...sdL, ...stItems.map(x => x.disc)])).filter(d => d !== 'Autre').concat('Autre');
     // types d'article propres à chaque thème : ceux des articles + ceux créés à la main (st.stypes)
     const stypesOf = d => (st.stypes && st.stypes[d]) || [], thOf = x => x[6] || SDISC[x[0]] || 'Autre', frs = (a, b) => a.localeCompare(b, 'fr');
     const typeIn = d => Array.from(new Set([...stypesOf(d), ...KS.flatMap(k => stockOfS(st, k)).filter(x => thOf(x) === d).map(subOf)])).filter(x => x !== 'Divers').sort(frs);
     const stCfgMap = fn => { const sc = { ...(st.stkCfg || {}) }; KS.forEach(k => stockOfS(st, k).forEach(x => { const r = fn(x); if (r) sc[k + x[0]] = { ...(sc[k + x[0]] || {}), ...r }; })); return sc; };
-    const themeRenOp = (o, n) => { n = String(n || '').trim(); if (!n || n === o) return ''; if (sdL.some(x => x !== o && x.toLowerCase() === n.toLowerCase())) return 'Cette discipline existe déjà.'; const sy = { ...(st.stypes || {}) }; if (sy[o]) { sy[n] = sy[o]; delete sy[o]; } set({ ...bump(), sdiscs: sdL.map(x => x === o ? n : x), stkCfg: stCfgMap(x => thOf(x) === o ? { disc: n } : null), stypes: sy, stkD: st.stkD === o ? n : st.stkD, stkRm: null }); return ''; };
+    const themeRenOp = (o, n) => { n = String(n || '').trim(); if (!n || n === o) return ''; if (sdL.some(x => x !== o && x.toLowerCase() === n.toLowerCase())) return 'Ce thème existe déjà.'; const sy = { ...(st.stypes || {}) }; if (sy[o]) { sy[n] = sy[o]; delete sy[o]; } set({ ...bump(), sdiscs: sdL.map(x => x === o ? n : x), stkCfg: stCfgMap(x => thOf(x) === o ? { disc: n } : null), stypes: sy, stkD: st.stkD === o ? n : st.stkD, stkRm: null }); return ''; };
     const themeDelOp = o => { const sy = { ...(st.stypes || {}) }; delete sy[o]; set({ ...bump(), sdiscs: sdL.filter(x => x !== o), stkCfg: stCfgMap(x => thOf(x) === o ? { disc: 'Autre' } : null), stypes: sy, stkD: st.stkD === o ? null : st.stkD, stkU: null, stkRm: null }); };
-    const typeAddOp = (d, t) => { t = String(t || '').trim(); if (!t) return 'Indiquez un nom.'; if (typeIn(d).some(x => x.toLowerCase() === t.toLowerCase())) return 'Cette sous-catégorie existe déjà.'; set({ ...bump(), stypes: { ...(st.stypes || {}), [d]: [...stypesOf(d), t] } }); return ''; };
-    const typeRenOp = (d, o, n) => { n = String(n || '').trim(); if (!n || n === o) return ''; if (typeIn(d).some(x => x !== o && x.toLowerCase() === n.toLowerCase())) return 'Cette sous-catégorie existe déjà.'; set({ ...bump(), stkCfg: stCfgMap(x => thOf(x) === d && subOf(x) === o ? { sub: n } : null), stypes: { ...(st.stypes || {}), [d]: [...stypesOf(d).filter(x => x !== o), n] }, stkU: st.stkU === o ? n : st.stkU, stkRm: null }); return ''; };
+    const typeAddOp = (d, t) => { t = String(t || '').trim(); if (!t) return 'Indiquez un nom.'; if (typeIn(d).some(x => x.toLowerCase() === t.toLowerCase())) return 'Ce type existe déjà.'; set({ ...bump(), stypes: { ...(st.stypes || {}), [d]: [...stypesOf(d), t] } }); return ''; };
+    const typeRenOp = (d, o, n) => { n = String(n || '').trim(); if (!n || n === o) return ''; if (typeIn(d).some(x => x !== o && x.toLowerCase() === n.toLowerCase())) return 'Ce type existe déjà.'; set({ ...bump(), stkCfg: stCfgMap(x => thOf(x) === d && subOf(x) === o ? { sub: n } : null), stypes: { ...(st.stypes || {}), [d]: [...stypesOf(d).filter(x => x !== o), n] }, stkU: st.stkU === o ? n : st.stkU, stkRm: null }); return ''; };
     const typeDelOp = (d, t) => set({ ...bump(), stkCfg: stCfgMap(x => thOf(x) === d && subOf(x) === t ? { sub: '' } : null), stypes: { ...(st.stypes || {}), [d]: stypesOf(d).filter(x => x !== t) }, stkU: st.stkU === t ? null : st.stkU, stkRm: null });
     const sdSel = st.stkD || null, inStt = stItems.filter(x => !sf || x.stt === sf);
-    const stEd = !!st.stkEd && canCfg();
-    // en mode « Modifier » : toucher une pastille la renomme, deux touches sur ✕ la suppriment
-    const edMap = (isT, d, base) => {
-      if (!stEd || d === 'Autre' || d === 'Divers') return { ...base, ed: false };
-      const id = isT ? 'T:' + d : 'U:' + sdSel + ':' + d, armed = st.stkRm === id;
-      return { ...base, ed: true, label: armed ? 'Supprimer ?' : base.label, bg: armed ? 'var(--warn)' : base.bg, fg: armed ? '#fff' : base.fg,
-        pick: () => set({ stkRm: null, fdlg: { t: isT ? 'Renommer la discipline' : 'Renommer la sous-catégorie', v: d, ok: 'Enregistrer', raw: true, ph: '', fn: v => { const e = isT ? themeRenOp(d, v) : typeRenOp(sdSel, d, v); if (e) this.toast(e); } } }),
-        rm: e => { if (e && e.stopPropagation) e.stopPropagation(); if (!armed) { set({ stkRm: id }); this.toast('Touchez encore ✕ pour supprimer : ses articles passeront en « ' + (isT ? 'Autres' : 'Divers') + ' »'); return; } if (isT) themeDelOp(d); else typeDelOp(sdSel, d); } };
-    };
-    const stDisc = dOrder.filter(d => d === 'Autre' || sdL.includes(d) || inStt.some(x => x.disc === d)).map(d => { const a = sdSel === d; return edMap(true, d, { k: d, label: d === 'Autre' ? 'Autres' : d, ic: ICO[DICO[d] || 'box'], bg: a ? 'var(--solid)' : 'var(--tile)', fg: a ? 'var(--solidTx)' : INK, pick: () => set({ stkD: a ? null : d, stkU: null }) }); });
+    const stDisc = [{ k: null, label: 'Tous', n: inStt.length }, ...dOrder.filter(d => sdL.includes(d) || inStt.some(x => x.disc === d)).map(d => ({ k: d, label: d, n: inStt.filter(x => x.disc === d).length }))].map(d => { const a = sdSel === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ stkD: d.k, stkU: null }), k: d.k }; });
     const inD = inStt.filter(x => !sdSel || x.disc === sdSel), suSel = sdSel && (inD.some(x => x.sub === st.stkU) || stypesOf(sdSel).includes(st.stkU)) ? st.stkU : null;
-    const stSub = !sdSel ? [] : Array.from(new Set([...stypesOf(sdSel), ...inD.map(x => x.sub).filter(u => !stypesOf(sdSel).includes(u)).sort(frs)])).map(u => { const a = suSel === u; return edMap(false, u, { k: u, label: u, bg: a ? 'var(--solid)' : 'var(--tile)', fg: a ? 'var(--solidTx)' : INK, pick: () => set({ stkU: a ? null : u }) }); });
+    const stSub = !sdSel ? [] : [{ k: null, label: 'Tous les types', n: inD.length }, ...Array.from(new Set([...inD.map(x => x.sub), ...stypesOf(sdSel)])).sort(frs).map(u => ({ k: u, label: u, n: inD.filter(x => x.sub === u).length }))].map(d => { const a = suSel === d.k; return { label: d.label, n: d.n, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => set({ stkU: d.k }), k: d.k }; });
+    // une seule ligne : les thèmes, puis (un thème choisi) ses types d'article avec un retour sur le thème
+    const stEd = !!st.stkEd && canCfg();
+    const stLine = (!sdSel ? stDisc : [{ back: true, label: '‹ ' + sdSel, n: '', bg: 'var(--solid)', fg: 'var(--solidTx)', pick: () => set({ stkD: null, stkU: null }) }, ...stSub]).map(d => {
+      if (!stEd || d.back || d.k == null) return { ...d, ed: false };
+      const isT = !sdSel, id = isT ? 'T:' + d.k : 'U:' + sdSel + ':' + d.k, armed = st.stkRm === id;
+      return { ...d, ed: true, label: armed ? 'Supprimer ?' : d.label, bg: armed ? 'var(--warn)' : d.bg, fg: armed ? '#fff' : d.fg,
+        pick: () => set({ stkRm: null, fdlg: { t: isT ? 'Renommer le thème' : 'Renommer le type d’article', v: d.k, ok: 'Enregistrer', raw: true, ph: '', fn: v => { const e = isT ? themeRenOp(d.k, v) : typeRenOp(sdSel, d.k, v); if (e) this.toast(e); } } }),
+        rm: e => { if (e && e.stopPropagation) e.stopPropagation(); if (!armed) { set({ stkRm: id }); this.toast('Touchez encore ✕ pour supprimer : ses articles passeront en « ' + (isT ? 'Autre' : 'Divers') + ' »'); return; } if (isT) themeDelOp(d.k); else typeDelOp(sdSel, d.k); } };
+    });
     const oq = s => Math.max(1, s[9] || 1);
     const stocks = inD.filter(x => !suSel || x.sub === suSel).map(({ s, key, o, low, disc, sub }) => {
       const max = Math.max(s[4] * 2, o.q, 1), step = 1, open = st.stkOpen === key;
@@ -3400,10 +3271,7 @@ class Component extends DCLogic {
         minus: () => updS(key, { ...o, q: Math.max(0, o.q - step) }), plus: () => updS(key, { ...o, q: o.q + step }),
         zones: zonesS.map(z => ({ label: z, bg: z === zone ? 'var(--acc)' : 'var(--tile)', fg: z === zone ? 'var(--accOn)' : INK, pick: () => set({ stkZone: { ...(st.stkZone || {}), [key]: z } }) })),
         adv: o.sup || ADV[s[0]] || 'Fournisseur à choisir', lotLbl: oq(s) > 1 ? '+ 1 pack · ' + oq(s) : '+ Commander 1', order: () => updS(key, { ...o, o: o.o + oq(s), sent: false }),
-        disc, canRecv: o.sent && o.o > 0, canOrder: !(o.sent && o.o > 0), recvLbl: 'Réceptionner +' + o.o, recv: () => updS(key, { ...o, q: o.q + o.o, o: 0, sent: false }), edit: () => openEd('stk', { key }),
-        cat: [disc === 'Autre' ? 'Autres' : disc, sub].filter(Boolean).join(' · '), hasBm: !!(s[10] || s[11]), bm: [s[10] ? 'Marque : ' + s[10] : '', s[11] ? 'Modèle : ' + s[11] : ''].filter(Boolean).join('  |  '),
-        qtxt: o.q + ' ' + (/^à l.unité$/i.test(s[2]) ? (o.q > 1 ? 'unités' : 'unité') : s[2]) + ' en stock' + (s[9] > 1 ? ' · ' + Math.floor(o.q / s[9]) + ' pack' + (Math.floor(o.q / s[9]) > 1 ? 's' : '') + ' de ' + s[9] : ''),
-        thTxt: 'Seuil minimum : ' + s[4], thCol: low ? 'var(--warnTx)' : 'var(--ink2)', thLow: low };
+        disc, canRecv: o.sent && o.o > 0, canOrder: !(o.sent && o.o > 0), recvLbl: 'Réceptionner +' + o.o, recv: () => updS(key, { ...o, q: o.q + o.o, o: 0, sent: false }), edit: () => openEd('stk', { key }) };
     });
     const stGroups = [];
     dOrder.forEach(d => Array.from(new Set(stocks.filter(x => x.disc === d).map(x => x.sub))).sort((a, b) => a.localeCompare(b, 'fr')).forEach(u => { const items = stocks.filter(x => x.disc === d && x.sub === u); stGroups.push({ label: sdSel ? u : d + ' › ' + u, items, n: items.length + ' article' + (items.length > 1 ? 's' : '') }); }));
@@ -3451,7 +3319,7 @@ class Component extends DCLogic {
     const ccat = st.cat !== 'TOUS' && inRub.some(s => s.cat === st.cat) ? st.cat : 'TOUS';
     const cats = ['TOUS', ...Array.from(new Set(inRub.map(s => s.cat).filter(Boolean)))].map(l => ({ label: l === 'TOUS' ? 'Toutes les disciplines' : cap(l), n: l === 'TOUS' ? inRub.length : inRub.filter(s => s.cat === l).length, bg: ccat === l ? 'var(--acc)' : 'transparent', fg: ccat === l ? 'var(--accOn)' : INK, pick: () => set({ cat: l, catOpen: false }) }));
     const allInv = []; Object.keys(st.P).forEach(k => st.P[k].forEach(p => p.inv.forEach(i => allInv.push({ i, proj: p.name, pid: p.id }))));
-    const itemsOf = key => { const r = []; KS.forEach(k => stockOf(k).forEach(x => { if (x[0] === key) { const sk = k + x[0], o = { q: x[3], o: 0, sent: false, ...(st.stk[sk] || {}) }; r.push({ k, x, sk, o, low: o.q <= x[4] }); } })); return r; };
+    const itemsOf = key => { const r = []; KS.forEach(k => stockOf(k).forEach(x => { if (x[0] === key) { const sk = k + x[0], o = { q: x[3], o: 0, sent: false, ...(st.stk[sk] || {}) }; r.push({ k, x, sk, o, low: o.q < x[4] }); } })); return r; };
     const supInfo = s => { const ci = allInv.filter(x => x.i.sup === s.name), its = (s.k || []).flatMap(itemsOf); return { ci, ct: ci.reduce((a, x) => a + x.i.amt, 0), cpd: ci.filter(x => x.i.st === 'paid').reduce((a, x) => a + x.i.amt, 0), its, low: its.filter(t => t.low && !t.o.o) }; };
     const sitesLbl = s => sitesOf(s).length ? sitesOf(s).map(SL).join(', ') : 'Tous sites';
     const contacts = inRub.filter(s => ccat === 'TOUS' || s.cat === ccat).sort((x, y) => x.name.localeCompare(y.name, 'fr')).map(s => {
@@ -3481,7 +3349,7 @@ class Component extends DCLogic {
       const key = k + x[0], o = { q: x[3], o: 0, sent: false, ...(st.stk[key] || {}) }, disc = x[6] || SDISC[x[0]] || '', sup = (o.sup || ADV[x[0]] || ''), open = () => set({ tab: 's', site: k, wpos: KS.indexOf(k), stkOpen: key, stkF: null, stkD: null, stkU: null });
       if (o.o > 0 && o.sent) cmdEv.push({ id: 'cmd:' + key, auto: true, date: addDays(o.at || today, Math.max(1, Math.ceil((hoursOf(sup.split(' · ')[1]) || 48) / 24))), t: '', site: k, title: 'Réception attendue · ' + x[1], sub: '+' + o.o + ' ' + x[2] + (sup ? ' · ' + sup.split(' · ')[0] : ''), cal: calAuto('presta', 'admin'), disc, open });
       else if (o.o > 0) cmdEv.push({ id: 'cmd:' + key, auto: true, date: today, t: '', site: k, title: 'Au panier · ' + x[1], sub: 'Commande à envoyer · +' + o.o + ' ' + x[2], cal: calAuto('admin'), disc, open });
-      else if (o.q <= x[4]) cmdEv.push({ id: 'cmd:' + key, auto: true, date: today, t: '', site: k, title: 'À commander · ' + x[1], sub: o.q + ' ' + x[2] + ' en stock (seuil ' + x[4] + ')', cal: calAuto('admin'), disc, open });
+      else if (o.q < x[4]) cmdEv.push({ id: 'cmd:' + key, auto: true, date: today, t: '', site: k, title: 'À commander · ' + x[1], sub: o.q + ' ' + x[2] + ' en stock (seuil ' + x[4] + ')', cal: calAuto('admin'), disc, open });
     }));
     const userEv = (st.evs || []).filter(e => !e.site || SITES[e.site]).map(e => ({ ...e, open: () => openEd('ev', { id: e.id }) }));
     const allEv = [...userEv, ...invEv, ...cmdEv].filter(e => CALS[e.cal] && !calOff[e.cal] && (st.allL || !e.site || e.site === st.site));
@@ -3601,16 +3469,16 @@ class Component extends DCLogic {
       proj: {
         title: () => 'Modifier le projet', req: 'name', delLbl: 'Supprimer ce projet', canDel: () => true,
         note: () => 'Supprimer le projet efface aussi ses étapes, notes, fournisseurs et factures.',
-        load: r => { const p = list.find(x => x.id === r.id) || {}; return { name: p.name, disc: discsOf(p)[0] || '', sub: p.sub || '', prio: prioOf(p)[1], bmin: p.bmin ? String(p.bmin).replace('.', ',') : '', bmax: p.bmax ? String(p.bmax).replace('.', ',') : '', cal: CALS[p.cal] ? CALS[p.cal][0] : '', phase: p.phase, desc: p.desc, site: SL(st.site), lvl: lvlOf(p), addr: p.addr, city: p.city, access: p.access, hours: p.hours }; },
-        groups: () => [{ t: 'Projet', f: [['name', 'Nom', 'Ex. Salle de bain lot 4'], ['disc', 'Discipline', '', Array.from(new Set([...st.discs, ...(F.disc ? [F.disc] : [])])), { add: 'disc' }], ['sub', 'Sous-discipline', 'Ex. Menuiserie', F.disc ? psubL(F.disc) : [], { combo: true }], ['prio', 'Priorité', '', PRIOS.map(x => x[1])], ['cal', 'Calendrier', '', CALU.map(k => CALS[k][0]), { add: 'cal' }], ['phase', 'Phase / lot', 'Ex. Second œuvre'], ['desc', 'Description', 'Une ligne (ex. Reprise des cloisons R+2)'], ['site', 'Site', '', siteNames]] }, { t: 'Budget estimatif (€)', f: [['bmin', 'Minimum', 'Ex. 1 500'], ['bmax', 'Maximum', 'Ex. 2 500']] }, { t: 'Localisation', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }], ...LOC] }],
+        load: r => { const p = list.find(x => x.id === r.id) || {}; return { name: p.name, disc: discsOf(p), cal: CALS[p.cal] ? CALS[p.cal][0] : '', phase: p.phase, desc: p.desc, site: SL(st.site), lvl: lvlOf(p), addr: p.addr, city: p.city, access: p.access, hours: p.hours }; },
+        groups: () => [{ t: 'Projet', f: [['name', 'Nom', 'Ex. Salle de bain lot 4'], ['disc', 'Disciplines', '', st.discs, { multi: true, add: 'disc' }], ['cal', 'Calendrier', '', CALU.map(k => CALS[k][0]), { add: 'cal' }], ['phase', 'Phase / lot', 'Ex. Second œuvre'], ['desc', 'Description', 'Une ligne (ex. Reprise des cloisons R+2)'], ['site', 'Site', '', siteNames]] }, { t: 'Localisation', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }], ...LOC] }],
         save: (r, F) => {
           const nk = keyOfName(F.site) || st.site;
           this.setState(s => {
             const cur = (s.P[s.site] || []).find(p => p.id === r.id); if (!cur) return null;
-            const dl = F.disc && F.disc !== 'Autre' ? [F.disc] : [], bm = amtOf(F.bmin), bM = amtOf(F.bmax), sb = (F.sub || '').trim(), p = { ...cur, name: F.name.trim(), disc: dl[0] || '', discs: dl, sub: sb, prio: (PRIOS.find(x => x[1] === F.prio) || PRIOS[2])[0], bmin: bm, bmax: bM, ...(bm || bM ? { bud: bM || bm } : {}), cal: CALU.find(k => CALS[k][0] === F.cal) || cur.cal || '', phase: F.phase || '', due: cur.due || '', desc: (F.desc || '').trim().slice(0, 600), lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: F.hours || '' };
-            const lu = countLvl(F.lvl, lvlOf(cur)), psn = dl[0] && p.sub && !(((s.psubs || {})[dl[0]]) || []).some(x => x.toLowerCase() === p.sub.toLowerCase()) ? { psubs: { ...(s.psubs || {}), [dl[0]]: [...(((s.psubs || {})[dl[0]]) || []), p.sub] } } : {};
-            if (nk === s.site) return { ...psn, lvlUse: lu, lvls: lvlMerge(F.lvl), P: { ...s.P, [s.site]: s.P[s.site].map(x => x.id === r.id ? p : x) } };
-            return { ...psn, lvlUse: lu, lvls: lvlMerge(F.lvl), P: { ...s.P, [s.site]: s.P[s.site].filter(x => x.id !== r.id), [nk]: [...(s.P[nk] || []), p] }, site: nk, wpos: KS.indexOf(nk) };
+            const dl = (Array.isArray(F.disc) ? F.disc : F.disc ? [F.disc] : []).filter(x => x !== 'Autre'), p = { ...cur, name: F.name.trim(), disc: dl[0] || '', discs: dl, cal: CALU.find(k => CALS[k][0] === F.cal) || cur.cal || '', phase: F.phase || '', due: cur.due || '', desc: (F.desc || '').trim().slice(0, 140), lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: F.hours || '' };
+            const lu = countLvl(F.lvl, lvlOf(cur));
+            if (nk === s.site) return { lvlUse: lu, lvls: lvlMerge(F.lvl), P: { ...s.P, [s.site]: s.P[s.site].map(x => x.id === r.id ? p : x) } };
+            return { lvlUse: lu, lvls: lvlMerge(F.lvl), P: { ...s.P, [s.site]: s.P[s.site].filter(x => x.id !== r.id), [nk]: [...(s.P[nk] || []), p] }, site: nk, wpos: KS.indexOf(nk) };
           });
         },
         del: r => { const p = list.find(x => x.id === r.id); if (p) this.trashPut('proj', '', { site: st.site, p, i: list.indexOf(p) }); this.setState(s => ({ P: { ...s.P, [s.site]: (s.P[s.site] || []).filter(x => x.id !== r.id) }, proj: null })); }
@@ -3663,24 +3531,13 @@ class Component extends DCLogic {
         }
       },
       stk: {
-        title: r => r.nw ? 'Nouveau produit' : 'Modifier l’article', req: 'name', delLbl: 'Supprimer l’article', canDel: r => !r.nw,
-        load: r => {
-          if (r.nw) return this.stkNewForm('', r);
-          const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || [], o = st.stk[r.key] || {}, q = o.q ?? x[3], per = x[9] || 0, cfg = (st.stkCfg || {})[r.key] || {};
-          return { name: x[1], brand: x[10] || '', model: x[11] || '', desc: x[12] || '', unit: x[2], disc: x[6] || SDISC[x[0]] || 'Autre', sub: x[0] ? subOf(x) : '', ean: x[8] || '', per: per ? String(per) : '', boxes: per > 1 && Math.floor(q / per) ? String(Math.floor(q / per)) : '', loose: String(per > 1 ? q % per : q), min: String(x[4]), att: cfg.att || [] };
-        },
-        groups: () => [],
-        note: () => '',
+        title: () => 'Modifier l’article', req: 'name', delLbl: 'Supprimer l’article', canDel: () => true,
+        load: r => { const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || []; const o = st.stk[r.key] || {}; return { name: x[1], unit: x[2], disc: x[6] || SDISC[x[0]] || 'Autre', sub: x[0] ? subOf(x) : '', ean: x[8] || '', q: String(o.q ?? x[3]), min: String(x[4]), pack: x[9] ? String(x[9]) : '' }; },
+        groups: () => [{ t: 'Article', f: [['name', 'Produit', 'Ex. Joint carrelage'], ['unit', 'Unité de base', 'Ex. à l’unité'], ['disc', 'Thème', '', [...sdiscsOf(st), 'Autre'], { add: 'sdisc' }], ['sub', 'Type article', 'Ex. Câbles', subSugg(F.disc), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir']] }, { t: 'Quantités', f: [['q', 'En stock', '0'], ['min', 'Seuil', '0'], ['pack', 'Unités par pack', 'Ex. 12 (vide : vendu à l’unité)']] }],
         save: (r, F) => {
-          const per = numOf(F.per), tot = numOf(F.boxes) * Math.max(1, per) + numOf(F.loose), unit = (F.unit || '').trim() || 'à l’unité', name = F.name.trim(), dsc = F.disc || 'Autre', sb = (F.sub || '').trim();
-          refPut(F.ean, name, unit, dsc, sb, F.brand, F.model, per);
-          if (r.nw) {
-            const tp = [r.id, name, unit, tot, numOf(F.min), 1, dsc, sb, (F.ean || '').trim(), per, (F.brand || '').trim(), (F.model || '').trim(), (F.desc || '').trim()];
-            set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), tp] }, ...((F.att || []).length ? { stkCfg: { ...(st.stkCfg || {}), [r.key]: { att: F.att } } } : {}), seq: st.seq + 1, stkD: null, stkU: null, stkF: null, stkOpen: r.key });
-            return;
-          }
+          refPut(F.ean, F.name, F.unit, F.disc, F.sub);
           const x = stockOf(st.site).find(y => st.site + y[0] === r.key) || [], o = { q: x[3], o: 0, sent: false, ...(st.stk[r.key] || {}) };
-          set({ stkCfg: { ...(st.stkCfg || {}), [r.key]: { ...((st.stkCfg || {})[r.key] || {}), name, unit, disc: dsc, sub: sb, ean: (F.ean || '').trim(), min: numOf(F.min), pack: per, brand: (F.brand || '').trim(), model: (F.model || '').trim(), desc: (F.desc || '').trim(), att: F.att || [] } }, stk: { ...st.stk, [r.key]: { ...o, q: tot } } });
+          set({ stkCfg: { ...(st.stkCfg || {}), [r.key]: { ...((st.stkCfg || {})[r.key] || {}), name: F.name.trim(), unit: (F.unit || '').trim() || 'à l’unité', disc: F.disc || 'Autre', sub: (F.sub || '').trim(), ean: (F.ean || '').trim(), min: numOf(F.min), pack: Math.max(0, numOf(F.pack)) } }, stk: { ...st.stk, [r.key]: { ...o, q: numOf(F.q) } } });
         },
         del: r => { this.trashPut('stk', '', { key: r.key, name: F.name }); set({ stkDel: { ...(st.stkDel || {}), [r.key]: true }, stkOpen: null }); }
       },
@@ -3749,8 +3606,8 @@ class Component extends DCLogic {
     const EK = st.sheet === 'ed' ? EDK[F.kind] : null, edRef = F.ref || {};
     const FD = {
       ed: EK ? EK.groups() : [],
-      p: [{ t: 'Emplacement', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }]] }],
-      s: [],
+      p: [{ t: 'Projet', f: [['a', 'Nom', 'Ex. Salle de bain lot 4'], ['b', 'Disciplines', '', st.discs, { multi: true, add: 'disc' }], ['desc', 'Description', 'Une ligne (ex. Reprise des cloisons R+2)']] }, { t: 'Emplacement', f: [['lvl', 'Emplacement', 'Ex. RDC, 2ème étage', lvlSugg, { combo: true, list: true, edit: true }]] }],
+      s: [{ t: 'Produit', f: [['a', 'Produit', 'Ex. Joint carrelage'], ['e', 'Thème', '', [...sdiscsOf(st), 'Autre'], { add: 'sdisc' }], ['u', 'Type article', 'Ex. Ampoules', subSugg(F.e), { combo: true }], ['ean', 'Code EAN', 'Scanner ou saisir', null, { type: 'text' }]] }, { t: 'Quantités', f: [['b', 'Unité de base', 'Ex. à l’unité'], ['c', 'Quantité (en unités)', '0'], ['d', 'Seuil', '0'], ['p', 'Unités par pack', 'Ex. 12 (vide : vendu à l’unité)']] }],
       l: evGroups('a'),
       inv: [{ t: 'Facture', f: [['a', 'N°', 'Ex. F-2026-0520'], ['b', 'Montant HT', 'Ex. 1 250'], ['c', 'Échéance', 'Ex. 30 nov']] }]
     };
@@ -3759,7 +3616,7 @@ class Component extends DCLogic {
       const pickV = v => setF({ [k]: multi ? (has(v) ? val.filter(x => x !== v) : [...(val || []), v]) : combo && o.list ? (has(v) ? splitL(val).filter(x => x !== v) : [...splitL(val), v]).join(', ') : has(v) && !combo ? '' : v, ...(k === 'siteN' ? { projN: '' } : {}) });
       const edOn = !!o.edit && !!F.lvlEd, ak = o.add, qk = 'qa_' + k, addOn = !!ak && F[qk] !== undefined;
       return { label, ph, type: o.type || 'text', val: multi ? '' : val || '', on: fset(k), isIn: !ch && !o.sw, isCh: !!ch && !combo, isCo: combo, isSw: !!o.sw, swTog: () => setF({ [k]: !val, ...(k === 'hrs' && !val && !F.t ? { t: '08:00', end: '09:00' } : {}) }), swTrack: val ? 'var(--ok)' : 'var(--track)', swKnob: val ? 'translateX(20px)' : 'none',
-        hasAdd: !!ak && canCfg(), addOn, addTog: () => setF({ [qk]: addOn ? undefined : '' }), addVal: F[qk] || '', addIn: fset(qk), addPh: { disc: 'Nouvelle discipline…', sdisc: 'Nouvelle discipline…', rub: 'Nouvelle rubrique…', cal: 'Nouveau calendrier…' }[ak] || '',
+        hasAdd: !!ak && canCfg(), addOn, addTog: () => setF({ [qk]: addOn ? undefined : '' }), addVal: F[qk] || '', addIn: fset(qk), addPh: { disc: 'Nouvelle discipline…', sdisc: 'Nouveau thème…', rub: 'Nouvelle rubrique…', cal: 'Nouveau calendrier…' }[ak] || '',
         addOk: () => { const typed = up1(String(F[qk] || '').trim()), r = quickAdd(ak, F[qk]); if (!r) return; const lab = ak === 'disc' || ak === 'sdisc' ? r : ak === 'rub' ? (RUB[r] || typed) : (CALS[r] ? CALS[r][0] : typed); setF({ [qk]: undefined, [k]: multi ? Array.from(new Set([...(val || []), lab])) : lab }); },
         hasEd: !!o.edit, edOn, edLbl: edOn ? 'Terminé' : 'Modifier', edBg: edOn ? 'var(--solid)' : 'transparent', edFg: edOn ? 'var(--solidTx)' : 'var(--acc)', edTog: () => setF({ lvlEd: !F.lvlEd, lvlNew: '' }), edVal: F.lvlNew || '', edIn: fset('lvlNew'), edAdd: () => lvlAdd(F.lvlNew),
         opts: (ch || []).map(v => { const a = has(v); return edOn ? { label: v + '  ✕', bg: 'var(--tile)', fg: 'var(--ink2)', pick: () => set({ lvls: lvlList.filter(x => x !== v) }) } : { label: v, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => pickV(v) }; }) }; }) }; });
@@ -3786,15 +3643,14 @@ class Component extends DCLogic {
       if (sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' || sh === 'cfg' || sh === 'trash') { pop(); return; }
       const a = (F.a || '').trim(), sq = st.seq + 1;
       if (sh === 'p') {
-        const dl = F.disc && F.disc !== 'Autre' ? [F.disc] : [], bm = amtOf(F.bmin), bM = amtOf(F.bmax), pcal = CALS[F.pcal] && CALU.includes(F.pcal) ? F.pcal : CALS.real ? 'real' : CALU[0];
-        const p = { id: newId, name: a, disc: dl[0] || '', discs: dl, sub: F.sub || '', prio: ['u', 'p', 'n', 'f'].includes(F.prio) ? F.prio : 'n', ...(F.bud && (bm || bM) ? { bmin: bm, bmax: bM, bud: bM || bm } : {}), cal: pcal, phase: dl[0] || 'Nouveau lot', due: F.plan !== false && /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > (F.pdate || today) ? (d => d.getDate() + ' ' + MABRV[d.getMonth()])(dOf(F.pend)) : '', desc: (F.desc || '').trim().slice(0, 600), lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: '', geo: S.geo,
+        const dl = (Array.isArray(F.b) ? F.b : F.b ? [F.b] : []).filter(x => x && x !== 'Autre'), pcal = CALS[F.pcal] && CALU.includes(F.pcal) ? F.pcal : CALS.real ? 'real' : CALU[0];
+        const p = { id: newId, name: a, disc: dl[0] || '', discs: dl, cal: pcal, phase: dl[0] || 'Nouveau lot', due: F.plan !== false && /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > (F.pdate || today) ? (d => d.getDate() + ' ' + MABRV[d.getMonth()])(dOf(F.pend)) : '', desc: (F.desc || '').trim().slice(0, 140), lvl: splitL(F.lvl).join(', '), addr: F.addr || '', city: F.city || '', access: F.access || '', hours: '', geo: S.geo,
           steps: fs.map((s, i) => ({ id: newId + 's' + i, l: s.l, t: s.t, v: 0 })), notes: [],
-          sup: [], inv: [], dv: [] };
+          sup: fSelIds.map(supCopy), inv: [], dv: [] };
         const pd0 = /^\d{4}-\d{2}-\d{2}$/.test(F.pdate || '') ? F.pdate : today, pto = /^\d{4}-\d{2}-\d{2}$/.test(F.pend || '') && F.pend > pd0 ? F.pend : '';
         const addPlan = F.plan !== false, pev = { id: 'e' + rid(), date: pd0, to: pto, dur: '', t: '', end: '', site: st.site, title: ((F.pkind || '').trim() || (pto ? 'Réalisation' : 'Démarrage')) + ' · ' + a, cal: pcal, disc: p.disc, discs: dl, proj: newId, who: '', note: '' };
-        const lu = countLvl(F.lvl, ''), cov = F.cover ? { cover: { ...(st.cover || {}), [newId]: F.cover }, ph: { ...(st.ph || {}), [newId]: [{ id: F.cover, sec: 'av', at: Date.now() }, ...((st.ph || {})[newId] || []).filter(x => x.id !== F.cover)] } } : {}, docs = this.pendDocs || []; this.pendDocs = null;
+        const lu = countLvl(F.lvl, ''), cov = F.cover ? { cover: { ...(st.cover || {}), [newId]: F.cover }, ph: { ...(st.ph || {}), [newId]: [{ id: F.cover, sec: 'av', at: Date.now() }] } } : {};
         this.setState(s => ({ ...cov, lvlUse: lu, lvls: lvlMerge(F.lvl), P: { ...s.P, [s.site]: [...s.P[s.site], p] }, evs: addPlan ? [...(s.evs || []), pev] : s.evs, proj: newId, seg: 'e', sheet: null, seq: sq, tab: 'p' }));
-        if (docs.length) setTimeout(() => this.fileUpload(docs, (this.state.files || {})['fp-' + newId] ? 'fp-' + newId : ''), 400);
       }
       if (sh === 's') { refPut(F.ean, a, F.b, F.e, F.u); const n = Math.max(0, parseInt(F.c) || 0), m = Math.max(1, parseInt(F.d) || 1); set({ addS: { ...st.addS, [st.site]: [...(st.addS[st.site] || []), [newId, a, (F.b || '').trim() || 'à l’unité', n, m, 1, F.e || 'Autre', (F.u || '').trim(), (F.ean || '').trim(), Math.max(0, parseInt(F.p) || 0)]] }, sheet: null, seq: sq, stkD: null, stkU: null, stkF: null, stkOpen: st.site + newId }); }
       if (sh === 'l') { const e = evFromForm(F, 'e' + rid(), 'a'); set({ evs: [...(st.evs || []), e], calDay: e.date, cal: e.date.slice(0, 7), sheet: null, seq: sq }); }
@@ -3808,7 +3664,7 @@ class Component extends DCLogic {
       }
     };
     const X = this.xVals(st, set);
-    const titles = { p: 'Mes projets', s: 'Stocks', m: 'Messages', l: 'Planning', c: 'Contacts', i: 'Claude', f: X.fTitle };
+    const titles = { p: 'Projets', s: 'Stocks', m: 'Messages', l: 'Planning', c: 'Contacts', i: 'Claude', f: X.fTitle };
     const subtitle = st.tab === 'f' ? X.fSub : st.tab === 'i' ? X.chSubT : st.tab === 'm' && !boxOn ? (st.allM ? 'Tous les sites' : SL(st.site)) + ' · ' + recv.length + ' à traiter' : st.tab === 'l' ? (st.allL ? 'Tous les sites' : SL(st.site)) + ' · ' + monthN + ' élément' + (monthN > 1 ? 's' : '') + ' en ' + MOIS[calMo - 1] : st.tab === 'c' ? (st.allC ? 'Tous les sites' : SL(st.site)) + ' · ' + contacts.length + ' contact' + (contacts.length > 1 ? 's' : '') : 'Sam. 24 oct · ' + S.addr;
     const kAll = list.reduce((a, p) => { a.s += p.steps.length; a.d += p.steps.filter(x => x.v >= 100).length; a.pct += pctOf(p); a.o += p.inv.filter(i => i.st !== 'paid').reduce((b, i) => b + i.amt, 0); return a; }, { s: 0, d: 0, pct: 0, o: 0 });
     const kp = { n: list.length, avg: list.length ? Math.round(kAll.pct / list.length) : 0, steps: kAll.d + '/' + kAll.s, open: kAll.o >= 1000 ? (kAll.o / 1000).toLocaleString('fr-FR', { maximumFractionDigits: 1 }) + ' k€' : eur(kAll.o) };
@@ -3838,20 +3694,15 @@ class Component extends DCLogic {
       discs: st.discs.map(d => ({ label: d, del: () => set({ discs: st.discs.filter(x => x !== d) }) })), discN: st.discs.length + ' active' + (st.discs.length > 1 ? 's' : ''),
       discText: st.discText, onDisc: (e) => set({ discText: e.target.value }),
       addDisc: () => { const t = st.discText.trim(); if (!t) return; const v = t.charAt(0).toUpperCase() + t.slice(1); if (!st.discs.some(x => x.toLowerCase() === v.toLowerCase())) set({ discs: [...st.discs, v], discText: '', pdAdd: false, ...(st.pdAdd ? { pdisc: v } : {}) }); else set({ discText: '', pdAdd: false }); },
-      stDiscL: stDisc, stSubL: stSub, stSubOn: !!sdSel, stSubNone: !!sdSel && !stSub.length, canCfgS: canCfg(), openCfgS: () => set({ sheet: 'cfg', cfgSec: 's', form: {}, back: [], menu: false }), stCanEd: canCfg(), stEdLbl: stEd ? 'Terminé' : 'Modifier', stEdTog: () => set({ stkEd: !stEd, stkRm: null }), stGroups, stFilt,
-      eanLook: sh === 'ed' && F.kind === 'stk' && /^\d{8,14}$/.test(F.ean || ''), eanLookTxt: F.look || 'Code ' + (F.ean || ''), eanWeb: 'https://www.google.com/search?q=' + encodeURIComponent((F.ean || '') + ' (site:laplateformedubatiment.fr OR site:pointp.fr OR site:cedeo.fr OR site:bigmat.fr OR site:leroymerlin.fr OR site:castorama.fr OR site:manomano.fr)'),
-      canScan: st.tab === 's', scanStock: () => this.startScan('stock'), scanForm: () => this.startScan('form'), eanForm: false,
+      stLine, stCap: sdSel ? 'Type article · ' + sdSel : 'Thème', stTop: !sdSel, stAddTitle: sdSel ? 'Ajouter un type d’article' : 'Ajouter un thème', stCanEd: canCfg(), stEdLbl: stEd ? 'Terminé' : 'Modifier', stEdTog: () => set({ stkEd: !stEd, stkRm: null }), stGroups, stFilt,
+      eanLook: (sh === 's' || (sh === 'ed' && F.kind === 'stk')) && /^\d{8,14}$/.test(F.ean || ''), eanLookTxt: F.look || 'Code ' + (F.ean || ''), eanWeb: 'https://www.google.com/search?q=' + encodeURIComponent((F.ean || '') + ' (site:laplateformedubatiment.fr OR site:pointp.fr OR site:cedeo.fr OR site:bigmat.fr OR site:leroymerlin.fr OR site:castorama.fr OR site:manomano.fr)'),
+      canScan: st.tab === 's', scanStock: () => this.startScan('stock'), scanForm: () => this.startScan('form'), eanForm: sh === 's' || (sh === 'ed' && F.kind === 'stk'),
       scanOpen: !!st.scan, scanMsg: st.scan ? st.scan.msg : '', scanCode: st.scan ? st.scan.code : '', onScanCode: (e) => set({ scan: { ...st.scan, code: e.target.value } }),
       scanClose: () => { this.stopScan(); set({ scan: null }); }, scanPhoto: () => this.scanPhoto(),
       scanManual: () => { const c = ((st.scan || {}).code || '').replace(/\s/g, ''); if (!c) return; if (!eanOk(c)) { set({ scan: { ...st.scan, msg: 'Code invalide : vérifiez les chiffres (clé de contrôle EAN).' } }); return; } this.gotCode(c); },
       scanKey: (e) => { if (e.key === 'Enter') { const c = ((st.scan || {}).code || '').replace(/\s/g, ''); if (c && eanOk(c)) this.gotCode(c); } }, hasStock: stocks.length > 0, noStock: stocks.length === 0, basket, hasBasket: basketLines > 0, basketN: basketLines + ' ligne' + (basketLines > 1 ? 's' : ''), sendOrder, orderSent: !!st.stkSent && basketLines === 0,
       sd, isSupList: st.tab === 'c' && !st.supSel, isSupDet: st.tab === 'c' && !!st.supSel, backSup: () => set({ supSel: null }), hasSup: contacts.length > 0, noSup: contacts.length === 0,
       sq: st.sq || '', onSq: (e) => set({ sq: e.target.value }), clearSq: () => set({ sq: '' }), hasSq: !!st.sq,
-      pprios, pqOn, pq: st.pq || '', onPq: e => set({ pq: e.target.value }), pqTog: () => { set({ pqOn: !pqOn, pq: pqOn ? '' : st.pq }); if (!pqOn) setTimeout(() => { const i = document.getElementById('pq-in'); if (i) i.focus(); }, 80); }, pqBg: pqOn ? 'var(--on)' : 'var(--tile)',
-      canSearch: st.tab === 'p' && !detail, canCfgP: canCfg(), openCfgP: () => set({ sheet: 'cfg', cfgSec: 'p', form: {}, back: [], menu: false }),
-      psubOn: !!pdisc, psubTitle: 'Sous-disciplines' + (pdisc ? ' (' + pdisc + ')' : ''), psubs: psubItems, psubNone: !psubItems.length, psubOpen: !st.psubFold, psubChev: st.psubFold ? ICO.chevD : ICO.chevU, psubFold: () => set({ psubFold: !st.psubFold }),
-      psubAdd: () => set({ fdlg: { t: 'Nouvelle sous-discipline (' + pdisc + ')', v: '', ok: 'Ajouter', raw: true, ph: 'Ex. Plomberie', fn: v => { const t = up1(String(v || '').trim()), L = psubL(pdisc); if (!t) return; if (L.some(x => x.toLowerCase() === t.toLowerCase())) { this.toast('Cette sous-discipline existe déjà.'); return; } set({ ...bump(), psubs: { ...(st.psubs || {}), [pdisc]: [...(((st.psubs || {})[pdisc]) || []), t] }, psub: t }); } } }),
-      hdIcon: st.tab === 'p', hdIconPath: ICO.brief, titleFs: st.tab === 'p' || st.tab === 's' ? '28px' : '34px', hasSub: st.tab !== 'p' && st.tab !== 's',
       psecs, pdiscs, pdAdd, togglePdAdd: () => set({ pdAdd: !st.pdAdd, discText: '' }), segPh: segK === 'ph', segD: segK === 'd', phSecs, phv, phvOpen: !!phv, dirRubs,
       addCover: async () => { const f = await phPick(false); if (!f.length) return; try { const b = await phShrink(f[0]), id = 'ph' + Date.now().toString(36) + rid(); await phPut(id, b); PURL[id] = URL.createObjectURL(b); phMark([id]); setF({ cover: id }); } catch (e) { this.toast('Photo ignorée : ' + ((e && e.message) || e)); } },
       newHasCover: !!F.cover, newNoCover: !F.cover, newCoverSrc: F.cover ? phUrl(F.cover) : '',
@@ -3938,7 +3789,7 @@ class Component extends DCLogic {
       })(),
       themeOpts: [[true, 'Sombre'], [false, 'Clair']].map(([v, label]) => ({ label, bg: st.dark === v ? ACC : 'transparent', fg: st.dark === v ? 'var(--accOn)' : 'var(--ink2)', pick: () => set({ dark: v }) })),
       canAdd: st.tab === 'p' || st.tab === 's' || st.tab === 'l' || st.tab === 'c' || st.tab === 'f' || (st.tab === 'i' && X.chOpen), canMore: st.tab === 'f', moreOpen: X.fMore,
-      canCfg: canCfg() && !/^[fisp]$/.test(st.tab), openCfg: () => set({ sheet: 'cfg', cfgSec: st.tab, form: {}, back: [], menu: false }),
+      canCfg: canCfg() && !/^[fi]$/.test(st.tab), openCfg: () => set({ sheet: 'cfg', cfgSec: st.tab, form: {}, back: [], menu: false }),
       isStkCfg: sh === 'stkcfg',
       ...(() => {
         const chip = (list, cur, key) => list.map(v => { const a = cur === v; return { label: v, bg: a ? 'var(--acc)' : 'var(--tile)', fg: a ? 'var(--accOn)' : INK, pick: () => setF({ [key]: a ? '' : v }) }; });
@@ -3959,25 +3810,7 @@ class Component extends DCLogic {
           cals: CALU.map(k => ({ label: CALS[k][0], dot: CALS[k][1], bg: k === pK ? 'var(--acc)' : 'var(--tile)', fg: k === pK ? 'var(--accOn)' : INK, pick: () => setF({ pcal: k }) })),
           canAdd: canCfg(), addOn: !!F.pcalAdd, addTog: () => setF({ pcalAdd: !F.pcalAdd, pcalNew: '' }), addVal: F.pcalNew || '', addIn: fset('pcalNew'),
           addOk: () => { const k2 = quickAdd('cal', F.pcalNew); if (k2) setF({ pcal: k2, pcalAdd: false, pcalNew: '' }); } };
-        const pdL = Array.from(new Set([...st.discs, ...(F.disc ? [F.disc] : [])])), psL = F.disc ? Array.from(new Set([...psubL(F.disc), ...(F.sub ? [F.sub] : [])])) : [];
-        const mkP = 'pdesc', micLive = st.mic === mkP, nPh = ((st.ph || {})[newId] || []).length, nDoc = (this.pendDocs || []).length, bOn = !!F.bud, ddk = F.dd || '';
-        const addPsub = () => this.setState({ fdlg: { t: 'Nouvelle sous-discipline', v: '', ok: 'Ajouter', raw: true, ph: 'Ex. Plomberie', fn: v => { const t = up1(String(v || '').trim()); if (!t) return; this.setState(s2 => { const d = s2.form.disc, L = ((s2.psubs || {})[d]) || []; return { ...bump(), psubs: L.some(x => x.toLowerCase() === t.toLowerCase()) ? s2.psubs : { ...(s2.psubs || {}), [d]: [...L, t] }, form: { ...s2.form, sub: t, dd: '' } }; }); } } });
-        const addPdisc = () => this.setState({ fdlg: { t: 'Nouvelle discipline', v: '', ok: 'Ajouter', raw: true, ph: 'Ex. Isolation', fn: x => { const t = up1(String(x || '').trim()); if (!t) return; const r = quickAdd('disc', t); this.setState(s2 => ({ form: { ...s2.form, disc: r || t, sub: '', dd: '' } })); } } });
-        const opt = (l, cur, pick) => ({ l, fw: cur ? '700' : '400', fg: cur ? 'var(--acc)' : 'var(--ink)', pick });
-        const prioCur = ['u', 'p', 'n', 'f'].includes(F.prio) ? F.prio : 'n';
-        const pf = { name: F.a || '', onName: fset('a'), desc: F.desc || '', onDesc: fset('desc'),
-          discLbl: F.disc || 'Choisir…', discTog: () => setF({ dd: ddk === 'disc' ? '' : 'disc' }), discOpen: ddk === 'disc',
-          discOpts: [...pdL.map(d => opt(d, F.disc === d, () => setF({ disc: d, sub: '', dd: '' }))), ...(canCfg() ? [opt('＋ Nouvelle discipline…', false, addPdisc)] : [])],
-          subLbl: F.sub || (F.disc ? 'Aucune' : 'Choisir une discipline'), subTog: () => setF({ dd: ddk === 'sub' ? '' : 'sub' }), subOpen: ddk === 'sub' && !!F.disc,
-          subOpts: [opt('Aucune', !F.sub, () => setF({ sub: '', dd: '' })), ...psL.map(d => opt(d, F.sub === d, () => setF({ sub: d, dd: '' }))), ...(canCfg() && F.disc ? [opt('＋ Nouvelle sous-discipline…', false, addPsub)] : [])],
-          prioLbl: (PRIOS.find(x => x[0] === prioCur) || PRIOS[2])[1], prioTog: () => setF({ dd: ddk === 'prio' ? '' : 'prio' }), prioOpen: ddk === 'prio',
-          prioOpts: PRIOS.map(x => opt(x[1], prioCur === x[0], () => setF({ prio: x[0], dd: '' }))),
-          mic: () => this.dictate(mkP, 'desc'), micMsg: micLive || st.micErr === mkP, micLbl: micLive ? 'Écoute…' : 'Dictée indisponible', micCol: micLive ? '#FF5A5A' : 'var(--ink3)', micBg: micLive ? '#FF5A5A' : 'var(--tile)', micFg: micLive ? '#fff' : 'var(--ink)',
-          attSub: nPh || nDoc ? [nPh ? nPh + ' photo' + (nPh > 1 ? 's' : '') : '', nDoc ? nDoc + ' document' + (nDoc > 1 ? 's' : '') : ''].filter(Boolean).join(' · ') : 'Photos, plans, documents…',
-          attPh: async () => { await this.addPhotos(newId, 'av'); this.forceUpdate(); },
-          attDoc: async () => { const L = await fPick(true); if (!L.length) return; this.pendDocs = [...(this.pendDocs || []), ...L]; setF({ nDocs: this.pendDocs.length }); },
-          budOn: bOn, budTog: () => setF({ bud: !bOn }), budTrack: bOn ? 'var(--ok)' : 'var(--track)', budKnob: bOn ? 'translateX(20px)' : 'none', budSub: bOn ? 'Fourchette en euros' : 'Définissez une fourchette si besoin', bmin: F.bmin || '', bmax: F.bmax || '', onBmin: fset('bmin'), onBmax: fset('bmax') };
-        return { kc, pp, pf };
+        return { kc, pp };
       })(),
       // corbeille : 30 jours pour restaurer
       ...(() => {
@@ -4027,11 +3860,11 @@ class Component extends DCLogic {
           T.push(tog(projSupOn, 'Fournisseurs par projet', '', () => { set({ projSup: !projSupOn }); }));
         }
         if (cfOn && sec === 's') {
-          const sdL = sdiscsOf(st), dupS = (t, o) => sdL.some(x => x !== o && x.toLowerCase() === t.toLowerCase()) ? 'Cette discipline existe déjà.' : '';
-          L.push(lister('sd', { t: 'Disciplines du stock', unit: 'discipline', items: sdL.map(d => ({ k: d, label: d })), ph: 'Nouvelle discipline (ex. Isolation)…', delLbl: 'Supprimer la discipline', note: '',
-            ren: (o, n) => dupS(n, o) || themeRenOp(o, n), delConf: 'Toucher encore : ses articles passent en « Autres »',
+          const sdL = sdiscsOf(st), dupS = (t, o) => sdL.some(x => x !== o && x.toLowerCase() === t.toLowerCase()) ? 'Ce thème existe déjà.' : '';
+          L.push(lister('sd', { t: 'Thèmes du stock', unit: 'thème', items: sdL.map(d => ({ k: d, label: d })), ph: 'Nouveau thème (ex. Isolation)…', delLbl: 'Supprimer le thème', note: '',
+            ren: (o, n) => dupS(n, o) || themeRenOp(o, n), delConf: 'Toucher encore : ses articles passent en « Autre »',
             del: d => themeDelOp(d), add: t => dupS(t) || (set({ sdiscs: [...sdL, t] }), '') }));
-          sdL.forEach((d, i) => L.push(lister('ty' + i, { t: 'Sous-catégories · ' + d, unit: 'sous-catégorie', items: typeIn(d).map(v => ({ k: v, label: v })), ph: 'Nouvelle sous-catégorie (ex. Câbles)…', delLbl: 'Supprimer la sous-catégorie', note: '', delConf: 'Toucher encore : ses articles passent en « Divers »',
+          sdL.forEach((d, i) => L.push(lister('ty' + i, { t: 'Types d’article · ' + d, unit: 'type', items: typeIn(d).map(v => ({ k: v, label: v })), ph: 'Nouveau type (ex. Câbles)…', delLbl: 'Supprimer le type', note: '', delConf: 'Toucher encore : ses articles passent en « Divers »',
             ren: (o, n) => typeRenOp(d, o, n), del: v => typeDelOp(d, v), add: t => typeAddOp(d, t) })));
         }
         if (cfOn && sec === 'c') {
@@ -4082,9 +3915,8 @@ class Component extends DCLogic {
               iaDelLbl: fm.iaDel ? 'Toucher encore pour retirer la clé' : 'Retirer la clé', iaDel: () => { if (!fm.iaDel) { setF({ iaDel: true }); return; } this.iaSet(''); } }; })(),
           mbxLims: [10, 30, 50, 100].map(n => ({ label: String(n), bg: mlim === n ? 'var(--on)' : 'transparent', fg: mlim === n ? INK : 'var(--ink2)', pick: () => set({ mbx: { ...mbx, limit: n } }) })),
           cfgGo: { p: go('p'), s: go('s'), m: go('m'), l: go('l'), c: go('c') },
-          cfgSub: { p: st.discs.length + ' disciplines · ' + lvlList.length + ' emplacements · photos ' + (projPhOn ? 'affichées' : 'masquées'), s: sdiscsOf(st).length + ' disciplines · sous-catégories · base EAN de ' + rn, m: '', l: CALU.length + ' calendriers · nom, couleur, disciplines', c: RUBK.length + ' rubriques · ' + SUP.length + ' contacts' },
-          qaStk: qaMk('stk', 'Nouvelle discipline (ex. Isolation)…', v => { const r = quickAdd('sdisc', v); if (r) { set({ stkD: r, stkU: null }); this.toast('Discipline « ' + r + ' » ajoutée au stock'); } return r; }),
-          qaSub: qaMk('ssub', 'Nouvelle sous-catégorie (ex. Câbles)…', v => { const t = up1(String(v || '').trim()), e = typeAddOp(st.stkD, t); if (e) { this.toast(e); return ''; } set({ stkU: t }); this.toast('Sous-catégorie « ' + t + ' » ajoutée'); return t; }),
+          cfgSub: { p: st.discs.length + ' disciplines · ' + lvlList.length + ' emplacements · photos ' + (projPhOn ? 'affichées' : 'masquées'), s: sdiscsOf(st).length + ' thèmes · types d’article · base EAN de ' + rn, m: '', l: CALU.length + ' calendriers · nom, couleur, disciplines', c: RUBK.length + ' rubriques · ' + SUP.length + ' contacts' },
+          qaStk: qaMk('stk', st.stkD ? 'Nouveau type d’article (ex. Câbles)…' : 'Nouveau thème (ex. Isolation)…', v => { if (st.stkD) { const t = up1(String(v || '').trim()), e = typeAddOp(st.stkD, t); if (e) { this.toast(e); return ''; } set({ stkU: t }); this.toast('Type « ' + t + ' » ajouté'); return t; } const r = quickAdd('sdisc', v); if (r) { set({ stkD: r, stkU: null, stkF: null }); this.toast('Thème « ' + r + ' » ajouté au stock'); } return r; }),
           qaRub: qaMk('rub', 'Nouvelle rubrique (ex. Architecte)…', v => { const r = quickAdd('rub', v); if (r) set({ rub: r }); return r; }),
           qaCal: qaMk('cal', 'Nouveau calendrier (ex. Réception)…', v => { const r = quickAdd('cal', v); if (r) this.toast('Calendrier ajouté : couleur et disciplines dans Réglages › Planning'); return r; }),
           calEdit: () => set({ sheet: 'cfg', cfgSec: 'l', form: {}, back: [], menu: false }), rubEdit: () => set({ sheet: 'cfg', cfgSec: 'c', form: {}, back: [], menu: false })
@@ -4094,31 +3926,13 @@ class Component extends DCLogic {
       edDelLbl: F.confirm ? 'Confirmer la suppression' : (EK ? EK.delLbl : ''), edDelBg: F.confirm ? 'var(--warn)' : 'var(--warnBg)', edDelFg: F.confirm ? '#fff' : 'var(--warnTx)',
       edDel: () => { if (!F.confirm) { setF({ confirm: true }); return; } EK.del(edRef); pop(); },
       ...(() => { const key = sh === 'ed' && F.kind === 'stk' ? edRef.key : null, cid = key ? (st.cover || {})['k:' + key] : null, src = cid ? phUrl(cid) : '';
-        const ddk = F.dd || '', opt = (l, cur, pick) => ({ l, fw: cur ? '700' : '400', fg: cur ? 'var(--acc)' : 'var(--ink)', pick });
-        const kdL = Array.from(new Set([...sdiscsOf(st), ...(F.disc && F.disc !== 'Autre' ? [F.disc] : []), 'Autre'])), ksL = F.disc ? Array.from(new Set([...typeIn(F.disc), ...(F.sub ? [F.sub] : [])])) : [];
-        const addKdisc = () => this.setState({ fdlg: { t: 'Nouvelle discipline', v: '', ok: 'Ajouter', raw: true, ph: 'Ex. Isolation', fn: x => { const t = up1(String(x || '').trim()); if (!t) return; const r = quickAdd('sdisc', t); this.setState(s2 => ({ form: { ...s2.form, disc: r || t, sub: '', dd: '' } })); } } });
-        const addKsub = () => this.setState({ fdlg: { t: 'Nouvelle sous-catégorie', v: '', ok: 'Ajouter', raw: true, ph: 'Ex. Câbles', fn: x => { const t = up1(String(x || '').trim()); if (!t) return; this.setState(s2 => { const d = s2.form.disc, L = (s2.stypes || {})[d] || []; return { ...bump(), stypes: L.some(y => y.toLowerCase() === t.toLowerCase()) ? s2.stypes : { ...(s2.stypes || {}), [d]: [...L, t] }, form: { ...s2.form, sub: t, dd: '' } }; }); } } });
-        const mkK = 'kdesc', micLive = st.mic === mkK, per = numOf(F.per), tot = numOf(F.boxes) * Math.max(1, per) + numOf(F.loose), mn = numOf(F.min), lowK = tot <= mn && (F.min !== '' || tot === 0), unitK = (F.unit || '').trim() || 'à l’unité', uTxt = /^à l.unité$/i.test(unitK) ? (tot > 1 ? 'unités' : 'unité') : unitK;
-        const attIds = F.att || [], nPh = key ? ((st.ph || {})['k:' + key] || []).length : 0;
-        const kf = !key ? {} : { name: F.name || '', onName: fset('name'), brand: F.brand || '', onBrand: fset('brand'), model: F.model || '', onModel: fset('model'), desc: F.desc || '', onDesc: fset('desc'), unit: F.unit || '', onUnit: fset('unit'), ean: F.ean || '', onEan: fset('ean'),
-          per: F.per || '', onPer: fset('per'), loose: F.loose || '', onLoose: fset('loose'), boxes: F.boxes || '', onBoxes: fset('boxes'), min: F.min || '', onMin: fset('min'),
-          sum: 'Total : ' + tot + ' ' + uTxt + (per > 1 ? ' (' + numOf(F.boxes) + ' × ' + per + ' + ' + numOf(F.loose) + ')' : '') + (lowK ? ' · sera dans « À commander »' : ' · en stock'), sumBg: lowK ? 'var(--warnBg)' : 'var(--okBg)', sumFg: lowK ? 'var(--warnTx)' : 'var(--okTx)',
-          discLbl: F.disc ? (F.disc === 'Autre' ? 'Autres' : F.disc) : 'Choisir…', discTog: () => setF({ dd: ddk === 'disc' ? '' : 'disc' }), discOpen: ddk === 'disc',
-          discOpts: [...kdL.map(d => opt(d === 'Autre' ? 'Autres' : d, F.disc === d, () => setF({ disc: d, sub: '', dd: '' }))), ...(canCfg() ? [opt('＋ Nouvelle discipline…', false, addKdisc)] : [])],
-          subLbl: F.sub || (F.disc ? 'Aucune' : 'Choisir une discipline'), subTog: () => setF({ dd: ddk === 'sub' ? '' : 'sub' }), subOpen: ddk === 'sub' && !!F.disc,
-          subOpts: [opt('Aucune', !F.sub, () => setF({ sub: '', dd: '' })), ...ksL.map(d => opt(d, F.sub === d, () => setF({ sub: d, dd: '' }))), ...(canCfg() && F.disc ? [opt('＋ Nouvelle sous-catégorie…', false, addKsub)] : [])],
-          mic: () => this.dictate(mkK, 'desc'), micMsg: micLive || st.micErr === mkK, micLbl: micLive ? 'Écoute…' : 'Dictée indisponible', micCol: micLive ? '#FF5A5A' : 'var(--ink3)', micBg: micLive ? '#FF5A5A' : 'var(--tile)', micFg: micLive ? '#fff' : 'var(--ink)',
-          attSub: nPh || attIds.length ? [nPh ? nPh + ' photo' + (nPh > 1 ? 's' : '') : '', attIds.length ? attIds.length + ' document' + (attIds.length > 1 ? 's' : '') : ''].filter(Boolean).join(' · ') : 'Photos, plans, documents…',
-          attPh: async () => { await this.addPhotos('k:' + key, 'stk'); this.forceUpdate(); },
-          attDoc: async () => { const L = await fPick(true); for (const f of L) { const id = await this.fileUpload([f], ''); if (id) this.setState(s2 => ({ form: { ...s2.form, att: [...(s2.form.att || []), id] } })); } },
-          hasAtt: attIds.length > 0, atts: attIds.map(id => ({ n: ((st.files || {})[id] || {}).n || 'Document', rm: () => setF({ att: attIds.filter(x => x !== id) }) })) };
-        return { isKForm: !!key, kf, isStkSheet: !!key, stkPh: { has: !!src, no: !src, src, addLbl: src ? 'Changer la photo' : 'Ajouter une photo', add: () => this.stkPhotoAdd(key), findLbl: F.imgBusy ? 'Recherche…' : 'Rechercher la photo (Claude)', find: () => this.stkImgFind(key), rm: () => this.stkPhotoRm(key), hasMsg: !!F.imgMsg, msg: F.imgMsg || '' } }; })(),
+        return { isStkSheet: !!key, stkPh: { has: !!src, no: !src, src, addLbl: src ? 'Changer la photo' : 'Ajouter une photo', add: () => this.stkPhotoAdd(key), findLbl: F.imgBusy ? 'Recherche…' : 'Rechercher la photo (Claude)', find: () => this.stkImgFind(key), rm: () => this.stkPhotoRm(key), hasMsg: !!F.imgMsg, msg: F.imgMsg || '' } }; })(),
       edConfirm: !!F.confirm, edWarnTxt: ['proj', 'step', 'note', 'inv', 'dv', 'team', 'stk', 'ev', 'sup', 'mail'].includes(F.kind) ? 'Cet élément sera placé dans la corbeille pendant 30 jours, puis supprimé définitivement. Vous pouvez le restaurer d’ici là (Compte › Corbeille).' : 'Cette suppression est définitive : elle ne passe pas par la corbeille.', edCancel: () => setF({ confirm: false }),
       editProj: () => openEd('proj', { id: pid }), editSup: () => openEd('sup', { id: S0.id }), editMail: () => openEd('mail', { id: cm0.id }), newSite: () => openEd('site', { k: null }),
-      openSheet: (e) => st.tab === 'f' ? X.fAdd(e) : st.tab === 'i' ? set({ chat: null, chatErr: '' }) : st.tab === 's' ? set({ sheet: 'ed', menu: false, back: [], form: this.stkNewForm('') }) : st.tab === 'c' ? openEd('sup', { id: null, rub: rub }) : st.tab === 'l' ? set({ sheet: 'l', back: [], form: { date: selD, cal: CALS[CALU[0]][0], siteN: SL(st.site), disc: '', hrs: !!st.evTimes, ...(st.evTimes ? { t: '08:00', end: '09:00' } : {}) }, menu: false }) : set({ sheet: st.tab, back: [], form: st.tab === 'p' ? { steps: DEFSTEPS, disc: pdisc || '', sub: psubSel || '', prio: 'n' } : { day: st.day, site: st.site }, menu: false }),
-      sheetOpen: !!sh, closeSheet: pop, closeLbl, dismissSheet: () => { this.pendDocs = null; if (this.rec) try { this.rec.abort(); } catch (e) {} set({ sheet: null, mic: null, back: [] }); }, submit, submitCol: valid ? ACC : 'var(--ink3)', submitBg: valid ? 'var(--acc)' : 'var(--track)', submitFg: valid ? 'var(--accOn)' : 'var(--ink3)', submitLabel: sh === 'ed' ? (edRef.k === null || edRef.i < 0 || edRef.id === null || edRef.nw ? 'Créer' : 'OK') : sh === 'p' ? 'Créer' : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' || sh === 'cfg' || sh === 'trash' ? 'OK' : 'Ajouter',
+      openSheet: (e) => st.tab === 'f' ? X.fAdd(e) : st.tab === 'i' ? set({ chat: null, chatErr: '' }) : st.tab === 'c' ? openEd('sup', { id: null, rub: rub }) : st.tab === 'l' ? set({ sheet: 'l', back: [], form: { date: selD, cal: CALS[CALU[0]][0], siteN: SL(st.site), disc: '', hrs: !!st.evTimes, ...(st.evTimes ? { t: '08:00', end: '09:00' } : {}) }, menu: false }) : set({ sheet: st.tab, back: [], form: st.tab === 'p' ? { steps: DEFSTEPS, sups: [], b: pdisc ? [pdisc] : [] } : { day: st.day, site: st.site }, menu: false }),
+      sheetOpen: !!sh, closeSheet: pop, closeLbl, dismissSheet: () => { if (this.rec) try { this.rec.abort(); } catch (e) {} set({ sheet: null, mic: null, back: [] }); }, submit, submitCol: valid ? ACC : 'var(--ink3)', submitLabel: sh === 'ed' ? (edRef.k === null || edRef.i < 0 || edRef.id === null ? 'Créer' : 'OK') : sh === 'p' ? 'Créer' : sh === 'acc' || sh === 'site' || sh === 'stkcfg' || sh === 'supcfg' || sh === 'cfg' || sh === 'trash' ? 'OK' : 'Ajouter',
       sheetTitle: sh === 'ed' ? (EK ? EK.title(edRef) : '') : sh === 'trash' ? 'Corbeille' : sh === 'cfg' ? 'Réglages · ' + ({ p: 'Projets', s: 'Stocks', m: 'Mails', l: 'Planning', c: 'Contacts' }[st.cfgSec] || '') : { stkcfg: 'Réglages du stock', supcfg: 'Réglages fournisseurs', site: 'Configurer le site', acc: 'Compte', p: 'Nouveau projet', s: 'Nouveau produit', l: 'Nouvel événement', sup: 'Ajouter un fournisseur', inv: 'Nouvelle facture' }[sh] || '',
-      groups, fSteps, invSups, invSt, projSupOn, projPhCover: projPhOn,
+      groups, fSteps, invSups, invSt, projSupOn, projPhCover: sh === 'p' && projPhOn,
       fSel: fSelL, hasFSel: fSelL.length > 0, fSelN: fSelL.length ? fSelL.length + ' sélectionné' + (fSelL.length > 1 ? 's' : '') : '', fSupQ: F.fq || '', onFSupQ: fset('fq'), hasFSupQ: !!F.fq, clearFSupQ: () => setF({ fq: '' }),
       fRes, hasFRes: fRes.length > 0, fResHint: !fRes.length && !!fq, fResTxt: fq ? 'Aucun contact référencé ne correspond.' : '',
       dirList, dirQ: F.dq || '', onDirQ: fset('dq'), hasDirQ: !!F.dq, clearDirQ: () => setF({ dq: '' }), dirT: dq ? 'Résultats' : 'Annuaire · ce site en premier', dirNone: !dirList.length, dirNoneTxt: dq ? 'Aucun contact référencé ne correspond à « ' + (F.dq || '').trim() + ' ». Ajoutez-le d’abord dans Contacts.' : 'Tous les contacts de cette rubrique sont déjà attachés au projet.',

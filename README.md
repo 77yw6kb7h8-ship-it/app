@@ -105,13 +105,13 @@ via le projet Supabase (Irlande) décrit dans `supabase/README.md`.
 
 ## Réglages
 
-Compte › **Réglages** : une page par section (aussi par l'icône de réglages en haut à droite des filtres de Mes projets, à droite d'« Articles » dans Stocks, ou la roue dentée des autres onglets).
+Compte › **Réglages** : une page par section (aussi par la roue dentée en haut de chaque onglet).
 
 - **Projets** : disciplines (toucher pour renommer ou supprimer ; un nouveau nom est repris dans les
   projets, le planning et les contacts, jamais dans le stock), emplacements proposés, tri par avancement
-  (Tous / En cours / Terminés) activé ou non, photos des projets affichées ou masquées,
+  (En cours / À faire / Terminés) activé ou non, photos des projets affichées ou masquées,
   fournisseurs par projet activés ou non.
-- **Stocks** : disciplines et sous-catégories de chaque discipline (toucher pour renommer ou supprimer, « Ajouter » pour en créer), articles et seuils du site (le bouton de commande ajoute un pack s’il est connu, sinon 1) ; **base de référence EAN** (import du catalogue CSV
+- **Stocks** : thèmes et types d’article de chaque thème (toucher pour renommer ou supprimer, « Ajouter » pour en créer), articles et seuils du site (le bouton de commande ajoute un pack s’il est connu, sinon 1) ; **base de référence EAN** (import du catalogue CSV
   du négoce, export, vider).
 - **Mails** : adresse mail, serveur IMAP (deviné d'après l'adresse), mot de passe d'application
   (gardé sur l'appareil, jamais dans les sauvegardes), nombre de mails à synchroniser (10, 30, 50,
@@ -131,17 +131,8 @@ Compte › **Réglages** : une page par section (aussi par l'icône de réglages
   toute l'entreprise ; « Restaurer » les remet en place, glisser vers la gauche les supprime pour de
   bon. Glisser vers la gauche supprime aussi dans l'annuaire, les calendriers et les articles des
   réglages.
-- **Mes projets** (v36) : en-tête avec icône, recherche et « + » ; filtres **Tous / En cours / Terminés** ;
-  **priorités** Urgent, Prioritaire, Normal, Faible (comptées et cliquables pour filtrer) ; boutons de
-  **disciplines** (Travaux, Dépannage, Vérification, Maintenance au premier lancement, modifiables) puis, la
-  discipline choisie, ses **sous-disciplines** (Travaux : Menuiserie, Peinture, Maçonnerie, Revêtements,
-  Aménagement ; « + » pour en ajouter). Les projets sont de petites cartes horizontales : vignette carrée,
-  nom, sous-discipline et étapes, priorité, flèche. Plus de grande photo, y compris sur la fiche.
-  **Nouveau projet** : photo et titre, deux menus Discipline / Sous-discipline, Priorité, Description (avec
-  dictée), pièces jointes (photos, plans, documents), emplacement, étapes (coche ou jauge), Planning avec
-  interrupteur, **Budget estimatif** (minimum et maximum) avec interrupteur ; plus de fournisseurs à la
-  création. Un projet a une discipline, une sous-discipline et une priorité (« Modifier le projet » aussi).
-- **Projets** : un projet a un calendrier ; son événement de planning reprend les deux à la création
+- **Projets** : barre des disciplines (filtre) avec **+** pour en créer une. Un projet peut avoir
+  plusieurs disciplines et un calendrier ; son événement de planning reprend les deux à la création
   (changer ensuite les disciplines du projet ne modifie pas les événements déjà créés). Bouton
   « Photo » sur la fiche pour changer la photo d'affichage. À la création, seul
   l'**emplacement** est demandé (RDC, 2ème étage…, en boutons ; « Modifier » au bout pour changer
@@ -161,20 +152,13 @@ Compte › **Réglages** : une page par section (aussi par l'icône de réglages
   **Documents** : rapport PDF du projet (synthèse, budget, notes, étapes avec leur date
   d'achèvement, devis, factures, intervenants, photos avec date et description), dossiers Photos,
   Devis, Factures et documents ajoutés, « Ouvrir le dossier dans Fichiers ».
-- **Stocks** (v36) : en-tête Stocks, scanner et « + » ; deux grands boutons **À commander** et **En stock**
-  (avec le nombre d'articles ; plus d'« En commande ») ; rubrique **Disciplines** (Électricité, Plomberie,
-  Chaufferie, Autres au premier lancement) avec son « + » ; la discipline choisie, ses **Sous-catégories**
-  (Électricité : Disjoncteurs, Câbles, Interrupteurs, Prises, Éclairage) avec leur « + » ; puis les **Articles**
-  en cartes horizontales : photo, nom, discipline · sous-catégorie, marque et modèle, quantité, seuil. Un
-  produit passe tout seul dans « À commander » quand son stock atteint le seuil d'alerte. Ces disciplines n'ont aucun
-  lien avec celles des projets. « Modifier » (propriétaire et admins) affiche un ✕ sur chaque pastille : toucher la
-  pastille la renomme, deux touches sur ✕ la suppriment (ses articles passent en « Autres » pour une discipline,
-  en « Divers » pour une sous-catégorie). Mêmes réglages dans Réglages › Stocks (icône à droite d'« Articles »).
-  **Nouveau produit** : photo en haut à gauche (importer, prendre ou chercher avec Claude), nom, marque, modèle,
-  deux menus Discipline / Sous-discipline, **Quantités** (unité de base, unités par boîte ou pack, quantité à
-  l'unité, nombre de boîtes ou packs, seuil d'alerte ; le total est calculé), Description (dictée), pièces jointes,
-  référence (code EAN) et, tout en bas, une grande rubrique **Scanner le QR code / code-barres** qui remplit le nom,
-  la marque, le modèle, la référence et le conditionnement quand ils sont connus. Bouton
+- **Stocks** : **thèmes** propres au stock (le « + » de la ligne et Réglages › Stocks), sans aucun lien avec les
+  disciplines des projets. Une seule ligne déroulante : d'abord les thèmes ; un thème choisi, la même ligne
+  propose ses **types d'article** (Électricité › Câbles / Ampoules / Prises…) avec une pastille « ‹ thème » pour
+  revenir. Le « + » de la ligne ajoute un thème (premier niveau) ou un type d’article (dans un thème) ; « Modifier »
+  (propriétaire et admins) affiche un ✕ sur chaque pastille : toucher la pastille la renomme, deux touches sur ✕
+  la suppriment (ses articles passent en « Autre » pour un thème, en « Divers » pour un type). Mêmes réglages
+  dans Réglages › Stocks. Un type créé sans article est gardé et partagé avec l'équipe ; bouton
   **scan EAN** (caméra, photo du code ou saisie). Un code est cherché dans vos articles, puis la
   **base de référence** (catalogue du négoce importé + produits déjà nommés, sans réseau), puis Open
   Products Facts et Open Food Facts, puis par la session cloud sur les sites du bâtiment (Plateforme
