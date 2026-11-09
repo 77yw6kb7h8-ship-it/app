@@ -204,7 +204,7 @@ Compte › **Réglages** : une page par section (aussi par l'icône à droite d'
   assombrissement au toucher. Tout se règle dans la feuille de style et les variables en tête de `index.html` ;
   « Réduire la transparence » (réglage iOS) remplace le verre par un fond opaque.
 - **Formulaires** : « Catégorie » et « Sous-catégorie » d'un projet sont des listes déroulantes ; le calendrier
-  d'un événement se choisit par pastille de couleur (son nom s'affiche à côté du titre) ; un champ « fichier »
+  d'un événement se choisit parmi des pastilles qui portent sa couleur et son nom (avec « + » pour en créer un) ; un champ « fichier »
   (PDF, pièce d'identité…) dépose le document dans Fichiers. Le nouvel événement n'a plus de « Catégorie »,
   les notes sont juste sous l'intitulé, et « Contact » devient « Intervenant » avec un PDF ; la fiche contact
   a « ID du contact » et « Intervenant » (PDF).
