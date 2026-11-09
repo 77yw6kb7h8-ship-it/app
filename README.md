@@ -11,14 +11,22 @@ Thème clair par défaut comme la v4 ; thème sombre dans Compte. Intitulés en 
 
 - **Sites** : menu Sites → « + Nouveau site » ; sur un site, Configurer → « Paramètres »
   pour renommer, changer la description, la couleur, l'adresse, ou supprimer.
+- **Couleurs** : partout où l'on choisit une couleur (site, calendrier, catégorie), une grille de
+  **24 pastilles** usuelles rangées par teinte (rouge, bordeaux, saumon, orange, ambre, jaune, beige, marron,
+  olive, lime, vert, menthe, sauge, canard, ciel, bleu, marine, indigo, violet, prune, rose, ardoise, gris, noir) ;
+  la pastille choisie porte une coche. Dans la fiche d'une catégorie (Projet, Stocks), la couleur teinte sa
+  pastille, son icône et sa ligne de liste ; retoucher la pastille retire la couleur.
 - **Projets** : bouton « Modifier » sur la fiche (nom, description d’une ligne, phase, site, adresse,
   suppression). La fin affichée vient des dates « du … au … » choisies à la création.
-- **Étapes** (en mode Modifier), **notes**, **factures**, **intervenants**, **événements** :
+- **Étapes** (en mode Modifier), **factures**, **intervenants**, **événements** :
   toucher l'élément pour le modifier ou le supprimer.
 - **Notes du projet** : au-dessus des étapes, une ligne qui grandit avec le texte (une ligne si
   vide). Au-delà de 4 lignes, elle s’affiche réduite avec « Afficher tout » / « Réduire ». Partagées
   comme le reste du projet et connues de Claude.
-- **Stock** : ouvrir un article → « Modifier l'article ».
+- **Stock** : l'écran principal ne sert qu'à **consommer** (bouton « − Consommer », retire 1). Toucher un article ouvre sa
+  **fiche** : une quantité saisie à la main sert au choix à **Ajouter** au stock ou à **Commander** (« Commander 24 unités »,
+  qui met l'article au panier « à commander » sans toucher au stock) ; une commande envoyée se **réceptionne** depuis la même
+  fiche. La flèche **›** de la carte ouvre le formulaire du produit.
 - **Fournisseurs** : fiche → « Modifier ». **Messages** : « Modifier ou supprimer le message ».
 
 Chaque suppression demande deux touchers. Tout est sauvegardé sur le téléphone.
@@ -105,60 +113,80 @@ via le projet Supabase (Irlande) décrit dans `supabase/README.md`.
 
 ## Réglages
 
-Compte › **Réglages** : une page par section (aussi par la roue dentée en haut de chaque onglet).
+Compte › **Réglages** : une page par section (aussi par l'icône à droite d'« Articles » dans Stocks, ou la roue dentée des autres onglets ; Projet n'a plus de bouton de réglages).
 
-- **Projets** : disciplines (toucher pour renommer ou supprimer ; un nouveau nom est repris dans les
-  projets, le planning et les contacts, jamais dans le stock), emplacements proposés, tri par avancement
-  (En cours / À faire / Terminés) activé ou non, photos des projets affichées ou masquées,
-  fournisseurs par projet activés ou non.
-- **Stocks** : thèmes et types d’article de chaque thème (toucher pour renommer ou supprimer, « Ajouter » pour en créer), articles et seuils du site (le bouton de commande ajoute un pack s’il est connu, sinon 1) ; **base de référence EAN** (import du catalogue CSV
+- **Projets** : tri par avancement (plus de liste d'emplacements ; les catégories se modifient directement dans Projet),
+  (Tous / En cours / Terminés) activé ou non, photos des projets affichées ou masquées.
+- **Stocks** : catégories et sous-catégories de chaque catégorie (toucher pour renommer ou supprimer, « Ajouter » pour en créer), articles et seuils du site (le bouton de commande ajoute un pack s’il est connu, sinon 1) ; **base de référence EAN** (import du catalogue CSV
   du négoce, export, vider).
 - **Mails** : adresse mail, serveur IMAP (deviné d'après l'adresse), mot de passe d'application
   (gardé sur l'appareil, jamais dans les sauvegardes), nombre de mails à synchroniser (10, 30, 50,
   100), session cloud.
 - **Planning** : « Heures de début et de fin par défaut » (interrupteur proposé à chaque nouvel
-  événement) ; calendriers (nom, couleur, disciplines proposées), ajout et suppression ; les
+  événement) ; calendriers (nom, couleur, catégories proposées), ajout et suppression ; les
   événements d'un calendrier supprimé passent dans le premier calendrier restant.
 - **Contacts** : rubriques (renommer, ajouter, supprimer ; « Fournisseur » reste car elle porte le
   stock et les factures), annuaire complet.
 
 ## Projets, stock, planning, contacts, mails
 
-- **Bouton « + »** au bout des listes défilantes (disciplines, rubriques, calendriers), dans les
+- **Bouton « + »** au bout des listes défilantes (catégories, rubriques, calendriers), dans les
   formulaires comme dans les onglets : ajout immédiat, réservé au propriétaire et aux admins.
 - **Corbeille** (Compte, propriétaire et admins) : projets, contacts, événements, articles,
   factures, étapes, notes, intervenants, photos et messages supprimés restent 30 jours, partagés avec
   toute l'entreprise ; « Restaurer » les remet en place, glisser vers la gauche les supprime pour de
   bon. Glisser vers la gauche supprime aussi dans l'annuaire, les calendriers et les articles des
   réglages.
-- **Projets** : barre des disciplines (filtre) avec **+** pour en créer une. Un projet peut avoir
-  plusieurs disciplines et un calendrier ; son événement de planning reprend les deux à la création
-  (changer ensuite les disciplines du projet ne modifie pas les événements déjà créés). Bouton
-  « Photo » sur la fiche pour changer la photo d'affichage. À la création, seul
-  l'**emplacement** est demandé (RDC, 2ème étage…, en boutons ; « Modifier » au bout pour changer
-  la liste). Planning du projet à la création : une date (« Du ») ou une période (« Du 15 mai au 12 juin »),
+- **Projet** (v37) : en-tête avec icône, recherche et « + » ; sections **Tous / À faire / En cours / Terminés** (une seule à la fois) ; rubrique **Filtres** que le bouton **^** replie ou déplie (le filtre actif reste rappelé dans le titre) ;
+  **priorités** Urgent, Prioritaire, Normal, Faible (comptées et cliquables pour filtrer) ; boutons de
+  **catégories** (aucune au départ). « + » ouvre la fiche **Nouvelle catégorie** : nom et **icône** à choisir dans un
+  catalogue de 83 icônes de chantier (outils, peinture, chantier, bâtiment, électricité, plomberie et chauffage,
+  équipement, suivi ; bibliothèque Lucide, licence ISC). Le crayon « Modifier » transforme les pastilles en **liste** : une ligne par
+  catégorie (icône, nom, nombre de projets) avec ses sous-catégories dessous, « + Sous-catégorie » et « Nouvelle
+  catégorie » ; toucher une ligne ouvre sa fiche (nom, icône, Supprimer) ; **glisser une ligne vers la gauche** la
+  supprime (« Annuler » reste proposé ; ses projets n'ont alors plus de catégorie ou de sous-catégorie). Mêmes
+  fiches dans le formulaire Nouveau projet et dans Stocks. **Moteur de catégories** (Projet, Stocks, filtre des Contacts) : une seule ligne ; toucher une
+  catégorie l'épingle à gauche (avec son icône et un ✕) et ses **sous-catégories** apparaissent à sa droite, dans la
+  même ligne ; la retoucher la désélectionne. Les projets sont de petites cartes horizontales : vignette carrée,
+  nom, sous-catégorie et étapes (ou « Terminé » pour un projet sans étapes), priorité, flèche. Plus de grande photo, y compris sur la fiche.
+  **Nouveau projet** : photo et titre, **Description** (avec dictée) juste dessous, deux menus Catégorie /
+  Sous-catégorie, Priorité, pièces jointes (photos, plans, documents), emplacement (champ libre), puis trois
+  interrupteurs, tous **désactivés par défaut** : **Étapes** (aucune étape pré-créée ; sans étapes, la fiche
+  propose « Marquer terminé » et « Modifier le projet › Suivi par étapes » les active), **Planning** et
+  **Budget estimatif** (minimum et maximum). Plus aucun exemple de saisie dans les champs ; plus de fournisseurs
+  à la création. Un projet a une catégorie, une sous-catégorie et une priorité (« Modifier le projet » aussi).
+- **Projets** : un projet a un calendrier ; son événement de planning reprend les deux à la création
+  (changer ensuite les catégories du projet ne modifie pas les événements déjà créés). Bouton
+  « Photo » sur la fiche pour changer la photo d'affichage. Planning du projet à la création : une date (« Du ») ou une période (« Du 15 mai au 12 juin »),
   affichée chaque jour dans le planning ; sans échéance saisie, la fin devient l'échéance.
-  Fiche : **Avancé** et **Fourn. ›** (descend jusqu'aux intervenants), puis la section **Budget** :
-  montant engagé (devis acceptés), barre payé / à payer / à facturer, budget prévu facultatif
-  (« Définir le budget ») et une ligne d'alerte (dépassement du budget, facturé au-delà des devis,
-  reste disponible, devis en attente). Onglets **Étapes**, **Devis & facture**, **Photos**,
-  **Documents** ; les **Intervenants** (fournisseurs du projet et équipe du site) sont en bas de la
-  fiche, avec « + Ajouter ». **Devis & facture** : une case « + Devis », une case « + Facture » ;
-  fournisseur au choix ou saisi (il rejoint les intervenants), statut à toucher (devis : en attente,
-  accepté, refusé ; facture : à payer, payée), trombone pour joindre le document (rangé dans le
-  dossier du projet). Onglet **Photos** : Avant et Après en grille, **Pendant** en journal avec
+  Fiche : la **description** (en gros) juste sous le titre, une **barre de progression** compacte rangée dans
+  l'en-tête, sous l'emplacement (touchable pour marquer terminé un projet sans étapes), les notes du projet, puis la barre **Étapes · Documents · Photos**
+  (Étapes absent d'un projet sans étapes). Plus de carte Budget, de fournisseurs rattachés au projet ni de rubrique
+  « À prévoir pour la suite » ; les **Intervenants** (équipe du site) sont en bas de la fiche, avec « + Ajouter ».
+  Onglet **Documents** : trois boutons identiques **+ Devis**, **+ Facture**, **+ Document**, qui joignent un fichier
+  et le rangent dans le dossier du projet correspondant (Devis, Factures, ou le dossier du projet) ; une rangée de
+  filtres **Tous / Devis / Factures / Documents** (avec leur nombre) trie la liste, où chaque fichier porte son type.
+  Plus de saisie de montants, de fournisseurs ni de statuts. Onglet **Photos** : Avant et Après en grille, **Pendant** en journal avec
   l'heure de prise de vue (lue dans la photo) et une description ; couverture, déplacer, remplacer,
   supprimer (photos réduites à 1600 px, gardées sur l'appareil, incluses dans les sauvegardes).
-  **Documents** : rapport PDF du projet (synthèse, budget, notes, étapes avec leur date
-  d'achèvement, devis, factures, intervenants, photos avec date et description), dossiers Photos,
-  Devis, Factures et documents ajoutés, « Ouvrir le dossier dans Fichiers ».
-- **Stocks** : **thèmes** propres au stock (le « + » de la ligne et Réglages › Stocks), sans aucun lien avec les
-  disciplines des projets. Une seule ligne déroulante : d'abord les thèmes ; un thème choisi, la même ligne
-  propose ses **types d'article** (Électricité › Câbles / Ampoules / Prises…) avec une pastille « ‹ thème » pour
-  revenir. Le « + » de la ligne ajoute un thème (premier niveau) ou un type d’article (dans un thème) ; « Modifier »
-  (propriétaire et admins) affiche un ✕ sur chaque pastille : toucher la pastille la renomme, deux touches sur ✕
-  la suppriment (ses articles passent en « Autre » pour un thème, en « Divers » pour un type). Mêmes réglages
-  dans Réglages › Stocks. Un type créé sans article est gardé et partagé avec l'équipe ; bouton
+  **Documents** : rapport PDF du projet (synthèse, notes, étapes avec leur date d'achèvement, intervenants,
+  photos avec date et description) en tête de liste, « Ouvrir le dossier dans Fichiers ».
+- **Stocks** (v37) : en-tête Stocks, scanner et « + » ; deux grands boutons **À commander** et **En stock**
+  (avec le nombre d'articles ; plus d'« En commande ») ; rubrique **Catégories** (aucune au départ, plus « Autres »)
+  avec son « + » (même fiche nom + icône que pour les projets) ; la catégorie choisie, ses **Sous-catégories** avec leur « + » ; puis les **Articles**
+  en cartes horizontales : photo, nom, catégorie · sous-catégorie, marque et modèle, quantité, seuil. Un
+  produit passe tout seul dans « À commander » quand son stock atteint le seuil d'alerte. Ces catégories n'ont aucun
+  lien avec celles des projets. « Modifier » (propriétaire et admins) affiche un ✕ sur chaque pastille : toucher la
+  pastille la renomme, deux touches sur ✕ la suppriment (ses articles passent en « Autres » pour une catégorie,
+  en « Divers » pour une sous-catégorie). Mêmes réglages dans Réglages › Stocks (icône à droite d'« Articles »).
+  **Nouveau produit** : photo en haut à gauche (importer, prendre ou chercher avec Claude), nom, marque, modèle,
+  deux menus Catégorie / Sous-catégorie, **Quantités** : **Unité de base** (un nombre de pièces : 1 pour une
+  bouteille, 2 pour un paquet de deux ampoules, qui devient un « lot de 2 »), **Quantité du pack** (en unités de
+  base : 12 bouteilles, ou 12 lots de 2 ampoules, soit 24 pièces ; le bouton de commande ajoute un pack), **Seuil
+  d'alerte** saisi à la main, puis le **stock actuel** (packs complets et unités seules ; le total est calculé et
+  converti en pièces). L'article passe dans « À commander » dès que son stock atteint ou passe sous le seuil, Description (dictée), pièces jointes,
+  référence (code EAN) et, tout en bas, une grande rubrique **Scanner le QR code / code-barres** qui remplit le nom,
+  la marque, le modèle, la référence et le conditionnement quand ils sont connus. Bouton
   **scan EAN** (caméra, photo du code ou saisie). Un code est cherché dans vos articles, puis la
   **base de référence** (catalogue du négoce importé + produits déjà nommés, sans réseau), puis Open
   Products Facts et Open Food Facts, puis par la session cloud sur les sites du bâtiment (Plateforme
@@ -166,16 +194,27 @@ Compte › **Réglages** : une page par section (aussi par la roue dentée en ha
   **Photo du produit** : dans la fiche de l'article, « Ajouter une photo » (appareil photo ou photothèque) ou
   « Rechercher la photo (Claude) » (Open Food Facts par code EAN, sinon recherche web de Claude) ; la photo
   est synchronisée et s'affiche sur la carte de l'article.
-  **Scan et packs** : un article déjà connu ouvre « Ajouter au stock » : à l'unité ou par pack. Un carton de 12
-  scanné en pack compte 12 « à l'unité » pour 1 pack ; l'unité de base reste « à l'unité » et le nombre
-  d'unités par pack se retient pour les scans suivants (aussi réglable dans la fiche).
+  **Scan** : un article déjà connu ouvre « Ajouter au stock » avec la seule quantité à saisir, comme
+  un toucher sur sa carte ; l'unité de base et la quantité du pack se règlent dans « Modifier l'article ».
+- **Fond animé** (Compte › « Fond animé », désactivé par défaut) : les taches de couleur du fond suivent l'inclinaison du
+  téléphone (accéléromètre, avec ressort) et sursautent quand on le secoue ; le calcul s'arrête dès que le téléphone est
+  immobile. iOS demande l'autorisation « Mouvement et orientation » à l'activation. Désactivé si « Réduire les animations » est actif.
+- **Style Liquid Glass** : fond dégradé coloré, cartes, feuilles, menus et barre du bas en verre dépoli (flou +
+  saturation), reflet fin sur les bords, boutons bombés (sélection, accent, boutons pleins) et léger
+  assombrissement au toucher. Tout se règle dans la feuille de style et les variables en tête de `index.html` ;
+  « Réduire la transparence » (réglage iOS) remplace le verre par un fond opaque.
+- **Formulaires** : « Catégorie » et « Sous-catégorie » d'un projet sont des listes déroulantes ; le calendrier
+  d'un événement se choisit par pastille de couleur (son nom s'affiche à côté du titre) ; un champ « fichier »
+  (PDF, pièce d'identité…) dépose le document dans Fichiers. Le nouvel événement n'a plus de « Catégorie »,
+  les notes sont juste sous l'intitulé, et « Contact » devient « Intervenant » avec un PDF ; la fiche contact
+  a « ID du contact » et « Intervenant » (PDF).
 - **Planning** : calendriers en haut (avec « + » et « Modifier »), vue du mois façon Calendrier
   d’Apple ; un projet ou un événement sur plusieurs jours y est tracé en barre continue. Un
   événement a une date de début et de fin, et des heures de début et de fin si l’interrupteur est
   activé (sinon toute la journée) ; sur plusieurs jours, il apparaît chaque jour (J1/3, J2/3…). Le choix du site ne propose
   que ses projets. Plus de calendriers Commandes ni Factures : les échéances de factures et les
   commandes à passer vont dans **Administratif**, les réceptions attendues dans **Prestation / visite**.
-- **Contacts** : rubriques modifiables (bouton « Modifier » au bout de la liste), discipline,
+- **Contacts** : rubriques modifiables (bouton « Modifier » au bout de la liste), catégorie,
   adresse, affectation aux sites, sélecteur de site. Délai et prix ne sont plus demandés à la
   création (modifiables ensuite sur la fiche d'un fournisseur).
 - **Mails** : résumé en deux lignes. Compte › Réglages › **Mails** : clé Claude de l'entreprise
