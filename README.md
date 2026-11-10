@@ -196,9 +196,16 @@ Compte › **Réglages** : une page par section (aussi par l'icône à droite d'
   est synchronisée et s'affiche sur la carte de l'article.
   **Scan** : un article déjà connu ouvre « Ajouter au stock » avec la seule quantité à saisir, comme
   un toucher sur sa carte ; l'unité de base et la quantité du pack se règlent dans « Modifier l'article ».
-- **Fond animé** (Compte › « Fond animé », désactivé par défaut) : les taches de couleur du fond suivent l'inclinaison du
-  téléphone (accéléromètre, avec ressort) et sursautent quand on le secoue ; le calcul s'arrête dès que le téléphone est
-  immobile. iOS demande l'autorisation « Mouvement et orientation » à l'activation. Désactivé si « Réduire les animations » est actif.
+- **Densité des boutons** (Compte › Apparence, et en tête de Réglages) : « Compacte » (par défaut, boutons et puces environ 20 % moins épais) ou
+  « Étendue » (l'ancien gabarit). Les paddings et hauteurs des boutons du gabarit passent par deux variables CSS, `--dens`
+  et `--dsz`, fixées au démarrage selon ce choix.
+- **Fond animé** (automatique, sans réglage) : les taches de couleur du fond suivent l'inclinaison du téléphone
+  (accéléromètre, avec ressort) et sursautent quand on le secoue ; le calcul s'arrête dès que le téléphone est immobile.
+  Sur iPhone, iOS demande l'autorisation « Mouvement et orientation » au **premier toucher** de l'écran (un refus est
+  mémorisé). Désactivé si « Réduire les animations » est actif.
+- **Mise à jour automatique** : quand une nouvelle version s'active, l'appli se recharge toute seule (tout de suite si elle
+  vient de s'ouvrir, sinon à son prochain retour au premier plan) ; elle cherche une mise à jour à chaque retour et toutes
+  les 10 minutes. Le numéro de version est affiché en bas de Compte (« Chantier · version 40 »).
 - **Style Liquid Glass** : fond dégradé coloré, cartes, feuilles, menus et barre du bas en verre dépoli (flou +
   saturation), reflet fin sur les bords, boutons bombés (sélection, accent, boutons pleins) et léger
   assombrissement au toucher. Tout se règle dans la feuille de style et les variables en tête de `index.html` ;
@@ -244,6 +251,18 @@ d'un appareil à l'autre : Compte → **Sauvegarde · iCloud Drive**.
   → iCloud Drive › **Chantier › Sauvegardes** (dossier créé sur le Mac, synchronisé par iCloud).
 - **Importer** choisit un fichier de sauvegarde, demande confirmation puis remplace toutes
   les données de l'appareil.
+
+## Développement local (Dev Servers + Vite)
+
+Sur le Mac, le programme **Dev Servers** lance l'appli avec un serveur **Vite** (`~/PycharmProjects/Chantier-dev`, qui sert la
+copie `~/PycharmProjects/Chantier`) :
+
+- **Chantier** : `http://localhost:8765/simulateur.html` ; l'iPhone sur le même Wi-Fi ouvre `http://<IP du Mac>:8765/`
+  (l'adresse « Network » s'affiche dans les logs). La page se recharge toute seule à chaque fichier modifié.
+- **Chantier (HTTPS iPhone)** : même chose en HTTPS, port 8766 (certificat auto-signé à accepter une fois dans Safari) ;
+  nécessaire sur iPhone pour l'accéléromètre du fond animé, qui exige une connexion sécurisée.
+- Pas de service worker ni de cache en développement : un ancien service worker est désinstallé au passage.
+- Après une modification dans le dépôt : `rsync -a chantier/ ~/PycharmProjects/Chantier/` (sans `--delete`).
 
 ## Mettre en ligne
 
