@@ -44,6 +44,8 @@ Chaque suppression demande deux touchers. Tout est sauvegardé sur le téléphon
 
 ## Barre d'onglets
 
+Dock en **verre** : piste claire en creux et **pastille claire** entourée d'une **lueur irisée diffuse** qui semble venir de dessous (teintes qui tournent lentement) ; elle glisse jusqu'à l'onglet ouvert en s'étirant ; onglet actif foncé, autres en gris clair. Suit le thème clair ou sombre.
+
 Compte › **Barre d’onglets** : jusqu’à 7 sections parmi Projets, Stocks, Mails, Planning, Contacts,
 Claude et Fichiers, dans l’ordre choisi. 5 sont visibles à la fois ; au-delà, la barre se fait glisser
 à gauche ou à droite (fondu sur le bord et indicateur de position sur les 2/3 de la barre), et l’onglet ouvert est
@@ -65,6 +67,11 @@ la barre déjà réglée sur l'appareil devient celle du compte (sauf s'il en a 
 - Maintenir un élément : ouvrir, renommer, dupliquer, déplacer, partager (enregistrer dans Fichiers,
   ouvrir dans une autre app), lire les informations, supprimer (corbeille de 30 jours ; le fichier
   n'est effacé du stockage qu'à la corbeille vidée).
+- **Arborescence en liste** : les dossiers se **déplient sur place** (chevron qui tourne) au lieu d'ouvrir une nouvelle page : dossiers pastel
+  (bleu, vert, rose, orange) avec leur nombre d'éléments à droite, fichiers indentés sous l'icône du dossier avec une icône par type
+  (PDF, image, vidéo, audio, code, présentation, mail…) et leur taille ; « Ouvrir le dossier › » en bas d'un dossier déplié y navigue
+  (pour y importer). À la racine, une carte **Récents** montre les 5 derniers fichiers avec l'heure (2 min, 1 h, lun.). La recherche
+  affiche une liste à plat avec le chemin ; la vue Icônes, la sélection, le glisser pour supprimer et l'appui long sont conservés.
 - **Visionneuse** : photos (pincer ou toucher deux fois pour zoomer), vidéos, audio, PDF (pages dans
   l'appli), texte, mails `.eml` et Outlook `.msg` (avec leurs pièces jointes). Word, Excel,
   PowerPoint : « Ouvrir » (aperçu de Safari) ou « Ouvrir dans… ». Glisser à gauche ou à droite :
@@ -75,8 +82,9 @@ la barre déjà réglée sur l'appareil devient celle du compte (sauf s'il en a 
   (stockées une seule fois, dans l'espace « photos »), les documents joints aux devis et factures y
   sont rangés, et le **rapport PDF** du projet est à sa racine. Ces dossiers sont tenus à jour par
   l'appli (nom du projet, déplacement de site) : ni renommés, ni déplacés, ni supprimés tant que le
-  projet existe ; on peut y ajouter ses propres fichiers et dossiers. Un projet supprimé laisse son
-  dossier (archive), qui redevient libre.
+  projet existe ; on peut y ajouter ses propres fichiers et dossiers. **Supprimer un projet supprime aussi ses dossiers**
+  (leurs fichiers partent à la corbeille de Fichiers pendant 30 jours) ; s'ils contiennent des fichiers, un avertissement l'indique avant de
+  confirmer. **Les projets terminés gardent leurs fichiers** : leur dossier reste en archive et redevient libre.
 
 ## Claude
 
@@ -196,6 +204,13 @@ Compte › **Réglages** : une page par section (aussi par l'icône à droite d'
   est synchronisée et s'affiche sur la carte de l'article.
   **Scan** : un article déjà connu ouvre « Ajouter au stock » avec la seule quantité à saisir, comme
   un toucher sur sa carte ; l'unité de base et la quantité du pack se règlent dans « Modifier l'article ».
+- **Moteur de catégories commun** (Projet, Stocks, Contacts) : un seul gabarit, donc le même affichage partout. Titre « Catégorie »
+  + « Modifier » ; pastilles à icône sur une ligne ; une catégorie touchée s'épingle à gauche (✕ pour la désélectionner) et ses
+  sous-catégories apparaissent à sa droite, avec « + » pour en ajouter. « Modifier » remplace les pastilles par l'**éditeur en liste** :
+  une ligne par catégorie (icône, nom, nombre d'éléments), ses sous-catégories dessous, « + Sous-catégorie » et « Nouvelle catégorie » ;
+  toucher une ligne pour renommer ou changer l'icône, glisser vers la gauche pour supprimer (« Annuler » reste proposé).
+  Spécificités : Stocks range les articles sans catégorie dans « Autres » (affiché seulement s'il en contient) ; Contacts a ses
+  rubriques propres (« Fournisseur » ne peut pas être supprimée).
 - **Densité des boutons** (Compte › Apparence, et en tête de Réglages) : « Compacte » (par défaut, boutons et puces environ 20 % moins épais) ou
   « Étendue » (l'ancien gabarit). Les paddings et hauteurs des boutons du gabarit passent par deux variables CSS, `--dens`
   et `--dsz`, fixées au démarrage selon ce choix.
@@ -205,7 +220,7 @@ Compte › **Réglages** : une page par section (aussi par l'icône à droite d'
   mémorisé). Désactivé si « Réduire les animations » est actif.
 - **Mise à jour automatique** : quand une nouvelle version s'active, l'appli se recharge toute seule (tout de suite si elle
   vient de s'ouvrir, sinon à son prochain retour au premier plan) ; elle cherche une mise à jour à chaque retour et toutes
-  les 10 minutes. Le numéro de version est affiché en bas de Compte (« Chantier · version 40 »).
+  les 10 minutes. Le numéro de version est affiché en bas de Compte (« Chantier · version 42 »).
 - **Style Liquid Glass** : fond dégradé coloré, cartes, feuilles, menus et barre du bas en verre dépoli (flou +
   saturation), reflet fin sur les bords, boutons bombés (sélection, accent, boutons pleins) et léger
   assombrissement au toucher. Tout se règle dans la feuille de style et les variables en tête de `index.html` ;
@@ -215,14 +230,31 @@ Compte › **Réglages** : une page par section (aussi par l'icône à droite d'
   (PDF, pièce d'identité…) dépose le document dans Fichiers. Le nouvel événement n'a plus de « Catégorie »,
   les notes sont juste sous l'intitulé, et « Contact » devient « Intervenant » avec un PDF ; la fiche contact
   a « ID du contact » et « Intervenant » (PDF).
-- **Planning** : calendriers en haut (avec « + » et « Modifier »), vue du mois façon Calendrier
-  d’Apple ; un projet ou un événement sur plusieurs jours y est tracé en barre continue. Un
+- **Gabarit commun des formulaires** (événement, nouveau projet, produit, contact — création et modification) : en-tête avec icône et ✕,
+  sections repliables à case (cochée automatiquement quand la section est remplie ; pour Étapes, Planning et Budget la case active la
+  rubrique), barre fixe « Annuler / Enregistrer ». **Catégorie et sous-catégorie sont fusionnées** en une seule sélection : la liste
+  montre chaque catégorie avec ses sous-catégories dessous ; toucher une catégorie propose aussitôt ses sous-catégories (la liste reste
+  ouverte), toucher une sous-catégorie fixe aussi sa catégorie ; « ＋ Nouvelle catégorie… » et « ＋ Nouvelle sous-catégorie… » en bas.
+  « Modifier le projet » garde pour l'instant l'ancien formulaire à champs séparés.
+- **Formulaire d'événement** (création et modification) : titre « Créer un événement », calendriers en pastilles à icône, puis
+  sections **à cocher** : à la création seule **Date et horaire** est active, on coche ensuite les sections voulues (**Description / Objet**,
+  **Informations société et intervenant**, **Projet**, **Pièces jointes**) pour faire apparaître leurs champs ; en modification, celles
+  qui contiennent des données sont ouvertes, et décocher une section ignore ses données. « Journée entière » coché : **date de fin** et
+  pas d'heures ; décoché : heures de début et de fin. Société cherchée dans les contacts (reprend téléphone et adresse), « ID » (pièce
+  d'identité), **Projet = un seul sélecteur Site › Projet**. Barre fixe « Annuler / Enregistrer
+  l'événement » ; « Supprimer l'événement » (corbeille 30 jours) en édition.
+- **Planning** : calendriers en haut (pastille **Tous** pour les réafficher tous, « + » et « Modifier »), puis le **résumé du jour**
+  sélectionné, et la **vue du mois** en bas, façon Calendrier d’Apple ; un projet ou un événement sur plusieurs jours y est tracé en barre continue. Un
   événement a une date de début et de fin, et des heures de début et de fin si l’interrupteur est
   activé (sinon toute la journée) ; sur plusieurs jours, il apparaît chaque jour (J1/3, J2/3…). Le choix du site ne propose
   que ses projets. Plus de calendriers Commandes ni Factures : les échéances de factures et les
   commandes à passer vont dans **Administratif**, les réceptions attendues dans **Prestation / visite**.
-- **Contacts** : rubriques modifiables (bouton « Modifier » au bout de la liste), catégorie,
-  adresse, affectation aux sites, sélecteur de site. Délai et prix ne sont plus demandés à la
+- **Contacts** : la **catégorie** et le **site** de chaque contact sont des étiquettes à droite de la ligne. Même moteur de catégories que Projet, mais indépendant : sous la recherche, les rubriques
+  (Fournisseurs, Sous-traitants, Clients… avec leur icône) ; aucune rubrique choisie = tous les contacts. Toucher une rubrique
+  l'épingle et affiche ses **sous-catégories** (anciennes « catégories de travaux » : métallurgie, sellier…) avec « + » pour en
+  ajouter. « Modifier » ouvre l'éditeur en liste (voir ci-dessous). **Formulaire contact** (création et modification, comme Projet et
+  Stocks) : nom, Catégorie / Sous-catégorie en menus, coordonnées (interlocuteur, téléphone, mail, **site internet**, adresse, ville),
+  conditions (fournisseurs), sites, description avec dictée, pièces jointes. La fiche affiche le site web avec « Ouvrir ↗ ». Délai et prix ne sont plus demandés à la
   création (modifiables ensuite sur la fiche d'un fournisseur).
 - **Mails** : résumé en deux lignes. Compte › Réglages › **Mails** : clé Claude de l'entreprise
   (propriétaire, admin), puis pour chacun adresse et mot de passe d'application. La boîte est lue par la
@@ -272,6 +304,19 @@ Le dossier `chantier/` est un site statique : il suffit de l'héberger en **HTTP
   (créer un compte gratuit pour garder le site).
 - **GitHub Pages** : Settings → Pages → branche `main`, dossier `/ (root)` ;
   l'appli est alors à `https://<compte>.github.io/project/chantier/`.
+
+## iPad et ordinateur
+
+L'appli s'adapte à la largeur de l'écran (seuils 768, 1100 et 1500 px, règles `@media` en tête de `index.html`) :
+
+- **iPad portrait / petit écran large (≥ 768 px)** : contenu centré (colonne de 820 px), barre d'onglets centrée (600 px),
+  feuilles de saisie en **fenêtres centrées** (700 px) au lieu de feuilles collées en bas, listes de projets et d'articles
+  sur **deux colonnes**, écrans Sites et Connexion bornés.
+- **iPad paysage / ordinateur (≥ 1100 px)** : colonne de 1040 px, fenêtres de 760 px ; **≥ 1500 px** : colonne de 1180 px,
+  trois colonnes pour les listes.
+- **Ordinateur** : la touche **Échap** ferme la feuille de saisie ; le glisser, l'appui long et le déplacement fonctionnent à la souris.
+- Le manifeste n'impose plus l'orientation portrait (`"orientation": "any"`) : l'iPad peut tourner.
+- Le simulateur (`simulateur.html`, iPhone de 402 px) n'est pas concerné : les règles ne s'appliquent qu'au-delà de 768 px.
 
 ## Installer sur l'iPhone
 

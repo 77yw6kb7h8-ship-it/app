@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chantier · Simulateur</title>
+<link rel="icon" href="./icons/icon-192.png">
+<style>
+:root {
+  --page: #D9DDE3; --ink: #0E1726; --ink2: rgba(14,23,38,.58); --chip: rgba(255,255,255,.6); --chipBd: rgba(255,255,255,.9); --acc: #0A7AFF; --track: rgba(14,23,38,.18);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --page: #0B0F17; --ink: #F2F4F8; --ink2: rgba(235,240,250,.6); --chip: rgba(255,255,255,.08); --chipBd: rgba(255,255,255,.14); --acc: #0A84FF; --track: rgba(255,255,255,.2); }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: radial-gradient(90% 60% at 0% 0%, rgba(10,122,255,.12), transparent 60%), radial-gradient(80% 60% at 100% 100%, rgba(240,160,90,.12), transparent 60%), var(--page);
+  color: var(--ink); font: 500 14px -apple-system, 'SF Pro Text', system-ui, sans-serif;
+  display: flex; flex-direction: column; align-items: center; overflow: hidden;
+}
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; padding: 16px 16px 0; }
+.bar b { font: 700 17px -apple-system, 'SF Pro Display', sans-serif; margin-right: 8px; }
+.chip { cursor: pointer; border: 1px solid var(--chipBd); background: var(--chip); color: var(--ink); padding: 8px 14px; border-radius: 999px; font: inherit; font-weight: 600; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); text-decoration: none; }
+.chip.on { background: var(--acc); border-color: var(--acc); color: #fff; }
+.sep { width: 1px; height: 22px; background: var(--chipBd); margin: 0 4px; }
+
+/* choix du modèle : un bouton par type de découpe d'écran, dessiné comme le haut d'un iPhone */
+.devs { display: flex; gap: 6px; align-items: center; }
+.dev { cursor: pointer; width: 46px; height: 60px; padding: 0; display: flex; align-items: flex-start; justify-content: center; border: 1px solid var(--chipBd); background: var(--chip); color: var(--ink); border-radius: 14px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: background .15s, color .15s, border-color .15s; overflow: hidden; }
+.dev svg { display: block; width: 40px; height: 56px; margin-top: 3px; }
+.dev:hover { border-color: var(--acc); }
+.dev.on { background: var(--acc); border-color: var(--acc); color: #fff; }
+.dev:focus-visible, .sw:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+
+/* interrupteur « Max » */
+.sw { cursor: pointer; display: flex; align-items: center; gap: 8px; border: 1px solid var(--chipBd); background: var(--chip); color: var(--ink); padding: 6px 12px 6px 14px; border-radius: 999px; font: inherit; font-weight: 600; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.sw i { position: relative; width: 42px; height: 26px; border-radius: 13px; background: var(--track); transition: background .2s; }
+.sw i::after { content: ''; position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,.3); transition: transform .2s; }
+.sw.on i { background: #30D158; }
+.sw.on i::after { transform: translateX(16px); }
+
+.stage { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; }
+.phone { position: relative; flex: none; padding: 12px; border-radius: 68px; background: #1B1D21; box-shadow: 0 0 0 2px #3A3D43, 0 40px 90px rgba(10,20,40,.35), inset 0 0 0 1px rgba(255,255,255,.08); transform-origin: center; }
+.screen { position: relative; overflow: hidden; border-radius: 56px; background: #EEF0F3; display: flex; flex-direction: column; }
+.status { flex: none; height: 54px; display: flex; align-items: center; justify-content: space-between; padding: 6px 30px 0 34px; font: 600 16px -apple-system, 'SF Pro Text', sans-serif; color: #000; transition: background .3s, color .3s; }
+.icons { display: flex; gap: 6px; align-items: center; }
+iframe { flex: 1; width: 100%; border: 0; display: block; background: transparent; }
+.home { position: absolute; bottom: 8px; left: 50%; width: 136px; height: 5px; margin-left: -68px; border-radius: 3px; background: #000; opacity: .85; z-index: 3; pointer-events: none; }
+.sebtn { display: none; position: absolute; bottom: 12px; left: 50%; width: 48px; height: 48px; margin-left: -24px; border-radius: 50%; border: 2px solid #3A3D43; }
+.hint { padding: 0 16px 14px; color: var(--ink2); font-size: 12.5px; text-align: center; }
+
+/* découpe d'écran (encoche ou Dynamic Island) */
+.cut { position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 3; pointer-events: none; display: block; }
+.cut.d-island { top: 11px; border-radius: 20px; background: #000; }
+
+/* iPhone à bouton Home (SE) : cadre épais, pas d'encoche ni de barre d'accueil */
+.phone.d-home { border-radius: 52px; padding: 70px 14px; }
+.phone.d-home .screen { border-radius: 4px; }
+.phone.d-home .status { height: 20px; padding: 0 8px; font-size: 12px; }
+.phone.d-home .cut, .phone.d-home .home { display: none; }
+.phone.d-home .sebtn { display: block; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="phone" id="phone">
+    <div class="screen" id="screen">
+      <div class="cut" id="cut"></div>
+      <div class="status" id="status"><span id="clock">9:41</span><span class="icons">
+        <svg width="18" height="12" viewBox="0 0 19 12" fill="currentColor"><rect x="0" y="7.5" width="3.2" height="4.5" rx=".7"/><rect x="4.8" y="5" width="3.2" height="7" rx=".7"/><rect x="9.6" y="2.5" width="3.2" height="9.5" rx=".7"/><rect x="14.4" y="0" width="3.2" height="12" rx=".7"/></svg>
+        <svg width="16" height="12" viewBox="0 0 17 12" fill="currentColor"><path d="M8.5 3.2c2.3 0 4.4.9 5.9 2.4l1.1-1.1A9.9 9.9 0 0 0 8.5 1.5 9.9 9.9 0 0 0 1.5 4.5l1.1 1.1a8.3 8.3 0 0 1 5.9-2.4zm0 3.3c1.4 0 2.6.5 3.6 1.4l1.1-1.1a6.7 6.7 0 0 0-9.4 0l1.1 1.1c1-.9 2.2-1.4 3.6-1.4zm0 3.3c.5 0 .9.2 1.3.5L8.5 11.6 7.2 10.3c.4-.3.8-.5 1.3-.5z"/></svg>
+        <svg width="26" height="12" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="23" height="12" rx="3.5" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2" fill="currentColor"/><path d="M25 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2z" fill="currentColor" opacity=".5"/></svg>
+      </span></div>
+      <iframe id="app" src="./" title="Application Chantier"></iframe>
+      <div class="home"></div>
+    </div>
+    <div class="sebtn"></div>
+  </div>
+</div>
+<script>
+// r : arrondi de l'écran · sh : hauteur de la barre d'état · size / max : taille de l'écran en points (modèle normal / Max ou Plus)
+const NOTCH_L = '<svg viewBox="0 0 209 30" width="209" height="30"><path d="M0 0H209C200 0 196 3 194 9L193 14C191 24 184 30 173 30H36C25 30 18 24 16 14L15 9C13 3 9 0 0 0Z" fill="#000"/><rect x="82" y="8" width="45" height="5" rx="2.5" fill="#1d1f24"/><circle cx="139" cy="11" r="3.4" fill="#16181c"/></svg>';
+const NOTCH_S = '<svg viewBox="0 0 162 32" width="162" height="32"><path d="M0 0H162C154 0 150 3 148 9L147 14C145 25 138 32 127 32H35C24 32 17 25 15 14L14 9C12 3 8 0 0 0Z" fill="#000"/><rect x="58" y="9" width="40" height="5" rx="2.5" fill="#1d1f24"/><circle cx="108" cy="12" r="3.3" fill="#16181c"/></svg>';
+const DEV = {
+  home:   { size: [375, 667], max: [414, 736], r: 4,  sh: 20, cut: '' },
+  notch:  { size: [375, 812], max: [414, 896], r: 40, sh: 44, cut: NOTCH_L },
+  notchS: { size: [390, 844], max: [428, 926], r: 47, sh: 47, cut: NOTCH_S },
+  island: { size: [402, 874], max: [440, 956], r: 56, sh: 54, cut: '' }
+};
+const phone = document.getElementById('phone'), screen = document.getElementById('screen'), app = document.getElementById('app'), status = document.getElementById('status'), cut = document.getElementById('cut');
+const dev = 'island', big = false;
+function fit() {
+  const t = DEV[dev], [w, h] = big ? t.max : t.size;
+  phone.className = 'phone d-' + dev;
+  if (dev !== 'home') phone.style.borderRadius = (t.r + 12) + 'px'; else phone.style.borderRadius = '';
+  screen.style.width = w + 'px';
+  screen.style.height = h + 'px';
+  screen.style.borderRadius = t.r + 'px';
+  if (dev !== 'home') status.style.height = t.sh + 'px'; else status.style.height = '';
+  cut.className = 'cut d-' + dev;
+  cut.innerHTML = t.cut;
+  const s0 = parseFloat(phone.dataset.s) || 1, box = phone.getBoundingClientRect(), outerH = box.height / s0, outerW = box.width / s0;
+  const avail = document.querySelector('.stage').getBoundingClientRect();
+  const s = Math.min(1, (avail.height - 24) / outerH, (avail.width - 24) / outerW);
+  phone.dataset.s = s;
+  phone.style.transform = 'scale(' + s + ')';
+}
+function refit() { phone.style.transform = ''; phone.dataset.s = 1; fit(); }
+addEventListener('resize', refit);
+// barre d'état assortie au thème choisi dans l'appli
+function sync() {
+  let dark = false;
+  try { dark = !!(JSON.parse(localStorage.getItem('chantier-app-v6') || '{}').state || {}).dark; } catch (e) {}
+  status.style.background = dark ? '#090D14' : 'linear-gradient(90deg,#DCE6F4,#EEF0F3)';
+  status.style.color = dark ? '#fff' : '#000';
+  document.querySelector('.home').style.background = dark ? '#fff' : '#000';
+  const d = new Date();
+  document.getElementById('clock').textContent = d.getHours() + ':' + String(d.getMinutes()).padStart(2, '0');
+}
+refit(); sync(); setInterval(sync, 800);
+</script>
+</body>
+</html>
