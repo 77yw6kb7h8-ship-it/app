@@ -713,7 +713,7 @@ if ('serviceWorker' in navigator) {
 </div>
 </sc-for>
 </div>
-<div data-tbind="1" style="position:absolute;left:calc(100% / 6);right:calc(100% / 6);bottom:2px;height:3px;border-radius:2px;background:var(--line);overflow:hidden;opacity:0;transition:opacity .2s;pointer-events:none"><div style="height:100%;border-radius:2px;background:var(--ink3)"></div></div>
+<div data-tbind="1" style="position:absolute;left:12px;right:12px;bottom:3px;height:3px;border-radius:2px;background:var(--line);overflow:hidden;opacity:0;transition:opacity .2s;pointer-events:none"><div style="height:100%;border-radius:2px;background:var(--ink3);will-change:transform"></div></div>
 </div>
 </sc-if>
 
@@ -1543,7 +1543,7 @@ const KS = Object.keys(SITES);
 const SL = k => SITES[k] ? (SITES[k].name || tc(SITES[k].label)) : k ? 'Site supprimé' : 'Aucun site';
 // 24 couleurs usuelles, rangées par teinte (calendriers, sites, catégories)
 // à garder identique à VERSION dans sw.js (affiché dans Compte)
-const APP_VERSION = '42';
+const APP_VERSION = '43';
 const COLORS = { Rouge: '#FF3B30', Bordeaux: '#9B1C31', Saumon: '#FF8A7A', Orange: '#E8590C', Ambre: '#FF9F0A', Jaune: '#FFCC00', Beige: '#C9B38A', Marron: '#8B5E3C', Olive: '#9AA34E', Lime: '#A3D63A', Vert: '#30A46C', Menthe: '#4CD6A0', Sauge: '#7FA88B', Canard: '#4E9FA2', Ciel: '#32ADE6', Bleu: '#0A84FF', Marine: '#1F3A93', Indigo: '#5856D6', Violet: '#AF52DE', Prune: '#B06E9C', Rose: '#E0569B', Ardoise: '#5B6478', Gris: '#8E8E93', Noir: '#1C1C1E' };
 const onCol = hex => { const n = parseInt(String(hex || '#000').slice(1), 16), l = 0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255); return l > 165 ? '#1C1C1E' : '#fff'; };
 const colorName = hex => Object.keys(COLORS).find(n => COLORS[n] === hex) || '';
@@ -2157,7 +2157,7 @@ const tabsOwn = comp => {
 const projFilesRun = comp => { const s = comp.state; if (s.P === comp.pfP && s.ph === comp.pfH && s.files === comp.pfF && s.rev === comp.pfR) return; comp.pfP = s.P; comp.pfH = s.ph; comp.pfF = s.files; comp.pfR = s.rev; const G = projFiles(s); if (G) comp.setState({ files: G }); };
 // barre d'onglets : fondu sur le bord où d'autres sections attendent, petit indicateur de défilement ; l'onglet actif est ramené en vue
 const tbFade = sc => { if (!sc) return; const m = sc.scrollWidth - sc.clientWidth, l = m > 2 && sc.scrollLeft > 2, r = m > 2 && sc.scrollLeft < m - 2, g = l || r ? 'linear-gradient(to right,' + (l ? 'transparent,#000 28px' : '#000') + ',' + (r ? '#000 calc(100% - 28px),transparent' : '#000') + ')' : ''; sc.style.webkitMaskImage = g; sc.style.maskImage = g;
-  const ind = sc.parentElement.querySelector('[data-tbind]'); if (ind) { ind.style.opacity = m > 2 ? '1' : '0'; if (m > 2) { ind.firstElementChild.style.width = 100 * sc.clientWidth / sc.scrollWidth + '%'; ind.firstElementChild.style.transform = 'translateX(' + 100 * sc.scrollLeft / sc.clientWidth + '%)'; } } };
+  const ind = sc.parentElement.querySelector('[data-tbind]'); if (ind) { ind.style.opacity = m > 2 ? '1' : '0'; if (m > 2) { const tw = ind.clientWidth, bw = Math.min(tw, 134); /* largeur de la barre d'accueil de l'iPhone (134 pt) */ ind.firstElementChild.style.width = bw + 'px'; ind.firstElementChild.style.transform = 'translateX(' + Math.max(0, Math.min(1, sc.scrollLeft / m)) * (tw - bw) + 'px)'; } } };
 // pastille de verre du dock : glisse jusqu'à l'onglet ouvert en s'étirant
 const tbLens = (sc, comp) => {
   const lens = sc && sc.querySelector('[data-tblens]'); if (!lens) return;

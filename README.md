@@ -220,7 +220,7 @@ Compte › **Réglages** : une page par section (aussi par l'icône à droite d'
   mémorisé). Désactivé si « Réduire les animations » est actif.
 - **Mise à jour automatique** : quand une nouvelle version s'active, l'appli se recharge toute seule (tout de suite si elle
   vient de s'ouvrir, sinon à son prochain retour au premier plan) ; elle cherche une mise à jour à chaque retour et toutes
-  les 10 minutes. Le numéro de version est affiché en bas de Compte (« Chantier · version 42 »).
+  les 10 minutes. Le numéro de version est affiché en bas de Compte (« Chantier · version 43 »).
 - **Style Liquid Glass** : fond dégradé coloré, cartes, feuilles, menus et barre du bas en verre dépoli (flou +
   saturation), reflet fin sur les bords, boutons bombés (sélection, accent, boutons pleins) et léger
   assombrissement au toucher. Tout se règle dans la feuille de style et les variables en tête de `index.html` ;
