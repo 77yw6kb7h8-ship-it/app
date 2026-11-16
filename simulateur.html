@@ -40,6 +40,7 @@ body {
 .sw.on i { background: #30D158; }
 .sw.on i::after { transform: translateX(16px); }
 
+.ver { position: fixed; top: 14px; left: 14px; z-index: 5; border: 1px solid var(--chipBd); background: var(--chip); color: var(--ink); font: 600 13px -apple-system, 'SF Pro Text', sans-serif; padding: 8px 12px; border-radius: 12px; cursor: pointer; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 2px 10px rgba(0,0,0,.08); }
 .stage { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; }
 .phone { position: relative; flex: none; padding: 12px; border-radius: 68px; background: #1B1D21; box-shadow: 0 0 0 2px #3A3D43, 0 40px 90px rgba(10,20,40,.35), inset 0 0 0 1px rgba(255,255,255,.08); transform-origin: center; }
 .screen { position: relative; overflow: hidden; border-radius: 56px; background: #EEF0F3; display: flex; flex-direction: column; }
@@ -63,6 +64,7 @@ iframe { flex: 1; width: 100%; border: 0; display: block; background: transparen
 </style>
 </head>
 <body>
+<select id="ver" class="ver" style="display:none" title="Version de l’appli · anciennes versions en lecture seule : aucune donnée n’est écrite"><option value="">Version actuelle (locale)</option></select>
 <div class="stage">
   <div class="phone" id="phone">
     <div class="screen" id="screen">
@@ -118,6 +120,22 @@ function sync() {
   const d = new Date();
   document.getElementById('clock').textContent = d.getHours() + ':' + String(d.getMinutes()).padStart(2, '0');
 }
+// version de l'appli : « Actuelle » (copie locale) ou une ancienne version lue dans l'historique git par le serveur local ;
+// le serveur local isole chaque ancienne version (lecture seule, stockage en mémoire) : rien ne touche aux données de l'appli actuelle
+const ver = document.getElementById('ver'), qs = new URLSearchParams(location.search);
+const verUrl = v => v ? '/versions/v' + v + '/' : './';
+// le choix est gardé dans l'adresse (?v=NN), jamais dans le stockage du navigateur
+const setVer = (v, save) => { app.src = verUrl(v); ver.value = v || ''; if (save) { try { history.replaceState(null, '', v ? '?v=' + v : location.pathname); } catch (e) {} } purge(v); };
+// restes éventuels des anciennes versions (cache des photos, sous un nom à part) : supprimés, sauf celui de la version affichée
+const purge = v => { try { if (indexedDB.databases) indexedDB.databases().then(L => L.forEach(d => { if (/^simulateur-v\d+:/.test(d.name || '') && !(v && d.name.startsWith('simulateur-v' + v + ':'))) indexedDB.deleteDatabase(d.name); })).catch(() => {}); } catch (e) {} };
+// sélecteur réservé à ce Mac (serveur local) ; les anciennes versions y sont servies en lecture seule
+if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) fetch('/versions.json').then(r => { if (!r.ok) throw new Error(); return r.json(); }).then(L => {
+  ver.style.display = '';
+  L.forEach(x => { const o = document.createElement('option'); o.value = x.v; o.textContent = 'v' + x.v + ' · ' + x.date.split('-').reverse().slice(0, 2).join('/') + ' · lecture seule'; ver.appendChild(o); });
+  const v0 = qs.get('v');
+  if (v0 && L.some(x => String(x.v) === String(v0))) setVer(v0, false); else purge('');
+}).catch(() => { ver.style.display = 'none'; });
+ver.onchange = () => setVer(ver.value, true);
 refit(); sync(); setInterval(sync, 800);
 </script>
 </body>

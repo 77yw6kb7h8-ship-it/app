@@ -23,7 +23,8 @@ Thème clair par défaut comme la v4 ; thème sombre dans Compte. Intitulés en 
 - **Notes du projet** : au-dessus des étapes, une ligne qui grandit avec le texte (une ligne si
   vide). Au-delà de 4 lignes, elle s’affiche réduite avec « Afficher tout » / « Réduire ». Partagées
   comme le reste du projet et connues de Claude.
-- **Stock** : l'écran principal ne sert qu'à **consommer** (bouton « − Consommer », retire 1). Toucher un article ouvre sa
+- **Stock** : sur l'écran principal, « − Consommer » retire 1 et « + Ajouter » ajoute 1 (v44). La carte affiche le titre, puis la
+  marque, puis le modèle (la catégorie n'y figure plus). Toucher un article ouvre sa
   **fiche** : une quantité saisie à la main sert au choix à **Ajouter** au stock ou à **Commander** (« Commander 24 unités »,
   qui met l'article au panier « à commander » sans toucher au stock) ; une commande envoyée se **réceptionne** depuis la même
   fiche. La flèche **›** de la carte ouvre le formulaire du produit.
@@ -204,6 +205,15 @@ Compte › **Réglages** : une page par section (aussi par l'icône à droite d'
   est synchronisée et s'affiche sur la carte de l'article.
   **Scan** : un article déjà connu ouvre « Ajouter au stock » avec la seule quantité à saisir, comme
   un toucher sur sa carte ; l'unité de base et la quantité du pack se règlent dans « Modifier l'article ».
+  **Scan, v44** : les sources se complètent au lieu de s'arrêter à la première (les deux bases ouvertes sont lues en
+  même temps, la fiche est remplie tout de suite, puis la recherche web ajoute ce qui manque sans rien écraser) : nom, marque,
+  modèle, catégorie et sous-catégorie (accents ignorés), unité, conditionnement, description (désignation, contenance,
+  référence fabricant) et **photo** (celle de la base ouverte, sinon recherche de Claude). Caméra : zoom ×2 quand le téléphone
+  le permet (les iPhone récents ne font pas la mise au point à moins de 20 cm), message si la caméra ne répond pas.
+- **Pièces jointes, v44** : dans tous les formulaires (projet, article, contact, événement), les photos jointes s'affichent en
+  **vignettes** sous « Ajouter des pièces jointes » ; toucher une vignette l'ouvre en plein écran, ✕ la retire. Les autres
+  documents restent en pastilles. Une photo refusée à l'envoi ne bloque plus les suivantes, et une photo pas encore arrivée
+  d'un autre appareil est redemandée toutes les 20 secondes au lieu de rester vide.
 - **Moteur de catégories commun** (Projet, Stocks, Contacts) : un seul gabarit, donc le même affichage partout. Titre « Catégorie »
   + « Modifier » ; pastilles à icône sur une ligne ; une catégorie touchée s'épingle à gauche (✕ pour la désélectionner) et ses
   sous-catégories apparaissent à sa droite, avec « + » pour en ajouter. « Modifier » remplace les pastilles par l'**éditeur en liste** :
@@ -220,7 +230,7 @@ Compte › **Réglages** : une page par section (aussi par l'icône à droite d'
   mémorisé). Désactivé si « Réduire les animations » est actif.
 - **Mise à jour automatique** : quand une nouvelle version s'active, l'appli se recharge toute seule (tout de suite si elle
   vient de s'ouvrir, sinon à son prochain retour au premier plan) ; elle cherche une mise à jour à chaque retour et toutes
-  les 10 minutes. Le numéro de version est affiché en bas de Compte (« Chantier · version 43 »).
+  les 10 minutes. Le numéro de version est affiché en bas de Compte (« Chantier · version 44 »).
 - **Style Liquid Glass** : fond dégradé coloré, cartes, feuilles, menus et barre du bas en verre dépoli (flou +
   saturation), reflet fin sur les bords, boutons bombés (sélection, accent, boutons pleins) et léger
   assombrissement au toucher. Tout se règle dans la feuille de style et les variables en tête de `index.html` ;
